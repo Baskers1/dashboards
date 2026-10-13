@@ -1,0 +1,1601 @@
+{
+ "venues": [
+  {
+   "id": "seafood-ristorante-st-andrews",
+   "name": "The Seafood Ristorante",
+   "town": "St Andrews",
+   "type": "restaurant",
+   "address": "Bruce Embankment, St Andrews",
+   "postcode": "KY16 9AB",
+   "website": "https://www.theseafoodrestaurant.com/",
+   "social": "https://www.facebook.com/theSeafoodStA/",
+   "serves_food": "yes",
+   "cuisine": "Seafood & fish and chips",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Lunch Menus",
+     "type": "main",
+     "url": "https://www.theseafoodrestaurant.com/documents/view.php?documentID=6",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Dinner Menu",
+     "type": "main",
+     "url": "https://www.theseafoodrestaurant.com/documents/view.php?documentID=7",
+     "format": "pdf",
+     "signal": false
+    }
+   ],
+   "notices": [
+    {
+     "text": "Graduation 2027 dining information published; bookings open early January 2027.",
+     "url": "https://www.theseafoodrestaurant.com/menus/Graduation-2026/"
+    }
+   ]
+  },
+  {
+   "id": "clarets-st-andrews",
+   "name": "Clarets",
+   "town": "St Andrews",
+   "type": "restaurant",
+   "address": "1st Floor, R&A World Golf Museum, Bruce Embankment, St Andrews",
+   "postcode": "KY16 9AB",
+   "website": "https://www.claretsstandrews.com/",
+   "serves_food": "yes",
+   "cuisine": "Modern British & European",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Breakfast Menu",
+     "type": "main",
+     "url": "https://www.claretsstandrews.com/documents/view.php?documentID=1",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Afternoon Menu",
+     "type": "main",
+     "url": "https://www.claretsstandrews.com/documents/view.php?documentID=2",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Evening Menu",
+     "type": "main",
+     "url": "https://www.claretsstandrews.com/documents/view.php?documentID=3",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Festive Menu 2026",
+     "type": "festive",
+     "url": "https://www.claretsstandrews.com/documents/view.php?documentID=5",
+     "format": "pdf",
+     "valid_dates": "Christmas 2026",
+     "signal": true
+    }
+   ],
+   "notices": [
+    {
+     "text": "New restaurant from the Rocca Group overlooking the Old Course, opened spring 2026.",
+     "url": "https://sltn.co.uk/2026/04/01/rocca-group-opens-new-restaurant-overlooking-st-andrews-old-course/"
+    },
+    {
+     "text": "Festive Menu 2026: three courses £40pp for groups of 8+ throughout the festive season; enquiries open.",
+     "url": "https://www.claretsstandrews.com/Festive/"
+    }
+   ]
+  },
+  {
+   "id": "forgans-st-andrews",
+   "name": "Forgan's",
+   "town": "St Andrews",
+   "type": "restaurant",
+   "address": "Market Street, St Andrews",
+   "website": "https://forgansstandrews.co.uk/",
+   "social": "https://www.facebook.com/Forgans/",
+   "serves_food": "yes",
+   "cuisine": "Scottish",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Menus",
+     "type": "main",
+     "url": "https://forgansstandrews.co.uk/menus/",
+     "format": "html",
+     "signal": false
+    },
+    {
+     "title": "Festive Brochure 2026",
+     "type": "festive",
+     "url": "https://www.forgansstandrews.co.uk/menu/festive/forgans-festive-brochure.pdf",
+     "format": "pdf",
+     "valid_dates": "2 Dec - 23 Dec 2026, plus Christmas Day & Hogmanay",
+     "signal": true
+    },
+    {
+     "title": "A la Carte",
+     "type": "main",
+     "url": "https://www.forgansstandrews.co.uk/menu/forgans-main-menu.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Lunch Menu",
+     "type": "main",
+     "url": "https://www.forgansstandrews.co.uk/menu/forgans-lunch-menu.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Dessert Menu",
+     "type": "main",
+     "url": "https://www.forgansstandrews.co.uk/menu/forgans-dessert-menu.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Kids (Wee) Menu",
+     "type": "other",
+     "url": "https://www.forgansstandrews.co.uk/menu/forgans-wee-menu.pdf",
+     "format": "pdf",
+     "signal": false
+    }
+   ],
+   "notices": [
+    {
+     "text": "Festive 2026: festive lunch 2 courses £25 / 3 £30 and dinner £39.95 / £44.95 (2-23 Dec), Christmas Day sittings 12pm & 4pm (£85 adults), Hogmanay ceilidh £95pp; bookings via enquiry.",
+     "url": "https://forgansstandrews.co.uk/festive/"
+    },
+    {
+     "text": "Autumn offers: Market Menus all day Sunday-Thursday (2 courses £22 / 3 courses £27), Thursday shepherd's pie and a drink £18, Monday corkage deal.",
+     "url": "https://forgansstandrews.co.uk/menus/"
+    }
+   ]
+  },
+  {
+   "id": "the-adamson",
+   "name": "The Adamson",
+   "town": "St Andrews",
+   "type": "restaurant",
+   "address": "127 South Street, St Andrews",
+   "postcode": "KY16 9UH",
+   "website": "https://www.theadamson.com/",
+   "serves_food": "yes",
+   "cuisine": "Modern British & European",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Lunch Menu",
+     "type": "main",
+     "url": "https://www.theadamson.com/menus#1",
+     "format": "html",
+     "signal": false
+    },
+    {
+     "title": "Main Menu",
+     "type": "main",
+     "url": "https://www.theadamson.com/menus?menu=main-menu_new#1",
+     "format": "html",
+     "signal": false
+    },
+    {
+     "title": "Sunday Roast",
+     "type": "sunday-roast",
+     "url": "https://www.theadamson.com/menus?menu=sunday-roast#1",
+     "format": "html",
+     "valid_dates": "Sundays",
+     "signal": false
+    },
+    {
+     "title": "Kids Menu",
+     "type": "other",
+     "url": "https://www.theadamson.com/menus?menu=kids-menu#1",
+     "format": "html",
+     "signal": false
+    },
+    {
+     "title": "Christmas Menu",
+     "type": "festive",
+     "url": "https://www.theadamson.com/menus?menu=christmas-menu#1",
+     "format": "html",
+     "valid_dates": "27 November - 24 December 2026",
+     "signal": true
+    },
+    {
+     "title": "Thanksgiving Menu",
+     "type": "event",
+     "url": "https://www.theadamson.com/menus?menu=thanksgiving#1",
+     "format": "html",
+     "valid_dates": "Thanksgiving 2026",
+     "signal": true
+    }
+   ],
+   "notices": [
+    {
+     "text": "Christmas menu published (27 Nov - 24 Dec; lunch 2 courses £25/3 £30, dinner 2 courses £40/3 £45); Thanksgiving menu tab added.",
+     "url": "https://www.theadamson.com/menus?menu=christmas-menu#1"
+    }
+   ]
+  },
+  {
+   "id": "mitchells-st-andrews",
+   "name": "Mitchell's",
+   "town": "St Andrews",
+   "type": "cafe",
+   "address": "Market Street, St Andrews",
+   "postcode": "KY16 9PB",
+   "website": "https://www.mitchellsstandrews.co.uk/",
+   "serves_food": "yes",
+   "cuisine": "Cafe & breakfast",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Food & Drink",
+     "type": "main",
+     "url": "https://www.mitchellsstandrews.co.uk/menu/",
+     "format": "html",
+     "signal": false
+    },
+    {
+     "title": "Day Menu",
+     "type": "main",
+     "url": "https://www.mitchellsstandrews.co.uk/menus/mitchells-day-menu.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Dinner Menu",
+     "type": "main",
+     "url": "https://www.mitchellsstandrews.co.uk/menus/mitchells-dinner-menu.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Desserts Menu",
+     "type": "main",
+     "url": "https://www.mitchellsstandrews.co.uk/menus/mitchells-desserts-menu.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Kids Menu",
+     "type": "other",
+     "url": "https://www.mitchellsstandrews.co.uk/menus/mitchells-kids-menu.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Festive Brochure 2026",
+     "type": "festive",
+     "url": "https://www.mitchellsstandrews.co.uk/menus/festive/mitchells-festive-brochure.pdf",
+     "format": "pdf",
+     "valid_dates": "Christmas 2026 & Hogmanay",
+     "signal": true
+    },
+    {
+     "title": "Kids Festive Menu",
+     "type": "festive",
+     "url": "https://www.mitchellsstandrews.co.uk/menus/festive/mitchells-festive-kids-menu.pdf",
+     "format": "pdf",
+     "valid_dates": "Festive 2026",
+     "signal": true
+    },
+    {
+     "title": "Kids Christmas Day Menu",
+     "type": "festive",
+     "url": "https://www.mitchellsstandrews.co.uk/menus/festive/mitchells-festive-xmas-kids-menu.pdf",
+     "format": "pdf",
+     "valid_dates": "Christmas Day 2026",
+     "signal": true
+    }
+   ],
+   "notices": [
+    {
+     "text": "Festive 2026: festive dining 2 courses £34.95 / 3 £39.95, festive buffet (15-45 people, £39.95pp), Christmas Day £64.95 adult / £24.95 child (12pm or 4pm), Hogmanay 3-course feast £69.95pp from 8pm.",
+     "url": "https://www.mitchellsstandrews.co.uk/festive/"
+    }
+   ]
+  },
+  {
+   "id": "jahangir-st-andrews",
+   "name": "Jahangir Balti & Tandoori",
+   "town": "St Andrews",
+   "type": "restaurant",
+   "address": "116a South Street, St Andrews",
+   "postcode": "KY16 9QD",
+   "website": "https://jahangirstandrews.co.uk/",
+   "serves_food": "yes",
+   "cuisine": "Indian & South Asian",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Dinner Menu",
+     "type": "main",
+     "url": "https://jahangirstandrews.co.uk/media/jahangir-dinner-2024.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Lunch Menu",
+     "type": "set-menu",
+     "url": "https://jahangirstandrews.co.uk/media/jahangir-lunch-menu-2024.pdf",
+     "format": "pdf",
+     "valid_dates": "Mon-Sat 12-2.30pm",
+     "signal": false
+    },
+    {
+     "title": "Pre-Theatre Menu",
+     "type": "set-menu",
+     "url": "https://jahangirstandrews.co.uk/media/jahangir-pretheatre-menu-2024.pdf",
+     "format": "pdf",
+     "valid_dates": "5-7pm, not Saturdays",
+     "signal": false
+    },
+    {
+     "title": "Takeaway Menu",
+     "type": "other",
+     "url": "https://jahangirstandrews.co.uk/media/jahangir-takeaway-2025.pdf",
+     "format": "pdf",
+     "signal": false
+    }
+   ],
+   "notices": []
+  },
+  {
+   "id": "the-criterion-st-andrews",
+   "name": "The Criterion",
+   "town": "St Andrews",
+   "type": "pub",
+   "address": "99 South Street, St Andrews",
+   "postcode": "KY16 9QW",
+   "website": "https://www.criterionstandrews.co.uk/",
+   "serves_food": "yes",
+   "cuisine": "British pub food",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Food Menu",
+     "type": "main",
+     "url": "https://www.criterionstandrews.co.uk/files/a2_may_2026.pdf",
+     "format": "pdf",
+     "valid_dates": "May 2026",
+     "signal": false
+    }
+   ],
+   "notices": []
+  },
+  {
+   "id": "the-dunvegan",
+   "name": "The Dunvegan",
+   "town": "St Andrews",
+   "type": "pub",
+   "address": "7 Pilmour Place, St Andrews",
+   "postcode": "KY16 9HZ",
+   "website": "https://www.dunvegan-hotel.com/",
+   "social": "https://www.facebook.com/TheDunvegan/",
+   "serves_food": "yes",
+   "cuisine": "British pub food",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Golfers Corner Bar & Claret Jug Restaurant menus",
+     "type": "main",
+     "url": "https://www.dunvegan-hotel.com/general-clean",
+     "format": "image",
+     "signal": false
+    }
+   ],
+   "notices": []
+  },
+  {
+   "id": "little-italy-st-andrews",
+   "name": "Little Italy",
+   "town": "St Andrews",
+   "type": "restaurant",
+   "address": "1-3 Logies Lane, St Andrews",
+   "postcode": "KY16 9NL",
+   "website": "https://littleitalystandrews.com/",
+   "serves_food": "yes",
+   "cuisine": "Italian",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Restaurant menu (incl. wine list)",
+     "type": "main",
+     "url": "https://littleitalystandrews.com/restaurant",
+     "format": "html",
+     "signal": false
+    }
+   ],
+   "notices": []
+  },
+  {
+   "id": "amber-st-andrews",
+   "name": "Amber",
+   "town": "St Andrews",
+   "type": "restaurant",
+   "address": "159 South Street, St Andrews",
+   "website": "https://www.amberstandrews.co.uk/",
+   "serves_food": "yes",
+   "cuisine": "Mediterranean & Middle Eastern",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Main Menu",
+     "type": "main",
+     "url": "https://www.amberstandrews.co.uk/s/MAIN-MENU.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Dessert Menu",
+     "type": "main",
+     "url": "https://www.amberstandrews.co.uk/s/Amber-Lunch-Dessert-7.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Kids Menu",
+     "type": "other",
+     "url": "https://www.amberstandrews.co.uk/s/Kids-Menu-5.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "A La Carte (launch menu)",
+     "type": "main",
+     "url": "https://www.amberstandrews.co.uk/s/Amber-Launch-Menu-A-La-Carte",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Sample Christmas Season Menu",
+     "type": "festive",
+     "url": "https://www.amberstandrews.co.uk/s/FESTIVE.pdf",
+     "format": "pdf",
+     "valid_dates": "From 30 November 2026; Christmas Eve & Hogmanay events",
+     "signal": true
+    },
+    {
+     "title": "Hogmanay 2026 - Ibiza White Party set menu (3 courses £99pp, live DJ)",
+     "type": "festive",
+     "url": "https://www.amberstandrews.co.uk/s/NYE-2026-2.pdf",
+     "format": "pdf",
+     "valid_dates": "31 December 2026",
+     "signal": true
+    }
+   ],
+   "notices": [
+    {
+     "text": "New restaurant from chef Dean Banks in the former BrewDog unit on South Street, opened 5 August 2026; Mediterranean/South American-influenced menu, diner input on menu/decor.",
+     "url": "https://www.fifetoday.co.uk/business/doors-open-to-dean-banks-new-st-andrews-restaurant-after-complete-makeover-8840644"
+    },
+    {
+     "text": "Festive 2026 page live: festive season from 30 November, December party nights with DJ, Christmas Eve and Hogmanay set menus; tables of 7+ must use the festive set menu.",
+     "url": "https://www.amberstandrews.co.uk/christmas"
+    },
+    {
+     "text": "St Tropez Sundays (fortnightly specials with DJ from 11am) continue 18 Oct, 1, 15 & 29 Nov 2026 - no fixed menu.",
+     "url": "https://www.amberstandrews.co.uk/st-tropez-sunday"
+    },
+    {
+     "text": "Hogmanay 2026 'Ibiza White Party' menu published: set menu from 7pm, 3 courses £99pp with live DJ.",
+     "url": "https://www.amberstandrews.co.uk/christmas"
+    }
+   ],
+   "postcode": "KY16 9UP"
+  },
+  {
+   "id": "the-dolls-house-st-andrews",
+   "name": "The Doll's House",
+   "town": "St Andrews",
+   "type": "restaurant",
+   "address": "3 Church Square, St Andrews",
+   "postcode": "KY16 9NN",
+   "website": "https://www.dollshousestandrews.co.uk/",
+   "serves_food": "unclear",
+   "cuisine": "Scottish",
+   "trading": "unclear",
+   "menus": [],
+   "notices": []
+  },
+  {
+   "id": "the-saint-st-andrews",
+   "name": "The Saint Bar & Kitchen",
+   "town": "St Andrews",
+   "type": "pub",
+   "address": "170 South Street, St Andrews",
+   "postcode": "KY16 9EG",
+   "website": "https://the-saint-bar.co.uk/",
+   "serves_food": "yes",
+   "cuisine": "Modern British & European",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Main Menu",
+     "type": "main",
+     "url": "https://the-saint-bar.co.uk/download/1324/?tmstv=1781785273",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Breakfast Menu",
+     "type": "main",
+     "url": "https://the-saint-bar.co.uk/wp-content/uploads/2025/11/Saint-Breakfast-web.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Sunday Specials",
+     "type": "sunday-roast",
+     "url": "https://the-saint-bar.co.uk/download/1968/?tmstv=1777886447",
+     "format": "pdf",
+     "valid_dates": "Sundays",
+     "signal": false
+    },
+    {
+     "title": "Sandwich Specials",
+     "type": "specials",
+     "url": "https://the-saint-bar.co.uk/download/2695/?tmstv=1784540004",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Kids Menu",
+     "type": "other",
+     "url": "https://the-saint-bar.co.uk/download/2115/?tmstv=1783436621",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Christmas at The Saint 2026",
+     "type": "festive",
+     "url": "https://the-saint-bar.co.uk/download/1622/?tmstv=1786961403",
+     "format": "pdf",
+     "valid_dates": "Christmas 2026",
+     "signal": true
+    }
+   ],
+   "notices": [
+    {
+     "text": "Christmas 2026 bookings open; book before 31 October 2026 for complimentary fizz on arrival.",
+     "url": "https://the-saint-bar.co.uk/christmas-at-the-saint-2/"
+    }
+   ]
+  },
+  {
+   "id": "haar-st-andrews",
+   "name": "Haar",
+   "town": "St Andrews",
+   "type": "restaurant",
+   "address": "1 Golf Place, St Andrews",
+   "postcode": "KY16 9JA",
+   "website": "https://www.haarrestaurant.com/",
+   "serves_food": "yes",
+   "cuisine": "Modern British & European",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Sample Tasting Menu (£69pp, lunch & dinner)",
+     "type": "set-menu",
+     "url": "https://www.haarrestaurant.com/s/Haar-menus-4.pdf",
+     "format": "pdf",
+     "valid_dates": "From 30 September 2026",
+     "signal": true
+    },
+    {
+     "title": "Festive Lunch Sample Menu",
+     "type": "festive",
+     "url": "https://www.haarrestaurant.com/s/Haar-la-Carte-9.pdf",
+     "format": "pdf",
+     "valid_dates": "Festive 2026",
+     "signal": true
+    },
+    {
+     "title": "Festive Set Sample Menu",
+     "type": "festive",
+     "url": "https://www.haarrestaurant.com/s/Haar-la-Carte-10.pdf",
+     "format": "pdf",
+     "valid_dates": "Festive 2026",
+     "signal": true
+    }
+   ],
+   "notices": [
+    {
+     "text": "Festive 2026 page live.",
+     "url": "https://www.haarrestaurant.com/festive"
+    },
+    {
+     "text": "The Open 2027 plans announced.",
+     "url": "https://www.haarrestaurant.com/theopen2027"
+    },
+    {
+     "text": "From 30 September 2026 Haar is tasting-menu only (£69pp, lunch and dinner); a la carte, terrace and kids menus removed from site.",
+     "url": "https://www.haarrestaurant.com/menu"
+    }
+   ]
+  },
+  {
+   "id": "greyfriars-st-andrews",
+   "name": "Greyfriars Hotel",
+   "town": "St Andrews",
+   "type": "pub",
+   "address": "129 North Street, St Andrews",
+   "postcode": "KY16 9AG",
+   "website": "https://www.belhaven.co.uk/pubs/fife/greyfriars-hotel",
+   "serves_food": "yes",
+   "cuisine": "British pub food",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Menu",
+     "type": "main",
+     "url": "https://www.belhaven.co.uk/pubs/fife/greyfriars-hotel/menu",
+     "format": "html",
+     "signal": false
+    },
+    {
+     "title": "Festive Fayre Buffet Menu",
+     "type": "festive",
+     "url": "https://gkbr-p-001.sitecorecontenthub.cloud/api/public/content/e60283a8ea6a4436a3049b2f337825de?v=28b4042f",
+     "format": "pdf",
+     "valid_dates": "12 Nov 2026 - 3 Jan 2027 (excl. 25 Dec & 1 Jan)",
+     "signal": true
+    },
+    {
+     "title": "Christmas Day Menu",
+     "type": "festive",
+     "url": "https://gkbr-p-001.sitecorecontenthub.cloud/api/public/content/635cf42dc3e64bae8199ce30baa3f38c?v=19f76e6c",
+     "format": "pdf",
+     "valid_dates": "25 December 2026",
+     "signal": true
+    }
+   ],
+   "notices": [
+    {
+     "text": "Christmas 2026 bookings open; Christmas Day pre-orders open 21 October, full payment by 1 December.",
+     "url": "https://www.belhaven.co.uk/pubs/fife/greyfriars-hotel/christmas"
+    }
+   ]
+  },
+  {
+   "id": "the-rule-st-andrews",
+   "name": "The Rule",
+   "town": "St Andrews",
+   "type": "pub",
+   "address": "116 South Street, St Andrews",
+   "postcode": "KY16 9QD",
+   "website": "https://www.socialpubandkitchen.co.uk/rule-st-andrews",
+   "serves_food": "yes",
+   "cuisine": "British pub food",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Food Menu",
+     "type": "main",
+     "url": "https://24-social.com/stonegate/0VzKJgPbwtrMiQJ8zPdj/domains/445/menus/17996/food-menu-band-4---core.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Lunch Menu",
+     "type": "main",
+     "url": "https://24-social.com/stonegate/0VzKJgPbwtrMiQJ8zPdj/domains/445/menus/18001/lunch-band-1---core.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Breakfast Menu",
+     "type": "main",
+     "url": "https://24-social.com/stonegate/0VzKJgPbwtrMiQJ8zPdj/domains/445/menus/17983/breakfast-menu-band-4---scotland.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Boozy Brunch",
+     "type": "event",
+     "url": "https://24-social.com/stonegate/0VzKJgPbwtrMiQJ8zPdj/domains/445/menus/17980/boozy-brunch-menu---unpriced.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Sunday Pit Stop",
+     "type": "sunday-roast",
+     "url": "https://24-social.com/stonegate/0VzKJgPbwtrMiQJ8zPdj/domains/445/menus/18007/sunday-pitstop-a3-menu---band-4.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Kids Menu",
+     "type": "other",
+     "url": "https://24-social.com/stonegate/0VzKJgPbwtrMiQJ8zPdj/domains/445/menus/17999/kids-menu-band-4---core.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Christmas set menu 2026",
+     "type": "festive",
+     "url": "https://24-social.com/stonegate/0VzKJgPbwtrMiQJ8zPdj/domains/445/menus/18996/spk_festivesetmenu_bd2.pdf",
+     "format": "pdf",
+     "valid_dates": "Christmas 2026",
+     "signal": true
+    },
+    {
+     "title": "Christmas boozy brunch (Scotland)",
+     "type": "festive",
+     "url": "https://24-social.com/stonegate/0VzKJgPbwtrMiQJ8zPdj/domains/445/menus/19021/spk_xmasbbscot_bd4.pdf",
+     "format": "pdf",
+     "valid_dates": "Christmas 2026",
+     "signal": true
+    },
+    {
+     "title": "Seasonal spreads (groups of 10+)",
+     "type": "festive",
+     "url": "https://24-social.com/stonegate/0VzKJgPbwtrMiQJ8zPdj/domains/445/menus/19004/spk_seasonalspreads_bd2.pdf",
+     "format": "pdf",
+     "valid_dates": "Christmas 2026",
+     "signal": true
+    },
+    {
+     "title": "Festive Pizza Party (groups of 10+)",
+     "type": "festive",
+     "url": "https://24-social.com/stonegate/0VzKJgPbwtrMiQJ8zPdj/domains/445/menus/18992/spk_festivepizzaparty_bd2.pdf",
+     "format": "pdf",
+     "valid_dates": "Christmas 2026",
+     "signal": true
+    }
+   ],
+   "notices": [
+    {
+     "text": "Christmas 2026 bookings open (party packages, festive boozy brunch, set menu).",
+     "url": "https://www.socialpubandkitchen.co.uk/pubs/rule-st-andrews/christmas"
+    }
+   ]
+  },
+  {
+   "id": "road-hole-restaurant",
+   "name": "Road Hole Restaurant (Old Course Hotel)",
+   "town": "St Andrews",
+   "type": "restaurant",
+   "address": "Old Course Hotel, Old Station Road, St Andrews",
+   "postcode": "KY16 9SP",
+   "website": "https://www.oldcoursehotel.co.uk/dining/road-hole-restaurant",
+   "serves_food": "yes",
+   "cuisine": "Modern British & European",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Main Menu",
+     "type": "main",
+     "url": "https://www.oldcoursehotel.co.uk/content/dam/kohler-destinations/pdf_resource/dsa/dining/RHR_Menu_A4_210826.pdf",
+     "format": "pdf",
+     "valid_dates": "Aug 2026",
+     "signal": false
+    },
+    {
+     "title": "Dessert Menu",
+     "type": "main",
+     "url": "https://www.oldcoursehotel.co.uk/content/dam/kohler-destinations/pdf_resource/dsa/dining/RHR_Dessert_A5_280926.pdf",
+     "format": "pdf",
+     "signal": false
+    }
+   ],
+   "notices": [
+    {
+     "text": "Old Course Hotel festive programme 2026 published (Christmas, In-Between escape, Grand Hogmanay).",
+     "url": "https://www.flipsnack.com/oldcoursehotel/festive-programme-2026"
+    }
+   ]
+  },
+  {
+   "id": "jigger-inn",
+   "name": "The Jigger Inn",
+   "town": "St Andrews",
+   "type": "pub",
+   "address": "Old Course Hotel, Old Station Road, St Andrews",
+   "postcode": "KY16 9SP",
+   "website": "https://www.oldcoursehotel.co.uk/dining/jigger-inn",
+   "serves_food": "yes",
+   "cuisine": "British pub food",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Main Menu",
+     "type": "main",
+     "url": "https://www.oldcoursehotel.co.uk/content/dam/kohler-destinations/pdf_resource/dsa/dining/Jigger_Menu_A4_050626.pdf",
+     "format": "pdf",
+     "valid_dates": "June 2026",
+     "signal": false
+    }
+   ],
+   "notices": []
+  },
+  {
+   "id": "hams-hame",
+   "name": "Hams Hame Pub & Grill",
+   "town": "St Andrews",
+   "type": "pub",
+   "address": "21 Golf Place, St Andrews",
+   "website": "https://www.oldcoursehotel.co.uk/dining/hams-hame-bar---grill",
+   "serves_food": "yes",
+   "cuisine": "British pub food",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "All Day Menu",
+     "type": "main",
+     "url": "https://www.oldcoursehotel.co.uk/content/dam/kohler-destinations/pdf_resource/dsa/dining/HamsHame_MainMenu_130726_Digital.pdf",
+     "format": "pdf",
+     "valid_dates": "July 2026",
+     "signal": false
+    },
+    {
+     "title": "Kids Menu",
+     "type": "other",
+     "url": "https://www.oldcoursehotel.co.uk/content/dam/kohler-destinations/pdf_resource/dsa/dining/HamsHame_KidsMenu_A4_070425.pdf",
+     "format": "pdf",
+     "signal": false
+    }
+   ],
+   "notices": [],
+   "postcode": "KY16 9JA"
+  },
+  {
+   "id": "18-rusacks",
+   "name": "18 Rooftop Restaurant (Rusacks)",
+   "town": "St Andrews",
+   "type": "restaurant",
+   "address": "Rusacks St Andrews, Pilmour Links, St Andrews",
+   "postcode": "KY16 9JQ",
+   "website": "https://www.18standrews.co.uk/",
+   "serves_food": "yes",
+   "cuisine": "Scottish",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "A la Carte",
+     "type": "main",
+     "url": "https://cdn.sanity.io/files/f5by2nov/production/1715d81cc7691a049877933472809ffdd8fbecdc.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Dessert",
+     "type": "main",
+     "url": "https://cdn.sanity.io/files/f5by2nov/production/e8672bbf20b82e9df6f5a3eb179b76b997f5cac7.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Sunday Lunch",
+     "type": "sunday-roast",
+     "url": "https://cdn.sanity.io/files/f5by2nov/production/666dd8c659d197e7e83674e575ad1da001153fa2.pdf",
+     "format": "pdf",
+     "valid_dates": "Sundays 12.30-3pm",
+     "signal": false
+    },
+    {
+     "title": "Afternoon Tea",
+     "type": "other",
+     "url": "https://cdn.sanity.io/files/f5by2nov/production/a1d26648568e55f0af10e9e60dd95e518a0f6f5f.pdf",
+     "format": "pdf",
+     "valid_dates": "Wed-Sat 12.30-3pm",
+     "signal": false
+    },
+    {
+     "title": "Bar Snacks",
+     "type": "other",
+     "url": "https://cdn.sanity.io/files/f5by2nov/production/ae5e4a3330261d5706c9ca51242b20b4dfb8f7b9.pdf?dl=18_Bar_Snacks.pdf",
+     "format": "pdf",
+     "signal": false
+    }
+   ],
+   "notices": []
+  },
+  {
+   "id": "the-bridge-rusacks",
+   "name": "The Bridge (Rusacks)",
+   "town": "St Andrews",
+   "type": "restaurant",
+   "address": "Rusacks St Andrews, Pilmour Links, St Andrews",
+   "postcode": "KY16 9JQ",
+   "website": "https://www.thebridgerusacks.co.uk/",
+   "serves_food": "yes",
+   "cuisine": "Mediterranean & Middle Eastern",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "A la Carte",
+     "type": "main",
+     "url": "https://cdn.sanity.io/files/26m2m71k/production/562ffa0c706633e2d9aa1b679cb94be2b08691d0.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Dessert",
+     "type": "main",
+     "url": "https://cdn.sanity.io/files/26m2m71k/production/7ad8bf174ade1e986ce906bceab5afd966d126b6.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Taste of the Med",
+     "type": "set-menu",
+     "url": "https://cdn.sanity.io/files/26m2m71k/production/6811fcd97133ab10120525f24aed080276882b8c.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Set Menu",
+     "type": "set-menu",
+     "url": "https://cdn.sanity.io/files/26m2m71k/production/76417a3853c9af037fba921ac72c2b3304368fb9.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Children's Menu",
+     "type": "other",
+     "url": "https://cdn.sanity.io/files/26m2m71k/production/4112fb59b31fc34491bb00640daced87a66a709c.pdf",
+     "format": "pdf",
+     "signal": false
+    }
+   ],
+   "notices": []
+  },
+  {
+   "id": "balgove-larder",
+   "name": "Balgove Larder Cafe & Steak Barn",
+   "town": "St Andrews",
+   "type": "cafe",
+   "address": "Strathtyrum, St Andrews",
+   "postcode": "KY16 9SF",
+   "website": "https://www.balgove.com/",
+   "social": "https://www.facebook.com/balgovelarderfarmshop/",
+   "serves_food": "yes",
+   "cuisine": "Scottish",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Cafe Lunch Menu",
+     "type": "seasonal",
+     "url": "https://cdn.shopify.com/s/files/1/0709/0827/files/Balgove_Cafe_Lunch_Menu_September_2026_A4_Landscape_58_-1.jpg?v=1788438196",
+     "format": "image",
+     "valid_dates": "September 2026",
+     "signal": false
+    },
+    {
+     "title": "Steak Barn Menu",
+     "type": "seasonal",
+     "url": "https://cdn.shopify.com/s/files/1/0709/0827/files/Steak_Barn_New_Menu_Aug_2026_FINAL_1.jpg?v=1788165284",
+     "format": "image",
+     "valid_dates": "From Aug 2026",
+     "signal": false
+    },
+    {
+     "title": "Cafe Breakfast Menu",
+     "type": "main",
+     "url": "https://cdn.shopify.com/s/files/1/0709/0827/files/Balgove_Cafe_Breakfast_Menu_May_2026.jpg?v=1779379812",
+     "format": "image",
+     "signal": false
+    }
+   ],
+   "notices": []
+  },
+  {
+   "id": "dune-st-andrews",
+   "name": "Dune",
+   "town": "St Andrews",
+   "type": "restaurant",
+   "address": "80 North Street, St Andrews",
+   "postcode": "KY16 9AH",
+   "website": "https://www.dune-standrews.co.uk/",
+   "social": "https://www.facebook.com/DuneStandrews/",
+   "serves_food": "yes",
+   "cuisine": "Seafood & fish and chips",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "A la Carte",
+     "type": "main",
+     "url": "https://www.dune-standrews.co.uk/s/current-menu-8.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Dessert Menu",
+     "type": "main",
+     "url": "https://www.dune-standrews.co.uk/s/DESSERT-MENU.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Lobster Roll Shack",
+     "type": "other",
+     "url": "https://www.dune-standrews.co.uk/seafoodshack",
+     "format": "html",
+     "signal": false
+    },
+    {
+     "title": "Kids Menu",
+     "type": "other",
+     "url": "https://www.dune-standrews.co.uk/s/DUNE-FELIX-MENU.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Sample Festive Menu 2026",
+     "type": "festive",
+     "url": "https://www.dune-standrews.co.uk/s/festive-menu.pdf",
+     "format": "pdf",
+     "valid_dates": "From 27 November 2026, throughout December (excl. 31 Dec)",
+     "signal": true
+    }
+   ],
+   "notices": [
+    {
+     "text": "Christmas 2026 page live.",
+     "url": "https://www.dune-standrews.co.uk/festive"
+    },
+    {
+     "text": "Christmas parties, live music and festive set menu from 27 November through December 2026 (excluding 31 Dec).",
+     "url": "https://www.dune-standrews.co.uk/festive"
+    }
+   ]
+  },
+  {
+   "id": "rogue-st-andrews",
+   "name": "Rogue",
+   "town": "St Andrews",
+   "type": "restaurant",
+   "address": "209 South Street, St Andrews",
+   "postcode": "KY16 9EF",
+   "website": "https://www.rogue-standrews.com/",
+   "serves_food": "yes",
+   "cuisine": "Modern British & European",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "A la Carte Menu (July 2026)",
+     "type": "main",
+     "url": "https://www.rogue-standrews.com/files/ROGUE-ALC-Menu-July-2026.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Lunch Menu (August 2026)",
+     "type": "main",
+     "url": "https://www.rogue-standrews.com/files/ROGUE-LUNCH-MENU-AUG-2026.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Dessert Menu",
+     "type": "main",
+     "url": "https://www.rogue-standrews.com/files/ROGUE-Dessert-MENU-2026.pdf",
+     "format": "pdf",
+     "signal": false
+    }
+   ],
+   "notices": []
+  },
+  {
+   "id": "maisha-st-andrews",
+   "name": "Maisha",
+   "town": "St Andrews",
+   "type": "restaurant",
+   "address": "5 College Street, St Andrews",
+   "postcode": "KY16 9AA",
+   "website": "https://www.maisharestaurant.co.uk/",
+   "serves_food": "yes",
+   "cuisine": "Indian & South Asian",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Menu (online ordering)",
+     "type": "main",
+     "url": "https://www.maisharestaurant.co.uk/ordering",
+     "format": "html",
+     "signal": false
+    }
+   ],
+   "notices": []
+  },
+  {
+   "id": "tailend-st-andrews",
+   "name": "Tailend",
+   "town": "St Andrews",
+   "type": "restaurant",
+   "address": "Market Street, St Andrews",
+   "postcode": "KY16 9PD",
+   "website": "https://www.thetailend.co.uk/",
+   "social": "https://www.facebook.com/tailendstandrews/",
+   "serves_food": "yes",
+   "cuisine": "Seafood & fish and chips",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Small Plates / Main Menu (2019 file - may be outdated)",
+     "type": "main",
+     "url": "https://www.thetailend.co.uk/uploads/5/4/4/2/54420811/main-menu-2019-final.pdf",
+     "format": "pdf",
+     "valid_dates": "2019",
+     "signal": false
+    }
+   ],
+   "notices": []
+  },
+  {
+   "id": "grange-inn-st-andrews",
+   "name": "The Grange Inn",
+   "town": "St Andrews",
+   "type": "restaurant",
+   "address": "Grange Road, St Andrews",
+   "postcode": "KY16 8LJ",
+   "website": "https://thegrangeinn.com/",
+   "serves_food": "yes",
+   "cuisine": "Scottish",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Lunch Menu (sample)",
+     "type": "main",
+     "url": "https://thegrangeinn.com/lunch-menu/",
+     "format": "html",
+     "signal": false
+    },
+    {
+     "title": "Dinner Menu (sample)",
+     "type": "set-menu",
+     "url": "https://thegrangeinn.com/dinner-menu/",
+     "format": "html",
+     "signal": false
+    }
+   ],
+   "notices": []
+  },
+  {
+   "id": "the-old-vic-st-andrews",
+   "name": "The Old Vic",
+   "town": "St Andrews",
+   "type": "pub",
+   "address": "Market Street, St Andrews",
+   "website": "https://vicstandrews.co.uk/",
+   "serves_food": "yes",
+   "cuisine": "British pub food",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Main Menu",
+     "type": "main",
+     "url": "https://vicstandrews.co.uk/menus/the-vic-main-menu.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Brunch Menu",
+     "type": "main",
+     "url": "https://vicstandrews.co.uk/menus/the-vic-brunch-menu.pdf",
+     "format": "pdf",
+     "valid_dates": "Daily until 4pm",
+     "signal": false
+    },
+    {
+     "title": "Dessert Menu",
+     "type": "main",
+     "url": "https://vicstandrews.co.uk/menus/the-vic-dessert-menu.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Kids Menu",
+     "type": "other",
+     "url": "https://vicstandrews.co.uk/menus/vic-kids-menu.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Festive Brochure 2026",
+     "type": "festive",
+     "url": "https://vicstandrews.co.uk/menus/festive/vic-festive-brochure.pdf",
+     "format": "pdf",
+     "valid_dates": "Festive 2026",
+     "signal": true
+    }
+   ],
+   "notices": [
+    {
+     "text": "Festive 2026: festive menu 2 courses £20 / 3 courses £25, festive buffet £16 for 5 items; Boxing Day party with live music.",
+     "url": "https://vicstandrews.co.uk/festive/"
+    }
+   ]
+  },
+  {
+   "id": "jannettas-gelateria",
+   "name": "Jannettas Gelateria",
+   "town": "St Andrews",
+   "type": "cafe",
+   "address": "31-33 South Street, St Andrews",
+   "website": "https://jannettas.co.uk/",
+   "social": "https://www.facebook.com/JannettasGelateria/",
+   "serves_food": "yes",
+   "cuisine": "Bakery & patisserie",
+   "trading": "confirmed",
+   "menus": [],
+   "notices": [
+    {
+     "text": "Site now positions Jannettas as an online gelato/cake/gift-card shop with collection-only orders (plus in-store trading).",
+     "url": "https://jannettas.co.uk/"
+    }
+   ]
+  },
+  {
+   "id": "northpoint-cafe",
+   "name": "Northpoint Cafe",
+   "town": "St Andrews",
+   "type": "cafe",
+   "address": "North Street, St Andrews",
+   "social": "https://www.facebook.com/northpointcafe/",
+   "serves_food": "yes",
+   "cuisine": "Cafe & breakfast",
+   "trading": "unclear",
+   "menus": [],
+   "notices": []
+  },
+  {
+   "id": "newport-inn",
+   "name": "The Newport Inn",
+   "town": "Newport",
+   "type": "pub",
+   "address": "1 High Street, Newport-on-Tay",
+   "postcode": "DD6 8AB",
+   "website": "https://thenewportinn.uk/",
+   "social": "https://www.facebook.com/p/Newport-Inn-61561428840338/",
+   "serves_food": "yes",
+   "cuisine": "Other",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Drinks menu (updated 10 June 2026)",
+     "type": "other",
+     "url": "https://thenewportinn.uk/wp-content/uploads/2026/06/The-Newport-In-Drinks-Menu-Update-10-June-2026-WEB.pdf",
+     "format": "pdf",
+     "signal": false
+    }
+   ],
+   "notices": [
+    {
+     "text": "Occupies the former The Newport restaurant site; food is from rotating street-food partners (pizza, Mexican, Greek, Sri Lankan) - no fixed menu published.",
+     "url": "https://thenewportinn.uk/restaurant/"
+    },
+    {
+     "text": "Designer Cocktails brunch events advertised.",
+     "url": "https://thenewportinn.uk/the-events/"
+    },
+    {
+     "text": "Food is served by rotating pop-up partners (Pizza Piaggio, KO:TE, El Dorado Taqueria, Loaded Patatakia, The Tuskers and others) plus Designer Cocktails brunch events; no fixed food menu online.",
+     "url": "https://thenewportinn.uk/restaurant/"
+    }
+   ]
+  },
+  {
+   "id": "kitschnbake",
+   "name": "Kitschnbake",
+   "town": "Newport",
+   "type": "cafe",
+   "address": "16-18 Boat Road, Newport-on-Tay",
+   "postcode": "DD6 8EZ",
+   "website": "https://www.kitschnbake.co.uk/",
+   "social": "https://www.facebook.com/KitschnBake/",
+   "serves_food": "yes",
+   "cuisine": "Bakery & patisserie",
+   "trading": "confirmed",
+   "menus": [],
+   "notices": []
+  },
+  {
+   "id": "the-view-wormit",
+   "name": "The View Restaurant",
+   "town": "Wormit",
+   "type": "restaurant",
+   "address": "Naughton Road, Wormit",
+   "postcode": "DD6 8NE",
+   "website": "https://www.view-restaurant.co.uk/",
+   "social": "https://www.facebook.com/theviewrestaurantwormit/",
+   "serves_food": "yes",
+   "cuisine": "Scottish",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Sample Lunch Menu",
+     "type": "main",
+     "url": "https://www.view-restaurant.co.uk/uploads/1/1/9/4/11949146/lunch_menu_current_04-26.pdf",
+     "format": "pdf",
+     "valid_dates": "April 2026",
+     "signal": false
+    },
+    {
+     "title": "Sample Dinner Menu",
+     "type": "main",
+     "url": "https://www.view-restaurant.co.uk/uploads/1/1/9/4/11949146/dinner_menu_current__04-26.pdf",
+     "format": "pdf",
+     "valid_dates": "April 2026",
+     "signal": false
+    },
+    {
+     "title": "Vegetarian & Vegan Menu",
+     "type": "other",
+     "url": "https://www.view-restaurant.co.uk/uploads/1/1/9/4/11949146/vegetarian_vegan_06-25.pdf",
+     "format": "pdf",
+     "valid_dates": "June 2025",
+     "signal": false
+    },
+    {
+     "title": "Breakfast Menu",
+     "type": "main",
+     "url": "https://www.view-restaurant.co.uk/uploads/1/1/9/4/11949146/breakfast_menu_2026.pdf",
+     "format": "pdf",
+     "valid_dates": "2026",
+     "signal": false
+    },
+    {
+     "title": "Sandwich Menu",
+     "type": "main",
+     "url": "https://www.view-restaurant.co.uk/uploads/1/1/9/4/11949146/sannie_menu_2026.pdf",
+     "format": "pdf",
+     "valid_dates": "2026",
+     "signal": false
+    },
+    {
+     "title": "Tea, Coffee & Cake Menu",
+     "type": "main",
+     "url": "https://www.view-restaurant.co.uk/uploads/1/1/9/4/11949146/coffee_cakes__menu_2026.pdf",
+     "format": "pdf",
+     "valid_dates": "2026",
+     "signal": false
+    },
+    {
+     "title": "Wine and Bar List",
+     "type": "other",
+     "url": "https://www.view-restaurant.co.uk/uploads/1/1/9/4/11949146/wine__bar_list_july_26.pdf",
+     "format": "pdf",
+     "valid_dates": "July 2026",
+     "signal": false
+    },
+    {
+     "title": "Afternoon Tea",
+     "type": "other",
+     "url": "https://www.view-restaurant.co.uk/uploads/1/1/9/4/11949146/afternoon_teas_2024.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Kids Menu",
+     "type": "other",
+     "url": "https://www.view-restaurant.co.uk/uploads/1/1/9/4/11949146/childrens_menu_2021.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Take Away Menu",
+     "type": "other",
+     "url": "https://www.view-restaurant.co.uk/uploads/1/1/9/4/11949146/take_away_menu_101.pdf",
+     "format": "pdf",
+     "signal": false
+    }
+   ],
+   "notices": []
+  },
+  {
+   "id": "bell-rock-tavern",
+   "name": "Bell Rock Tavern",
+   "town": "Tayport",
+   "type": "pub",
+   "address": "4-6 Dalgleish Street, Tayport",
+   "postcode": "DD6 9BB",
+   "website": "https://bellrocktavern.uk/",
+   "social": "https://www.facebook.com/thebellrocktavern/",
+   "serves_food": "yes",
+   "cuisine": "Indian & South Asian",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Menu (Indian & Scottish, online ordering)",
+     "type": "main",
+     "url": "https://online.bellrocktavern.uk/menu/",
+     "format": "html",
+     "signal": false
+    },
+    {
+     "title": "Restaurant Menu",
+     "type": "main",
+     "url": "https://bellrocktavern.uk/wp-content/uploads/2025/03/LCP37800-Bellrock-Tavern-Restaurant.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Takeaway Menu (updated June 2026)",
+     "type": "other",
+     "url": "https://bellrocktavern.uk/wp-content/uploads/2026/06/bellrock-takeaway-updated.pdf",
+     "format": "pdf",
+     "signal": false
+    }
+   ],
+   "notices": []
+  },
+  {
+   "id": "tayport-harbour-cafe",
+   "name": "The Harbour Cafe",
+   "town": "Tayport",
+   "type": "cafe",
+   "address": "10 Broad Street, Tayport",
+   "postcode": "DD6 9AJ",
+   "website": "https://tayportct.org.uk/harbourcafe/",
+   "serves_food": "yes",
+   "cuisine": "Cafe & breakfast",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Menu",
+     "type": "main",
+     "url": "https://tayportct.org.uk/harbourcafe/menu/",
+     "format": "html",
+     "signal": false
+    }
+   ],
+   "notices": []
+  },
+  {
+   "id": "larick-cafe",
+   "name": "Larick Cafe",
+   "town": "Tayport",
+   "type": "cafe",
+   "address": "The Larick Centre, Shanwell Road, Tayport",
+   "postcode": "DD6 9EA",
+   "website": "https://tayportct.org.uk/communityhub/",
+   "social": "https://www.facebook.com/larickcafetayport/",
+   "serves_food": "yes",
+   "cuisine": "Cafe & breakfast",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Lunch Menu",
+     "type": "main",
+     "url": "https://tayportct.org.uk/communityhub/main-menu/",
+     "format": "html",
+     "valid_dates": "11.30am-3pm",
+     "signal": false
+    },
+    {
+     "title": "Breakfast Menu",
+     "type": "main",
+     "url": "https://tayportct.org.uk/communityhub/breakfast-menu/",
+     "format": "html",
+     "valid_dates": "10.00-11.30",
+     "signal": false
+    }
+   ],
+   "notices": [
+    {
+     "text": "October holidays: free picnic lunch for kids on Tuesdays and Wednesdays 12-2pm.",
+     "url": "https://tayportct.org.uk/communityhub/"
+    }
+   ]
+  },
+  {
+   "id": "cobbies-inn",
+   "name": "Cobbies Bar & Kitch Inn",
+   "town": "Tayport",
+   "type": "pub",
+   "address": "Tayport",
+   "website": "https://www.cobbiesinn.co.uk/",
+   "social": "https://www.facebook.com/p/Cobbies-Inn-100063471912827/",
+   "serves_food": "yes",
+   "cuisine": "British pub food",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "New Menu",
+     "type": "main",
+     "url": "https://www.cobbiesinn.co.uk/newmenu.htm",
+     "format": "image"
+    }
+   ],
+   "notices": []
+  },
+  {
+   "id": "shoreline-newport",
+   "name": "Shoreline",
+   "town": "Newport",
+   "type": "restaurant",
+   "address": "2 Boat Brae, Newport-on-Tay",
+   "website": "https://shorelinenewport.co.uk/",
+   "social": "https://www.instagram.com/shorelinenewport/",
+   "serves_food": "yes",
+   "cuisine": "Modern British & European",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "September-October 2026 Menu (incl. Sunday roast, weekday lunch 12-4pm)",
+     "type": "seasonal",
+     "url": "https://shorelinenewport.co.uk/wp-content/uploads/2026/09/September-october.pdf",
+     "format": "pdf",
+     "valid_dates": "September-October 2026",
+     "signal": false
+    }
+   ],
+   "notices": [
+    {
+     "text": "Riverside restaurant & bar in the former Boat Brae building (opened June 2025); open daily, dogs welcome in bar and on deck.",
+     "url": "https://shorelinenewport.co.uk/about-us/"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "TripAdvisor St Andrews restaurants",
+   "url": "https://www.tripadvisor.com/Restaurants-g186533-St_Andrews_Fife_Scotland.html",
+   "note": "venue discovery"
+  },
+  {
+   "name": "TripAdvisor Newport-on-Tay",
+   "url": "https://www.tripadvisor.com/Restaurants-g1582956-Newport_on_Tay_Fife_Scotland.html",
+   "note": "venue discovery"
+  },
+  {
+   "name": "TripAdvisor Tayport",
+   "url": "https://www.tripadvisor.com/Restaurants-g1093532-Tayport_Fife_Scotland.html",
+   "note": "venue discovery"
+  },
+  {
+   "name": "SLTN - Clarets opening",
+   "url": "https://sltn.co.uk/2026/04/01/rocca-group-opens-new-restaurant-overlooking-st-andrews-old-course/",
+   "note": "Rocca Group new venue; Rocca at Rusacks no longer listed in group"
+  },
+  {
+   "name": "Old Course Hotel dining directory",
+   "url": "https://www.oldcoursehotel.co.uk/dining/dining-directory",
+   "note": "also Swilcan Loft, The Deck, Road Hole Bar not captured"
+  },
+  {
+   "name": "Rusacks food & beverage",
+   "url": "https://marineandlawn.com/rusacksstandrews/food-beverage/",
+   "note": "18, The Bridge, One Under, Rao's"
+  },
+  {
+   "name": "FifeToday - Amber (Dean Banks) opening",
+   "url": "https://www.fifetoday.co.uk/business/doors-open-to-dean-banks-new-st-andrews-restaurant-after-complete-makeover-8840644",
+   "note": "new venue discovery, refresh 28 Sep 2026"
+  },
+  {
+   "name": "Shoreline Newport-on-Tay (own site)",
+   "url": "https://shorelinenewport.co.uk/",
+   "note": "venue missed in earlier passes; found via search 12 Oct 2026"
+  }
+ ],
+ "notes": [
+  "Refreshed 28 Sep 2026: checked all venue sites, added Amber (new opening, Aug 2026), updated Forgan's (festive brochure PDF found), Road Hole Restaurant and 18 (Rusacks) dessert-menu PDF filenames (site had renamed files), Balgove Steak Barn signal turned off (no longer a new launch), Jannettas notice (now collection-only online shop model).",
+  "Rocca (Rusacks): not listed among Rocca Group venues in April 2026; Rusacks now runs 18 and The Bridge - treat Rocca as closed/replaced.",
+  "The Grill House (St Mary's Place): listed as closed (Yelp/Foursquare) - excluded.",
+  "Nahm-Jim (Market St): listed as closed - excluded.",
+  "The Newport restaurant (1 High St, Newport): closed; its domain thenewportrestaurant.co.uk is now a gambling spam site - do not use. Site now The Newport Inn.",
+  "Ma Bells (40 The Scores): no own website found; trading unclear - excluded.",
+  "Taste (North St, St Andrews): no own website found - excluded.",
+  "Forgan Arts Centre (Newport): no cafe mentioned on its site - excluded.",
+  "Wormit Boating Club: members' club with bar, no public food menu - excluded.",
+  "Sites unreadable/blocked on this refresh (28 Sep 2026): forgansstandrews.co.uk/menus/ (403), dollshousestandrews.co.uk (DNS/invalid_url via both fetchers), thetailend.co.uk (JS-rendered, no menu content extractable, PDF still 2019), vicstandrews.co.uk/food-drinks/ (403; homepage confirms pub trading but no food menu found), rogue-standrews.com (401/timeout on menus.php and homepage), maisharestaurant.co.uk (rate-limited), cobbiesinn.co.uk/newmenu.htm (loads but menu appears to be an image with no extractable text), littleitalystandrews.com/restaurant (no menu links, image-only page), dunvegan-hotel.com/food (404, kept existing /general-clean image link).",
+  "Little Italy, Doll's House (site blank), Kitschnbake, Newport Inn, Cobbies Inn, Northpoint: no menu found on own site.",
+  "Missing postcodes: Forgan's, Hams Hame, Old Vic, Jannettas, Northpoint, Cobbies Inn, Amber (new venue - not yet found).",
+  "Not covered (search budget exhausted): Tulsi (JS site), Mozza (mozza.co.uk), Central Bar, Aikmans, Keys Bar, Swilcan Loft, Fairmont St Andrews, Hotel du Vin, Cafe in the Square, Bibi's, Cromars (mostly takeaway), Tayport Arms, Manna Cafe (Newport).",
+  "Second pass 2026-09-28: Little Italy's /restaurant page carries the full a la carte menu (antipasti to desserts) and wine list - added.",
+  "Second pass 2026-09-28: Newport Inn drinks menu PDF added; food page lists pop-up food partners rather than a menu (notice added).",
+  "Second pass 2026-09-28 (late morning): added Jeet Christmas 2026, Camperdown Elm festive/Christmas Day/Boxing Day 2026, The Rule Christmas 2026 PDFs, Milas shared menu page (Perth), Bar 10 afternoon tea; Giddy Goose Christmas bookings notice.",
+  "Refresh 2026-10-05: re-checked all 36 venue sites. Added festive 2026 menus for The Adamson (Christmas + Thanksgiving tabs), Mitchell's (festive brochure, kids festive and Christmas Day kids menus), The Old Vic (festive brochure), Amber (FESTIVE.pdf), Haar (festive lunch/set sample PDFs), Dune (festive-menu.pdf replacing page link), Greyfriars (festive fayre buffet + Christmas Day PDFs replacing page link), The Rule (festive pizza party; all Rule menus moved from spccs1.co.uk to 24-social.com URLs). Haar now tasting-menu only from 30 Sep 2026 (old tasting/lunch/a la carte/terrace/kids menus removed). Balgove cafe lunch menu replaced by September 2026 version; breakfast menu added. New PDF links found for Mitchell's, Old Vic (trading now confirmed), Rogue (July/Aug 2026 menus), Forgan's (menus page now readable), Bell Rock Tavern, Jahangir takeaway, View takeaway, 18 bar snacks; Larick breakfast menu. Fixed URLs: 18 dessert PDF, Road Hole dessert PDF (280926), Amber launch a la carte link. Notices added: Forgan's autumn offers, Amber St Tropez Sundays, Old Course Hotel festive programme 2026, Larick October holiday lunches. No venues dropped; 2 searches for new openings found nothing well evidenced.",
+  "Still unreadable 2026-10-05: dollshousestandrews.co.uk (DNS invalid), thetailend.co.uk (JS shell only), maisharestaurant.co.uk/ordering (429), cobbiesinn.co.uk/newmenu.htm (image-only), dunvegan-hotel.com menus (image-only, /menu empty), littleitalystandrews.com (no new menus), Northpoint (social only), Kitschnbake/Newport Inn (no food menu online).",
+  "Refresh 2026-10-12: re-checked all 36 venue sites (WebFetch + TinyFish). All existing menu URLs still linked from venue sites (Seafood, Clarets, Forgan's, Adamson, Mitchell's, Jahangir, Criterion, Saint, Haar, Greyfriars, Rule, Road Hole, Jigger, Hams Hame, 18, Bridge, Balgove, Dune, Rogue, Old Vic, Amber, View, Bell Rock, Harbour Cafe, Larick); no menus removed. Added Amber Hogmanay 2026 'Ibiza White Party' set menu (NYE-2026-2.pdf). Cleared signal on Amber launch/main/dessert menus (opened Aug) and Balgove Sept lunch menu; dropped stale Balgove notices and Forgan's early-booking fizz offer (deadline 25 Sep passed); updated Forgan's, Mitchell's, Old Vic festive notices with prices; Amber St Tropez Sunday dates trimmed to future ones; removed duplicate Rule notice. Hams Hame address (21 Golf Place) from Old Course Hotel page, postcode KY16 9JA inferred from Golf Place (same street as Haar). Added Shoreline (Newport, 2 Boat Brae) - open since June 2025 but missing; postcode not found on own site. No closures found. 3 searches for new openings: only Shoreline added; Sweetgrass Baking Co (Newport, social-only, Aug 2026) not added - no own website seen.",
+  "Still unreadable 2026-10-12: maisharestaurant.co.uk (429 on both fetchers), dollshousestandrews.co.uk (invalid/DNS), thetailend.co.uk (JS shell, no content), littleitalystandrews.com (robots-blocked for WebFetch; TinyFish OK, menu inline on /restaurant), dunvegan-hotel.com /menu and /year-end (empty Wix pages; image menu at /general-clean), cobbiesinn.co.uk/newmenu.htm (image only), greyfriars belhaven /menu (JS, no menu content extracted - URL kept), forgansstandrews.co.uk (WebFetch error; TinyFish OK). Shoreline postcode missing."
+ ]
+}

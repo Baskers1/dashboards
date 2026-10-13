@@ -1,0 +1,994 @@
+{
+ "venues": [
+  {
+   "id": "63-tay-street",
+   "name": "63 Tay Street",
+   "town": "Perth",
+   "type": "restaurant",
+   "address": "63 Tay Street, Perth",
+   "postcode": "PH2 8NN",
+   "website": "https://www.63taystreet.com/",
+   "serves_food": "yes",
+   "cuisine": "Scottish",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "'4 for 44' set menu",
+     "type": "set-menu",
+     "url": "https://www.63taystreet.com/wp-content/uploads/2026/09/4-for-44-16-9-26.pdf",
+     "format": "pdf",
+     "valid_dates": "Sample 16 Sep 2026; lunch Thu-Sat, dinner Wed-Thu"
+    },
+    {
+     "title": "'Just Feed Us Fraser' 6-course tasting menu",
+     "type": "main",
+     "url": "https://www.63taystreet.com/wp-content/uploads/2026/04/Just-Feed-Us-17-4-26.pdf",
+     "format": "pdf",
+     "valid_dates": "£69.50pp; lunch Thu-Sat, dinner Wed-Sat"
+    },
+    {
+     "title": "Sunday Lunch @ 63",
+     "type": "sunday-roast",
+     "url": "https://www.63taystreet.com/wp-content/uploads/2026/09/Sunday-Lunch-Sample-24-9-26.pdf",
+     "format": "pdf",
+     "valid_dates": "Next date: 6 Dec 2026 (12-2.45pm arrivals)"
+    },
+    {
+     "title": "Festive Prix Fixe 2026",
+     "type": "festive",
+     "url": "https://www.63taystreet.com/wp-content/uploads/2026/04/Festive-3-3-3-2026.pdf",
+     "format": "pdf",
+     "valid_dates": "Through December 2026 (excl. Christmas Eve dinner)",
+     "signal": true
+    }
+   ],
+   "notices": [
+    {
+     "text": "Festive Prix Fixe running through December 2026; parties of 8+ need pre-order and £10pp deposit.",
+     "url": "https://www.63taystreet.com/menus/"
+    },
+    {
+     "text": "Next Sunday Lunch @ 63 is 6 December 2026.",
+     "url": "https://www.63taystreet.com/menus/"
+    }
+   ]
+  },
+  {
+   "id": "deans-perth",
+   "name": "Deans Restaurant",
+   "town": "Perth",
+   "type": "restaurant",
+   "address": "77-79 Kinnoull Street, Perth",
+   "postcode": "PH1 5EZ",
+   "website": "https://www.deansperth.co.uk/",
+   "serves_food": "yes",
+   "cuisine": "Modern British & European",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Sample A La Carte Menu Autumn 2026",
+     "type": "seasonal",
+     "url": "https://www.deansperth.co.uk/s/ALC-MENU-AUTUMN-2026-2-cpw5.pdf",
+     "format": "pdf",
+     "valid_dates": "Autumn 2026"
+    },
+    {
+     "title": "Sample Sunday Menu 2026",
+     "type": "sunday-roast",
+     "url": "https://www.deansperth.co.uk/s/SUNDAY-A-LA-CARTE-MENU-2026.pdf",
+     "format": "pdf"
+    },
+    {
+     "title": "Sample Festive Menu 2026",
+     "type": "festive",
+     "url": "https://www.deansperth.co.uk/s/FESTIVE-2026.pdf",
+     "format": "pdf",
+     "valid_dates": "20 Nov - 30 Dec 2026",
+     "signal": true
+    },
+    {
+     "title": "Wine List",
+     "type": "other",
+     "url": "https://www.deansperth.co.uk/s/Deans-Perth-Wine-List_140x297-26126-proof3.pdf",
+     "format": "pdf"
+    },
+    {
+     "title": "Drinks List",
+     "type": "other",
+     "url": "https://www.deansperth.co.uk/s/Deans-Drinks-Menu-3.pdf",
+     "format": "pdf"
+    }
+   ],
+   "notices": [
+    {
+     "text": "Festive parties 20 Nov - 30 Dec 2026; pre-orders for 5+, menu & pre-order sheet emailed in November; a la carte not available in December.",
+     "url": "https://www.deansperth.co.uk/festive-meals"
+    }
+   ]
+  },
+  {
+   "id": "cafe-tabou-perth",
+   "name": "Cafe Tabou",
+   "town": "Perth",
+   "type": "restaurant",
+   "address": "4 St John's Place, Perth",
+   "postcode": "PH1 5SZ",
+   "website": "https://www.cafetabou.co.uk/",
+   "serves_food": "yes",
+   "cuisine": "Modern British & European",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Autumn Menus (Sept 2026)",
+     "type": "seasonal",
+     "url": "https://www.cafetabou.co.uk/desktop/web/ckfinder/userfiles/files/TGOC19630%20-%20Cafe%20Tabou%20-%20Sept%202026%20Menus%20V4%20Proof.pdf",
+     "format": "pdf",
+     "valid_dates": "Autumn 2026"
+    },
+    {
+     "title": "Breakfast Menu",
+     "type": "main",
+     "url": "https://www.cafetabou.co.uk/desktop/web/ckfinder/userfiles/files/TGOC18124%20-%20Cafe%20Tabou%20-%20Breakfast%20and%20Drinks%20Menu%20Changes%20Oct25%20(Breakfast)%20Proof.pdf",
+     "format": "pdf",
+     "valid_dates": "From Oct 2025"
+    },
+    {
+     "title": "Drinks Menu",
+     "type": "other",
+     "url": "https://www.cafetabou.co.uk/desktop/web/ckfinder/userfiles/files/TGOC18124%20-%20Cafe%20Tabou%20-%20Breakfast%20and%20Drinks%20Menu%20Changes%20Oct25%20(Drinks%20Main)%20V2%20Proof.pdf",
+     "format": "pdf",
+     "valid_dates": "From Oct 2025"
+    }
+   ],
+   "notices": []
+  },
+  {
+   "id": "breizh-perth",
+   "name": "Breizh",
+   "town": "Perth",
+   "type": "restaurant",
+   "address": "28-30 High Street, Perth",
+   "postcode": "PH1 5TQ",
+   "website": "https://www.breizhrestaurant.com/",
+   "serves_food": "yes",
+   "cuisine": "Modern British & European",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "A La Carte",
+     "type": "main",
+     "url": "https://secure.toolkitfiles.co.uk/clients/36483/sitedata/menus/A-La-Carte.pdf",
+     "format": "pdf"
+    },
+    {
+     "title": "Pizzas and Galettes",
+     "type": "main",
+     "url": "https://secure.toolkitfiles.co.uk/clients/36483/sitedata/menus/Pizzas&Galettes.pdf",
+     "format": "pdf"
+    },
+    {
+     "title": "Desserts",
+     "type": "main",
+     "url": "https://secure.toolkitfiles.co.uk/clients/36483/sitedata/menus/Desserts.pdf",
+     "format": "pdf"
+    },
+    {
+     "title": "Pre-Theatre Menu",
+     "type": "set-menu",
+     "url": "https://secure.toolkitfiles.co.uk/clients/36483/sitedata/menus/Pre-Theatre-Menu.pdf",
+     "format": "pdf"
+    },
+    {
+     "title": "Drinks Menu",
+     "type": "other",
+     "url": "https://secure.toolkitfiles.co.uk/clients/36483/sitedata/menus/drinks-menu-july-2023.pdf",
+     "format": "pdf",
+     "valid_dates": "July 2023"
+    },
+    {
+     "title": "Wine List",
+     "type": "other",
+     "url": "https://secure.toolkitfiles.co.uk/clients/36483/sitedata/menus/BREIZH%20WINE%20LIST.pdf?xxx",
+     "format": "pdf"
+    },
+    {
+     "title": "Christmas Menu (Menu de Noël)",
+     "type": "festive",
+     "url": "https://secure.toolkitfiles.co.uk/clients/36483/sitedata/menus/Christmas%20Menu.pdf",
+     "format": "pdf",
+     "valid_dates": "Christmas (year not stated); 2 courses £28.90, 3 courses £34.90",
+     "signal": true
+    }
+   ],
+   "notices": [
+    {
+     "text": "New Christmas menu (Menu de Noël) now linked on the menus page; £10pp deposit at booking.",
+     "url": "https://www.breizhrestaurant.com/menus"
+    }
+   ]
+  },
+  {
+   "id": "tabla-perth",
+   "name": "Tabla",
+   "town": "Perth",
+   "type": "restaurant",
+   "address": "173 South Street, Perth",
+   "postcode": "PH2 8NY",
+   "website": "https://tablarestaurant.co.uk/",
+   "serves_food": "yes",
+   "cuisine": "Indian & South Asian",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Online menu (order page)",
+     "type": "main",
+     "url": "https://tablarestaurant.co.uk/restaurant-order/",
+     "format": "html"
+    }
+   ],
+   "notices": []
+  },
+  {
+   "id": "everest-inn-perth",
+   "name": "Everest Inn",
+   "town": "Perth",
+   "type": "restaurant",
+   "address": "36 South Methven Street, Perth",
+   "postcode": "PH1 5NU",
+   "website": "https://everestinnperth.co.uk/",
+   "social": "https://www.facebook.com/EverestInnPerth/",
+   "serves_food": "yes",
+   "cuisine": "Indian & South Asian",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Food Menu",
+     "type": "main",
+     "url": "https://everestinnperth.co.uk/menu/",
+     "format": "html"
+    },
+    {
+     "title": "Dine-in and Drinks Menu",
+     "type": "main",
+     "url": "https://everestinnperth.co.uk/menu/dineinanddrink.pdf",
+     "format": "pdf"
+    },
+    {
+     "title": "Menu (redesigned website)",
+     "type": "main",
+     "url": "https://everestinnperth.co.uk/menu.html",
+     "format": "html"
+    }
+   ],
+   "notices": [
+    {
+     "text": "Nepalese Street Food & Wine Pairing event hosted (Sept 2026); some tandoori/rice items marked 'coming soon' on the menu.",
+     "url": "https://everestinnperth.co.uk/menu/"
+    },
+    {
+     "text": "Christmas Day party menu 2026 announced on Facebook; not yet on the restaurant's own website.",
+     "url": "https://www.facebook.com/groups/1200210820525378/posts/2185739791972471/"
+    }
+   ]
+  },
+  {
+   "id": "north-port-perth",
+   "name": "The North Port",
+   "town": "Perth",
+   "type": "restaurant",
+   "address": "8 North Port, Perth",
+   "postcode": "PH1 5LU",
+   "website": "https://www.thenorthport.co.uk/",
+   "serves_food": "yes",
+   "cuisine": "Scottish",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Main Menu",
+     "type": "main",
+     "url": "https://www.thenorthport.co.uk/menus/main-menu/",
+     "format": "html"
+    },
+    {
+     "title": "Set Menu",
+     "type": "set-menu",
+     "url": "https://www.thenorthport.co.uk/menus/set-menu/",
+     "format": "html"
+    },
+    {
+     "title": "Group Set Menu",
+     "type": "set-menu",
+     "url": "https://www.thenorthport.co.uk/menus/group-set-menu/",
+     "format": "html"
+    },
+    {
+     "title": "Wine List",
+     "type": "other",
+     "url": "https://www.thenorthport.co.uk/menus/wine-list/",
+     "format": "html"
+    },
+    {
+     "title": "Festive Menu",
+     "type": "festive",
+     "url": "https://www.thenorthport.co.uk/menus/festive-menu/",
+     "format": "html",
+     "valid_dates": "Festive 2026",
+     "signal": true
+    }
+   ],
+   "notices": [
+    {
+     "text": "Festive menu live: lunch 2c £40 / 3c £45, dinner 2c £43 / 3c £48.",
+     "url": "https://www.thenorthport.co.uk/menus/festive-menu/"
+    }
+   ]
+  },
+  {
+   "id": "cridos-perth",
+   "name": "Cridos",
+   "town": "Perth",
+   "type": "restaurant",
+   "address": "5/6 St John's Place, Perth",
+   "postcode": "PH1 5SZ",
+   "website": "https://cridosrestaurant.co.uk/",
+   "social": "https://www.facebook.com/cridosrestaurant/",
+   "serves_food": "yes",
+   "cuisine": "Italian",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Menu",
+     "type": "main",
+     "url": "https://cridosrestaurant.co.uk/menu/",
+     "format": "html"
+    },
+    {
+     "title": "Lunch Special",
+     "type": "set-menu",
+     "url": "https://cridosrestaurant.co.uk/lunch-special/",
+     "format": "html",
+     "valid_dates": "Daily 12:00-16:00; 2c £22.50, 3c £26"
+    },
+    {
+     "title": "Seafood Menu",
+     "type": "specials",
+     "url": "https://cridosrestaurant.co.uk/wp-content/uploads/2026/07/TGOC19332-Cridos-Seafood-Menu-Proof_page-0001.jpg",
+     "format": "image",
+     "valid_dates": "From July 2026"
+    },
+    {
+     "title": "Festive Menu 2026",
+     "type": "festive",
+     "url": "https://cridosrestaurant.co.uk/wp-content/uploads/2026/09/Cridos_Festive_Menu_A4_260901_164631_page-0001.jpg",
+     "format": "image",
+     "valid_dates": "Festive 2026",
+     "signal": true
+    }
+   ],
+   "notices": [
+    {
+     "text": "Festive Menu 2026 published on the website (image).",
+     "url": "https://cridosrestaurant.co.uk/"
+    }
+   ]
+  },
+  {
+   "id": "broth3rs-perth",
+   "name": "Broth3rs",
+   "town": "Perth",
+   "type": "restaurant",
+   "address": "24 George Street, Perth",
+   "postcode": "PH1 5JR",
+   "website": "https://broth3rsrestaurant.co.uk/",
+   "social": "https://www.facebook.com/3threebroth3rs/",
+   "serves_food": "yes",
+   "cuisine": "Italian",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Main Menu (starters, mains, pizza)",
+     "type": "main",
+     "url": "https://broth3rsrestaurant.co.uk/#menu",
+     "format": "html"
+    },
+    {
+     "title": "Lunch Time Special Menu",
+     "type": "set-menu",
+     "url": "https://broth3rsrestaurant.co.uk/#lunch",
+     "format": "html",
+     "valid_dates": "Daily 12noon-4pm; 2 courses £19.95"
+    },
+    {
+     "title": "Menu di Natale (Italian Christmas Menu)",
+     "type": "festive",
+     "url": "https://media.base44.com/files/public/6a8acff31870281ef3800ba4/210f3d61c_Broth3rs_Christmas_Menu_A4_260831_155120.pdf",
+     "format": "pdf",
+     "valid_dates": "30 Nov - end Dec 2026; £34.95pp three courses",
+     "signal": true
+    }
+   ],
+   "notices": [
+    {
+     "text": "Christmas menu 'Menu di Natale' from 30 Nov 2026 (£34.95pp); £10pp deposit and pre-order for parties of 8+.",
+     "url": "https://broth3rsrestaurant.co.uk/#xmas2026"
+    }
+   ]
+  },
+  {
+   "id": "cardo-perth",
+   "name": "Cardo",
+   "town": "Perth",
+   "type": "restaurant",
+   "address": "38 South Street, Perth",
+   "postcode": "PH2 8PG",
+   "website": "https://cardo.restaurant/",
+   "serves_food": "yes",
+   "cuisine": "Italian",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "A La Carte Menu",
+     "type": "main",
+     "url": "https://cardo.restaurant/wp-content/uploads/2025/04/TGO16795-Cardo-A-La-Carte-Menu-March25-V5-Proof.pdf",
+     "format": "pdf",
+     "valid_dates": "March 2025"
+    },
+    {
+     "title": "Lunch Menu",
+     "type": "main",
+     "url": "https://cardo.restaurant/wp-content/uploads/2026/06/TGOC19166-Cardo-Menu-Updates-May26-Lunch-Proof.pdf",
+     "format": "pdf",
+     "valid_dates": "May 2026"
+    },
+    {
+     "title": "Dinner Menu",
+     "type": "main",
+     "url": "https://cardo.restaurant/wp-content/uploads/2026/06/TGOC19166-Cardo-Menu-Updates-May26-Dinner-V2-Proof.pdf",
+     "format": "pdf",
+     "valid_dates": "May 2026"
+    },
+    {
+     "title": "Drinks Menu",
+     "type": "other",
+     "url": "https://cardo.restaurant/wp-content/uploads/2026/06/high-res-menu-381669-bkm080626123840thP.pdf",
+     "format": "pdf",
+     "valid_dates": "June 2026"
+    },
+    {
+     "title": "Set Menu (October)",
+     "type": "set-menu",
+     "url": "https://cardo.restaurant/wp-content/uploads/2026/10/CARDO-SET-MENU-october.pdf",
+     "format": "pdf",
+     "valid_dates": "October 2026",
+     "signal": true
+    },
+    {
+     "title": "Christmas Menu 2026",
+     "type": "festive",
+     "url": "https://cardo.restaurant/wp-content/uploads/2026/09/CARDO-CHRISTMAS26.pdf",
+     "format": "pdf",
+     "valid_dates": "December 2026",
+     "signal": true
+    }
+   ],
+   "notices": [
+    {
+     "text": "October 2026 set menu published.",
+     "url": "https://cardo.restaurant/"
+    },
+    {
+     "text": "Christmas 2026 menu and pre-order form available.",
+     "url": "https://cardo.restaurant/wp-content/uploads/2026/09/2026-pre-order-form.xlsx"
+    }
+   ]
+  },
+  {
+   "id": "jade-garden-perth",
+   "name": "The Jade Garden",
+   "town": "Perth",
+   "type": "restaurant",
+   "address": "14 Scott Street, Perth",
+   "postcode": "PH1 5EJ",
+   "website": "https://www.jadegardenperth.co.uk/",
+   "social": "https://www.facebook.com/p/Jade-Garden-Restaurant-100063668794984/",
+   "serves_food": "yes",
+   "cuisine": "Chinese & East Asian",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "A La Carte Menu",
+     "type": "main",
+     "url": "https://www.jadegardenperth.co.uk/our-menus",
+     "format": "html"
+    },
+    {
+     "title": "Lunch Menu",
+     "type": "set-menu",
+     "url": "https://www.jadegardenperth.co.uk/our-menus?location=Terry+A+Francois+Boulevard&menu=lunch-menu#1",
+     "format": "html"
+    }
+   ],
+   "notices": []
+  },
+  {
+   "id": "mae-ping-perth",
+   "name": "Mae Ping Thai Dining",
+   "town": "Perth",
+   "type": "restaurant",
+   "address": "South Street, Perth",
+   "postcode": "PH2 8NY",
+   "social": "https://www.instagram.com/maepingthai_perth/",
+   "serves_food": "yes",
+   "cuisine": "Thai & South-East Asian",
+   "trading": "unclear",
+   "menus": [],
+   "notices": []
+  },
+  {
+   "id": "pacos-perth",
+   "name": "Paco's",
+   "town": "Perth",
+   "type": "restaurant",
+   "address": "3-5 Mill Street, Perth",
+   "postcode": "PH1 5HZ",
+   "website": "https://www.pacos.co.uk/",
+   "serves_food": "yes",
+   "cuisine": "Burgers, BBQ & American",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Paco's Menu",
+     "type": "main",
+     "url": "https://www.pacos.co.uk/wp-content/uploads/2025/05/Pacos-Restaurant-Menu-May-2025.pdf",
+     "format": "pdf",
+     "valid_dates": "May 2025"
+    },
+    {
+     "title": "Festive Menu",
+     "type": "festive",
+     "url": "https://www.pacos.co.uk/wp-content/uploads/2025/09/Pacos-Restaurant-Festive-Menu-2025.pdf",
+     "format": "pdf",
+     "valid_dates": "Festive 2025 file - no 2026 version seen yet"
+    }
+   ],
+   "notices": []
+  },
+  {
+   "id": "kisas-perth",
+   "name": "Kisa's",
+   "town": "Perth",
+   "type": "restaurant",
+   "address": "1 Mill Street, Perth",
+   "postcode": "PH1 5HZ",
+   "website": "https://kisas.co.uk/kisas/",
+   "serves_food": "yes",
+   "cuisine": "Modern British & European",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Day Menu",
+     "type": "main",
+     "url": "https://kisas.co.uk/wp-content/uploads/2026/03/Day.pdf",
+     "format": "pdf",
+     "valid_dates": "From March 2026"
+    },
+    {
+     "title": "Evening Menu",
+     "type": "main",
+     "url": "https://kisas.co.uk/wp-content/uploads/2026/03/Evening.pdf",
+     "format": "pdf",
+     "valid_dates": "From March 2026"
+    },
+    {
+     "title": "Dessert Menu",
+     "type": "other",
+     "url": "https://kisas.co.uk/wp-content/uploads/2026/03/Dessert.pdf",
+     "format": "pdf",
+     "valid_dates": "From March 2026"
+    },
+    {
+     "title": "Kids Menu",
+     "type": "other",
+     "url": "https://kisas.co.uk/wp-content/uploads/2026/03/Kids.pdf",
+     "format": "pdf",
+     "valid_dates": "From March 2026"
+    }
+   ],
+   "notices": []
+  },
+  {
+   "id": "the-bothy-perth",
+   "name": "The Bothy",
+   "town": "Perth",
+   "type": "restaurant",
+   "address": "33 Kinnoull Street, Perth",
+   "postcode": "PH1 5EN",
+   "social": "https://www.facebook.com/TheBothyPerth/",
+   "serves_food": "yes",
+   "cuisine": "Scottish",
+   "trading": "unclear",
+   "menus": [],
+   "notices": []
+  },
+  {
+   "id": "the-venue-perth",
+   "name": "The Venue",
+   "town": "Perth",
+   "type": "restaurant",
+   "address": "38 St John Street, Perth",
+   "postcode": "PH1 5SP",
+   "serves_food": "yes",
+   "cuisine": "Scottish",
+   "trading": "unclear",
+   "menus": [],
+   "notices": []
+  },
+  {
+   "id": "parklands-hotel-perth",
+   "name": "No. 1 The Bank Bistro, Parklands Hotel",
+   "town": "Perth",
+   "type": "restaurant",
+   "address": "2 St Leonard's Bank, Perth",
+   "postcode": "PH2 8EB",
+   "website": "https://www.theparklandshotel.com/eat-and-drink/",
+   "social": "https://www.facebook.com/Thehotelperth/",
+   "serves_food": "yes",
+   "cuisine": "Modern British & European",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Bistro Menu (September)",
+     "type": "seasonal",
+     "url": "https://www.theparklandshotel.com/wp-content/uploads/2026/09/September-Bistro-Full.pdf",
+     "format": "pdf",
+     "valid_dates": "September 2026"
+    }
+   ],
+   "notices": [
+    {
+     "text": "Hotel has a Christmas page (year not verified).",
+     "url": "https://www.theparklandshotel.com/christmas/"
+    }
+   ]
+  },
+  {
+   "id": "effies-of-perth",
+   "name": "Effies of Perth",
+   "town": "Perth",
+   "type": "cafe",
+   "address": "202 High Street, Perth",
+   "postcode": "PH1 5PA",
+   "website": "https://effiesofperth.co.uk/",
+   "social": "https://www.facebook.com/effiesofperth/",
+   "serves_food": "yes",
+   "cuisine": "Cafe & breakfast",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Breakfast",
+     "type": "main",
+     "url": "https://effiesofperth.co.uk/menus/breakfast.html",
+     "format": "html"
+    },
+    {
+     "title": "Main Meal and Lunch Menu",
+     "type": "main",
+     "url": "https://effiesofperth.co.uk/menus/main-meal-and-lunch-menu.html",
+     "format": "html"
+    },
+    {
+     "title": "Afternoon Tea",
+     "type": "other",
+     "url": "https://effiesofperth.co.uk/menus/afternoon-tea.html",
+     "format": "html"
+    }
+   ],
+   "notices": []
+  },
+  {
+   "id": "willows-perth",
+   "name": "Willows",
+   "town": "Perth",
+   "type": "cafe",
+   "address": "12-14 St John's Place, Perth",
+   "postcode": "PH1 5SZ",
+   "website": "https://www.willowsperth.co.uk/",
+   "social": "https://www.facebook.com/WillowsPerth/",
+   "serves_food": "yes",
+   "cuisine": "Cafe & breakfast",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Main Menu",
+     "type": "main",
+     "url": "https://canva.link/f6tg2kwx0cc6632",
+     "format": "html",
+     "valid_dates": "Breakfast 08:30-12:00, lunch 12:00-16:00"
+    },
+    {
+     "title": "Sunday Roast Board",
+     "type": "sunday-roast",
+     "url": "https://www.willowsperth.co.uk/sunday-roast",
+     "format": "html",
+     "valid_dates": "Sundays from 12pm, £17.95pp min 2 people"
+    },
+    {
+     "title": "Afternoon Tea",
+     "type": "other",
+     "url": "https://www.willowsperth.co.uk/afternoonteapage",
+     "format": "html"
+    }
+   ],
+   "notices": []
+  },
+  {
+   "id": "hinterland-perth",
+   "name": "Hinterland",
+   "town": "Perth",
+   "type": "cafe",
+   "address": "10 St John's Place, Perth",
+   "postcode": "PH1 5SZ",
+   "website": "https://www.hinterlandcoffee.co.uk/",
+   "social": "https://www.facebook.com/hinterlandcoffee/",
+   "serves_food": "yes",
+   "cuisine": "Cafe & breakfast",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Menu",
+     "type": "main",
+     "url": "https://www.hinterlandcoffee.co.uk/_files/ugd/9c1875_48ca04671ec948e28ad409b752e75e5b.pdf",
+     "format": "pdf"
+    }
+   ],
+   "notices": []
+  },
+  {
+   "id": "blend-perth",
+   "name": "Blend Coffee Lounge",
+   "town": "Perth",
+   "type": "cafe",
+   "address": "274 High Street, Perth",
+   "postcode": "PH1 5QJ",
+   "website": "https://blendcoffee.co.uk/",
+   "social": "https://www.facebook.com/blendperth/",
+   "serves_food": "yes",
+   "cuisine": "Cafe & breakfast",
+   "trading": "confirmed",
+   "menus": [],
+   "notices": []
+  },
+  {
+   "id": "stone-cafe-perth-museum",
+   "name": "Stone Café at Perth Museum",
+   "town": "Perth",
+   "type": "cafe",
+   "address": "Perth Museum, St John's Place, Perth",
+   "postcode": "PH1 5SZ",
+   "website": "https://perthmuseum.co.uk/plan-your-visit/stone-cafe/",
+   "serves_food": "yes",
+   "cuisine": "Cafe & breakfast",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Perth Museum Café Menu May 2026",
+     "type": "main",
+     "url": "https://perthmuseum.co.uk/wp-content/uploads/2026/06/PM-Cafe-Menu-May-2026.pdf",
+     "format": "pdf",
+     "valid_dates": "From May 2026"
+    }
+   ],
+   "notices": [
+    {
+     "text": "Culture Perth and Kinross is seeking a new concession operator for the cafe; councillors were told on 9 Oct 2026 the procurement had a positive response.",
+     "url": "https://www.thecourier.co.uk/fp/news/5594077/perth-museum-cafe-operator-culture-chief-confident/"
+    }
+   ]
+  },
+  {
+   "id": "twa-tams-perth",
+   "name": "The Twa Tams",
+   "town": "Perth",
+   "type": "pub",
+   "address": "79-81 Scott Street, Perth",
+   "postcode": "PH2 8JR",
+   "website": "https://www.thetwatamsperth.com/",
+   "serves_food": "yes",
+   "cuisine": "British pub food",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Student Menu",
+     "type": "other",
+     "url": "https://www.thetwatamsperth.com/_files/ugd/13da7e_734c1115d3c14063bc2bffdcbc338a7c.pdf",
+     "format": "pdf"
+    },
+    {
+     "title": "Drinks Menu",
+     "type": "other",
+     "url": "https://www.thetwatamsperth.com/_files/ugd/13da7e_790f9525b64c45aca6bf8bf0c2a89b7c.pdf",
+     "format": "pdf"
+    }
+   ],
+   "notices": []
+  },
+  {
+   "id": "old-ship-inn-perth",
+   "name": "The Old Ship Inn",
+   "town": "Perth",
+   "type": "pub",
+   "address": "31 High Street, Perth",
+   "postcode": "PH1 5TJ",
+   "website": "https://oldshipinnperth.co.uk/",
+   "serves_food": "unclear",
+   "cuisine": "British pub food",
+   "trading": "confirmed",
+   "menus": [],
+   "notices": []
+  },
+  {
+   "id": "greyfriars-bar-perth",
+   "name": "Greyfriars Bar",
+   "town": "Perth",
+   "type": "pub",
+   "address": "15 South Street, Perth",
+   "postcode": "PH2 8PG",
+   "website": "https://greyfriarsbar.co.uk",
+   "serves_food": "unclear",
+   "cuisine": "British pub food",
+   "trading": "confirmed",
+   "menus": [],
+   "notices": []
+  },
+  {
+   "id": "bank-bar-perth",
+   "name": "The BANK Bar & Beer Garden",
+   "town": "Perth",
+   "type": "pub",
+   "address": "6 South Methven Street, Perth",
+   "postcode": "PH1 5PE",
+   "website": "https://www.thebankperth.com/",
+   "serves_food": "yes",
+   "cuisine": "British pub food",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Food Menu",
+     "type": "main",
+     "url": "https://www.thebankperth.com/menu",
+     "format": "html"
+    }
+   ],
+   "notices": []
+  },
+  {
+   "id": "milas-perth",
+   "name": "Milas",
+   "town": "Perth",
+   "type": "restaurant",
+   "address": "High Street, Perth (former Argos unit)",
+   "website": "https://www.milasdundee.co.uk/",
+   "serves_food": "yes",
+   "cuisine": "Mediterranean & Middle Eastern",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Food menu (shared Milas Dundee/Perth site)",
+     "type": "main",
+     "url": "https://www.milasdundee.co.uk/menus?menu=dinner-menu",
+     "format": "html"
+    }
+   ],
+   "notices": [
+    {
+     "text": "New Turkish/Mediterranean grill restaurant (sister to Milas Dundee) opened on Perth High Street on 25 September 2026; no Perth-specific menu page found yet on the shared site.",
+     "url": "https://www.thecourier.co.uk/fp/business-environment/5586862/milas-turkish-restaurant-opens-perth-dundee-success/"
+    }
+   ]
+  },
+  {
+   "id": "the-postbox-perth",
+   "name": "The Postbox by Andrew Spence",
+   "town": "Perth",
+   "type": "restaurant",
+   "address": "80 George Street, Perth",
+   "postcode": "PH1 5LB",
+   "website": "https://thepostboxperth.com/",
+   "social": "https://www.facebook.com/p/The-Postbox-by-Andrew-Spence-61591362009444/",
+   "serves_food": "yes",
+   "cuisine": "Modern British & European",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Sample A La Carte",
+     "type": "main",
+     "url": "https://thepostboxperth.com/menu",
+     "format": "html",
+     "valid_dates": "Lunch 12-3pm, dinner 5.30pm-late; Thu-Sun"
+    },
+    {
+     "title": "Sample Sunday Menu",
+     "type": "sunday-roast",
+     "url": "https://thepostboxperth.com/menu",
+     "format": "html",
+     "valid_dates": "Sundays"
+    }
+   ],
+   "notices": [
+    {
+     "text": "New fine-dining restaurant by chef Andrew Spence opened late August 2026; open Tue-Sun in December.",
+     "url": "https://www.thecourier.co.uk/fp/lifestyle/food-drink/5564939/first-look-the-postbox-perth/"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Wanderlog - best restaurants in Perth",
+   "url": "https://wanderlog.com/list/geoCategory/74670/where-to-eat-best-restaurants-in-perth",
+   "note": "venue discovery + addresses"
+  },
+  {
+   "name": "Wanderlog - bars in Perth and Kinross",
+   "url": "https://wanderlog.com/list/geoCategory/249850/best-bars-and-drinks-in-perth-and-kinross",
+   "note": "pub discovery + addresses"
+  },
+  {
+   "name": "CAMRA WhatPub",
+   "url": "https://camra.org.uk/pubs/sandeman-perth-138477",
+   "note": "Sandeman closure; Greyfriars address"
+  },
+  {
+   "name": "OpenTable",
+   "url": "https://www.opentable.com/r/63-tay-street-restaurant",
+   "note": "63 Tay Street postcode; Pig'Halle address"
+  },
+  {
+   "name": "Small City Big Personality",
+   "url": "https://www.smallcitybigpersonality.co.uk/directory-Blend-Coffee-Lounge-v179",
+   "note": "Blend address/website"
+  },
+  {
+   "name": "The Courier - Milas Perth opening",
+   "url": "https://www.thecourier.co.uk/fp/business-environment/5586862/milas-turkish-restaurant-opens-perth-dundee-success/",
+   "note": "New Turkish restaurant opened 25 Sept 2026 on Perth High Street"
+  },
+  {
+   "name": "The Courier - Lamesa opens",
+   "url": "https://thecourier.co.uk/fp/business-environment/5239975/perth-filipino-scottish-restaurant-lamesa-opens/",
+   "note": "Candidate venue (May 2025), not added"
+  },
+  {
+   "name": "The Courier - The Postbox opening",
+   "url": "https://www.thecourier.co.uk/fp/lifestyle/food-drink/5564939/first-look-the-postbox-perth/",
+   "note": "New fine-dining restaurant, 80 George Street, opened late Aug 2026"
+  },
+  {
+   "name": "FSA ratings - The Postbox",
+   "url": "https://ratings.food.gov.uk/business/1973344/the-postbox-by-andrew-spence",
+   "note": "Postcode PH1 5LB"
+  }
+ ],
+ "notes": [
+  "Pig'Halle: not included - no own website found; OpenTable lists it at 38 South Street, the same address now used by Cardo, so it appears closed/replaced.",
+  "The Sandeman (14-16 Kinnoull St, PH1 5EN): CAMRA lists it closed long-term since 25/06/2026 - excluded.",
+  "Taythorpe is a guest house (no restaurant) - excluded. 'Fleming's' - no Perth venue found. Murrayshall skipped (outside city). Leonardo Boutique Huntingtower (Crieff Road, PH1) is a chain hotel on the outskirts - not researched.",
+  "Cardo and Broth3rs sites have been fully relaunched since the last check (Cardo previously showed a 2021 COVID notice; Broth3rs previously returned no menu content) - both now confirmed trading with current 2026 menus.",
+  "North Port and Kisa's sites previously timed out for WebFetch but loaded fine via TinyFish this round - both now confirmed trading with menu URLs opened directly.",
+  "Breizh still links only a 2023 Christmas menu; no 2026 festive menu seen.",
+  "Cridos Festive Menu 2026 only published as Facebook video.",
+  "Parklands Christmas page (year not verified) still not fetchable, but a current September 2026 bistro menu PDF is now linked.",
+  "Paco's: main menu PDF is dated May 2025 and its festive PDF is dated 2025 - no 2026 versions seen yet.",
+  "No own website found for The Bothy, Mae Ping, The Venue. Blend site still shows no menu. Greyfriars (503 error on direct fetch, read via WebFetch) and Old Ship Inn: food service still unclear.",
+  "Twa Tams site links the same PDF filenames as before; site redesigned (nav now just 'Student'/'Drinks Promos'/'Drinks') but underlying PDFs unchanged.",
+  "Mae Ping exact street number not verified (postcode PH2 8NY from listings); no own website found.",
+  "Jade Garden: old /menu path now redirects into /our-menus's JS menu switcher, so only the working /our-menus URL is kept.",
+  "The BANK Bar menu page (thebankperth.com/menu) is a JS-rendered Wix page with no static text content - listed as html but could not confirm current dish content.",
+  "Milas (new, added this refresh): Turkish/Mediterranean grill opened on Perth High Street 25 Sept 2026, sister to Milas Dundee; exact postcode not found (former Argos unit) and no Perth-specific menu page located yet.",
+  "Coverage: 27 venues, short of the 30-45 target; further candidates: Slainte Bar, The Silvery Tay, Ormonds, King James, Royal George Hotel, Salutation Hotel.",
+  "Second pass 2026-09-28 (late morning): added Jeet Christmas 2026, Camperdown Elm festive/Christmas Day/Boxing Day 2026, The Rule Christmas 2026 PDFs, Milas shared menu page (Perth), Bar 10 afternoon tea; Giddy Goose Christmas bookings notice.",
+  "Refresh 2026-10-05: Cardo set menu replaced by new October 2026 set menu PDF (signal) and June 2026 drinks menu added; Breizh wine list PDF added (Christmas still only 2023 file); Cridos seafood menu (Facebook, July 2026) added; Jade Garden lunch menu added; 63 Tay Street next Sunday Lunch now 6 Dec; Paco's 'Paella Night coming soon' notice no longer on site (removed) and still no 2026 festive menu; Parklands still only September bistro PDF (signal cleared), Christmas page blank; Deans festive page says menu & pre-order sheet emailed in November; North Port festive menu confirmed (lunch 2c £40/3c £45, dinner £43/£48). Unchanged: Deans, Cafe Tabou, Broth3rs, Everest Inn, Tabla, Kisa's, Effies, Willows, Hinterland, Stone Cafe, Twa Tams, Milas. Old Ship Inn and Greyfriars sites still show no food. Greyfriars direct fetch 503 (read via WebFetch). No venues closed. New-opening check: only Lamesa (Filipino-Scottish, High Street, opened May 2025 per The Courier) found - not added (no own site/postcode, not new).",
+  "Refresh 2026-10-12: Breizh now links a new Christmas 'Menu de Noël' PDF (year not stated; replaced the 2023 file); 63 Tay Street menus now point to dated sample PDFs (new 4-for-44 sample 16 Sep 2026); Cridos seafood and festive menus now hosted as images on own site (replacing Facebook links); Deans festive PDF now only linked from festive-meals page, Dec closure notice no longer shown (dropped); Milas menu URL narrowed to dinner-menu tab, Perth postcode still unknown (former Argos unit, High Street). Added The Postbox by Andrew Spence (80 George St, PH1 5LB, opened late Aug 2026). Signals cleared on Cardo May lunch/dinner; stale 'site relaunched/loads reliably' notices dropped. Unchanged: Cafe Tabou, Tabla, Everest Inn, North Port, Jade Garden, Paco's (still 2025 festive only), Kisa's, Parklands (Christmas page still blank), Effies, Willows, Hinterland, Stone Cafe, Twa Tams, BANK Bar. Blend, Old Ship Inn, Greyfriars still show no food menu. Broth3rs read via TinyFish (JS site). No closures found. Bulk HTTP link check unavailable (proxy blocks curl); links verified via page fetches.",
+  "Second pass 2026-10-12 (late morning): Stone Cafe operator-procurement notice added; Milas Perth still has no FHIS record or Tripadvisor listing found."
+ ]
+}

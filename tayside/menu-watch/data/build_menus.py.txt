@@ -1,0 +1,60 @@
+#!/usr/bin/env python3
+"""Build Dundee & Tayside Menu Watch.
+Usage: python3 build_menus.py research_dir ratings.txt menus-template.html out.html TODAY [prev_data.json]
+ratings.txt lines: venue-id|FHRSID|P/E/I/A/X|YYYY-MM-DD|FSA name   or   venue-id|-  (no record)
+Also reads reviews.txt beside ratings.txt (Tripadvisor + OpenTable) if present.
+Writes out.html and data.json (next to out.html) for next week's diff.
+"""
+import json, glob, os, sys
+rdir, rpath, tpl, out, TODAY = sys.argv[1:6]
+prev = json.load(open(sys.argv[6])) if len(sys.argv) > 6 and os.path.exists(sys.argv[6]) else None
+CODE = {"P": "Pass", "E": "Pass and Eat Safe", "I": "Improvement Required", "A": "Awaiting Inspection", "X": "Exempt"}
+
+hyg = {}
+for line in open(rpath, encoding="utf8"):
+    p = line.rstrip("\n").split("|")
+    if len(p) == 5:
+        hyg[p[0]] = {"fhrsid": int(p[1]), "rating": CODE.get(p[2], p[2]), "date": p[3] or None, "fsa_name": p[4]}
+
+def num(x, f):
+    try: return f(x)
+    except ValueError: return None
+# reviews.txt (beside ratings.txt): venue-id|ta_url|ta_rating|ta_reviews|ot_url|ot_rating|ot_reviews, "-" = not listed
+rev = {}
+rp = os.path.join(os.path.dirname(os.path.abspath(rpath)), "reviews.txt")
+if os.path.exists(rp):
+    for line in open(rp, encoding="utf8"):
+        p = line.rstrip("\n").split("|")
+        if len(p) != 7: continue
+        rev[p[0]] = {k: ({"url": p[i], "rating": num(p[i+1], float), "reviews": num(p[i+2], int)} if p[i].startswith("https://") else None)
+                     for k, i in (("tripadvisor", 1), ("opentable", 4))}
+
+venues, seen = [], set()
+for f in sorted(glob.glob(os.path.join(rdir, "*.json"))):
+    for v in json.load(open(f)).get("venues", []):
+        if v["id"] in seen: continue
+        seen.add(v["id"])
+        v["hygiene"] = hyg.get(v["id"])
+        v.update(rev.get(v["id"], {"tripadvisor": None, "opentable": None}))
+        v.setdefault("menus", [])
+        venues.append(v)
+
+# A second run on the same day (late-morning pass) diffs against last week's snapshot, not the early run.
+same_day = bool(prev) and prev.get("generated") == TODAY
+if same_day:
+    old_urls, hist, baseline = set(prev.get("last_week_urls", [])), prev["history"][:-1], prev.get("baseline", False)
+else:
+    old_urls = {m["url"] for v in (prev or {}).get("venues", []) for m in v.get("menus", [])}
+    hist, baseline = (prev or {}).get("history", []), not prev
+for v in venues:
+    for m in v["menus"]:
+        m["is_new_this_week"] = not baseline and m.get("url") not in old_urls
+nm = sum(m["is_new_this_week"] for v in venues for m in v["menus"])
+hist = hist + [{"date": TODAY, "venues": len(venues), "menus": sum(len(v["menus"]) for v in venues), "new_menus": nm}]
+data = {"generated": TODAY, "baseline": baseline, "run_number": len(hist), "history": hist, "venues": venues}
+js = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
+open(out, "w").write(open(tpl).read().replace("__DATA__", js))
+json.dump({**data, "last_week_urls": sorted(old_urls)}, open(os.path.join(os.path.dirname(os.path.abspath(out)), "data.json"), "w"), ensure_ascii=False)
+from collections import Counter
+print(len(venues), "venues;", hist[-1]["menus"], "menus;", nm, "new;", Counter((v["hygiene"] or {}).get("rating", "No record found") for v in venues))
+assert all(v["hygiene"] or v["id"] in {l.split("|")[0] for l in open(rpath)} for v in venues), "venue missing from ratings.txt"
