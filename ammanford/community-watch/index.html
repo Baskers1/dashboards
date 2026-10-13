@@ -974,7 +974,7 @@ try {
 } catch (e) {}
 
 const $ = id => document.getElementById(id);
-const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));const safeUrl=u=>{u=String(u??"").trim();return /^https?:\/\//i.test(u)?u:"#"};
 
 const todayStr = new Intl.DateTimeFormat("en-CA", {timeZone:"Europe/London"}).format(new Date());
 const utc = s => { const [y,m,d] = s.split("-").map(Number); return Date.UTC(y, m-1, d); };
@@ -1079,7 +1079,7 @@ function renderStatic() {
   document.querySelectorAll("[data-i]").forEach(el => el.textContent = t(el.dataset.i));
   document.querySelectorAll("[data-ia]").forEach(el => el.setAttribute("aria-label", t(el.dataset.ia)));
   document.querySelectorAll("[data-ip]").forEach(el => el.setAttribute("placeholder", t(el.dataset.ip)));
-  const links = SRC_LINKS[st.lang].map(([u, n]) => '<a href="' + u + '" target="_blank" rel="noopener">' + esc(n) + '</a>').join(", ");
+  const links = SRC_LINKS[st.lang].map(([u, n]) => '<a href=\"' + esc(safeUrl(u)) + '\" target="_blank" rel="noopener">' + esc(n) + '</a>').join(", ");
   document.querySelectorAll("[data-ih]").forEach(el => el.innerHTML = t(el.dataset.ih, {links, c: esc(fmtLong(LAST_CHECKED))}));
   document.querySelectorAll(".langbar button").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === st.lang));
   $("asof").textContent = t("asof", {d: fmt(todayStr), c: fmtLong(LAST_CHECKED)});
@@ -1102,14 +1102,14 @@ function renderAlert() {
     cls = "calm"; sym = "✓"; head = t("calm"); sub = t("next") + F(open[0], "title") + ", " + fmtShort(open[0].deadline) + ".";
   } else { cls = "calm"; sym = "✓"; head = t("none"); sub = t("checkSites"); }
   const more = soon.length > urgent.length && urgent.length ? t("moreSoon", {n: soon.length - urgent.length}) : "";
-  const links = linkSub.length ? '<span style="display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:6px">' + linkSub.map(x => '<a href="' + x.url + '" target="_blank" rel="noopener" style="color:var(--ink);font-weight:700">' + esc(F(x, "urlLabel") + ": " + F(x, "title")) + ' ↗</a>').join("") + '</span>' : "";
+  const links = linkSub.length ? '<span style="display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:6px">' + linkSub.map(x => '<a href=\"' + esc(safeUrl(x.url)) + '\" target="_blank" rel="noopener" style="color:var(--ink);font-weight:700">' + esc(F(x, "urlLabel") + ": " + F(x, "title")) + ' ↗</a>').join("") + '</span>' : "";
   $("alert").innerHTML = '<div class="alert ' + cls + '"><div class="sym" aria-hidden="true">' + sym + '</div><div><strong>' + esc(head) + '</strong><span>' + esc(sub + more) + '</span>' + links + '</div></div>';
 }
 function renderRunway() {
   const open = withInfo.filter(x => x.i.phase === "open" && itemAreaOk(x)).sort((a, b) => a.i.d - b.i.d);
   let h = '<h2 id="rw-h">' + ic("calendar") + esc(t("datesUp")) + (st.area === "all" ? "" : ' <small style="font-family:var(--f-body);font-weight:400;color:var(--muted)">' + esc(t("forPlace", {p: selName(), w: wideLbl()})) + '</small>') + '</h2>';
   if (!open.length) h += '<p class="rw-note">' + esc(t("nothingDated")) + '</p>';
-  const row = x => '<a class="rw-row" href="' + x.url + '" target="_blank" rel="noopener" aria-label="' + esc(F(x, "title") + ", " + daysText(x) + ", " + fmt(x.deadline) + ". " + F(x, "urlLabel") + " " + t("newTab")) + '"><div class="rw-title">' + esc(F(x, "title")) + '<small>' + ic(KINDIC[x.kind]) + esc(kindLbl(x.kind)) + ' · ' + esc(whereTxt(x)) + '</small></div><div class="rw-days">' + esc(daysText(x)) + ' <span style="font-weight:400;color:var(--muted)">' + esc(fmtShort(x.deadline)) + '</span><span class="rw-go">' + esc(F(x, "urlLabel")) + ' ↗</span></div></a>';
+  const row = x => '<a class="rw-row" href=\"' + esc(safeUrl(x.url)) + '\" target="_blank" rel="noopener" aria-label="' + esc(F(x, "title") + ", " + daysText(x) + ", " + fmt(x.deadline) + ". " + F(x, "urlLabel") + " " + t("newTab")) + '"><div class="rw-title">' + esc(F(x, "title")) + '<small>' + ic(KINDIC[x.kind]) + esc(kindLbl(x.kind)) + ' · ' + esc(whereTxt(x)) + '</small></div><div class="rw-days">' + esc(daysText(x)) + ' <span style="font-weight:400;color:var(--muted)">' + esc(fmtShort(x.deadline)) + '</span><span class="rw-go">' + esc(F(x, "urlLabel")) + ' ↗</span></div></a>';
   const buckets = [{c:"urgent", k:"bWeek", f:x => x.i.d <= 7}, {c:"", k:"bFew", f:x => x.i.d <= 31}, {c:"", k:"bLater", f:() => true}];
   let left = open.slice();
   buckets.forEach(b => {
@@ -1179,7 +1179,7 @@ function renderControls() {
   });
   $("lenses").innerHTML = lh;
   $("soonlist").innerHTML = SOON.map((s, i) => "<li>" + esc(L(s, SOON_CY[i])) + "</li>").join("");
-  $("watch").innerHTML = WATCH.map((w, i) => '<li><a href="' + w[1] + '" target="_blank" rel="noopener">' + esc(L(w[0], WATCH_CY[i])) + '</a></li>').join("");
+  $("watch").innerHTML = WATCH.map((w, i) => '<li><a href=\"' + esc(safeUrl(w[1])) + '\" target="_blank" rel="noopener">' + esc(L(w[0], WATCH_CY[i])) + '</a></li>').join("");
   $("bigbar").innerHTML = BIG.map(b => '<button type="button" data-big="' + b.k + '" aria-pressed="' + (st.big === b.k) + '">' + ic(b.i) + esc(L(b.label[0], b.label[1])) + '</button>').join("");
   const showArea = st.mode === "big";
   $("bigarea").hidden = !showArea;
@@ -1202,14 +1202,14 @@ function cardHtml(it) {
     '<h3>' + (KIND_EMOJI[it.kind] || "") + ' ' + esc(title) + '</h3>' +
     '<div class="body-org">' + esc(it.body) + ' · ' + esc(whereTxt(it)) + '</div>' +
     '<p class="plain">' + esc(F(it, "plain")) + '</p>' + dl +
-    '<div class="actions"><a class="btn" href="' + it.url + '" target="_blank" rel="noopener" aria-label="' + esc(ul + ": " + title + " " + t("newTab")) + '">' + esc(ul) + ' ↗</a>' +
+    '<div class="actions"><a class="btn" href=\"' + esc(safeUrl(it.url)) + '\" target="_blank" rel="noopener" aria-label="' + esc(ul + ": " + title + " " + t("newTab")) + '">' + esc(ul) + ' ↗</a>' +
     '<button type="button" class="btn link" data-more="' + it.id + '" aria-expanded="' + open + '" aria-controls="m-' + it.id + '">' + esc(open ? t("hide") : t("whoAff")) + '</button></div>' +
     '<div class="more" id="m-' + it.id + '"' + (open ? "" : " hidden") + '>' +
     '<div><h4>' + esc(t("whoAff")) + '</h4><ul>' + F(it, "aff").map(a => "<li>" + esc(a) + "</li>").join("") + '</ul></div>' +
     '<p class="meta"><strong>' + esc(t("whoRun")) + '</strong> ' + esc(tr2(LEVELS, it.level)) + '</p>' +
     (st.mode === "std" ? '<div><h4>' + esc(t("likeThis")) + '</h4><div class="lensrow">' + lensBtns + '</div></div>' : "") +
     '<p>' + esc(F(it, "detail")) + '</p><p><strong>' + esc(t("howResp")) + '</strong> ' + esc(F(it, "how")) + '</p>' +
-    '<p class="src">' + esc(t("source")) + ' <a href="' + it.src + '" target="_blank" rel="noopener">' + esc(it.src.replace(/^https?:\/\//, "").slice(0, 70)) + '</a></p></div></article>';
+    '<p class="src">' + esc(t("source")) + ' <a href=\"' + esc(safeUrl(it.src)) + '\" target="_blank" rel="noopener">' + esc(it.src.replace(/^https?:\/\//, "").slice(0, 70)) + '</a></p></div></article>';
 }
 function groupHtml(g) {
   const label = F(g, "label"), dates = F(g, "dates");
@@ -1221,7 +1221,7 @@ function groupHtml(g) {
     '<p class="plain">' + esc(F(g, "what")) + '</p>' +
     '<p class="meta"><strong>' + esc(t("howInv")) + '</strong> ' + esc(F(g, "get")) + '</p>' +
     (dates ? '<p class="meta"><strong>' + esc(t("datesNotes")) + '</strong> ' + esc(dates) + '</p>' : "") +
-    '<div class="actions"><a class="btn" href="' + g.url + '" target="_blank" rel="noopener" aria-label="' + esc(label + ": " + g.n + " " + t("newTab")) + '">' + esc(label) + ' ↗</a></div></article>';
+    '<div class="actions"><a class="btn" href=\"' + esc(safeUrl(g.url)) + '\" target="_blank" rel="noopener" aria-label="' + esc(label + ": " + g.n + " " + t("newTab")) + '">' + esc(label) + ' ↗</a></div></article>';
 }
 function sect(title, html) { return '<h2 class="sect">' + esc(title) + '</h2>' + html; }
 function empty(msg) { return '<div class="empty-msg"><strong>' + esc(t("nothing")) + '</strong><br>' + esc(msg) + '</div>'; }
@@ -1256,7 +1256,7 @@ const CLUSTER_PHOTO = {"c-amman":"all", "c-gwen":"gorslas", "c-tywi":"llandeilo"
 function renderHero() {
   const k = PHOTOS[st.area] ? st.area : (CLUSTER_PHOTO[st.area] || "all"), p = PHOTOS[k];
   $("hero").dataset.area = k;
-  const a = (u, x) => '<a href="' + u + '" target="_blank" rel="noopener">' + esc(x) + '</a>';
+  const a = (u, x) => '<a href=\"' + esc(safeUrl(u)) + '\" target="_blank" rel="noopener">' + esc(x) + '</a>';
   $("credit").innerHTML = '<span>' + esc(L(p.what, p.what_cy)) + ' — ' + a(p.srcUrl, p.who) + ' / ' + esc(p.at) +
     (p.lic ? ', ' + a(p.licUrl, p.lic) : '') + '</span>';
 }
