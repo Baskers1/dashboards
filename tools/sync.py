@@ -6,6 +6,7 @@ Usage: python3 tools/sync.py <download_dir> [<id> ...]
   saved by the Artifact tool. Files are copied byte for byte; the only change made is that
   links to other dashboards' claude.ai artifact pages are pointed at their GitHub Pages copies.
   With ids given, only those dashboards are synced; the hub is always rebuilt.
+  Entries whose id starts with "local:" are published by their own task (e.g. sky pages) and are only listed on the hub.
 Exits non-zero (and changes nothing for that dashboard) if a downloaded page looks wrong.
 """
 import html, json, os, re, shutil, sys
@@ -89,7 +90,7 @@ def main(argv):
     if len(argv) < 2:
         print(__doc__)
         return 2
-    src_root, ids = argv[1], argv[2:] or list(BY_ID)
+    src_root, ids = argv[1], argv[2:] or [i for i in BY_ID if not i.startswith("local:")]
     errors = [e for e in (sync_one(src_root, BY_ID[i]) for i in ids if i in BY_ID) if e]
     unknown = [i for i in ids if i not in BY_ID]
     build_hub()
