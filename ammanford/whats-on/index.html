@@ -1,5 +1,17 @@
-<!doctype html><html><head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; base-uri 'none'; form-action 'none'; object-src 'none'"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'sha256-u0R0IeBdlCcpbayBAICOp7bFVHw4Dyd9w8d78QYP5Qg=' 'sha256-xdciPqgcPX12cdJSG6kzzanqNSw4g3YoyrvAC7SrGU0=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
+var SCHEME=/^\s*([a-z][a-z0-9+.\-]*):/i,HREF={http:1,https:1,mailto:1,tel:1},SRC={http:1,https:1,blob:1};
+function okUrl(v,isSrc){var c=String(v).replace(/[\u0000- ]/g,""),m=SCHEME.exec(c);if(!m)return true;var s=m[1].toLowerCase();
+if(isSrc&&s==="data")return /^data:image\//i.test(c);return !!(isSrc?SRC:HREF)[s];}
+function fixOne(n){if(n.nodeType!==1)return;var a=n.attributes;
+for(var j=a.length-1;j>=0;j--){var k=a[j].name.toLowerCase(),v=a[j].value;
+if(k.slice(0,2)==="on"){if(!(k==="onerror"&&v==="this.remove()"))n.removeAttribute(a[j].name);}
+else if((k==="href"||k==="xlink:href"||k==="action"||k==="formaction")&&!okUrl(v,false))n.removeAttribute(a[j].name);
+else if((k==="src"||k==="srcset"||k==="poster")&&!okUrl(v,true))n.removeAttribute(a[j].name);}
+if(n.tagName==="A"&&n.getAttribute("target")==="_blank"&&n.getAttribute("rel")!=="noopener noreferrer")n.setAttribute("rel","noopener noreferrer");}
+function fixTree(n){if(n.nodeType!==1)return;fixOne(n);var all=n.getElementsByTagName("*");for(var i=0;i<all.length;i++)fixOne(all[i]);}
+new MutationObserver(function(ms){for(var i=0;i<ms.length;i++){var m=ms[i];if(m.type==="attributes")fixOne(m.target);
+else for(var j=0;j<m.addedNodes.length;j++)fixTree(m.addedNodes[j]);}}).observe(document.documentElement,{childList:true,subtree:true,attributes:true});
+})();</script><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Ammanford · What&#39;s On</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -424,7 +436,7 @@ const DOW=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"], MON=["Jan","Feb","Mar","A
 const MONFULL=["January","February","March","April","May","June","July","August","September","October","November","December"];
 
 const $=s=>document.querySelector(s);
-const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));const safeUrl=u=>{u=String(u??"").trim();return /^https?:\/\//i.test(u)?u:"#"};
 function store(k,v){try{if(v===undefined)return JSON.parse(localStorage.getItem(k)||"null");localStorage.setItem(k,JSON.stringify(v))}catch(e){return null}}
 
 // today in London
@@ -476,14 +488,14 @@ function evRow(e,opts={}){
     <div class="evcat"><div class="cat-badge" aria-hidden="true">${gicon(e.group)}</div>${opts.run?"":`<div class="t">${esc(t)}</div>`}</div>
     <div>
       <div><span class="tag">${esc(GNAME[e.group]||e.category)}</span>${runTxt?`<span class="tag" style="color:var(--ink-3)">${runTxt}</span>`:""}</div>
-      <div class="ti">${e.url?`<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.title)}</a>`:esc(e.title)}${e.price?`<span class="price">${esc(e.price)}</span>`:""}${e.highlight?`<span class="star-hl">Pick</span>`:""}${e.via?`<span class="via">via ${esc(e.via)}</span>`:""}</div>
-      <div class="meta"><span class="town">${esc(e.town)}</span> · ${esc(venue(e))}</div>${e.flag?`<span class="flag">⚠ <a href="${esc(e.flagUrl)}" target="_blank" rel="noopener">${esc(e.flag)}</a></span>`:""}
+      <div class="ti">${e.url?`<a href="${esc(safeUrl(e.url))}" target="_blank" rel="noopener">${esc(e.title)}</a>`:esc(e.title)}${e.price?`<span class="price">${esc(e.price)}</span>`:""}${e.highlight?`<span class="star-hl">Pick</span>`:""}${e.via?`<span class="via">via ${esc(e.via)}</span>`:""}</div>
+      <div class="meta"><span class="town">${esc(e.town)}</span> · ${esc(venue(e))}</div>${e.flag?`<span class="flag">⚠ <a href="${esc(safeUrl(e.flagUrl))}" target="_blank" rel="noopener">${esc(e.flag)}</a></span>`:""}
       ${opts.run?(p=>`<progress class="run-bar" value="${p.pct}" max="100" aria-label="${esc(e.title)}: ${esc(p.label)}"></progress>`)(runProgress(e)):""}
       ${e.summary&&!/^Live music listed on Thanet Gigs/.test(e.summary)?`<div class="sum">${esc(e.summary)}</div>`:""}
     </div>
     <div class="acts">
       <button class="ib" data-save="${e.id}" aria-pressed="${saved.has(e.id)}" aria-label="Save ${esc(e.title)}">${saved.has(e.id)?"★ Saved":"☆ Save"}</button>
-      <a class="ib" href="${esc(gcal(e))}" target="_blank" rel="noopener" aria-label="Add ${esc(e.title)} to Google Calendar">+ Calendar</a>
+      <a class="ib" href="${esc(safeUrl(gcal(e)))}" target="_blank" rel="noopener" aria-label="Add ${esc(e.title)} to Google Calendar">+ Calendar</a>
     </div>
   </div>`}
 
@@ -560,20 +572,20 @@ function renderHeatCal(s,list,from,to){
 /* ---------- aside panels ---------- */
 function panelCinemas(){
   const m=st.meta;if(!m||!m.cinemas)return"";
-  return `<section class="panel"><h3>Cinemas <small>times change daily</small></h3><ul class="list cin">${m.cinemas.filter(c=>!st.towns.size||st.towns.has(c.town)).map(c=>`<li><a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.name)}</a> <span class="k">${esc(c.town)}</span>
+  return `<section class="panel"><h3>Cinemas <small>times change daily</small></h3><ul class="list cin">${m.cinemas.filter(c=>!st.towns.size||st.towns.has(c.town)).map(c=>`<li><a href="${esc(safeUrl(c.url))}" target="_blank" rel="noopener">${esc(c.name)}</a> <span class="k">${esc(c.town)}</span>
     <div class="films">${(c.now_showing||[]).length?esc(c.now_showing.slice(0,6).join(" · ")):esc(c.note||"See listings")}</div></li>`).join("")}</ul></section>`}
 function panelNews(n=8,topic){
   let items=st.news||[];if(topic)items=items.filter(x=>x.topic===topic);
   if(st.towns.size)items=items.filter(x=>st.towns.has(x.area)||["Carmarthenshire","Swansea","Neath Port Talbot","Wales-wide"].includes(x.area));
-  return `<section class="panel"><h3>${topic==="politics"?"Local politics":"Local news"} <small>${items.length} stories</small></h3><ul class="list">${items.slice(0,n).map(x=>`<li class="newsli"><div class="newsicon" aria-hidden="true">${gicon(newsIcon(x))}</div><div class="newsbody"><div class="k">${fmtShort(x.date)} · ${esc(x.area)} · ${esc(x.source)}</div><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.headline)}</a><div class="s">${esc(x.summary)}</div></div></li>`).join("")}</ul></section>`}
+  return `<section class="panel"><h3>${topic==="politics"?"Local politics":"Local news"} <small>${items.length} stories</small></h3><ul class="list">${items.slice(0,n).map(x=>`<li class="newsli"><div class="newsicon" aria-hidden="true">${gicon(newsIcon(x))}</div><div class="newsbody"><div class="k">${fmtShort(x.date)} · ${esc(x.area)} · ${esc(x.source)}</div><a href="${esc(safeUrl(x.url))}" target="_blank" rel="noopener">${esc(x.headline)}</a><div class="s">${esc(x.summary)}</div></div></li>`).join("")}</ul></section>`}
 function panelCouncil(from,to,n=7){
   const items=st.events.filter(e=>e.group==="politics"&&inWindow(e,from,to)&&(!st.towns.size||st.towns.has(e.town))).slice(0,n);
-  return `<section class="panel" data-g="politics"><h3><span>${gicon("politics")}Council diary</span> <small>next ${items.length}</small></h3><ul class="list">${items.map(e=>`<li><div class="k">${fmtDay(e.date)}${e.time?" · "+e.time:""}</div><a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.title)}</a><div class="s">${esc(e.summary||"")}</div></li>`).join("")||"<li class='s'>No meetings published for this window.</li>"}</ul></section>`}
+  return `<section class="panel" data-g="politics"><h3><span>${gicon("politics")}Council diary</span> <small>next ${items.length}</small></h3><ul class="list">${items.map(e=>`<li><div class="k">${fmtDay(e.date)}${e.time?" · "+e.time:""}</div><a href="${esc(safeUrl(e.url))}" target="_blank" rel="noopener">${esc(e.title)}</a><div class="s">${esc(e.summary||"")}</div></li>`).join("")||"<li class='s'>No meetings published for this window.</li>"}</ul></section>`}
 function panelSources(){
   const m=st.meta;if(!m||!m.sources)return"";
   const by={};m.sources.forEach(s=>(by[s.type]=by[s.type]||[]).push(s));
   const order=[["newsletter","Newsletters"],["news","News"],["council","Councils"],["listings","Listings"],["clubs","Clubs, groups & pubs"],["social","Social media"]];
-  return `<section class="panel"><h3>Where this comes from <small>${m.sources.length} sources</small></h3>${order.filter(([k])=>by[k]).map(([k,l])=>`<details class="srcd" data-src="${k}"${st.openSrc.has(k)?" open":""}><summary>${l} <span class="n">${by[k].length}</span></summary><ul class="list">${by[k].map(s=>`<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a>${s.area?` <span class="k">${esc(s.area)}</span>`:""}<div class="s">${esc(s.note)}</div></li>`).join("")}</ul></details>`).join("")}</section>`}
+  return `<section class="panel"><h3>Where this comes from <small>${m.sources.length} sources</small></h3>${order.filter(([k])=>by[k]).map(([k,l])=>`<details class="srcd" data-src="${k}"${st.openSrc.has(k)?" open":""}><summary>${l} <span class="n">${by[k].length}</span></summary><ul class="list">${by[k].map(s=>`<li><a href="${esc(safeUrl(s.url))}" target="_blank" rel="noopener">${esc(s.name)}</a>${s.area?` <span class="k">${esc(s.area)}</span>`:""}<div class="s">${esc(s.note)}</div></li>`).join("")}</ul></details>`).join("")}</section>`}
 function panelNotes(){
   const m=st.meta;if(!m||!m.gaps)return"";
   return `<section class="panel"><h3>Coverage notes</h3><ul class="list notes">${m.gaps.map(g=>`<li>${esc(g)}</li>`).join("")}</ul></section>`}
@@ -611,7 +623,7 @@ function renderSeason(){
   renderStrip(list,from,to);
   const hl=list.filter(e=>e.highlight&&e.group!=="politics"&&e.date>=from).sort((a,b)=>a.date.localeCompare(b.date));
   let html=`<section class="sec" style="margin-top:22px"><div class="sec-h"><h2>Big nights</h2><span class="sub">${hl.length} picks to book ahead</span></div>
-    ${hl.length?`<div class="hl-rail">${hl.map(e=>{const d=toD(e.date);return `<a class="poster" data-g="${e.group}" href="${esc(e.url)}" target="_blank" rel="noopener"><div class="pd">${DOW[d.getUTCDay()]} ${d.getUTCDate()}<small>${MONFULL[d.getUTCMonth()]}${isRun(e)?" – "+fmtShort(e.end_date):""}</small></div><div class="pt">${esc(e.title)}</div><div class="pv"><span class="tag">${gicon(e.group)}${esc(GNAME[e.group])}</span><br>${esc(venue(e))}, <b>${esc(e.town)}</b></div></a>`}).join("")}</div>`:`<div class="empty-state">No headline picks match those filters.</div>`}</section>`;
+    ${hl.length?`<div class="hl-rail">${hl.map(e=>{const d=toD(e.date);return `<a class="poster" data-g="${e.group}" href="${esc(safeUrl(e.url))}" target="_blank" rel="noopener"><div class="pd">${DOW[d.getUTCDay()]} ${d.getUTCDate()}<small>${MONFULL[d.getUTCMonth()]}${isRun(e)?" – "+fmtShort(e.end_date):""}</small></div><div class="pt">${esc(e.title)}</div><div class="pv"><span class="tag">${gicon(e.group)}${esc(GNAME[e.group])}</span><br>${esc(venue(e))}, <b>${esc(e.town)}</b></div></a>`}).join("")}</div>`:`<div class="empty-state">No headline picks match those filters.</div>`}</section>`;
   const months={};list.forEach(e=>{const m=(e.date<from?from:e.date).slice(0,7);(months[m]=months[m]||[]).push(e)});
   Object.keys(months).sort().forEach(m=>{
     const ev=months[m].sort((a,b)=>a.date.localeCompare(b.date)||(a.time||"99").localeCompare(b.time||"99"));
@@ -623,7 +635,7 @@ function renderSeason(){
       // show everything instead of truncating; full grid keeps the original caps.
       const lim=popCount<=2?it.length:(g==="music"?14:10);
       html+=`<div class="mcol" data-g="${g}"><h3><span>${gicon(g)}${GNAME[g]}</span> <small>${it.length}</small></h3>${it.slice(0,lim).map(e=>{const d=toD(e.date<from?from:e.date);
-        return `<div class="mi" data-g="${e.group}"><div class="mdcol"><div class="cat-badge sm" aria-hidden="true">${gicon(e.group)}</div><div class="md">${DOW[d.getUTCDay()]} ${d.getUTCDate()}${isRun(e)?`<br><span style="font-weight:400">to ${fmtShort(e.end_date)}</span>`:""}</div></div><div><a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.title)}</a>${e.highlight?` <span class="star-hl">Pick</span>`:""}${e.via?`<span class="via">via ${esc(e.via)}</span>`:""}${e.flag?`<span class="flag">⚠ <a href="${esc(e.flagUrl)}" target="_blank" rel="noopener">${esc(e.flag)}</a></span>`:""}<div class="mv">${esc(venue(e))} · ${esc(e.town)}</div>${isRun(e)?(p=>`<progress class="run-bar" value="${p.pct}" max="100" aria-label="${esc(e.title)}: ${esc(p.label)}"></progress>`)(runProgress(e)):""}</div><div class="acts"><button class="ib" data-save="${e.id}" aria-pressed="${saved.has(e.id)}" aria-label="Save ${esc(e.title)}">${saved.has(e.id)?"★":"☆"}</button><a class="ib" href="${esc(gcal(e))}" target="_blank" rel="noopener" aria-label="Add ${esc(e.title)} to Google Calendar">+Cal</a></div></div>`}).join("")}
+        return `<div class="mi" data-g="${e.group}"><div class="mdcol"><div class="cat-badge sm" aria-hidden="true">${gicon(e.group)}</div><div class="md">${DOW[d.getUTCDay()]} ${d.getUTCDate()}${isRun(e)?`<br><span style="font-weight:400">to ${fmtShort(e.end_date)}</span>`:""}</div></div><div><a href="${esc(safeUrl(e.url))}" target="_blank" rel="noopener">${esc(e.title)}</a>${e.highlight?` <span class="star-hl">Pick</span>`:""}${e.via?`<span class="via">via ${esc(e.via)}</span>`:""}${e.flag?`<span class="flag">⚠ <a href="${esc(safeUrl(e.flagUrl))}" target="_blank" rel="noopener">${esc(e.flag)}</a></span>`:""}<div class="mv">${esc(venue(e))} · ${esc(e.town)}</div>${isRun(e)?(p=>`<progress class="run-bar" value="${p.pct}" max="100" aria-label="${esc(e.title)}: ${esc(p.label)}"></progress>`)(runProgress(e)):""}</div><div class="acts"><button class="ib" data-save="${e.id}" aria-pressed="${saved.has(e.id)}" aria-label="Save ${esc(e.title)}">${saved.has(e.id)?"★":"☆"}</button><a class="ib" href="${esc(safeUrl(gcal(e)))}" target="_blank" rel="noopener" aria-label="Add ${esc(e.title)} to Google Calendar">+Cal</a></div></div>`}).join("")}
         ${it.length>lim?`<div class="mv" style="padding-top:6px">+ ${it.length-lim} more — pick a town or search to narrow down</div>`:""}</div>`});
     html+=`</div></section>`;
   });
@@ -631,12 +643,12 @@ function renderSeason(){
   const m=st.meta||{};
   const films=(m.film_releases||[]).filter(f=>f.date>=from).sort((a,b)=>a.date.localeCompare(b.date));
   html+=`<section class="sec"><div class="sec-h"><h2>At the pictures</h2><span class="sub">Big UK releases and your local screens</span></div><div class="twocol">
-    <div class="panel" data-g="film"><h3><span>${gicon("film")}Coming to cinemas</span></h3><ul class="list">${films.map(f=>`<li><span class="k">${fmtDay(f.date)}</span><br><a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.title)}</a></li>`).join("")}</ul></div>
+    <div class="panel" data-g="film"><h3><span>${gicon("film")}Coming to cinemas</span></h3><ul class="list">${films.map(f=>`<li><span class="k">${fmtDay(f.date)}</span><br><a href="${esc(safeUrl(f.url))}" target="_blank" rel="noopener">${esc(f.title)}</a></li>`).join("")}</ul></div>
     ${panelCinemas()}</div></section>`;
   html+=`<section class="sec"><div class="sec-h"><h2>Town hall</h2><span class="sub">Who runs what, and what's being argued about</span></div><div class="twocol">
     ${panelNews(10,"politics")}
-    <div class="panel"><h3>Councils</h3><div class="tblwrap"><table class="tbl"><tr><th></th><th>Council</th><th>Control</th></tr>${(m.councils||[]).map(c=>`<tr><td class="imgcell">${councilImg(c.name)}</td><td><a href="${esc(c.url)}" target="_blank" rel="noopener"><b>${esc(c.name)}</b></a><br><a class="k" href="${esc(c.meetings_url)}" target="_blank" rel="noopener">Meetings calendar ↗</a></td><td>${esc(c.control||"—")}</td></tr>`).join("")}</table></div>
-    <h3 style="margin-top:16px">Your MPs</h3><div class="tblwrap"><table class="tbl">${(m.mps||[]).map(p=>`<tr><td class="imgcell">${mpImg(p.name)}</td><td><b>${esc(p.constituency)}</b></td><td><a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.name)}</a><br><span class="k">${esc(p.party)}</span></td></tr>`).join("")}</table></div>${(m.ms||[]).length?`<details class="srcd"><summary>Your Senedd members <span class="n">${m.ms.length}</span></summary>${Object.entries((m.ms||[]).reduce((a,p)=>{const c=p.constituency.split(" (")[0];(a[c]=a[c]||[]).push(p);return a},{})).map(([c,ps])=>`<div class="srcgrp">${esc(c)}</div><ul class="list">${ps.map(p=>`<li><a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.name)}</a> <span class="k">${esc(p.party)}</span></li>`).join("")}</ul>`).join("")}</details>`:""}</div>
+    <div class="panel"><h3>Councils</h3><div class="tblwrap"><table class="tbl"><tr><th></th><th>Council</th><th>Control</th></tr>${(m.councils||[]).map(c=>`<tr><td class="imgcell">${councilImg(c.name)}</td><td><a href="${esc(safeUrl(c.url))}" target="_blank" rel="noopener"><b>${esc(c.name)}</b></a><br><a class="k" href="${esc(safeUrl(c.meetings_url))}" target="_blank" rel="noopener">Meetings calendar ↗</a></td><td>${esc(c.control||"—")}</td></tr>`).join("")}</table></div>
+    <h3 style="margin-top:16px">Your MPs</h3><div class="tblwrap"><table class="tbl">${(m.mps||[]).map(p=>`<tr><td class="imgcell">${mpImg(p.name)}</td><td><b>${esc(p.constituency)}</b></td><td><a href="${esc(safeUrl(p.url))}" target="_blank" rel="noopener">${esc(p.name)}</a><br><span class="k">${esc(p.party)}</span></td></tr>`).join("")}</table></div>${(m.ms||[]).length?`<details class="srcd"><summary>Your Senedd members <span class="n">${m.ms.length}</span></summary>${Object.entries((m.ms||[]).reduce((a,p)=>{const c=p.constituency.split(" (")[0];(a[c]=a[c]||[]).push(p);return a},{})).map(([c,ps])=>`<div class="srcgrp">${esc(c)}</div><ul class="list">${ps.map(p=>`<li><a href="${esc(safeUrl(p.url))}" target="_blank" rel="noopener">${esc(p.name)}</a> <span class="k">${esc(p.party)}</span></li>`).join("")}</ul>`).join("")}</details>`:""}</div>
     </div></section>`;
   html+=`<section class="sec"><div class="twocol">${panelSocial()}${panelNotes()}${panelSources()}</div></section>`;
   $("#main").innerHTML=html;
@@ -734,7 +746,7 @@ function panelSocial(){
    <p class="soc-note">Pages with no website post a median <b>${C.social_only.median_lead_days} days</b> ahead; pages that also have a site post <b>${C.with_website.median_lead_days} days</b> ahead. On social, the date and venue appear first (median ${F.date} days before), the start time around ${F.time} days before, and a price ${F.price} days before when it's given at all.</p>
    <div class="soc-h">Hour the listing is posted</div><div class="soc-fig">${hb.map(([l,v])=>row(l,v,"",hm)).join("")}</div>
   <details class="srcd"><summary>Accounts <span class="n">${accts.length}</span></summary><ul class="list">${accts.map(a=>{const last=(a.last_post||"").slice(0,10),old=last&&last<cutoff;
-    return `<li><a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.name)}</a> <span class="k">${esc(a.platform)}</span><div class="s">${a.listing_posts?`${a.listing_posts} of ${a.posts_scanned} posts list an event${a.median_lead_days!=null?`, ${a.median_lead_days} days ahead`:""}`:"No event posts"}${old?` · <span class="dormant">quiet since ${fmtShort(last)}</span>`:""}</div></li>`}).join("")}</ul></details></section>`}
+    return `<li><a href="${esc(safeUrl(a.url))}" target="_blank" rel="noopener">${esc(a.name)}</a> <span class="k">${esc(a.platform)}</span><div class="s">${a.listing_posts?`${a.listing_posts} of ${a.posts_scanned} posts list an event${a.median_lead_days!=null?`, ${a.median_lead_days} days ahead`:""}`:"No event posts"}${old?` · <span class="dormant">quiet since ${fmtShort(last)}</span>`:""}</div></li>`}).join("")}</ul></details></section>`}
 function boot(){
   if(!DATA){st.err="The listings are being updated. Please try again shortly.";render();return}
   st.events=mergeSocial((DATA.events||[]).slice()).sort((a,b)=>a.date.localeCompare(b.date)||(a.time||"99").localeCompare(b.time||"99"));
