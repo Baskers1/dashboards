@@ -153,7 +153,7 @@ const DAYS=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturda
 const MONTHS=["January","February","March","April","May","June","July","August","September","October","November","December"];
 const PER_DAY=8;
 const $=s=>document.querySelector(s);
-const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));const safeUrl=u=>{u=String(u??"").trim();return /^https?:\/\//i.test(u)?u:"#"};
 function store(k,v){try{if(v===undefined)return JSON.parse(localStorage.getItem(k));localStorage.setItem(k,JSON.stringify(v))}catch(e){return null}}
 
 function today(){const p=new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/London",year:"numeric",month:"2-digit",day:"2-digit"}).formatToParts(new Date());const g=t=>p.find(x=>x.type===t).value;return `${g("year")}-${g("month")}-${g("day")}`}
@@ -191,8 +191,8 @@ function card(e,opts={}){
     ${price?`<p class="row"><b>Price:</b> ${price}</p>`:""}
     ${e.summary?`<p class="row">${esc(e.summary)}</p>`:""}
     ${thanetGigs?`<p class="row"></p>`:""}
-    <details class="cal"><summary class="calbtn">📅 Add to my calendar</summary><div class="calmenu">${(([g,o])=>`<a class="calopt" href="${esc(g)}" target="_blank" rel="noopener">Google Calendar</a><a class="calopt" href="${esc(o)}" target="_blank" rel="noopener">Outlook calendar</a><p class="addr" style="margin:0">On an iPhone? Either works in Safari, or use the Google Calendar app.</p>`)(calLinks(e))}</div></details>
-    ${e.url?`<div><a class="go" href="${esc(e.url)}" target="_blank" rel="noopener">Open the event's page ›<span class="sr"> for ${esc(e.title)}</span></a><button class="copy-link" type="button" data-copy="${esc(e.url)}">Link not opening? Copy it</button></div>`:""}
+    <details class="cal"><summary class="calbtn">📅 Add to my calendar</summary><div class="calmenu">${(([g,o])=>`<a class="calopt" href="${esc(safeUrl(g))}" target="_blank" rel="noopener">Google Calendar</a><a class="calopt" href="${esc(safeUrl(o))}" target="_blank" rel="noopener">Outlook calendar</a><p class="addr" style="margin:0">On an iPhone? Either works in Safari, or use the Google Calendar app.</p>`)(calLinks(e))}</div></details>
+    ${e.url?`<div><a class="go" href="${esc(safeUrl(e.url))}" target="_blank" rel="noopener">Open the event's page ›<span class="sr"> for ${esc(e.title)}</span></a><button class="copy-link" type="button" data-copy="${esc(e.url)}">Link not opening? Copy it</button></div>`:""}
   </article>`}
 
 function render(){

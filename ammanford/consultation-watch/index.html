@@ -4480,7 +4480,7 @@ const ic = n => '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusabl
 const itemIc = it => TOPIC_IC[(it.topics || [])[0]] || SECTOR_IC[it.sector] || "note";
 
 const $ = id => document.getElementById(id);
-const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));const safeUrl=u=>{u=String(u??"").trim();return /^https?:\/\//i.test(u)?u:"#"};
 
 /* dates: work in whole days using today's London calendar date */
 const todayStr = new Intl.DateTimeFormat("en-CA", {timeZone:"Europe/London"}).format(new Date());
@@ -4533,7 +4533,7 @@ function visible() {
 }
 
 /* renderers */
-const goLink = x => '<a class="go" href="' + esc(x.url) + '" target="_blank" rel="noopener">' + esc(x.title) + '<span class="go-i" aria-hidden="true"> ↗</span><span class="sr">' + tr(" (opens the consultation in a new tab)") + '</span></a>';
+const goLink = x => '<a class="go" href=\"' + esc(safeUrl(x.url)) + '\" target="_blank" rel="noopener">' + esc(x.title) + '<span class="go-i" aria-hidden="true"> ↗</span><span class="sr">' + tr(" (opens the consultation in a new tab)") + '</span></a>';
 function renderAlert() {
   const open = withInfo.filter(x => x.i.phase === "open").sort((a, b) => a.i.d - b.i.d);
   const urgent = open.filter(x => x.i.d <= 7), soon = open.filter(x => x.i.d <= 21);
@@ -4585,7 +4585,7 @@ function renderControls() {
     lh += '</div></div>';
   });
   $("lenses").innerHTML = lh;
-  $("watch").innerHTML = WATCH.map(w => '<li><a href="' + w[1] + '" target="_blank" rel="noopener">' + ic("link") + '<span>' + esc(cyOn() && WATCH_CY[w[1]] || w[0]) + '</span></a></li>').join("") + (WATCH_NOTE ? '<li class="watch-note">' + esc(cyOn() && WATCH_NOTE_CY || WATCH_NOTE) + '</li>' : '');
+  $("watch").innerHTML = WATCH.map(w => '<li><a href=\"' + esc(safeUrl(w[1])) + '\" target="_blank" rel="noopener">' + ic("link") + '<span>' + esc(cyOn() && WATCH_CY[w[1]] || w[0]) + '</span></a></li>').join("") + (WATCH_NOTE ? '<li class="watch-note">' + esc(cyOn() && WATCH_NOTE_CY || WATCH_NOTE) + '</li>' : '');
   $("bigbar").innerHTML = BIG.map(b => '<button type="button" data-big="' + b.k + '" aria-pressed="' + (st.big === b.k) + '">' + ic(BIG_IC[b.k]) + '<span>' + tr(b.label) + '</span></button>').join("");
   const lens = LENSES.find(l => l.id === st.lens);
   $("lensbar").innerHTML = lens && st.mode !== "big" ? '<p style="margin:0 0 12px">' + tr("Showing only items affecting ") + '<strong>' + esc(tr(lens.label)) + '</strong>. <button type="button" class="chip" data-lens="' + lens.id + '">' + tr("Clear") + '</button></p>' : "";
@@ -4620,12 +4620,12 @@ function cardHtml(it) {
     '<div class="card-top"><span class="tag">' + ic(statusIc) + esc(statusTxt) + '</span><span class="tag">' + ic(SECTOR_IC[it.sector]) + esc(tr(SECTORS[it.sector])) + '</span></div>' +
     '<div class="card-head"><span class="tile" aria-hidden="true">' + ic(itemIc(it)) + '</span><div><h3>' + esc(it.title) + '</h3><div class="body-org">' + esc(it.body) + '</div></div></div>' + dl +
     '<p class="plain">' + esc(it.plain) + '</p>' + (it.noCy ? '<p class="opens" lang="cy">' + tr("English only for now: the Welsh translation of this card is still to come.") + '</p>' : '') +
-    '<div class="actions"><a class="btn" href="' + it.url + '" target="_blank" rel="noopener">' + esc(btnLabel) + ic("out") + '</a>' +
+    '<div class="actions"><a class="btn" href=\"' + esc(safeUrl(it.url)) + '\" target="_blank" rel="noopener">' + esc(btnLabel) + ic("out") + '</a>' +
     '<button type="button" class="btn ghost" data-more="' + it.id + '" aria-expanded="' + open + '" aria-controls="m-' + it.id + '">' + ic("people") + tr(open ? "Hide" : MORE_LABEL) + '</button></div>' +
     (p.phase === "open" ? '<p class="opens">' + tr("Opens the official website in a new tab.") + '</p>' : '') +
     '<div class="more" id="m-' + it.id + '"' + (open ? "" : " hidden") + '>' + impactHtml(it) +
     '<p>' + esc(it.detail) + '</p><p><strong>' + tr("How to respond:") + '</strong> ' + esc(it.how) + '</p>' +
-    '<p class="src">' + tr("Source:") + ' <a href="' + it.src + '" target="_blank" rel="noopener">' + esc(it.src.replace(/^https?:\/\//, "").slice(0, 60)) + '</a></p></div></article>';
+    '<p class="src">' + tr("Source:") + ' <a href=\"' + esc(safeUrl(it.src)) + '\" target="_blank" rel="noopener">' + esc(it.src.replace(/^https?:\/\//, "").slice(0, 60)) + '</a></p></div></article>';
 }
 function renderList() {
   const arr = visible();
@@ -4809,7 +4809,7 @@ function renderPetitions() {
     '<h3>' + esc(cyOn() && p.cy && p.cy.title || p.title) + '</h3>' +
     '<p class="pet-sig">' + (p.sig === null ? tr('Signatures not published') : p.sig.toLocaleString("en-GB") + tr(p.sig === 1 ? ' signature' : ' signatures')) + '</p>' +
     '<p>' + esc(cyOn() && p.cy && p.cy.outcome || p.outcome) + '</p>' + (cyOn() && !p.cy ? '<p class="pet-sig">' + tr("English only for now: the Welsh translation of this card is still to come.") + '</p>' : '') +
-    '<a href="' + p.url + '" target="_blank" rel="noopener">' + tr("Read more") + '</a></li>').join("") :
+    '<a href=\"' + esc(safeUrl(p.url)) + '\" target="_blank" rel="noopener">' + tr("Read more") + '</a></li>').join("") :
     '<li class="empty-msg">' + tr("No petitions found for this filter.") + '</li>';
 }
 (function () { const t = $("totop"); const f = () => { t.hidden = window.scrollY < 700; };
