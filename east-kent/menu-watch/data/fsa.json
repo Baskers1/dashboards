@@ -1,0 +1,735 @@
+{
+ "beaches-cafe-bar": {
+  "r": "5",
+  "id": 1938277,
+  "d": "2026-04-10"
+ },
+ "bayside-cafe": {
+  "r": "5",
+  "id": 1658814,
+  "d": "2025-07-30"
+ },
+ "eds-cafe-broadstairs": {
+  "r": "5",
+  "id": 1515226,
+  "d": "2026-05-05"
+ },
+ "forts-cafe-broadstairs": {
+  "r": "5",
+  "id": 1920871,
+  "d": "2026-01-26"
+ },
+ "little-wave-deli": {
+  "r": "5",
+  "id": 1760708,
+  "d": "2026-09-14"
+ },
+ "bessies-tea-parlour": {
+  "r": "5",
+  "id": 700024,
+  "d": "2024-07-16"
+ },
+ "old-curiosity-shop-cafe": {
+  "r": "5",
+  "id": 745635,
+  "d": "2025-02-04"
+ },
+ "havisham-and-cratchit": {
+  "r": "5",
+  "id": 1792421,
+  "d": "2025-01-09"
+ },
+ "taddys-barn": {
+  "r": "5",
+  "id": 1591246,
+  "d": "2026-08-13"
+ },
+ "cabin-cafe-northdown-hill": {
+  "r": "5",
+  "id": 608260,
+  "d": "2026-01-20"
+ },
+ "joss-bay-cafe": {
+  "r": "5",
+  "id": 658567,
+  "d": "2026-07-30"
+ },
+ "jems-coffee-shop-minster": {
+  "r": "5",
+  "id": 984446,
+  "d": "2025-05-22",
+  "m": "address"
+ },
+ "the-bus-cafe-margate": {
+  "r": "5",
+  "id": 962407,
+  "d": "2025-04-09"
+ },
+ "seabird-margate": {
+  "r": "5",
+  "id": 1959632,
+  "d": "2026-05-29"
+ },
+ "moka-at-mast-margate": {
+  "r": "5",
+  "id": 1920875,
+  "d": "2026-02-19",
+  "m": "address"
+ },
+ "the-dalby-cafe-margate": {
+  "r": "5",
+  "id": 608147,
+  "d": "2024-12-19"
+ },
+ "forts-cafe-margate": {
+  "r": "5",
+  "id": 1273797,
+  "d": "2026-05-21"
+ },
+ "cliffs-cafe-margate": {
+  "r": "5",
+  "id": 928482,
+  "d": "2022-07-05"
+ },
+ "glorias-lounge-cafe-margate": {
+  "r": "5",
+  "id": 943198,
+  "d": "2026-09-02"
+ },
+ "big-shot-margate": {
+  "r": "5",
+  "id": 1489165,
+  "d": "2025-02-21"
+ },
+ "west-bay-cafe-westgate": {
+  "r": "5",
+  "id": 637794,
+  "d": "2024-10-17"
+ },
+ "kellys-cafe-westgate": {
+  "r": "5",
+  "id": 1856246,
+  "d": "2025-07-28"
+ },
+ "best-beano-cafe-westgate": {
+  "r": "4",
+  "id": 742199,
+  "d": "2025-02-04"
+ },
+ "fields-cafe-birchington": {
+  "r": "5",
+  "id": 810440,
+  "d": "2024-11-29"
+ },
+ "cafe-b-birchington": {
+  "r": "5",
+  "id": 608297,
+  "d": "2024-10-17"
+ },
+ "village-square-cafe-birchington": {
+  "r": "5",
+  "id": 608391,
+  "d": "2025-07-09"
+ },
+ "marias-kitchen-birchington": {
+  "r": "5",
+  "id": 1760712,
+  "d": "2026-03-04"
+ },
+ "njord-cafe-bar": {
+  "r": "5",
+  "id": 1658810,
+  "d": "2026-08-18"
+ },
+ "ship-shape-cafe-bar": {
+  "r": "5",
+  "id": 637680,
+  "d": "2025-07-09"
+ },
+ "rileys-cafe": {
+  "r": "5",
+  "id": 962408,
+  "d": "2025-05-14"
+ },
+ "golden-coffee-house": {
+  "r": "5",
+  "id": 1938280,
+  "d": "2026-04-22"
+ },
+ "home-front-tea-room": {
+  "r": "5",
+  "id": 984444,
+  "d": "2025-07-02"
+ },
+ "the-lookout-cafe": {
+  "r": "5",
+  "id": 584528,
+  "d": "2025-07-22"
+ },
+ "alisons-sea-view-cafe": {
+  "r": "5",
+  "id": 1034365,
+  "d": "2026-06-18"
+ },
+ "viking-ship-cafe": {
+  "r": "5",
+  "id": 658610,
+  "d": "2026-04-16"
+ },
+ "george-heart": {
+  "r": "5",
+  "id": 1212498,
+  "d": "2025-12-05"
+ },
+ "hooden-horse": {
+  "r": "5",
+  "id": 765466,
+  "d": "2025-04-22"
+ },
+ "wellington": {
+  "r": "5",
+  "id": 1892883,
+  "d": "2025-12-03"
+ },
+ "faith-in-strangers": {
+  "r": "5",
+  "id": 1422415,
+  "d": "2025-04-25"
+ },
+ "good-egg": {
+  "r": "5",
+  "id": 895509,
+  "d": "2025-10-07"
+ },
+ "willys": {
+  "r": "5",
+  "id": 1846000,
+  "d": "2025-07-11",
+  "m": "address"
+ },
+ "la-trattoria": {
+  "r": "5",
+  "id": 1792424,
+  "d": "2025-01-10"
+ },
+ "smoke-and-co": {
+  "r": "5",
+  "id": 1824879,
+  "d": "2025-04-15"
+ },
+ "churchill-tavern": {
+  "r": "5",
+  "id": 1977644,
+  "d": "2026-07-29"
+ },
+ "bar-finns": {
+  "r": "5",
+  "id": 1846019,
+  "d": "2025-06-17"
+ },
+ "st-lawrence-tavern": {
+  "r": "5",
+  "id": 584493,
+  "d": "2025-02-24"
+ },
+ "belle-vue": {
+  "r": "4",
+  "id": 608204,
+  "d": "2025-08-13"
+ },
+ "blackbird": {
+  "r": "5",
+  "id": 716503,
+  "d": "2025-08-15",
+  "m": "address"
+ },
+ "marechiaro": {
+  "r": "5",
+  "id": 1920867,
+  "d": "2026-02-04"
+ },
+ "porto-reale": {
+  "r": "5",
+  "id": 1754790,
+  "d": "2026-07-16"
+ },
+ "wandering-hut": {
+  "r": "5",
+  "id": 1846025,
+  "d": "2025-06-17"
+ },
+ "charles-dickens": {
+  "r": "5",
+  "id": 370785,
+  "d": "2025-06-03"
+ },
+ "no-23": {
+  "r": "5",
+  "id": 1743672,
+  "d": "2024-07-04",
+  "m": "address"
+ },
+ "canterbury-bell": {
+  "r": "5",
+  "id": 716505,
+  "d": "2024-10-05"
+ },
+ "kebbells": {
+  "r": "5",
+  "id": 1380678,
+  "d": "2025-12-03"
+ },
+ "tartar-frigate": {
+  "r": "5",
+  "id": 265665,
+  "d": "2024-03-25"
+ },
+ "powell": {
+  "r": "5",
+  "id": 1859209,
+  "d": "2025-08-01"
+ },
+ "cow-shed": {
+  "r": "4",
+  "id": 1042038,
+  "d": "2026-05-07"
+ },
+ "swan-westgate": {
+  "r": "5",
+  "id": 1001597,
+  "d": "2026-03-27"
+ },
+ "smugglers": {
+  "r": "5",
+  "id": 608277,
+  "d": "2025-08-19"
+ },
+ "the-new-inn-minster": {
+  "r": "4",
+  "id": 962397,
+  "d": "2026-01-21"
+ },
+ "the-bell-inn-minster": {
+  "r": "2",
+  "id": 1067421,
+  "d": "2026-07-28"
+ },
+ "the-minster-meze-and-grill": {
+  "r": "5",
+  "id": 1339813,
+  "d": "2025-02-03"
+ },
+ "crown-inn-sarre": {
+  "r": "5",
+  "id": 637592,
+  "d": "2025-04-16"
+ },
+ "christies-wine-bar-bistro": {
+  "r": "5",
+  "id": 608213,
+  "d": "2025-07-28"
+ },
+ "lafayettes-margate": {
+  "r": "5",
+  "id": 1805282,
+  "d": "2025-01-23"
+ },
+ "the-pickled-fox-margate": {
+  "r": "5",
+  "id": 1631582,
+  "d": "2025-05-24"
+ },
+ "bottega-caruso-margate": {
+  "r": "5",
+  "id": 1026839,
+  "d": "2025-04-02"
+ },
+ "buoy-and-oyster-margate": {
+  "r": "5",
+  "id": 830474,
+  "d": "2024-10-19"
+ },
+ "angelas-margate": {
+  "r": "5",
+  "id": 1010330,
+  "d": "2025-10-07"
+ },
+ "sargasso-margate": {
+  "r": "5",
+  "id": 1199876,
+  "d": "2026-09-11"
+ },
+ "rose-in-june": {
+  "r": "5",
+  "id": 637786,
+  "d": "2025-10-13"
+ },
+ "lilies-margate": {
+  "r": "5",
+  "id": 1532183,
+  "d": "2026-07-09"
+ },
+ "cliftonville-dining-room": {
+  "r": "5",
+  "id": 1846006,
+  "d": "2025-06-13"
+ },
+ "little-havana": {
+  "r": "5",
+  "id": 1871165,
+  "d": "2025-11-05"
+ },
+ "dosa-palace": {
+  "r": "5",
+  "id": 1859212,
+  "d": "2025-08-05"
+ },
+ "gurkha-restaurant-and-bar-margate": {
+  "r": "5",
+  "id": 1902169,
+  "d": "2025-12-15"
+ },
+ "veil-of-flavours": {
+  "r": "5",
+  "id": 1907966,
+  "d": "2025-12-17"
+ },
+ "royal-harbour-brasserie": {
+  "r": "1",
+  "id": 537319,
+  "d": "2026-05-07"
+ },
+ "the-waterfront-ramsgate": {
+  "r": "5",
+  "id": 1126614,
+  "d": "2025-02-18"
+ },
+ "royal-victoria-pavilion": {
+  "r": "5",
+  "id": 1001586,
+  "d": "2025-07-28"
+ },
+ "the-queens-head-ramsgate": {
+  "r": "5",
+  "id": 637775,
+  "d": "2025-01-28"
+ },
+ "il-tricolore": {
+  "r": "5",
+  "id": 1081095,
+  "d": "2025-01-31"
+ },
+ "the-galley-ramsgate": {
+  "r": "5",
+  "id": 637686,
+  "d": "2025-07-21"
+ },
+ "alexandra-ristorante-italiano": {
+  "r": "5",
+  "id": 658569,
+  "d": "2024-11-01"
+ },
+ "the-bedford-inn-ramsgate": {
+  "r": "5",
+  "id": 947209,
+  "d": "2026-08-15"
+ },
+ "the-racing-greyhound-ramsgate": {
+  "r": "5",
+  "id": 637649,
+  "d": "2025-05-23"
+ },
+ "sir-stanley-gray-ramsgate": {
+  "r": "5",
+  "id": 575971,
+  "d": "2026-04-14"
+ },
+ "the-windmill-ramsgate": {
+  "r": "5",
+  "id": 943192,
+  "d": "2024-12-09"
+ },
+ "posillipo-broadstairs": {
+  "r": "3",
+  "id": 681906,
+  "d": "2025-09-27"
+ },
+ "the-little-sicilian-broadstairs": {
+  "r": "5",
+  "id": 1151976,
+  "d": "2025-05-13"
+ },
+ "bar-ingo-broadstairs": {
+  "r": "5",
+  "id": 1754788,
+  "d": "2026-08-27"
+ },
+ "forno-lounge-broadstairs": {
+  "r": "5",
+  "id": 1856244,
+  "d": "2025-07-30"
+ },
+ "le-vintage-broadstairs": {
+  "r": "5",
+  "id": 1412326,
+  "d": "2023-09-27"
+ },
+ "the-red-lion-st-peters": {
+  "r": "5",
+  "id": 991877,
+  "d": "2025-04-14"
+ },
+ "quince-westgate": {
+  "r": "5",
+  "id": 1522819,
+  "d": "2025-11-21"
+ },
+ "pauls-bar-bistro-westgate": {
+  "r": "5",
+  "id": 370783,
+  "d": "2026-07-27"
+ },
+ "finbars-of-west-bay-westgate": {
+  "r": "5",
+  "id": 1199871,
+  "d": "2025-09-08"
+ },
+ "thai-orchid-ramsgate": {
+  "r": "5",
+  "id": 584500,
+  "d": "2025-12-04"
+ },
+ "aster-broadstairs": {
+  "r": "5",
+  "id": 1892881,
+  "d": "2025-11-13"
+ },
+ "jetty-broadstairs": {
+  "r": "4",
+  "id": 1422416,
+  "d": "2026-09-22"
+ },
+ "papas-fish-chips-ramsgate": {
+  "r": "Awaiting",
+  "id": 1963526
+ },
+ "spiers-epitome-burger-bar-ramsgate": {
+  "r": "5",
+  "id": 1888408,
+  "d": "2025-11-06"
+ },
+ "wimpy-birchington": {
+  "r": "5",
+  "id": 1863770,
+  "d": "2025-07-21"
+ },
+ "xv-fifteen-square-metres-broadstairs": {
+  "r": "5",
+  "id": 1760707,
+  "d": "2026-03-27"
+ },
+ "pearly-cow": {
+  "r": "5",
+  "id": 1658813,
+  "d": "2026-08-10",
+  "m": "address"
+ },
+ "perico-lounge-ramsgate": {
+  "r": "5",
+  "id": 1736389,
+  "d": "2025-12-03"
+ },
+ "spitfire-cafe-manston": {
+  "r": "5",
+  "id": 620114,
+  "d": "2026-08-21"
+ },
+ "pedaler-in-the-yard-manston": {
+  "r": "5",
+  "id": 1675810,
+  "d": "2025-10-25"
+ },
+ "coast-cafe-and-bar": {
+  "r": "5",
+  "id": 620159,
+  "d": "2025-11-04",
+  "m": "address"
+ },
+ "noa-rooftop": {
+  "r": "5",
+  "id": 620159,
+  "d": "2025-11-04",
+  "m": "address"
+ },
+ "number-nine": {
+  "r": "5",
+  "id": 1559607,
+  "d": "2024-09-17",
+  "m": "address"
+ },
+ "smugglers-retreat-minster": {
+  "r": "5",
+  "id": 608364,
+  "d": "2026-07-14",
+  "m": "address"
+ },
+ "cafe-vinny-margate": {
+  "r": "5",
+  "id": 624994,
+  "d": "2026-01-05",
+  "m": "address"
+ },
+ "gb-pizza-co-margate": {
+  "r": "5",
+  "id": 555401,
+  "d": "2025-06-11",
+  "m": "14A Marine Drive, Margate, Kent CT9 1DH"
+ },
+ "st-mildreds-bay-westgate": {
+  "r": "5",
+  "id": 1302095,
+  "d": "2024-11-27",
+  "m": "St Mildreds Gardens, Westgate-on-Sea, Kent CT8 8TP"
+ },
+ "millies-beach-bar-westgate": {
+  "r": "5",
+  "id": 1302095,
+  "d": "2024-11-27",
+  "m": "St Mildreds Gardens, Westgate-on-Sea, Kent CT8 8TP"
+ },
+ "chefs-of-india-minster": {
+  "r": "5",
+  "id": 1846028,
+  "d": "2025-08-01",
+  "m": "address"
+ },
+ "naafi-cafe-manston": {
+  "r": "5",
+  "id": 1412321,
+  "d": "2025-07-23",
+  "m": "RAF Manston History Museum, Manston Road, Minster, Kent CT12 5DF"
+ },
+ "flavours-by-kumar-ramsgate": {
+  "r": "5",
+  "id": 637815,
+  "d": "2026-01-30"
+ },
+ "tim-hortons-broadstairs": {
+  "r": "5",
+  "id": 1611313,
+  "d": "2025-03-19"
+ },
+ "foliage-cafe-broadstairs": {
+  "r": "5",
+  "id": 1859214,
+  "d": "2025-07-31"
+ },
+ "captain-ds-broadstairs": {
+  "r": "5",
+  "id": 1888411,
+  "d": "2025-10-29"
+ },
+ "taco-bell-westwood-cross-broadstairs": {
+  "r": "5",
+  "id": 1789172,
+  "d": "2024-12-17"
+ },
+ "follys-dessert-cafe-ramsgate": {
+  "r": "5",
+  "id": 1736394,
+  "d": "2025-02-25",
+  "m": "address"
+ },
+ "giant-coffee-broadstairs": {
+  "r": "4",
+  "id": 1837953,
+  "d": "2025-05-08",
+  "m": "address"
+ },
+ "the-bouncing-bomb-cafe-birchington": {
+  "id": 1542106,
+  "d": "2026-08-05"
+ },
+ "rc-roastery-ramsgate": {
+  "r": "5",
+  "id": 1920865,
+  "d": "2026-02-03"
+ },
+ "vincents-ramsgate": {
+  "r": "5",
+  "id": 1863772,
+  "d": "2025-08-20",
+  "m": "third-party aggregator (eatible.co.uk), matched by exact name and address"
+ },
+ "the-tenth-cafe-bar-manston": {
+  "r": "5",
+  "id": 962411,
+  "d": "2025-04-14"
+ },
+ "the-lift-cafe-ramsgate": {
+  "r": "5",
+  "id": 1938296,
+  "d": "2026-05-07",
+  "m": "address"
+ },
+ "ask-italian-westwood-cross-broadstairs": {
+  "r": "5",
+  "id": 658547,
+  "d": "2025-04-14",
+  "m": "address"
+ },
+ "cubo-pizzeria-ramsgate": {
+  "r": "5",
+  "id": 1938292,
+  "d": "2026-04-22",
+  "m": "address"
+ },
+ "sete-cliftonville": {
+  "r": "5",
+  "d": "2025-11-05",
+  "m": "address"
+ },
+ "mariners-bar-ramsgate": {
+  "id": 370786,
+  "d": "2024-05-30",
+  "m": "address"
+ },
+ "minnis-bay": {
+  "r": "5",
+  "id": 803021,
+  "d": "2025-08-19",
+  "m": "address (matched as 'The Minnis Bar & Restaurant', The Parade, Birchington CT7 9QP - name differs slightly from venue record 'Minnis Bay Bar & Brasserie')"
+ },
+ "bakers-baristas-westwood-cross-broadstairs": {
+  "r": "5",
+  "id": 1933907,
+  "d": "2026-04-07"
+ },
+ "marina-view-rtyc-ramsgate": {
+  "r": "5",
+  "id": 608319,
+  "d": "2025-08-21",
+  "m": "address"
+ },
+ "albarino-tapas-broadstairs": {
+  "r": "5",
+  "id": 637694,
+  "d": "2026-03-20",
+  "m": "address"
+ },
+ "samworth-and-mee-broadstairs": {
+  "r": "5",
+  "id": 637792,
+  "d": "2025-09-12"
+ },
+ "seafarer-restaurant-broadstairs": {
+  "r": "4",
+  "id": 455637,
+  "d": "2026-08-24"
+ },
+ "the-crown-cafe-bistro-broadstairs": {
+  "id": 1126609,
+  "d": "2026-03-25",
+  "m": "address"
+ }
+}

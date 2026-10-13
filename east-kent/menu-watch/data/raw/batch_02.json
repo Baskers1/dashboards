@@ -1,0 +1,747 @@
+[
+ {
+  "id": "eds-cafe-broadstairs",
+  "name": "Ed's Cafe",
+  "town": "Broadstairs",
+  "type": "cafe",
+  "address": "19 High St, Broadstairs CT10 1LP",
+  "website": null,
+  "social": "https://www.facebook.com/p/Eds-Cafe-100088312815965/",
+  "trading": "confirmed",
+  "food_evidence": "No website; Facebook page blocked by robots.txt, could not verify menu content. FSA confirmed unchanged (rating 5, inspected 2026-05-05, all three areas 'Very good'). TripAdvisor confirmed unchanged (4.9/82, not closed).",
+  "menus": [],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "serves_food": "yes"
+ },
+ {
+  "id": "cabin-cafe-northdown-hill",
+  "name": "Cabin Cafe",
+  "town": "Broadstairs",
+  "type": "cafe",
+  "address": "Northdown Hill, Broadstairs CT10 3JH",
+  "website": null,
+  "social": null,
+  "trading": "confirmed",
+  "food_evidence": "No website or social media listed, so menu could not be checked. FSA confirmed unchanged (rating 5, inspected 2026-01-20, all areas 'Good'). TripAdvisor confirmed unchanged (4.5/40; listing shown as 'Unclaimed' on TripAdvisor but not marked closed). Upgraded trading from 'unclear' to 'confirmed' given the recent Jan-2026 FSA inspection and active TripAdvisor listing.",
+  "menus": [],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "serves_food": "yes"
+ },
+ {
+  "id": "the-dalby-cafe-margate",
+  "name": "The Dalby Cafe",
+  "town": "Cliftonville",
+  "type": "cafe",
+  "address": "4-6 Dalby Road, Cliftonville, Margate CT9 2EX",
+  "website": null,
+  "social": "https://www.facebook.com/dalbycafe/",
+  "trading": "confirmed",
+  "food_evidence": "No website; Facebook blocked by robots.txt. FSA confirmed unchanged (rating 5, inspected 2024-12-19 — this remains the latest inspection on record, nearly 2 years old, no newer inspection found). TripAdvisor confirmed unchanged (4.7/270, not closed).",
+  "menus": [
+   {
+    "title": "The Dalby Cafe on Just Eat (third-party)",
+    "type": "main",
+    "url": "https://www.just-eat.co.uk/restaurants-the-dalby-cafe-margate/menu",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false,
+    "notes": "Carried forward from last week - not re-verified this session."
+   }
+  ],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "serves_food": "yes"
+ },
+ {
+  "id": "best-beano-cafe-westgate",
+  "name": "The Best Beano Cafe Westgate",
+  "town": "Westgate-on-Sea",
+  "type": "cafe",
+  "address": "21 Station Road, Westgate-on-Sea CT8 8RB",
+  "website": null,
+  "social": "https://www.facebook.com/thebestbeanocafe/",
+  "trading": "confirmed",
+  "food_evidence": "No website; Facebook blocked by robots.txt. FSA confirmed unchanged (rating 4, inspected 2025-02-04, all areas 'Good'). TripAdvisor confirmed unchanged (4.2/133, not closed).",
+  "menus": [],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "serves_food": "yes"
+ },
+ {
+  "id": "rileys-cafe",
+  "name": "Riley's Cafe (CK Riley's)",
+  "town": "Ramsgate",
+  "type": "cafe",
+  "address": "8 Queen St, Ramsgate CT11 9DR",
+  "website": null,
+  "social": "https://www.instagram.com/ck_riley",
+  "trading": "confirmed",
+  "food_evidence": "No website; Instagram blocked by robots.txt. FSA confirmed unchanged (rating 5 for 'C and K Rileys Ltd', inspected 2025-05-14, all areas 'Very good'). TripAdvisor confirmed unchanged (4.3/149, not closed).",
+  "menus": [],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "serves_food": "yes"
+ },
+ {
+  "id": "george-heart",
+  "name": "The George & Heart House",
+  "town": "Margate",
+  "type": "pub",
+  "address": "44 King St, Margate CT9 1QE",
+  "website": "https://www.georgeandheart.com/",
+  "social": null,
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "Menus (main hub)",
+    "type": "main",
+    "url": "https://www.georgeandheart.com/menus",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Eat With Us / Food & Drinks",
+    "type": "main",
+    "url": "https://www.georgeandheart.com/food-and-drinks",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "What's On",
+    "type": "event",
+    "url": "https://www.georgeandheart.com/whats-on",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Sample Set Menu",
+    "type": "set-menu",
+    "url": "https://www.georgeandheart.com/s/GH-new-menu-1-53kg.pdf",
+    "format": "pdf",
+    "valid_dates": null,
+    "is_new_signal": false,
+    "notes": "Carried forward from last week - not re-verified this session."
+   },
+   {
+    "title": "The Roast (Sunday)",
+    "type": "sunday-roast",
+    "url": "https://www.georgeandheart.com/s/Roast-Menu.pdf",
+    "format": "pdf",
+    "valid_dates": "Every Sunday 12-7pm",
+    "is_new_signal": false,
+    "notes": "Carried forward from last week - not re-verified this session."
+   }
+  ],
+  "food_evidence": "Homepage links to Menus, Food & Drinks and What's On pages but doesn't show dish content directly. Image filenames reference a 'GH Summer Menu'. Footer shows a stale '© 2021' copyright, so parts of the site may not be current — worth a manual spot-check. No festive/Christmas 2026 menu found. FSA confirmed unchanged (rating 5, inspected 2025-12-05). TripAdvisor rating unchanged at 3.8, but review count rose from 114 to 117.",
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "serves_food": "yes"
+ },
+ {
+  "id": "willys",
+  "name": "Willy's",
+  "town": "Margate",
+  "type": "restaurant",
+  "address": "6 Dalby Square, Cliftonville CT9 2ER",
+  "website": "https://www.willys.co.uk/",
+  "social": null,
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "Willy's Menu",
+    "type": "main",
+    "url": "https://www.willys.co.uk/menu",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   }
+  ],
+  "food_evidence": "Homepage links to a menu page (classic British dishes, 'reimagined with wit and flair') but no seasonal/festive menu found. Opening hours confirmed (breakfast daily 8:30-11:30am; lunch Fri/Sat & Sun; dinner Thu-Sat 5-9pm). FSA confirmed unchanged (rating 5, inspected 2025-07-11, business shown as 'Margate House' — consistent with existing address-match flag). TripAdvisor confirmed unchanged (4.0/20, not closed).",
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "serves_food": "yes"
+ },
+ {
+  "id": "blackbird",
+  "name": "Blackbird Ramsgate",
+  "town": "Ramsgate",
+  "type": "pub",
+  "address": "2-3 The Broadway, Ramsgate CT11 9JN",
+  "website": null,
+  "social": "https://www.instagram.com/blackbirdramsgate",
+  "trading": "confirmed",
+  "food_evidence": "No website; Instagram blocked by robots.txt. FSA confirmed unchanged (rating 5 for 'Seabird' at this address, inspected 2025-08-15, all areas 'Very good'/'Good'). TripAdvisor lists this as an Attraction page (Nightlife category, #46 of 52 in Ramsgate), 0 reviews, no rating shown, not marked closed — consistent with existing data.",
+  "menus": [],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "serves_food": "yes"
+ },
+ {
+  "id": "no-23",
+  "name": "No 23 Brunch & Dinner",
+  "town": "Broadstairs",
+  "type": "restaurant",
+  "address": "23 Albion St, Broadstairs CT10 1LU",
+  "website": "https://no23brunch.uk/",
+  "social": "https://www.instagram.com/no23brunch/",
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "Brunch Menu (featured items: Turkish Breakfast, The Mediterranean, The Broadstairsian, King of Menemen, Full House, Eggs Royale)",
+    "type": "main",
+    "url": "https://no23brunch.uk/menu",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   }
+  ],
+  "new_menu_notices": [
+   {
+    "text": "Instagram teaser mentions followers can 'preview upcoming dishes' but gives no specifics.",
+    "url": "https://no23brunch.uk/"
+   }
+  ],
+  "food_evidence": "Homepage lists several named brunch dishes with prices (£12.95-£17.95) plus 50/50 Wagyu & Angus burgers. No seasonal/festive menu found. FSA confirmed unchanged (rating 5, inspected 2024-07-04; business shown on FSA register as 'The Smokehouse' at this address — consistent with the existing address-match flag, may be a prior occupant name). TripAdvisor confirmed unchanged (5.0/3, not closed).",
+  "checked_on": "2026-10-12",
+  "serves_food": "yes"
+ },
+ {
+  "id": "swan-westgate",
+  "name": "The Swan by the Beach",
+  "town": "Westgate-on-Sea",
+  "type": "pub",
+  "address": "Westgate-on-Sea, Kent",
+  "website": "https://www.the-swan.pub/",
+  "social": "https://www.facebook.com/swanatwestgate/",
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "Main/Lunch Menu",
+    "type": "main",
+    "url": "https://www.the-swan.pub/mainmenu",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Sunday Menu",
+    "type": "sunday-roast",
+    "url": "https://www.the-swan.pub/sundaymenu",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Light Bites Menu",
+    "type": "main",
+    "url": "https://www.the-swan.pub/lightbitesmenu",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Young Guests Menu",
+    "type": "other",
+    "url": "https://www.the-swan.pub/young-guests-menu",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Festive Season",
+    "type": "festive",
+    "url": "https://www.the-swan.pub/festiveseason",
+    "format": "html",
+    "valid_dates": "2026-12",
+    "is_new_signal": true
+   },
+   {
+    "title": "Christmas Parties",
+    "type": "festive",
+    "url": "https://www.the-swan.pub/christmas-parties",
+    "format": "html",
+    "valid_dates": "2026-12",
+    "is_new_signal": true
+   },
+   {
+    "title": "Mid-Week Carvery",
+    "type": "specials",
+    "url": "https://www.the-swan.pub/midweek-carvery",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": true
+   },
+   {
+    "title": "New Year's Eve",
+    "type": "event",
+    "url": "https://www.the-swan.pub/newyearseve",
+    "format": "html",
+    "valid_dates": "2026-12-31",
+    "is_new_signal": true
+   }
+  ],
+  "food_evidence": "Site hosts a full set of menu pages including a dedicated Festive Season, Christmas Parties, Mid-Week Carvery and New Year's Eve page — good signal of live seasonal planning for Christmas 2026, though exact dates/prices weren't captured from page text. FSA confirmed unchanged (rating 5 for 'The Swan by the Sea' at this address, inspected 2026-03-27). TripAdvisor rating unchanged at 4.3; review count may have risen slightly (page showed 321 in the visible count but 322 in page metadata) — flagged, not auto-applied as a firm update.",
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "serves_food": "yes"
+ },
+ {
+  "id": "the-new-stag-monkton",
+  "name": "The New Stag Inn",
+  "town": "Monkton",
+  "type": "pub",
+  "address": "70 Monkton St, Monkton CT12 4JF",
+  "website": null,
+  "social": "https://www.facebook.com/photo.php?fbid=122120319722847501&set=a.122105086748847501&id=61575425056789",
+  "trading": "confirmed",
+  "food_evidence": "No website; Facebook photo-post link blocked by robots.txt. FSA record still not found for this venue despite a targeted search (CAMRA lists the pub but no clear ratings.food.gov.uk match) — left out of fsa_updates rather than guessing an id. TripAdvisor confirmed unchanged (4.2/46, not closed).",
+  "menus": [
+   {
+    "title": "Daily menu / roast dinner (Facebook post)",
+    "type": "other",
+    "url": "https://www.facebook.com/photo.php?fbid=122120319722847501&set=a.122105086748847501&id=61575425056789",
+    "format": "social",
+    "valid_dates": "Undated",
+    "is_new_signal": false,
+    "notes": "Carried forward from last week - not re-verified this session."
+   }
+  ],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "serves_food": "yes"
+ },
+ {
+  "id": "angelas-margate",
+  "name": "Angela's",
+  "town": "Margate",
+  "type": "restaurant",
+  "address": "21 The Parade, Margate CT9 1EX",
+  "website": "https://angelasofmargate.com/",
+  "social": "https://www.facebook.com/Angelasofmargate/",
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "Angela's Menu",
+    "type": "main",
+    "url": "https://angelasofmargate.com/angelas-menu",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Dory's Classics (bar pop-up)",
+    "type": "event",
+    "url": "https://angelasofmargate.com/",
+    "format": "html",
+    "valid_dates": "2026-10-12 to 2026-10-22",
+    "is_new_signal": true
+   },
+   {
+    "title": "Weekday Set Lunch",
+    "type": "set-menu",
+    "url": "https://angelasofmargate.com/",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Dory's Classics (bar pop-up while kitchen issue is fixed)",
+    "type": "event",
+    "url": "https://www.instagram.com/p/DeJPn3wDLRd/",
+    "format": "webpage",
+    "valid_dates": "12-22 October (year not stated on page, but matches current week)",
+    "is_new_signal": true
+   }
+  ],
+  "new_menu_notices": [
+   {
+    "text": "NOTABLE: Angela's homepage says the restaurant is 'closing for two weeks (to fix an unexpected problem)' but is running a 'Dory's classics' pop-up menu in the bar from 12-22 October (served 12-10pm, walk-ins welcome) — this window starts today (checked 2026-10-12), so the main restaurant may currently be shut while the bar pop-up runs.",
+    "url": "https://angelasofmargate.com/"
+   },
+   {
+    "text": "Angela's main restaurant is closing for about two weeks to fix an unexpected problem (dates not explicitly stated, but the Dory's Classics bar pop-up covering the gap runs 12-22 October, i.e. this week)."
+   }
+  ],
+  "food_evidence": "Timely finding: the site itself flags a temporary ~2-week closure for repairs starting around now, with a bar-only 'Dory's Classics' pop-up menu running 12-22 October in its place. Treated as a temporary closure, not permanent, so trading kept as 'confirmed'; worth a follow-up check next refresh. FSA confirmed unchanged (rating 5, inspected 2025-10-07). TripAdvisor confirmed unchanged (4.7/465, not closed).",
+  "checked_on": "2026-10-12",
+  "serves_food": "yes"
+ },
+ {
+  "id": "gurkha-restaurant-and-bar-margate",
+  "name": "Gurkha Restaurant and Bar",
+  "town": "Margate",
+  "type": "restaurant",
+  "address": "16 Ethelbert Cres, Cliftonville CT9 2DY",
+  "website": "https://www.gurkharestaurantbar.co.uk/margate/",
+  "social": null,
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "Main Menu",
+    "type": "main",
+    "url": "https://www.gurkharestaurantbar.co.uk/margate/menu.html",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "All You Can Eat (Mon-Thu, dine-in only, £25pp/£15 child)",
+    "type": "specials",
+    "url": "https://www.gurkharestaurantbar.co.uk/margate/menu.html",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": true
+   },
+   {
+    "title": "All You Can Eat Buffet (Mon-Thu, dine-in only, GBP25 adult / GBP15 child)",
+    "type": "set-menu",
+    "url": "https://www.gurkharestaurantbar.co.uk/margate/",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false,
+    "notes": "Carried forward from last week - not re-verified this session."
+   },
+   {
+    "title": "Home delivery ordering menu",
+    "type": "other",
+    "url": "https://www.gurkharestaurantbar.co.uk/margate/menu/home-delivery.html",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false,
+    "notes": "Carried forward from last week - not re-verified this session."
+   }
+  ],
+  "food_evidence": "Site shows collection and home-delivery ordering links plus an All-You-Can-Eat Mon-Thu deal. Page also displays a standalone 'CLOSED' label with no hours/date attached, which is ambiguous — likely a live open/closed widget rather than a permanent-closure notice, since FSA was inspected as recently as 2025-12-15 and TripAdvisor shows an active, highly-rated listing; flagged for a manual check rather than acted on. FSA confirmed unchanged (rating 5, inspected 2025-12-15). TripAdvisor confirmed unchanged (4.9/72, not closed).",
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "serves_food": "yes"
+ },
+ {
+  "id": "the-galley-ramsgate",
+  "name": "The Galley",
+  "town": "Ramsgate",
+  "type": "cafe",
+  "address": "3 West Cliff Arcade, Ramsgate CT11 8LH",
+  "website": null,
+  "social": "https://www.facebook.com/thegalleyramsgate/",
+  "trading": "confirmed",
+  "food_evidence": "No website; Facebook blocked by robots.txt. FSA confirmed unchanged (rating 5, inspected 2025-07-21). TripAdvisor confirmed unchanged (4.8/283, not closed; closed Wed/Thu as a normal weekly pattern).",
+  "menus": [
+   {
+    "title": "Third-party online menu (Zmenu)",
+    "type": "main",
+    "url": "https://www.zmenu.com/the-galley-ramsgate-uk-online-menu/",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false,
+    "notes": "Carried forward from last week - not re-verified this session."
+   }
+  ],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "serves_food": "yes"
+ },
+ {
+  "id": "the-little-sicilian-broadstairs",
+  "name": "The Little Sicilian",
+  "town": "Broadstairs",
+  "type": "restaurant",
+  "address": "45 York St, Broadstairs CT10 1PB",
+  "website": "https://thelittlesicilian.co.uk/",
+  "social": "https://www.facebook.com/TheLittleSicilianBroadstairs/",
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "Main A La Carte Menu",
+    "type": "main",
+    "url": "https://thelittlesicilian.co.uk/menu/",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Set Lunch Menu",
+    "type": "set-menu",
+    "url": "https://thelittlesicilian.co.uk/set-lunch-menu/",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   }
+  ],
+  "new_menu_notices": [
+   {
+    "text": "New private function/party room now available for up to 34 guests, with a fixed-price menu option on request.",
+    "url": "https://thelittlesicilian.co.uk/"
+   }
+  ],
+  "food_evidence": "Site describes a large daily-specials selection plus a full Italian à la carte menu; a new function room was flagged. No OpenTable listing found despite search. FSA confirmed unchanged (rating 5 at 'Buttery Restaurant', this address, inspected 2025-05-13). TripAdvisor rating unchanged at 4.6; review count rose from 399 to 400.",
+  "checked_on": "2026-10-12",
+  "serves_food": "yes"
+ },
+ {
+  "id": "finbars-of-west-bay-westgate",
+  "name": "Finbar's of West Bay",
+  "town": "Westgate-on-Sea",
+  "type": "restaurant",
+  "address": "West Bay Promenade, Westgate-on-Sea CT8 8QA",
+  "website": "https://www.finbarswestgate.co.uk/",
+  "social": "https://www.facebook.com/finbarsofwestbay/",
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "Lunch Menu",
+    "type": "main",
+    "url": "https://www.finbarswestgate.co.uk/menus",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Evening Menu (a la carte)",
+    "type": "main",
+    "url": "https://www.finbarswestgate.co.uk/menus",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Sunday Set Course Menu",
+    "type": "sunday-roast",
+    "url": "https://www.finbarswestgate.co.uk/menus",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Kids Menu",
+    "type": "other",
+    "url": "https://www.finbarswestgate.co.uk/menus",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Christmas Dining (5-course)",
+    "type": "festive",
+    "url": "https://www.finbarswestgate.co.uk/menus",
+    "format": "html",
+    "valid_dates": "2026-12",
+    "is_new_signal": true
+   },
+   {
+    "title": "Margate Restaurant Week",
+    "type": "event",
+    "url": "https://www.finbarswestgate.co.uk/menus",
+    "format": "html",
+    "valid_dates": "2026-11-02 to 2026-11-06",
+    "is_new_signal": true
+   },
+   {
+    "title": "Lunch Menu",
+    "type": "set-menu",
+    "url": "https://www.finbarswestgate.co.uk/files/1416-1-1.jpg",
+    "format": "image",
+    "valid_dates": "Available Wed-Sat; no calendar dates",
+    "is_new_signal": false,
+    "notes": "Carried forward from last week - not re-verified this session."
+   }
+  ],
+  "new_menu_notices": [
+   {
+    "text": "New weekly notice: a la carte + homemade pie night every Thursday, starting 8 October 2026.",
+    "url": "https://www.finbarswestgate.co.uk/"
+   }
+  ],
+  "food_evidence": "Confirmed a live, current menu hub with Christmas Dining and a Margate Restaurant Week (2-6 Nov) listing, plus a brand-new Thursday pie night starting 8 Oct 2026. FSA confirmed unchanged (rating 5 for 'Finbars Restaurant' / 'West Bay Cafe' at this address, inspected 2025-09-08). OpenTable link confirmed working and bookable; rating/review count updated from 4.6/152 to 4.5/155.",
+  "checked_on": "2026-10-12",
+  "serves_food": "yes"
+ },
+ {
+  "id": "wimpy-birchington",
+  "name": "Wimpy Birchington",
+  "town": "Birchington",
+  "type": "restaurant",
+  "address": "44-46 Station Road, Birchington-on-Sea CT7 9DQ",
+  "website": "https://wimpy.uk.com/menus/anytime-meals/birchington-on-sea",
+  "social": null,
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "Mains Menu",
+    "type": "main",
+    "url": "https://wimpy.uk.com/menus/anytime-meals/birchington-on-sea",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "New dishes: Fish Burger, Club Sandwich, The Big Grill, Steakhouse Seasoned Chips, Mini Corn on the Cob, 10 Plant-based Strips",
+    "type": "specials",
+    "url": "https://wimpy.uk.com/menus/anytime-meals/birchington-on-sea",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": true
+   }
+  ],
+  "new_menu_notices": [
+   {
+    "text": "Menu page marks six items as 'New dish': Fish Burger, Club Sandwich, The Big Grill, Steakhouse Seasoned Chips, Mini Corn on the Cob, 10 Plant-based Strips. Recurring 'Wimpy Wednesday' deal (£8.50, one of four burgers + chips + drink) also confirmed.",
+    "url": "https://wimpy.uk.com/menus/anytime-meals/birchington-on-sea"
+   }
+  ],
+  "food_evidence": "Menu page explicitly flags several new dishes this refresh. FSA confirmed unchanged (rating 5, inspected 2025-07-21). TripAdvisor confirmed unchanged (3.7/15, not closed).",
+  "checked_on": "2026-10-12",
+  "serves_food": "yes"
+ },
+ {
+  "id": "perico-lounge-ramsgate",
+  "name": "Perico Lounge",
+  "town": "Ramsgate",
+  "type": "restaurant",
+  "address": "Unit 1, Beach Drive, Ramsgate, Kent CT11 8HF",
+  "website": "https://thelounges.co.uk/perico/",
+  "social": "https://www.facebook.com/pericolounge/",
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "Main Menu",
+    "type": "main",
+    "url": "https://thelounges.co.uk/perico/menus",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Autumn/Winter 2026 Menu",
+    "type": "seasonal",
+    "url": "https://thelounges.co.uk/whats-on/autumn-winter-2026-menu",
+    "format": "html",
+    "valid_dates": "2026 autumn/winter",
+    "is_new_signal": true
+   },
+   {
+    "title": "Christmas Menu (Marry Me Santa, Pig-in-Blanket Mac & Cheese, Goan Spiced Parsnip Soup, Baileys Cheesecake, Chocolate Orange Mousse)",
+    "type": "festive",
+    "url": "https://thelounges.co.uk/christmas",
+    "format": "html",
+    "valid_dates": "2026-11-19 to 2026-12-31",
+    "is_new_signal": true
+   }
+  ],
+  "new_menu_notices": [
+   {
+    "text": "Running deals tied to the menu: Cheeky Mondays (from 5pm), Tapas Tuesday (£13.95 from 5pm), Lounge Cocktail Club (£13.25 for two, from 5pm), Lunch Deal (£6.95, Mon-Fri 12-5pm).",
+    "url": "https://thelounges.co.uk/perico/"
+   }
+  ],
+  "food_evidence": "Good new-menu signal: a freshly announced Autumn/Winter 2026 menu and a dated Christmas menu (19 Nov-31 Dec) with named festive dishes. Page's 'last modified' date (Nov 2025) doesn't quite match the 2026 Christmas content, so dates should be spot-checked closer to the time. FSA confirmed unchanged (rating 5, inspected 2025-12-03). TripAdvisor confirmed unchanged (3.6/70, not closed).",
+  "checked_on": "2026-10-12",
+  "serves_food": "yes"
+ },
+ {
+  "id": "pedaler-in-the-yard-manston",
+  "name": "The Pedaler in the Yard",
+  "town": "Manston (Ramsgate)",
+  "type": "cafe",
+  "address": "The Cattle Yard, Preston Road, Manston, Ramsgate, Kent CT12 5FQ",
+  "website": "https://thecattleyard.co.uk/pedaler-in-the-yard/",
+  "social": "https://www.instagram.com/theindiepedaler/",
+  "trading": "confirmed",
+  "food_evidence": "Page mentions a 'Pedaler Menu' but gives no link or content; cakes are baked in-house and most ingredients sourced within 25 miles, groups of 4+ can book by phone/email. No seasonal/festive menu found. FSA confirmed unchanged (rating 5, inspected 2025-10-25). TripAdvisor confirmed unchanged (3.4/86, not closed).",
+  "menus": [
+   {
+    "title": "Pedaler in the Yard cafe menu",
+    "type": "main",
+    "url": "https://thecattleyard.co.uk/pedaler-in-the-yard/",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false,
+    "notes": "Carried forward from last week - not re-verified this session."
+   }
+  ],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "serves_food": "yes"
+ },
+ {
+  "id": "the-tenth-cafe-bar-manston",
+  "name": "The Tenth Cafe Bar",
+  "town": "Manston (Ramsgate)",
+  "type": "cafe",
+  "address": "Manston Golf Centre, Greensole Lane, Manston CT12 5FG",
+  "website": null,
+  "social": null,
+  "trading": "confirmed",
+  "food_evidence": "No website or social media to check for menus. Found a likely FSA match via search — 'The Tenth', Manston Golf Centre, Manston Road, CT12 5BE (ratings.food.gov.uk/business/962411), inspected 2025-04-14, all three areas 'Very good' — but could not extract a numeric 0-5 rating from the page, so left out of fsa_updates rather than guessing; worth a manual check. TripAdvisor confirmed unchanged (4.0/3, not closed).",
+  "menus": [],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "serves_food": "yes"
+ },
+ {
+  "id": "the-lift-cafe-ramsgate",
+  "name": "The Lift Cafe",
+  "town": "Ramsgate",
+  "type": "cafe",
+  "address": "Harbour Parade, Ramsgate (base of the East Cliff Lift)",
+  "website": null,
+  "social": null,
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "Takeaway food & drink kiosk",
+    "type": "other",
+    "url": "https://www.visitramsgate.co.uk/lift_cafe/",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   }
+  ],
+  "food_evidence": "No own website/social; found via Visit Ramsgate's listing, which describes it as a seafront takeaway kiosk (no menu/prices listed), open Thu-Sat 10-4 and Sun 10-2, closed Mon-Wed, and noted as trading 'weather permitting' and seasonally closed from mid-autumn through winter — so it may be closing for the season around now. No FSA record or TripAdvisor listing could be found for it; left both out rather than guessing.",
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "serves_food": "yes"
+ },
+ {
+  "id": "foliage-cafe-broadstairs",
+  "name": "Foliage Cafe",
+  "town": "Broadstairs",
+  "type": "cafe",
+  "address": "7 Albion Street, Broadstairs, Kent CT10 1LU",
+  "website": "https://foliageplants.co.uk/",
+  "social": null,
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "Cafe Menu (coffee, frappes, cakes incl. gluten-free/vegan, paninis, cheese & charcuterie boards, draught beer/wine, cocktails)",
+    "type": "main",
+    "url": "https://foliageplants.co.uk/",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Afternoon Tea at Foliage",
+    "type": "specials",
+    "url": "https://foliageplants.co.uk/",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": true
+   }
+  ],
+  "new_menu_notices": [
+   {
+    "text": "Friday evenings run late with music/events, with the full food & drinks menu available all evening.",
+    "url": "https://foliageplants.co.uk/"
+   }
+  ],
+  "food_evidence": "Plant-shop cafe; homepage describes the food/drink offering and an 'Afternoon Tea at Foliage' heading (no details given). No TripAdvisor listing could be found despite a search — left ta out rather than guessing. FSA confirmed unchanged (rating 5 for 'Foliage', inspected 2025-07-31).",
+  "checked_on": "2026-10-12",
+  "serves_food": "yes"
+ }
+]
