@@ -1,0 +1,55 @@
+#!/usr/bin/env python3
+"""Build the single-file dashboard (thanet-menu-watch.html) from page_template.html + data.json.
+
+One page holds both versions: the plain address is the standard view and the
+address ending #big is the large-print view. Needs data.json and buzz.json beside it.
+"""
+import json, os, re
+
+B = os.path.dirname(os.path.abspath(__file__))
+tpl = open(os.path.join(B, "page_template.html"), encoding="utf-8").read()
+d = json.load(open(os.path.join(B, "data.json"), encoding="utf-8"))
+venues = d.pop("venues")
+# Social research ("What people are saying", complaints, posts) lives in buzz.json beside data.json.
+# It must be present: publishing the page without it would wipe that half of the dashboard.
+_bp = os.path.join(B, "buzz.json")
+if not os.path.exists(_bp):
+    raise SystemExit("buzz.json is missing: restore data/buzz.json from the artifact before building")
+buzz = json.load(open(_bp, encoding="utf-8"))
+
+# Drop fields the page never shows (checked, first_seen) and empty values,
+# so the public copy is smaller. The page treats missing as null/false/[].
+def slim(v):
+    v = {k: x for k, x in v.items() if x not in (None, []) and k != "checked"}
+    t = v.get("ta")
+    if t and t.get("u"):  # store only the TripAdvisor ids; the page rebuilds the link (TripAdvisor redirects any slug)
+        m = re.search(r"/(Restaurant|Attraction)_Review-(g\d+-d\d+)-", t["u"])
+        if m:
+            t = {k: x for k, x in t.items() if k != "u"}; t["i"] = m.group(2)
+            if m.group(1) == "Attraction": t["a"] = 1
+            v["ta"] = t
+    for k, dflt in (("serves_food", "yes"), ("trading", "confirmed")):
+        if v.get(k) == dflt: del v[k]  # page restores these defaults
+    v["menus"] = [{k: x for k, x in m.items()
+                   if x not in (None, False) and k != "first_seen" and not (k == "format" and x == "html")} for m in v.get("menus", [])]
+    return v
+venues = [slim(v) for v in venues]
+dump = lambda x: json.dumps(x, ensure_ascii=False, separators=(",", ":"))
+# One venue per line keeps the file easy to read and to hand to a web host.
+data = (dump(d)[:-1] + ',"venues":[\n' + ",\n".join(dump(v).replace('},{"title"', '},\n{"title"').replace('},{"text"', '},\n{"text"') for v in venues) + "\n]}").replace("</", "<\\/")
+buzz_js = ("{" + ",\n".join(json.dumps(k) + ":" + dump(v) if not isinstance(v, list) else
+           json.dumps(k) + ":[\n" + ",\n".join(dump(x) for x in v) + "\n]" for k, v in buzz.items()) + "}").replace("</", "<\\/")
+import re as _re
+tpl = _re.sub(r"(?m)^[ \t]+", "", tpl)                     # leading indentation
+tpl = _re.sub(r"(?m)^(/\*.*\*/|//.*)$\n", "", tpl)          # comment-only lines
+out = tpl.replace("__DATA__", data).replace("__BUZZ__", buzz_js)
+assert "__BUZZ__" not in out and "__DATA__" not in out
+long = [n for n, l in enumerate(out.split("\n"), 1) if len(l) > 2000]
+assert not long, f"lines over 2000 characters: {long[:5]}"
+open(os.path.join(B, "thanet-menu-watch.html"), "w", encoding="utf-8").write(out)
+print("thanet-menu-watch.html", len(out))
+
+# Public copy for sharable.link: identical page. Post thumbnails are files beside the artifact
+# (thumbs/*.jpg); on the public host they are missing and the page shows a plain icon instead.
+open(os.path.join(B, "thanet-menu-watch-public.html"), "w", encoding="utf-8").write(out)
+print("thanet-menu-watch-public.html", len(out))

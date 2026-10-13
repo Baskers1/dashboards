@@ -1,0 +1,349 @@
+[
+ {
+  "id": "marina-view-rtyc-ramsgate",
+  "name": "MarinaView Restaurant (Royal Temple Yacht Club)",
+  "town": "Ramsgate",
+  "type": "restaurant",
+  "address": "6 Westcliff Mansions, Ramsgate CT11 9HY",
+  "website": "https://marinaview-restaurant.com",
+  "social": null,
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "fsa": {
+   "r": "5",
+   "id": 608319,
+   "d": "2025-08-21"
+  },
+  "ta": null,
+  "ot": null,
+  "cuisine": "Modern British & European",
+  "menus": [],
+  "new_menu_notices": [
+   {
+    "text": "FSA record found under 'Royal Temple Yacht Club' (the club MarinaView Restaurant operates within), same address - matched by address/premises, not exact trading name."
+   }
+  ],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Restaurant inside the Royal Temple Yacht Club, open to the public (ramsgatetown.org news: Thu-Sat evenings from 5:30pm plus Sunday roasts, booking via club phone 01843 591766; visitramsgate.co.uk confirms 'visitors are always welcome'). Listed on tableagent.com with address, phone and cuisine tags. FSA lists the premises as 'Royal Temple Yacht Club', 5-6 West Cliff Mansions, CT11 9HY, rated 5, inspected 21 Aug 2025. Not present in the tracked venue list."
+ },
+ {
+  "id": "palms-pizzeria-margate",
+  "name": "Palms Pizzeria",
+  "town": "Margate",
+  "type": "restaurant",
+  "address": "Unit 16, The Centre, Margate CT9 1JG",
+  "website": "https://palmspizzeria.com",
+  "social": null,
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "fsa": null,
+  "ta": null,
+  "ot": null,
+  "cuisine": "Italian",
+  "menus": [
+   {
+    "title": "Delivery menu (Deliveroo)",
+    "url": "https://deliveroo.co.uk/menu/margate/margate/palms-pizzeria",
+    "type": "food",
+    "format": "webpage"
+   },
+   {
+    "title": "Menu, hours & directions (Margate)",
+    "type": "main",
+    "url": "https://www.palmspizzeria.com/margate",
+    "format": "webpage",
+    "valid_dates": null,
+    "is_new_signal": false
+   }
+  ],
+  "new_menu_notices": [
+   {
+    "text": "Main site has no standalone menu beyond the per-location page; previously only a Deliveroo link was on record. Opening hours not shown on the location page."
+   }
+  ],
+  "checked_on": "2026-10-12",
+  "food_evidence": "New York-style pizza-by-the-slice restaurant, opened April 2022 at The Centre, Margate (cenemagazine.co.uk); current address and menu confirmed via palmspizzeria.com; active Deliveroo listing; won double at National Pizza Awards per Isle of Thanet News (Nov 2023). Not present in the tracked venue list."
+ },
+ {
+  "id": "curve-coffee-roasters-margate",
+  "name": "Curve Coffee Roasters (Curve Coffee Store)",
+  "town": "Margate",
+  "type": "cafe",
+  "address": "12 The Centre, Margate CT9 1JG",
+  "website": "https://www.curveroasters.co.uk/",
+  "social": "https://www.instagram.com/curveroasters/",
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "fsa": null,
+  "ta": null,
+  "ot": null,
+  "cuisine": "Cafe & breakfast",
+  "menus": [
+   {
+    "title": "Cafe",
+    "type": "main",
+    "url": "https://www.curveroasters.co.uk/cafe",
+    "format": "webpage",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Autumn / 'cosy season' specials (via Instagram)",
+    "type": "seasonal",
+    "url": "https://www.instagram.com/curveroasters/",
+    "format": "other",
+    "valid_dates": null,
+    "is_new_signal": true
+   }
+  ],
+  "new_menu_notices": [
+   {
+    "text": "Instagram posts mention an autumn menu update (baked beans with roasted squash and charred cabbage) and 'cosy season' additions (cinnamon sugar toasted brioche, Greek butter beans with tzatziki) - not reflected on the main site's cafe page."
+   }
+  ],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Cafe/brunch spot run by Curve Coffee Roasters, relocated to a larger 35-seat site at The Centre, Margate in 2022 (Isle of Thanet News, Aug 2022); address and social confirmed via sprudge.com Margate coffee guide (12 The Centre; curveroasters.co.uk; @curveroasters). Not present in the tracked venue list."
+ },
+ {
+  "id": "partenopei-broadstairs",
+  "name": "Partenopei",
+  "town": "Broadstairs",
+  "type": "restaurant",
+  "address": "43 Albion Street, Broadstairs CT10 1NE",
+  "website": "https://partenopei.co.uk/",
+  "social": "https://www.instagram.com/partenopeibroadstairs/",
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "fsa": {
+   "r": "5",
+   "id": 1717852,
+   "d": "2025-10-11"
+  },
+  "ta": {
+   "r": 4.8,
+   "n": 145,
+   "u": "https://www.tripadvisor.co.uk/Restaurant_Review-g635678-d27453575-Reviews-Partenopei-Broadstairs_Isle_of_Thanet_Kent_England.html",
+   "closed": false
+  },
+  "ot": {
+   "u": "https://www.opentable.co.uk/r/partenopei-broadstairs",
+   "r": 4.7,
+   "n": 28
+  },
+  "cuisine": "Italian",
+  "menus": [
+   {
+    "title": "Dining Menu",
+    "url": "https://partenopei.co.uk/dining-menu/",
+    "type": "food",
+    "format": "webpage"
+   }
+  ],
+  "new_menu_notices": [
+   {
+    "text": "Dining menu page unchanged from existing record. OpenTable listing found on the opentable.hk domain (OpenTable's own site, mirrors opentable.co.uk content) rather than opentable.co.uk itself."
+   }
+  ],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Neapolitan Italian restaurant on Albion Street run by the same team behind Porto Reale, Ramsgate (Isle of Thanet News, July 2024). Confirmed via its own website/menu, OpenTable (4.7, 28 reviews), TripAdvisor (4.8, 145 reviews) and FSA rating 5 (FHRS 1717852, inspected 11 Oct 2025). Not present in the tracked venue list."
+ },
+ {
+  "id": "albarino-tapas-broadstairs",
+  "name": "Albariño Tapas Bar & Restaurant",
+  "town": "Broadstairs",
+  "type": "restaurant",
+  "address": "29 Albion Street, Broadstairs CT10 1LX",
+  "website": "https://albarino-tapas.tablein.com",
+  "social": null,
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "fsa": {
+   "r": "5",
+   "id": 637694,
+   "d": "2026-03-20"
+  },
+  "ta": null,
+  "ot": null,
+  "cuisine": "Spanish & tapas",
+  "menus": [
+   {
+    "title": "Wednesday Paella Night",
+    "type": "specials",
+    "url": "https://albarino-tapas.tablein.com",
+    "format": "webpage",
+    "valid_dates": null,
+    "is_new_signal": true
+   }
+  ],
+  "new_menu_notices": [
+   {
+    "text": "£14pp paella night served in a pan, minimum 2 people - not previously on record. Booking page shows regular opening hours (Tue-Fri 17:00-23:30, Sat 12:00-23:30, closed Mon/Sun)."
+   }
+  ],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Spanish tapas bar/deli-by-day on Albion Street (reviewed by cenemagazine.co.uk, Good Food Guide listing). FSA rating 5 (FHRS 637694) inspected as recently as 20 Mar 2026 confirms current trading. Booking page at albarino-tapas.tablein.com. Not present in the tracked venue list."
+ },
+ {
+  "id": "samworth-and-mee-broadstairs",
+  "name": "Samworth & Mee",
+  "town": "Broadstairs",
+  "type": "restaurant",
+  "address": "9-11 Albion Street, Broadstairs CT10 1LU",
+  "website": null,
+  "social": null,
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "fsa": {
+   "r": "5",
+   "id": 637792,
+   "d": "2025-09-12"
+  },
+  "ta": {
+   "r": 4.6,
+   "n": 444,
+   "u": "https://www.tripadvisor.co.uk/Restaurant_Review-g635678-d4290116-Reviews-or30-Samworth_Mee-Broadstairs_Isle_of_Thanet_Kent_England.html",
+   "closed": false
+  },
+  "ot": null,
+  "cuisine": "Seafood & fish and chips",
+  "menus": [],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Well-established seafood restaurant on Albion Street with a large review base (TripAdvisor 4.6, 444 reviews) and FSA rating 5 (FHRS 637792, inspected 12 Sep 2025). An established venue that appears to have been simply missed from the tracked list."
+ },
+ {
+  "id": "seafarer-restaurant-broadstairs",
+  "name": "Seafarer Restaurant (Seafarer Fish & Chips)",
+  "town": "Broadstairs",
+  "type": "restaurant",
+  "address": "51 Albion Street, Broadstairs CT10 1NE",
+  "website": null,
+  "social": null,
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "fsa": {
+   "r": "4",
+   "id": 455637,
+   "d": "2026-08-24"
+  },
+  "ta": null,
+  "ot": null,
+  "cuisine": "Seafood & fish and chips",
+  "menus": [
+   {
+    "title": "Delivery menu (Deliveroo)",
+    "url": "https://deliveroo.co.uk/menu/margate/broadstairs/seafarer-restaurant",
+    "type": "food",
+    "format": "webpage"
+   }
+  ],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Fish & chips restaurant on Albion Street with an active Deliveroo listing; FSA rating 4 (FHRS 455637) inspected as recently as 24 Aug 2026 confirms current trading. An established venue missed from the tracked list."
+ },
+ {
+  "id": "little-kit-broadstairs",
+  "name": "Little Kit",
+  "town": "Broadstairs",
+  "type": "cafe",
+  "address": "Unit 3, Eldon Place, Broadstairs CT10 1NA",
+  "website": null,
+  "social": null,
+  "serves_food": "yes",
+  "trading": "unclear",
+  "fsa": {
+   "r": "5",
+   "id": 1578756,
+   "d": "2025-11-03"
+  },
+  "ta": null,
+  "ot": null,
+  "cuisine": "Cafe & breakfast",
+  "menus": [],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Sandwich/takeaway shop at Eldon Place, Broadstairs. Last FSA inspection 3 Nov 2025 gave a rating of 5, but hygienescore.co.uk flags that the FSA no longer lists this business, so current trading status could not be confirmed with certainty - recommend a direct check before publishing."
+ },
+ {
+  "id": "new-old-bakehouse-broadstairs",
+  "name": "The New Old Bakehouse",
+  "town": "Broadstairs",
+  "type": "cafe",
+  "address": "15 High Street, Broadstairs",
+  "website": "https://www.thenewoldbakehousebroadstairs.com/",
+  "social": null,
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "fsa": null,
+  "ta": null,
+  "ot": null,
+  "cuisine": "Cafe & breakfast",
+  "menus": [
+   {
+    "title": "The New Old Bakehouse Menu v4 (full menu)",
+    "type": "main",
+    "url": "https://www.thenewoldbakehousebroadstairs.com/",
+    "format": "webpage",
+    "valid_dates": null,
+    "is_new_signal": false
+   }
+  ],
+  "new_menu_notices": [
+   {
+    "text": "Site also lists Afternoon Tea and a Catering Buffet Menu (from £8.50/head) alongside breakfast, light lunches, sandwiches, hot/cold drinks and bakehouse specials - none previously on record (existing_menus was empty)."
+   }
+  ],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Bakery/cafe serving breakfasts, sandwiches, lunches, cream teas and cakes plus outside catering; Isle of Thanet News covered its first year of business (May 2024). Own website confirms it is trading. Not present in the tracked venue list."
+ },
+ {
+  "id": "the-crown-cafe-bistro-broadstairs",
+  "name": "The Crown Cafe and Bistro",
+  "town": "Broadstairs",
+  "type": "cafe",
+  "address": "23 High Street, Broadstairs CT10 1LP",
+  "website": null,
+  "social": null,
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "fsa": {
+   "r": "5",
+   "id": 1126609,
+   "d": "2026-03-25"
+  },
+  "ta": null,
+  "ot": null,
+  "cuisine": "Cafe & breakfast",
+  "menus": [],
+  "new_menu_notices": [
+   {
+    "text": "FSA listing found under 'The Crown' (not 'The Crown Cafe and Bistro') at the matching address, 23 High Street CT10 1LP - name differs so treat as address-matched; overall numeric rating not shown on the page (only descriptive sub-scores), so left blank."
+   }
+  ],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Homely cafe/bistro on High Street serving breakfast, lunches and homemade cakes (Visit Thanet attraction listing). FSA rating 5 (FHRS 1126609) inspected 25 Mar 2026 confirms current trading. Not present in the tracked venue list."
+ },
+ {
+  "id": "twists-of-broadstairs",
+  "name": "Twist's",
+  "town": "Broadstairs",
+  "type": "cafe",
+  "address": "2 York Street, Broadstairs CT10 1PD",
+  "website": null,
+  "social": "https://facebook.com/twistsofbroadstairs",
+  "serves_food": "yes",
+  "trading": "unclear",
+  "fsa": {
+   "r": "5",
+   "id": 1859216,
+   "d": "2025-08-04"
+  },
+  "ta": null,
+  "ot": null,
+  "cuisine": "Cafe & breakfast",
+  "menus": [],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Made-to-order sourdough pizza and brunch cafe in the former Louisa's Lounge on York Street, Broadstairs (Isle of Thanet News, 17 July 2025); Facebook page facebook.com/twistsofbroadstairs. FSA rating 5 (FHRS 1859216) inspected 4 Aug 2025, but hygienescore.co.uk flags the FSA no longer lists it, so current trading status is unclear - recommend a direct check before publishing."
+ }
+]

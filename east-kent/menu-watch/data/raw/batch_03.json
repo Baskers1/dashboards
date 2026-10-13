@@ -1,0 +1,823 @@
+[
+ {
+  "id": "forts-cafe-broadstairs",
+  "name": "Forts Cafe",
+  "town": "Broadstairs",
+  "type": "cafe",
+  "address": "8 Dundonald Rd, Broadstairs CT10 1PE",
+  "website": null,
+  "social": "https://www.instagram.com/fortscoffee/",
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "food_evidence": "No website; Instagram blocked by robots.txt so menu could not be checked this session. FSA (5, inspected 26 Jan 2026) and TripAdvisor (4.8★, 21 reviews) both confirmed unchanged via live lookup."
+ },
+ {
+  "id": "joss-bay-cafe",
+  "name": "Joss Bay Cafe",
+  "town": "Broadstairs",
+  "type": "cafe",
+  "address": "Joss Gap Rd, Broadstairs CT10 3PG",
+  "website": "https://jossbaycafe.co.uk/",
+  "social": "https://www.facebook.com/TheJossBayCafe/",
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "Eat & Drink Menu",
+    "type": "main",
+    "url": "https://jossbaycafe.co.uk/eat-drink/",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   }
+  ],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Website confirms a seasonal beach cafe (mid-April to September, weather dependent) serving hot/cold drinks, takeaway burgers & paninis, and ice cream; full menu lives at /eat-drink/ (items not listed on homepage). FSA 5 (30 Jul 2026) and TripAdvisor 2.8★/6 reviews both confirmed unchanged."
+ },
+ {
+  "id": "forts-cafe-margate",
+  "name": "Forts Café",
+  "town": "Cliftonville",
+  "type": "cafe",
+  "address": "8 Cliff Terrace, Cliftonville, Margate CT9 1RU",
+  "website": null,
+  "social": "https://www.instagram.com/fortscoffee/",
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "food_evidence": "No dedicated website (shares the @fortscoffee Instagram with the Broadstairs branch, blocked by robots.txt). FSA 5 (21 May 2026) and TripAdvisor 4.8★/95 reviews confirmed unchanged."
+ },
+ {
+  "id": "fields-cafe-birchington",
+  "name": "Fields Café",
+  "town": "Birchington",
+  "type": "cafe",
+  "address": "8 The Square, Birchington-on-Sea CT7 9AB",
+  "website": "https://fieldscafe.co.uk/",
+  "social": "https://www.facebook.com/fieldsbirchington",
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "Menu",
+    "type": "main",
+    "url": "https://fieldscafe.co.uk/menus",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Sunday Roast",
+    "type": "sunday-roast",
+    "url": "https://fieldscafe.co.uk/specials-%26-roasts",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": true
+   }
+  ],
+  "new_menu_notices": [
+   {
+    "text": "Now offering Sunday Roasts - check the Specials & Roasts page or Facebook for what's available",
+    "url": "https://fieldscafe.co.uk/specials-%26-roasts"
+   }
+  ],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Website now promotes newly-offered Sunday Roasts (check the Specials & Roasts page or Facebook weekly) alongside the regular menu. FSA 5 (29 Nov 2024, still the latest inspection on record) and TripAdvisor 4.7★/29 reviews confirmed unchanged."
+ },
+ {
+  "id": "golden-coffee-house",
+  "name": "Golden Coffee House",
+  "town": "Ramsgate",
+  "type": "cafe",
+  "address": "26 Harbour St, Ramsgate CT11 8HA",
+  "website": null,
+  "social": "https://tinyurl.com/FB-GoldenCoffeeHouse",
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "food_evidence": "No website; Facebook link unreachable (robots.txt). Could not find a confident TripAdvisor listing via search this session. FSA 5 confirmed unchanged (22 Apr 2026)."
+ },
+ {
+  "id": "hooden-horse",
+  "name": "Hooden Horse",
+  "town": "Margate",
+  "type": "pub",
+  "address": "1 Richborough Cl, Margate CT9 4FA",
+  "website": "https://www.hungryhorse.co.uk/pubs/kent/hooden-horse",
+  "social": null,
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "Main Menu",
+    "type": "main",
+    "url": "https://www.hungryhorse.co.uk/pubs/kent/hooden-horse/menu",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "New Menu Highlights",
+    "type": "seasonal",
+    "url": "https://www.hungryhorse.co.uk/pubs/kent/hooden-horse/menu-highlights",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": true
+   },
+   {
+    "title": "Breakfast Menu",
+    "type": "main",
+    "url": "https://www.hungryhorse.co.uk/pubs/kent/hooden-horse/breakfast",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Daily Deals",
+    "type": "specials",
+    "url": "https://www.hungryhorse.co.uk/pubs/kent/hooden-horse/deals",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Christmas 2026",
+    "type": "festive",
+    "url": "https://www.hungryhorse.co.uk/pubs/kent/hooden-horse/christmas",
+    "format": "html",
+    "valid_dates": "2026-12",
+    "is_new_signal": true
+   },
+   {
+    "title": "Lunchtime deals (daily offers Mon-Fri)",
+    "type": "weekly",
+    "url": "https://www.hungryhorse.co.uk/pubs/kent/hooden-horse/deals/lunch",
+    "format": "html",
+    "valid_dates": "Mon-Fri 12-4pm",
+    "is_new_signal": false,
+    "notes": "Carried forward from last week - not re-verified this session."
+   },
+   {
+    "title": "Breakfast with Santa",
+    "type": "event",
+    "url": "https://www.hungryhorse.co.uk/pubs/kent/hooden-horse/christmas/dine-with-santa",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false,
+    "notes": "Carried forward from last week - not re-verified this session."
+   },
+   {
+    "title": "NEW Loaded Menu (Smoky Rancher, Tingly Tedster, K-BBQ Burger, Full Monty Mixed Grill, Chicken Tikka Masala Platter, Chicken Parmigiana, Katsu Curry Feast)",
+    "type": "seasonal",
+    "url": "https://www.hungryhorse.co.uk/pubs/kent/hooden-horse/menu-highlights",
+    "format": "webpage",
+    "valid_dates": null,
+    "is_new_signal": true
+   }
+  ],
+  "new_menu_notices": [
+   {
+    "text": "\"Brand spanking new menu\" with fresh new dishes now live",
+    "url": "https://www.hungryhorse.co.uk/pubs/kent/hooden-horse/menu-highlights"
+   },
+   {
+    "text": "Christmas 2026 bookings now open",
+    "url": "https://www.hungryhorse.co.uk/pubs/kent/hooden-horse/christmas"
+   },
+   {
+    "text": "Page now headlined 'BRAND SPANKING NEW MENU' with new dish names vs. previous highlights content."
+   }
+  ],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Site shows a newly-launched main menu (\"brand spanking new menu\"), plus breakfast, daily deals, drinks menu and a Christmas 2026 booking page now live. FSA 5 (22 Apr 2025) and TripAdvisor 3.7★/1686 reviews confirmed unchanged."
+ },
+ {
+  "id": "la-trattoria",
+  "name": "La Trattoria",
+  "town": "Margate",
+  "type": "restaurant",
+  "address": "172 Northdown Rd, Cliftonville CT9 2QN",
+  "website": "https://latrattoriamargate.com/",
+  "social": "https://www.instagram.com/latrattoriamargate",
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "Menu",
+    "type": "main",
+    "url": "https://latrattoriamargate.com/menu",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   }
+  ],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Site confirms trading hours (Thu-Fri-Sat 5:30-9:30pm) and links to a menu page (items not itemized on homepage); no seasonal/festive notices found. No OpenTable listing found via search. FSA 5 (10 Jan 2025) and TripAdvisor 5.0★/9 reviews confirmed unchanged."
+ },
+ {
+  "id": "marechiaro",
+  "name": "Marechiaro",
+  "town": "Ramsgate",
+  "type": "restaurant",
+  "address": "9-12 W Cliff Arcade, Ramsgate CT11 8LH",
+  "website": null,
+  "social": "https://www.instagram.com/marechiarorestaurant",
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "food_evidence": "No dedicated website; Instagram blocked by robots.txt. OpenTable listing confirmed live and bookable (4.8★/47 reviews). FSA 5 (4 Feb 2026) confirmed; TripAdvisor shows 5.0★ with review count displayed inconsistently as 28 (header) vs 29 (full list) — kept at 28 to match the prior record."
+ },
+ {
+  "id": "canterbury-bell",
+  "name": "Canterbury Bell",
+  "town": "Broadstairs",
+  "type": "pub",
+  "address": "481 Margate Rd, Westwood, Broadstairs CT10 2QD",
+  "website": "https://www.canterburybellpubthanet.co.uk/",
+  "social": null,
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "Set Menus",
+    "type": "set-menu",
+    "url": "https://www.canterburybellpubthanet.co.uk/menus",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Sunday Roast",
+    "type": "sunday-roast",
+    "url": "https://www.canterburybellpubthanet.co.uk/sunday-roast",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Hawkstone Pie",
+    "type": "specials",
+    "url": "https://www.canterburybellpubthanet.co.uk/hawkstone-pie",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": true
+   },
+   {
+    "title": "Christmas/Festive Menu",
+    "type": "festive",
+    "url": "https://www.canterburybellpubthanet.co.uk/Christmas",
+    "format": "html",
+    "valid_dates": "2026-12",
+    "is_new_signal": true
+   },
+   {
+    "title": "Pub lunch",
+    "type": "main",
+    "url": "https://www.canterburybellpubthanet.co.uk/pub-lunch",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false,
+    "notes": "Carried forward from last week - not re-verified this session."
+   },
+   {
+    "title": "Pub grill",
+    "type": "main",
+    "url": "https://www.canterburybellpubthanet.co.uk/pub-grill",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false,
+    "notes": "Carried forward from last week - not re-verified this session."
+   },
+   {
+    "title": "Vegetarian",
+    "type": "other",
+    "url": "https://www.canterburybellpubthanet.co.uk/vegetarian",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false,
+    "notes": "Carried forward from last week - not re-verified this session."
+   }
+  ],
+  "new_menu_notices": [
+   {
+    "text": "New & Exclusive: Hawkstone Pie",
+    "url": "https://www.canterburybellpubthanet.co.uk/hawkstone-pie"
+   },
+   {
+    "text": "Book from the festive menu by 31 Oct 2026 to earn a £10 voucher for a Nov/Jan return visit",
+    "url": "https://www.canterburybellpubthanet.co.uk/Christmas"
+   },
+   {
+    "text": "40% off mains offer via sign-up code",
+    "url": "https://www.canterburybellpubthanet.co.uk/40offer"
+   }
+  ],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Site shows a new exclusive dish (Hawkstone Pie) and festive/Christmas 2026 menus now bookable, plus a 40%-off-mains sign-up offer. Site showed \"Currently Closed\" at fetch time (likely just after-hours, not a trading-status change — regular food service hours still listed). FSA 5 (5 Oct 2024) and TripAdvisor 4.0★/1075 reviews confirmed unchanged."
+ },
+ {
+  "id": "smugglers",
+  "name": "Smugglers",
+  "town": "Birchington",
+  "type": "restaurant",
+  "address": "212 Canterbury Rd, Birchington CT7 9AQ",
+  "website": "https://www.smugglersbirchington.co.uk/",
+  "social": "https://www.facebook.com/smugglersbirchington/",
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "£12 Autumn Main Courses (Tue & Fri)",
+    "type": "seasonal",
+    "url": "https://www.smugglersbirchington.co.uk/_resources/autumn-12.00-main-courses-menu-tuesdays-fridays.pdf",
+    "format": "pdf",
+    "valid_dates": "Autumn 2026",
+    "is_new_signal": true
+   },
+   {
+    "title": "Food, Wine & Cocktails",
+    "type": "main",
+    "url": "https://www.smugglersbirchington.co.uk/foodanddrinkmenus",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Sunday Lunch",
+    "type": "sunday-roast",
+    "url": "https://www.smugglersbirchington.co.uk/sundaylunches",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Afternoon Tea",
+    "type": "specials",
+    "url": "https://www.smugglersbirchington.co.uk/afternoontea",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Christmas & New Year's Eve",
+    "type": "festive",
+    "url": "https://www.smugglersbirchington.co.uk/christmasnewyearseve",
+    "format": "html",
+    "valid_dates": "2026-12",
+    "is_new_signal": true
+   },
+   {
+    "title": "Late Summer main courses, 12 pounds, Tue-Fri",
+    "type": "set-menu",
+    "url": "https://www.smugglersbirchington.co.uk/_resources/Late-Summer-Main-Courses-Menu-Tuesdays-Fridays.pdf",
+    "format": "pdf",
+    "valid_dates": "Tue-Fri, final days",
+    "is_new_signal": false,
+    "notes": "Carried forward from last week - not re-verified this session."
+   },
+   {
+    "title": "Autumn Menu 2026",
+    "type": "seasonal",
+    "url": "https://www.smugglersbirchington.co.uk/_resources/autumn-menu-2026.pdf",
+    "format": "pdf",
+    "valid_dates": null,
+    "is_new_signal": true
+   },
+   {
+    "title": "Autumn Sunday Menu 2026",
+    "type": "sunday-roast",
+    "url": "https://www.smugglersbirchington.co.uk/_resources/autumn-sunday-menu-2026.pdf",
+    "format": "pdf",
+    "valid_dates": null,
+    "is_new_signal": true
+   },
+   {
+    "title": "Party Menu 2026",
+    "type": "event",
+    "url": "https://www.smugglersbirchington.co.uk/_resources/Party%20Menu%202026.pdf",
+    "format": "pdf",
+    "valid_dates": null,
+    "is_new_signal": true
+   },
+   {
+    "title": "Wine & Cocktail Menu 2026",
+    "type": "drinks",
+    "url": "https://www.smugglersbirchington.co.uk/_resources/wine-list-2026.pdf",
+    "format": "pdf",
+    "valid_dates": null,
+    "is_new_signal": true
+   },
+   {
+    "title": "Finger Buffet Menu 2025",
+    "type": "event",
+    "url": "https://www.smugglersbirchington.co.uk/_resources/finger-buffet-menu-2025.pdf",
+    "format": "pdf",
+    "valid_dates": "2025",
+    "is_new_signal": false
+   },
+   {
+    "title": "Afternoon Tea Menu 2025 (PDF)",
+    "type": "specials",
+    "url": "https://www.smugglersbirchington.co.uk/_resources/afternoon-tea-menu-2025.pdf",
+    "format": "pdf",
+    "valid_dates": "2025",
+    "is_new_signal": false
+   }
+  ],
+  "new_menu_notices": [
+   {
+    "text": "New Autumn £12 Main Courses menu (Tuesdays & Fridays)",
+    "url": "https://www.smugglersbirchington.co.uk/_resources/autumn-12.00-main-courses-menu-tuesdays-fridays.pdf"
+   },
+   {
+    "text": "Christmas Day Lunch, Boxing Day Lunch, Christmas Set Menu, Christmas Entertainment Party Menu and NYE now bookable",
+    "url": "https://www.smugglersbirchington.co.uk/christmasnewyearseve"
+   },
+   {
+    "text": "Site now publishes dated 2026 seasonal/party/wine PDFs alongside the previously tracked undated Autumn/Late-Summer £12 mains PDFs; Christmas & NYE page (christmasnewyearseve) still referenced but not yet pulled."
+   }
+  ],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Site shows a new Autumn £12 main-courses menu (Tue/Fri) plus a full Christmas 2026/NYE menu line-up now bookable; Sunday Lunch and Afternoon Tea unchanged. OpenTable (4.5★/29) and TripAdvisor (4.3★/399) both confirmed live/unchanged. FSA 5 (19 Aug 2025) confirmed."
+ },
+ {
+  "id": "crown-inn-sarre",
+  "name": "Crown Inn",
+  "town": "Sarre",
+  "type": "pub",
+  "address": "Ramsgate Rd, Sarre CT7 0LF",
+  "website": "https://www.crowninnsarre.co.uk/menus",
+  "social": "https://www.facebook.com/p/The-crown-inn-sarre-100090052359013/",
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "Main Menu",
+    "type": "main",
+    "url": "https://snsites.co.uk/sites/default/files/2025-04/Crown%20Sarre%20Main%20Menu%20A4%200325.pdf",
+    "format": "pdf",
+    "valid_dates": "per filename, dated ~Mar 2025 — may be outdated",
+    "is_new_signal": false
+   },
+   {
+    "title": "Sunday Menu",
+    "type": "sunday-roast",
+    "url": "https://snsites.co.uk/sites/default/files/2025-04/Crown%20Sarre%20Sunday%20Menu%20A4%200325.pdf",
+    "format": "pdf",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Non-Gluten Menu",
+    "type": "other",
+    "url": "https://snsites.co.uk/sites/default/files/2025-04/Crown%20Sarre%20NGT%20Menu%20A4%200325.pdf",
+    "format": "pdf",
+    "valid_dates": null,
+    "is_new_signal": false
+   }
+  ],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Menus page lists Main/Sunday/Non-Gluten PDFs, but filenames suggest they date from around March 2025 — may not reflect current dishes/prices. No festive/seasonal update or OpenTable listing found. FSA 5 (16 Apr 2025) and TripAdvisor 4.5★/94 reviews confirmed unchanged."
+ },
+ {
+  "id": "sargasso-margate",
+  "name": "Sargasso",
+  "town": "Margate",
+  "type": "restaurant",
+  "address": "Stone Pier, Margate CT9 1AP",
+  "website": "https://www.sargasso.bar/",
+  "social": "https://www.instagram.com/sargasso.bar/",
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "Menu",
+    "type": "main",
+    "url": "https://www.sargasso.bar/menu/",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Feasting Menu",
+    "type": "event",
+    "url": "https://www.sargasso.bar/menu/feasting-menu/",
+    "format": "webpage",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Drinks",
+    "type": "drinks",
+    "url": "https://www.sargasso.bar/menu/drinks/",
+    "format": "webpage",
+    "valid_dates": null,
+    "is_new_signal": false
+   }
+  ],
+  "new_menu_notices": [
+   {
+    "text": "Evolving menu now includes more bites, fried snacks and daily-changing dishes, under new Chef Patron Will Gleave",
+    "url": "https://www.sargasso.bar/menu/"
+   }
+  ],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Site describes an evolving menu (more bites/fried snacks/daily-changing dishes) under new Chef Patron Will Gleave; no itemized menu or festive notices found. No OpenTable listing found. FSA 5 (11 Sep 2026) and TripAdvisor 3.8★/150 reviews confirmed unchanged."
+ },
+ {
+  "id": "veil-of-flavours",
+  "name": "Veil of Flavours (Secret Spices)",
+  "town": "Margate",
+  "type": "restaurant",
+  "address": "104 Ramsgate Rd, Margate CT9 4BH",
+  "website": "https://www.veilflavours.co.uk/",
+  "social": "https://www.facebook.com/secretspicesmargate/",
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "Online Order Menu",
+    "type": "main",
+    "url": "https://chefonline.co.uk/veil-of-flavours-margate-margate-ct9/menu",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "'10% OFF' promo site (veilofflavour.co.uk)",
+    "type": "specials",
+    "url": "https://veilofflavour.co.uk/",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false,
+    "notes": "Carried forward from last week - not re-verified this session."
+   }
+  ],
+  "new_menu_notices": [
+   {
+    "text": "Online order menu (chefonline.co.uk) still live; a TripAdvisor review confirms the business is the rebrand of 'Secret Spices' now trading as Veil of Flavours, dine-in/takeaway/collection/delivery all still offered."
+   }
+  ],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Site links to an online-ordering menu (ChefOnline) listing tandoori/seafood starters, chef curries, biryanis and vegetarian dishes; no seasonal or Christmas notices found. No OpenTable listing found. FSA 5 (17 Dec 2025) and TripAdvisor 3.0★/4 reviews confirmed unchanged."
+ },
+ {
+  "id": "alexandra-ristorante-italiano",
+  "name": "Alexandra Ristorante Italiano",
+  "town": "Ramsgate",
+  "type": "restaurant",
+  "address": "70 Harbour Parade, Ramsgate CT11 8LP",
+  "website": "http://www.alexandraristorante.co.uk/",
+  "social": "https://www.facebook.com/alexandraristorante/",
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Website has minimal content and no menu page found; confirms alfresco dining, vegetarian options and wheelchair accessibility, and notes it was featured on Channel 5's The Restaurant Inspector. No OpenTable listing found. FSA 5 (1 Nov 2024) and TripAdvisor 4.3★/402 reviews confirmed unchanged."
+ },
+ {
+  "id": "bar-ingo-broadstairs",
+  "name": "Bar Ingo",
+  "town": "Broadstairs",
+  "type": "restaurant",
+  "address": "9 York St, Broadstairs CT10 1PD",
+  "website": "https://www.bar-ingo.co.uk/",
+  "social": "https://www.instagram.com/bar_ingo_broadstairs/",
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Site describes small plates and a wine-led offering (no itemized menu on homepage); OpenTable confirmed live and bookable (4.8★/176, \"booked 3 times today\"). FSA 5 (27 Aug 2026) and TripAdvisor 4.9★/36 reviews confirmed unchanged."
+ },
+ {
+  "id": "thai-orchid-ramsgate",
+  "name": "Thai Orchid Restaurant",
+  "town": "Ramsgate",
+  "type": "restaurant",
+  "address": "1-2 West Cliff Arcade, Ramsgate CT11 8LH",
+  "website": "https://www.thaiorchidramsgate.co.uk/",
+  "social": "https://www.facebook.com/thaiorchidramsgate/",
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "Restaurant Menu",
+    "type": "main",
+    "url": "https://www.thaiorchidramsgate.co.uk/menu.html",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   }
+  ],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Site links to its menu page (items not itemized), advertises a 10% takeaway discount, and is closed Mondays. No OpenTable listing found for this branch (an OpenTable \"Thai Orchid\" exists in Whitstable — a different venue). FSA 5 (4 Dec 2025; listed on the FSA site as \"Thai Orchard\") and TripAdvisor 4.6★/311 reviews confirmed unchanged."
+ },
+ {
+  "id": "xv-fifteen-square-metres-broadstairs",
+  "name": "XV (Fifteen Square Metres)",
+  "town": "Broadstairs",
+  "type": "restaurant",
+  "address": "15 Oscar Road, Broadstairs CT10 1QJ",
+  "website": "https://www.fifteensquaremetres.co.uk/",
+  "social": null,
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "Menu",
+    "type": "seasonal",
+    "url": "https://www.fifteensquaremetres.co.uk/menu.html",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Food Menu",
+    "type": "main",
+    "url": "https://www.fifteensquaremetres.co.uk/food-menu.html",
+    "format": "webpage",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Drinks Menu",
+    "type": "drinks",
+    "url": "https://www.fifteensquaremetres.co.uk/drinks-menu.html",
+    "format": "webpage",
+    "valid_dates": null,
+    "is_new_signal": false
+   }
+  ],
+  "new_menu_notices": [
+   {
+    "text": "Operates only 45 weeks/year and is closed Sun-Tue; previously tracked URL (menu.html) now splits into separate food/drinks pages."
+   }
+  ],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Site confirms a seasonal, frequently-changing small-plates menu (gluten-free options), operating 45 weeks/year with a regularly-changing wine list; no specific Christmas 2026 menu announced yet. No OpenTable listing found. FSA 5 (27 Mar 2026) and TripAdvisor 5.0★/78 reviews confirmed unchanged."
+ },
+ {
+  "id": "giant-coffee-ramsgate",
+  "name": "Giant Coffee Ramsgate",
+  "town": "Ramsgate",
+  "type": "cafe",
+  "address": "1 Charlotte Court, Ramsgate, Kent CT11 8HE",
+  "website": null,
+  "social": "https://www.instagram.com/giant_coffeeramsgate/",
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "food_evidence": "No website; Instagram blocked by robots.txt. Could not find a confident FSA or TripAdvisor listing via search this session — left both unset rather than guess at an ID."
+ },
+ {
+  "id": "captain-ds-broadstairs",
+  "name": "Captain D's",
+  "town": "Broadstairs",
+  "type": "restaurant",
+  "address": "Unit R1, Westwood Cross, Margate Road, Broadstairs CT10 2BF",
+  "website": "https://www.captainds.com/",
+  "social": null,
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "Full Menu",
+    "type": "main",
+    "url": "https://www.captainds.com/our-menu/",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   }
+  ],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Corporate site has no Westwood Cross-specific page (US chain homepage); confirms standard menu categories (Wild Caught Fish, Grilled Meals, Family Meals) via the general menu link. No seasonal/Christmas notice found. FSA 5 (29 Oct 2025) and TripAdvisor 4.4★/15 reviews confirmed unchanged."
+ },
+ {
+  "id": "ask-italian-westwood-cross-broadstairs",
+  "name": "ASK Italian",
+  "town": "Broadstairs",
+  "type": "restaurant",
+  "address": "Unit 48, Westwood Cross, Margate Road, Broadstairs CT10 2BF",
+  "website": "https://www.askitalian.co.uk/italian-restaurants/south-east/westwood-cross",
+  "social": "https://www.facebook.com/ASKItalianWestwoodCross/",
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "Full Menu",
+    "type": "main",
+    "url": "https://www.askitalian.co.uk/italian-restaurants/south-east/westwood-cross/menus",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Kids Set Menu",
+    "type": "set-menu",
+    "url": "https://www.askitalian.co.uk/italian-restaurants/south-east/westwood-cross/menus/kids-set-menu",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Autumn Menu (Calabria-inspired)",
+    "type": "seasonal",
+    "url": "https://www.askitalian.co.uk/the-slice/news/autumn-menu",
+    "format": "html",
+    "valid_dates": "Autumn 2026",
+    "is_new_signal": true
+   },
+   {
+    "title": "Christmas Menu",
+    "type": "festive",
+    "url": "https://www.askitalian.co.uk/occasions/christmas",
+    "format": "html",
+    "valid_dates": "from 2026-11-17",
+    "is_new_signal": true
+   },
+   {
+    "title": "Lasagne Garlic Bread (Limited Time Special)",
+    "type": "specials",
+    "url": "https://www.askitalian.co.uk/italian-restaurants/south-east/westwood-cross/menus",
+    "format": "webpage",
+    "valid_dates": "2026-10-06 to 2026-10-22",
+    "is_new_signal": true
+   },
+   {
+    "title": "Spicy Chicken Crocchettes (Autumn Special)",
+    "type": "specials",
+    "url": "https://www.askitalian.co.uk/italian-restaurants/south-east/westwood-cross/menus",
+    "format": "webpage",
+    "valid_dates": null,
+    "is_new_signal": true
+   }
+  ],
+  "new_menu_notices": [
+   {
+    "text": "Brand new Autumn menu with Calabria-inspired spicy dishes now live",
+    "url": "https://www.askitalian.co.uk/the-slice/news/autumn-menu"
+   },
+   {
+    "text": "Christmas menu sneak peek — launching at this restaurant 17 November 2026",
+    "url": "https://www.askitalian.co.uk/occasions/christmas"
+   },
+   {
+    "text": "OpenTable listing is no longer bookable — the page now states the restaurant is not on the OpenTable booking network",
+    "url": "https://www.opentable.co.uk/r/ask-italian-westwood-cross-broadstairs"
+   },
+   {
+    "text": "Christmas 'sneak peek' banner now live on site (book early, reward offer) but no 2026 Christmas menu details/dates posted yet"
+   }
+  ],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Site shows a brand-new Autumn menu (Calabria-inspired spicy dishes) and a Christmas menu sneak peek launching 17 Nov 2026, plus app-only offers (free dessert in Oct, 10% click & collect). OpenTable link is now dead (\"not on the OpenTable booking network\") — dropped from this record. Could not find a confident FSA match via search (left unset). TripAdvisor 3.7★/481 confirmed unchanged."
+ },
+ {
+  "id": "follys-dessert-cafe-ramsgate",
+  "name": "Folly's Dessert Cafe",
+  "town": "Ramsgate",
+  "type": "cafe",
+  "address": "Turner Street, Ramsgate",
+  "website": null,
+  "social": null,
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "food_evidence": "No website or social link to check for menus. Found a likely FSA match for \"Folly's\" (dessert/ice-cream cafe), FHRS ID 1736394, rated 5, inspected 25 Feb 2025, listed at 4A Broad Street, Ramsgate CT11 8NQ — address differs slightly from the recorded Turner Street, so treated as an address-level match pending confirmation. No confident TripAdvisor listing found via search."
+ },
+ {
+  "id": "cubo-pizzeria-ramsgate",
+  "name": "Cubo Pizzeria",
+  "town": "Ramsgate",
+  "type": "restaurant",
+  "address": "Ramsgate Royal Harbour, Ramsgate",
+  "website": "https://www.cubopizza.co.uk/",
+  "social": null,
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Site returned only page metadata (no itemized menu); describes handmade contemporary pizza, BYOB dining and click & collect. A \"Cubo\" FSA listing was found but at Units 16 & 35 Military Road (not Royal Harbour) — uncertain if the same business, so left FSA unset rather than guess. No OpenTable listing found. TripAdvisor 5.0★/16 reviews confirmed unchanged."
+ }
+]

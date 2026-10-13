@@ -1,0 +1,843 @@
+[
+ {
+  "id": "bessies-tea-parlour",
+  "name": "Bessie's Tea Parlour",
+  "town": "Broadstairs",
+  "type": "cafe",
+  "address": "45 Albion St, Broadstairs CT10 1NE",
+  "website": "https://bessiesbroadstairs.co.uk/",
+  "social": "https://www.instagram.com/bessiesbroadstairs/",
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "Menu",
+    "type": "main",
+    "url": "https://bessiesbroadstairs.co.uk/menu/",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   }
+  ],
+  "new_menu_notices": [
+   {
+    "text": "Change of management in 2025 - Karen handed running of the Tea Parlour to long-time staff member Jess. No new/seasonal/Christmas menu found.",
+    "url": "https://bessiesbroadstairs.co.uk/"
+   }
+  ],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Website live. Confirmed regular tea-room menu (sandwiches, savouries, cakes, teas, coffees) and private tea parties. No seasonal/festive 2026 items found. FSA inspection date (16 Jul 2024) and TripAdvisor rating (4.6/338, open) both confirmed unchanged."
+ },
+ {
+  "id": "jems-coffee-shop-minster",
+  "name": "Jem's Coffee Shop",
+  "town": "Minster",
+  "type": "cafe",
+  "address": "77 High St, Minster, Ramsgate CT12 4AB",
+  "website": null,
+  "social": null,
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "food_evidence": "No website or social listed, so no menu check possible. FSA record (id 984446, matched by address) is actually for 'Jemima's Tea Room' at the same address, inspection 22 May 2025 confirmed unchanged - all three inspected categories show 'Good' (not 'Very good'), which is slightly inconsistent with the existing rating of 5; flagging for review but not changing without a confirmed numeric score. TripAdvisor (4.6/71, as Jemima's Tea Room) confirmed unchanged, not closed."
+ },
+ {
+  "id": "glorias-lounge-cafe-margate",
+  "name": "Gloria's Lounge & Cafe",
+  "town": "Cliftonville",
+  "type": "cafe",
+  "address": "259 Northdown Road, Cliftonville, Margate CT9 2PN",
+  "website": "https://www.glorias-lounge-cafe.co.uk/",
+  "social": "https://www.facebook.com/GloriasMargate/",
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "Main Menu",
+    "type": "main",
+    "url": "https://www.glorias-lounge-cafe.co.uk/images/Menu.pdf",
+    "format": "pdf",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Kids Menu",
+    "type": "other",
+    "url": "https://www.glorias-lounge-cafe.co.uk/images/Menu.pdf",
+    "format": "pdf",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Takeaway Menu",
+    "type": "other",
+    "url": "https://www.glorias-lounge-cafe.co.uk/images/Menu.pdf",
+    "format": "pdf",
+    "valid_dates": null,
+    "is_new_signal": false
+   }
+  ],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Website live. Main/kids/takeaway menu links all point to the same PDF. No seasonal/festive items found. FSA inspection date (2 Sep 2026) and TripAdvisor (4.9/51, open) both confirmed unchanged."
+ },
+ {
+  "id": "village-square-cafe-birchington",
+  "name": "Village Square Cafe",
+  "town": "Birchington",
+  "type": "cafe",
+  "address": "22-24 The Square, Birchington-on-Sea CT7 9AB",
+  "website": null,
+  "social": "https://www.facebook.com/profile.php?id=386751081400468",
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Facebook page blocked by robots.txt - unreachable this session. FSA inspection date (9 Jul 2025) confirmed unchanged. TripAdvisor (4.4/81, open) confirmed unchanged."
+ },
+ {
+  "id": "coast-cafe-and-bar",
+  "name": "Coast Cafe and Bar",
+  "town": "Ramsgate",
+  "type": "cafe",
+  "address": "Victoria Parade, Ramsgate CT11 8DG",
+  "website": null,
+  "social": "https://www.instagram.com/coastramsgate/",
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Instagram blocked by robots.txt - unreachable. FSA record (id 620159, address match) is actually registered as 'The Granville Theatre' at the same Victoria Parade address - likely the venue trades from within/alongside the theatre building; inspection date (4 Nov 2025) confirmed unchanged. TripAdvisor rating remains very low (1.7/3 reviews) and the listing is marked 'Unclaimed' - worth a human check on whether this venue is still actively trading as a cafe, though TripAdvisor shows no permanent-closure flag."
+ },
+ {
+  "id": "faith-in-strangers",
+  "name": "Faith In Strangers",
+  "town": "Margate",
+  "type": "restaurant",
+  "address": "17 Ethelbert Cres, Cliftonville CT9 2DY",
+  "website": "https://faithinstrangers.co.uk/",
+  "social": "https://twitter.com/FISmargate",
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "Steak Frites Thursdays",
+    "type": "specials",
+    "url": "https://faithinstrangers.co.uk/steakfrites",
+    "format": "html",
+    "valid_dates": "weekly, Thursdays from 6pm",
+    "is_new_signal": true
+   },
+   {
+    "title": "Sunday Roast",
+    "type": "sunday-roast",
+    "url": "https://faithinstrangers.co.uk/roast",
+    "format": "html",
+    "valid_dates": "weekly, Sundays 12-5pm",
+    "is_new_signal": true
+   },
+   {
+    "title": "Members Lunch (Work.Club)",
+    "type": "weekly",
+    "url": "https://faithinstrangers.co.uk/",
+    "format": "html",
+    "valid_dates": "weekly, Wednesdays, £15pp",
+    "is_new_signal": true
+   },
+   {
+    "title": "New Year's Eve Dinner 2026",
+    "type": "festive",
+    "url": "https://faithinstrangers.co.uk/events/new-years-eve-dinner-2026",
+    "format": "html",
+    "valid_dates": "31 Dec 2026, 6:30pm",
+    "is_new_signal": true
+   },
+   {
+    "title": "Christmas Parties",
+    "type": "festive",
+    "url": "https://faithinstrangers.co.uk/christmas-parties",
+    "format": "html",
+    "valid_dates": "Dec 2026",
+    "is_new_signal": true
+   },
+   {
+    "title": "Restaurant dinner (Fri 6pm, Sat from 4pm)",
+    "type": "main",
+    "url": "https://faithinstrangers.co.uk/restaurant",
+    "format": "html",
+    "valid_dates": "Fri 6pm, Sat from 4pm",
+    "is_new_signal": false,
+    "notes": "Carried forward from last week - not re-verified this session."
+   }
+  ],
+  "new_menu_notices": [
+   {
+    "text": "New Year's Eve Dinner 2026 bookable now.",
+    "url": "https://faithinstrangers.co.uk/events/new-years-eve-dinner-2026"
+   },
+   {
+    "text": "Christmas Parties page live for 2026 bookings (no menu detail yet).",
+    "url": "https://faithinstrangers.co.uk/christmas-parties"
+   }
+  ],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Website live, good new menu/event signal: weekly Steak Frites Thursdays, Sunday Roast, Members Lunch, plus NYE Dinner 2026 and Christmas Parties pages for the upcoming festive season. FSA inspection date (25 Apr 2025) and TripAdvisor (4.7/26, open) both confirmed unchanged."
+ },
+ {
+  "id": "churchill-tavern",
+  "name": "The Churchill Tavern",
+  "town": "Ramsgate",
+  "type": "pub",
+  "address": "19-21 Paragon, Ramsgate CT11 9JX",
+  "website": "https://churchilltavern.co.uk/",
+  "social": "https://www.facebook.com/p/Churchill-Tavern-CT11-61579947638468/",
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "Christmas Menu",
+    "type": "festive",
+    "url": "https://churchilltavern.co.uk/images/christmas/christmas_menu_23.jpeg",
+    "format": "image",
+    "valid_dates": "2023 (filename suggests outdated - needs reverification)",
+    "is_new_signal": false
+   },
+   {
+    "title": "Real Ale List",
+    "type": "drinks",
+    "url": "https://churchilltavern.co.uk/pub-tavern/real-ale-list",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Roostys at the Churchill Tavern (menus on roostys.co.uk)",
+    "type": "main",
+    "url": "https://churchilltavern.co.uk/restaurant",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false,
+    "notes": "Carried forward from last week - not re-verified this session."
+   }
+  ],
+  "new_menu_notices": [
+   {
+    "text": "Christmas Menu link on site (christmas_menu_23.jpeg) is dated 2023 - no 2026 Christmas menu found on site; may need checking with venue/Roostys directly."
+   }
+  ],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Website live. Food service is run by a partner kitchen 'Roostys @ The Churchill Tavern' with menus hosted on roostys.co.uk (not fetched this session). Christmas menu link filename implies 2023 vintage - likely stale. FSA inspection date (29 Jul 2026) and TripAdvisor (4.4/302, open) both confirmed unchanged."
+ },
+ {
+  "id": "wandering-hut",
+  "name": "Wandering Hut",
+  "town": "Ramsgate",
+  "type": "restaurant",
+  "address": "Custom House, Harbour Parade, Ramsgate CT11 8LP",
+  "website": "https://www.wanderinghut.com/",
+  "social": null,
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "Main Menu (Tapas, Meats & Fish, Pasta & Risotto, Salads, Breads)",
+    "type": "main",
+    "url": "https://images.squarespace-cdn.com/content/v1/67f7a0c373415b68b18bf5d4/0660fb16-793d-4308-8920-104da2d2682e/Menu+Hut++%28200+x+50+cm%29+%28420+x+297+mm%29.png",
+    "format": "image",
+    "valid_dates": null,
+    "is_new_signal": false
+   }
+  ],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Website live, menu confirmed (tapas/meats/fish/pasta/salads/breads, incl. Lobster Thermidor and 1kg Tomahawk to share). Booking via tableagent.com. No festive/seasonal menu found. FSA inspection date (17 Jun 2025) confirmed unchanged. TripAdvisor review count updated: now 4.8/114 (was 100)."
+ },
+ {
+  "id": "tartar-frigate",
+  "name": "The Tartar Frigate",
+  "town": "Broadstairs",
+  "type": "pub",
+  "address": "Harbour St, Broadstairs CT10 1EU",
+  "website": "https://www.tartarfrigate.co.uk/",
+  "social": "https://www.facebook.com/thetartarfrigate/",
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "Main Menu",
+    "type": "main",
+    "url": "https://www.tartarfrigate.co.uk/s/REST-WEB.pdf",
+    "format": "pdf",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Bar Menu",
+    "type": "main",
+    "url": "https://www.tartarfrigate.co.uk/s/BAR.pdf",
+    "format": "pdf",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Sunday Menu (June 2026)",
+    "type": "sunday-roast",
+    "url": "https://www.tartarfrigate.co.uk/s/37003-Tartar-Frigate-Sunday-Menu-June-2026-v2.pdf",
+    "format": "pdf",
+    "valid_dates": "June 2026",
+    "is_new_signal": true
+   },
+   {
+    "title": "Christmas Menu 2026",
+    "type": "festive",
+    "url": "https://www.tartarfrigate.co.uk/s/37396-TT-Christmas-Separate-Menus-Aug-2026_Tartar-Frigate-gg3f.pdf",
+    "format": "pdf",
+    "valid_dates": "Dec 2026",
+    "is_new_signal": true
+   },
+   {
+    "title": "Children's Menu",
+    "type": "other",
+    "url": "https://www.tartarfrigate.co.uk/s/CHILDS-MENU.pdf",
+    "format": "pdf",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Wine & Champagne List",
+    "type": "drinks",
+    "url": "https://www.tartarfrigate.co.uk/s/Wine-List.pdf",
+    "format": "pdf",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Boxing Day Lunch",
+    "type": "festive",
+    "url": "https://www.tartarfrigate.co.uk/",
+    "format": "html",
+    "valid_dates": "26 Dec 2026, £45pp, 12:30/3:30 sittings",
+    "is_new_signal": true
+   },
+   {
+    "title": "New Year's Day Lunch",
+    "type": "festive",
+    "url": "https://www.tartarfrigate.co.uk/",
+    "format": "html",
+    "valid_dates": "1 Jan 2027, £45pp, 12:30/3:30 sittings",
+    "is_new_signal": true
+   },
+   {
+    "title": "Pink Sunday (breast cancer charity lunch)",
+    "type": "event",
+    "url": "https://www.tartarfrigate.co.uk/",
+    "format": "html",
+    "valid_dates": "25 Oct 2026, 12:30/3:30 sittings",
+    "is_new_signal": true
+   }
+  ],
+  "new_menu_notices": [
+   {
+    "text": "Christmas Pre-Order Sheet for party bookings now available.",
+    "url": "https://www.tartarfrigate.co.uk/s/FRIGATE-XMAS-PARTY-TICK-SHEET-2026.doc"
+   },
+   {
+    "text": "Pink Sunday charity lunch for breast cancer awareness on 25 Oct 2026.",
+    "url": "https://www.tartarfrigate.co.uk/"
+   },
+   {
+    "text": "Site now states 'We will be serving the new menu on Sundays in the Bar area' - possible new/separate Sunday bar menu alongside the existing dining-room Sunday Menu; no distinct URL found yet."
+   },
+   {
+    "text": "Boxing Day and New Year's Day lunches confirmed as 4-course meals at £45pp, 12:30pm/3:30pm sittings; no standalone menu PDF linked."
+   }
+  ],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Website live with strong new signal: full Christmas 2026 menu set, Boxing Day & New Year's Day set lunches, a Pink Sunday charity lunch (25 Oct 2026), and an updated Sunday Menu (June 2026). Folk Jam Sessions run weekly on Wednesdays. FSA inspection date (25 Mar 2024) confirmed unchanged. TripAdvisor (4.6/1309, open) confirmed unchanged. OpenTable updated: now 4.7/1280 reviews (was 4.8/1277), still bookable."
+ },
+ {
+  "id": "the-bell-inn-minster",
+  "name": "The Bell Inn",
+  "town": "Minster",
+  "type": "pub",
+  "address": "2 High St, Minster CT12 4BU",
+  "website": "https://thebellinnminster.weebly.com/",
+  "social": "https://www.facebook.com/thebellinnminster/",
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "Menu",
+    "type": "main",
+    "url": "https://thebellinnminster.weebly.com/menu.html",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Xmas Menu 2026",
+    "type": "festive",
+    "url": "https://thebellinnminster.weebly.com/xmas-menu-2026.html",
+    "format": "html",
+    "valid_dates": "Dec 2026",
+    "is_new_signal": true
+   },
+   {
+    "title": "Daily specials board (Facebook)",
+    "type": "specials",
+    "url": "https://www.facebook.com/thebellinnminster/",
+    "format": "social",
+    "valid_dates": null,
+    "is_new_signal": false,
+    "notes": "Carried forward from last week - not re-verified this session."
+   }
+  ],
+  "new_menu_notices": [
+   {
+    "text": "Xmas Menu 2026 page now live.",
+    "url": "https://thebellinnminster.weebly.com/xmas-menu-2026.html"
+   }
+  ],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Website live, new Christmas 2026 menu page found. Recent TripAdvisor reviews describe the pub as 'newly reopened'. FSA inspection date (28 Jul 2026) confirmed unchanged; categories show 'Improvement necessary'/'Generally satisfactory', consistent with the existing low rating of 2. TripAdvisor (4.3/354, open) confirmed unchanged."
+ },
+ {
+  "id": "lafayettes-margate",
+  "name": "Lafayette's",
+  "town": "Margate",
+  "type": "restaurant",
+  "address": "13-15 High St, Margate CT9 1DL",
+  "website": "https://www.lafayettesmargate.co.uk/menus",
+  "social": "https://www.instagram.com/_lafayettes_/",
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "Breakfast Menu",
+    "type": "main",
+    "url": "https://www.lafayettesmargate.co.uk/menus?menu=breakfast-menu-1",
+    "format": "html",
+    "valid_dates": "Fri-Sun, 10am-12:30pm",
+    "is_new_signal": false
+   },
+   {
+    "title": "Main Menu",
+    "type": "main",
+    "url": "https://www.lafayettesmargate.co.uk/menus?location=Location+1&menu=main-menu#1",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Dessert Menu",
+    "type": "main",
+    "url": "https://www.lafayettesmargate.co.uk/menus?location=Location+1&menu=dessert-menu#1",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Coffee Menu",
+    "type": "drinks",
+    "url": "https://www.lafayettesmargate.co.uk/menus?location=Location+1&menu=coffee-menu#1",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Sunday Menu",
+    "type": "sunday-roast",
+    "url": "https://www.lafayettesmargate.co.uk/menus?location=Location+1&menu=sunday-menu#1",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Monthly pan-Asian Sunday (first Sunday of each month)",
+    "type": "monthly",
+    "url": "https://www.lafayettesmargate.co.uk/menus",
+    "format": "html",
+    "valid_dates": "First Sunday monthly",
+    "is_new_signal": false,
+    "notes": "Carried forward from last week - not re-verified this session."
+   },
+   {
+    "title": "Dessert Menu",
+    "type": "other",
+    "url": "https://www.lafayettesmargate.co.uk/menus?location=Location+1&menu=dessert-menu",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false,
+    "notes": "Carried forward from last week - not re-verified this session."
+   },
+   {
+    "title": "Coffee Menu",
+    "type": "drinks",
+    "url": "https://www.lafayettesmargate.co.uk/menus",
+    "format": "webpage",
+    "valid_dates": null,
+    "is_new_signal": true
+   }
+  ],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Website live, breakfast menu items confirmed (The Whole Shebang, Plant Based version, Sausage & Maple Bacon Bap, etc). Separate main/dessert/coffee/Sunday menus linked but contents not individually fetched. No festive 2026 menu found. FSA inspection date (23 Jan 2025) confirmed unchanged. TripAdvisor (4.7/68, open) confirmed unchanged."
+ },
+ {
+  "id": "lilies-margate",
+  "name": "Lilie's",
+  "town": "Margate",
+  "type": "restaurant",
+  "address": "3 Cliff Terrace, Cliftonville, Margate CT9 1RU",
+  "website": "https://www.liliesmargate.com/",
+  "social": "https://www.instagram.com/lilies_margate/",
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "Menu",
+    "type": "main",
+    "url": "https://www.liliesmargate.com/menu",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Specials menu",
+    "type": "specials",
+    "url": "https://www.liliesmargate.com/menu?menu=specials#1",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false,
+    "notes": "Carried forward from last week - not re-verified this session."
+   },
+   {
+    "title": "Christmas & New Year celebrations",
+    "type": "festive",
+    "url": "https://www.liliesmargate.com/events",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false,
+    "notes": "Carried forward from last week - not re-verified this session."
+   },
+   {
+    "title": "Drinks (wine) menu",
+    "type": "drinks",
+    "url": "https://www.liliesmargate.com/menu?menu=wine",
+    "format": "webpage",
+    "valid_dates": null,
+    "is_new_signal": true
+   }
+  ],
+  "new_menu_notices": [
+   {
+    "text": "Homepage promotes a 'Celebrate Christmas & New Year Lilie's style' events page, but no festive menu or pricing details given yet.",
+    "url": "https://www.liliesmargate.com/events"
+   }
+  ],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Website live but homepage content didn't surface menu details directly - menu page link confirmed, contents not retrieved this session. Christmas/New Year events page teased but no specifics. FSA inspection date (9 Jul 2026) confirmed unchanged. TripAdvisor (4.8/97, open) confirmed unchanged."
+ },
+ {
+  "id": "the-waterfront-ramsgate",
+  "name": "The Waterfront",
+  "town": "Ramsgate",
+  "type": "pub",
+  "address": "88 Harbour Parade, Ramsgate CT11 8LP",
+  "website": "https://www.craftunionpubs.com/waterfront-pub-ramsgate",
+  "social": "https://www.facebook.com/thewaterfrontramsgate/",
+  "serves_food": "unclear",
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "Third-party menu listing",
+    "type": "other",
+    "url": "https://mymenuweb.com/uk/restaurants/678369/",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false,
+    "notes": "Carried forward from last week - not re-verified this session."
+   },
+   {
+    "title": "Food Truck events (occasional, local vendors)",
+    "type": "event",
+    "url": "https://www.craftunionpubs.com/waterfront-pub-ramsgate/food-events",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false,
+    "notes": "Carried forward from last week - not re-verified this session."
+   }
+  ],
+  "new_menu_notices": [
+   {
+    "text": "Christmas 2026 occasion page live (drinks/booking focused, no food menu shown).",
+    "url": "https://www.craftunionpubs.com/pubs/waterfront-pub-ramsgate/occasions/christmas-pub"
+   },
+   {
+    "text": "Halloween drinks promotion page live.",
+    "url": "https://www.craftunionpubs.com/pubs/waterfront-pub-ramsgate/occasions/halloween-drinks"
+   },
+   {
+    "text": "Craft Union pub page for this venue currently shows only drinks offers (bombs, cider, draught deals) - no food menu content visible on the page at all; worth confirming whether food service is still offered."
+   }
+  ],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Website live but no food menu found on the page - only drink offers (Bomb bundle, cider, draught, gin, shots) and seasonal occasion pages (Christmas 2026, Halloween). Confirmed as an Attraction-type TripAdvisor listing (#27 of 52 Nightlife in Ramsgate), not a Restaurant page - 'a':1 should be set. FSA inspection date (18 Feb 2025) confirmed unchanged. TripAdvisor (4.3/11, open) confirmed unchanged."
+ },
+ {
+  "id": "the-racing-greyhound-ramsgate",
+  "name": "The Racing Greyhound",
+  "town": "Ramsgate",
+  "type": "pub",
+  "address": "227 Hereson Rd, Ramsgate CT11 7EX",
+  "website": null,
+  "social": "https://www.facebook.com/rgreyhound/",
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Facebook page blocked by robots.txt - unreachable. No separate website. FSA inspection date (23 May 2025) confirmed unchanged. TripAdvisor (4.5/339, open) confirmed unchanged."
+ },
+ {
+  "id": "le-vintage-broadstairs",
+  "name": "Le Vintage",
+  "town": "Broadstairs",
+  "type": "restaurant",
+  "address": "53 Albion St, Broadstairs CT10 1NE",
+  "website": "https://www.le-vintage.co.uk/",
+  "social": "https://www.facebook.com/profile.php?id=100092608237986",
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "Food Menu",
+    "type": "main",
+    "url": "https://www.le-vintage.co.uk/menu/",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Drinks Menu",
+    "type": "drinks",
+    "url": "https://www.le-vintage.co.uk/drinks-menu/",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Drinks/Cocktails Menu",
+    "type": "drinks",
+    "url": "https://www.le-vintage.co.uk/drinks",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Weekly Promotions (Wine Wednesday, Steak Night Thursday, Sunday Date Night)",
+    "type": "specials",
+    "url": "https://www.le-vintage.co.uk/promotions/",
+    "format": "html",
+    "valid_dates": "Ongoing, no end date shown",
+    "is_new_signal": false,
+    "notes": "Carried forward from last week - not re-verified this session."
+   }
+  ],
+  "new_menu_notices": [
+   {
+    "text": "Site now also links a 'Dessert Menu' PDF whose link tooltip oddly reads 'Click here for the Sunday menu' - possible mislabeled or undocumented new Sunday menu; no distinct URL captured."
+   }
+  ],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Website live; food and two drinks-menu links confirmed (possibly duplicate/legacy URL). A Promotions page is linked but wasn't fetched this session, so any specials there are unconfirmed. FSA record (id 1412326, listed under 'The Dolphin/Le Vintage/Hangry Burger') inspection date (27 Sep 2023) confirmed unchanged. TripAdvisor (4.7/74, open) confirmed unchanged. OpenTable updated: now 4.8/22 reviews (was 4.9/21), still bookable."
+ },
+ {
+  "id": "jetty-broadstairs",
+  "name": "Jetty Broadstairs",
+  "town": "Broadstairs",
+  "type": "restaurant",
+  "address": "Pier Head Kiosk, The Harbour, Broadstairs, Kent CT10 1JU",
+  "website": "https://www.jettybroadstairs.co.uk",
+  "social": "https://www.jettybroadstairs.co.uk",
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "Bistro Menu",
+    "type": "main",
+    "url": "https://www.jettybroadstairs.co.uk/bistro-menu",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Takeaway Menu",
+    "type": "other",
+    "url": "https://www.jettybroadstairs.co.uk/takeaway-menu",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   },
+   {
+    "title": "Breakfast Menu",
+    "type": "main",
+    "url": "https://www.jettybroadstairs.co.uk/bistro-menu",
+    "format": "webpage",
+    "valid_dates": null,
+    "is_new_signal": true
+   },
+   {
+    "title": "Specials",
+    "type": "specials",
+    "url": "https://www.jettybroadstairs.co.uk/bistro-menu",
+    "format": "webpage",
+    "valid_dates": null,
+    "is_new_signal": true
+   },
+   {
+    "title": "Bistro Kids",
+    "type": "other",
+    "url": "https://www.jettybroadstairs.co.uk/bistro-menu",
+    "format": "webpage",
+    "valid_dates": null,
+    "is_new_signal": true
+   },
+   {
+    "title": "Sunday Roast",
+    "type": "sunday-roast",
+    "url": "https://www.jettybroadstairs.co.uk/bistro-menu",
+    "format": "webpage",
+    "valid_dates": null,
+    "is_new_signal": true
+   },
+   {
+    "title": "Christmas Set Menu",
+    "type": "festive",
+    "url": "https://www.jettybroadstairs.co.uk/bistro-menu",
+    "format": "webpage",
+    "valid_dates": null,
+    "is_new_signal": true
+   }
+  ],
+  "new_menu_notices": [
+   {
+    "text": "Newly launched breakfast service: Wed-Sun 8am, last orders 10:45am, starting Wed 7 Oct (year not stated on page)."
+   }
+  ],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Website live, bistro and takeaway menus confirmed (street food/seafood style); a la carte and terrace service described but use the same bistro menu. Page footer marked '© 2024' so content may be dated. No festive 2026 menu found. FSA record shows a NEW, more recent inspection on 22 Sep 2026 (previously 20 Mar 2025) with all three categories now 'Good' (not 'Very good') - flagging a likely rating change; best estimate updated to 4, pending official numeric confirmation. TripAdvisor (4.2/257, open) confirmed unchanged. OpenTable review count updated: now 4.6/896 (was 893)."
+ },
+ {
+  "id": "gb-pizza-co-margate",
+  "name": "GB Pizza Co",
+  "town": "Margate",
+  "type": "restaurant",
+  "address": "14a Marine Drive, Margate, Kent",
+  "website": "https://greatbritishpizza.com/",
+  "social": "https://www.instagram.com/gbpizzacomargate/",
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "Food & Drink Menu (Margate)",
+    "type": "main",
+    "url": "https://greatbritishpizza.com/home-margate-menu-margate-2/",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   }
+  ],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Website live and 'OPEN! All day, until 9pm' - Margate-specific menu page link confirmed, but its item contents weren't retrieved this session. No festive 2026 menu found. FSA inspection date (11 Jun 2025) confirmed unchanged. TripAdvisor (4.3/1018, open) confirmed unchanged."
+ },
+ {
+  "id": "giant-coffee-broadstairs",
+  "name": "Giant Coffee Broadstairs",
+  "town": "Broadstairs",
+  "type": "cafe",
+  "address": "35 Albion Street, Broadstairs, Kent CT10 1LU",
+  "website": null,
+  "social": "https://www.instagram.com/giant_coffeebroadstairs/",
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Instagram blocked by robots.txt - unreachable, no website. Found a likely FSA match via a third-party FHRS mirror (eatible.co.uk) and confirmed directly on ratings.food.gov.uk: business 'Giant', 35 Albion Street, CT10 1LU, inspected 8 May 2025, all three categories 'Good' (not 'Very good') - estimated rating 4, matched by address/business name only, not fully certain it's the same 'Giant Coffee'. TripAdvisor (4.9/8, open) confirmed unchanged."
+ },
+ {
+  "id": "frankies-at-the-beach-ramsgate",
+  "name": "Frankie's at the Beach",
+  "town": "Ramsgate",
+  "type": "cafe",
+  "address": "Kiosk 1, Marina Esplanade, Ramsgate CT11 8LP",
+  "website": "https://www.visitramsgate.co.uk/frankies-at-the-beach/",
+  "social": null,
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [
+   {
+    "title": "Beach Kiosk Menu (burgers, hotdogs, ice cream, cocktails)",
+    "type": "main",
+    "url": "https://www.visitramsgate.co.uk/frankies-at-the-beach/",
+    "format": "html",
+    "valid_dates": null,
+    "is_new_signal": false
+   }
+  ],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Website live. Confirmed offering: 6oz steak burgers, German Bratwurst, footlong hotdogs, Mr Whippy sundaes/waffles (40+ flavours), licensed bar (cocktails/beer/wine). Opening is seasonal/weather dependent. No dedicated menu PDF or festive items found. Searched for an FSA record (not the Camber, East Sussex 'Frankies@the beach' which is a different business) but could not confirm a Ramsgate-specific FSA listing this session - leaving fsa out. TripAdvisor review count updated: now 4.9/754 (was 740)."
+ },
+ {
+  "id": "tim-hortons-broadstairs",
+  "name": "Tim Hortons",
+  "town": "Broadstairs",
+  "type": "restaurant",
+  "address": "473a Margate Road, Broadstairs, Kent CT10 2PR",
+  "website": null,
+  "social": null,
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "food_evidence": "No website or social listed, so no menu check was possible (standard chain menu assumed unchanged). FSA inspection date (19 Mar 2025) confirmed unchanged. TripAdvisor (2.7/69, open) confirmed unchanged."
+ },
+ {
+  "id": "turkuaz-ramsgate",
+  "name": "Turkuaz",
+  "town": "Ramsgate",
+  "type": "restaurant",
+  "address": "Royal Oak Hotel, Ramsgate",
+  "website": null,
+  "social": null,
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "food_evidence": "No website or social listed. Web searches for a TripAdvisor listing and an FSA record both failed to turn up a confident match for this Ramsgate venue specifically (searches returned unrelated Turkuaz restaurants in other cities). Leaving fsa/ta out rather than guessing."
+ },
+ {
+  "id": "olivias-pizza-kitchen-ramsgate",
+  "name": "Olivia's Pizza & Kitchen (Spitz Bar & Lounge)",
+  "town": "Ramsgate",
+  "type": "restaurant",
+  "address": null,
+  "website": null,
+  "social": "https://www.instagram.com/oliviaspizzaandkitchen",
+  "serves_food": "yes",
+  "trading": "confirmed",
+  "menus": [],
+  "new_menu_notices": [],
+  "checked_on": "2026-10-12",
+  "food_evidence": "Instagram blocked by robots.txt - unreachable, no website. Web searches for TripAdvisor and FSA records returned no confident match (a third-party FHRS mirror listing exists for an 'Olivia's' in Thanet with FSA id 1938288, but its own page shows no address, rating or inspection date, so it could not be verified as this specific venue) - leaving fsa/ta out rather than guessing."
+ }
+]
