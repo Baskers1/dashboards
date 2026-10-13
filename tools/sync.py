@@ -2,14 +2,19 @@
 """Copy downloaded Claude artifact files into the GitHub Pages folders and rebuild the hub page.
 
 Usage: python3 tools/sync.py <download_dir> [<id> ...]
+       python3 tools/sync.py --harden-only      (re-apply harden.py to the pages already here)
   <download_dir>/<artifact id>/index.html (+ any other published files) must already exist,
-  saved by the Artifact tool. Files are copied byte for byte; the only change made is that
-  links to other dashboards' claude.ai artifact pages are pointed at their GitHub Pages copies.
+  saved by the Artifact tool. Files are copied as they are, except that links to other
+  dashboards' claude.ai artifact pages are pointed at their GitHub Pages copies and every
+  HTML page goes through harden.py (Content-Security-Policy, link guard, lang, unwrapping).
   With ids given, only those dashboards are synced; the hub is always rebuilt.
   Entries whose id starts with "local:" are published by their own task (e.g. sky pages) and are only listed on the hub.
 Exits non-zero (and changes nothing for that dashboard) if a downloaded page looks wrong.
 """
 import html, json, os, re, shutil, sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from harden import harden  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_URL = "https://baskers1.github.io/dashboards/"
@@ -49,15 +54,22 @@ def sync_one(src_root, d):
     if os.path.isdir(dst):
         shutil.rmtree(dst)  # exact mirror: drop files the artifact no longer has
     shutil.copytree(src, dst)
+    fix_pages(dst)
+    return None
+
+
+def fix_pages(dst):
+    """Point claude.ai links at GitHub Pages and harden every HTML page under dst."""
     for dirpath, _, names in os.walk(dst):
         for n in names:
             if n.endswith(".html"):
                 p = os.path.join(dirpath, n)
-                t = open(p, encoding="utf-8").read()
-                t2 = rewrite_links(t)
+                with open(p, encoding="utf-8", newline="") as f:
+                    t = f.read()
+                t2 = harden(rewrite_links(t))
                 if t2 != t:
-                    open(p, "w", encoding="utf-8").write(t2)
-    return None
+                    with open(p, "w", encoding="utf-8", newline="") as f:
+                        f.write(t2)
 
 
 def build_hub():
@@ -83,13 +95,20 @@ color:var(--accent);font-weight:600;text-decoration:none}}a:hover,a:focus{{borde
 <p class="lede">Weather, what's on, menus, local consultations and NHS waits for the places we care about. Each page updates itself on a schedule.</p>
 {''.join(rows)}</main></body></html>
 """
-    open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8").write(page)
+    open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8").write(harden(page))
 
 
 def main(argv):
     if len(argv) < 2:
         print(__doc__)
         return 2
+    if argv[1] == "--harden-only":
+        done = [d for d in M["dashboards"] if os.path.isdir(folder(d))]
+        for d in done:
+            fix_pages(folder(d))
+        build_hub()
+        print(f"hardened {len(done)} dashboards and the hub")
+        return 0
     src_root, ids = argv[1], argv[2:] or [i for i in BY_ID if not i.startswith("local:")]
     errors = [e for e in (sync_one(src_root, BY_ID[i]) for i in ids if i in BY_ID) if e]
     unknown = [i for i in ids if i not in BY_ID]
