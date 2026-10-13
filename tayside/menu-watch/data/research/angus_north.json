@@ -1,0 +1,1124 @@
+{
+  "venues": [
+    {
+      "id": "corner-house-forfar",
+      "name": "The Corner House",
+      "town": "Forfar",
+      "type": "restaurant",
+      "address": "The Corner House, 1 Arbroath Road, Forfar, Angus",
+      "postcode": "DD8 2HS",
+      "website": "https://www.thecornerhouserestaurant.com/",
+      "social": "https://www.facebook.com/p/The-Corner-House-Restaurant-100087382981460/",
+      "serves_food": "yes",
+      "cuisine": "Scottish",
+      "trading": "confirmed",
+      "menus": [
+        {
+          "title": "Breakfast & Lunch Menu",
+          "type": "main",
+          "url": "https://www.thecornerhouserestaurant.com/menu",
+          "format": "html",
+          "valid_dates": "Daily 10am-2.30pm",
+          "signal": false
+        },
+        {
+          "title": "High Tea Social Menu",
+          "type": "other",
+          "url": "https://www.thecornerhouserestaurant.com/menu",
+          "format": "html",
+          "signal": false
+        },
+        {
+          "title": "Sunday Roast",
+          "type": "sunday-roast",
+          "url": "https://www.thecornerhouserestaurant.com/sunday-roast-forfar",
+          "format": "html",
+          "valid_dates": "Sundays",
+          "signal": false
+        },
+        {
+          "title": "Christmas 2026 Menu",
+          "type": "festive",
+          "url": "https://www.thecornerhouserestaurant.com/christmas2026",
+          "format": "image",
+          "valid_dates": "December 2026 incl. Christmas Day (pre-book)",
+          "signal": true
+        }
+      ],
+      "notices": [
+        {
+          "text": "Christmas 2026 menu published; bookings taken through December and for Christmas Day.",
+          "url": "https://www.thecornerhouserestaurant.com/christmas2026"
+        }
+      ]
+    },
+    {
+      "id": "jeet-forfar",
+      "name": "Jeet Fine Dining",
+      "town": "Forfar",
+      "type": "restaurant",
+      "address": "111-115 Castle Street, Forfar, Angus",
+      "postcode": "DD8 3AH",
+      "website": "https://jeetindiancuisine.com/",
+      "social": "https://www.facebook.com/jeetforfar/",
+      "serves_food": "yes",
+      "cuisine": "Indian & South Asian",
+      "trading": "confirmed",
+      "menus": [
+        {
+          "title": "Sit-In Menu",
+          "type": "main",
+          "url": "http://jeetindiancuisine.com/wp-content/uploads/2024/11/Jeet-Sit-In-Menu-2024-11.pdf",
+          "format": "pdf",
+          "signal": false
+        },
+        {
+          "title": "Sit-In Meal Deal",
+          "type": "set-menu",
+          "url": "http://jeetindiancuisine.com/wp-content/uploads/2024/11/Jeet-Sit-In-Meal-Deal-2024-11.pdf",
+          "format": "pdf",
+          "signal": false
+        },
+        {
+          "title": "Buffet Menu",
+          "type": "other",
+          "url": "http://jeetindiancuisine.com/wp-content/uploads/2024/11/Jeet-Buffet-Menu-2024-11.pdf",
+          "format": "pdf",
+          "signal": false
+        },
+        {
+          "title": "Takeaway Menu",
+          "type": "other",
+          "url": "http://jeetindiancuisine.com/wp-content/uploads/2024/11/Jeet-Take-Away-Menu-2024-11.pdf",
+          "format": "pdf",
+          "signal": false
+        },
+        {
+          "title": "Takeaway Meal Deal",
+          "type": "set-menu",
+          "url": "http://jeetindiancuisine.com/wp-content/uploads/2024/11/Jeet-Take-Away-Meal-Deal-2024-11.pdf",
+          "format": "pdf",
+          "signal": false
+        },
+        {
+          "title": "Christmas 2026 Menu",
+          "type": "festive",
+          "url": "http://jeetindiancuisine.com/wp-content/uploads/2026/09/Jeet-Christmas-2026.jpeg",
+          "format": "image",
+          "valid_dates": "Christmas 2026 - sittings 12 noon & 3pm; adults £54.95, under-12s £34.95",
+          "signal": true
+        },
+        {
+          "title": "Christmas Day 2026 menu",
+          "type": "festive",
+          "url": "https://jeetindiancuisine.com/christmas-menu/",
+          "format": "html",
+          "valid_dates": "25 Dec 2026, sittings 12 noon & 3pm",
+          "signal": true
+        }
+      ],
+      "notices": [
+        {
+          "text": "Christmas 2026 menu out (uploaded Sept 2026); advance booking with deposit required.",
+          "url": "https://jeetindiancuisine.com/christmas-menu/"
+        }
+      ]
+    },
+    {
+      "id": "dunnichen-stone-forfar",
+      "name": "The Dunnichen Stone",
+      "town": "Forfar",
+      "type": "pub",
+      "address": "2 Berrymoss Lane, Forfar, Angus",
+      "postcode": "DD8 1GY",
+      "website": "https://www.dunnichenstonepubforfar.co.uk/",
+      "social": "https://www.facebook.com/DunnichenStone/",
+      "serves_food": "yes",
+      "cuisine": "British pub food",
+      "trading": "confirmed",
+      "menus": [
+        {
+          "title": "Pub Classics",
+          "type": "main",
+          "url": "https://www.dunnichenstonepubforfar.co.uk/pub-classics",
+          "format": "html",
+          "signal": false
+        },
+        {
+          "title": "Pizza",
+          "type": "main",
+          "url": "https://www.dunnichenstonepubforfar.co.uk/pizza",
+          "format": "html",
+          "signal": false
+        },
+        {
+          "title": "Burgers",
+          "type": "main",
+          "url": "https://www.dunnichenstonepubforfar.co.uk/burgers",
+          "format": "html",
+          "signal": false
+        },
+        {
+          "title": "Vegetarian",
+          "type": "main",
+          "url": "https://www.dunnichenstonepubforfar.co.uk/vegetarian",
+          "format": "html",
+          "signal": false
+        },
+        {
+          "title": "Hawkstone IPA & Beef Pie (new dish)",
+          "type": "specials",
+          "url": "https://www.dunnichenstonepubforfar.co.uk/hawkstone-pie",
+          "format": "html",
+          "valid_dates": "Launched Aug 2026",
+          "signal": false
+        },
+        {
+          "title": "Sunday Roast",
+          "type": "sunday-roast",
+          "url": "https://www.dunnichenstonepubforfar.co.uk/sunday-roast",
+          "format": "html",
+          "valid_dates": "Sundays",
+          "signal": false
+        },
+        {
+          "title": "Festive Menu",
+          "type": "festive",
+          "url": "https://www.dunnichenstonepubforfar.co.uk/festive-menu",
+          "format": "html",
+          "valid_dates": "9 Nov - 30 Dec 2026 (excl. Christmas Day & Boxing Day)",
+          "signal": true
+        },
+        {
+          "title": "Christmas Day Menu",
+          "type": "festive",
+          "url": "https://www.dunnichenstonepubforfar.co.uk/christmas-day",
+          "format": "html",
+          "valid_dates": "25 Dec 2026",
+          "signal": true
+        },
+        {
+          "title": "Boxing Day Menu",
+          "type": "festive",
+          "url": "https://www.dunnichenstonepubforfar.co.uk/boxing-day",
+          "format": "html",
+          "valid_dates": "26 Dec 2026",
+          "signal": true
+        }
+      ],
+      "notices": [
+        {
+          "text": "Festive 2026 bookings open: book a festive menu by 31 Oct 2026 for a £10 voucher for Nov/Jan.",
+          "url": "https://www.dunnichenstonepubforfar.co.uk/christmas"
+        }
+      ]
+    },
+    {
+      "id": "drovers-inn-memus",
+      "name": "The Drovers Inn",
+      "town": "Forfar",
+      "type": "pub",
+      "address": "The Drovers Inn, Memus, by Forfar, Angus",
+      "postcode": "DD8 3TY",
+      "website": "https://www.the-drovers.com/",
+      "social": "https://www.facebook.com/TheDroversInn",
+      "serves_food": "yes",
+      "cuisine": "Modern British & European",
+      "trading": "confirmed",
+      "menus": [
+        {
+          "title": "All Day Menu Winter 2026",
+          "type": "main",
+          "url": "https://www.the-drovers.com/images/menus/Drovers%20-%20All%20Day%20Menu%20Winter%202026.pdf",
+          "format": "pdf",
+          "valid_dates": "Winter 2026",
+          "signal": false
+        },
+        {
+          "title": "Light Dishes Menu",
+          "type": "main",
+          "url": "https://www.the-drovers.com/images/menus/Light%20Dishes%20Menu.pdf",
+          "format": "pdf",
+          "signal": false
+        },
+        {
+          "title": "Vegan Menu Winter 2026",
+          "type": "main",
+          "url": "https://www.the-drovers.com/images/menus/VEGAN%20WINTER%202026.pdf",
+          "format": "pdf",
+          "valid_dates": "Winter 2026",
+          "signal": false
+        },
+        {
+          "title": "Children's Menu",
+          "type": "other",
+          "url": "https://www.the-drovers.com/images/menus/Drovers%20Children%27s%20Menu.pdf",
+          "format": "pdf",
+          "signal": false
+        }
+      ],
+      "notices": [
+        {
+          "text": "Steak night Tuesdays from 5pm; Sunday roast from noon.",
+          "url": "https://www.the-drovers.com/"
+        }
+      ]
+    },
+    {
+      "id": "royal-hotel-forfar",
+      "name": "The Royal Hotel (Bistro 33)",
+      "town": "Forfar",
+      "type": "restaurant",
+      "address": "Royal Hotel, Castle Street, Forfar, Angus",
+      "website": "https://www.royalhotelangus.com/",
+      "social": "https://www.facebook.com/royalhotelforfar",
+      "serves_food": "yes",
+      "cuisine": "Modern British & European",
+      "trading": "confirmed",
+      "menus": [
+        {
+          "title": "Breakfast Menu",
+          "type": "main",
+          "url": "https://www.royalhotelangus.com/dining/breakfast-menu/",
+          "format": "html",
+          "valid_dates": "Mon-Fri 7-9am, Sat-Sun 8-10am",
+          "signal": false
+        },
+        {
+          "title": "Bistro 33 Menu",
+          "type": "main",
+          "url": "https://www.royalhotelangus.com/dining/bistro-33-menu/",
+          "format": "html",
+          "valid_dates": "Evening meals Mon-Sat 5.30-8pm",
+          "signal": false
+        },
+        {
+          "title": "Snack Menu",
+          "type": "main",
+          "url": "https://www.royalhotelangus.com/dining/snack-menu/",
+          "format": "html",
+          "signal": false
+        },
+        {
+          "title": "Afternoon Teas",
+          "type": "other",
+          "url": "https://www.royalhotelangus.com/dining/afternoon-teas/",
+          "format": "html",
+          "valid_dates": "Monthly event, call for dates",
+          "signal": false
+        }
+      ],
+      "notices": []
+    },
+    {
+      "id": "the-stag-forfar",
+      "name": "The Stag",
+      "town": "Forfar",
+      "type": "pub",
+      "address": "Castle Street, Forfar, Angus",
+      "postcode": "DD8 3HX",
+      "website": "https://www.thestagforfar.co.uk/",
+      "social": "https://www.facebook.com/thestag.forfar.angus/",
+      "serves_food": "yes",
+      "cuisine": "British pub food",
+      "trading": "confirmed",
+      "menus": [
+        {
+          "title": "Summer Menu 2026",
+          "type": "main",
+          "url": "https://www.thestagforfar.co.uk/uploads/files/1777325080SummerMenu2026.pdf",
+          "format": "pdf",
+          "valid_dates": "2026",
+          "signal": false
+        },
+        {
+          "title": "Afternoon Teas (Wed-Sat)",
+          "type": "other",
+          "url": "https://www.thestagforfar.co.uk/uploads/files/1769626509Afternoonteas2026.pdf",
+          "format": "pdf",
+          "valid_dates": "Wed-Sat",
+          "signal": false
+        },
+        {
+          "title": "Steak Night (Thursday)",
+          "type": "specials",
+          "url": "https://www.thestagforfar.co.uk/uploads/files/1769896635ThursdayNightSteakMenu2026.pdf",
+          "format": "pdf",
+          "valid_dates": "Thursdays",
+          "signal": false
+        },
+        {
+          "title": "Burger Night (Tuesday)",
+          "type": "specials",
+          "url": "https://www.thestagforfar.co.uk/uploads/files/1769896787BURGERNIGHTMENU2026.pdf",
+          "format": "pdf",
+          "valid_dates": "Tuesdays",
+          "signal": false
+        },
+        {
+          "title": "Gluten Free Menu 2026",
+          "type": "main",
+          "url": "https://www.thestagforfar.co.uk/uploads/files/1777325104GFSummerMenu2026.pdf",
+          "format": "pdf",
+          "signal": false
+        },
+        {
+          "title": "Cafe Menu",
+          "type": "main",
+          "url": "https://www.thestagforfar.co.uk/uploads/files/1769896659CafeMenuupdated031225.pdf",
+          "format": "pdf",
+          "signal": false
+        }
+      ],
+      "notices": []
+    },
+    {
+      "id": "chapelbank-hotel-forfar",
+      "name": "Chapelbank Hotel & Bistro",
+      "town": "Forfar",
+      "type": "restaurant",
+      "address": "67-69 East High Street, Forfar, Angus",
+      "postcode": "DD8 2EP",
+      "social": "https://www.facebook.com/p/Chapelbank-Hotel-Bistro-100067627556089/",
+      "serves_food": "yes",
+      "cuisine": "Modern British & European",
+      "trading": "unclear",
+      "menus": [],
+      "notices": [
+        {
+          "text": "The 67-69 East High Street premises now trades as The Nest by The Giddy Goose (wine and pizza bar); food hygiene record is under that name.",
+          "url": "https://www.thenestbythegiddygoose.co.uk/"
+        }
+      ]
+    },
+    {
+      "id": "the-mill-forfar",
+      "name": "Lochlands Mill Bar & Restaurant (formerly The Mill)",
+      "town": "Forfar",
+      "type": "cafe",
+      "address": "Dundee Road, Forfar, Angus",
+      "social": "https://www.facebook.com/themillforfar/",
+      "serves_food": "yes",
+      "cuisine": "Cafe & breakfast",
+      "trading": "confirmed",
+      "menus": [],
+      "notices": [
+        {
+          "text": "New owner (Dundee publican Graham Bradley) has taken over The Mill cafe, renamed Lochlands Mill Bar & Restaurant; evening bar meals Thu-Sun from 6 Sep 2026, daytime breakfast/lunch/afternoon teas 7 days.",
+          "url": "https://www.thecourier.co.uk/fp/news/5567568/new-owners-lochlands-mill-forfar/"
+        }
+      ]
+    },
+    {
+      "id": "bar-10-forfar",
+      "name": "10 Cafe Bar",
+      "town": "Forfar",
+      "type": "pub",
+      "address": "The Cross, Castle Street, Forfar, Angus",
+      "website": "https://www.bar10.co.uk/",
+      "social": "https://www.facebook.com/10barforfar/",
+      "serves_food": "yes",
+      "cuisine": "Cafe & breakfast",
+      "trading": "confirmed",
+      "menus": [
+        {
+          "title": "Afternoon tea (£25pp, booking required)",
+          "type": "set-menu",
+          "url": "https://bar10.co.uk/afternoon-tea",
+          "format": "html",
+          "signal": false
+        }
+      ],
+      "notices": []
+    },
+    {
+      "id": "sultan-turkish-forfar",
+      "name": "Sultan Turkish Restaurant",
+      "town": "Forfar",
+      "type": "restaurant",
+      "address": "Castle Street, Forfar, Angus",
+      "postcode": "DD8 3HN",
+      "social": "https://www.facebook.com/sultanturkishrestaurant/",
+      "serves_food": "yes",
+      "cuisine": "Mediterranean & Middle Eastern",
+      "trading": "confirmed",
+      "menus": [],
+      "notices": []
+    },
+    {
+      "id": "purdys-coffee-house-forfar",
+      "name": "Purdy's Coffee House",
+      "town": "Forfar",
+      "type": "cafe",
+      "address": "Castle Street, Forfar, Angus",
+      "social": "https://www.facebook.com/PurdysCoffeeHouse",
+      "serves_food": "yes",
+      "cuisine": "Cafe & breakfast",
+      "trading": "confirmed",
+      "menus": [],
+      "notices": []
+    },
+    {
+      "id": "airlie-arms-kirriemuir",
+      "name": "The Airlie Arms Hotel & Restaurant",
+      "town": "Kirriemuir",
+      "type": "restaurant",
+      "address": "St Malcolm's Wynd, Kirriemuir, Angus",
+      "website": "https://www.airliearms.net/",
+      "social": "https://www.facebook.com/airliearmshotel",
+      "serves_food": "yes",
+      "cuisine": "Scottish",
+      "trading": "confirmed",
+      "menus": [],
+      "notices": []
+    },
+    {
+      "id": "thrums-hotel-kirriemuir",
+      "name": "The Thrums Hotel",
+      "town": "Kirriemuir",
+      "type": "pub",
+      "address": "Kirriemuir town centre, Angus (street not verified)",
+      "website": "https://www.thrumshotel.co.uk/",
+      "serves_food": "yes",
+      "cuisine": "British pub food",
+      "trading": "confirmed",
+      "menus": [
+        {
+          "title": "Dining Menu",
+          "type": "main",
+          "url": "https://www.thrumshotel.co.uk/dining/menu/",
+          "format": "html",
+          "signal": false
+        }
+      ],
+      "notices": []
+    },
+    {
+      "id": "visocchis-kirriemuir",
+      "name": "Visocchi's Cafe & Ice Cream Parlour",
+      "town": "Kirriemuir",
+      "type": "cafe",
+      "address": "The Square, Kirriemuir, Angus (street not verified)",
+      "serves_food": "yes",
+      "cuisine": "Italian",
+      "trading": "unclear",
+      "menus": [],
+      "notices": []
+    },
+    {
+      "id": "88-degrees-kirriemuir",
+      "name": "88 Degrees",
+      "town": "Kirriemuir",
+      "type": "cafe",
+      "address": "High Street, Kirriemuir, Angus",
+      "social": "https://www.facebook.com/88kirriemuir",
+      "serves_food": "yes",
+      "cuisine": "Cafe & breakfast",
+      "trading": "confirmed",
+      "menus": [],
+      "notices": []
+    },
+    {
+      "id": "garden-cafe-pathhead-kirriemuir",
+      "name": "The Garden Cafe at Pathhead Farm",
+      "town": "Kirriemuir",
+      "type": "cafe",
+      "address": "Pathhead Equestrian Centre, Forfar Road, Kirriemuir, Angus",
+      "postcode": "DD8 5BY",
+      "website": "https://pathheadfarm.co.uk/",
+      "social": "https://www.facebook.com/Pathheadfarmcafeandevents",
+      "serves_food": "yes",
+      "cuisine": "Cafe & breakfast",
+      "trading": "confirmed",
+      "menus": [
+        {
+          "title": "Cafe Menu (breakfast, lunch, coffee & cake)",
+          "type": "main",
+          "url": "https://pathheadfarm.co.uk/pages/our-menu",
+          "format": "html",
+          "valid_dates": "Daily 9am-4pm",
+          "signal": false
+        }
+      ],
+      "notices": [
+        {
+          "text": "Christmas at Pathhead runs 29 Nov-14 Dec 2026 with a Christmas market (6-7 Dec) and Santa grotto visits; cafe offers a festive food & drinks menu during the event (menu itself not yet published online).",
+          "url": "https://pathheadfarm.co.uk/pages/christmas-at-pathhead"
+        },
+        {
+          "text": "Pathhead Pumpkin Patch (spooky season) kicks off 16 Oct 2026; cafe open alongside.",
+          "url": "https://pathheadfarm.co.uk/pages/pathhead-pumpkin-patch"
+        }
+      ]
+    },
+    {
+      "id": "cafe-obscura-kirriemuir",
+      "name": "Cafe Obscura (Barrie Pavilion)",
+      "town": "Kirriemuir",
+      "type": "cafe",
+      "address": "Camera Obscura, Kirrie Hill, Northmuir, Kirriemuir, Angus",
+      "website": "https://www.kirriemuircameraobscura.com/",
+      "social": "https://www.facebook.com/KirrieCameraObscura/",
+      "serves_food": "yes",
+      "cuisine": "Cafe & breakfast",
+      "trading": "unclear",
+      "menus": [],
+      "notices": []
+    },
+    {
+      "id": "park-hotel-montrose",
+      "name": "Park Hotel",
+      "town": "Montrose",
+      "type": "restaurant",
+      "address": "61 John Street, Montrose, Angus",
+      "postcode": "DD10 8RJ",
+      "website": "https://theparkhotelmontrose.co.uk/",
+      "social": "https://www.facebook.com/Park.Hotel.Montrose",
+      "serves_food": "yes",
+      "cuisine": "Modern British & European",
+      "trading": "confirmed",
+      "menus": [],
+      "notices": [
+        {
+          "text": "Website has moved to theparkhotelmontrose.co.uk; Parkers Restaurant open daily (breakfast 7am-12pm, lunch 12-5pm, dinner 5-10pm) but no menus are published on the new site yet.",
+          "url": "https://theparkhotelmontrose.co.uk/restaurant/"
+        }
+      ]
+    },
+    {
+      "id": "links-hotel-montrose",
+      "name": "Links Hotel",
+      "town": "Montrose",
+      "type": "restaurant",
+      "address": "Mid Links, Montrose, Angus",
+      "postcode": "DD10 8RL",
+      "website": "https://www.linkshotel.com/",
+      "social": "https://www.facebook.com/profile.php?id=100041267816405",
+      "serves_food": "yes",
+      "cuisine": "Modern British & European",
+      "trading": "confirmed",
+      "menus": [
+        {
+          "title": "Sample Dinner Menu",
+          "type": "main",
+          "url": "https://www.linkshotel.com/download_file/view/60071acd-ad2a-44b4-9569-676186b7c4cb/229",
+          "format": "pdf",
+          "signal": false
+        },
+        {
+          "title": "Sample Lunch Menu",
+          "type": "main",
+          "url": "https://www.linkshotel.com/download_file/view/6b13d2a8-c80d-47ce-a3bf-1d77e28d29bb/229",
+          "format": "pdf",
+          "signal": false
+        },
+        {
+          "title": "Sample Wine List",
+          "type": "other",
+          "url": "https://www.linkshotel.com/download_file/view/60967dc4-f707-400b-b72f-783352ffa867/229",
+          "format": "pdf",
+          "signal": false
+        }
+      ],
+      "notices": [
+        {
+          "text": "Coffee shop open Mon-Sat Easter to October only; restaurant closed Sunday & Monday evenings.",
+          "url": "https://www.linkshotel.com/food-drink"
+        }
+      ]
+    },
+    {
+      "id": "roos-leap-montrose",
+      "name": "Roo's Leap",
+      "town": "Montrose",
+      "type": "restaurant",
+      "address": "2 Traill Drive, Montrose, Angus",
+      "postcode": "DD10 8SW",
+      "website": "https://www.roosleap.com/",
+      "serves_food": "yes",
+      "cuisine": "Burgers, BBQ & American",
+      "trading": "confirmed",
+      "menus": [
+        {
+          "title": "Lunch Menu",
+          "type": "main",
+          "url": "https://www.roosleap.com/lunch-menu/",
+          "format": "html",
+          "signal": false
+        },
+        {
+          "title": "Dinner Menu",
+          "type": "main",
+          "url": "https://www.roosleap.com/dinner-menu/",
+          "format": "html",
+          "signal": false
+        },
+        {
+          "title": "Dessert & Coffee Menu",
+          "type": "main",
+          "url": "https://www.roosleap.com/dessert-coffee-menu/",
+          "format": "html",
+          "signal": false
+        },
+        {
+          "title": "Vegetarian & Vegan Menu",
+          "type": "main",
+          "url": "https://www.roosleap.com/vegetarian-and-vegan-menu/",
+          "format": "html",
+          "signal": false
+        },
+        {
+          "title": "Gluten Free Menu",
+          "type": "main",
+          "url": "https://www.roosleap.com/gluten-free-menu/",
+          "format": "html",
+          "signal": false
+        },
+        {
+          "title": "Children's Menu",
+          "type": "other",
+          "url": "https://www.roosleap.com/childrens-menu/",
+          "format": "html",
+          "signal": false
+        },
+        {
+          "title": "Drinks Menu",
+          "type": "other",
+          "url": "https://www.roosleap.com/drinks-menu/",
+          "format": "html",
+          "signal": false
+        }
+      ],
+      "notices": []
+    },
+    {
+      "id": "ma-yom-montrose",
+      "name": "Ma Yom Thai Restaurant",
+      "town": "Montrose",
+      "type": "restaurant",
+      "address": "139 High Street, Montrose, Angus",
+      "postcode": "DD10 8QN",
+      "website": "https://mayom.co.uk/",
+      "social": "https://www.facebook.com/mayomspeakeasy/",
+      "serves_food": "yes",
+      "cuisine": "Thai & South-East Asian",
+      "trading": "confirmed",
+      "menus": [
+        {
+          "title": "Evening Menu",
+          "type": "main",
+          "url": "https://mayom.co.uk/evening-menu/",
+          "format": "html",
+          "signal": false
+        },
+        {
+          "title": "Set Menu",
+          "type": "set-menu",
+          "url": "https://mayom.co.uk/set-menu/",
+          "format": "html",
+          "signal": false
+        },
+        {
+          "title": "Vegetarian & Vegan Menu",
+          "type": "main",
+          "url": "https://mayom.co.uk/vegetarian-menu/",
+          "format": "html",
+          "signal": false
+        },
+        {
+          "title": "Gluten Free Menu",
+          "type": "main",
+          "url": "https://mayom.co.uk/gluten-free-menu/",
+          "format": "html",
+          "signal": false
+        },
+        {
+          "title": "Takeaway Menu",
+          "type": "other",
+          "url": "https://mayom.co.uk/takeaway-menu/",
+          "format": "html",
+          "signal": false
+        }
+      ],
+      "notices": []
+    },
+    {
+      "id": "george-hotel-montrose",
+      "name": "The George Hotel",
+      "town": "Montrose",
+      "type": "restaurant",
+      "address": "22 George Street, Montrose, Angus",
+      "postcode": "DD10 8EW",
+      "website": "https://thegeorgehotel.uk/",
+      "social": "https://www.instagram.com/thegeorgehotel_montrose",
+      "serves_food": "yes",
+      "cuisine": "British pub food",
+      "trading": "confirmed",
+      "menus": [
+        {
+          "title": "Light Lunch",
+          "type": "main",
+          "url": "https://thegeorgehotel.uk/menu/light-lunch/",
+          "format": "html",
+          "signal": false
+        },
+        {
+          "title": "Dinner Menu",
+          "type": "main",
+          "url": "https://thegeorgehotel.uk/menu/dinner-menu/",
+          "format": "html",
+          "signal": false
+        },
+        {
+          "title": "Dessert Menu",
+          "type": "main",
+          "url": "https://thegeorgehotel.uk/menu/dessert-menu/",
+          "format": "html",
+          "signal": false
+        },
+        {
+          "title": "High Tea",
+          "type": "other",
+          "url": "https://thegeorgehotel.uk/menu/high-tea/",
+          "format": "html",
+          "signal": false
+        },
+        {
+          "title": "Group High Tea",
+          "type": "set-menu",
+          "url": "https://thegeorgehotel.uk/menu/group-high-tea/",
+          "format": "html",
+          "signal": false
+        },
+        {
+          "title": "Kids Menu",
+          "type": "other",
+          "url": "https://thegeorgehotel.uk/menu/kids-menu/",
+          "format": "html",
+          "signal": false
+        },
+        {
+          "title": "Function Menu (incl. Christmas parties in the Garden Room)",
+          "type": "set-menu",
+          "url": "https://thegeorgehotel.uk/menu/function-menu/",
+          "format": "html",
+          "signal": false
+        }
+      ],
+      "notices": [
+        {
+          "text": "Christmas parties hosted in the Garden Room - enquire; no 2026 festive menu published yet.",
+          "url": "https://thegeorgehotel.uk/events/"
+        }
+      ]
+    },
+    {
+      "id": "montrose-playhouse-reel-bar",
+      "name": "The Reel Cafe Bar, Montrose Playhouse",
+      "town": "Montrose",
+      "type": "cafe",
+      "address": "The Mall, Montrose, Angus",
+      "postcode": "DD10 8NN",
+      "website": "https://montroseplayhouse.co.uk/",
+      "social": "https://www.facebook.com/MoPlayhouse",
+      "serves_food": "yes",
+      "cuisine": "Cafe & breakfast",
+      "trading": "confirmed",
+      "menus": [
+        {
+          "title": "Reel Bar Food & Drink (lunch, small plates, snack bar, cocktails)",
+          "type": "main",
+          "url": "https://montroseplayhouse.co.uk/food-drink/",
+          "format": "html",
+          "signal": false
+        }
+      ],
+      "notices": [
+        {
+          "text": "Food & drink page still says kitchen closed for staff training and menu changes coming; Playhouse Facebook says normal lunch service (11am-3pm) resumed Mon 12 Oct 2026.",
+          "url": "https://montroseplayhouse.co.uk/food-drink/"
+        }
+      ]
+    },
+    {
+      "id": "picture-house-montrose",
+      "name": "The Picture House",
+      "town": "Montrose",
+      "type": "pub",
+      "address": "12 Hume Street, Montrose, Angus",
+      "postcode": "DD10 8JD",
+      "website": "https://www.belhaven.co.uk/pubs/angus/picture-house",
+      "serves_food": "yes",
+      "cuisine": "British pub food",
+      "trading": "confirmed",
+      "menus": [
+        {
+          "title": "Menu",
+          "type": "main",
+          "url": "https://www.belhaven.co.uk/pubs/angus/picture-house/menu",
+          "format": "html",
+          "signal": false
+        },
+        {
+          "title": "Deals (Two Classics, Senior Menu Mon-Fri, Lunch Club Mon-Fri 12-4pm)",
+          "type": "specials",
+          "url": "https://www.belhaven.co.uk/pubs/angus/picture-house/deals",
+          "format": "html",
+          "valid_dates": "Mon-Fri",
+          "signal": false
+        },
+        {
+          "title": "Festive Fayre Menu",
+          "type": "festive",
+          "url": "https://www.belhaven.co.uk/pubs/angus/picture-house/christmas/festive-fayre",
+          "format": "html",
+          "valid_dates": "12 Nov 2026 - 3 Jan 2027 (excl. 25-26 Dec, 31 Dec-1 Jan)",
+          "signal": true
+        },
+        {
+          "title": "Hogmanay Menu",
+          "type": "festive",
+          "url": "https://www.belhaven.co.uk/pubs/angus/picture-house/christmas/hogmanany",
+          "format": "html",
+          "valid_dates": "31 Dec 2026 - 1 Jan 2027",
+          "signal": true
+        }
+      ],
+      "notices": [
+        {
+          "text": "Christmas 2026 Festive Fayre bookable; menu pre-orders open 21 Oct 2026.",
+          "url": "https://www.belhaven.co.uk/pubs/angus/picture-house/christmas"
+        }
+      ]
+    },
+    {
+      "id": "erskines-cafe-house-of-dun",
+      "name": "Erskine's Cafe at House of Dun",
+      "town": "Montrose",
+      "type": "cafe",
+      "address": "House of Dun, by Montrose, Angus",
+      "website": "https://www.nts.org.uk/visit/places/house-of-dun/highlights/food-and-drink",
+      "social": "https://www.facebook.com/HouseofDun",
+      "serves_food": "yes",
+      "cuisine": "Cafe & breakfast",
+      "trading": "confirmed",
+      "menus": [
+        {
+          "title": "Cafe Menu (June 2026)",
+          "type": "main",
+          "url": "https://ntswebstorage01.blob.core.windows.net/nts-web-assets-production/downloads/House-of-Dun-cafe-menu_0626.pdf",
+          "format": "pdf",
+          "signal": false
+        }
+      ],
+      "notices": [
+        {
+          "text": "2026 hours: Wed-Sun to 1 Nov, then Thu-Sun 2 Nov-20 Dec.",
+          "url": "https://visitangus.com/things-to-see-do/food-drink/erskines-cafe-at-house-of-dun/"
+        }
+      ]
+    },
+    {
+      "id": "pavilion-cafe-montrose",
+      "name": "Pavilion Cafe",
+      "town": "Montrose",
+      "type": "cafe",
+      "address": "Melville Gardens, Montrose, Angus",
+      "postcode": "DD10 8HG",
+      "social": "https://www.facebook.com/pavilioncafemontrose/",
+      "serves_food": "yes",
+      "cuisine": "Cafe & breakfast",
+      "trading": "confirmed",
+      "menus": [],
+      "notices": []
+    },
+    {
+      "id": "janes-tearoom-montrose",
+      "name": "Jane's Tearoom",
+      "town": "Montrose",
+      "type": "cafe",
+      "address": "17 Castle Place, Montrose, Angus",
+      "postcode": "DD10 8AL",
+      "serves_food": "yes",
+      "cuisine": "Cafe & breakfast",
+      "trading": "confirmed",
+      "menus": [],
+      "notices": []
+    },
+    {
+      "id": "chic-rustic-bistro-montrose",
+      "name": "Chic Rustic Bistro & Gift Emporium",
+      "town": "Montrose",
+      "type": "cafe",
+      "address": "Tayock Holiday Park, Brechin Road, Montrose, Angus",
+      "social": "https://www.facebook.com/profile.php?id=61560481727713",
+      "serves_food": "yes",
+      "cuisine": "Cafe & breakfast",
+      "trading": "confirmed",
+      "menus": [],
+      "notices": []
+    },
+    {
+      "id": "a-cup-above-montrose",
+      "name": "A Cup Above",
+      "town": "Montrose",
+      "type": "cafe",
+      "address": "156 High Street, Montrose, Angus",
+      "postcode": "DD10 8JB",
+      "serves_food": "yes",
+      "cuisine": "Cafe & breakfast",
+      "trading": "confirmed",
+      "menus": [],
+      "notices": []
+    },
+    {
+      "id": "madisons-montrose",
+      "name": "Madisons Cafe & Bistro",
+      "town": "Montrose",
+      "type": "cafe",
+      "address": "Montrose Sports Centre, Marine Avenue, Montrose, Angus",
+      "postcode": "DD10 8TR",
+      "serves_food": "yes",
+      "cuisine": "Cafe & breakfast",
+      "trading": "confirmed",
+      "menus": [],
+      "notices": []
+    },
+    {
+      "id": "golf-inn-montrose",
+      "name": "The Golf Inn",
+      "town": "Montrose",
+      "type": "pub",
+      "address": "15-17 Mill Street, Montrose, Angus",
+      "postcode": "DD10 8NP",
+      "social": "https://www.facebook.com/golfy1517/",
+      "serves_food": "unclear",
+      "cuisine": "British pub food",
+      "trading": "confirmed",
+      "menus": [],
+      "notices": []
+    },
+    {
+      "id": "rig-furrow-forfar",
+      "name": "Rig & Furrow (Forfar Golf Club)",
+      "town": "Forfar",
+      "type": "restaurant",
+      "address": "Forfar Golf Club, Cunninghill, Forfar, Angus",
+      "postcode": "DD8 2RL",
+      "website": "https://forfargolfclub.com/rigandfurrow",
+      "serves_food": "yes",
+      "cuisine": "British pub food",
+      "trading": "confirmed",
+      "menus": [
+        {
+          "title": "Monday-Saturday Lunch Menu",
+          "type": "main",
+          "url": "https://forfargolfclub.com/wp-content/uploads/2026/05/Rig-Furrow-Day-Menu.pdf",
+          "format": "pdf",
+          "valid_dates": "Mon-Sat 12-4pm",
+          "signal": false
+        },
+        {
+          "title": "Sunday Lunch Menu",
+          "type": "sunday-roast",
+          "url": "https://forfargolfclub.com/wp-content/uploads/2026/05/Rig-Furrow-Sunday-Menu.pdf",
+          "format": "pdf",
+          "valid_dates": "Sundays 12-5pm",
+          "signal": false
+        },
+        {
+          "title": "Evening A la Carte Menu",
+          "type": "main",
+          "url": "https://forfargolfclub.com/wp-content/uploads/2026/06/Rig-Furrow-A-la-Carte-Menu-2.pdf",
+          "format": "pdf",
+          "valid_dates": "Fri-Sat evenings",
+          "signal": false
+        },
+        {
+          "title": "Children's Menu",
+          "type": "other",
+          "url": "https://forfargolfclub.com/wp-content/uploads/2026/05/RF_ChildrensMenu.pdf",
+          "format": "pdf",
+          "signal": false
+        },
+        {
+          "title": "Wine List",
+          "type": "other",
+          "url": "https://forfargolfclub.com/wp-content/uploads/2026/05/RF_WineList_Final.pdf",
+          "format": "pdf",
+          "signal": false
+        },
+        {
+          "title": "Festive Menu (3 courses £35 / 2 courses £29)",
+          "type": "festive",
+          "url": "https://forfargolfclub.com/wp-content/uploads/2026/09/All-Festive-Menus.jpg",
+          "format": "image",
+          "valid_dates": "26 Nov - 23 Dec 2026 (selected dates; Thu-Sat lunch, Fri-Sat eve, Sun 2-6pm)",
+          "signal": true
+        }
+      ],
+      "notices": [
+        {
+          "text": "Festive menu bookings open (£10pp deposit); bookings made by 31 Oct 2026 enter a prize draw. Restaurant closed Mondays & Tuesdays during the festive period.",
+          "url": "https://forfargolfclub.com/rigandfurrow"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "name": "Visit Angus - Where to eat in Forfar",
+      "url": "https://visitangus.com/where-to-eat-and-drink-in-forfar/",
+      "note": "venue discovery + listing pages for address/web/social"
+    },
+    {
+      "name": "Visit Angus - Where to eat in Montrose",
+      "url": "https://visitangus.com/where-to-eat-and-drink-in-montrose/",
+      "note": "venue discovery"
+    },
+    {
+      "name": "Visit Angus - Where to eat in Kirriemuir",
+      "url": "https://visitangus.com/where-to-eat-and-drink-in-kirriemuir/",
+      "note": "venue discovery"
+    },
+    {
+      "name": "The Courier - Montrose food & drink guide",
+      "url": "https://www.thecourier.co.uk/fp/lifestyle/food-drink/4953292/montrose-food-and-drink-guide/",
+      "note": "Montrose addresses/postcodes"
+    },
+    {
+      "name": "Restaurantji Montrose",
+      "url": "https://www.restaurantji.co.uk/scotland/montrose/",
+      "note": "Montrose venue list"
+    },
+    {
+      "name": "FSA ratings - Golf Inn",
+      "url": "https://ratings.food.gov.uk/business/42554/golf-inn-montrose",
+      "note": "postcode"
+    },
+    {
+      "name": "Dundee and Angus Chamber - Rig & Furrow opening",
+      "url": "https://www.dundeeandanguschamber.co.uk/news/article/25016/new-restaurant-opens-within-forfar-golf-club-serving-the-best-sunday-roast-in-angus",
+      "note": "new venue discovery"
+    }
+  ],
+  "notes": [
+    "Weekly refresh (28 Sep 2026): Royal Hotel Forfar (breakfast/bistro 33/snack/afternoon-tea pages) and The Stag Forfar (menu/PDF suite, now serving real menus - previously 403) both now readable; menus added.",
+    "Thrums Hotel Kirriemuir: dining/menu/ page now returns full HTML menu (previously blocked); added.",
+    "Airlie Arms Kirriemuir: still no menu pages found on own site (food-drink page unreachable this pass); recheck manually.",
+    "The Mill Forfar: themillforfar.com (with and without www, several paths) still 404s across the board - trading remains unclear.",
+    "Chapelbank Hotel: no own website found, Facebook only; trading unclear.",
+    "Visocchi's Kirriemuir, 88 Degrees, Sultan Turkish, Purdy's Coffee House: no own website found this pass; not rechecked (Facebook-only, out of scope per rules).",
+    "Cafe Obscura (Barrie Pavilion): site blocked by robots.txt on this pass; trading remains unclear.",
+    "Montrose cafes with no own site (Pavilion Cafe, Jane's Tearoom, Chic Rustic, A Cup Above, Madisons, Golf Inn): not rechecked this pass, no changes made.",
+    "Corner House, Jeet, Dunnichen Stone, Drovers Inn, Park Hotel, Links Hotel, Roo's Leap, Ma Yom, George Hotel, Erskine's Cafe: menu URLs re-verified, all unchanged from last refresh.",
+    "Reel Cafe Bar (Montrose Playhouse): kitchen still shown closed for staff training on this pass.",
+    "New venue added: Rig & Furrow at Forfar Golf Club (opened 30 May 2026), including a Christmas 2026 festive menu.",
+    "Searched for new Kirriemuir openings (no well-evidenced new venue found) and new Montrose openings (Salty's, Brechin Road, found but opened July 2024 - not a 2026 opening, excluded).",
+    "No venues found to be permanently closed this pass.",
+    "Second pass 2026-09-28 (FSA open data, Angus): 67-69 East High Street Forfar DD8 2EP is registered as 'The Nest By The Giddy Goose' (FHRSID 41769, Improvement Required 2026-03-11) - Chapelbank may have been rebranded; not matched. Jane's Tearoom (17 Castle Place) likely = FSA 'Mum's' 17-19 Castle Place (FHRSID 439841, Improvement Required 2025-11-27); a Tripadvisor reviewer says Jane's is listed as Mum's of Montrose - left unmatched pending confirmation.",
+    "Second pass 2026-09-28 (late morning): added Jeet Christmas 2026, Camperdown Elm festive/Christmas Day/Boxing Day 2026, The Rule Christmas 2026 PDFs, Milas shared menu page (Perth), Bar 10 afternoon tea; Giddy Goose Christmas bookings notice.",
+    "Refresh 2026-10-05: Re-checked all venue sites. Dunnichen Stone: added Hawkstone IPA & Beef Pie specials page (launched Aug 2026, signal false); festive menus + £10 voucher (book by 31 Oct) unchanged. Picture House: 'New Menu' page now 404 - removed; added Deals page (Two Classics, Senior Menu, Lunch Club); Festive Fayre/Hogmanay unchanged (pre-orders open 21 Oct). George Hotel: added Function Menu (Christmas parties in Garden Room; no dedicated 2026 festive menu yet). Pathhead: pumpkin patch notice (from 16 Oct). Rig & Furrow: May/June 2026 opening menus now set signal false (no longer new); festive menu unchanged. Corner House, Jeet, Drovers, Royal Hotel, The Stag (via TinyFish; still Summer Menu 2026, no autumn/Christmas menu), Bar 10, Thrums (menu page last modified 2020), Park Hotel, Links Hotel, Roo's Leap, Ma Yom, Montrose Playhouse (kitchen still shown closed for staff training), Erskine's Cafe (June 2026 PDF): menus re-verified, unchanged. Airlie Arms: home page has no menu links, food-drink page unreachable. Cafe Obscura: robots.txt blocks fetch, not bypassed. Facebook-only venues not rechecked. Two searches for new openings in Forfar/Kirriemuir/Montrose found nothing new and well evidenced. No closures confirmed.",
+    "Refresh 2026-10-12: Re-checked all venue sites (TinyFish). Park Hotel Montrose: site moved to theparkhotelmontrose.co.uk; old parkmontrose.com lunch/dinner/children's PDFs now 404 - removed, no menus on new site. The Mill Forfar: confirmed trading under new owner as Lochlands Mill Bar & Restaurant (Courier 27 Aug 2026; evening bar meals Thu-Sun from 6 Sep) - name updated, trading confirmed; no own website (themillforfar.com dead). Rig & Furrow: festive menu dates/prices added, book-by-31-Oct prize draw notice; May opening notice dropped as stale. Jeet: added Takeaway Meal Deal PDF (linked on site, Nov 2024 - not new). Dunnichen Stone festive set menu dates (9 Nov-30 Dec) added. Reel Cafe: site still shows kitchen closed for training; FB snippet says lunch resumed 12 Oct. Corner House, Drovers, Royal Hotel, The Stag (still Summer Menu 2026), Bar 10, Thrums, Pathhead, Links, Roo's Leap, Ma Yom, George Hotel, Picture House, Erskine's: unchanged. Airlie Arms: TinyFish target unreachable; WebFetch home page shows no menu links. Cafe Obscura site now redirects to Facebook. Festive signals kept (all announced <3 weeks ago or still current Christmas 2026). New-opening searches (3): nothing new with own site found; Courier/FB mention McGurty's opening a new venue in an unnamed Angus town - unverified, not added."
+  ]
+}

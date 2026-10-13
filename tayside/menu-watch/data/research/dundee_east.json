@@ -1,0 +1,1051 @@
+{
+ "venues": [
+  {
+   "id": "ship-inn-broughty-ferry",
+   "name": "The Ship Inn",
+   "town": "Dundee",
+   "type": "pub",
+   "address": "121 Fisher Street, Broughty Ferry, Dundee",
+   "postcode": "DD5 2BR",
+   "serves_food": "yes",
+   "cuisine": "Seafood & fish and chips",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Bar Menu",
+     "type": "main",
+     "url": "https://theshipinn-broughtyferry.co.uk/BAR-MENU",
+     "format": "html",
+     "signal": false
+    },
+    {
+     "title": "Restaurant Lunch Menu",
+     "type": "main",
+     "url": "https://theshipinn-broughtyferry.co.uk/Restaurant-Lunch-Menu",
+     "format": "html",
+     "signal": false
+    },
+    {
+     "title": "Restaurant Evening Menu",
+     "type": "main",
+     "url": "https://theshipinn-broughtyferry.co.uk/Restaurant-Evening-Menu",
+     "format": "html",
+     "signal": false
+    },
+    {
+     "title": "Christmas / Festive Menu 2026",
+     "type": "festive",
+     "url": "https://theshipinn-broughtyferry.co.uk/CHRISTMAS-MENU",
+     "format": "html",
+     "valid_dates": "Christmas 2026",
+     "signal": true
+    }
+   ],
+   "notices": [
+    {
+     "text": "Festive Menu 2026 published; homepage says the Christmas menu starts 'Thursday 30th November' (30 Nov 2026 is a Monday - wording looks carried over from a previous year).",
+     "url": "https://theshipinn-broughtyferry.co.uk/"
+    }
+   ],
+   "website": "https://theshipinn-broughtyferry.co.uk/"
+  },
+  {
+   "id": "fishermans-tavern",
+   "name": "The Fisherman's Tavern",
+   "town": "Dundee",
+   "type": "pub",
+   "address": "10-16 Fort Street, Broughty Ferry, Dundee",
+   "postcode": "DD5 2AD",
+   "serves_food": "yes",
+   "cuisine": "British pub food",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Fisherman's Tavern Menus",
+     "type": "main",
+     "url": "https://www.belhaven.co.uk/pubs/angus/fishermans-tavern/menu",
+     "format": "html",
+     "signal": false
+    },
+    {
+     "title": "Festive Fayre Menu 2026",
+     "type": "festive",
+     "url": "https://gkbr-p-001.sitecorecontenthub.cloud/api/public/content/73409df4ea764b7ebc87cefe5c0444c5?v=6e13e5f2",
+     "format": "pdf",
+     "valid_dates": "12 Nov 2026 - 3 Jan 2027 (excl. 25 Dec & 1 Jan)",
+     "signal": true
+    },
+    {
+     "title": "Festive Buffet Menu 2026",
+     "type": "festive",
+     "url": "https://gkbr-p-001.sitecorecontenthub.cloud/api/public/content/d96898615d9e411a9377080b8e9230f6?v=17d257f1",
+     "format": "pdf",
+     "valid_dates": "Christmas 2026",
+     "signal": true
+    },
+    {
+     "title": "Christmas Day Menu 2026",
+     "type": "festive",
+     "url": "https://gkbr-p-001.sitecorecontenthub.cloud/api/public/content/635cf42dc3e64bae8199ce30baa3f38c?v=19f76e6c",
+     "format": "pdf",
+     "valid_dates": "25 Dec 2026",
+     "signal": true
+    }
+   ],
+   "notices": [
+    {
+     "text": "Christmas 2026 bookings open: Festive Fayre 12 Nov 2026-3 Jan 2027 (£5pp deposit); Christmas Day £10pp deposit, paid in full by 1 Dec; pre-orders open 21 Oct 2026.",
+     "url": "https://www.belhaven.co.uk/pubs/angus/fishermans-tavern/christmas"
+    }
+   ],
+   "website": "https://www.belhaven.co.uk/pubs/angus/fishermans-tavern"
+  },
+  {
+   "id": "jollys-hotel",
+   "name": "Jolly's Hotel (Wetherspoon)",
+   "town": "Dundee",
+   "type": "pub",
+   "address": "43A Gray Street, Broughty Ferry, Dundee",
+   "postcode": "DD5 2BJ",
+   "serves_food": "yes",
+   "cuisine": "British pub food",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Wetherspoon menu",
+     "type": "main",
+     "url": "https://www.jdwetherspoon.com/pub-menus/jollys-hotel-broughty-ferry/",
+     "format": "html",
+     "signal": false
+    }
+   ],
+   "notices": [],
+   "website": "https://www.jdwetherspoon.com/pubs/all-pubs/scotland/dundee/jollys-hotel-broughty-ferry"
+  },
+  {
+   "id": "royal-arch",
+   "name": "The Royal Arch",
+   "town": "Dundee",
+   "type": "pub",
+   "address": "285-287 Brook Street, Broughty Ferry, Dundee",
+   "postcode": "DD5 2DS",
+   "serves_food": "yes",
+   "cuisine": "British pub food",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Bar & Bistro Menu 2025",
+     "type": "main",
+     "url": "https://the-royal-arch.com/wp-content/uploads/2025/12/Royal-Arch-Menu-2025.pdf",
+     "format": "pdf",
+     "signal": false
+    }
+   ],
+   "notices": [
+    {
+     "text": "Website says 'FULL website coming soon'; bookings via Dish Cult.",
+     "url": "https://the-royal-arch.com/"
+    }
+   ],
+   "website": "https://the-royal-arch.com/",
+   "social": "https://www.facebook.com/TheRoyalArch"
+  },
+  {
+   "id": "the-anchor-broughty-ferry",
+   "name": "The Anchor",
+   "town": "Dundee",
+   "type": "pub",
+   "address": "48 Gray Street, Broughty Ferry, Dundee",
+   "postcode": "DD5 2BJ",
+   "serves_food": "yes",
+   "cuisine": "British pub food",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Food Menu",
+     "type": "main",
+     "url": "https://the-anchor.co.uk/wp-content/uploads/2026/03/Menu-V2-A3-2-sided-web.pdf",
+     "format": "pdf",
+     "signal": false
+    }
+   ],
+   "notices": [],
+   "website": "https://the-anchor.co.uk/",
+   "social": "https://www.instagram.com/the.anchor.bar/"
+  },
+  {
+   "id": "bruach-bar",
+   "name": "Bruach Bar & Restaurant",
+   "town": "Dundee",
+   "type": "restaurant",
+   "address": "326 Brook Street, Broughty Ferry, Dundee",
+   "postcode": "DD5 2AN",
+   "serves_food": "yes",
+   "cuisine": "Modern British & European",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Brunch",
+     "type": "main",
+     "url": "https://www.bruach-bar.com/_files/ugd/c5941c_43a129f107124056b0af97b45b829af8.pdf",
+     "format": "pdf",
+     "valid_dates": "Daily 10am-12pm",
+     "signal": false
+    },
+    {
+     "title": "All Day Dining",
+     "type": "main",
+     "url": "https://www.bruach-bar.com/_files/ugd/c5941c_baf4b603ab404cee8f57357ff06d5784.pdf",
+     "format": "pdf",
+     "valid_dates": "Daily 12pm-9pm",
+     "signal": false
+    },
+    {
+     "title": "Lunch",
+     "type": "main",
+     "url": "https://www.bruach-bar.com/_files/ugd/c5941c_ba7e8af4930047c2bbea1988f52da1af.pdf",
+     "format": "pdf",
+     "valid_dates": "Mon-Fri 12pm-3pm",
+     "signal": false
+    },
+    {
+     "title": "Sunday Service",
+     "type": "sunday-roast",
+     "url": "https://www.bruach-bar.com/_files/ugd/c5941c_f358736ce3814c2aaf02c20d4defb2e5.pdf",
+     "format": "pdf",
+     "valid_dates": "Sundays",
+     "signal": false
+    },
+    {
+     "title": "Boozy Brunch",
+     "type": "other",
+     "url": "https://www.bruach-bar.com/_files/ugd/c5941c_11487a38f83d4170ae97c5769499b708.pdf",
+     "format": "pdf",
+     "valid_dates": "Sat-Sun 11am-12pm, pre-book",
+     "signal": false
+    },
+    {
+     "title": "Dessert",
+     "type": "main",
+     "url": "https://www.bruach-bar.com/_files/ugd/c5941c_0f1034ca767d4975a278397dfd475587.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Children's",
+     "type": "main",
+     "url": "https://www.bruach-bar.com/_files/ugd/c5941c_5a670a5a5d2e4704ba96f7d1d2645b99.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Gluten-Free All Day Dining",
+     "type": "main",
+     "url": "https://www.bruach-bar.com/_files/ugd/c5941c_f958899d34d6478a8ef302b2ba053417.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Gluten-Free Lunch",
+     "type": "main",
+     "url": "https://www.bruach-bar.com/_files/ugd/c5941c_68cfc0d7ede94d4e90d061d10aa5494a.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Festive 2026 set menu (XMAS 2026)",
+     "type": "festive",
+     "url": "https://www.bruach-bar.com/_files/ugd/c5941c_83497fa857d040b0b476a5bb4e8febb3.pdf",
+     "format": "pdf",
+     "valid_dates": "26 Nov - 24 Dec 2026",
+     "signal": true
+    }
+   ],
+   "notices": [
+    {
+     "text": "Festive 2026 menu: 2 courses £32.95 / 3 courses £40.95, 26 Nov-24 Dec, £10pp deposit, pre-order a week ahead; Mon-Thu bookings get complimentary bubbles.",
+     "url": "https://www.bruach-bar.com/festive"
+    },
+    {
+     "text": "Reopened 9 Oct 2026 after a £230,000 refurbishment, with new head chef Keith Jarvis and a more social menu (midweek menu, Sunday roasts).",
+     "url": "https://www.thecourier.co.uk/fp/lifestyle/food-drink/5593232/first-look-bruach-cocktail-bar-broughty-ferry/"
+    }
+   ],
+   "website": "https://www.bruach-bar.com/",
+   "social": "https://www.instagram.com/bruachbar/"
+  },
+  {
+   "id": "collinsons",
+   "name": "Collinsons Restaurant",
+   "town": "Dundee",
+   "type": "restaurant",
+   "address": "122-124 Brown Street, Broughty Ferry, Dundee",
+   "postcode": "DD5 1EN",
+   "serves_food": "yes",
+   "cuisine": "Modern British & European",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Lunch Autumn 2026",
+     "type": "seasonal",
+     "url": "https://collinsonsrestaurant.com/menu.php?cat_id=71",
+     "format": "html",
+     "valid_dates": "Autumn 2026 (2 courses £35 / 3 courses £41)",
+     "signal": true
+    },
+    {
+     "title": "Dinner Autumn 2026",
+     "type": "seasonal",
+     "url": "https://collinsonsrestaurant.com/menu.php?cat_id=102",
+     "format": "html",
+     "valid_dates": "Autumn 2026 (2 courses £48 / 3 courses £55)",
+     "signal": true
+    }
+   ],
+   "notices": [
+    {
+     "text": "Michelin Guide listed restaurant.",
+     "url": "https://guide.michelin.com/us/en/dundee-city/broughty-ferry/restaurant/collinsons"
+    }
+   ],
+   "website": "https://collinsonsrestaurant.com/"
+  },
+  {
+   "id": "forgans-broughty-ferry",
+   "name": "Forgan's Broughty Ferry",
+   "town": "Dundee",
+   "type": "restaurant",
+   "address": "234 Brook Street, Broughty Ferry, Dundee",
+   "postcode": "DD5 2AH",
+   "serves_food": "yes",
+   "cuisine": "Scottish",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Main Menu",
+     "type": "main",
+     "url": "https://forgansbroughtyferry.co.uk/menu/forgansbf-main-menu.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Kids Menu",
+     "type": "main",
+     "url": "https://forgansbroughtyferry.co.uk/menu/forgansbf-wee-menu.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Low Gluten Menu",
+     "type": "main",
+     "url": "https://forgansbroughtyferry.co.uk/menu/forgansbf-low-gluten-menu.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Dessert Menu",
+     "type": "main",
+     "url": "https://forgansbroughtyferry.co.uk/menu/forgansbf-dessert-menu.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Market Menu (Autumn offers)",
+     "type": "seasonal",
+     "url": "https://forgansbroughtyferry.co.uk/offers/",
+     "format": "html",
+     "valid_dates": "Sun-Thu all day, Autumn 2026",
+     "signal": true
+    },
+    {
+     "title": "Festive Brochure 2026 (festive set menus, Christmas Day, Hogmanay)",
+     "type": "festive",
+     "url": "https://forgansbroughtyferry.co.uk/menu/festive/forgansbf-festive-brochure.pdf",
+     "format": "pdf",
+     "valid_dates": "Christmas 2026 / Hogmanay",
+     "signal": true
+    }
+   ],
+   "notices": [
+    {
+     "text": "Autumn offers: Market Menus (2 courses £22 / 3 courses £27) Sun-Thu all day; Thursday Shepherd's Pie & drink £18; Monday corkage £5 wine/£20 champagne; NHS 20% food discount.",
+     "url": "https://forgansbroughtyferry.co.uk/menus/"
+    },
+    {
+     "text": "Christmas Day dining £79.95pp adults / £29.95 under-12s, sittings 12pm & 4.30pm; Hogmanay package £85pp with ceilidh from 7.30pm.",
+     "url": "https://forgansbroughtyferry.co.uk/festive/"
+    },
+    {
+     "text": "Festive set menus 2026: Sun-Thu 2 courses £25 / Mon-Thu 3 courses £30; Fri-Sat lunch £30/£35, dinner £40/£45; plus festive ceilidh and DJ party nights.",
+     "url": "https://forgansbroughtyferry.co.uk/festive/"
+    }
+   ],
+   "website": "https://forgansbroughtyferry.co.uk/",
+   "social": "https://www.facebook.com/forgansbroughtyferry/"
+  },
+  {
+   "id": "velvet-tide",
+   "name": "Velvet Tide (The Cailleach & Merchant's Bar)",
+   "town": "Dundee",
+   "type": "restaurant",
+   "address": "27 Gray Street, Broughty Ferry, Dundee",
+   "postcode": "DD5 2BH",
+   "serves_food": "yes",
+   "cuisine": "Modern British & European",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Menu",
+     "type": "main",
+     "url": "https://velvet-tide.com/menu",
+     "format": "html",
+     "signal": false
+    }
+   ],
+   "notices": [
+    {
+     "text": "New restaurant replacing Sol y Sombra opened 28 June 2026 (Wed-Sun from noon).",
+     "url": "https://www.thecourier.co.uk/fp/lifestyle/food-drink/5523549/first-look-velvet-tide-broughty-ferry/"
+    },
+    {
+     "text": "Now has own website (velvet-tide.com) with menu, events, reservations via OpenTable.",
+     "url": "https://velvet-tide.com/"
+    },
+    {
+     "text": "Events programme: Chef's Table Experience 5 Dec 2026, Wine & Dine Celebration 20 Jan 2027, Heritage Feast 14 Feb 2027.",
+     "url": "https://velvet-tide.com/events"
+    }
+   ],
+   "website": "https://velvet-tide.com/",
+   "social": "https://www.instagram.com/velvettidedundee/"
+  },
+  {
+   "id": "visocchis",
+   "name": "Visocchi's (Viso Gelato)",
+   "town": "Dundee",
+   "type": "cafe",
+   "address": "40 Gray Street, Broughty Ferry, Dundee",
+   "postcode": "DD5 2BJ",
+   "serves_food": "yes",
+   "cuisine": "Italian",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Food & gelato menu (online ordering)",
+     "type": "main",
+     "url": "https://visogelato.com/",
+     "format": "html",
+     "signal": false
+    }
+   ],
+   "notices": [
+    {
+     "text": "Closed 8-15 October 2026 for bathroom refurbishment.",
+     "url": "https://visogelato.com/"
+    }
+   ],
+   "website": "https://visogelato.com/",
+   "social": "https://www.facebook.com/Visocchis/"
+  },
+  {
+   "id": "goa-broughty-ferry",
+   "name": "Goa",
+   "town": "Dundee",
+   "type": "restaurant",
+   "address": "230 Brook Street, Broughty Ferry, Dundee",
+   "postcode": "DD5 2AH",
+   "serves_food": "yes",
+   "cuisine": "Indian & South Asian",
+   "trading": "confirmed",
+   "menus": [],
+   "notices": [],
+   "website": "https://goabroughtyferry.co.uk/"
+  },
+  {
+   "id": "indos-broughty-ferry",
+   "name": "Indos",
+   "town": "Dundee",
+   "type": "restaurant",
+   "address": "289 Brook Street, Broughty Ferry, Dundee",
+   "postcode": "DD5 2DS",
+   "serves_food": "yes",
+   "cuisine": "Indian & South Asian",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Menu page",
+     "type": "main",
+     "url": "https://www.indosbroughtyferry.hungrrr.co.uk/menu",
+     "format": "html",
+     "signal": false
+    },
+    {
+     "title": "Main / Pre-Theatre Menu",
+     "type": "set-menu",
+     "url": "https://www.indosbroughtyferry.hungrrr.co.uk/uploads/files/15737402991564933822Indos_MainMenu_V10.pdf",
+     "format": "pdf",
+     "signal": false
+    }
+   ],
+   "notices": [],
+   "website": "https://www.indosbroughtyferry.hungrrr.co.uk/"
+  },
+  {
+   "id": "pizza-revolution-broughty-ferry",
+   "name": "Pizza Revolution",
+   "town": "Dundee",
+   "type": "restaurant",
+   "address": "46 Gray Street, Broughty Ferry, Dundee",
+   "postcode": "DD5 2BJ",
+   "serves_food": "yes",
+   "cuisine": "Italian",
+   "trading": "unclear",
+   "menus": [],
+   "notices": [],
+   "social": "https://www.facebook.com/PizzaRevBroughtyFerry/"
+  },
+  {
+   "id": "urban-beach-glass-pavilion",
+   "name": "Urban Beach @ The Glass Pavilion",
+   "town": "Dundee",
+   "type": "cafe",
+   "address": "The Esplanade, Broughty Ferry, Dundee",
+   "postcode": "DD5 2EP",
+   "serves_food": "yes",
+   "cuisine": "Cafe & breakfast",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Cafe Menu",
+     "type": "main",
+     "url": "https://urbanbeachdundee.co.uk/menus/Main-Menu",
+     "format": "html",
+     "signal": false
+    },
+    {
+     "title": "Coffee & Patisserie Menu",
+     "type": "main",
+     "url": "https://urbanbeachdundee.co.uk/menus/Coffee-Menu",
+     "format": "html",
+     "signal": false
+    },
+    {
+     "title": "Kids Menu",
+     "type": "main",
+     "url": "https://urbanbeachdundee.co.uk/menus/Kids-Menu",
+     "format": "html",
+     "signal": false
+    },
+    {
+     "title": "Bar Food & Drinks Menu",
+     "type": "main",
+     "url": "https://urbanbeachdundee.co.uk/menus/Bar-Food-Drinks-menu",
+     "format": "html",
+     "signal": false
+    }
+   ],
+   "notices": [
+    {
+     "text": "Autumn hours: cafe open Saturday & Sunday only (breakfast from 10am, cafe 12-4pm).",
+     "url": "https://urbanbeachdundee.co.uk/"
+    }
+   ],
+   "website": "https://urbanbeachdundee.co.uk/"
+  },
+  {
+   "id": "bowmans-broughty-ferry",
+   "name": "Bowmans Coffee House (Broughty Ferry)",
+   "town": "Dundee",
+   "type": "cafe",
+   "address": "286 Brook Street, Broughty Ferry, Dundee",
+   "postcode": "DD5 2AN",
+   "serves_food": "yes",
+   "cuisine": "Cafe & breakfast",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Coffee House Menu",
+     "type": "main",
+     "url": "https://www.bowmanscoffeehouse.co.uk/menu/coffee-house-menu/",
+     "format": "html",
+     "signal": false
+    }
+   ],
+   "notices": [],
+   "website": "https://www.bowmanscoffeehouse.co.uk/",
+   "social": "https://www.facebook.com/bowmanscoffeehouse/"
+  },
+  {
+   "id": "braw-tea-cafe",
+   "name": "Braw Tea Cafe",
+   "town": "Dundee",
+   "type": "cafe",
+   "address": "The Pavilion, Castle Green Playground, Broughty Ferry, Dundee",
+   "postcode": "DD5 2HA",
+   "serves_food": "yes",
+   "cuisine": "Cafe & breakfast",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Menu",
+     "type": "main",
+     "url": "https://brawtea.co.uk/menu",
+     "format": "html",
+     "signal": false
+    }
+   ],
+   "notices": [],
+   "website": "https://brawtea.co.uk/"
+  },
+  {
+   "id": "maison-dieu-broughty-ferry",
+   "name": "Maison Dieu Coffee",
+   "town": "Dundee",
+   "type": "cafe",
+   "address": "195 Brook Street, Broughty Ferry, Dundee",
+   "postcode": "DD5 2AG",
+   "serves_food": "yes",
+   "cuisine": "Cafe & breakfast",
+   "trading": "confirmed",
+   "menus": [],
+   "notices": [
+    {
+     "text": "Speciality cafe; food menu listed as 'coming very soon'.",
+     "url": "https://maisondieucoffee.co.uk/pages/broughty-ferry-cafe"
+    }
+   ],
+   "website": "https://maisondieucoffee.co.uk/pages/broughty-ferry-cafe",
+   "social": "https://www.instagram.com/maisondieubroughtyferry/"
+  },
+  {
+   "id": "milton-inn-monifieth",
+   "name": "The Milton Inn",
+   "town": "Monifieth",
+   "type": "pub",
+   "address": "Grange Road, Monifieth",
+   "postcode": "DD5 4LU",
+   "serves_food": "yes",
+   "cuisine": "British pub food",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "The Milton Inn Menu",
+     "type": "main",
+     "url": "https://img1.wsimg.com/blobby/go/8b4c1ce6-cfaf-4ea0-b6b6-9038ee18d886/downloads/abe57afd-1647-466f-acaf-a043119e48c3/The%20Milton%20Inn%20Menu.pdf?ver=1790241417991",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Light Lunch Menu",
+     "type": "main",
+     "url": "https://img1.wsimg.com/blobby/go/8b4c1ce6-cfaf-4ea0-b6b6-9038ee18d886/downloads/5f004553-625e-4edb-a706-f77dc6ef2ca0/The%20Milton%20Inn%20Light%20Lunch%20Menu%20A4.pdf?ver=1790241417991",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Christmas Menu",
+     "type": "festive",
+     "url": "https://img1.wsimg.com/blobby/go/8b4c1ce6-cfaf-4ea0-b6b6-9038ee18d886/downloads/6b3bae5a-6284-4047-852c-9a1e9329f5fb/Chrsitmas%20menu.png?ver=1790241417118",
+     "format": "image",
+     "valid_dates": "Christmas (year not stated on page)",
+     "signal": false
+    }
+   ],
+   "notices": [
+    {
+     "text": "Homepage carries a reopening welcome message.",
+     "url": "https://themiltoninnmonifieth.co.uk/"
+    }
+   ],
+   "website": "https://themiltoninnmonifieth.co.uk/",
+   "social": "https://www.facebook.com/miltonmonifieth/"
+  },
+  {
+   "id": "the-culdee",
+   "name": "The Culdee",
+   "town": "Monifieth",
+   "type": "cafe",
+   "address": "4 Church Street, Monifieth",
+   "postcode": "DD5 4JP",
+   "serves_food": "yes",
+   "cuisine": "Cafe & breakfast",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Menus",
+     "type": "main",
+     "url": "https://theculdee.co.uk/menus/",
+     "format": "html",
+     "signal": false
+    },
+    {
+     "title": "Food Menu (breakfast, lunch, sharing)",
+     "type": "main",
+     "url": "https://theculdee.co.uk/wp-content/uploads/2025/10/TC_A3_FoodMenu_Sep25-web.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Drinks Menu",
+     "type": "main",
+     "url": "https://theculdee.co.uk/wp-content/uploads/2025/10/TC_RollFold_DrinksMenu-Sep25-Web.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Kids Menu",
+     "type": "main",
+     "url": "https://theculdee.co.uk/wp-content/uploads/2025/10/TC_A4_KidsMenu-Sep25-web.pdf",
+     "format": "pdf",
+     "signal": false
+    }
+   ],
+   "notices": [
+    {
+     "text": "Culdee Christmas Sessions music night announced for 19 Dec 2026.",
+     "url": "https://theculdee.co.uk/product/culdee-christmas-sessions-19-dec/"
+    }
+   ],
+   "website": "https://theculdee.co.uk/"
+  },
+  {
+   "id": "mac-cafe-monifieth",
+   "name": "MAC Cafe (Monifieth Activity Centre)",
+   "town": "Monifieth",
+   "type": "cafe",
+   "address": "Riverview Drive, Monifieth",
+   "postcode": "DD5 4NH",
+   "serves_food": "yes",
+   "cuisine": "Cafe & breakfast",
+   "trading": "confirmed",
+   "menus": [],
+   "notices": [
+    {
+     "text": "Community cafe within Monifieth Activity Centre, overlooking the Firth of Tay; open Mon-Sat 10am-4pm. Drinks/breakfast-lunch/kids menus shown as images on-site, no linkable menu URL found.",
+     "url": "https://www.monifiethactivitycentre.org/our-facilities/cafe"
+    }
+   ],
+   "website": "https://www.monifiethactivitycentre.org/our-facilities/cafe"
+  },
+  {
+   "id": "bowmans-monifieth",
+   "name": "Bowmans Coffee House (Monifieth)",
+   "town": "Monifieth",
+   "type": "cafe",
+   "address": "27a High Street, Monifieth",
+   "postcode": "DD5 4AA",
+   "serves_food": "yes",
+   "cuisine": "Cafe & breakfast",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Coffee House Menu",
+     "type": "main",
+     "url": "https://www.bowmanscoffeehouse.co.uk/menu/coffee-house-menu/",
+     "format": "html",
+     "signal": false
+    }
+   ],
+   "notices": [],
+   "website": "https://www.bowmanscoffeehouse.co.uk/",
+   "social": "https://www.facebook.com/bowmanscoffeehouse/"
+  },
+  {
+   "id": "forbes-of-kingennie",
+   "name": "Forbes of Kingennie (The Scullery Restaurant & Cairn O'Mount Bar)",
+   "town": "Newbigging",
+   "type": "restaurant",
+   "address": "Kingennie, Broughty Ferry, Dundee",
+   "postcode": "DD5 3RD",
+   "serves_food": "yes",
+   "cuisine": "Modern British & European",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Breakfast Menu",
+     "type": "main",
+     "url": "https://media.guestnet.co.uk/media/forbes-of-kingennie/storage/uploads/sources/sl5ox7qu1s.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Main Menu",
+     "type": "main",
+     "url": "https://media.guestnet.co.uk/media/forbes-of-kingennie/storage/uploads/sources/ttgxigehpq.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Lunch Menu",
+     "type": "main",
+     "url": "https://media.guestnet.co.uk/media/forbes-of-kingennie/storage/uploads/sources/kfrinso7mg.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Dessert Menu",
+     "type": "main",
+     "url": "https://media.guestnet.co.uk/media/forbes-of-kingennie/storage/uploads/sources/1ksthee5qf.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Children's Main Menu",
+     "type": "main",
+     "url": "https://media.guestnet.co.uk/media/forbes-of-kingennie/storage/uploads/sources/b6rziqanvs.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Sunday Roast",
+     "type": "sunday-roast",
+     "url": "https://media.guestnet.co.uk/media/forbes-of-kingennie/storage/uploads/sources/mntc57fqfl.pdf",
+     "format": "pdf",
+     "valid_dates": "Sundays",
+     "signal": false
+    },
+    {
+     "title": "Steak Tuesday",
+     "type": "weekly",
+     "url": "https://media.guestnet.co.uk/media/forbes-of-kingennie/storage/uploads/sources/wdufqbpile.pdf",
+     "format": "pdf",
+     "valid_dates": "Tuesdays",
+     "signal": false
+    },
+    {
+     "title": "Fish Friday",
+     "type": "weekly",
+     "url": "https://media.guestnet.co.uk/media/forbes-of-kingennie/storage/uploads/sources/a4ivt7bdh2.pdf",
+     "format": "pdf",
+     "valid_dates": "Fridays",
+     "signal": false
+    },
+    {
+     "title": "2026 Festive Brochure",
+     "type": "festive",
+     "url": "https://production-guestnet-cms-bucket-167936580666.s3.amazonaws.com/media/forbes-of-kingennie/storage/uploads/sources/bovkzozkuq.pdf",
+     "format": "pdf",
+     "valid_dates": "Christmas 2026 / Hogmanay",
+     "signal": true
+    }
+   ],
+   "notices": [
+    {
+     "text": "Christmas 2026: party nights 4, 11, 12 & 18 Dec (£54.95), Christmas Day dinner £98.95, Hogmanay Hoolie.",
+     "url": "https://forbesofkingennie.co.uk/christmas-2026"
+    },
+    {
+     "text": "Weekly deals: Steak Tuesday, Pizza & Pasta Wednesday (pizza £11 / pasta £10), Burger Thursday (2nd half price), Fish Friday (2 mains £29), Fizz Friday.",
+     "url": "https://forbesofkingennie.co.uk/eat"
+    }
+   ],
+   "website": "https://forbesofkingennie.co.uk/eat"
+  },
+  {
+   "id": "invergowrie-inn",
+   "name": "Invergowrie Inn",
+   "town": "Invergowrie",
+   "type": "pub",
+   "address": "130 Main Street, Invergowrie, Dundee",
+   "postcode": "DD2 5BE",
+   "serves_food": "yes",
+   "cuisine": "British pub food",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Food & Drink",
+     "type": "main",
+     "url": "https://invergowrie-inn.co.uk/food-drink/",
+     "format": "html",
+     "signal": false
+    }
+   ],
+   "notices": [],
+   "website": "https://invergowrie-inn.co.uk/",
+   "social": "https://www.facebook.com/gowrieinn/"
+  },
+  {
+   "id": "landmark-hotel-dundee",
+   "name": "The Landmark Hotel (former Swallow Hotel)",
+   "town": "Invergowrie",
+   "type": "restaurant",
+   "address": "Kingsway West, Invergowrie, Dundee",
+   "postcode": "DD2 5JT",
+   "serves_food": "yes",
+   "cuisine": "Modern British & European",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Dinner menu",
+     "type": "main",
+     "url": "https://restaurant.landmarkdundee.co.uk/assets/menu/Dinner%20Menu%20(2).pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Bar menu",
+     "type": "main",
+     "url": "https://restaurant.landmarkdundee.co.uk/assets/menu/Bar-Menu.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Kids menu",
+     "type": "other",
+     "url": "https://restaurant.landmarkdundee.co.uk/assets/menu/Kids%20Menu%20(1).pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Drinks menu",
+     "type": "other",
+     "url": "https://restaurant.landmarkdundee.co.uk/assets/menu/Drinks%20Menu.pdf",
+     "format": "pdf",
+     "signal": false
+    }
+   ],
+   "notices": [],
+   "website": "https://restaurant.landmarkdundee.co.uk/",
+   "social": "https://www.facebook.com/TheLandmarkHotelDundee/"
+  },
+  {
+   "id": "mitchells-broughty-ferry",
+   "name": "Mitchell's Broughty Ferry",
+   "town": "Dundee",
+   "type": "cafe",
+   "address": "234 Brook Street, Broughty Ferry, Dundee",
+   "postcode": "DD5 2AH",
+   "website": "https://mitchellsbroughtyferry.co.uk/",
+   "social": "https://www.instagram.com/mitchellsbf/",
+   "serves_food": "yes",
+   "cuisine": "Cafe & breakfast",
+   "trading": "confirmed",
+   "menus": [
+    {
+     "title": "Breakfast Menu",
+     "type": "main",
+     "url": "https://mitchellsbroughtyferry.co.uk/menus/mitchells-broughty-ferry-breakfast-menu.pdf",
+     "format": "pdf",
+     "valid_dates": "Served until 12pm",
+     "signal": false
+    },
+    {
+     "title": "Lunch Menu",
+     "type": "main",
+     "url": "https://mitchellsbroughtyferry.co.uk/menus/mitchells-broughty-ferry-lunch-menu.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Food Menu",
+     "type": "main",
+     "url": "https://mitchellsbroughtyferry.co.uk/menus/mitchells-broughty-ferry-main-menu.pdf",
+     "format": "pdf",
+     "signal": false
+    },
+    {
+     "title": "Kids Menu",
+     "type": "main",
+     "url": "https://mitchellsbroughtyferry.co.uk/menus/mitchells-broughty-ferry-kids-menu.pdf",
+     "format": "pdf",
+     "signal": false
+    }
+   ],
+   "notices": [
+    {
+     "text": "Offers: afternoon tea £19pp; coffee & cake £6.95 Mon-Fri; £1.50 takeaway coffee Mon-Thu.",
+     "url": "https://mitchellsbroughtyferry.co.uk/offers/"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "The Courier - 7 top places to eat in Broughty Ferry",
+   "url": "https://www.thecourier.co.uk/fp/lifestyle/food-drink/3418926/top-places-eat-out-dinner-broughty-ferry/",
+   "note": "venue discovery + addresses"
+  },
+  {
+   "name": "The Courier - Monifieth food guide",
+   "url": "https://www.thecourier.co.uk/fp/lifestyle/food-drink/4873198/food-and-drink-guide-monifieth/",
+   "note": "Monifieth venues/addresses"
+  },
+  {
+   "name": "The Courier - Velvet Tide first look (24 Jun 2026)",
+   "url": "https://www.thecourier.co.uk/fp/lifestyle/food-drink/5523549/first-look-velvet-tide-broughty-ferry/",
+   "note": "new opening replacing Sol y Sombra"
+  },
+  {
+   "name": "The Courier - Tayberry moving to city centre (Jan 2024)",
+   "url": "https://www.thecourier.co.uk/fp/news/dundee/4864153/the-tayberry-dundee-new-site/",
+   "note": "Tayberry left Broughty Ferry; site became Sandbanks Brasserie (now also closed, see below)"
+  },
+  {
+   "name": "The Courier - Sandbanks Brasserie sudden closure",
+   "url": "https://www.thecourier.co.uk/fp/news/5184081/sandbanks-brasserie-restaurant-jamie-scott/",
+   "note": "confirms permanent closure, removed from file 28 Sep 2026"
+  },
+  {
+   "name": "The Courier - Panmure Hotel Monifieth office planning",
+   "url": "https://www.thecourier.co.uk/fp/news/5427123/monifieth-panmure-hotel-office-planning-approval/",
+   "note": "confirms Panmure Hotel closed 2018, converted to 9 apartments; removed from file 28 Sep 2026"
+  },
+  {
+   "name": "Visit Broughty Ferry directory",
+   "url": "https://visitbroughtyferry.com/",
+   "note": "addresses for Royal Arch, Goa, Forgan's, Braw Tea"
+  },
+  {
+   "name": "CAMRA WhatPub",
+   "url": "https://camra.org.uk/pubs/invergowrie-inn-dundee-138294",
+   "note": "Invergowrie Inn postcode, Ship Inn postcode"
+  },
+  {
+   "name": "OpenTable - The Culdee",
+   "url": "https://www.opentable.co.uk/r/the-culdee-monifieth",
+   "note": "Culdee address"
+  },
+  {
+   "name": "The List - Broughty Ferry food district",
+   "url": "https://list.co.uk/news/dundee-food-districts-broughty-ferry-11231",
+   "note": "venue discovery"
+  },
+  {
+   "name": "Courier - Monifieth A92 restaurant lined up as Angus Housing Association HQ",
+   "url": "https://www.thecourier.co.uk/fp/news/5448024/angus-housing-association-monifieth-hq-move/",
+   "note": "search headline only (bot-blocked); Monifieth Farm restaurant likely closed"
+  },
+  {
+   "name": "Mitchell's Broughty Ferry website",
+   "url": "https://mitchellsbroughtyferry.co.uk/menu/",
+   "note": "existing venue (next door to Forgan's) added 12 Oct 2026; address/postcode from site footer"
+  }
+ ],
+ "notes": [
+  "REFRESH 28 Sep 2026: Sandbanks Brasserie (permanently closed, confirmed via Courier) and Panmure Hotel Monifieth (closed 2018, now apartments, confirmed via Courier) removed from file. Added MAC Cafe (Monifieth Activity Centre) as a new venue.",
+  "The Tayberry is NOT in Broughty Ferry any more: left 594 Brook St in 2023 (previously Sandbanks Brasserie, now closed) and relocated to 11 Tay Square, Dundee city centre - belongs to the city-centre remit. thetayberry.co.uk homepage now serves an unrelated adult/spam site (the /menu/ page still shows old Tayberry text) - do not use.",
+  "Sol y Sombra (27 Gray St) replaced by Velvet Tide, opened 28 Jun 2026; solysombratapasbar.co.uk still live but stale. Velvet Tide now has its own website (velvet-tide.com) with a menu page, though the menu page loads its dish list via JS so only the category label was captured, not individual dishes.",
+  "Forgan's Broughty Ferry: site now readable via TinyFish (still 403 to plain WebFetch). Full menu PDFs, autumn offers and a combined 2026 festive brochure PDF (covering festive dining, Christmas Day and Hogmanay menus at different pages) found; trading upgraded to confirmed.",
+  "Collinsons: site now readable via TinyFish (still 403 to plain WebFetch). Site nav now lists 'Lunch Autumn 2026' (cat_id=71) and 'Dinner Autumn 2026' (cat_id=102) as current seasonal menus; cat_id=53 ('Dinner Menu') still serves stale ~2013-era content despite being linked from the homepage; cat_id=66 ('Mid Week Menu') now shows festive-style dishes (roast turkey, Christmas pudding) under its old title/URL - unclear if this is their actual 2026 Christmas menu or stale content. No dedicated Christmas 2026 menu page found via search.",
+  "Royal Arch menu PDF (uploaded Dec 2025) still returns 403 to fetcher; link seen on the-royal-arch.com homepage. Full site is JS-rendered so festive/notice content could not be checked this refresh.",
+  "The Culdee: site now readable via TinyFish (still 403 to plain WebFetch). Found newer Sep 2025 menu PDFs (food/drinks/kids) that supersede the previously-recorded Nov 2024 food menu PDF; both are still linked from the site.",
+  "Milton Inn: site redesigned (new page URLs /food-menu, /festive-menu) but the underlying PDF/PNG menu files are unchanged from last refresh. Festive menu is still a PNG without a year stated - signal left false until year confirmed.",
+  "Indos PDF filename dates from ~2019 (V10) - likely old; page unchanged this refresh.",
+  "Landmark Hotel (Invergowrie): restaurant.landmarkdundee.co.uk is still JS-only with no readable menu. A separate/newer-looking domain thelandmarkdundee.co.uk/the-landmark-hotel/food-drink/ was found via search but failed with a certificate error (self-signed cert) on both WebFetch and TinyFish - could not verify. Trading left unclear.",
+  "New: Monifieth Farm Hotel & Restaurant (Ethiebeaton Park, Arbroath Rd, Monifieth DD5 4HB) opened Aug 2025 as an American roadhouse-style restaurant, but a guest review from Aug 2026 states the restaurant is 'closed for good now' (hotel itself still trading) - not added, evidence conflicting/recent.",
+  "1876 Dundee (Queen Street, Broughty Ferry, former Gulistan House) - opened Jun 2025, social inactive since 31 Dec, building now advertised to let (Mar 2026 Courier article) - likely closed but not certain; not added, was not previously in file.",
+  "Not found / not verified: Newtown Bar, Barnacles, BrewDog Broughty Ferry (no evidence these exist in remit), Dalhousie Golf Club (Carnoustie, outside remit).",
+  "Skipped as takeaway/delivery only: Grill House Monifieth, Meze Grill (Erskine Lane), Seaside Kitchen.",
+  "Gaps (no own website or not checked; search budget exhausted): The Fort Bar, Eagle Inn, Post Office Bar, Mali Thai, Gulistan, Gracie's (Facebook only), Raj Mahal Monifieth, The Crown Inn & The Vault Monifieth, The Bay Diner Monifieth, Longparke Farm cafe (site 403), DD4 venues (e.g. The Clep Bar) - none researched to menu level.",
+  "The Anchor: food-drinks page was 403 to plain WebFetch; readable via TinyFish which surfaced an actual menu PDF (Mar 2026 upload) not previously recorded.",
+  "Goa (Broughty Ferry): /menu page blocked by robots.txt; homepage gives no menu link, kept as-is (no menus).",
+  "Second pass 2026-09-28: restaurant.landmarkdundee.co.uk now renders for TinyFish - Dinner, Bar, Kids and Drinks menu PDFs linked from its menu section added; hours listed (breakfast, lunch 12-3, dinner 5:30-8:30) so trading set to confirmed.",
+  "Second pass 2026-09-28: Bowmans Monifieth matched to FHRSID 439819 and MAC Cafe to 1775928 (Cafe @ The MAC, Pass 2026-09-10). Velvet Tide: Tripadvisor reviews for 'the new Velvet tide' are posted on the old Sol y Sombra listing (d2046683, 27 Gray Street) - not adopted as its listing.",
+  "Refresh 2026-10-05: All 24 venues re-checked (WebFetch + TinyFish). Changes: Bruach festive 2026 menu now a direct PDF (\"XMAS 2026\"); Collinsons stale cat_id=53/66 pages dropped (no longer linked; only Autumn 2026 lunch/dinner linked); new notices for Culdee (Christmas Sessions 19 Dec), Velvet Tide (Chef's Table 5 Dec + events), Forbes weekly deals, Forgan's festive set-menu prices (expired 25 Sep fizz offer removed), Fisherman's Tavern festive dates. No venues dropped or added. Unchanged: Ship Inn (Christmas 2026 menu still live), Jolly's, Royal Arch (still \"coming soon\" site, 2025 PDF), Anchor, Visocchi's (now branded Viso Gelato, 40 Gray St), Indos, Urban Beach, Bowmans x2, Braw Tea, Maison Dieu (food menu still \"coming very soon\"), Milton Inn (festive PNG still undated), MAC Cafe, Invergowrie Inn (no menu PDFs on food page), Forbes, Landmark.",
+  "Refresh 2026-10-05: Landmark restaurant site menu section now also lists Morning Tea (10am-12pm) and Afternoon Tea (12-3pm) menus but no linkable URLs were exposed - not added. Goa homepage now describes itself as curry takeaway/order online (no menu link). Velvet Tide menu page still loads dishes via JS.",
+  "Refresh 2026-10-05: new-opening searches - The Ferry Selkie (Broughty Ferry, Scottish/Spanish, FHRS 1608554, reviewed by Courier 2023) is an existing venue not in file: no own website found (OpenTable/Tripadvisor only) - gap, not added. Courier headline \"Monifieth A92 restaurant lined up as new Angus Housing Association HQ\" (thecourier.co.uk/fp/news/5448024) further suggests Monifieth Farm restaurant has closed (not in file). Courier \"new cafe opens in Broughty Ferry\" (5287393) and Le Monde/1876 (former Gulistan House) articles were bot-blocked and unverified.",
+  "Refresh 2026-10-12: all 24 venues re-checked (WebFetch; TinyFish for Collinsons, Anchor, Forgan's, Culdee, Royal Arch, Velvet Tide, Invergowrie Inn, Landmark). Changes: Forbes of Kingennie 2026 festive brochure PDF replaced by new file (bovkzozkuq.pdf) linked from /christmas-2026; Visocchi's/Viso Gelato closed 8-15 Oct 2026 for refurb (notice added); signal cleared on older items (Anchor Mar 2026 menu, Velvet Tide menu, Culdee Sep 2025 menu). All other menu links unchanged and still linked. Royal Arch still 'coming soon' site with 2025 PDF; Maison Dieu food menu still 'coming very soon'; Milton Inn festive PNG still undated; Goa still takeaway-only, no menu link; Culdee closure 3 Oct (past) not recorded. Ship Inn festive page heading now confirms 'FESTIVE MENU 2026'.",
+  "Refresh 2026-10-12: added Mitchell's Broughty Ferry (234 Brook St, DD5 2AH; Scotsman Group cafe/brunch, existing venue missing from file). Its menu page tags lunch and food menus as 'new menu' (no launch date given) - signal left false. New-opening searches (Broughty Ferry, Monifieth) found nothing verifiable with an own website; Sixth Sense Delicatessen (Monikie, opened ~Aug 2026, Facebook only) and Good Day Kitchen & Cafe (Instagram only) noted as unverified gaps.",
+  "Second pass 2026-10-12 (late morning): Bruach reopening notice added (menu PDFs on /food unchanged). New Broughty Ferry coffee shop Next Door (339 Brook St, opened 10 Oct 2026) not added - drinks-led, Instagram only, no food menu on own site. Coffee & Co (Dundee city centre) up for sale - not in file."
+ ]
+}
