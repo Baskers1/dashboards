@@ -7,11 +7,14 @@ Usage: python3 tools/sync.py <download_dir> [<id> ...]
   saved by the Artifact tool. Files are copied as they are, except that links to other
   dashboards' claude.ai artifact pages are pointed at their GitHub Pages copies and every
   HTML page goes through harden.py (Content-Security-Policy, link guard, lang, unwrapping).
+  Only browser files are published (see PUBLIC_EXT): working data, research, playbooks and
+  scripts stay out of the public site. Exact-text replacements in redact.json remove personal
+  details. Links use both claude.ai forms: short ids and code/artifact/<uuid> ("aliases").
   With ids given, only those dashboards are synced; the hub is always rebuilt.
   Entries whose id starts with "local:" are published by their own task (e.g. sky pages) and are only listed on the hub.
-Exits non-zero (and changes nothing for that dashboard) if a downloaded page looks wrong.
+Exits non-zero (and leaves that dashboard's live folder untouched) if a downloaded page looks wrong.
 """
-import html, json, os, re, shutil, sys
+import html, json, os, re, shutil, sys, tempfile
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from harden import harden  # noqa: E402
@@ -20,16 +23,33 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_URL = "https://baskers1.github.io/dashboards/"
 M = json.load(open(os.path.join(ROOT, "tools", "dashboards.json"), encoding="utf-8"))
 BY_ID = {d["id"]: d for d in M["dashboards"]}
-LINK = re.compile(r"https://claude\.ai/(?:code/)?artifact/([A-Za-z0-9]{22})")
+LOOKUP = {**BY_ID, **{a: d for d in M["dashboards"] for a in d.get("aliases", [])}}
+LINK = re.compile(r"https://claude\.ai/(?:code/)?artifact/"
+                  r"([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}|[A-Za-z0-9]{22})")
+REDACT = json.load(open(os.path.join(ROOT, "tools", "redact.json"), encoding="utf-8"))["replacements"]
+SAFE_NAME = re.compile(r"^[a-z0-9][a-z0-9-]*$")
+PUBLIC_EXT = {".html", ".htm", ".css", ".js", ".jpg", ".jpeg", ".png", ".gif", ".webp", ".avif",
+              ".svg", ".ico", ".woff", ".woff2"}
 
 
 def folder(d):
+    for part in (d["area"], d["slug"]):
+        if not SAFE_NAME.match(part):  # these names get rmtree'd; never let them escape ROOT
+            raise ValueError(f"unsafe folder name in dashboards.json: {part!r}")
     return os.path.join(ROOT, d["area"], d["slug"])
 
 
 def rewrite_links(text):
-    return LINK.sub(lambda m: BASE_URL + BY_ID[m.group(1)]["area"] + "/" + BY_ID[m.group(1)]["slug"] + "/"
-                    if m.group(1) in BY_ID else m.group(0), text)
+    def sub(m):
+        d = LOOKUP.get(m.group(1))
+        return f"{BASE_URL}{d['area']}/{d['slug']}/" if d else m.group(0)
+    return LINK.sub(sub, text)
+
+
+def redact(text):
+    for r in REDACT:
+        text = text.replace(r["find"], r["replace"])
+    return text
 
 
 def check(page):
@@ -51,25 +71,42 @@ def sync_one(src_root, d):
     if bad:
         return f"{d['id']}: {bad}"
     dst = folder(d)
-    if os.path.isdir(dst):
-        shutil.rmtree(dst)  # exact mirror: drop files the artifact no longer has
-    shutil.copytree(src, dst)
-    fix_pages(dst)
+    os.makedirs(os.path.dirname(dst), exist_ok=True)
+    # Build the new copy beside the old one, then swap, so a failure never leaves a missing page.
+    tmp = tempfile.mkdtemp(prefix=".sync-", dir=os.path.dirname(dst))
+    try:
+        staged = os.path.join(tmp, "new")
+        shutil.copytree(src, staged)
+        fix_pages(staged)
+        if os.path.isdir(dst):
+            os.rename(dst, os.path.join(tmp, "old"))  # exact mirror: drop files the artifact no longer has
+        os.rename(staged, dst)
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
     return None
 
 
 def fix_pages(dst):
-    """Point claude.ai links at GitHub Pages and harden every HTML page under dst."""
-    for dirpath, _, names in os.walk(dst):
+    """Drop non-browser files, then fix links, redact and harden every HTML page under dst.
+    Returns the paths removed, relative to dst."""
+    removed = []
+    for dirpath, _, names in os.walk(dst, topdown=False):
         for n in names:
-            if n.endswith(".html"):
-                p = os.path.join(dirpath, n)
+            p = os.path.join(dirpath, n)
+            ext = os.path.splitext(n)[1].lower()
+            if ext not in PUBLIC_EXT:
+                os.remove(p)
+                removed.append(os.path.relpath(p, dst))
+            elif ext in (".html", ".htm"):
                 with open(p, encoding="utf-8", newline="") as f:
                     t = f.read()
-                t2 = harden(rewrite_links(t))
+                t2 = harden(redact(rewrite_links(t)))
                 if t2 != t:
                     with open(p, "w", encoding="utf-8", newline="") as f:
                         f.write(t2)
+        if dirpath != dst and not os.listdir(dirpath):
+            os.rmdir(dirpath)
+    return removed
 
 
 def build_hub():
@@ -105,7 +142,8 @@ def main(argv):
     if argv[1] == "--harden-only":
         done = [d for d in M["dashboards"] if os.path.isdir(folder(d))]
         for d in done:
-            fix_pages(folder(d))
+            for r in fix_pages(folder(d)):
+                print("removed", os.path.join(d["area"], d["slug"], r))
         build_hub()
         print(f"hardened {len(done)} dashboards and the hub")
         return 0

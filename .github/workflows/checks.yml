@@ -1,0 +1,18 @@
+name: checks
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  sync-rules:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Self-tests for tools/sync.py
+        run: python3 tools/test_sync.py
+      - name: Published pages already follow the publishing rules
+        run: |
+          python3 tools/sync.py --harden-only
+          git diff --exit-code --stat || { echo "::error::Pages differ from what tools/sync.py would publish. Run: python3 tools/sync.py --harden-only"; exit 1; }
+          test -z "$(git status --porcelain)"

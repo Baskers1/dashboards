@@ -1,0 +1,9 @@
+{
+ "_comment": "Exact-text replacements applied to every published HTML page by tools/sync.py. Use for personal details (private phone numbers, personal email addresses) that should not be on the public site.",
+ "replacements": [
+  {
+   "find": "Contact 07480 530963 or darell.berthon@icloud.com.",
+   "replace": "Contact details are on the group's own page."
+  }
+ ]
+}

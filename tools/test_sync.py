@@ -47,4 +47,69 @@ assert u.index("y{}") < u.index("</head>") and u.index("var B=2;") < u.index("</
 assert '<body class="big">' in u and '<html lang="en">' in u and "<p>inner</p>" in u
 assert sha("var B=2;") in harden(double)
 assert unwrap(page) == page, "single documents are left alone"
+
+# --- publishing rules (aliases, folder names, redaction, file filter, safe swap) ---
+import shutil, tempfile
+ids = [d["id"] for d in s.M["dashboards"]] + [a for d in s.M["dashboards"] for a in d.get("aliases", [])]
+assert len(set(ids)) == len(ids), "duplicate id or alias"
+for d in s.M["dashboards"]:
+    s.folder(d)  # raises on unsafe names
+for bad in ("../x", "a/b", "", "X"):
+    try:
+        s.folder({"area": bad, "slug": "weather"}); raise AssertionError(f"accepted {bad!r}")
+    except ValueError:
+        pass
+
+aliased = next(d for d in s.M["dashboards"] if d.get("aliases"))
+out = s.rewrite_links(f'href="https://claude.ai/code/artifact/{aliased["aliases"][0]}"')
+assert out == f'href="{s.BASE_URL}{aliased["area"]}/{aliased["slug"]}/"', out
+unknown_uuid = "https://claude.ai/code/artifact/00000000-0000-0000-0000-000000000000"
+assert s.rewrite_links(unknown_uuid) == unknown_uuid
+
+r = s.REDACT[0]
+assert r["find"] not in s.redact("x " + r["find"] + " y") and r["replace"] in s.redact(r["find"])
+
+tmp = tempfile.mkdtemp()
+try:
+    for rel, body in {"index.html": "<html><head><title>t</title></head><body>" + r["find"] + "</body></html>",
+                      "thumbs/a.jpg": "x", "hero.JPG": "x", "data/data.json": "{}",
+                      "data/build.py.txt": "x", "data/notes.md": "x", "design/shell.txt": "x"}.items():
+        os.makedirs(os.path.dirname(os.path.join(tmp, rel)), exist_ok=True)
+        open(os.path.join(tmp, rel), "w").write(body)
+    removed = s.fix_pages(tmp)
+    assert sorted(removed) == sorted(["data/data.json", "data/build.py.txt", "data/notes.md", "design/shell.txt"]), removed
+    assert not os.path.exists(os.path.join(tmp, "data")) and not os.path.exists(os.path.join(tmp, "design"))
+    assert os.path.exists(os.path.join(tmp, "thumbs/a.jpg")) and os.path.exists(os.path.join(tmp, "hero.JPG"))
+    page_out = open(os.path.join(tmp, "index.html")).read()
+    assert "Content-Security-Policy" in page_out and r["find"] not in page_out
+finally:
+    shutil.rmtree(tmp)
+
+# sync_one: a rejected download leaves the live folder alone
+src = tempfile.mkdtemp()
+try:
+    os.makedirs(os.path.join(src, known["id"]))
+    open(os.path.join(src, known["id"], "index.html"), "w").write("<title>tiny</title>")
+    dst = s.folder(known)
+    before = sorted(os.listdir(dst)) if os.path.isdir(dst) else None
+    assert "too small" in s.sync_one(src, known)
+    assert (sorted(os.listdir(dst)) if os.path.isdir(dst) else None) == before
+finally:
+    shutil.rmtree(src)
+
+# sync_one success: new copy replaces old (stale files dropped), rules applied, no temp left
+root, src = tempfile.mkdtemp(), tempfile.mkdtemp()
+real_root, s.ROOT = s.ROOT, root
+try:
+    dst = s.folder(known); os.makedirs(dst)
+    open(os.path.join(dst, "stale.html"), "w").write("old")
+    os.makedirs(os.path.join(src, known["id"], "data"))
+    open(os.path.join(src, known["id"], "index.html"), "w").write("<html><head><title>t</title></head><body>" + "x" * 10_000 + "</body></html>")
+    open(os.path.join(src, known["id"], "data", "d.json"), "w").write("{}")
+    assert s.sync_one(src, known) is None
+    assert os.listdir(dst) == ["index.html"], os.listdir(dst)
+    assert "Content-Security-Policy" in open(os.path.join(dst, "index.html")).read()
+    assert [n for n in os.listdir(os.path.dirname(dst)) if n.startswith(".sync-")] == [], "temp dir left behind"
+finally:
+    s.ROOT = real_root; shutil.rmtree(root); shutil.rmtree(src)
 print("ok")

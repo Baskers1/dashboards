@@ -55,13 +55,19 @@
    "id": "GxRwChkzXrSMukphXMyAky",
    "area": "east-kent",
    "slug": "referral-waits",
-   "name": "Referral Waits"
+   "name": "Referral Waits",
+   "aliases": [
+    "81365a8b-6746-4a75-b25e-d841e614697a"
+   ]
   },
   {
    "id": "3tHzURDoGBo53pXmhT9D2d",
    "area": "east-kent",
    "slug": "waiting-charts",
-   "name": "Waiting & Outcome Charts"
+   "name": "Waiting & Outcome Charts",
+   "aliases": [
+    "175bae3c-6ecc-4f2e-b099-31315d5bb4ee"
+   ]
   },
   {
    "id": "85RFURpU8jkhfq2rUHGzSq",
@@ -109,13 +115,19 @@
    "id": "1ap1HPBzNXcBw1tXUb7HP1",
    "area": "west-herts",
    "slug": "referral-waits",
-   "name": "Referral Waits"
+   "name": "Referral Waits",
+   "aliases": [
+    "04b8831e-e840-4b3f-a9a8-270cb6a0a72c"
+   ]
   },
   {
    "id": "GBeYq1Pe1gojBtBko66GWX",
    "area": "west-herts",
    "slug": "waiting-charts",
-   "name": "Waiting & Outcome Charts"
+   "name": "Waiting & Outcome Charts",
+   "aliases": [
+    "7af5a868-4a9a-4069-961d-5f8e04ac6764"
+   ]
   },
   {
    "id": "MVLXSXWcDGro4CG3zdWYtW",
@@ -163,13 +175,19 @@
    "id": "KW9d4HfJUrrcoFqwri2tzC",
    "area": "tayside",
    "slug": "referral-waits",
-   "name": "Referral Waits"
+   "name": "Referral Waits",
+   "aliases": [
+    "95d660e5-6d42-46ae-8e9b-f881321ca7f9"
+   ]
   },
   {
    "id": "9WPeF5bi5z5jXiCkewiF64",
    "area": "tayside",
    "slug": "waiting-charts",
-   "name": "Waiting & Outcome Charts"
+   "name": "Waiting & Outcome Charts",
+   "aliases": [
+    "44e3a1df-0f4b-46dd-9f4e-9c0841d7b845"
+   ]
   },
   {
    "id": "QvsUPEJ7F3xE83p1e6zRnR",
@@ -217,13 +235,19 @@
    "id": "WMTkiPBR3iJxxy3Eoh4NE3",
    "area": "ammanford",
    "slug": "referral-waits",
-   "name": "Referral Waits"
+   "name": "Referral Waits",
+   "aliases": [
+    "edb46253-275c-4cfb-8c04-6f826c691ae0"
+   ]
   },
   {
    "id": "3End8nyEVNwRs1hwJym7xc",
    "area": "ammanford",
    "slug": "waiting-charts",
-   "name": "Waiting & Outcome Charts"
+   "name": "Waiting & Outcome Charts",
+   "aliases": [
+    "121f1000-6cc0-4731-9b17-6dc374662ef1"
+   ]
   },
   {
    "id": "FtnSqUFf4fa9q8kCZKJAVT",
