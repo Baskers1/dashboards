@@ -248,6 +248,18 @@
    "area": "sky",
    "slug": "ammanford",
    "name": "Ammanford night sky"
+  },
+  {
+   "id": "local:sky-dundee",
+   "area": "sky",
+   "slug": "dundee",
+   "name": "Dundee night sky"
+  },
+  {
+   "id": "local:sky-carnoustie",
+   "area": "sky",
+   "slug": "carnoustie",
+   "name": "Carnoustie night sky"
   }
  ]
 }
