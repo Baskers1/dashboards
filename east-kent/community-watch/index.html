@@ -1,0 +1,769 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>East Kent · Community Watch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:wght@600;800&display=swap">
+<style>
+:root{
+  --bg:#EEF3F5; --surface:#FFFFFF; --surface2:#E3ECEF; --ink:#12303F; --muted:#4A6572; --line:#C6D5DB;
+  --accent:#0B6F7A; --accent-ink:#FFFFFF; --focus:#0B4FD1;
+  --urgent:#B3261E; --urgent-bg:#FCE9E7; --soon:#8A5A00; --soon-bg:#FBF0D6; --ok:#2F6B3F; --ok-bg:#E2F1E5; --done:#5B6B73; --done-bg:#E6EBED; --evt:#0B5A8A; --evt-bg:#E0EEF8;
+  --f-body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-head:"Bricolage Grotesque","Atkinson Hyperlegible",system-ui,sans-serif;
+  --base:16px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0D1B22; --surface:#15272F; --surface2:#1C333D; --ink:#E7F0F3; --muted:#9FB6C0; --line:#2C4652;
+    --accent:#4FC3CF; --accent-ink:#06222A; --focus:#8DB6FF;
+    --urgent:#FF9A92; --urgent-bg:#3A1B19; --soon:#F2C56B; --soon-bg:#372A0B; --ok:#8FD09F; --ok-bg:#16301D; --done:#9FB0B8; --done-bg:#1F313A; --evt:#8CC8F2; --evt-bg:#142B3C;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0D1B22; --surface:#15272F; --surface2:#1C333D; --ink:#E7F0F3; --muted:#9FB6C0; --line:#2C4652;
+  --accent:#4FC3CF; --accent-ink:#06222A; --focus:#8DB6FF;
+  --urgent:#FF9A92; --urgent-bg:#3A1B19; --soon:#F2C56B; --soon-bg:#372A0B; --ok:#8FD09F; --ok-bg:#16301D; --done:#9FB0B8; --done-bg:#1F313A; --evt:#8CC8F2; --evt-bg:#142B3C;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:var(--base);line-height:1.5;padding-inline:16px;padding-block:0 48px}
+body.big{--base:22px;line-height:1.55}
+.wrap{max-width:1080px;margin-inline:auto}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}
+h1,h2,h3{font-family:var(--f-head);text-wrap:balance;margin:0;line-height:1.15}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+
+.top{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:flex-end;justify-content:space-between;padding-block:24px 16px}
+.brand h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:800;letter-spacing:-.01em}
+.brand p{margin:6px 0 0;color:var(--muted);max-width:62ch}
+.asof{font-size:.85rem;color:var(--muted);margin-top:4px}
+.mode{display:inline-flex;border:2px solid var(--ink);border-radius:999px;overflow:hidden;background:var(--surface)}
+.mode button{border:0;background:transparent;padding:10px 18px;font-weight:700;min-height:44px}
+.mode button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+
+.alert{display:flex;gap:16px;align-items:center;flex-wrap:wrap;border-radius:12px;padding:16px 20px;margin-block:8px 20px;border:2px solid}
+.alert.urgent{background:var(--urgent-bg);border-color:var(--urgent);color:var(--urgent)}
+.alert.soon{background:var(--soon-bg);border-color:var(--soon);color:var(--soon)}
+.alert.calm{background:var(--ok-bg);border-color:var(--ok);color:var(--ok)}
+.alert strong{font-family:var(--f-head);font-size:1.25em;display:block}
+.alert span{color:var(--ink)}
+.alert .sym{font-size:2em;line-height:1;font-weight:800}
+
+.runway{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-bottom:20px}
+.runway h2{font-size:1.1rem;margin-bottom:12px}
+.rw-row{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,2fr) auto;gap:8px 16px;align-items:center;padding-block:8px;border-top:1px solid var(--line)}
+.rw-row:first-of-type{border-top:0}
+a.rw-row{color:inherit;text-decoration:none;padding-inline:10px;margin-inline:-10px;border-radius:10px}
+a.rw-row:hover,a.rw-row:focus-visible{background:var(--surface2)}
+a.rw-row:hover .rw-title,a.rw-row:focus-visible .rw-title{text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:3px}
+.rw-go{display:block;font-weight:700;font-size:.8rem;color:var(--accent)}
+.rw-title{font-weight:700;overflow-wrap:anywhere}
+.rw-title small{display:block;font-weight:400;color:var(--muted);font-size:.8rem}
+.rw-bar{height:12px;border-radius:999px;background:var(--surface2);position:relative;overflow:hidden}
+.rw-bar i{position:absolute;inset:0 auto 0 0;border-radius:999px;background:var(--accent)}
+.rw-bar.urgent i{background:var(--urgent)} .rw-bar.soon i{background:var(--soon)} .rw-bar.event i{background:var(--evt)}
+.rw-days{font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap}
+.rw-note{font-size:.8rem;color:var(--muted);margin:10px 0 0}
+@media(max-width:620px){.rw-row{grid-template-columns:1fr auto}.rw-bar{grid-column:1/-1;order:3}}
+
+.viewtabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;border-bottom:2px solid var(--line);padding-bottom:12px}
+.viewtabs button{border:2px solid var(--line);background:var(--surface);border-radius:10px;padding:10px 18px;min-height:44px;font-weight:700}
+.viewtabs button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.controls{display:grid;gap:12px;margin-bottom:16px}
+.ctl-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ctl-label{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700;min-width:5.5rem}
+.ctl-row>span:last-child{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 14px;min-height:40px;font-weight:700}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.chip .n{opacity:.75;font-weight:400;margin-left:4px}
+.search{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.search input{flex:1 1 260px;min-height:44px;padding:8px 14px;border:2px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}
+
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+.list{display:grid;gap:16px}
+.sect{font-size:1.25rem;margin-top:8px}
+.sect small{font-family:var(--f-body);font-weight:400;color:var(--muted);font-size:.8rem;margin-left:8px}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;display:grid;gap:12px}
+.card.done{opacity:.94}
+.card-top{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.tag{font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:6px;background:var(--surface2);color:var(--muted)}
+.tag.rec{background:var(--ok-bg);color:var(--ok)}
+.tag.chk{background:var(--soon-bg);color:var(--soon)}
+.card h3{font-size:1.3rem;font-weight:800}
+.body-org{color:var(--muted);font-size:.9rem;margin-top:-4px}
+.dl{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;padding:10px 14px;border-radius:10px;font-weight:700}
+.dl.urgent{background:var(--urgent-bg);color:var(--urgent)}
+.dl.soon{background:var(--soon-bg);color:var(--soon)}
+.dl.later{background:var(--ok-bg);color:var(--ok)}
+.dl.event{background:var(--evt-bg);color:var(--evt)}
+.dl.done,.dl.ongoing,.dl.decision{background:var(--done-bg);color:var(--done)}
+.dl .big{font-family:var(--f-head);font-size:1.4em;font-variant-numeric:tabular-nums}
+.plain{margin:0;font-size:1.05em}
+.meta{margin:0;color:var(--muted);font-size:.92em}
+.meta strong{color:var(--ink)}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:10px 18px;border-radius:10px;border:2px solid var(--accent);font-weight:700;text-decoration:none;background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn[aria-expanded="true"]{background:var(--surface2)}
+.more{display:grid;gap:14px;padding-top:4px}
+.more p{margin:0}
+.more ul{margin:0;padding-left:20px;display:grid;gap:4px}
+.more h4{margin:0 0 6px;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.lensrow{display:flex;flex-wrap:wrap;gap:6px}
+.lensrow .chip{padding:4px 10px;min-height:32px;font-size:.85rem}
+.src{font-size:.85rem;color:var(--muted);overflow-wrap:anywhere}
+
+.side{position:sticky;top:12px;display:grid;gap:12px}
+@media(max-width:900px){.side{position:static}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
+.panel h2{font-size:1.05rem;margin-bottom:4px}
+.panel p.hint{margin:0 0 10px;color:var(--muted);font-size:.85rem}
+.group{margin-top:12px}
+.group h3{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-family:var(--f-body);font-weight:700;margin-bottom:6px}
+.ent{display:flex;flex-wrap:wrap;gap:6px}
+.ent .chip{padding:5px 10px;min-height:34px;font-size:.85rem;font-weight:400;text-align:left}
+.ent .chip[aria-pressed="true"]{font-weight:700}
+.panel ul{margin:0;padding-left:18px;display:grid;gap:6px}
+.empty-msg{background:var(--surface);border:1px dashed var(--line);border-radius:12px;padding:20px;color:var(--muted)}
+.foot{margin-top:28px;color:var(--muted);font-size:.85rem;display:grid;gap:8px;max-width:78ch}
+
+.bigbar,.bigarea{display:none}
+body.big .bigbar{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:16px}
+body.big .bigarea{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-bottom:20px}
+.bigbar button{min-height:76px;border:3px solid var(--accent);border-radius:16px;background:var(--surface);font-weight:800;font-size:1.05em;padding:12px}
+.bigbar button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.bigarea button{min-height:60px;border:2px solid var(--ink);border-radius:14px;background:var(--surface);font-weight:700;padding:10px}
+.bigarea button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.bigarea .lbl{grid-column:1/-1;font-weight:700;color:var(--muted);font-size:.8em;text-transform:uppercase;letter-spacing:.08em}
+body.big .brand p,body.big .asof{font-size:.8em}
+body.big .grid{grid-template-columns:1fr}
+body.big .side,body.big .runway,body.big .ctl-standard,body.big .viewtabs{display:none}
+body.big .card{padding:24px;gap:16px;border-width:2px}
+body.big .card h3{font-size:1.45rem}
+body.big .btn{min-height:64px;padding:14px 26px;font-size:1.05em;border-radius:14px;width:100%}
+body.big .actions{display:grid;grid-template-columns:1fr}
+body.big .dl{font-size:1.05em;padding:14px 18px}
+body.big .mode button{min-height:56px;padding:12px 22px}
+body.big .lensrow .chip{min-height:44px}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+.back-to-top{position:fixed;right:20px;bottom:20px;z-index:40;width:48px;height:48px;border-radius:50%;border:2px solid var(--accent);background:var(--accent);color:var(--accent-ink);font-size:1.3rem;font-weight:800;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,.25);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .2s}
+.back-to-top.show{opacity:1;visibility:visible;transform:translateY(0)}
+body.big .back-to-top{width:60px;height:60px;font-size:1.6rem;right:16px;bottom:16px}
+@media(prefers-reduced-motion:reduce){.back-to-top{transition:none}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <h1>Thanet Community Watch</h1>
+      <p>Who is doing what across Thanet: social enterprises, volunteering and community groups, plus the council and government plans that affect them, local people and wildlife. Deadlines are flagged as they get close.</p>
+      <div class="asof" id="asof"></div>
+    </div>
+    <div class="mode" role="group" aria-label="Choose display">
+      <button type="button" id="m-std" aria-pressed="true">Standard</button>
+      <button type="button" id="m-big" aria-pressed="false">Big buttons</button>
+    </div>
+  </header>
+
+  <div class="controls ctl-standard" id="ctl-where">
+    <div class="ctl-row" role="group" aria-label="Choose your town"><span class="ctl-label">Choose your town</span><span id="areas"></span></div>
+  </div>
+
+  <div id="alert" role="status" aria-live="polite"></div>
+
+  <div class="bigbar" id="bigbar" role="group" aria-label="What would you like to see?"></div>
+  <div class="bigarea" id="bigarea" role="group" aria-label="Which town?"></div>
+
+  <section class="runway" id="runway" aria-labelledby="rw-h"></section>
+
+  <div class="viewtabs" role="group" aria-label="Choose a section">
+    <button type="button" data-view="deadlines">Deadlines and decisions</button>
+    <button type="button" data-view="groups">Groups and volunteering</button>
+    <button type="button" data-view="nature">Nature and wildlife</button>
+  </div>
+
+  <div class="controls ctl-standard" id="ctl-items">
+    <div class="ctl-row" role="group" aria-label="Status"><span class="ctl-label">Show</span><span id="tabs"></span></div>
+    <div class="ctl-row" role="group" aria-label="Who is running it"><span class="ctl-label">Run by</span><span id="levels"></span></div>
+  </div>
+  <div class="controls ctl-standard" id="ctl-groups">
+    <div class="search"><label class="ctl-label" for="q">Search</label><input id="q" type="search" placeholder="Name, town or what they do" autocomplete="off"></div>
+    <div class="ctl-row" role="group" aria-label="Type of group"><span class="ctl-label">Type</span><span id="gcats"></span></div>
+    <div class="ctl-row"><span class="ctl-label">Volunteers</span><span id="recruit"></span></div>
+  </div>
+
+  <div class="grid">
+    <main>
+      <div id="lensbar"></div>
+      <div class="list" id="list"></div>
+    </main>
+    <aside class="side">
+      <section class="panel" id="lens-panel" aria-labelledby="lens-h">
+        <h2 id="lens-h">Who and what is affected</h2>
+        <p class="hint">Pick a group, animal or place to see only the items that touch it.</p>
+        <div id="lenses"></div>
+      </section>
+      <section class="panel" aria-labelledby="soon-h">
+        <h2 id="soon-h">Expected soon, not yet dated</h2>
+        <p class="hint">My reading of what may appear next. None of these has an announced date.</p>
+        <ul id="soonlist"></ul>
+      </section>
+      <section class="panel" aria-labelledby="w-h">
+        <h2 id="w-h">Places to watch</h2>
+        <ul id="watch"></ul>
+      </section>
+    </aside>
+  </div>
+
+  <div class="foot">
+    <p><strong>How to read this.</strong> Days left are counted from today's date in London. "Closes" is the last day to reply, apply or sign up. "Happens" is the day of an event. Red means 7 days or fewer, amber 21 days or fewer. A group marked "Check before you go" was found in a search result or an older article, so confirm it is still running before you travel or hand over money.</p>
+    <p><strong>What is not here.</strong> No repair cafes or residents' association lists turned up, and no Environment Agency sea defence scheme dated 2026 was found. Some group sites blocked automated reading. The list will miss small groups that only use Facebook or word of mouth.</p>
+    <p><strong>Sources.</strong> Thanet District Council's <a href="https://yourvoice.thanet.gov.uk/en-GB/" target="_blank" rel="noopener">Your Voice Thanet</a>, <a href="https://letstalk.kent.gov.uk/" target="_blank" rel="noopener">Let's Talk Kent</a>, <a href="https://www.gov.uk/" target="_blank" rel="noopener">GOV.UK</a>, <a href="https://consult.defra.gov.uk/" target="_blank" rel="noopener">Defra Citizen Space</a>, the <a href="https://www.thanetcoast.org.uk/events-and-activities/" target="_blank" rel="noopener">Thanet Coast Project</a>, group websites, and the <a href="https://theisleofthanetnews.com/category/community/" target="_blank" rel="noopener">Isle of Thanet News</a>. Information collected on 13 October 2026. Always confirm dates and times on the linked page before you rely on them.</p>
+  </div>
+</div>
+
+<button type="button" id="backtotop" class="back-to-top" aria-label="Back to top">↑</button>
+
+<script>
+const LEVELS = {local:"Thanet councils", county:"Kent County Council", central:"Central government", funder:"Funders and companies", community:"Community and charity"};
+const GCATS = {hub:"Volunteer hubs, funders and support", se:"Social enterprises and CICs", food:"Food and family support", care:"Older people, health and disability", nature:"Nature, gardens and coast", culture:"Arts, heritage, clubs and centres", camp:"Campaign and residents' groups"};
+const GCAT_EMOJI = {hub:"👥", se:"💼", food:"🍲", care:"❤️", nature:"🌿", culture:"🎨", camp:"📢"};
+const KIND_EMOJI = {Consultation:"📋", Funding:"💰", Event:"📅", Decision:"🏛️", Programme:"🔁"};
+const AREAS = {margate:"Margate", ramsgate:"Ramsgate", broadstairs:"Broadstairs and St Peter's", west:"Birchington, Westgate and Minster"};
+const AREAL = Object.assign({thanet:"Across Thanet"}, AREAS);
+const LENSES = [
+  {cat:"People", id:"old", label:"Older and disabled people"},
+  {cat:"People", id:"young", label:"Young people and families"},
+  {cat:"People", id:"home", label:"Renters, homeless and housing need"},
+  {cat:"People", id:"dog", label:"Dog owners and walkers"},
+  {cat:"People", id:"res", label:"Every resident"},
+  {cat:"People", id:"biz", label:"Local businesses"},
+  {cat:"Organisations", id:"vcse", label:"Charities and voluntary groups"},
+  {cat:"Organisations", id:"se", label:"Social enterprises"},
+  {cat:"Wildlife and places", id:"bird", label:"Coastal and wading birds"},
+  {cat:"Wildlife and places", id:"marine", label:"Sea, seals and shore life"},
+  {cat:"Wildlife and places", id:"marsh", label:"Marsh, farmland and woodland"},
+  {cat:"Wildlife and places", id:"coast", label:"Beaches and coast paths"},
+  {cat:"Wildlife and places", id:"water", label:"Bathing water and pollution"}
+];
+const IOTN_SEP5 = "https://theisleofthanetnews.com/2026/09/05/community-chartwell-house-rtc-grants-ramsgate-squirrels-margate-sea-cadets-chalk-and-change-camera-club-entrepreneur-awards-margate-mayor-east-kent-freemasons-merchant-navy-day-and-redrow/";
+const IOTN_SEP20 = "https://theisleofthanetnews.com/2026/09/20/community-krcf-grants-coast-country-markets-birchington-health-and-thanet-lions/";
+const IOTN_OCT11 = "https://theisleofthanetnews.com/2026/10/11/community-sarah-thorne-theatre-liberty-college-golf-club-quiz-margate-mayor-poppy-appeal-dinner-st-nicholas-craft-fair-ndft-cry-rotary-and-martha-trust/";
+
+/* status: open (has a future date), decision (waiting on a decision, watch), ongoing (running, no closing date), closed.
+   kind: Consultation, Funding, Decision, Programme, Event. */
+const ITEMS = [
+{ id:"redrow", title:"Redrow South East Community Fund", body:"Redrow (housebuilder)", level:"funder", kind:"Funding", status:"open",
+  deadline:"2026-09-30", time:"time not stated", topics:["money","volunteer"], lenses:["vcse","young"],
+  plain:"Up to £5,000 for community groups, youth groups and schools in Kent and East Sussex.",
+  detail:"Redrow South East has re-launched its community fund. The date and amount come from the Isle of Thanet News report of 5 September 2026. Read the rules on the Redrow site before you apply.",
+  how:"Apply online through Redrow's community fund page, linked from the report.",
+  aff:["Community groups, youth groups and schools"], url:IOTN_SEP5, urlLabel:"Read the report", src:IOTN_SEP5 },
+{ id:"minerals", title:"Kent Mineral Sites Plan 2026 (draft)", body:"Kent County Council", level:"county", kind:"Consultation", status:"open",
+  deadline:"2026-10-05", time:"11:59, as shown on Let's Talk Kent (extended)", topics:["nature","services"], lenses:["res","marsh"],
+  plain:"Kent County Council asks whether its draft plan for where minerals can be dug in Kent is legally sound and workable.",
+  detail:"This is a legal soundness check on a county-wide plan. I did not confirm any Thanet-specific sites, so read the plan's site list before deciding whether it touches you.",
+  how:"Online form, Word form emailed to mwlp@kent.gov.uk, or post to Minerals and Waste Planning Policy Team, Sessions House, Maidstone ME14 1XQ.",
+  aff:["Residents near any proposed site","Environmental groups"], url:"https://letstalk.kent.gov.uk/draft-of-the-kent-mineral-sites-plan-2026", urlLabel:"Have your say", src:"https://letstalk.kent.gov.uk/draft-of-the-kent-mineral-sites-plan-2026" },
+{ id:"localplan", title:"New Thanet Local Plan: scoping consultation", body:"Thanet District Council", level:"local", kind:"Consultation", status:"open",
+  deadline:"2026-10-09", time:"5pm", topics:["homes","nature","services"], lenses:["res","biz","vcse","se","marsh","bird"],
+  plain:"The first step in deciding where about 15,000 new homes, jobs and roads go in Thanet over the next 15 years, and which places stay protected.",
+  detail:"Reported target of 1,106 homes a year. Drop-in session still to come: Friday 2 October, 9am to 4.30pm, Cecil Street, Margate. The council aims to send the plan to a government inspector by March 2028 and adopt it in February 2029. The pages I read said little about wildlife, so ask how farmland habitats and the protected coast will be treated.",
+  how:"Comment on the portal, email local.plans@thanet.gov.uk, or post to Strategic Planning, Cecil Square, Margate CT9 1YW.",
+  aff:["Farmland and green space that could be built on","Community groups and social enterprises that need premises","Doctors, buses and other services for new households","The protected Thanet coast, through extra visitors"],
+  url:"https://thanetcouncilplan.inconsult.uk/TLP_SCOP/consultationHome", urlLabel:"Have your say", src:"https://www.thanet.gov.uk/timetable-published-in-preparation-for-a-new-local-plan-2/" },
+{ id:"pspo", title:"Dog control rules for beaches and open spaces (renewal)", body:"Thanet District Council", level:"local", kind:"Consultation", status:"open",
+  deadline:"2026-10-09", time:"end of day (the page showed 18:59, so confirm)", topics:["nature","services"], lenses:["dog","bird","coast","res"],
+  plain:"A three-year renewal of the dog rules. New: no dogs on the beach all year between Cold Harbour and Plum Pudding at Birchington, and dogs on leads on the northern sea wall there.",
+  detail:"Follows evidence of bird disturbance from Bird Wise East Kent. Existing rules such as clearing up after dogs, leads on promenades and seasonal beach exclusions continue. Cabinet takes the final decision later this year.",
+  how:"Complete the survey on Your Voice Thanet.",
+  aff:["Overwintering wading birds and migrating geese at Birchington","Pegwell Bay wildlife","Dog owners and walkers","Blue Flag and Seaside Award beaches"],
+  url:"https://yourvoice.thanet.gov.uk/en-GB/projects/dog-control-pspo", urlLabel:"Have your say", src:"https://theisleofthanetnews.com/2026/08/29/consultation-open-for-proposed-renewed-dog-beach-ban-or-on-lead-order-for-isle-sites/" },
+{ id:"flytip", title:"Conditional cautions for fly-tipping", body:"Defra", level:"central", kind:"Consultation", status:"open",
+  deadline:"2026-10-16", time:"time not stated", topics:["nature","services"], lenses:["res","marsh"],
+  plain:"Government proposes to let councils, including Thanet, issue conditional cautions to people caught fly-tipping.",
+  detail:"National consultation. It was the only open Defra consultation I found that touches coasts, litter or countryside. Confirm the closing time on the Defra page.",
+  how:"Respond on Defra's Citizen Space.",
+  aff:["Litter and fly-tipping on rural verges and the coast"], url:"https://consult.defra.gov.uk/fly-tipping-and-litter-policy/conditional-caution-powers-to-local-authorities/", urlLabel:"Have your say", src:"https://consult.defra.gov.uk/fly-tipping-and-litter-policy/conditional-caution-powers-to-local-authorities/" },
+{ id:"housing", title:"Housing, Homelessness and Rough Sleeper Strategy (draft)", body:"Thanet District Council", level:"local", kind:"Consultation", status:"open",
+  deadline:"2026-10-25", time:"the page showed 19:59, so confirm", topics:["homes","services"], lenses:["home","old","vcse","res"],
+  plain:"Draft plan on housing affordability, an ageing population and preventing homelessness.",
+  detail:"It goes to Cabinet and Full Council later in 2026. The page does not mention the voluntary sector, so housing, homelessness and food charities may want to comment. 25 October is a Sunday.",
+  how:"Complete the survey on Your Voice Thanet.",
+  aff:["Homeless people and rough sleepers","Older residents","Tenants","Housing and homelessness charities"], url:"https://yourvoice.thanet.gov.uk/en-GB/projects/hhrs-strategy", urlLabel:"Have your say", src:"https://yourvoice.thanet.gov.uk/en-GB/projects/hhrs-strategy" },
+{ id:"chalk", at:["margate"], title:"Chalk & Change Award for under-25s", body:"Financial Escape, Margate", level:"community", kind:"Funding", status:"open",
+  deadline:"2026-10-31", time:"time not stated", topics:["money"], lenses:["young","se"],
+  plain:"£500 for community enterprise ideas from people under 25, with written feedback for every applicant.",
+  detail:"Submit a two-page proposal. Reported by the Isle of Thanet News on 5 September 2026.",
+  how:"Send the two-page proposal as described in the report.",
+  aff:["Young people with an idea for a community enterprise"], url:IOTN_SEP5, urlLabel:"Read the report", src:IOTN_SEP5 },
+{ id:"rtcgrants", at:["ramsgate"], title:"Ramsgate Town Council grants", body:"Ramsgate Town Council", level:"local", kind:"Funding", status:"open",
+  deadline:"2026-11-04", time:"Quarterly deadline; Full Council decides 25 November 2026", topics:["money"], lenses:["vcse","se"],
+  plain:"Ramsgate Fund, Events Fund and Community Services Fund for local projects. The last round gave £25,229 to nine projects.",
+  detail:"The council's funding page, re-read in full on 12 October 2026, confirms the next quarterly submission deadline is 4 November 2026 (Full Council decides 25 November 2026), matching what was already shown. Budget remaining as of 27 August 2026: Ramsgate Fund £3,093.80 of £20,600; Events Fund £13,154 of £70,000; Community Services Fund £459.50 of £52,000. There is also a Small Grants Scheme (up to £300 per project, first-come first-served, no closing date) from a separate yearly pot, now shown with £2,407.94 of £5,000 remaining. Check eligibility for each fund on the council's funding page.",
+  how:"Apply through the Town Council's funding page.",
+  aff:["Ramsgate community groups and events"], url:"https://www.ramsgatetown.org/town-council/funding", urlLabel:"See the funds", src:"https://www.ramsgatetown.org/town-council/funding" },
+{ id:"margatemarshals", at:["margate"], title:"Margate Mayor's call for Community Event Volunteer Marshals", body:"Margate Town Mayor's Office", level:"community", kind:"Event", status:"open",
+  deadline:"2026-11-08", time:"Remembrance Sunday Parade, Sunday 8 November 2026; the Mayor's Office is building a standing volunteer team for events beyond this one", topics:["volunteer"], lenses:["res","vcse"],
+  plain:"The Margate Town Mayor's Office is recruiting Community Event Volunteer Marshals, with the Remembrance Sunday Parade as the first named event.",
+  detail:"Reported by the Isle of Thanet News on 11 October 2026. The call is framed as building a volunteer team ahead of Margate Town Council taking on a fuller programme of events next year, so it is likely to continue beyond the Remembrance Sunday date shown here.",
+  how:"Sign up through the online form linked from the Mayor's Office.",
+  aff:["Margate's civic and remembrance events"], url:IOTN_OCT11, urlLabel:"Read the report", src:IOTN_OCT11 },
+
+/* events */
+{ id:"seaweed", at:["broadstairs"], title:"Seaweed and Their Secrets walk, Botany Bay", body:"Thanet Coast Project with a Natural History Museum expert", level:"community", kind:"Event", status:"open",
+  deadline:"2026-10-03", time:"10:00, two hours, ages 14 and over, by donation", topics:["nature","volunteer"], lenses:["marine","coast"],
+  plain:"A guided walk on the chalk shore to learn about seaweeds.",
+  detail:"Part of the Thanet Coast Project programme. The chalk reef here is part of the Thanet Coast Marine Conservation Zone.",
+  how:"Book on Eventbrite through the events page.",
+  aff:["Chalk reef and shore life"], url:"https://www.thanetcoast.org.uk/events-and-activities/", urlLabel:"See the events page", src:"https://www.thanetcoast.org.uk/events-and-activities/" },
+{ id:"lions", title:"Sight Awareness Day, Westwood Cross", body:"Thanet Lions Club CIO", level:"community", kind:"Event", status:"open",
+  deadline:"2026-10-08", time:"time not stated", topics:["volunteer"], lenses:["old","res"],
+  plain:"The Lions Club runs a sight awareness day at Westwood Cross.",
+  detail:"Reported by the Isle of Thanet News on 20 September 2026.",
+  how:"Turn up on the day. Contact Steve Carley through the Lions Club to join.",
+  aff:["People with sight problems and their families"], url:IOTN_SEP20, urlLabel:"Read the report", src:IOTN_SEP20 },
+{ id:"halfterm", at:["margate","broadstairs","ramsgate"], title:"Beach art scavenger hunts (half-term)", body:"Thanet Coast Project", level:"community", kind:"Event", status:"open",
+  deadline:"2026-10-27", time:"9am, ages 4 to 11, £2.50 each. Also Wed 28 Oct at Viking Bay, Broadstairs and Thu 29 Oct at Ramsgate Main Sands", topics:["nature","volunteer"], lenses:["young","marine","coast"],
+  plain:"Family sessions on marine life clues and beach art. First date is Margate Main Sands.",
+  detail:"Re-checked the Thanet Coast Project events page again on 13 October 2026: all three dates still show at 9am and are now labelled 'amended dates' (1.5 hours each). The page is inconsistent on booking status, showing some other entries as already open and these three as 'opens in October', so confirm on Eventbrite before relying on it.",
+  how:"Book on Eventbrite through the link.",
+  aff:["Children and families","Shore life"], url:"https://www.eventbrite.co.uk/e/1998960616013", urlLabel:"Book on Eventbrite", src:"https://www.thanetcoast.org.uk/events-and-activities/" },
+{ id:"beachclean", at:["ramsgate"], title:"Winter Beach Clean, Pegwell Bay", body:"Thanet Coast Project with the Marine Conservation Society", level:"community", kind:"Event", status:"open",
+  deadline:"2026-12-04", time:"10:30, two hours, ages 5 and over", topics:["nature","volunteer"], lenses:["marine","bird","coast"],
+  plain:"A two-hour litter survey and clean on the shore of Pegwell Bay National Nature Reserve.",
+  detail:"The Great British Beach Clean at Pegwell Bay and Minnis Bay took place on 19 September 2026. This is the next one listed.",
+  how:"Book through the Marine Conservation Society link on the Thanet Coast events page.",
+  aff:["Pegwell Bay shoreline, seals and wading birds","Volunteers"], url:"https://www.mcsuk.org/beach-cleans/winter-beach-clean-pegwell-bay-04-12-2026/", urlLabel:"Book a place", src:"https://www.thanetcoast.org.uk/events-and-activities/" },
+{ id:"cliffscaves", at:["broadstairs"], title:"Cliffs, Caves and Castles walk, Botany Bay and Kingsgate", body:"Thanet Coast Project, led by Tony Child", level:"community", kind:"Event", status:"open",
+  deadline:"2026-10-17", time:"9:30am, meet at the clifftop grassland opposite the Botany Bay Hotel, Marine Drive CT10 3LG. About 2km, ages 14+ (under-18s need an adult)", topics:["nature","volunteer"], lenses:["coast","marine"],
+  plain:"A guided walk along the chalk coast between Botany Bay and Kingsgate, part of the year-round Margate Pride programme.",
+  detail:"Re-checked the Thanet Coast Project events page on 12 October 2026, which now gives a direct booking link and meeting point; booking is described as essential.",
+  how:"Book on OUTSAVVY through the link.",
+  aff:["Chalk cliffs and coast path"], url:"https://www.outsavvy.com/event/40112/cliffs-caves-castles-walk-talk", urlLabel:"Book on OUTSAVVY", src:"https://www.thanetcoast.org.uk/events-and-activities/" },
+
+/* decisions and watch */
+{ id:"sealink", at:["west"], title:"Sea Link power cable: Secretary of State's own consultation", body:"Secretary of State for Energy Security and Net Zero; National Grid", level:"central", kind:"Decision", status:"open",
+  deadline:"2026-10-22", time:"23:59, 22 October 2026. Target decision date 30 October 2026", topics:["nature","services"], lenses:["bird","marine","marsh","res"],
+  plain:"A £1.1bn undersea cable between Suffolk and Kent, with a converter station about 28 metres tall on Minster Marshes. The Secretary of State has opened his own consultation with interested parties before deciding.",
+  detail:"The examination closed in May 2026 and a recommendation went to the Secretary of State in July. He then opened this further consultation on 22 September 2026. Kent Wildlife Trust and the RSPB oppose the Kent site because of Pegwell Bay and Minster Marshes. Sir Roger Gale has criticised National Grid's preparatory works before consent. No decision had been announced as of 8 October 2026.",
+  how:"Respond through Have Your Say on the Planning Inspectorate's EN020026 project page, or by email to southeastanglialink@planninginspectorate.gov.uk.",
+  aff:["Sandwich and Pegwell Bay nature reserve","Eels, migrating birds, seals, otters, water voles and bats reported on Minster Marshes","Landowners and residents in Minster"],
+  url:"https://national-infrastructure-consenting.planninginspectorate.gov.uk/projects/EN020026", urlLabel:"Have your say", src:"https://national-infrastructure-consenting.planninginspectorate.gov.uk/projects/EN020026" },
+{ id:"manston", at:["ramsgate","west"], title:"Manston Airport: request to extend the start date", body:"RiverOak Strategic Partners; Secretary of State for Transport", level:"central", kind:"Decision", status:"decision",
+  deadline:null, time:"Representations closed 5 July 2026. Late responses accepted to 8 October 2026. Decision date not confirmed", topics:["services","nature"], lenses:["res","biz"],
+  plain:"The owner wants two more years, until September 2029, to start construction, and wants a requirement about moving an RAF direction-finder dropped.",
+  detail:"The Ministry of Defence has already said the capability is still needed. The Secretary of State extended her own further-information deadline to 8 October 2026 in an 11 September letter to the applicant. No decision had been announced as of 8 October 2026. Watch the Planning Inspectorate project page (reference TR020002) for a decision.",
+  how:"The window to comment has closed. Follow the Planning Inspectorate page.",
+  aff:["Residents near the airfield (noise and air quality)","Local jobs and business"], url:"https://theisleofthanetnews.com/2026/05/29/manston-airport-owner-requests-two-year-extension-to-start-construction-and-scrapping-of-requirement-to-re-site-mod-direction-finder/", urlLabel:"Read the report", src:"https://theisleofthanetnews.com/2026/05/29/manston-airport-owner-requests-two-year-extension-to-start-construction-and-scrapping-of-requirement-to-re-site-mod-direction-finder/" },
+{ id:"lgr", title:"East Kent unitary council: paused and possibly challenged", body:"Ministry of Housing, Communities and Local Government; Kent County Council", level:"central", kind:"Decision", status:"decision",
+  deadline:null, time:"Decided 16 July 2026, then paused for review from 7 September 2026. A judicial review would need to start within about three months of the July decision", topics:["services"], lenses:["res","vcse","se"],
+  plain:"Thanet was due to join Canterbury and Dover in one new East Kent council (Option 4B) replacing the district and county councils, from April 2028, but the decision is now paused for review, and Kent County Council has discussed a judicial review challenge.",
+  detail:"The consultation closed on 26 March 2026. Kent County Council said on 22 September 2026 that it would send a pre-action protocol letter to the Secretary of State 'in the coming days', assess the response, and only then decide whether to ask its lawyers to start judicial review proceedings; it said a 27 July letter asking questions had still not been acknowledged. Any challenge needs to be lodged within roughly three months of the 16 July decision, so around mid-October 2026 — a window that is now closing. No confirmation of a pre-action letter being sent, or of proceedings starting, had been found by 12 October 2026. Charities and social enterprises funded or commissioned by the councils should expect contracts and grant schemes to be reviewed once the position settles.",
+  how:"No open consultation. Engage with the transition bodies when they are set up.",
+  aff:["Every Thanet resident","Charities and social enterprises with council contracts or grants"], url:"https://questions-statements.parliament.uk/written-statements/detail/2026-07-16/hcws286", urlLabel:"Read the statement", src:"https://theisleofthanetnews.com/2026/07/17/local-government-reorganisation-what-will-four-new-councils-mean-for-kent/" },
+{ id:"pipgrant", at:["ramsgate"], title:"Ramsgate Pride in Place Community Action Grant", body:"Ramsgate Town Council for the Ramsgate Neighbourhood Board", level:"local", kind:"Funding", status:"open",
+  deadline:"2026-11-15", time:"Midnight, Sunday 15 November 2026", topics:["money"], lenses:["vcse","se"],
+  plain:"Grants for Ramsgate projects against five priorities (Open It Up, Clean It Up, Light It Up, Raise It Up, Join It Up): up to £10,000 under 'Building Stronger Communities' for grassroots neighbourhood projects, or £10,000 to £15,000 under 'Creating Thriving Places' for larger projects with a plan to continue after the grant ends. £150,000 available this round.",
+  detail:"Part of the wider £20m, 10-year Ramsgate Pride in Place programme, with Thanet District Council as Accountable Body. The fund opened Monday 5 October 2026. The council's own Pride in Place page, re-read again on 13 October 2026, still gives the deadline as Sunday 15 November 2026, though its key-dates table labels that date a Thursday — it is not, so treat 15 November itself as the safer date to work to rather than the day name. The same page sets out the rest of the timetable: a Grant Panel meeting in the week of 7 December 2026, conditional decisions issued Friday 11 December 2026, payments from January 2027, and a latest project completion date of 31 March 2028.",
+  how:"Apply through the form linked from the council's Pride in Place page, or email the completed application form to Hannah Rowe at office.admin@ramsgatetowncouncil.gov.uk.",
+  aff:["Ramsgate community groups, voluntary groups and social enterprises"], url:"https://www.ramsgatetown.org/town-council/funding", urlLabel:"See the fund", src:"https://www.ramsgatetown.org/town-council/funding" },
+{ id:"crtb", title:"Community Right to Buy Fund (£61m)", body:"Ministry of Housing, Communities and Local Government", level:"central", kind:"Funding", status:"decision",
+  deadline:null, time:"Announced 16 June 2026. No application window published", topics:["money"], lenses:["vcse","se"],
+  plain:"Money to help residents in deprived areas buy at-risk assets such as pubs, shops and community centres.",
+  detail:"Announced with £15m for Community Power pilots in 25 areas and a promised Right to Manage reform. The release gives no dates. Margate and Ramsgate are the likeliest Thanet areas.",
+  how:"Watch GOV.UK for the prospectus and guidance.",
+  aff:["Community groups that want to own a building","Social enterprises"], url:"https://www.gov.uk/government/news/pubs-shops-and-local-assets-protected-with-communities-in-charge", urlLabel:"Read the announcement", src:"https://www.gov.uk/government/news/pubs-shops-and-local-assets-protected-with-communities-in-charge" },
+{ id:"coastcycle", at:["west"], title:"Thanet Coast Cycle Ride, Minnis Bay (date unclear)", body:"Thanet District Council and Cycling UK's Big Bike Revival, with Bird Wise East Kent", level:"local", kind:"Event", status:"decision",
+  deadline:null, time:"A 15 October 2026 date was reported in early October, but the Thanet Coast Project events page, re-read on 12 October 2026, now lists this ride only under its 2027 listings, as \"Thu 14 Jan, 10am (tbc)\" — still marked tbc, so treat it as not yet confirmed", topics:["nature","volunteer"], lenses:["coast","bird"],
+  plain:"A free guided bike ride along the Thanet coast near Minnis Bay, run with Bird Wise East Kent, now expected in January 2027 rather than this October.",
+  detail:"Rather than show a deadline the source no longer supports, this is marked as awaiting a confirmed date. The page gives no booking link for it yet. Check the Thanet Coast Project events page directly before making plans.",
+  how:"Watch the Thanet Coast Project events page for a confirmed date and booking link.",
+  aff:["Cyclists","Overwintering birds on the north Thanet coast"], url:"https://www.thanetcoast.org.uk/events-and-activities/", urlLabel:"See the events page", src:"https://www.thanetcoast.org.uk/events-and-activities/" },
+{ id:"housingc3", title:"Council homes given C3 consumer standards grade", body:"Regulator of Social Housing; Thanet District Council", level:"central", kind:"Decision", status:"decision",
+  deadline:null, time:"Grading published 30 September 2026. A draft improvement plan is due at Cabinet on Tuesday 3 November 2026", topics:["homes","services"], lenses:["home","res"],
+  plain:"The housing regulator found serious failings in the quality and condition of Thanet's roughly 3,200 council homes, and in how the council acts against anti-social behaviour.",
+  detail:"This is the council's first consumer-standards grading from the Regulator of Social Housing. The council met expectations on repairs, health and safety, tenancy services, and transparency, but the regulator wants swift improvement on home condition and anti-social behaviour. £190,000 has been approved for condition surveys of all council homes, due by spring 2027.",
+  how:"Watch for the draft improvement plan at the 3 November Cabinet meeting.",
+  aff:["Council tenants","Housing and homelessness charities"], url:"https://www.gov.uk/government/news/two-local-authorities-get-c3-consumer-grade-from-rsh", urlLabel:"Read the regulator's statement", src:"https://www.gov.uk/government/news/two-local-authorities-get-c3-consumer-grade-from-rsh" },
+{ id:"pierremont", at:["broadstairs"], title:"Pierremont Park: £400k regeneration and park transfer go to Cabinet", body:"Thanet District Council", level:"local", kind:"Decision", status:"decision",
+  deadline:null, time:"Buyer for the former depot withdrew, announced 24 August 2026. Cabinet is due to consider options on Wednesday 4 November 2026", topics:["services"], lenses:["res"],
+  plain:"Cabinet will be asked to approve up to £400,000 from the Pride in Place Impact Fund to regenerate Pierremont Park, Broadstairs, to transfer the park itself to Broadstairs and St Peter's Town Council at market value with safeguards to keep it a public park, and to remarket the former depot next to it, going to public auction if no buyer is agreed within six weeks.",
+  detail:"Confirmed directly via the council's own announcement of 12 October 2026, read on 13 October 2026. A scrutiny meeting set for 25 August, called in over the original depot sale, was cancelled once that buyer withdrew; this 4 November Cabinet meeting is the public discussion the council leader had promised on future options for the site.",
+  how:"Watch the Cabinet meeting on 4 November 2026, or read the committee papers once published on the council's website.",
+  aff:["Broadstairs residents near the depot and park","Broadstairs and St Peter's Town Council, as the prospective new owner of the park"], url:"https://www.thanet.gov.uk/proposals-for-pierremont-park-to-be-considered-by-the-cabinet/", urlLabel:"Read the announcement", src:"https://www.thanet.gov.uk/proposals-for-pierremont-park-to-be-considered-by-the-cabinet/" },
+{ id:"risesite2", title:"Second RISE rough sleeper accommodation site", body:"Thanet District Council with the Thanet RISE partnership", level:"local", kind:"Decision", status:"decision",
+  deadline:null, time:"£1.4m funding award announced August 2026. First centre opened September 2026. No site or date yet for the second scheme", topics:["homes","money"], lenses:["home","res","vcse"],
+  plain:"The council has been given £1.4m over three years to open a second staffed accommodation scheme for people helped by the Thanet RISE rough sleeper team.",
+  detail:"The money comes from the Ministry of Housing, Communities and Local Government's Rough Sleeping Programme. The first RISE centre opened at Grosvenor Place, Margate, in September 2026. No site or opening date has been announced for the second scheme, and nothing was said about a public consultation. Confirmed directly via the Isle of Thanet News report of 7 October 2026.",
+  how:"No consultation announced. Watch Thanet District Council's news page.",
+  aff:["People sleeping rough in Thanet","Housing and homelessness charities working with RISE"], url:"https://theisleofthanetnews.com/2026/10/07/plan-for-second-thanet-high-support-rough-sleeper-accommodation-site-using-1-4m-government-funding-award/", urlLabel:"Read the report", src:"https://theisleofthanetnews.com/2026/10/07/plan-for-second-thanet-high-support-rough-sleeper-accommodation-site-using-1-4m-government-funding-award/" },
+{ id:"marinacp3", at:["ramsgate"], title:"Marina Car Park 3, Ramsgate: redevelopment proposals invited", body:"Thanet District Council", level:"local", kind:"Decision", status:"decision",
+  deadline:null, time:"Invitation reported 8 October 2026. No submission deadline given", topics:["services","money"], lenses:["biz","res"],
+  plain:"The council is inviting developers and businesses to propose how to redevelop the roughly one-acre Marina Car Park 3 site on Ramsgate's Eastern Undercliff, for uses that could include housing, a hotel or leisure space.",
+  detail:"The council says it wants best value for taxpayers and would reinvest any sale proceeds into council buildings and property. Proposals can be conditional on planning permission or an unconditional freehold sale. This is a developer invitation rather than a public consultation, and no closing date was given. Re-read the council's own announcement on 13 October 2026: submissions go through an informal tender, judged on price, certainty of funding, proposed land use and the developer's track record; suggested uses include shops and sports or leisure space as well as a hotel or housing.",
+  how:"Prospective developers can request the official bidding documents by emailing propertyandassetmanagement@thanet.gov.uk.",
+  aff:["Ramsgate residents and businesses near the Eastern Undercliff","Use of a public car park"], url:"https://theisleofthanetnews.com/2026/10/08/council-invites-ideas-and-proposals-to-redevelop-marina-car-park-3-in-ramsgate/", urlLabel:"Read the report", src:"https://theisleofthanetnews.com/2026/10/08/council-invites-ideas-and-proposals-to-redevelop-marina-car-park-3-in-ramsgate/" },
+
+/* ongoing */
+{ id:"pip", at:["ramsgate"], title:"Ramsgate Pride in Place (£20m over 10 years)", body:"Thanet District Council and the Ramsgate Neighbourhood Board", level:"local", kind:"Programme", status:"ongoing",
+  deadline:null, time:"Running. The Board has not published a timeline for the first four years", topics:["money","homes"], lenses:["vcse","se","young","res"],
+  plain:"A 10-year regeneration plan for Ramsgate. It has already backed Pie Factory Music with £535,000 to buy the Ramsgate Youth Centre.",
+  detail:"The Board is still building its investment framework and promises capacity funding and co-design for local organisations.",
+  how:"Join the mailing list, use Your Voice Thanet, or email regeneration@thanet.gov.uk.",
+  aff:["Ramsgate voluntary groups and social enterprises","Young people","Ramsgate businesses"], url:"https://www.thanet.gov.uk/info-pages/ramsgate-pride-in-place/", urlLabel:"See the programme", src:"https://www.thanet.gov.uk/info-pages/ramsgate-pride-in-place/" },
+{ id:"reaching", title:"National Lottery Reaching Communities England", body:"The National Lottery Community Fund", level:"funder", kind:"Funding", status:"ongoing",
+  deadline:null, time:"Open with no closing date. About 40 weeks to a decision", topics:["money"], lenses:["vcse","se"],
+  plain:"Grants from £20,001 up to £20m for established charities and community groups.",
+  detail:"The average award in 2025 was £319,000 over three years.",
+  how:"Apply on the funder's site.",
+  aff:["Established voluntary groups and social enterprises"], url:"https://www.tnlcommunityfund.org.uk/funding/funding-programmes/reaching-communities-england", urlLabel:"See the fund", src:"https://www.tnlcommunityfund.org.uk/funding/funding-programmes/reaching-communities-england" },
+{ id:"kcfgrants", title:"Kent Community Foundation grants", body:"Kent Community Foundation", level:"funder", kind:"Funding", status:"ongoing",
+  deadline:null, time:"No closing date found. Check the funding page", topics:["money","nature"], lenses:["vcse","se","marsh"],
+  plain:"Environmental grants for groups with income up to £1m, and micro grants of up to £2,000 for groups under £100,000.",
+  detail:"Reported by the Isle of Thanet News on 28 June 2026.",
+  how:"Apply through the Foundation's website.",
+  aff:["Small charities and community groups, including environmental projects"], url:"https://kentcf.org.uk/", urlLabel:"See the grants", src:"https://theisleofthanetnews.com/2026/06/28/kent-community-foundation-spotlight-on-funding-for-isle-charities-taking-environmental-action/" },
+{ id:"bathing", title:"Sewage releases and no-swim advice", body:"Southern Water, Environment Agency, Thanet District Council", level:"local", kind:"Programme", status:"ongoing",
+  deadline:null, time:"Latest advice found: 27 August 2026 (nine beaches)", topics:["nature","services"], lenses:["water","coast","marine","res"],
+  plain:"Precautionary no-swim advice was issued for beaches from Kingsgate to Dumpton Gap and at West Bay and Fulsam Rock after releases and heavy rain.",
+  detail:"There were also releases in January and June 2026, and a sewage leak from a collapsed sewer at Viking Bay, Broadstairs, reported on 6 October 2026. Blue Flags in 2026 went to Minnis Bay, Botany Bay, Joss Bay and Ramsgate Main Sands, and eight more beaches won Seaside Awards.",
+  how:"Check council bathing water notices. Report pollution to the Environment Agency. Contact your councillor or MP.",
+  aff:["Bathers and beach businesses","Marine life and bathing water ratings"], url:"https://theisleofthanetnews.com/2026/08/27/warning-issued-against-bathing-at-nine-thanet-beaches/", urlLabel:"Read the report", src:"https://www.thanet.gov.uk/blue-flags-for-the-best-of-thanets-beaches/" },
+{ id:"lnrs", title:"Kent and Medway Local Nature Recovery Strategy", body:"Kent County Council with Medway Council", level:"county", kind:"Programme", status:"ongoing",
+  deadline:null, time:"Published 5 December 2025", topics:["nature","money"], lenses:["marine","marsh","vcse"],
+  plain:"A map-based plan for where nature recovery and biodiversity net gain money should go. It covers coastal protection, seagrass and urban trees.",
+  detail:"I did not extract the Thanet-specific priorities. Community groups can use the map and toolkit to line up projects and funding bids.",
+  how:"Use the interactive map and toolkit.",
+  aff:["Habitats across the Thanet coast","Landowners and community groups"], url:"https://news.kent.gov.uk/articles/kent-and-medway-local-nature-recovery-strategy-launched", urlLabel:"Read the launch", src:"https://news.kent.gov.uk/articles/kent-and-medway-local-nature-recovery-strategy-launched" },
+{ id:"woodland", title:"Six mini-woodlands for Thanet", body:"Thanet District Council Cabinet", level:"local", kind:"Programme", status:"ongoing",
+  deadline:null, time:"Approved 25 April 2024, subject to outside funding. No planting dates found", topics:["nature"], lenses:["marsh","res"],
+  plain:"About 4 hectares of new woodland at Dane Valley Road, Garlinge, Memorial Rec, Northdown Park, St Peter's Rec and Tivoli Park.",
+  detail:"The council estimates about 1,140 tonnes of carbon captured over 30 years.",
+  how:"Contact the council for planting dates and volunteer sessions.",
+  aff:["Urban woodland and residents near the six sites"], url:"https://www.thanet.gov.uk/cabinet-approves-plans-for-six-areas-of-mini-woodland-across-thanet/", urlLabel:"Read the decision", src:"https://www.thanet.gov.uk/cabinet-approves-plans-for-six-areas-of-mini-woodland-across-thanet/" },
+{ id:"swessentials", title:"Southern Water Essentials tariff: automatic low-income switch", body:"Thanet District Council and Southern Water", level:"local", kind:"Programme", status:"ongoing",
+  deadline:null, time:"Announced 18 August 2026", topics:["money"], lenses:["res","home"],
+  plain:"Just over 5,250 low-income Thanet households and benefit recipients are being identified for Southern Water's discounted Essentials tariff and switched across automatically.",
+  detail:"Average saving reported as about £346 a year per household, roughly £1.8m in total.",
+  how:"No action needed if eligible; the switch is automatic. Contact Southern Water with questions.",
+  aff:["Low-income households and benefit recipients"], url:"https://www.thanet.gov.uk/low-income-families-to-save-hundreds-on-water-bills-through-thanet-district-council-and-southern-water-partnership/", urlLabel:"Read the announcement", src:"https://www.thanet.gov.uk/low-income-families-to-save-hundreds-on-water-bills-through-thanet-district-council-and-southern-water-partnership/" },
+{ id:"greenenergyforum", at:["ramsgate"], title:"Ramsgate Green Energy, Marine and Coastal Innovation Forum", body:"Thanet District Council, delivered by Ramsgate Space CIC", level:"local", kind:"Programme", status:"ongoing",
+  deadline:null, time:"Held Thursday 10 September 2026, 10am to 4pm, at the former Port of Ramsgate Terminal Building, Military Road", topics:["money","services"], lenses:["biz","se"],
+  plain:"Around 70 people from green and marine businesses, government, research and skills bodies met in Ramsgate, including a visit to the Green Campus site at the Port of Ramsgate.",
+  detail:"Part of the council's push to attract green-economy investment to Ramsgate's port area.",
+  how:"Watch Thanet District Council's news page and Ramsgate Space for any follow-up events.",
+  aff:["Green and marine businesses","Ramsgate port area"], url:"https://theisleofthanetnews.com/?p=222163", urlLabel:"Read the report", src:"https://theisleofthanetnews.com/?p=222163" },
+
+/* closed */
+{ id:"mens", title:"Men's Health Community Fund, round 2", body:"Department of Health and Social Care, Movember and People's Health Trust", level:"central", kind:"Funding", status:"closed",
+  deadline:"2026-09-11", time:"Closed. Projects start January 2027 at the earliest", topics:["money"], lenses:["vcse"],
+  plain:"Up to £3m for voluntary projects supporting men aged 35 to 59 who are out of work, and men over 60 going through life changes.",
+  detail:"Round 1 closed on 15 July 2026.", how:"Closed.", aff:["Voluntary groups working with men"], url:"https://find-government-grants.service.gov.uk/grants/mens-health-community-fund-1", urlLabel:"See the fund", src:"https://find-government-grants.service.gov.uk/grants/mens-health-community-fund-1" },
+{ id:"kccbudget", title:"Kent County Council budget consultation 2027-28", body:"Kent County Council", level:"county", kind:"Consultation", status:"closed",
+  deadline:"2026-09-07", time:"Closed. Results and the draft budget are due in the autumn", topics:["services"], lenses:["res","vcse","old"],
+  plain:"Asked about savings priorities, income and council tax options.",
+  detail:"Watch for the results and the draft 2027-28 budget. KCC decided in 2025 to cut funding for voluntary wellbeing services.", how:"Closed.", aff:["All Kent residents","Charities funded by KCC"], url:"https://letstalk.kent.gov.uk/budget-consultation-2027-28", urlLabel:"See the consultation", src:"https://letstalk.kent.gov.uk/budget-consultation-2027-28" },
+{ id:"gbbc", at:["west","ramsgate"], title:"Great British Beach Clean, Pegwell Bay and Minnis Bay", body:"Marine Conservation Society with Thanet Coast Project", level:"community", kind:"Event", status:"closed",
+  deadline:"2026-09-19", time:"Took place 19 September 2026", topics:["nature","volunteer"], lenses:["marine","coast"],
+  plain:"The national beach litter survey at two Thanet sites.", detail:"The next listed clean is at Pegwell Bay on 4 December.", how:"Past event.", aff:["Beach litter data"], url:"https://www.thanetcoast.org.uk/events-and-activities/", urlLabel:"See the events page", src:"https://www.thanetcoast.org.uk/events-and-activities/" },
+{ id:"sporefaring", title:"Sporefaring: the Mushroom Festival on the Isle of Thanet", body:"Margate Mushrooms and Naturehood Thanet", level:"community", kind:"Event", status:"open",
+  deadline:"2026-10-16", time:"Fri 16 to Sun 18 October, across several Thanet venues", topics:["nature","volunteer"], lenses:["marsh","res"],
+  plain:"Three days of foraging, talks, workshops and family mushroom events across Thanet. Formerly the Margate Mushroom Festival.",
+  detail:"A guided foraging walk at Clowes Wood (16 Oct); talks and a film screening at Ark Cliftonville (17 Oct) on medicinal mushrooms, psychedelics and mycoremediation; a biofluorescent night walk at Northdown Park (17 Oct); and on 18 October a family mushroom show, biofluorescent painting and workshops at Margate Arts Club plus a 'Sip & Spore' tasting and a Future of Fungi panel at Gather & in Ramsgate.",
+  how:"Book an Early Bird, full Festival or single-day pass through Ticket Tailor; some individual events have their own tickets.",
+  aff:["Local foragers and nature groups","Family audiences"], url:"https://www.tickettailor.com/events/sporefaring", urlLabel:"See tickets and programme", src:"https://www.tickettailor.com/events/sporefaring" }
+];
+
+/* Groups. roles:1 = advertises volunteer roles. v:1 = a primary source for this group was read directly on a refresh run; v:0 = search result or older article only. */
+const GROUPS = [
+{n:"Kent Coast Volunteering", cat:"hub", area:"thanet", what:"Matches volunteers with local groups. Runs community transport, Good Neighbours befriending and DBS checks.", get:"Register on the volunteer portal.", url:"https://www.kcv.org.uk/volunteering/i-want-to-volunteer/volunteering-opportunities/", label:"See volunteer roles", roles:1, v:0, dates:"The role list I saw looked out of date, and deadlines on the home page had no year."},
+{n:"Kent Volunteers: Thanet", cat:"hub", area:"thanet", what:"County volunteering portal with a Thanet page.", get:"Search the Thanet page for roles.", url:"https://kentvolunteers.org.uk/areas/thanet/", label:"Visit website", roles:0, v:0},
+{n:"Social Enterprise Kent", cat:"se", area:"thanet", what:"Supports Thanet's voluntary and social enterprise sector from Margate and Ramsgate, and runs the Community Champions Awards with the council.", get:"Contact them for support.", url:"https://sekgroup.org.uk/", label:"Visit website", roles:0, v:1, dates:"The 2026 awards were held on 28 January. The last call for entries opened 27 September 2025, so watch for the next one. Also lists a Thanet Social Enterprise Boost programme, whose page would not load."},
+{n:"Kent Community Foundation", cat:"hub", area:"thanet", what:"Grants for charities and community groups, including environmental grants and micro grants of up to £2,000.", get:"Apply for a grant.", url:"https://kentcf.org.uk/", label:"Visit website", roles:0, v:1, dates:"No closing date found."},
+{n:"Kent Reliance Community Foundation", cat:"hub", area:"thanet", what:"Gave £421,505 to eight charities in its latest round, including Margate FC Community Trust and Mama to Mama.", get:"Watch for the next round.", url:IOTN_SEP20, label:"Read the report", roles:0, v:1, dates:"Round reported 20 September 2026."},
+{n:"Thanet District Council: volunteering", cat:"hub", area:"thanet", what:"Council page pointing to volunteering groups, including Kent Coast Volunteering, Reach Volunteering and litter picks.", get:"Browse the list.", url:"https://www.thanet.gov.uk/info-pages/volunteering/", label:"Visit page", roles:1, v:1},
+{n:"Bon Volks (Circular Margate)", cat:"se", area:"margate", what:"A materials hub that turns reclaimed construction materials into furniture and creates paid work and skills. Kent Community Foundation funded.", get:"Contact them.", url:"https://www.bonvolks.com/circular-margate", label:"Visit website", roles:0, v:1},
+{n:"Heritage Lab Ramsgate CIC", cat:"se", area:"ramsgate", what:"Restores historic buildings, including the Old Wine Warehouse and the East Cliff Art Deco shelters. Won a £250,424 Historic England grant in April 2026.", get:"Follow their work.", url:"https://heritagelab.org.uk", label:"Visit website", roles:0, v:1},
+{n:"Happy Mondays (Remixd CIC)", cat:"se", area:"ramsgate", what:"Weekly creative, gardening and wellbeing sessions on Ramsgate High Street for lonely or isolated people.", get:"Donate or attend.", url:"https://www.spacehive.com/happy-mondays-weekly-lounge", label:"See the project", roles:0, v:0, dates:"A crowdfunder ended on 5 May 2026. I did not read the outcome."},
+{n:"MiCommunity / Margate Independent Foodbank", cat:"food", area:"margate", what:"Low-priced food and household goods for everyone, run on donations. A third shop was due to open in Birchington. About 20 volunteers and looking for two or three more (January 2026).", get:"Volunteer or donate.", url:"https://www.mifoodbank.org/", label:"Visit website", roles:1, v:1},
+{n:"Mama to Mama Baby Bank", cat:"food", area:"margate", what:"Baby bank for vulnerable families. Won a £23,799 two-year grant in September 2026.", get:"Donate or volunteer.", url:"https://www.mama-to-mama.co.uk/", label:"Visit website", roles:1, v:1},
+{n:"Thanet Food Link", cat:"food", area:"margate", what:"Registered food bank charity.", get:"See what they currently need.", url:"https://www.givefood.org.uk/needs/at/thanet-food-link/", label:"See what they need", roles:0, v:0},
+{n:"Thanet Family Food Bank", cat:"food", area:"thanet", what:"Local branch of the Family Food Bank.", get:"Check the site.", url:"https://www.familyfoodbank.org/thanet-ffb.html", label:"Visit website", roles:0, v:0},
+{n:"Age UK Thanet", cat:"care", area:"margate", what:"Advice and activities for older people from the Millmead Centre. Volunteers help at the hub, with admin, meal delivery driving and telephone buddying.", get:"Volunteer or donate.", url:"https://www.ageuk.org.uk/thanet/get-involved/volunteer/", label:"See volunteer roles", roles:1, v:1},
+{n:"Heart in the Community CIC", cat:"care", area:"west", what:"Free coffee clubs, dementia support and a charity shop against loneliness in Westgate, Birchington and Minster. Also sells paid companionship.", get:"Come along or volunteer.", url:"https://heartinthecommunity.co.uk/", label:"Visit website", roles:1, v:1, dates:"Weekly: Westgate coffee club Tue 11am. Birchington Memory Haven Tue 1:30pm and lunch club Wed 11am. Time Together Thu 2pm. Minster Fri 10am."},
+{n:"Margate FC Community Trust", cat:"care", area:"margate", what:"Runs Friday homeless support, a Thursday over-55s social club and a schools Golden Ticket scheme from Hartsdown Park.", get:"Volunteer through the club's charity page.", url:"https://margate-fc.com/charity/", label:"Visit website", roles:1, v:1},
+{n:"Thanet Health Hub volunteers", cat:"care", area:"broadstairs", what:"Meet-and-greet volunteers wanted at the new health hub in Broadstairs, with weekday shifts.", get:"Email volunteering@kcht.nhs.uk.", url:"https://theisleofthanetnews.com/2026/05/27/call-for-meet-and-greet-volunteers-at-thanet-health-hub/", label:"Read the call", roles:1, v:0, dates:"The call was made in May 2026. Ask whether it is still open."},
+{n:"QEQM League of Friends", cat:"care", area:"margate", what:"Funds equipment for the Queen Elizabeth the Queen Mother Hospital.", get:"Donate or join.", url:"http://www.qeqmfriends.com", label:"Visit website", roles:0, v:0},
+{n:"East Kent Mencap", cat:"care", area:"thanet", what:"Learning disability support, including the Gateway Club and Thanet Thinkers.", get:"Volunteer.", url:"https://www.eastkentmencap.co.uk/volunteer/", label:"Visit website", roles:1, v:0},
+{n:"Neurodivergent Friends in Thanet (NDFT)", cat:"care", area:"thanet", what:"Free, peer-led social meetups and coffee mornings for neurodivergent adults, run by neurodivergent adults.", get:"Book a place online.", url:"https://ndft.org.uk/events", label:"See upcoming events", roles:0, v:1, dates:"Coffee morning Fri 23 Oct, 10am to 12pm, The House Hotel, Albion Place, Ramsgate. No further dates listed yet beyond that."},
+{n:"Windmill Community Gardens Margate", cat:"nature", area:"margate", what:"A one-acre market garden selling veg bags, with volunteering, work placements and workshops.", get:"Volunteer or attend.", url:"https://windmillcommunitygardensmargate.com/", label:"Visit website", roles:1, v:1},
+{n:"Wilderness to Wonderland", cat:"nature", area:"margate", what:"Volunteers turn neglected public spaces near Station Approach into community gardens.", get:"Volunteer as a gardener.", url:"https://www.everydayactivekent.org.uk/activities/wilderness-to-wonderland-volunteer-as-a-gardener/", label:"See the role", roles:1, v:1},
+{n:"Dane Valley Woods", cat:"nature", area:"margate", what:"Volunteer-led woodland on a former landfill site. About 7,000 trees planted and around 1,600 volunteer hours a year.", get:"Volunteer.", url:"https://danevalleywoods.org/about/", label:"Visit website", roles:1, v:1},
+{n:"Thanet Coast Project", cat:"nature", area:"thanet", what:"Coastal wardens, beach cleans, Coastbusters oyster control and events along the Thanet coast.", get:"Volunteer or book an event.", url:"https://www.thanetcoast.org.uk/events-and-activities/", label:"See events", roles:1, v:1, dates:"Seaweed walk 3 Oct. Beach art hunts 27 to 29 Oct. Winter beach clean 4 Dec."},
+{n:"Bird Wise East Kent", cat:"nature", area:"thanet", what:"A partnership of the three councils, Natural England, the RSPB and Kent Wildlife Trust. Its rangers reduce disturbance to overwintering birds on the Thanet coast.", get:"See events and report disturbance.", url:"https://eastkent.birdwise.org.uk/bird-wise-events/", label:"Visit website", roles:0, v:0, dates:"Its site blocked automated reading, so events are unconfirmed."},
+{n:"Kent Wildlife Trust", cat:"nature", area:"thanet", what:"Practical conservation volunteering at Pegwell Bay and Ham Fen. Leads the Rethink Sea Link campaign.", get:"Filter for Thanet on the volunteering page.", url:"https://www.kentwildlifetrust.org.uk/volunteering-opportunities", label:"See volunteering", roles:1, v:1, dates:"No Thanet sessions from October to December were visible."},
+{n:"Broadstairs Town Team", cat:"nature", area:"broadstairs", what:"Litter picking and gardening in Broadstairs.", get:"Volunteer.", url:"https://www.broadstairstownteam.org.uk/", label:"Visit website", roles:1, v:0},
+{n:"Friends of Margate Cemetery", cat:"nature", area:"margate", what:"Volunteers who help look after Margate Cemetery.", get:"Join.", url:"https://www.cemeteryfriends.com/members/margate.php", label:"Visit website", roles:1, v:0},
+{n:"Friends of St Peter's Churchyard", cat:"nature", area:"broadstairs", what:"Looks after a nine-acre churchyard with a wildlife focus.", get:"Volunteer. Ring Rev David Tate on 01843 447861.", url:"https://stpeterinthanet.org.uk/c/friends-of-st-peters-churchyard/", label:"Visit website", roles:1, v:0},
+{n:"Thanet Community Development Trust", cat:"culture", area:"ramsgate", what:"Courses, clubs, heritage trails and room hire at the Hereson Centre. Looking for exhibition researchers, oral history interviewers, photographers and trustees.", get:"Volunteer or become a trustee.", url:"https://www.tcdt.org.uk/", label:"Visit website", roles:1, v:1},
+{n:"Thanet Heritage Volunteer Hub", cat:"culture", area:"margate", what:"Coordinates volunteers for Margate Caves, Dickens House, RAF Manston Museum, Tudor House, Drapers Windmill and the Ramsgate Tunnels.", get:"Email volunteerproject@margatecaves.co.uk.", url:"https://www.heritagevolunteers.co.uk/", label:"See current roles", roles:1, v:1},
+{n:"Ramsgate Community Cinema", cat:"culture", area:"ramsgate", what:"Volunteer-supported cinema run by Kent Film Foundation at Paragon Works. Regular screenings resumed on 2 September 2026.", get:"Attend or volunteer.", url:"https://theisleofthanetnews.com/2026/08/22/ramsgate-community-cinema-competes-for-bifa-cinema-of-the-year-title/", label:"Read the report", roles:0, v:1},
+{n:"Coastal Community Learning", cat:"culture", area:"broadstairs", what:"Affordable adult creative, fitness and wellbeing courses.", get:"Join a course.", url:"http://www.coastalcommunitylearning.com", label:"Visit website", roles:0, v:0},
+{n:"Garden Gate Project", cat:"nature", area:"margate", what:"A walled community garden on Northdown Park Road offering year-round social and therapeutic horticulture for adults with learning disabilities and mental health challenges, plus open days, flower arranging workshops and a craft hut.", get:"Visit the garden or check the website; the project is always happy to welcome new volunteers.", url:"https://www.thegardengateproject.co.uk/", label:"Visit website", roles:1, v:1, dates:"Ran a Summer Music Day on 18 July 2026; check the website for the next open day."},
+{n:"Coast & Country Markets", cat:"culture", area:"broadstairs", what:"Monthly farmers and country markets in Broadstairs and Birchington. Stallholders can register at coast-and-country.flutterflow.app.", get:"Shop or trade.", url:IOTN_SEP20, label:"Read the report", roles:0, v:1, dates:"Next market 11 Oct, 10am to 1pm. Christmas market 19 Dec, 12 to 4pm, Dog Acre, Birchington."},
+{n:"Thanet Lions Club", cat:"culture", area:"thanet", what:"Community service club with sight-related projects.", get:"Join. Contact Steve Carley.", url:IOTN_SEP20, label:"Read the report", roles:1, v:1, dates:"Sight Awareness Day at Westwood Cross on Thu 8 Oct."},
+{n:"Thanet Camera Club", cat:"culture", area:"broadstairs", what:"Photography workshops, competitions and speakers, £35 a season, at the Portland Centre.", get:"Join.", url:"http://www.isleofthanetphotographicsociety.com", label:"Visit website", roles:0, v:1, dates:"Season began Thu 10 Sep, 7:30pm."},
+{n:"6th Ramsgate Royal Harbour Sea Scouts", cat:"culture", area:"ramsgate", what:"A Squirrels section for ages 4 to 6 started on 7 September.", get:"Join the waiting list.", url:IOTN_SEP5, label:"Read the report", roles:0, v:1},
+{n:"Save Minster Marshes", cat:"camp", area:"west", what:"Residents' campaign against the Sea Link converter station on Minster Marshes. Runs walks, film screenings and forest bathing.", get:"Join a walk.", url:"https://www.minstermarshes.com/", label:"Visit website", roles:0, v:0},
+{n:"Westgate & Garlinge Action Group", cat:"camp", area:"west", what:"Campaigns against housing on farmland. Meets on the last Wednesday of each month at 7pm.", get:"Go to a meeting.", url:"https://theisleofthanetnews.com/2026/04/19/photos-thanet-groups-host-day-of-action-for-nature-events/", label:"Read the report", roles:0, v:0}
+];
+
+const SOON = [
+  "Housing strategy: Cabinet and Full Council decisions after 25 October.",
+  "Thanet's draft 2027-28 budget, and possibly a council tax support consultation (last year's closed 1 October).",
+  "Kent County Council's draft 2027-28 budget.",
+  "Community Right to Buy Fund prospectus, and the Right to Manage consultation.",
+  "The 2027 Community Champions Awards call for nominations (last year's opened 27 September)."
+];
+const WATCH = [
+  ["Your Voice Thanet (council surveys)", "https://yourvoice.thanet.gov.uk/en-GB/"],
+  ["Let's Talk Kent (county council)", "https://letstalk.kent.gov.uk/"],
+  ["Ramsgate Pride in Place", "https://www.thanet.gov.uk/info-pages/ramsgate-pride-in-place/"],
+  ["Ramsgate Town Council funding", "https://www.ramsgatetown.org/town-council/funding"],
+  ["Kent Coast Volunteering", "https://www.kcv.org.uk/volunteering/i-want-to-volunteer/volunteering-opportunities/"],
+  ["Social Enterprise Kent", "https://sekgroup.org.uk/"],
+  ["Kent Community Foundation", "https://kentcf.org.uk/"],
+  ["Thanet Coast Project events", "https://www.thanetcoast.org.uk/events-and-activities/"],
+  ["Kent Wildlife Trust", "https://www.kentwildlifetrust.org.uk/"],
+  ["Defra consultation hub", "https://consult.defra.gov.uk/"],
+  ["Isle of Thanet News: community", "https://theisleofthanetnews.com/category/community/"]
+];
+const BIG = [
+  {k:"deadlines", label:"📅 Dates coming up"},
+  {k:"volunteer", label:"👥 Volunteer near me"},
+  {k:"help", label:"🍲 Food and support"},
+  {k:"nature", label:"🌿 Nature and wildlife"},
+  {k:"money", label:"💰 Money for groups"},
+  {k:"all", label:"🔎 Everything"}
+];
+
+const st = {mode:"std", view:"deadlines", tab:"open", level:"all", lens:null, gcat:"all", area:"all", recruit:false, q:"", big:"deadlines", open:{}};
+try { if (localStorage.getItem("tcwatch-mode") === "big") st.mode = "big"; } catch (e) {}
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+const todayStr = new Intl.DateTimeFormat("en-CA", {timeZone:"Europe/London"}).format(new Date());
+const utc = s => { const [y,m,d] = s.split("-").map(Number); return Date.UTC(y, m-1, d); };
+const fmt = s => new Intl.DateTimeFormat("en-GB", {weekday:"short", day:"numeric", month:"short", year:"numeric", timeZone:"UTC"}).format(utc(s));
+const fmtShort = s => new Intl.DateTimeFormat("en-GB", {weekday:"short", day:"numeric", month:"short", timeZone:"UTC"}).format(utc(s));
+const daysTo = s => Math.round((utc(s) - utc(todayStr)) / 86400000);
+
+function info(it) {
+  if (it.status === "closed") return {phase:"closed", d: it.deadline ? daysTo(it.deadline) : null, level:"done"};
+  if (it.status === "open") {
+    const d = daysTo(it.deadline);
+    if (d < 0) return {phase:"closed", d, level:"done"};
+    const ev = it.kind === "Event";
+    return {phase:"open", d, level: ev ? "event" : d <= 7 ? "urgent" : d <= 21 ? "soon" : "later"};
+  }
+  return {phase:it.status, d:null, level:it.status};
+}
+function daysText(it) {
+  const d = it.i.d;
+  if (it.kind === "Event") return d === 0 ? "Today" : d === 1 ? "Tomorrow" : "In " + d + " days";
+  return d === 0 ? "Closes today" : d === 1 ? "1 day left" : d + " days left";
+}
+const withInfo = ITEMS.map(it => Object.assign({}, it, {i: info(it)}));
+const RANK = {open:0, decision:1, ongoing:2, closed:3};
+function orderItems(arr) {
+  return arr.slice().sort((a, b) => RANK[a.i.phase] - RANK[b.i.phase] ||
+    (a.i.phase === "closed" ? utc(b.deadline) - utc(a.deadline) : a.i.phase === "open" ? utc(a.deadline) - utc(b.deadline) : 0));
+}
+function matchLens(it) { return !st.lens || it.lenses.includes(st.lens); }
+function itemAreaOk(it) { return st.area === "all" || !it.at || it.at.includes(st.area); }
+function areaOk(g) { return st.area === "all" || g.area === st.area || g.area === "thanet"; }
+
+function itemsView() {
+  let arr = withInfo.filter(itemAreaOk);
+  if (st.tab !== "all") arr = arr.filter(x => x.i.phase === st.tab);
+  if (st.level !== "all") arr = arr.filter(x => x.level === st.level);
+  return orderItems(arr.filter(matchLens));
+}
+function groupsView() {
+  const q = st.q.trim().toLowerCase();
+  return GROUPS.filter(g => (st.gcat === "all" || g.cat === st.gcat) && areaOk(g) && (!st.recruit || g.roles) &&
+    (!q || (g.n + " " + g.what + " " + AREAL[g.area] + " " + GCATS[g.cat]).toLowerCase().includes(q)));
+}
+function bigView() {
+  const live = withInfo.filter(x => x.i.phase !== "closed" && itemAreaOk(x));
+  const k = st.big;
+  let items = [], groups = [];
+  if (k === "deadlines") items = live.filter(x => x.i.phase === "open");
+  else if (k === "volunteer") groups = GROUPS.filter(g => g.roles && areaOk(g));
+  else if (k === "help") groups = GROUPS.filter(g => (g.cat === "food" || g.cat === "care") && areaOk(g));
+  else if (k === "nature") { items = live.filter(x => x.topics.includes("nature")); groups = GROUPS.filter(g => g.cat === "nature" && areaOk(g)); }
+  else if (k === "money") { items = live.filter(x => x.kind === "Funding"); groups = GROUPS.filter(g => g.cat === "hub" && areaOk(g)); }
+  else { items = live; groups = GROUPS.filter(areaOk); }
+  return {items: orderItems(items), groups};
+}
+
+function renderAlert() {
+  const open = withInfo.filter(x => x.i.phase === "open" && x.kind !== "Event" && itemAreaOk(x)).sort((a, b) => a.i.d - b.i.d);
+  const urgent = open.filter(x => x.i.d <= 7), soon = open.filter(x => x.i.d <= 21);
+  let cls, sym, head, sub, linkSub = [];
+  if (urgent.length) {
+    cls = "urgent"; sym = "!";
+    head = urgent.length + (urgent.length === 1 ? " deadline falls" : " deadlines fall") + " within 7 days";
+    sub = urgent.map(x => x.title + " (" + fmtShort(x.deadline) + ")").join("; ") + ".";
+    linkSub = urgent;
+  } else if (soon.length) {
+    cls = "soon"; sym = "!";
+    head = soon.length + (soon.length === 1 ? " deadline falls" : " deadlines fall") + " within 3 weeks";
+    sub = "Next: " + soon[0].title + ", " + fmtShort(soon[0].deadline) + " (" + soon[0].i.d + " days).";
+    linkSub = [soon[0]];
+  } else if (open.length) {
+    cls = "calm"; sym = "✓"; head = "Nothing closes in the next 3 weeks"; sub = "Next: " + open[0].title + ", " + fmtShort(open[0].deadline) + ".";
+  } else { cls = "calm"; sym = "✓"; head = "No open deadlines recorded"; sub = "Check the places to watch."; }
+  const more = soon.length > urgent.length && urgent.length ? " " + (soon.length - urgent.length) + " more within 3 weeks." : "";
+  const links = linkSub.length ? '<span style="display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:6px">' + linkSub.map(x => '<a href="' + x.url + '" target="_blank" rel="noopener" style="color:var(--ink);font-weight:700">' + esc(x.urlLabel + ": " + x.title) + ' ↗</a>').join("") + '</span>' : "";
+  $("alert").innerHTML = '<div class="alert ' + cls + '"><div class="sym" aria-hidden="true">' + sym + '</div><div><strong>' + esc(head) + '</strong><span>' + esc(sub + more) + '</span>' + links + '</div></div>';
+}
+function renderRunway() {
+  const open = withInfo.filter(x => x.i.phase === "open" && itemAreaOk(x)).sort((a, b) => a.i.d - b.i.d);
+  let h = '<h2 id="rw-h">Dates coming up' + (st.area === "all" ? "" : ' <small style="font-family:var(--f-body);font-weight:400;color:var(--muted)">for ' + esc(AREAS[st.area]) + ' and all of Thanet</small>') + '</h2>';
+  if (!open.length) h += '<p class="rw-note">Nothing dated is recorded.</p>';
+  open.forEach(x => {
+    const w = Math.max(4, Math.round(100 - Math.min(x.i.d, 70) / 70 * 100));
+    h += '<a class="rw-row" href="' + x.url + '" target="_blank" rel="noopener" aria-label="' + esc(x.title + ", " + daysText(x) + ". " + x.urlLabel + " (opens in a new tab)") + '"><div class="rw-title">' + esc(x.title) + '<small>' + esc(x.kind) + ' · ' + esc(x.body) + '</small></div><div class="rw-bar ' + x.i.level + '" aria-hidden="true"><i style="width:' + w + '%"></i></div><div class="rw-days">' + esc(daysText(x)) + ' <span style="font-weight:400;color:var(--muted)">' + esc(fmtShort(x.deadline)) + '</span><span class="rw-go">' + esc(x.urlLabel) + ' ↗</span></div></a>';
+  });
+  h += '<p class="rw-note">Select any row to open the consultation, grant, event or report itself. Bars fill as the date gets closer: red is 7 days or fewer, amber 21 days or fewer, blue an event.</p>';
+  $("runway").innerHTML = h;
+}
+function chips(obj, key, cur, extra) {
+  return Object.keys(obj).map(k => '<button type="button" class="chip" data-' + key + '="' + k + '" aria-pressed="' + (cur === k) + '">' + esc(obj[k]) + (extra ? '<span class="n">' + extra(k) + '</span>' : '') + '</button>').join(" ");
+}
+function renderControls() {
+  document.querySelectorAll(".viewtabs button").forEach(b => b.setAttribute("aria-pressed", st.view === b.dataset.view));
+  const std = st.mode === "std";
+  $("ctl-items").hidden = !(std && st.view === "deadlines");
+  $("ctl-groups").hidden = !(std && st.view === "groups");
+  $("lens-panel").hidden = st.view === "groups";
+  const cnt = f => withInfo.filter(f).length;
+  const tabs = {open:"Dates coming up", decision:"Decisions and watch", ongoing:"Ongoing", closed:"Recently closed", all:"All"};
+  $("tabs").innerHTML = chips(tabs, "tab", st.tab, k => k === "all" ? ITEMS.length : cnt(x => x.i.phase === k));
+  $("levels").innerHTML = chips(Object.assign({all:"Everyone"}, LEVELS), "level", st.level, k => k === "all" ? ITEMS.length : cnt(x => x.level === k));
+  $("gcats").innerHTML = chips(Object.assign({all:"All types"}, GCATS), "gcat", st.gcat, k => k === "all" ? GROUPS.length : GROUPS.filter(g => g.cat === k).length);
+  $("areas").innerHTML = chips(Object.assign({all:"All of Thanet"}, AREAS), "area", st.area);
+  $("ctl-where").hidden = st.mode !== "std";
+  $("recruit").innerHTML = '<button type="button" class="chip" data-recruit="1" aria-pressed="' + st.recruit + '">Looking for volunteers</button>';
+  let lh = "";
+  ["People", "Organisations", "Wildlife and places"].forEach(c => {
+    lh += '<div class="group"><h3>' + c + '</h3><div class="ent">';
+    LENSES.filter(l => l.cat === c).forEach(l => {
+      const n = withInfo.filter(it => it.lenses.includes(l.id)).length;
+      if (n) lh += '<button type="button" class="chip" data-lens="' + l.id + '" aria-pressed="' + (st.lens === l.id) + '">' + esc(l.label) + '<span class="n">' + n + '</span></button>';
+    });
+    lh += '</div></div>';
+  });
+  $("lenses").innerHTML = lh;
+  $("soonlist").innerHTML = SOON.map(s => "<li>" + esc(s) + "</li>").join("");
+  $("watch").innerHTML = WATCH.map(w => '<li><a href="' + w[1] + '" target="_blank" rel="noopener">' + esc(w[0]) + '</a></li>').join("");
+  $("bigbar").innerHTML = BIG.map(b => '<button type="button" data-big="' + b.k + '" aria-pressed="' + (st.big === b.k) + '">' + b.label + '</button>').join("");
+  const showArea = st.mode === "big";
+  $("bigarea").hidden = !showArea;
+  $("bigarea").innerHTML = showArea ? '<div class="lbl">Which town?</div>' + ['all'].concat(Object.keys(AREAS)).map(k => '<button type="button" data-area="' + k + '" aria-pressed="' + (st.area === k) + '">' + (k === "all" ? "All of Thanet" : AREAS[k]) + '</button>').join("") : "";
+  const lens = LENSES.find(l => l.id === st.lens);
+  $("lensbar").innerHTML = lens && st.mode !== "big" && st.view !== "groups" ? '<p style="margin:0 0 12px">Showing only items touching <strong>' + esc(lens.label) + '</strong>. <button type="button" class="chip" data-lens="' + lens.id + '">Clear</button></p>' : "";
+}
+function cardHtml(it) {
+  const p = it.i, open = !!st.open[it.id], ev = it.kind === "Event";
+  const statusTxt = {open: ev ? "Coming up" : "Open", decision:"Decision pending", ongoing:"Ongoing", closed:"Closed"}[p.phase];
+  let dl;
+  if (p.phase === "open") dl = '<div class="dl ' + p.level + '"><span class="big">' + esc(daysText(it)) + '</span><span>' + (ev ? "Happens " : "Closes ") + esc(fmt(it.deadline)) + ', ' + esc(it.time) + '</span></div>';
+  else if (p.phase === "closed") dl = '<div class="dl done"><span>' + (it.deadline ? esc(fmt(it.deadline)) + '. ' : "") + esc(it.time) + '</span></div>';
+  else dl = '<div class="dl ' + p.phase + '"><span>' + esc(it.time) + '</span></div>';
+  const lensBtns = it.lenses.map(id => { const l = LENSES.find(x => x.id === id); return l ? '<button type="button" class="chip" data-lens="' + id + '" aria-pressed="' + (st.lens === id) + '">' + esc(l.label) + '</button>' : ""; }).join("");
+  return '<article class="card ' + (p.phase === "closed" ? "done" : "") + '" id="c-' + it.id + '">' +
+    '<div class="card-top"><span class="tag">' + esc(statusTxt) + '</span><span class="tag">' + (KIND_EMOJI[it.kind] || "") + ' ' + esc(it.kind) + '</span><span class="tag">' + esc(LEVELS[it.level]) + '</span><span class="tag">' + esc(it.at ? it.at.map(a => AREAS[a]).join(", ") : "All of Thanet") + '</span></div>' +
+    '<h3>' + (KIND_EMOJI[it.kind] || "") + ' ' + esc(it.title) + '</h3><div class="body-org">' + esc(it.body) + '</div>' + dl +
+    '<p class="plain">' + esc(it.plain) + '</p>' +
+    '<div class="actions"><a class="btn" href="' + it.url + '" target="_blank" rel="noopener">' + esc(it.urlLabel) + '</a>' +
+    '<button type="button" class="btn ghost" data-more="' + it.id + '" aria-expanded="' + open + '" aria-controls="m-' + it.id + '">' + (open ? "Hide details" : "Who and what is affected") + '</button></div>' +
+    '<div class="more" id="m-' + it.id + '"' + (open ? "" : " hidden") + '>' +
+    '<div><h4>Who and what it touches</h4><ul>' + it.aff.map(a => "<li>" + esc(a) + "</li>").join("") + '</ul></div>' +
+    (st.mode === "std" ? '<div><h4>Filter by</h4><div class="lensrow">' + lensBtns + '</div></div>' : "") +
+    '<p>' + esc(it.detail) + '</p><p><strong>How to respond:</strong> ' + esc(it.how) + '</p>' +
+    '<p class="src">Source: <a href="' + it.src + '" target="_blank" rel="noopener">' + esc(it.src.replace(/^https?:\/\//, "").slice(0, 70)) + '</a></p></div></article>';
+}
+function groupHtml(g) {
+  return '<article class="card"><div class="card-top"><span class="tag">' + (GCAT_EMOJI[g.cat] || "") + ' ' + esc(GCATS[g.cat]) + '</span><span class="tag">' + esc(AREAL[g.area]) + '</span>' +
+    (g.roles ? '<span class="tag rec">👋 Volunteers wanted</span>' : "") +
+    '<span class="tag ' + (g.v ? "" : "chk") + '">' + (g.v ? "Source recently confirmed" : "Check before you go") + '</span></div>' +
+    '<h3>' + (GCAT_EMOJI[g.cat] || "") + ' ' + esc(g.n) + '</h3><p class="plain">' + esc(g.what) + '</p>' +
+    '<p class="meta"><strong>How to get involved:</strong> ' + esc(g.get) + '</p>' +
+    (g.dates ? '<p class="meta"><strong>Dates and notes:</strong> ' + esc(g.dates) + '</p>' : "") +
+    '<div class="actions"><a class="btn" href="' + g.url + '" target="_blank" rel="noopener">' + esc(g.label) + '</a></div></article>';
+}
+function sect(title, n, html) { return '<h2 class="sect">' + esc(title) + '<small>' + n + ' shown</small></h2>' + html; }
+function empty(msg) { return '<div class="empty-msg"><strong>Nothing to show here.</strong><br>' + esc(msg) + '</div>'; }
+function renderList() {
+  let h = "";
+  if (st.mode === "big") {
+    const v = bigView();
+    if (v.items.length) h += sect("Dates and plans", v.items.length, v.items.map(cardHtml).join(""));
+    if (v.groups.length) h += sect("Groups", v.groups.length, v.groups.map(groupHtml).join(""));
+    if (!h) h = empty("Try another button or town.");
+  } else if (st.view === "deadlines") {
+    const arr = itemsView();
+    h = arr.length ? arr.map(cardHtml).join("") : empty("Try a different filter.");
+  } else if (st.view === "groups") {
+    const arr = groupsView();
+    h = arr.length ? '<p class="meta" style="margin:0">' + arr.length + ' of ' + GROUPS.length + ' groups. Groups that cover all of Thanet appear under every town.</p>' + arr.map(groupHtml).join("") : empty("No group matches. Clear the search or a filter.");
+  } else {
+    const items = orderItems(withInfo.filter(x => x.i.phase !== "closed" && itemAreaOk(x) && x.topics.includes("nature") && matchLens(x)));
+    const gs = GROUPS.filter(g => g.cat === "nature");
+    h = sect("Plans, decisions and events", items.length, items.length ? items.map(cardHtml).join("") : empty("Nothing matches that filter.")) + (st.lens ? "" : sect("Groups you can join", gs.length, gs.map(groupHtml).join("")));
+  }
+  $("list").innerHTML = h;
+}
+function render() {
+  document.body.classList.toggle("big", st.mode === "big");
+  $("m-std").setAttribute("aria-pressed", st.mode === "std");
+  $("m-big").setAttribute("aria-pressed", st.mode === "big");
+  $("asof").textContent = "Today in Thanet: " + fmt(todayStr) + ". Information collected 13 October 2026.";
+  renderAlert(); renderRunway(); renderControls(); renderList();
+}
+document.addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  const d = b.dataset;
+  if (b.id === "m-std" || b.id === "m-big") {
+    st.mode = b.id === "m-big" ? "big" : "std";
+    try { localStorage.setItem("tcwatch-mode", st.mode); } catch (x) {}
+  } else if (d.view) st.view = d.view;
+  else if (d.tab) st.tab = d.tab;
+  else if (d.level) st.level = d.level;
+  else if (d.lens) { st.lens = st.lens === d.lens ? null : d.lens; if (st.view === "deadlines" && st.lens) st.tab = "all"; }
+  else if (d.gcat) st.gcat = d.gcat;
+  else if (d.area) st.area = d.area;
+  else if (d.recruit) st.recruit = !st.recruit;
+  else if (d.big) st.big = d.big;
+  else if (d.more) st.open[d.more] = !st.open[d.more];
+  else return;
+  render();
+  if (d.more) { const t = document.querySelector('[data-more="' + d.more + '"]'); if (t) t.focus(); }
+});
+$("q").addEventListener("input", e => { st.q = e.target.value; renderList(); });
+render();
+const btt = $("backtotop");
+window.addEventListener("scroll", () => { btt.classList.toggle("show", window.scrollY > 400); }, {passive:true});
+btt.addEventListener("click", () => window.scrollTo({top:0, behavior:"smooth"}));
+</script>
+
+</body></html>

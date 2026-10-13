@@ -1,0 +1,467 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>DONKI Space Weather</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* v2. Order on every tab: status first, then ranked headline figures, then charts (each with a table view), then tables. */
+:root{
+  --bg:#f3f5f9; --surface:#ffffff; --ink:#14203a; --muted:#566684; --line:#cbd3e3; --edge:#6f7d9c; --band:#eef1f8;
+  --accent:#a84e08; --accent-soft:#f6e4d3;
+  --good:#1f7a4d; --warn:#8f5a00; --crit:#b3261e;
+  --c-s:#3f64a3; --c-c:#9a5f00; --c-o:#b3261e;
+  --font-display:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;
+  --font-body:'IBM Plex Sans','Segoe UI',system-ui,sans-serif;
+  --font-data:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0a1020; --surface:#111a30; --ink:#e6ecf8; --muted:#a3b1cf; --line:#2c3d63; --edge:#6a7ba2; --band:#0e172b;
+  --accent:#f0a04b; --accent-soft:#2a2216;
+  --good:#58c78f; --warn:#e8b13c; --crit:#ff7b72;
+  --c-s:#7fa3dc; --c-c:#f0a04b; --c-o:#ff7b72; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0a1020; --surface:#111a30; --ink:#e6ecf8; --muted:#a3b1cf; --line:#2c3d63; --edge:#6a7ba2; --band:#0e172b;
+  --accent:#f0a04b; --accent-soft:#2a2216;
+  --good:#58c78f; --warn:#e8b13c; --crit:#ff7b72;
+  --c-s:#7fa3dc; --c-c:#f0a04b; --c-o:#ff7b72; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.5;padding-inline:16px;padding-block:0 48px}
+.wrap{max-width:1080px;margin-inline:auto}
+header{padding-block:24px 12px;display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:flex-start}
+.hd{min-width:0;flex:1 1 360px}
+.eyebrow{font-family:var(--font-data);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+h1{font-family:var(--font-display);font-weight:700;font-size:clamp(28px,5vw,42px);line-height:1.05;margin:6px 0 6px;text-wrap:balance}
+.lede{color:var(--muted);max-width:64ch;margin:0;font-size:15px}
+.ctl{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.btn{font:500 14px var(--font-body);color:var(--ink);background:var(--surface);border:1px solid var(--edge);border-radius:8px;padding:0 14px;min-height:44px;cursor:pointer}
+.btn:hover{border-color:var(--ink)}
+.btn.sm{min-height:36px;font-size:13px;padding:0 12px}
+.fresh{font:500 13px var(--font-data);color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:6px 12px;background:var(--surface)}
+.fresh.stale{color:var(--warn);border-color:var(--warn)}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);display:flex;gap:4px;overflow-x:auto;padding-block:6px}
+nav button{font:500 15px var(--font-body);color:var(--muted);background:none;border:1px solid transparent;border-radius:8px;padding:0 14px;min-height:44px;white-space:nowrap;cursor:pointer}
+nav button:hover{color:var(--ink);border-color:var(--line)}
+nav button[aria-selected="true"]{color:var(--ink);background:var(--surface);border-color:var(--line);box-shadow:inset 0 -3px 0 var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+section.panel{padding-block:20px}
+h2{font-family:var(--font-display);font-size:22px;margin:0 0 4px}
+h3{font-family:var(--font-display);font-size:17px;margin:0 0 2px}
+.sub{color:var(--muted);margin:0 0 12px;font-size:14px;max-width:72ch}
+.status{display:flex;gap:14px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--muted);border-radius:8px;padding:14px 16px;margin-block:8px 10px}
+.status .g{font:700 22px var(--font-data);line-height:1.2}
+.status h2{margin:0;font-size:20px}
+.status p{margin:2px 0 0;color:var(--muted);font-size:15px}
+.status[data-lv="good"]{border-left-color:var(--good)} .status[data-lv="good"] .g{color:var(--good)}
+.status[data-lv="warn"]{border-left-color:var(--warn)} .status[data-lv="warn"] .g{color:var(--warn)}
+.status[data-lv="crit"]{border-left-color:var(--crit)} .status[data-lv="crit"] .g{color:var(--crit)}
+.cover{font-size:13.5px;color:var(--muted);margin:0 0 6px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-block:16px 12px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;min-width:0}
+.kpi.hero{grid-column:1/-1;border-color:var(--edge)}
+.kpi .l{font:500 12px var(--font-data);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.kpi .n{font-family:var(--font-display);font-size:34px;font-weight:700;line-height:1.1;margin-top:4px;font-variant-numeric:tabular-nums}
+.kpi.hero .n{font-size:clamp(28px,5vw,40px)}
+.kpi .d{font-size:14px;color:var(--muted);margin-top:4px}
+.kpi svg{display:block;margin-top:8px}
+.stats{display:flex;flex-wrap:wrap;gap:8px 20px;margin-bottom:20px;font-size:14px;color:var(--muted)}
+.stats b{color:var(--ink);font-variant-numeric:tabular-nums;font-weight:600}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,520px),1fr));gap:14px;margin-bottom:22px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px;min-width:0;margin-bottom:0}
+.card .top{display:flex;gap:12px;justify-content:space-between;align-items:flex-start;flex-wrap:wrap}
+.chart{overflow-x:auto}
+.chart svg{display:block;min-width:520px;width:100%;height:auto}
+svg text{fill:var(--muted);font-family:var(--font-data);font-size:11px}
+svg .grid{stroke:var(--line);stroke-width:1}
+svg .axis{stroke:var(--muted);stroke-width:1}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface);margin-bottom:8px}
+table{border-collapse:collapse;width:100%;font-size:14px}
+caption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font:500 12px var(--font-data);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--bg)}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.more{margin-bottom:22px}
+.tblwrap .tbl{margin-top:8px}
+.pill{display:inline-block;font:500 12px var(--font-data);padding:2px 8px;border-radius:99px;border:1px solid var(--edge);color:var(--ink)}
+.pill.m{color:var(--warn);border-color:var(--warn)}
+.pill.good{color:var(--good);border-color:var(--good)}
+.pill.crit{color:var(--crit);border-color:var(--crit)}
+.emptybox{border:1px dashed var(--edge);border-radius:10px;padding:16px;color:var(--muted);background:var(--surface);margin-bottom:20px}
+.emptybox strong{color:var(--ink);display:block;margin-bottom:2px}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin-top:8px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend svg{width:12px;height:12px;min-width:0;display:inline-block}
+footer{border-top:1px solid var(--line);margin-top:16px;padding-top:16px;color:var(--muted);font-size:14px;max-width:84ch}
+footer p{margin:0 0 8px}
+details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:4px 14px;margin-block:10px}
+summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:600;color:var(--ink)}
+dl{margin:0 0 10px;display:grid;grid-template-columns:max-content 1fr;gap:6px 14px}
+dt{font-weight:600;color:var(--ink)} dd{margin:0}
+@media (max-width:520px){dl{grid-template-columns:1fr} dd{margin-bottom:6px}}
+.kpi[data-tip],.card[data-tip],.tbl[data-tip],.emptybox[data-tip],.status[data-tip]{cursor:help}
+.kpi[data-tip]:hover,.card[data-tip]:hover,.tbl[data-tip]:hover,.emptybox[data-tip]:hover,.status[data-tip]:hover{border-color:var(--accent)}
+.stats span[data-tip]{cursor:help;text-decoration:underline dotted var(--edge);text-underline-offset:4px}
+#tip{position:fixed;z-index:50;max-width:min(300px,calc(100vw - 24px));background:var(--ink);color:var(--bg);font:400 14px/1.45 var(--font-body);padding:9px 12px;border-radius:8px;box-shadow:0 4px 18px rgba(0,0,0,.28);pointer-events:none;opacity:0;transition:opacity .12s}
+#tip.on{opacity:1}
+#tip b{display:block;font:500 11px var(--font-data);letter-spacing:.08em;text-transform:uppercase;opacity:.75;margin-bottom:3px}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="hd">
+    <div class="eyebrow" id="eyebrow">NASA CCMC · DONKI</div>
+    <h1>DONKI Space Weather</h1>
+    <p class="lede">Solar flares, coronal mass ejections and their effects at Earth, from NASA's Database Of Notifications, Knowledge, Information.</p>
+  </div>
+  <div class="ctl">
+    <span class="fresh" id="fresh" role="status"></span>
+    <button class="btn" id="tzbtn" type="button"></button>
+    <button class="btn" id="thbtn" type="button"></button>
+  </div>
+</header>
+<div id="status" role="status"></div>
+<p class="cover" id="cover"></p>
+<nav role="tablist" id="tabs" aria-label="Sections"></nav>
+<main id="panels"></main>
+<footer id="foot"></footer>
+</div>
+
+<script>
+const D = {"cme":[{"id":"2026-10-05T01:26","t":"2026-10-05T01:26Z","loc":"S21W71","ar":14546,"sp":340.0,"ty":"S","ha":18.0,"earth":null,"imp":[{"loc":"Mars","t":"2026-10-10T12:00Z"},{"loc":"Psyche","t":"2026-10-10T16:00Z"},{"loc":"STEREO A","t":"2026-10-08T12:00Z"}]},{"id":"2026-10-05T07:48","t":"2026-10-05T07:48Z","loc":"","ar":null,"sp":701.0,"ty":"C","ha":40.0,"earth":null,"imp":[{"loc":"BepiColombo","t":"2026-10-06T12:00Z"},{"loc":"BepiColombo","t":"2026-10-06T13:00Z"}]},{"id":"2026-10-05T11:24","t":"2026-10-05T11:24Z","loc":"S17E60","ar":null,"sp":629.0,"ty":"C","ha":10.0,"earth":null,"imp":[{"loc":"Europa Clipper","t":"2026-10-08T00:00Z"},{"loc":"OSIRIS-APEX","t":"2026-10-08T18:00Z"},{"loc":"Parker Solar Probe","t":"2026-10-07T12:00Z"}]},{"id":"2026-10-05T21:12","t":"2026-10-05T21:12Z","loc":"","ar":null,"sp":266.0,"ty":"S","ha":35.0,"earth":null,"imp":[{"loc":"Psyche","t":"2026-10-13T11:00Z"},{"loc":"STEREO A","t":"2026-10-10T13:00Z"}]},{"id":"2026-10-06T00:00","t":"2026-10-06T00:00Z","loc":"S19W88","ar":14546,"sp":325.0,"ty":"S","ha":17.0,"earth":null,"imp":[{"loc":"Mars","t":"2026-10-11T23:30Z"},{"loc":"Psyche","t":"2026-10-13T00:00Z"},{"loc":"STEREO A","t":"2026-10-09T10:00Z"}]},{"id":"2026-10-06T06:23","t":"2026-10-06T06:23Z","loc":"N10E12","ar":14549,"sp":570.0,"ty":"C","ha":40.0,"earth":{"t":"2026-10-09T02:21Z","kp":[null,4,6,7],"gb":false},"imp":[{"loc":"Europa Clipper","t":"2026-10-09T00:02Z"},{"loc":"Juice","t":"2026-10-08T23:26Z"},{"loc":"Mars","t":"2026-10-11T06:00Z"},{"loc":"OSIRIS-APEX","t":"2026-10-10T00:00Z"},{"loc":"Solar Orbiter","t":"2026-10-08T12:09Z"},{"loc":"STEREO A","t":"2026-10-09T08:00Z"},{"loc":"Europa Clipper","t":"2026-10-08T19:18Z"},{"loc":"Juice","t":"2026-10-08T21:49Z"},{"loc":"Mars","t":"2026-10-11T06:00Z"},{"loc":"OSIRIS-APEX","t":"2026-10-09T09:12Z"},{"loc":"Parker Solar Probe","t":"2026-10-08T04:00Z"},{"loc":"Solar Orbiter","t":"2026-10-08T11:26Z"},{"loc":"STEREO A","t":"2026-10-09T06:00Z"}]},{"id":"2026-10-06T09:53","t":"2026-10-06T09:53Z","loc":"N08E07","ar":14549,"sp":424.0,"ty":"S","ha":24.0,"earth":{"t":"2026-10-09T20:00Z","kp":[null,3,4,4],"gb":false},"imp":[{"loc":"Europa Clipper","t":"2026-10-09T06:00Z"},{"loc":"Juice","t":"2026-10-09T17:41Z"}]},{"id":"2026-10-06T13:08","t":"2026-10-06T13:08Z","loc":"N40E10","ar":null,"sp":438.0,"ty":"S","ha":11.0,"earth":null,"imp":[]},{"id":"2026-10-07T13:53","t":"2026-10-07T13:53Z","loc":"N10W04","ar":14549,"sp":310.0,"ty":"S","ha":36.0,"earth":{"t":"2026-10-11T06:00Z","kp":[null,2,4,4],"gb":true},"imp":[{"loc":"Europa Clipper","t":"2026-10-10T16:00Z"},{"loc":"Juice","t":"2026-10-10T22:00Z"},{"loc":"OSIRIS-APEX","t":"2026-10-11T18:00Z"},{"loc":"Solar Orbiter","t":"2026-10-10T18:00Z"}]},{"id":"2026-10-08T16:12","t":"2026-10-08T16:12Z","loc":"","ar":null,"sp":449.0,"ty":"S","ha":24.0,"earth":null,"imp":[]},{"id":"2026-10-08T16:24","t":"2026-10-08T16:24Z","loc":"N05W25","ar":null,"sp":579.0,"ty":"C","ha":28.0,"earth":{"t":"2026-10-11T20:14Z","kp":[null,3,4,5],"gb":false},"imp":[{"loc":"Juice","t":"2026-10-11T16:00Z"},{"loc":"Mars","t":"2026-10-13T12:00Z"},{"loc":"Psyche","t":"2026-10-14T00:00Z"},{"loc":"Solar Orbiter","t":"2026-10-11T02:26Z"},{"loc":"STEREO A","t":"2026-10-11T12:00Z"},{"loc":"Juice","t":"2026-10-11T14:01Z"},{"loc":"Mars","t":"2026-10-13T12:00Z"},{"loc":"Psyche","t":"2026-10-14T00:00Z"},{"loc":"Solar Orbiter","t":"2026-10-11T02:07Z"},{"loc":"STEREO A","t":"2026-10-11T12:00Z"}]},{"id":"2026-10-08T16:53","t":"2026-10-08T16:53Z","loc":"N12W20","ar":14549,"sp":723.0,"ty":"C","ha":35.0,"earth":{"t":"2026-10-11T20:14Z","kp":[null,3,4,5],"gb":false},"imp":[{"loc":"Europa Clipper","t":"2026-10-11T00:00Z"},{"loc":"Juice","t":"2026-10-11T03:34Z"},{"loc":"Mars","t":"2026-10-13T18:00Z"},{"loc":"Solar Orbiter","t":"2026-10-10T21:51Z"},{"loc":"STEREO A","t":"2026-10-11T18:00Z"},{"loc":"Juice","t":"2026-10-11T14:45Z"},{"loc":"Solar Orbiter","t":"2026-10-11T07:42Z"},{"loc":"STEREO A","t":"2026-10-12T00:00Z"},{"loc":"Juice","t":"2026-10-11T14:01Z"},{"loc":"Mars","t":"2026-10-13T12:00Z"},{"loc":"Psyche","t":"2026-10-14T00:00Z"},{"loc":"Solar Orbiter","t":"2026-10-11T02:07Z"},{"loc":"STEREO A","t":"2026-10-11T12:00Z"}]},{"id":"2026-10-08T20:12","t":"2026-10-08T20:12Z","loc":"N15W85","ar":14547,"sp":453.0,"ty":"S","ha":38.0,"earth":null,"imp":[]},{"id":"2026-10-09T00:45","t":"2026-10-09T00:45Z","loc":"","ar":null,"sp":293.0,"ty":"S","ha":27.0,"earth":null,"imp":[]},{"id":"2026-10-09T07:15","t":"2026-10-09T07:15Z","loc":"N15W90","ar":14547,"sp":391.0,"ty":"S","ha":21.0,"earth":null,"imp":[]},{"id":"2026-10-09T08:00","t":"2026-10-09T08:00Z","loc":"","ar":null,"sp":270.0,"ty":"S","ha":10.0,"earth":null,"imp":[]},{"id":"2026-10-09T14:36","t":"2026-10-09T14:36Z","loc":"N15W94","ar":14547,"sp":315.0,"ty":"S","ha":41.0,"earth":null,"imp":[{"loc":"STEREO A","t":"2026-10-13T10:00Z"}]},{"id":"2026-10-10T08:36","t":"2026-10-10T08:36Z","loc":"N16W105","ar":14547,"sp":368.0,"ty":"S","ha":40.0,"earth":null,"imp":[{"loc":"Mars","t":"2026-10-16T07:00Z"},{"loc":"Psyche","t":"2026-10-16T18:00Z"},{"loc":"STEREO A","t":"2026-10-14T04:00Z"}]},{"id":"2026-10-10T12:23","t":"2026-10-10T12:23Z","loc":"","ar":null,"sp":763.0,"ty":"C","ha":10.0,"earth":null,"imp":[]},{"id":"2026-10-10T16:15","t":"2026-10-10T16:15Z","loc":"N08W54","ar":14549,"sp":844.0,"ty":"C","ha":43.0,"earth":{"t":"2026-10-12T00:43Z","kp":[null,8,9,9],"gb":false},"imp":[{"loc":"Mars","t":"2026-10-14T19:05Z"},{"loc":"Psyche","t":"2026-10-15T06:00Z"},{"loc":"Solar Orbiter","t":"2026-10-12T14:33Z"},{"loc":"STEREO A","t":"2026-10-13T02:33Z"},{"loc":"Europa Clipper","t":"2026-10-11T19:12Z"},{"loc":"Juice","t":"2026-10-11T22:12Z"},{"loc":"Mars","t":"2026-10-14T15:00Z"},{"loc":"OSIRIS-APEX","t":"2026-10-12T07:22Z"},{"loc":"Psyche","t":"2026-10-15T18:00Z"},{"loc":"Solar Orbiter","t":"2026-10-11T23:43Z"},{"loc":"STEREO A","t":"2026-10-12T21:00Z"}]},{"id":"2026-10-10T22:00","t":"2026-10-10T22:00Z","loc":"","ar":null,"sp":351.0,"ty":"S","ha":11.0,"earth":null,"imp":[]},{"id":"2026-10-11T09:12","t":"2026-10-11T09:12Z","loc":"","ar":null,"sp":374.0,"ty":"S","ha":17.0,"earth":null,"imp":[]},{"id":"2026-10-11T23:15","t":"2026-10-11T23:15Z","loc":"S20E30","ar":null,"sp":457.0,"ty":"S","ha":10.0,"earth":null,"imp":[{"loc":"Solar Orbiter","t":"2026-10-14T22:00Z"}]}],"flr":[{"id":"2026-09-19T17:57","b":"2026-09-19T17:57Z","p":"2026-09-19T18:17Z","e":"2026-09-19T18:32Z","c":"C3.3","loc":"N14E90","ar":14535},{"id":"2026-09-30T02:30","b":"2026-09-30T02:30Z","p":"2026-09-30T02:46Z","e":"2026-09-30T03:05Z","c":"C8.6","loc":"N11W48","ar":14535},{"id":"2026-10-04T06:13","b":"2026-10-04T06:13Z","p":"2026-10-04T06:19Z","e":"2026-10-04T06:21Z","c":"B3.2","loc":"S20W62","ar":14546},{"id":"2026-10-04T06:21","b":"2026-10-04T06:21Z","p":"2026-10-04T06:30Z","e":"2026-10-04T06:39Z","c":"B9.3","loc":"S19W62","ar":14546},{"id":"2026-10-05T18:36","b":"2026-10-05T18:36Z","p":"2026-10-05T18:48Z","e":"2026-10-05T18:57Z","c":"M1.0","loc":"N20E10","ar":14545},{"id":"2026-10-06T05:38","b":"2026-10-06T05:38Z","p":"2026-10-06T06:10Z","e":"2026-10-06T06:51Z","c":"M1.4","loc":"N10E12","ar":14549},{"id":"2026-10-06T07:47","b":"2026-10-06T07:47Z","p":"2026-10-06T08:05Z","e":"2026-10-06T08:13Z","c":"M1.8","loc":"N08E07","ar":14549},{"id":"2026-10-07T12:49","b":"2026-10-07T12:49Z","p":"2026-10-07T13:17Z","e":"2026-10-07T13:44Z","c":"C7.9","loc":"N10W04","ar":14549},{"id":"2026-10-08T15:29","b":"2026-10-08T15:29Z","p":"2026-10-08T15:48Z","e":"2026-10-08T15:58Z","c":"M6.7","loc":"N12W20","ar":14549},{"id":"2026-10-09T13:55","b":"2026-10-09T13:55Z","p":"2026-10-09T14:09Z","e":"2026-10-09T14:17Z","c":"M1.3","loc":"N15W90","ar":14547},{"id":"2026-10-10T13:56","b":"2026-10-10T13:56Z","p":"2026-10-10T14:12Z","e":"2026-10-10T14:27Z","c":"M1.2","loc":"N08W51","ar":14549},{"id":"2026-10-10T14:58","b":"2026-10-10T14:58Z","p":"2026-10-10T15:10Z","e":"2026-10-10T15:20Z","c":"M6.4","loc":"N08W54","ar":14549}],"sep":[],"ips":[{"t":"2026-09-14T09:24Z","loc":"Earth","ins":6,"lk":["2026-09-09T16:00"]},{"t":"2026-09-15T11:28Z","loc":"Earth","ins":6,"lk":["2026-09-13T19:48"]},{"t":"2026-09-17T01:24Z","loc":"Earth","ins":6,"lk":["2026-09-13T21:12","2026-09-14T11:08"]},{"t":"2026-09-17T15:10Z","loc":"STEREO A","ins":2,"lk":["2026-09-14T11:08"]},{"t":"2026-09-21T00:33Z","loc":"STEREO A","ins":2,"lk":[]},{"t":"2026-09-23T15:30Z","loc":"Earth","ins":6,"lk":[]},{"t":"2026-09-28T08:32Z","loc":"STEREO A","ins":2,"lk":[]},{"t":"2026-10-03T01:26Z","loc":"Earth","ins":6,"lk":["2026-09-30T03:12"]},{"t":"2026-10-03T23:41Z","loc":"Earth","ins":6,"lk":[]},{"t":"2026-10-09T10:41Z","loc":"Earth","ins":6,"lk":["2026-10-06T06:23"]},{"t":"2026-10-10T01:48Z","loc":"STEREO A","ins":2,"lk":["2026-10-08T16:24"]},{"t":"2026-10-10T14:33Z","loc":"Earth","ins":6,"lk":["2026-10-06T06:23","2026-10-06T09:53","2026-10-07T13:53"]}],"hss":[{"t":"2026-09-15T23:36Z","ins":["SOLAR-1: MAG","SOLAR-1: SWiPS","IMAP: SWAPI","IMAP: MAG","ACE: MAG","ACE: SWEPAM"]},{"t":"2026-09-21T12:15Z","ins":["STEREO A: IMPACT","STEREO A: PLASTIC"]},{"t":"2026-09-24T08:09Z","ins":["SOLAR-1: MAG","ACE: SWEPAM","IMAP: SWAPI","IMAP: MAG","ACE: MAG","SOLAR-1: SWiPS"]},{"t":"2026-09-29T00:34Z","ins":["STEREO A: IMPACT","STEREO A: PLASTIC"]},{"t":"2026-10-03T23:40Z","ins":["SOLAR-1: SWiPS","ACE: SWEPAM","ACE: MAG","SOLAR-1: MAG","IMAP: MAG","IMAP: SWAPI"]}],"rbe":[{"t":"2026-09-23T16:10Z","ins":["GOES-P: SEISS >2MeV"],"lk":["2026-09-15T23:36-HSS-001"]},{"t":"2026-09-26T14:10Z","ins":["GOES-P: SEISS >2MeV"],"lk":["2026-09-24T08:09-HSS-001"]},{"t":"2026-10-05T16:20Z","ins":["GOES-P: SEISS >2MeV"],"lk":["2026-10-03T23:40-HSS-001"]},{"t":"2026-10-10T14:35Z","ins":["GOES-P: SEISS >2MeV"],"lk":["2026-10-06T06:23-CME-001","2026-10-06T09:53-CME-001","2026-10-07T13:53-CME-001"]}],"note":[{"t":"2026-10-02T14:34Z","ty":"RBE","id":"20261002-AL-001"},{"t":"2026-10-04T12:40Z","ty":"MPC","id":"20261004-AL-001"},{"t":"2026-10-04T12:48Z","ty":"IPS","id":"20261004-AL-002"},{"t":"2026-10-04T21:06Z","ty":"GST","id":"20261004-AL-003"},{"t":"2026-10-04T21:33Z","ty":"GST","id":"20261004-AL-004"},{"t":"2026-10-05T15:05Z","ty":"CME","id":"20261005-AL-001"},{"t":"2026-10-05T16:30Z","ty":"RBE","id":"20261005-AL-002"},{"t":"2026-10-05T16:43Z","ty":"RBE","id":"20261005-AL-003"},{"t":"2026-10-05T17:32Z","ty":"CME","id":"20261005-AL-004"},{"t":"2026-10-06T12:46Z","ty":"CME","id":"20261006-AL-001"},{"t":"2026-10-06T20:49Z","ty":"CME","id":"20261006-AL-002"},{"t":"2026-10-07T16:48Z","ty":"RBE","id":"20261007-AL-001"},{"t":"2026-10-07T20:35Z","ty":"Report","id":"20261007-7D-001"},{"t":"2026-10-08T15:48Z","ty":"FLR","id":"20261008-AL-001"},{"t":"2026-10-08T15:56Z","ty":"FLR","id":"20261008-AL-002"},{"t":"2026-10-08T21:09Z","ty":"CME","id":"20261008-AL-003"},{"t":"2026-10-08T22:05Z","ty":"CME","id":"20261008-AL-004"},{"t":"2026-10-09T11:14Z","ty":"IPS","id":"20261009-AL-001"},{"t":"2026-10-09T11:30Z","ty":"CME","id":"20261009-AL-002"},{"t":"2026-10-10T15:04Z","ty":"IPS","id":"20261010-AL-001"},{"t":"2026-10-10T15:11Z","ty":"RBE","id":"20261010-AL-002"},{"t":"2026-10-10T15:13Z","ty":"FLR","id":"20261010-AL-003"},{"t":"2026-10-10T15:20Z","ty":"FLR","id":"20261010-AL-004"},{"t":"2026-10-10T15:50Z","ty":"MPC","id":"20261010-AL-005"},{"t":"2026-10-10T18:03Z","ty":"GST","id":"20261010-AL-006"},{"t":"2026-10-10T18:30Z","ty":"GST","id":"20261010-AL-007"},{"t":"2026-10-10T19:49Z","ty":"CME","id":"20261010-AL-008"}],"gst":[{"t":"2026-10-04T18:00Z","kp":5.67},{"t":"2026-10-10T15:00Z","kp":7.0}],"mpc":[{"t":"2026-10-04T07:26Z"},{"t":"2026-10-10T15:33Z"}],"meta":{"start":"2026-09-12","end":"2026-10-12","cmeStart":"2026-10-05","cmeEnd":"2026-10-11","pulled":"12 Oct 2026 04:55 UTC","pulledIso":"2026-10-12T04:55Z"}};
+D.gst=D.gst||[]; D.mpc=D.mpc||[]; D.note=D.note||[];
+const M=D.meta;
+const $=(s,r=document)=>r.querySelector(s);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const T=s=>new Date(s.endsWith('Z')?s:s+'Z');
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* ---------- plain-English hover text ---------- */
+const TIPS=[
+ [/^status$/,"The one-line summary of right now. A green tick means calm, an amber triangle means keep an eye out, and a red square means a storm is under way."],
+ [/next cme arrival/i,"A CME is a huge cloud of gas the Sun burps into space. NASA's computer forecasts when the next one could reach Earth. It is a forecast, so it can be hours out."],
+ [/strongest flare/i,"A solar flare is a flash of light from the Sun, like a camera flash. The letter says how strong: C is small, M is medium, X is huge. This is the biggest one in the period."],
+ [/^No geomagnetic/,"No storms were logged, which is good news. Earth's magnetic bubble stayed calm."],
+ [/geomagnetic storm/i,"A geomagnetic storm is when the solar wind shakes Earth's magnetic bubble. It is what makes the really strong auroras. Zero means Earth stayed calm."],
+ [/^No magnetopause/,"Nothing was logged. Earth's magnetic bubble was never squeezed in far enough to catch our satellites."],
+ [/magnetopause/i,"The magnetopause is the edge of Earth's magnetic bubble. A crossing means it got squashed in past the satellites that orbit far out."],
+ [/^No radiation/,"No enhancements were logged for this period."],
+ [/radiation belt/i,"Earth has rings of charged particles trapped around it. An enhancement is when they get extra crowded, which can annoy satellites."],
+ [/^No particle/,"No particle events were logged for this period."],
+ [/particle event|energetic particle/i,"Sometimes a big eruption flings out tiny super-fast particles, like a spray of invisible bullets. Each row is one detector noticing them. Rows close together are usually one burst."],
+ [/^No modelled|^No comparison/,"Nothing to show yet. The forecast either has no Earth arrivals, or none of them has been checked against what really happened."],
+ [/CMEs per day/i,"Each bar is one day. The taller the bar, the more solar clouds the Sun threw out that day."],
+ [/CME speed/i,"Each mark is one solar cloud. Higher means faster, bigger means wider, and the shape tells you the speed class. Hover a mark for details."],
+ [/predicted against/i,"Shows how good the forecast was. The hollow ring is when the computer said a cloud would arrive, the solid dot is when it really did. The label shows how many hours early or late."],
+ [/impacts on|probe or planet/i,"The same forecast checks which other spacecraft and planets are in the way. This counts how many clouds were predicted to hit each one."],
+ [/modelled to reach|modelled earth/i,"The forecast table. Kp is a 0 to 9 storm scale, and 5 or more is a proper storm. Glancing means only a sideswipe, direct means a head-on hit."],
+ [/^flares,|flares|^Solar flares/i,"Flares are flashes of light from the Sun, like a camera flash. The letter says how strong: C is small, M is medium, X is huge. A diamond on the chart is an M or stronger."],
+ [/1000 km\/s/i,"Most solar clouds drift out slowly. These are the speed demons, travelling 1000 km every second or faster."],
+ [/interplanetary|shocks|reached earth/i,"A shock is the front edge of a solar cloud, like the bow wave in front of a boat. Transit is how long the cloud took to get from the Sun to the spacecraft that felt it."],
+ [/high speed/i,"High speed streams are gusts of extra-fast solar wind that blow out of dark holes in the Sun's surface, like a fan switched to high."],
+ [/CME|coronal/i,"A CME (coronal mass ejection) is the Sun burping a huge cloud of gas and magnetism into space. Most miss Earth. Speed is in km/s, and S, C and O are slow, common and fast."]
+];
+const tipFor=t=>{t=String(t||'');const h=TIPS.find(p=>p[0].test(t));return h?h[1]:''};
+const tp=t=>{const x=tipFor(t);return x?' data-tip="'+esc(x)+'" tabindex="0"':''};
+/* free-text fields from the feed are escaped once, here, before any markup is built */
+const sx=v=>v==null?v:esc(v);
+D.flr.forEach(f=>{f.loc=sx(f.loc)});
+D.cme.forEach(c=>{c.loc=sx(c.loc);c.imp.forEach(i=>{i.loc=sx(i.loc)})});
+D.ips.forEach(i=>{i.loc=sx(i.loc)});
+[D.sep,D.hss,D.rbe].forEach(a=>a.forEach(r=>{r.ins=(r.ins||[]).map(sx)}));
+const NOW=Date.now();
+const MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+/* ---------- time: UTC by default, UK time on request ---------- */
+let TZ=store.get('donki-tz')==='uk'?'Europe/London':'UTC';
+const tzName=()=>TZ==='UTC'?'UTC':'UK time';
+function fmtD(d){
+  const o={};new Intl.DateTimeFormat('en-GB',{timeZone:TZ,day:'numeric',month:'short',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(d).forEach(p=>o[p.type]=p.value);
+  return o.day+' '+o.month.replace('Sept','Sep')+' '+o.hour+':'+o.minute;
+}
+const fmt=s=>fmtD(T(s));
+const hrs=(a,b)=>(T(b)-T(a))/36e5;
+const hoursTxt=h=>h<1?'under 1 h':h<48?Math.round(h)+' h':Math.round(h/24)+' days';
+
+/* ---------- data helpers ---------- */
+const cmeById=Object.fromEntries(D.cme.map(c=>[c.id,c]));
+const flux=c=>({C:1e-6,M:1e-5,X:1e-4}[c[0]]*parseFloat(c.slice(1)));
+const mFlares=D.flr.filter(f=>f.c[0]==='M'||f.c[0]==='X');
+const earthIps=D.ips.filter(i=>i.loc==='Earth');
+const gScale=k=>k>=9?'G5 extreme':k>=8?'G4 severe':k>=7?'G3 strong':k>=6?'G2 moderate':k>=5?'G1 minor':'below storm level';
+const kpOf=c=>{const k=c.earth.kp.filter(x=>x!=null);return k.length?[Math.min(...k),Math.max(...k)]:null};
+const kpTxt=c=>{const r=kpOf(c);return r?(r[0]===r[1]?'Kp '+r[0]:'Kp '+r[0]+' to '+r[1]):'Kp not given'};
+const loggedIps=c=>earthIps.find(i=>i.lk.includes(c.id));
+function upcoming(n){return D.cme.filter(c=>c.earth&&T(c.earth.t)>NOW&&!loggedIps(c)).sort((a,b)=>T(a.earth.t)-T(b.earth.t)).slice(0,n)}
+
+/* ---------- window labels ---------- */
+const day0=T(M.start+'T00:00Z');
+const dlab=n=>{const d=new Date(day0.getTime()+n*864e5);return d.getUTCDate()+' '+MON[d.getUTCMonth()]};
+const dayIdx=s=>Math.floor((T(s)-day0)/864e5);
+const WDAYS=Math.round((T(M.end+'T00:00Z')-day0)/864e5)+1;
+const CO=Math.max(0,dayIdx(M.cmeStart+'T00:00Z'));
+const CDAYS=Math.max(1,dayIdx(M.cmeEnd+'T00:00Z')+1-CO);
+const winLabel=dlab(0)+' to '+dlab(WDAYS-1);
+const cmeLabel=dlab(CO)+' to '+dlab(CO+CDAYS-1);
+const partial=(CO>0||CO+CDAYS<WDAYS);
+const inRecent=f=>{const i=dayIdx(f.p);return i>=CO&&i<CO+CDAYS};
+const recentFlares=D.flr.filter(inRecent);
+const xDay=(s,x0,x1,days,off=0)=>x0+(x1-x0)*((T(s)-day0)/864e5-off)/days;
+
+/* ---------- freshness and status ---------- */
+const pulledMs=Date.parse(M.pulledIso||M.pulled);
+function freshHtml(){
+  if(isNaN(pulledMs))return {t:'Updated '+M.pulled,stale:false};
+  const h=(NOW-pulledMs)/36e5;
+  const t=(h>=36?'▲ Out of date: updated ':'Updated ')+(h<1?'under 1 h':Math.round(h)+' h')+' ago ('+fmtD(new Date(pulledMs))+' '+tzName()+')';
+  return {t,stale:h>=36};
+}
+function statusInfo(){
+  const w=72*36e5;
+  const storm=D.gst.filter(g=>NOW>=T(g.t)&&NOW-T(g.t)<w);
+  const kpMax=Math.max(0,...storm.map(g=>g.kp));
+  const up=upcoming(1)[0];
+  const big=mFlares.filter(f=>NOW>=T(f.p)&&NOW-T(f.p)<w).sort((a,b)=>flux(b.c)-flux(a.c))[0];
+  const upTxt=up?' Next CME arrival expected '+fmt(up.earth.t)+' ('+tzName()+').':'';
+  if(kpMax>=5)return {lv:'crit',g:'■',h:'Geomagnetic storm in the last 3 days',d:'Peak Kp '+kpMax+' ('+gScale(kpMax)+').'+upTxt};
+  if(up)return {lv:'warn',g:'▲',h:'CME expected at Earth',d:'Model arrival '+fmt(up.earth.t)+' ('+tzName()+'), '+kpTxt(up)+'. A forecast, not an observation.'};
+  if(big)return {lv:'warn',g:'▲',h:'Active sun',d:big.c+' flare peaked '+fmt(big.p)+' ('+tzName()+'). No Earth-directed CME arrivals are pending.'};
+  return {lv:'good',g:'✓',h:'Quiet conditions',d:'No storms in the last 3 days, no M-class flares, and no CME arrivals pending.'};
+}
+function statusHtml(){const s=statusInfo();return '<div class="status" data-lv="'+s.lv+'"'+tp('status')+'><span class="g" aria-hidden="true">'+s.g+'</span><div><h2>'+s.h+'</h2><p>'+s.d+'</p></div></div>'}
+
+/* ---------- building blocks ---------- */
+function svg(w,h,inner,label){return '<svg viewBox="0 0 '+w+' '+h+'" role="img" aria-label="'+esc(label)+'">'+inner+'</svg>'}
+function kpi(label,big,detail,extra,hero){return '<div class="kpi'+(hero?' hero':'')+'"'+tp(label)+'><div class="l">'+label+'</div><div class="n">'+big+'</div><div class="d">'+detail+'</div>'+(extra||'')+'</div>'}
+function stat(n,l){return '<span'+tp(l)+'><b>'+n+'</b> '+l+'</span>'}
+function empty(t,b){return '<div class="emptybox"'+tp(t)+'><strong>'+t+'</strong>'+b+'</div>'}
+function table(cols,rows,o){
+  o=o||{};const lim=o.limit||0;
+  const head='<tr>'+cols.map(c=>'<th scope="col" class="'+(c.n?'num':'')+'">'+c.h+'</th>').join('')+'</tr>';
+  const body=rows.map((r,i)=>'<tr'+(lim&&i>=lim?' hidden data-x':'')+'>'+r.map((v,j)=>'<td class="'+(cols[j].n?'num':'')+'">'+v+'</td>').join('')+'</tr>').join('');
+  const more=lim&&rows.length>lim?'<button type="button" class="btn sm more" data-more>Show all '+rows.length+' rows</button>':'';
+  return '<div class="tbl"'+tp(o.cap)+'><table><caption>'+esc(o.cap||'')+'</caption><thead>'+head+'</thead><tbody>'+body+'</tbody></table></div>'+more;
+}
+function figure(title,sub,svgHtml,cols,rows,extra){
+  return '<div class="card"'+tp(title)+'><div class="top"><div><h3>'+title+'</h3><p class="sub">'+sub+'</p></div><button type="button" class="btn sm" data-tbl aria-pressed="false">View as table</button></div>'
+   +'<div class="chartwrap"><div class="chart">'+svgHtml+'</div>'+(extra||'')+'</div>'
+   +'<div class="tblwrap" hidden>'+table(cols,rows,{cap:title})+'</div></div>';
+}
+function spark(vals){
+  const W=120,H=26,mx=Math.max(1,...vals),bw=W/vals.length;
+  return '<svg width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'" aria-hidden="true" style="min-width:0">'+vals.map((v,i)=>'<rect x="'+(i*bw+1)+'" y="'+(H-v/mx*(H-2)-1)+'" width="'+(bw-2)+'" height="'+(v/mx*(H-2)+1)+'" rx="1" fill="var(--accent)"/>').join('')+'</svg>';
+}
+const shapeAt=(t,x,y,r,col,title,fillOp)=>{
+  const f=' fill="'+col+'" fill-opacity="'+(fillOp||1)+'" stroke="'+col+'"';
+  const tt='<title>'+esc(title)+'</title>';
+  if(t==='C')return '<rect x="'+(x-r)+'" y="'+(y-r)+'" width="'+2*r+'" height="'+2*r+'"'+f+'>'+tt+'</rect>';
+  if(t==='O')return '<polygon points="'+x+','+(y-r-1)+' '+(x+r+1)+','+(y+r)+' '+(x-r-1)+','+(y+r)+'"'+f+'>'+tt+'</polygon>';
+  if(t==='D')return '<polygon points="'+x+','+(y-r-1)+' '+(x+r+1)+','+y+' '+x+','+(y+r+1)+' '+(x-r-1)+','+y+'"'+f+'>'+tt+'</polygon>';
+  return '<circle cx="'+x+'" cy="'+y+'" r="'+r+'"'+f+'>'+tt+'</circle>';
+};
+
+/* ---------- charts ---------- */
+function chartFlares(){
+  const W=720,H=300,L=46,R=16,Tp=14,B=34,days=WDAYS;
+  const lo=Math.log10(1e-6),hi=Math.log10(4e-5);
+  const y=v=>Tp+(H-Tp-B)*(1-(Math.log10(v)-lo)/(hi-lo));
+  const X=d=>L+(W-L-R)*d/days;
+  let s='<rect x="'+X(CO)+'" y="'+Tp+'" width="'+(X(CO+CDAYS)-X(CO))+'" height="'+(H-Tp-B)+'" fill="var(--band)"/>';
+  [[1e-6,'C1'],[3e-6,'C3'],[1e-5,'M1'],[3e-5,'M3']].forEach(a=>{s+='<line class="grid" x1="'+L+'" x2="'+(W-R)+'" y1="'+y(a[0])+'" y2="'+y(a[0])+'"/><text x="'+(L-6)+'" y="'+(y(a[0])+3)+'" text-anchor="end">'+a[1]+'</text>'});
+  for(let d=0;d<days-2;d+=5){s+='<line class="grid" x1="'+X(d)+'" x2="'+X(d)+'" y1="'+Tp+'" y2="'+(H-B)+'"/><text x="'+X(d)+'" y="'+(H-B+16)+'" text-anchor="middle">'+dlab(d)+'</text>'}
+  s+='<line class="axis" x1="'+L+'" x2="'+(W-R)+'" y1="'+(H-B)+'" y2="'+(H-B)+'"/>';
+  D.flr.forEach(f=>{const m=f.c[0]!=='C';const x=xDay(f.p,L,W-R,days),yy=y(flux(f.c));
+    s+='<line x1="'+x+'" x2="'+x+'" y1="'+(H-B)+'" y2="'+yy+'" stroke="'+(m?'var(--accent)':'var(--c-s)')+'" stroke-width="1.5"/>'+shapeAt(m?'D':'S',x,yy,m?5:3.5,m?'var(--accent)':'var(--c-s)',f.c+' flare, peak '+fmt(f.p)+' '+tzName()+', '+f.loc);
+    if(m)s+='<text x="'+x+'" y="'+(yy-11)+'" text-anchor="middle" style="fill:var(--ink)">'+f.c+'</text>'});
+  const lab=D.flr.length+' flares in '+winLabel+', '+mFlares.length+' of them M-class or stronger'+(mFlares.length?', strongest '+mFlares.slice().sort((a,b)=>flux(b.c)-flux(a.c))[0].c:'')+'. The shaded band is '+cmeLabel+'. A table view is available.';
+  return svg(W,H,s,lab);
+}
+function chartCmeDaily(){
+  const W=720,H=240,L=34,R=12,Tp=14,B=30,n=CDAYS;
+  const counts=Array(n).fill(0);D.cme.forEach(c=>{const i=dayIdx(c.t)-CO;if(i>=0&&i<n)counts[i]++});
+  const top=Math.max(5,Math.ceil(Math.max(...counts)/5)*5),y=v=>Tp+(H-Tp-B)*(1-v/top),bw=(W-L-R)/n;
+  let s='';
+  for(let v=0;v<=top;v+=5)s+='<line class="grid" x1="'+L+'" x2="'+(W-R)+'" y1="'+y(v)+'" y2="'+y(v)+'"/><text x="'+(L-6)+'" y="'+(y(v)+3)+'" text-anchor="end">'+v+'</text>';
+  counts.forEach((c,i)=>{const x=L+i*bw+4;
+    s+='<rect x="'+x+'" y="'+y(c)+'" width="'+(bw-8)+'" height="'+(H-B-y(c))+'" fill="var(--accent)" rx="2"><title>'+dlab(i+CO)+': '+c+' CMEs</title></rect><text x="'+(x+(bw-8)/2)+'" y="'+(y(c)-4)+'" text-anchor="middle" style="fill:var(--ink)">'+c+'</text><text x="'+(x+(bw-8)/2)+'" y="'+(H-B+16)+'" text-anchor="middle">'+(n>16&&i%2?'':dlab(i+CO).split(' ')[0])+'</text>'});
+  s+='<line class="axis" x1="'+L+'" x2="'+(W-R)+'" y1="'+(H-B)+'" y2="'+(H-B)+'"/>';
+  return {svg:svg(W,H,s,'CMEs per day, '+cmeLabel+': '+counts.join(', ')+'. A table view is available.'),counts};
+}
+function chartCmeSpeed(){
+  const W=720,H=300,L=50,R=16,Tp=14,B=34,days=CDAYS;
+  const ymax=Math.max(1400,Math.ceil(Math.max(...D.cme.map(c=>c.sp||0))/350)*350),y=v=>Tp+(H-Tp-B)*(1-v/ymax);
+  let s='';
+  [0,1,2,3,4].map(i=>i*ymax/4).forEach(v=>s+='<line class="grid" x1="'+L+'" x2="'+(W-R)+'" y1="'+y(v)+'" y2="'+y(v)+'"/><text x="'+(L-6)+'" y="'+(y(v)+3)+'" text-anchor="end">'+v+'</text>');
+  for(let d=0;d<days;d+=Math.max(1,Math.round(days/7))){const x=L+(W-L-R)*d/days;s+='<text x="'+x+'" y="'+(H-B+16)+'" text-anchor="middle">'+dlab(d+CO)+'</text>'}
+  s+='<line class="axis" x1="'+L+'" x2="'+(W-R)+'" y1="'+(H-B)+'" y2="'+(H-B)+'"/><text x="12" y="'+(H/2)+'" transform="rotate(-90 12 '+(H/2)+')" text-anchor="middle">km/s</text>';
+  const col={S:'var(--c-s)',C:'var(--c-c)',O:'var(--c-o)'};
+  D.cme.filter(c=>c.sp).forEach(c=>{s+=shapeAt(c.ty||'S',xDay(c.t,L,W-R,days,CO),y(c.sp),3+(c.ha||0)/12,col[c.ty]||'var(--muted)',fmt(c.t)+' '+tzName()+' · '+c.sp+' km/s · half-angle '+c.ha+'° · '+(c.loc||''),.55)});
+  const fast=D.cme.filter(c=>c.sp>=1000).length;
+  return svg(W,H,s,D.cme.length+' CMEs plotted by speed, '+cmeLabel+'; '+fast+' at 1000 km/s or faster. A table view is available.');
+}
+function arrivalRows(){return earthIps.map(i=>{const c=i.lk.map(k=>cmeById[k]).find(c=>c&&c.earth);return c?{ips:i.t,pred:c.earth.t,cme:c.t}:null}).filter(Boolean)}
+function chartArrivals(rows){
+  const W=720,H=60+rows.length*42,L=130,R=24;
+  const all=rows.flatMap(r=>[T(r.pred),T(r.ips)]);const t0=new Date(Math.min(...all)-864e5),t1=new Date(Math.max(...all)+864e5);
+  const x=s=>L+(W-L-R)*((T(s)-t0)/(t1-t0));
+  let g='';
+  for(let k=0;k<=4;k++){const tt=new Date(t0.getTime()+(t1-t0)*k/4),xx=x(tt.toISOString());g+='<line class="grid" x1="'+xx+'" x2="'+xx+'" y1="20" y2="'+(H-26)+'"/><text x="'+xx+'" y="'+(H-8)+'" text-anchor="middle">'+tt.getUTCDate()+' '+MON[tt.getUTCMonth()]+'</text>'}
+  rows.forEach((r,i)=>{const yy=40+i*42,d=hrs(r.pred,r.ips);
+    g+='<text x="'+(L-10)+'" y="'+(yy+3)+'" text-anchor="end">CME '+fmt(r.cme)+'</text><line x1="'+x(r.pred)+'" x2="'+x(r.ips)+'" y1="'+yy+'" y2="'+yy+'" stroke="var(--muted)" stroke-width="1.5"/><circle cx="'+x(r.pred)+'" cy="'+yy+'" r="5" fill="none" stroke="var(--accent)" stroke-width="2"><title>Model arrival '+fmt(r.pred)+'</title></circle><circle cx="'+x(r.ips)+'" cy="'+yy+'" r="5" fill="var(--accent)"><title>Shock logged '+fmt(r.ips)+'</title></circle><text x="'+((x(r.pred)+x(r.ips))/2)+'" y="'+(yy-9)+'" text-anchor="middle" style="fill:var(--ink)">'+(d>0?'+':'')+d.toFixed(1)+' h</text>'});
+  return svg(W,H,g,rows.length+' modelled arrivals compared with the shock logged at Earth. A table view is available.');
+}
+function impactCounts(){const m={};D.cme.forEach(c=>{new Set(c.imp.map(i=>i.loc)).forEach(k=>m[k]=(m[k]||0)+1)});return Object.entries(m).sort((p,q)=>q[1]-p[1])}
+function chartImpacts(a){
+  const W=720,H=a.length*28+16,L=130,mx=a[0][1];let s='';
+  a.forEach((p,i)=>{const yy=8+i*28,w=(W-L-60)*p[1]/mx;
+    s+='<text x="'+(L-8)+'" y="'+(yy+14)+'" text-anchor="end" style="fill:var(--ink)">'+p[0]+'</text><rect x="'+L+'" y="'+(yy+2)+'" width="'+w+'" height="16" rx="2" fill="var(--accent)"/><text x="'+(L+w+6)+'" y="'+(yy+14)+'">'+p[1]+'</text>'});
+  return svg(W,H,s,'Number of CMEs modelled to reach each location: '+a.map(p=>p[0]+' '+p[1]).join(', ')+'. A table view is available.');
+}
+const legendSCO='<div class="legend"><span><svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="var(--c-s)"/></svg>Slow (S)</span><span><svg viewBox="0 0 12 12" aria-hidden="true"><rect x="1" y="1" width="10" height="10" fill="var(--c-c)"/></svg>Common (C)</span><span><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,0 12,11 0,11" fill="var(--c-o)"/></svg>Fast, 1000 km/s or more (O)</span></div>';
+const legendFl='<div class="legend"><span><svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4" fill="var(--c-s)"/></svg>C-class</span><span><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,0 12,6 6,12 0,6" fill="var(--accent)"/></svg>M-class or stronger</span><span>Shaded band: '+cmeLabel+'</span></div>';
+
+/* ---------- panels ---------- */
+function heroKpi(){
+  const up=upcoming(1)[0];
+  if(up)return kpi('Next CME arrival at Earth (model)',fmt(up.earth.t)+' <span style="font-size:.5em;font-weight:500">'+tzName()+'</span>',kpTxt(up)+' · '+(up.earth.gb?'glancing blow':'direct hit')+' · in '+hoursTxt(hrs(new Date(NOW).toISOString(),up.earth.t)),'',true);
+  return kpi('Next CME arrival at Earth (model)','None expected','No modelled CME arrivals are pending as of this update.','',true);
+}
+function strongest(){return recentFlares.slice().sort((a,b)=>flux(b.c)-flux(a.c))[0]}
+function geoKpi(){
+  if(!D.gst.length)return kpi('Geomagnetic storms','None','No storms logged in '+winLabel+'.');
+  const g=D.gst.slice().sort((a,b)=>b.kp-a.kp)[0];
+  return kpi('Geomagnetic storms',D.gst.length,'Peak Kp '+g.kp+' ('+gScale(g.kp)+'), '+winLabel+'.');
+}
+const panels={
+overview(){
+  const s=strongest(),cd=chartCmeDaily();
+  const fl=Array(CDAYS).fill(0);recentFlares.forEach(f=>fl[dayIdx(f.p)-CO]++);
+  return '<h2>Overview</h2><p class="sub">Headline figures cover '+cmeLabel+'. Charts and storm counts say when they cover the longer window.</p>'
+  +'<div class="kpis">'+heroKpi()
+  +kpi('Strongest flare, '+cmeLabel,s?s.c:'None',s?'Peak '+fmt(s.p)+' '+tzName()+', from '+s.loc:'No flares logged in this period.',spark(fl))
+  +geoKpi()
+  +kpi('CMEs, '+cmeLabel,D.cme.length,D.cme.filter(c=>c.sp>=1000).length+' at 1000 km/s or faster.',spark(cd.counts))
+  +'</div>'
+  +'<div class="stats">'+stat(recentFlares.length,'flares ('+mFlares.filter(inRecent).length+' M-class or stronger) in '+cmeLabel)+stat(earthIps.length,'shocks reached Earth')+stat(D.hss.length,'high speed streams')+stat(D.rbe.length,'radiation belt enhancements')+stat(D.sep.length,'particle event records')+'</div>'
+  +'<div class="grid2">'
+  +figure('Flares, '+winLabel,'Peak X-ray class on a log scale. Diamonds are M-class or stronger.',chartFlares(),[{h:'Class'},{h:'Peak ('+tzName()+')'},{h:'Source'}],D.flr.map(f=>[f.c,fmt(f.p),f.loc]),legendFl)
+  +figure('CMEs per day, '+cmeLabel,'Counts of CMEs by start day (UTC).',cd.svg,[{h:'Day (UTC)'},{h:'CMEs',n:1}],cd.counts.map((c,i)=>[dlab(i+CO),c]))
+  +'</div>';
+},
+solar(){
+  const rows=D.cme.map(c=>[fmt(c.t),c.loc||'none',c.sp==null?'n/a':c.sp,c.ha!=null?c.ha+'°':'n/a',c.ty||'n/a']);
+  return '<h2>Solar activity</h2><p class="sub">Coronal mass ejections, flares and solar energetic particle events.</p>'
+  +'<div class="stats">'+stat(D.cme.length,'CMEs, '+cmeLabel)+stat(D.cme.filter(c=>c.sp>=1000).length,'at 1000 km/s or faster')+stat(D.flr.length,'flares, '+winLabel)+stat(D.sep.length,'particle event records')+'</div>'
+  +figure('CME speed and width','Each mark is one CME. Height is speed, size is half-angle, shape is class. Hover or focus a mark for detail, or use the table view.',chartCmeSpeed(),[{h:'Start ('+tzName()+')'},{h:'Source'},{h:'Speed km/s',n:1},{h:'Half-angle',n:1},{h:'Class'}],rows,legendSCO)
+  +'<h3 style="margin-top:22px">Flares</h3><p class="sub">'+D.flr.length+' flares recorded for '+winLabel+', newest first.</p>'
+  +table([{h:'Class'},{h:'Begin'},{h:'Peak'},{h:'End'},{h:'Source'},{h:'Region',n:1}],D.flr.slice().sort((a,b)=>T(b.p)-T(a.p)).map(f=>['<span class="pill'+(f.c[0]==='C'?'':' m')+'">'+f.c+'</span>',fmt(f.b),fmt(f.p),fmt(f.e),f.loc,f.ar||'none']),{limit:10,cap:'Solar flares'})
+  +'<h3>Solar energetic particle events</h3><p class="sub">Each row is one instrument record. Records close together in time usually belong to one event.</p>'
+  +(D.sep.length?table([{h:'Time ('+tzName()+')'},{h:'Instrument'}],D.sep.map(s=>[fmt(s.t),s.ins[0]||'n/a']),{limit:8,cap:'Solar energetic particle events'}):empty('No particle events logged','The SEP feed returned no events for '+winLabel+'.'))
+  +'<h3>CMEs</h3><p class="sub">Most accurate analysis for each of the '+D.cme.length+' CMEs.</p>'
+  +table([{h:'Start'},{h:'Source'},{h:'Speed km/s',n:1},{h:'Half-angle',n:1},{h:'Class'}],rows,{limit:10,cap:'Coronal mass ejections'});
+},
+geo(){
+  return '<h2>Geomagnetic</h2><p class="sub">Storms at Earth, interplanetary shocks and fast solar wind streams.</p>'
+  +'<div class="stats">'+stat(D.gst.length,'geomagnetic storms, '+winLabel)+stat(D.ips.length,'interplanetary shocks')+stat(earthIps.length,'of those reached Earth')+stat(D.hss.length,'high speed streams')+'</div>'
+  +'<h3>Geomagnetic storms</h3>'
+  +(D.gst.length?'<p class="sub">Highest Kp index during each storm.</p>'+table([{h:'Start ('+tzName()+')'},{h:'Peak Kp',n:1},{h:'Level'}],D.gst.slice().sort((a,b)=>T(b.t)-T(a.t)).map(g=>[fmt(g.t),g.kp,gScale(g.kp)]),{cap:'Geomagnetic storms'}):empty('No geomagnetic storms logged','The storm feed returned no events for '+winLabel+'. That is normal in quiet periods.'))
+  +'<h3>Interplanetary shocks</h3><p class="sub">Transit is the time from the linked CME start to the shock.</p>'
+  +table([{h:'Shock'},{h:'Where'},{h:'Linked CME'},{h:'Transit',n:1}],D.ips.map(i=>{const c=i.lk.map(k=>cmeById[k]).find(Boolean);return [fmt(i.t),i.loc==='Earth'?'<span class="pill good">Earth</span>':i.loc,i.lk.length?i.lk.map(k=>fmt(k)).join(', '):'none linked',c?hrs(c.t,i.t).toFixed(0)+' h':'n/a']}),{limit:8,cap:'Interplanetary shocks'})
+  +'<h3>High speed streams</h3><p class="sub">Seen at Earth-side spacecraft and at STEREO A.</p>'
+  +table([{h:'Time'},{h:'Seen by'}],D.hss.map(h=>[fmt(h.t),h.ins.length>2?'<span class="pill good">Earth side</span> ACE, SOLAR-1, IMAP':'STEREO A']),{limit:8,cap:'High speed streams'});
+},
+mag(){
+  return '<h2>Magnetosphere</h2><p class="sub">Radiation belt enhancements and magnetopause crossings.</p>'
+  +'<div class="stats">'+stat(D.rbe.length,'radiation belt enhancements')+stat(D.mpc.length,'magnetopause crossings')+'</div>'
+  +'<h3>Radiation belt enhancements</h3><p class="sub">Electron enhancements measured by GOES SEISS above 2 MeV, with the solar events DONKI links to each.</p>'
+  +(D.rbe.length?table([{h:'Time ('+tzName()+')'},{h:'Instrument'},{h:'Linked events'}],D.rbe.map(r=>[fmt(r.t),r.ins[0]||'n/a',r.lk.map(l=>fmt(l.slice(0,16))+' '+(l.includes('HSS')?'stream':'CME')).join(', ')||'none']),{cap:'Radiation belt enhancements'}):empty('No radiation belt enhancements logged','The feed returned no events for '+winLabel+'.'))
+  +'<h3>Magnetopause crossings</h3>'
+  +(D.mpc.length?table([{h:'Time ('+tzName()+')'}],D.mpc.map(m=>[fmt(m.t)]),{cap:'Magnetopause crossings'}):empty('No magnetopause crossings logged','The feed returned no events for '+winLabel+'. That is normal in quiet periods.'));
+},
+models(){
+  const ce=D.cme.filter(c=>c.earth).sort((a,b)=>T(a.earth.t)-T(b.earth.t));
+  const ar=arrivalRows(),imp=impactCounts();
+  const state=c=>{const i=loggedIps(c);return i?'<span class="pill good">Logged '+fmt(i.t)+'</span>':T(c.earth.t)>NOW?'<span class="pill m">Due in '+hoursTxt(hrs(new Date(NOW).toISOString(),c.earth.t))+'</span>':'<span class="pill">Not logged yet</span>'};
+  return '<h2>Models</h2><p class="sub">WSA-Enlil runs on CME analyses. These are forecasts, compared with the shock actually logged at Earth.</p>'
+  +'<div class="stats">'+stat(ce.length,'CMEs modelled to reach Earth')+stat(D.cme.filter(c=>c.imp.length).length,'CMEs with probe or planet impacts')+'</div>'
+  +'<h3>Modelled Earth arrivals</h3><p class="sub">Kp ranges come from the model at several cone widths. A glancing blow is a weaker, off-centre hit.</p>'
+  +(ce.length?table([{h:'CME start'},{h:'Model arrival'},{h:'Kp range',n:1},{h:'Type'},{h:'Status'}],ce.map(c=>[fmt(c.t),fmt(c.earth.t),kpOf(c)?kpOf(c)[0]+' to '+kpOf(c)[1]:'n/a',c.earth.gb?'<span class="pill">glancing</span>':'<span class="pill crit">direct</span>',state(c)]),{cap:'Modelled Earth arrivals'}):empty('No modelled Earth arrivals','No CME in '+cmeLabel+' has an Earth arrival in the model output.'))
+  +'<div style="height:22px"></div>'
+  +(ar.length?figure('Predicted against logged arrival','Hollow ring is the model arrival, solid dot is the shock logged at Earth. The label is observed minus predicted.',chartArrivals(ar),[{h:'CME start'},{h:'Model arrival'},{h:'Shock logged'},{h:'Difference',n:1}],ar.map(r=>[fmt(r.cme),fmt(r.pred),fmt(r.ips),(hrs(r.pred,r.ips)>0?'+':'')+hrs(r.pred,r.ips).toFixed(1)+' h'])):empty('No comparison yet','No logged Earth shock in this window is linked to a CME with a modelled arrival, so there is nothing to compare. This is common when the CME list covers only '+cmeLabel+'.'))
+  +'<div style="height:22px"></div>'
+  +(imp.length?figure('Impacts on spacecraft and planets','Number of CMEs modelled to reach each location, '+cmeLabel+'.',chartImpacts(imp),[{h:'Location'},{h:'CMEs',n:1}],imp):'');
+}
+};
+const labels={overview:'Overview',solar:'Solar',geo:'Geomagnetic',mag:'Magnetosphere',models:'Models'};
+const keys=Object.keys(labels);
+
+/* ---------- footer ---------- */
+const GLOSS=[['CME','Coronal mass ejection: a cloud of solar plasma thrown into space. Fast ones can reach Earth in one to three days.'],
+ ['Flare class','A burst of X-rays from the sun, ranked C, M, X from weakest to strongest. Each letter is ten times the one before.'],
+ ['Kp','A 0 to 9 index of how disturbed Earth\'s magnetic field is. 5 or more is a geomagnetic storm: 5 is G1 minor, 9 is G5 extreme.'],
+ ['SEP','Solar energetic particles: fast charged particles from the sun that can affect satellites and radio.'],
+ ['IPS','Interplanetary shock: the leading edge of a CME or fast stream passing a spacecraft.'],
+ ['HSS','High speed stream: fast solar wind from a coronal hole.'],
+ ['RBE','Radiation belt enhancement: more energetic electrons trapped around Earth.'],
+ ['MPC','Magnetopause crossing: Earth\'s magnetic boundary pushed inside geostationary orbit.'],
+ ['WSA-Enlil','The model NASA uses to forecast when a CME will arrive. Arrival times can be off by several hours.']];
+function footHtml(){
+  return '<details><summary>Glossary</summary><dl>'+GLOSS.map(g=>'<dt>'+g[0]+'</dt><dd>'+g[1]+'</dd>').join('')+'</dl></details>'
+   +'<p>Source: NASA CCMC DONKI API. Data pulled '+esc(M.pulled)+'. This page is rebuilt on a schedule; it does not update while you read it.</p>'
+   +'<p>'+(partial?'<strong>Coverage.</strong> The CME list covers '+cmeLabel+' only; flares, shocks and other feeds cover '+winLabel+'.':'<strong>Coverage.</strong> All feeds cover '+winLabel+'.')+' An empty list means no events were logged.</p>';
+}
+
+/* ---------- render, tabs, controls ---------- */
+const tabs=$('#tabs'),main=$('#panels');
+let cur=keys[0];
+keys.forEach(k=>{
+  const b=document.createElement('button');b.type='button';b.setAttribute('role','tab');b.id='t-'+k;b.setAttribute('aria-controls','p-'+k);b.textContent=labels[k];b.onclick=()=>show(k);tabs.append(b);
+  const s=document.createElement('section');s.className='panel';s.id='p-'+k;s.setAttribute('role','tabpanel');s.setAttribute('aria-labelledby','t-'+k);main.append(s);
+});
+tabs.addEventListener('keydown',e=>{
+  const i=keys.indexOf(cur);let j=-1;
+  if(e.key==='ArrowRight')j=(i+1)%keys.length;else if(e.key==='ArrowLeft')j=(i+keys.length-1)%keys.length;else if(e.key==='Home')j=0;else if(e.key==='End')j=keys.length-1;
+  if(j>=0){e.preventDefault();show(keys[j]);$('#t-'+keys[j]).focus()}
+});
+function show(k,noHash){
+  cur=k;
+  keys.forEach(n=>{const sel=n===k;$('#p-'+n).hidden=!sel;const t=$('#t-'+n);t.setAttribute('aria-selected',sel);t.tabIndex=sel?0:-1});
+  if(!noHash)try{history.replaceState(null,'','#'+k)}catch(e){}
+}
+function render(){
+  keys.forEach(k=>{$('#p-'+k).innerHTML=panels[k]()});
+  $('#status').innerHTML=statusHtml();
+  const f=freshHtml(),fe=$('#fresh');fe.textContent=f.t;fe.classList.toggle('stale',f.stale);
+  $('#cover').textContent=partial?'Note: the CME list covers '+cmeLabel+' only, because that is what the API returned. Other feeds cover '+winLabel+'.':'';
+  $('#eyebrow').textContent='NASA CCMC · DONKI · '+winLabel;
+  $('#foot').innerHTML=footHtml();
+  $('#tzbtn').textContent='Times: '+tzName();
+  $('#tzbtn').setAttribute('aria-label','Showing times in '+tzName()+'. Switch to '+(TZ==='UTC'?'UK time':'UTC')+'.');
+  show(cur,true);
+}
+$('#tzbtn').onclick=()=>{TZ=TZ==='UTC'?'Europe/London':'UTC';store.set('donki-tz',TZ==='UTC'?'utc':'uk');render()};
+const root=document.documentElement;
+const isDark=()=>root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;
+const thSync=()=>{$('#thbtn').textContent=isDark()?'Light mode':'Dark mode'};
+const savedTh=store.get('donki-theme');if(savedTh==='light'||savedTh==='dark')root.dataset.theme=savedTh;
+$('#thbtn').onclick=()=>{const n=isDark()?'light':'dark';root.dataset.theme=n;store.set('donki-theme',n);thSync()};
+thSync();
+document.addEventListener('click',e=>{
+  const t=e.target.closest('button[data-tbl]');
+  if(t){const c=t.closest('.card'),on=t.getAttribute('aria-pressed')!=='true';t.setAttribute('aria-pressed',on);t.textContent=on?'View as chart':'View as table';c.querySelector('.chartwrap').hidden=on;c.querySelector('.tblwrap').hidden=!on;return}
+  const m=e.target.closest('button[data-more]');
+  if(m){m.previousElementSibling.querySelectorAll('tr[data-x]').forEach(r=>r.hidden=false);m.remove()}
+});
+const tipEl=document.createElement('div');tipEl.id='tip';tipEl.setAttribute('role','tooltip');document.body.append(tipEl);
+const hideTip=()=>tipEl.classList.remove('on');
+function showTip(el){tipEl.innerHTML='<b>In plain English</b>'+el.dataset.tip;tipEl.classList.add('on');
+  const r=el.getBoundingClientRect(),w=tipEl.offsetWidth,h=tipEl.offsetHeight;
+  const x=Math.min(Math.max(12,r.left+r.width/2-w/2),innerWidth-w-12);let y=r.top-h-10;
+  if(y<8)y=Math.min(r.bottom+10,innerHeight-h-8);
+  tipEl.style.left=x+'px';tipEl.style.top=y+'px'}
+document.addEventListener('mouseover',e=>{const t=e.target.closest('[data-tip]');t?showTip(t):hideTip()});
+document.addEventListener('focusin',e=>{const t=e.target.closest('[data-tip]');if(t)showTip(t)});
+document.addEventListener('focusout',hideTip);
+document.addEventListener('click',hideTip);
+document.addEventListener('scroll',hideTip,{passive:true});
+render();
+const h0=(location.hash||'').slice(1);show(labels[h0]?h0:'overview');
+</script>
+
+</body></html>

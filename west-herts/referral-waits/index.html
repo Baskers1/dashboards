@@ -1,0 +1,349 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>West Herts · Referral Waits</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Fraunces:opsz,wght@9..144,600&display=swap">
+<style>
+:root{
+  --bg:#f3f6f7; --surface:#ffffff; --surface2:#e9eff1; --line:#d3dde1;
+  --ink:#13232b; --ink2:#4a5d66; --accent:#0a5c6e; --accent-ink:#ffffff; --home:#0a5c6e;
+  --good:#2b7a4b; --mid:#5f8f3a; --warn:#b5741a; --bad:#b03a3a;
+  --bar:#0a5c6e; --bar-track:#e3eaed;
+  --font:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+  --display:'Fraunces',Georgia,serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e1a20; --surface:#152730; --surface2:#1c333d; --line:#2a444f;
+    --ink:#e6eff2; --ink2:#9db3bc; --accent:#57b9cc; --accent-ink:#06222a; --home:#57b9cc;
+    --good:#5dc083; --mid:#98c46a; --warn:#e0a44f; --bad:#e2736f;
+    --bar:#57b9cc; --bar-track:#20393f; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e1a20; --surface:#152730; --surface2:#1c333d; --line:#2a444f;
+  --ink:#e6eff2; --ink2:#9db3bc; --accent:#57b9cc; --accent-ink:#06222a; --home:#57b9cc;
+  --good:#5dc083; --mid:#98c46a; --warn:#e0a44f; --bad:#e2736f;
+  --bar:#57b9cc; --bar-track:#20393f; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:14px;line-height:1.45;padding-inline:16px;padding-block:20px 40px}
+.wrap{max-width:1100px;margin:0 auto}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(1.6rem,4vw,2.1rem);margin:0 0 4px;letter-spacing:-.01em;text-wrap:balance}
+.sub{color:var(--ink2);margin:0 0 18px;max-width:70ch}
+.filters{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px;display:grid;gap:14px;margin-bottom:16px}
+.frow{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.lbl{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin-bottom:6px;font-weight:600}
+select{width:100%;font:inherit;color:var(--ink);background:var(--surface2);border:1px solid var(--line);border-radius:4px;padding:8px 10px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:inherit;font-size:13px;color:var(--ink);background:var(--surface2);border:1px solid var(--line);border-radius:999px;padding:5px 12px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.chip .home{font-size:10px;opacity:.85;margin-left:6px;letter-spacing:.06em}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.seg button{font:inherit;background:var(--surface2);color:var(--ink);border:0;padding:7px 14px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.check{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--ink2)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:16px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px}
+.tile .k{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);font-weight:600}
+.tile .v{font-family:var(--mono);font-size:1.5rem;font-weight:500;margin-top:2px;font-variant-numeric:tabular-nums}
+.tile .n{font-size:12px;color:var(--ink2)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--ink2);padding:10px 14px;border-bottom:1px solid var(--line)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.row{display:grid;grid-template-columns:minmax(150px,1.3fr) minmax(160px,2fr) 104px 76px;gap:14px;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.row.head{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);font-weight:600;background:var(--surface2)}
+.who b{display:block;font-weight:500}
+.who span{font-size:12px;color:var(--ink2)}
+.who .homebadge{color:var(--home);font-weight:600}
+.track{position:relative;height:18px;background:var(--bar-track);border-radius:3px}
+.fill{position:absolute;inset:0 auto 0 0;background:var(--bar);border-radius:3px}
+.track .val{position:absolute;top:0;line-height:18px;font-family:var(--mono);font-size:12px;color:var(--ink);white-space:nowrap}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right}
+.pill{display:inline-block;font-family:var(--mono);font-size:12px;padding:2px 8px;border-radius:999px;border:1px solid currentColor;font-variant-numeric:tabular-nums}
+.pill.g{color:var(--good)}.pill.m{color:var(--warn)}.pill.r{color:var(--bad)}
+.scroll{overflow-x:auto}
+table.heat{border-collapse:collapse;width:100%;min-width:640px}
+.heat th,.heat td{padding:8px 10px;text-align:center;border-bottom:1px solid var(--line)}
+.heat th{font-size:12px;font-weight:600;color:var(--ink2);background:var(--surface2)}
+.heat th:first-child,.heat td:first-child{text-align:left;font-weight:500;color:var(--ink)}
+.heat td.c{font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--ink)}
+.heat td.na{color:var(--ink2)}
+.heat tr.hl td:first-child{box-shadow:inset 3px 0 0 var(--accent)}
+.heat .sm{display:block;font-size:10px;color:var(--ink2);font-family:var(--font)}
+.heat .band-g{background:color-mix(in srgb,var(--good) 24%,var(--surface))}
+.heat .band-m{background:color-mix(in srgb,var(--mid) 24%,var(--surface))}
+.heat .band-w{background:color-mix(in srgb,var(--warn) 28%,var(--surface))}
+.heat .band-b{background:color-mix(in srgb,var(--bad) 30%,var(--surface))}
+.trusts{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin-top:16px}
+.tcard{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px}
+.tcard h3{font-size:14px;margin:0 0 4px}
+.tcard p{margin:0 0 6px;font-size:12px;color:var(--ink2)}
+.tcard dl{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;margin:0;font-size:12px}
+.tcard dt{color:var(--ink2)}.tcard dd{margin:0;font-family:var(--mono);text-align:right;font-variant-numeric:tabular-nums}
+.areanote{margin:0;padding:10px 12px;background:var(--surface2);border-radius:4px;font-size:13px;color:var(--ink)}
+.empty{padding:28px;text-align:center;color:var(--ink2)}
+.notes{margin-top:18px;font-size:12px;color:var(--ink2);max-width:80ch}
+.notes p{margin:0 0 8px}
+.notes a{color:var(--accent)}
+button.th{font:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-align:inherit}
+button.th:hover{color:var(--accent)}
+.num button.th{width:100%;text-align:right}
+.hit{cursor:pointer}
+.row.hit:hover{background:var(--surface2)}
+.tile.hit:hover,.tcard.hit:hover{border-color:var(--accent)}
+.heat td.hit:hover,.heat th.hit:hover{outline:2px solid var(--accent);outline-offset:-2px}
+.lg{font:inherit;font-size:12px;color:var(--ink2);background:none;border:1px solid transparent;border-radius:999px;padding:2px 8px;cursor:pointer}
+.lg[aria-pressed="true"]{border-color:var(--accent);color:var(--ink);background:var(--surface2)}
+.btn{font:inherit;color:var(--ink);background:var(--surface2);border:1px solid var(--line);border-radius:4px;padding:7px 14px;cursor:pointer}
+.btn:hover{border-color:var(--accent)}
+.hit:focus-visible,.lg:focus-visible,.btn:focus-visible,button.th:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (max-width:640px){
+  .row{grid-template-columns:1fr 70px;gap:8px 12px}
+  .row .barcell{grid-column:1 / -1;order:3}
+  .row.head{display:none}
+}
+</style>
+
+<div class="wrap">
+  <h1>West Herts Referral Waits</h1>
+  <p class="sub">Hospital waiting lists for referrals from Watford, Croxley Green, Rickmansworth, Hemel Hempstead and Sarratt, with neighbouring trusts you can refer to under Right to Choose. Data through July 2026.</p>
+
+  <p style="margin:0 0 16px;padding:10px 14px;background:var(--surface);border:1px solid var(--line);border-radius:6px;font-size:13px;color:var(--ink2)">Related dashboard: <a href="https://claude.ai/code/artifact/7af5a868-4a9a-4069-961d-5f8e04ac6764" target="_blank" rel="noopener" style="color:var(--accent);font-weight:600">West Herts Waiting &amp; Outcome Charts</a> — the fuller view with CQC ratings, ONS deaths, hospital mortality (SHMI) and inpatient satisfaction by ethnicity.</p>
+
+  <section class="filters" aria-label="Filters">
+    <div>
+      <div class="lbl" id="l-trust">Hospital trust</div>
+      <div class="chips" id="trustChips" role="group" aria-labelledby="l-trust"></div>
+    </div>
+    <div class="frow">
+      <div>
+        <label class="lbl" for="area">Patient's area</label>
+        <select id="area"></select>
+      </div>
+      <div>
+        <label class="lbl" for="care">Type of care</label>
+        <select id="care">
+          <option value="all">All types</option>
+          <option value="Surgical">Surgical</option>
+          <option value="Medical">Medical and clinic-based</option>
+          <option value="Women's health">Women's health</option>
+        </select>
+      </div>
+      <div>
+        <label class="lbl" for="spec">Specialty clinic</label>
+        <select id="spec"></select>
+      </div>
+      <div>
+        <label class="lbl" for="sort">Sort by</label>
+        <select id="sort">
+          <option value="wait-desc">Longest median wait</option>
+          <option value="wait-asc">Shortest median wait</option>
+          <option value="list-desc">Largest waiting list</option>
+          <option value="pct-asc">Lowest % within 18 weeks</option>
+          <option value="pct-desc">Highest % within 18 weeks</option><option value="list-asc">Smallest waiting list</option><option value="name-asc">Clinic A to Z</option><option value="name-desc">Clinic Z to A</option>
+        </select>
+      </div>
+      <div>
+        <div class="lbl">View</div>
+        <div class="seg" role="group" aria-label="View">
+          <button type="button" id="vList" aria-pressed="true">Ranked list</button>
+          <button type="button" id="vHeat" aria-pressed="false">Matrix</button>
+        </div>
+      </div>
+    </div>
+    <p class="areanote" id="areaNote"></p>
+    <div class="frow" style="align-items:center"><label class="check" for="small"><input type="checkbox" id="small"> Include very small lists (under 100 patients)</label><div><button type="button" class="btn" id="reset">Reset filters</button></div></div>
+  </section>
+
+  <section class="tiles" id="tiles" aria-live="polite"></section>
+
+  <section class="panel">
+    <div class="legend">
+      <button type="button" class="lg" data-band="g" aria-pressed="false"><i style="background:var(--good)"></i>65% or more within 18 weeks</button>
+      <button type="button" class="lg" data-band="m" aria-pressed="false"><i style="background:var(--warn)"></i>50 to 64%</button>
+      <button type="button" class="lg" data-band="r" aria-pressed="false"><i style="background:var(--bad)"></i>under 50%</button>
+      <span>Constitutional standard: 92%</span><span>Click a legend key, clinic, trust or tile to filter.</span>
+    </div>
+    <div id="out"></div>
+  </section>
+
+  <section class="trusts" id="trustCards" aria-label="Trust summaries"></section>
+
+  <div class="notes">
+    <p><b>What the numbers mean.</b> Median wait is how long patients currently on the list have waited so far. It is not the time a new referral will wait. The 18-week figure is the share of everyone on the list who has waited 18 weeks or less since referral. Care type groups are my own grouping of NHS treatment specialties.</p>
+    <p><b>Site level.</b> NHS England publishes these figures per trust, not per hospital site, day surgery unit or town. West Hertfordshire's figures cover Watford General, Hemel Hempstead and St Albans City together. The area note above gives approximate distances only.</p>
+    <p><b>Source.</b> NHS England Referral to Treatment (RTT) incomplete pathways, data through July 2026, and A&amp;E for August 2026, as compiled by <a href="https://hospitalwaits.co.uk" rel="noopener">HospitalWaits</a>. Cross-check against the <a href="https://www.england.nhs.uk/statistics/statistical-work-areas/rtt-waiting-times/" rel="noopener">NHS England RTT release</a> before relying on it.</p>
+  </div>
+</div>
+
+<script>
+var TRUSTS=[
+ {id:'wh',name:'West Hertfordshire Teaching Hospitals',short:'West Herts',home:true,sites:'Watford General, Hemel Hempstead, St Albans City',total:37886,ae:{p:78.3,h12:23},met:'2 of 15'},
+ {id:'enh',name:'East and North Hertfordshire',short:'East & North Herts',sites:'Lister (Stevenage), QEII (Welwyn), Mount Vernon (Northwood)',total:39478,ae:{p:51.8,h12:81},met:'4 of 17',dist:'Mount Vernon is a few miles from Rickmansworth'},
+ {id:'rfl',name:'Royal Free London',short:'Royal Free',sites:'Royal Free (Hampstead), Barnet, Chase Farm',total:100538,ae:{p:70.1,h12:1946},met:'1 of 16'},
+ {id:'lnw',name:'London North West University Healthcare',short:'London North West',sites:'Northwick Park (Harrow), Ealing, Central Middlesex',total:57849,ae:{p:52.0,h12:585},met:'3 of 15'},
+ {id:'buc',name:'Buckinghamshire Healthcare',short:'Buckinghamshire',sites:'Wycombe, Stoke Mandeville, Amersham',total:40805,ae:{p:68.4,h12:134},met:'1 of 15'}
+];
+var CARE={'Ear, Nose and Throat':'Surgical','General Surgery':'Surgical','Trauma and Orthopaedics':'Surgical','Ophthalmology':'Surgical','Urology':'Surgical','Oral Surgery':'Surgical','Plastic Surgery':'Surgical','Cardiothoracic Surgery':'Surgical','Cardiology':'Medical','Gastroenterology':'Medical','Respiratory Medicine':'Medical','Neurology':'Medical','Rheumatology':'Medical','Dermatology':'Medical','Elderly Medicine':'Medical','General Internal Medicine':'Medical','Gynaecology':"Women's health"};
+var AREAS={
+ 'Watford':'Watford General is the nearest acute hospital and the main site for clinics, operations and emergency care.',
+ 'Croxley Green':'Watford General is the nearest acute hospital, roughly 2 to 3 miles away.',
+ 'Rickmansworth':'Watford General is roughly 4 to 5 miles away. Mount Vernon Hospital in Northwood (East and North Herts) is also a few miles away.',
+ 'Hemel Hempstead':'Hemel Hempstead Hospital is local for outpatient clinics. Watford General, about 8 miles away, is the nearest acute hospital.',
+ 'Sarratt':'Watford General is roughly 5 to 6 miles away. Mount Vernon Hospital in Northwood (East and North Herts) is a similar distance.'
+};
+// [trust, specialty, median weeks, patients on list, % within 18 weeks]
+var RAW=[
+['wh','Trauma and Orthopaedics',15,5052,55],['wh','Cardiology',10,4653,77],['wh','Dermatology',8,3612,85],['wh','Ophthalmology',13,3386,63],['wh','General Surgery',15,3300,56],['wh','Gastroenterology',8,3289,92],['wh','Ear, Nose and Throat',18,3108,48],['wh','Oral Surgery',16,2837,55],['wh','Urology',11,2717,75],['wh','Gynaecology',10,2162,71],['wh','Respiratory Medicine',8,1431,89],['wh','Neurology',10,1317,80],['wh','Rheumatology',10,973,75],['wh','Elderly Medicine',6,46,96],['wh','General Internal Medicine',4,3,100],
+['enh','General Internal Medicine',2,50,98],['enh','Cardiothoracic Surgery',6,157,89],['enh','Neurology',6,748,93],['enh','Respiratory Medicine',6,969,93],['enh','Cardiology',7,3524,96],['enh','Ophthalmology',7,2615,78],['enh','Elderly Medicine',8,153,80],['enh','Plastic Surgery',8,3088,74],['enh','Gynaecology',11,4901,69],['enh','General Surgery',11,2137,68],['enh','Gastroenterology',11,2129,63],['enh','Dermatology',14,1733,56],['enh','Ear, Nose and Throat',14,5808,58],['enh','Rheumatology',14,1396,57],['enh','Urology',14,4209,57],['enh','Trauma and Orthopaedics',18,4771,49],['enh','Oral Surgery',22,1090,43],
+['rfl','Trauma and Orthopaedics',17,10647,51],['rfl','Dermatology',7,9741,81],['rfl','Ear, Nose and Throat',15,9617,56],['rfl','Urology',14,9450,56],['rfl','Gastroenterology',10,9029,70],['rfl','Cardiology',13,8523,61],['rfl','Gynaecology',12,8019,65],['rfl','Ophthalmology',11,7543,67],['rfl','Neurology',13,6355,61],['rfl','Respiratory Medicine',11,5311,72],['rfl','Oral Surgery',14,4923,59],['rfl','General Surgery',21,4256,43],['rfl','Rheumatology',14,3531,59],['rfl','Plastic Surgery',13,3223,63],['rfl','General Internal Medicine',4,212,88],['rfl','Elderly Medicine',2,158,96],
+['lnw','Oral Surgery',20,8260,46],['lnw','Ear, Nose and Throat',13,7941,59],['lnw','Gastroenterology',11,6876,67],['lnw','Trauma and Orthopaedics',14,6606,60],['lnw','Gynaecology',11,6054,70],['lnw','Cardiology',12,4837,65],['lnw','Urology',9,4175,79],['lnw','Respiratory Medicine',13,3412,61],['lnw','General Surgery',12,3301,64],['lnw','Dermatology',14,3196,56],['lnw','Ophthalmology',6,1292,89],['lnw','Rheumatology',5,970,96],['lnw','Neurology',8,825,84],['lnw','Elderly Medicine',1,66,99],['lnw','Plastic Surgery',7,37,100],['lnw','General Internal Medicine',0,1,100],
+['buc','Ophthalmology',13,5481,64],['buc','Trauma and Orthopaedics',15,4915,55],['buc','Ear, Nose and Throat',13,4711,62],['buc','Gynaecology',17,3910,51],['buc','Gastroenterology',13,3459,65],['buc','Dermatology',10,3386,76],['buc','Cardiology',14,2844,61],['buc','Neurology',17,2813,53],['buc','Urology',13,2653,64],['buc','General Surgery',14,2364,57],['buc','Plastic Surgery',12,1576,65],['buc','Oral Surgery',9,1162,73],['buc','Respiratory Medicine',11,825,77],['buc','Rheumatology',7,421,90],['buc','Elderly Medicine',3,284,99],['buc','General Internal Medicine',0,1,100]
+];
+var ROWS=RAW.map(function(r){return{t:r[0],s:r[1],w:r[2],n:r[3],p:r[4],c:CARE[r[1]]};});
+var TBY={};TRUSTS.forEach(function(t){TBY[t.id]=t;});
+var SPECS=Object.keys(CARE).sort();
+
+var st={trusts:{wh:true,enh:true,rfl:true,lnw:true,buc:true},area:'Watford',care:'all',spec:'all',sort:'wait-desc',view:'list',small:false,band:'all'};
+try{var s0=JSON.parse(localStorage.getItem('wh-state')||'null');if(s0&&s0.trusts){st=Object.assign(st,s0);}}catch(e){}
+function save(){try{localStorage.setItem('wh-state',JSON.stringify(st));}catch(e){}}
+
+var $=function(id){return document.getElementById(id)};
+function fmt(n){return n.toLocaleString('en-GB');}
+function band(p){return p>=65?'g':(p>=50?'m':'r');}
+function pill(p){return '<span class="pill '+band(p)+'">'+p+'%</span>';}
+
+function fixSpec(){
+  var sp=$('spec');
+  var list=SPECS.filter(function(s){return st.care==='all'||CARE[s]===st.care;});
+  if(st.spec!=='all'&&list.indexOf(st.spec)<0){st.spec='all';}
+  sp.innerHTML='<option value="all">All specialties</option>'+list.map(function(s){return '<option>'+s+'</option>';}).join('');
+  sp.value=st.spec;
+}
+function buildControls(){
+  var tc=$('trustChips');
+  tc.innerHTML=TRUSTS.map(function(t){
+    return '<button type="button" class="chip" data-t="'+t.id+'" aria-pressed="'+!!st.trusts[t.id]+'">'+t.short+(t.home?'<span class="home">HOME</span>':'')+'</button>';
+  }).join('');
+  tc.addEventListener('click',function(e){
+    var b=e.target.closest('.chip');if(!b)return;
+    var id=b.getAttribute('data-t');st.trusts[id]=!st.trusts[id];
+    b.setAttribute('aria-pressed',String(!!st.trusts[id]));save();render();
+  });
+  var ar=$('area');ar.innerHTML=Object.keys(AREAS).map(function(a){return '<option>'+a+'</option>';}).join('');if(!AREAS[st.area])st.area='Watford';ar.value=st.area;
+  ar.onchange=function(){st.area=this.value;save();render();};
+  $('care').value=st.care;$('sort').value=st.sort;$('small').checked=st.small;
+  fixSpec();
+  $('care').onchange=function(){st.care=this.value;fixSpec();save();render();};
+  $('spec').onchange=function(){st.spec=this.value;save();render();};
+  $('sort').onchange=function(){st.sort=this.value;save();render();};
+  $('small').onchange=function(){st.small=this.checked;save();render();};
+  $('vList').onclick=function(){st.view='list';save();render();};
+  $('vHeat').onclick=function(){st.view='heat';save();render();};
+}
+
+function filtered(){
+  return ROWS.filter(function(r){
+    if(!st.trusts[r.t])return false;
+    if(st.care!=='all'&&r.c!==st.care)return false;
+    if(st.spec!=='all'&&r.s!==st.spec)return false;
+    if(!st.small&&r.n<100)return false;
+    if(st.band!=='all'&&band(r.p)!==st.band)return false;
+    return true;
+  });
+}
+function sorted(rows){
+  var f={'wait-desc':function(a,b){return b.w-a.w||b.n-a.n},'wait-asc':function(a,b){return a.w-b.w||b.n-a.n},'list-desc':function(a,b){return b.n-a.n},'pct-asc':function(a,b){return a.p-b.p},'pct-desc':function(a,b){return b.p-a.p},'list-asc':function(a,b){return a.n-b.n},'name-asc':function(a,b){return a.s.localeCompare(b.s)||a.t.localeCompare(b.t)},'name-desc':function(a,b){return b.s.localeCompare(a.s)||a.t.localeCompare(b.t)}}[st.sort];
+  return rows.slice().sort(f);
+}
+
+function renderTiles(rows){
+  var el=$('tiles');
+  if(!rows.length){el.innerHTML='';return;}
+  var tot=rows.reduce(function(a,r){return a+r.n},0);
+  var wp=rows.reduce(function(a,r){return a+r.p*r.n},0)/tot;
+  var wmed=rows.reduce(function(a,r){return a+r.w*r.n},0)/tot;
+  var longest=rows.reduce(function(a,r){return r.w>a.w?r:a},rows[0]);
+  var shortest=rows.reduce(function(a,r){return r.w<a.w?r:a},rows[0]);
+  el.innerHTML=
+   '<div class="tile"><div class="k">Patients waiting</div><div class="v">'+fmt(tot)+'</div><div class="n">in current selection</div></div>'+
+   '<div class="tile"><div class="k">Within 18 weeks</div><div class="v">'+wp.toFixed(0)+'%</div><div class="n">weighted by list size</div></div>'+
+   '<div class="tile"><div class="k">Typical median</div><div class="v">'+wmed.toFixed(0)+' wk</div><div class="n">weighted by list size</div></div>'+
+   '<div class="tile hit" role="button" tabindex="0" data-spec="'+longest.s+'"><div class="k">Longest median</div><div class="v">'+longest.w+' wk</div><div class="n">'+longest.s+', '+TBY[longest.t].short+'</div></div>'+
+   '<div class="tile hit" role="button" tabindex="0" data-spec="'+shortest.s+'"><div class="k">Shortest median</div><div class="v">'+shortest.w+' wk</div><div class="n">'+shortest.s+', '+TBY[shortest.t].short+'</div></div>';
+}
+
+function th(l,k){var on=st.sort.indexOf(k+'-')===0;return '<button type="button" class="th" data-sort="'+k+'">'+l+(on?(st.sort.slice(-4)==='desc'?' ▼':' ▲'):'')+'</button>';}
+function renderList(rows){
+  if(!rows.length)return '<div class="empty">No clinics match these filters. Select a trust or widen the care type.</div>';
+  var maxW=30;
+  var h='<div class="row head"><div>'+th('Clinic and trust','name')+'</div><div>'+th('Median wait so far (weeks)','wait')+'</div><div class="num">'+th('Within 18 wk','pct')+'</div><div class="num">'+th('On list','list')+'</div></div>';
+  h+=sorted(rows).map(function(r){
+    var t=TBY[r.t];var pct=Math.min(100,r.w/maxW*100);
+    return '<div class="row hit" role="button" tabindex="0" title="Compare '+r.s+' across trusts" data-spec="'+r.s+'"><div class="who"><b>'+r.s+'</b><span>'+t.short+(t.home?' <span class="homebadge">· home trust</span>':'')+' · '+r.c+'</span></div>'+
+      '<div class="barcell"><div class="track"><div class="fill" style="width:'+pct+'%"></div><span class="val" style="left:calc('+pct+'% + 6px)">'+r.w+' wk</span></div></div>'+
+      '<div class="num">'+pill(r.p)+'</div><div class="num">'+fmt(r.n)+'</div></div>';
+  }).join('');
+  return h;
+}
+
+function wband(w){return w<=10?'band-g':(w<=15?'band-m':(w<=20?'band-w':'band-b'));}
+function renderHeat(rows){
+  var ts=TRUSTS.filter(function(t){return st.trusts[t.id]});
+  var specs=SPECS.filter(function(s){return rows.some(function(r){return r.s===s});});
+  if(!ts.length||!specs.length)return '<div class="empty">No clinics match these filters. Select a trust or widen the care type.</div>';
+  var idx={};rows.forEach(function(r){idx[r.t+'|'+r.s]=r;});
+  var h='<div class="scroll"><table class="heat"><thead><tr><th>Median wait, weeks</th>'+ts.map(function(t){return '<th class="hit" data-solo="'+t.id+'" title="Show only '+t.short+'">'+t.short+'</th>'}).join('')+'</tr></thead><tbody>';
+  specs.forEach(function(s){
+    h+='<tr'+(st.spec===s?' class="hl"':'')+'><td class="hit" data-spec="'+s+'">'+s+'</td>';
+    ts.forEach(function(t){
+      var r=idx[t.id+'|'+s];
+      h+= r?'<td class="c hit '+wband(r.w)+'" data-spec="'+s+'">'+r.w+'<span class="sm">'+fmt(r.n)+' waiting · '+r.p+'%</span></td>':'<td class="c na">n/a</td>';
+    });
+    h+='</tr>';
+  });
+  h+='</tbody></table></div><div class="legend" style="border-top:1px solid var(--line);border-bottom:0"><span>Shading by median: 10 weeks or less, 11 to 15, 16 to 20, over 20. Small print shows patients waiting and % within 18 weeks. n/a means no figure reported for that clinic.</span></div>';
+  return h;
+}
+
+function renderCards(){
+  $('trustCards').innerHTML=TRUSTS.filter(function(t){return st.trusts[t.id]}).map(function(t){
+    return '<div class="tcard hit" role="button" tabindex="0" data-solo="'+t.id+'" title="Show only this trust"><h3>'+t.name+(t.home?' (home trust)':'')+'</h3><p>'+t.sites+(t.dist?' · '+t.dist:'')+'</p><dl>'+
+      '<dt>All specialties waiting</dt><dd>'+fmt(t.total)+'</dd>'+
+      '<dt>A&amp;E within 4 hrs (Aug)</dt><dd>'+t.ae.p.toFixed(1)+'%</dd>'+
+      '<dt>12+ hr waits for a bed</dt><dd>'+fmt(t.ae.h12)+'</dd>'+
+      '<dt>Specialties meeting 92%</dt><dd>'+t.met+'</dd></dl></div>';
+  }).join('');
+}
+
+function render(){
+  var rows=filtered();
+  $('areaNote').textContent=st.area+': '+AREAS[st.area]+' Figures below are per trust, not per site or area.';
+  renderTiles(rows);
+  $('vList').setAttribute('aria-pressed',String(st.view==='list'));
+  $('vHeat').setAttribute('aria-pressed',String(st.view==='heat'));
+  $('out').innerHTML=st.view==='list'?renderList(rows):renderHeat(rows);
+  renderCards();
+  document.querySelectorAll('.lg').forEach(function(b){b.setAttribute('aria-pressed',String(st.band===b.dataset.band));});
+}
+function syncChips(){document.querySelectorAll('#trustChips .chip').forEach(function(b){b.setAttribute('aria-pressed',String(!!st.trusts[b.dataset.t]));});}
+function act(el){
+  var d=el.dataset;
+  if(d.sort){var k=d.sort,d0=(k==='name'||k==='pct')?'asc':'desc',o=d0==='asc'?'desc':'asc';st.sort=(st.sort===k+'-'+d0)?k+'-'+o:k+'-'+d0;$('sort').value=st.sort;}
+  else if(d.spec!==undefined){st.spec=(st.spec===d.spec)?'all':d.spec;if(st.spec!=='all'&&st.care!=='all'&&CARE[st.spec]!==st.care)st.care='all';$('care').value=st.care;fixSpec();}
+  else if(d.solo){var only=TRUSTS.every(function(t){return !!st.trusts[t.id]===(t.id===d.solo);});TRUSTS.forEach(function(t){st.trusts[t.id]=only?true:t.id===d.solo;});syncChips();}
+  else if(d.band){st.band=st.band===d.band?'all':d.band;}
+  save();render();
+}
+document.addEventListener('click',function(e){var el=e.target.closest('[data-sort],[data-spec],[data-solo],[data-band]');if(el)act(el);});
+document.addEventListener('keydown',function(e){if((e.key==='Enter'||e.key===' ')&&e.target.getAttribute('role')==='button'){e.preventDefault();act(e.target);}});
+$('reset').onclick=function(){TRUSTS.forEach(function(t){st.trusts[t.id]=true;});st.care='all';st.spec='all';st.sort='wait-desc';st.small=false;st.band='all';$('care').value='all';$('sort').value='wait-desc';$('small').checked=false;fixSpec();syncChips();save();render();};
+buildControls();
+render();
+</script>
+
+</body></html>

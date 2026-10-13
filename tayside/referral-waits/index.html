@@ -1,0 +1,804 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Tayside · Referral Waits</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Fraunces:opsz,wght@9..144,600&display=swap">
+<style>
+:root{
+  --bg:#f3f6f7; --surface:#ffffff; --surface2:#e9eff1; --line:#d3dde1;
+  --ink:#13232b; --ink2:#4a5d66; --accent:#0a5c6e; --accent-ink:#ffffff; --home:#0a5c6e;
+  --good:#2b7a4b; --mid:#5f8f3a; --warn:#b5741a; --bad:#b03a3a;
+  --bar:#0a5c6e; --bar-track:#e3eaed;
+  --font:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+  --display:'Fraunces',Georgia,serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e1a20; --surface:#152730; --surface2:#1c333d; --line:#2a444f;
+    --ink:#e6eff2; --ink2:#9db3bc; --accent:#57b9cc; --accent-ink:#06222a; --home:#57b9cc;
+    --good:#5dc083; --mid:#98c46a; --warn:#e0a44f; --bad:#e2736f;
+    --bar:#57b9cc; --bar-track:#20393f; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e1a20; --surface:#152730; --surface2:#1c333d; --line:#2a444f;
+  --ink:#e6eff2; --ink2:#9db3bc; --accent:#57b9cc; --accent-ink:#06222a; --home:#57b9cc;
+  --good:#5dc083; --mid:#98c46a; --warn:#e0a44f; --bad:#e2736f;
+  --bar:#57b9cc; --bar-track:#20393f; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:14px;line-height:1.45;padding-inline:16px;padding-block:20px 40px}
+.wrap{max-width:1100px;margin:0 auto}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(1.6rem,4vw,2.1rem);margin:0 0 4px;letter-spacing:-.01em;text-wrap:balance}
+.sub{color:var(--ink2);margin:0 0 18px;max-width:70ch}
+.filters{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px;display:grid;gap:14px;margin-bottom:16px}
+.frow{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.lbl{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin-bottom:6px;font-weight:600}
+select{width:100%;font:inherit;color:var(--ink);background:var(--surface2);border:1px solid var(--line);border-radius:4px;padding:8px 10px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:inherit;font-size:13px;color:var(--ink);background:var(--surface2);border:1px solid var(--line);border-radius:999px;padding:5px 12px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.chip .home{font-size:10px;opacity:.85;margin-left:6px;letter-spacing:.06em}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.seg button{font:inherit;background:var(--surface2);color:var(--ink);border:0;padding:7px 14px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.check{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--ink2)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:16px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px}
+.tile .k{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);font-weight:600}
+.tile .v{font-family:var(--mono);font-size:1.5rem;font-weight:500;margin-top:2px;font-variant-numeric:tabular-nums}
+.tile .n{font-size:12px;color:var(--ink2)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--ink2);padding:10px 14px;border-bottom:1px solid var(--line)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.row{display:grid;grid-template-columns:minmax(150px,1.3fr) minmax(160px,2fr) 104px 76px;gap:14px;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.row.head{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);font-weight:600;background:var(--surface2)}
+.who b{display:block;font-weight:500}
+.who span{font-size:12px;color:var(--ink2)}
+.who .homebadge{color:var(--home);font-weight:600}
+.track{position:relative;height:18px;background:var(--bar-track);border-radius:3px}
+.fill{position:absolute;inset:0 auto 0 0;background:var(--bar);border-radius:3px}
+.track .val{position:absolute;top:0;line-height:18px;font-family:var(--mono);font-size:12px;color:var(--ink);white-space:nowrap}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right}
+.pill{display:inline-block;font-family:var(--mono);font-size:12px;padding:2px 8px;border-radius:999px;border:1px solid currentColor;font-variant-numeric:tabular-nums}
+.pill.g{color:var(--good)}.pill.m{color:var(--warn)}.pill.r{color:var(--bad)}
+.scroll{overflow-x:auto}
+table.heat{border-collapse:collapse;width:100%;min-width:640px}
+.heat th,.heat td{padding:8px 10px;text-align:center;border-bottom:1px solid var(--line)}
+.heat th{font-size:12px;font-weight:600;color:var(--ink2);background:var(--surface2)}
+.heat th:first-child,.heat td:first-child{text-align:left;font-weight:500;color:var(--ink)}
+.heat td.c{font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--ink)}
+.heat td.na{color:var(--ink2)}
+.heat tr.hl td:first-child{box-shadow:inset 3px 0 0 var(--accent)}
+.heat .sm{display:block;font-size:10px;color:var(--ink2);font-family:var(--font)}
+.heat .band-g{background:color-mix(in srgb,var(--good) 24%,var(--surface))}
+.heat .band-m{background:color-mix(in srgb,var(--mid) 24%,var(--surface))}
+.heat .band-w{background:color-mix(in srgb,var(--warn) 28%,var(--surface))}
+.heat .band-b{background:color-mix(in srgb,var(--bad) 30%,var(--surface))}
+.trusts{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin-top:16px}
+.tcard{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px}
+.tcard h3{font-size:14px;margin:0 0 4px}
+.tcard p{margin:0 0 6px;font-size:12px;color:var(--ink2)}
+.tcard dl{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;margin:0;font-size:12px}
+.tcard dt{color:var(--ink2)}.tcard dd{margin:0;font-family:var(--mono);text-align:right;font-variant-numeric:tabular-nums}
+.empty{padding:28px;text-align:center;color:var(--ink2)}
+.notes{margin-top:18px;font-size:12px;color:var(--ink2);max-width:80ch}
+.notes p{margin:0 0 8px}
+.notes a{color:var(--accent)}
+button.th{font:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-align:inherit}
+button.th:hover{color:var(--accent)}
+.num button.th{width:100%;text-align:right}
+.hit{cursor:pointer}
+.row.hit:hover{background:var(--surface2)}
+.tile.hit:hover,.tcard.hit:hover{border-color:var(--accent)}
+.heat td.hit:hover,.heat th.hit:hover{outline:2px solid var(--accent);outline-offset:-2px}
+.lg{font:inherit;font-size:12px;color:var(--ink2);background:none;border:1px solid transparent;border-radius:999px;padding:2px 8px;cursor:pointer}
+.lg[aria-pressed="true"]{border-color:var(--accent);color:var(--ink);background:var(--surface2)}
+.btn{font:inherit;color:var(--ink);background:var(--surface2);border:1px solid var(--line);border-radius:4px;padding:7px 14px;cursor:pointer}
+.btn:hover{border-color:var(--accent)}
+.hit:focus-visible,.lg:focus-visible,.btn:focus-visible,button.th:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (max-width:640px){
+  .row{grid-template-columns:1fr 70px;gap:8px 12px}
+  .row .barcell{grid-column:1 / -1;order:3}
+  .row.head{display:none}
+}
+
+.srcbar{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px;margin-bottom:16px}
+.srcs{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:10px}
+.src{font:inherit;text-align:left;color:var(--ink);background:var(--surface2);border:1px solid var(--line);border-radius:6px;padding:10px 12px;cursor:pointer}
+.src b{display:block;font-weight:600}
+.src span{display:block;font-size:12px;color:var(--ink2);margin-top:2px}
+.src[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);background:var(--surface)}
+.src:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.srcinfo{margin-top:12px;font-size:13px;color:var(--ink2);display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center}
+.srcinfo a,.notes a,.plain a{color:var(--accent)}
+.srcinfo .inst{color:var(--ink);font-weight:600}
+.plain{padding:14px}
+.plain p{margin:0 0 10px;max-width:75ch}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;font-size:13px;margin:0 0 12px}
+.kv dt{color:var(--ink2)}.kv dd{margin:0}
+.rate{display:inline-block;font-size:12px;padding:2px 8px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.rate.o{color:var(--good);font-weight:600}.rate.g{color:var(--good)}.rate.ri{color:var(--warn)}.rate.i{color:var(--bad)}
+table.cqc{border-collapse:collapse;width:100%;min-width:1000px}.cqc td:first-child{min-width:190px}.cqc a{color:var(--accent)}.cqc .rate{font-size:11px;padding:2px 7px}
+.cqc th,.cqc td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--line);font-size:13px}
+.cqc th{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);background:var(--surface2);font-weight:600}
+.cqc tr.hl td:first-child{box-shadow:inset 3px 0 0 var(--accent)}
+.old{color:var(--warn);font-size:12px}
+.btnlink{display:inline-block;font:inherit;color:var(--ink);background:var(--surface2);border:1px solid var(--line);border-radius:4px;padding:7px 14px;text-decoration:none;margin:0 8px 8px 0}
+.btnlink:hover{border-color:var(--accent)}
+.ebar{display:grid;grid-template-columns:minmax(160px,1.2fr) minmax(160px,2fr) 60px;gap:14px;align-items:center;padding:9px 14px;border-bottom:1px solid var(--line)}
+.ebar:last-child{border-bottom:0}
+.ebar.head{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);font-weight:600;background:var(--surface2)}
+.ebar.all{background:var(--surface2)}
+@media (max-width:640px){.ebar{grid-template-columns:1fr 50px}.ebar .barcell{grid-column:1 / -1;order:3}.ebar.head{display:none}}
+
+.tabs2{display:inline-flex;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.tabs2 button{font:inherit;background:var(--surface2);color:var(--ink);border:0;padding:7px 14px;cursor:pointer}
+.tabs2 button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.ochart{padding:14px}
+.ochart h3{font-size:14px;margin:0 0 2px}
+.ochart .cap{font-size:12px;color:var(--ink2);margin:0 0 10px}
+.key{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--ink2);margin-bottom:10px}
+.key i{display:inline-block;width:12px;height:4px;border-radius:2px;margin-right:6px;vertical-align:middle}
+.pl{display:grid;grid-template-columns:minmax(150px,1.1fr) minmax(200px,3fr);gap:6px 14px;align-items:center;padding:6px 0;border-bottom:1px solid var(--line)}
+.pl:last-child{border-bottom:0}
+.pl .bars{display:grid;gap:3px}
+.bar{position:relative;height:10px;background:var(--bar-track);border-radius:2px}
+.bar>b{position:absolute;inset:0 auto 0 0;border-radius:0 4px 4px 0}
+.bar.a>b{background:var(--accent)}.bar.a.muted>b{background:var(--ink2);opacity:.4}.bar.e>b{background:var(--ink2);opacity:.7}
+.pl.muted{opacity:.72}.pl.muted>div:first-child{color:var(--ink2)}
+.bar span{position:absolute;top:-3px;font:11px var(--mono);color:var(--ink);white-space:nowrap}
+.tt{position:fixed;z-index:9;pointer-events:none;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:8px 10px;font-size:12px;box-shadow:0 2px 8px rgba(0,0,0,.18);max-width:260px}
+.tt b{display:block;margin-bottom:2px}
+svg.line{width:100%;height:auto;display:block}
+svg.line text{font:8px var(--font);fill:var(--ink2)}
+.oscroll{overflow-x:auto}
+table.od{border-collapse:collapse;width:100%;font-size:13px}
+.od th,.od td{padding:7px 10px;text-align:right;border-bottom:1px solid var(--line)}
+.od th:first-child,.od td:first-child{text-align:left}
+.od th{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);background:var(--surface2)}
+.ogrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+@media (max-width:640px){.pl{grid-template-columns:1fr}}
+</style>
+
+<style>
+:root{--c2:#b5741a;--c3:#7a5ea8;--c4:#2b7a4b;--c5:#a0465e}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--c2:#e0a44f;--c3:#b39ae0;--c4:#5dc083;--c5:#e08aa0}}
+:root[data-theme="dark"]{--c2:#e0a44f;--c3:#b39ae0;--c4:#5dc083;--c5:#e08aa0}
+.chip .nat{font-size:10px;opacity:.85;margin-left:6px;letter-spacing:.06em}
+.cqc td.n{font-family:var(--mono);text-align:right;font-variant-numeric:tabular-nums}
+.cqc th.n{text-align:right}
+.tag{display:inline-block;font-size:11px;padding:1px 7px;border-radius:999px;border:1px solid var(--line);color:var(--ink2);white-space:nowrap}
+.xlink{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;padding:12px 14px;margin:0 0 16px;color:var(--ink);text-decoration:none}
+.xlink:hover{border-color:var(--accent)}
+.xlink:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.xlink .xl-k{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);font-weight:600}
+.xlink b{display:block;font-weight:600}
+.xlink .xl-d{font-size:12px;color:var(--ink2)}
+.xlink .xl-go{margin-left:auto;color:var(--accent);font-weight:600;white-space:nowrap}
+</style>
+
+<div class="wrap">
+  <h1 id="pageTitle">Referral Waits</h1>
+  <p class="sub" id="pageSub">Hospital waiting lists for referrals from Dundee and Tayside, with neighbouring NHS boards for comparison. Filter by board, stage of treatment, care type and specialty. <span id="asof"></span></p>
+  <a class="xlink" href="https://claude.ai/code/artifact/44e3a1df-0f4b-46dd-9f4e-9c0841d7b845" target="_blank" rel="noopener">
+    <div><div class="xl-k">Companion dashboard</div><b>Tayside Waiting &amp; Outcome Charts</b><span class="xl-d">Inspections, A&amp;E waits, hospital mortality and end-of-life data, charted alongside these waiting times.</span></div>
+    <span class="xl-go" aria-hidden="true">Open &#8599;</span>
+  </a>
+
+  <section class="srcbar" aria-label="Data source">
+    <div class="lbl" id="l-src">Data source</div>
+    <div class="srcs" id="srcs" role="group" aria-labelledby="l-src">
+      <button type="button" class="src" data-src="waits" aria-pressed="true"><b>Waiting times</b><span>Public Health Scotland, stage of treatment</span></button>
+      <button type="button" class="src" data-src="insp" aria-pressed="false"><b>Inspections</b><span>Healthcare Improvement Scotland</span></button>
+      <button type="button" class="src" data-src="ae" aria-pressed="false"><b>A&amp;E waits</b><span>Public Health Scotland, by site</span></button>
+      <button type="button" class="src" data-src="hsmr" aria-pressed="false"><b>Hospital mortality</b><span>HSMR, Public Health Scotland</span></button>
+      <button type="button" class="src" data-src="eol" aria-pressed="false"><b>End of life</b><span>Time at home in last 6 months, PHS and NRS</span></button>
+    </div>
+    <div class="srcinfo" id="srcinfo" aria-live="polite"></div>
+  </section>
+
+  <div id="src-waits">
+  <section class="filters" aria-label="Filters">
+    <div>
+      <div class="lbl" id="l-trust">NHS board</div>
+      <div class="chips" id="trustChips" role="group" aria-labelledby="l-trust"></div>
+    </div>
+    <div class="frow">
+      <div>
+        <label class="lbl" for="stage">Stage of treatment</label>
+        <select id="stage">
+          <option value="op">New outpatient appointment</option>
+          <option value="ip">Inpatient or day case treatment</option>
+        </select>
+      </div>
+      <div>
+        <label class="lbl" for="care">Type of care</label>
+        <select id="care">
+          <option value="all">All types</option>
+          <option value="Surgical">Surgical</option>
+          <option value="Medical">Medical and clinic-based</option>
+          <option value="Women's health">Women's health</option>
+          <option value="Children's">Children's</option>
+          <option value="Dental">Dental and oral</option>
+        </select>
+      </div>
+      <div>
+        <label class="lbl" for="spec">Specialty clinic</label>
+        <select id="spec"></select>
+      </div>
+      <div>
+        <label class="lbl" for="sort">Sort by</label>
+        <select id="sort">
+          <option value="wait-desc">Longest median wait</option>
+          <option value="wait-asc">Shortest median wait</option>
+          <option value="list-desc">Largest waiting list</option>
+          <option value="list-asc">Smallest waiting list</option>
+          <option value="pct-asc">Lowest % within 12 weeks</option>
+          <option value="pct-desc">Highest % within 12 weeks</option>
+          <option value="name-asc">Clinic A to Z</option>
+          <option value="name-desc">Clinic Z to A</option>
+        </select>
+      </div>
+      <div>
+        <div class="lbl">View</div>
+        <div class="seg" role="group" aria-label="View">
+          <button type="button" id="vList" aria-pressed="true">Ranked list</button>
+          <button type="button" id="vHeat" aria-pressed="false">Matrix</button>
+        </div>
+      </div>
+    </div>
+    <div class="frow" style="align-items:center"><label class="check" for="small"><input type="checkbox" id="small"> Include very small lists (under 100 patients)</label><div><button type="button" class="btn" id="reset">Reset filters</button></div></div>
+  </section>
+
+  <section class="tiles" id="tiles" aria-live="polite"></section>
+
+  <section class="panel">
+    <div class="legend">
+      <button type="button" class="lg" data-band="g" aria-pressed="false"><i style="background:var(--good)"></i>65% or more within 12 weeks</button>
+      <button type="button" class="lg" data-band="m" aria-pressed="false"><i style="background:var(--warn)"></i>50 to 64%</button>
+      <button type="button" class="lg" data-band="r" aria-pressed="false"><i style="background:var(--bad)"></i>under 50%</button>
+      <span id="stdNote"></span><span>Click a legend key, clinic, board or tile to filter.</span>
+    </div>
+    <div id="out"></div>
+  </section>
+
+  <section class="trusts" id="trustCards" aria-label="Board summaries"></section>
+
+  <div class="notes">
+    <p><b>What the numbers mean.</b> These are ongoing waits: patients still on the list at the end of the month. Median wait is how long they have waited so far, not how long a new referral will wait. "Within 12 weeks" is the share who have waited 12 weeks or less. Scotland's standards are that 95% of patients wait no more than 12 weeks for a new outpatient appointment, and that inpatient and day case treatment starts within 12 weeks of agreeing it (the Treatment Time Guarantee). PHS publishes medians in days; they are shown here in weeks. Care type groups are my own grouping of NHS Scotland specialties.</p>
+    <p><b>Site level and referral.</b> PHS publishes these figures per NHS board, not per hospital. Tayside's figures cover Ninewells, Perth Royal Infirmary, Stracathro and its community hospitals together. Since October 2025 waits are counted against the board where the patient will be seen, and treatment bought from the independent sector is reported separately. NHS Scotland has no equivalent of England's Right to Choose: a referral to another board goes through the usual cross-boundary arrangements. Some national services, such as the Golden Jubilee in Clydebank, take referrals from every board and are not shown here.</p>
+    <p id="waitsSource"></p>
+  </div>
+  </div>
+
+  <div id="src-insp" hidden>
+    <section class="panel"><div class="scroll"><table class="cqc" style="min-width:900px">
+      <thead><tr><th>Hospital</th><th>Inspection</th><th>Report</th><th class="n">Good practice</th><th class="n">Recommendations</th><th class="n">Requirements</th><th>Notes</th></tr></thead>
+      <tbody id="inspBody"></tbody></table></div>
+      <div class="legend" style="border-top:1px solid var(--line);border-bottom:0"><span>Hospital names link to the HIS report. A blank count means the report summary gives no figure.</span></div>
+    </section>
+    <div class="notes"><p><b>No ratings in Scotland.</b> Healthcare Improvement Scotland (HIS) inspects NHS hospitals, but it does not give an overall rating like CQC's Outstanding to Inadequate. Each report lists areas of good practice, recommendations (things the board should do) and requirements (things it must do to meet standards). More requirements usually means more problems found, but counts are not comparable between a full inspection and a follow-up, or between acute and maternity inspections.</p>
+    <p id="inspSource"></p></div>
+  </div>
+
+  <div id="src-ae" hidden>
+    <section class="filters" aria-label="A&amp;E filters">
+      <div class="frow">
+        <div><label class="lbl" for="aType">Department type</label><select id="aType"><option value="all">All sites</option><option value="ED">Emergency departments</option><option value="MIU">Minor injury units</option></select></div>
+        <div><div class="lbl">Boards</div><div class="check">Uses the board buttons on the Waiting times tab</div></div>
+      </div>
+    </section>
+    <section class="tiles" id="aTiles" aria-live="polite"></section>
+    <section class="panel ochart"><h3>Seen within 4 hours, by board</h3><p class="cap">Share of all A&amp;E attendances (emergency departments and minor injury units) seen and admitted, transferred or discharged within 4 hours. The standard is 95%. Hover a month for figures.</p><div class="key" id="aKey"></div><div id="aChart"></div></section>
+    <section class="panel" style="margin-top:16px"><div class="scroll"><table class="cqc" style="min-width:760px">
+      <thead><tr><th>Site</th><th>Type</th><th class="n">Attendances</th><th class="n">Within 4 hours</th><th class="n">Over 8 hours</th><th class="n">Over 12 hours</th></tr></thead><tbody id="aBody"></tbody></table></div></section>
+    <div class="notes"><p id="aeSource"></p><p><b>Reading it.</b> Minor injury units see less complex cases and nearly always meet 4 hours, so board totals are best compared alongside the emergency department rows. Waits over 8 and 12 hours are only counted at sites that send patient-level data.</p></div>
+  </div>
+
+  <div id="src-hsmr" hidden>
+    <section class="filters" aria-label="Mortality filters">
+      <div class="frow">
+        <div><label class="lbl" for="hBoard">NHS board</label><select id="hBoard"><option value="all">All your boards</option></select></div>
+        <div><label class="lbl" for="hBand">HSMR band</label><select id="hBand"><option value="all">All bands</option><option value="1">Above approx. upper limit</option><option value="2">Within limits</option><option value="3">Below approx. lower limit</option></select></div>
+        <div><div class="lbl">Context</div><label class="check" for="hAll"><input type="checkbox" id="hAll" checked> Show all Scottish hospitals in grey</label></div>
+        <div><div class="lbl">&nbsp;</div><button type="button" class="btn" id="hReset">Reset filters</button></div>
+      </div>
+    </section>
+    <section class="tiles" id="hTiles" aria-live="polite"></section>
+    <section class="panel ochart"><h3>Deaths compared with predicted, by hospital</h3><p class="cap">Each dot is a hospital. Height is the HSMR (1.00 means deaths matched what was predicted for its patients). Dashed lines are approximate 3 standard deviation control limits. Hover a dot for numbers.</p>
+      <div class="key"><span><i style="background:var(--accent)"></i>Hospitals in your boards (shown by filters)</span><span><i style="background:var(--ink2);opacity:.5"></i>Other Scottish hospitals</span><span><i style="background:none;border-top:2px dashed var(--ink2);height:0"></i>Control limits</span></div>
+      <div id="hChart"></div></section>
+    <section class="panel" style="margin-top:16px"><div class="scroll"><table class="cqc" style="min-width:820px">
+      <thead><tr><th>Hospital</th><th>Board</th><th class="n">HSMR</th><th>Band</th><th class="n">Deaths observed</th><th class="n">Deaths predicted</th><th class="n">Patients</th></tr></thead><tbody id="hBody"></tbody></table></div></section>
+    <div class="notes"><p id="hsmrSource"></p>
+    <p><b>Reading it carefully.</b> The HSMR compares deaths within 30 days of admission with the number predicted from each hospital's patients (age, sex, deprivation, diagnosis, admission type and so on). PHS presents it as a screening tool, not a measure of avoidable deaths or quality of care. The control limits here are worked out as 1 ± 3/√predicted deaths, close to the funnel plot PHS publishes, so a hospital near a limit should be checked against the PHS dashboard. Stracathro mainly does planned day surgery, so its numbers are too small to read anything into.</p></div>
+  </div>
+
+  <div id="src-eol" hidden>
+    <section class="filters" aria-label="End of life filters">
+      <div class="frow">
+        <div><label class="lbl" for="eYear">Financial year</label><select id="eYear"></select></div>
+        <div><label class="lbl" for="eArea">Area of residence</label><select id="eArea"></select></div>
+        <div><label class="check" for="eTable" style="margin-top:22px"><input type="checkbox" id="eTable"> Show as table</label></div>
+      </div>
+    </section>
+    <section class="tiles" id="eTiles" aria-live="polite"></section>
+    <section class="panel ochart"><h3 id="eT1"></h3><p class="cap" id="eC1"></p><div id="eB1"></div></section>
+    <section class="panel ochart" style="margin-top:16px"><h3 id="eT2"></h3><p class="cap" id="eC2"></p><div class="key" id="eK2"></div><div id="eB2"></div></section>
+    <div class="notes"><p id="eolSource"></p>
+    <p><b>What this measures.</b> For everyone who died in the year (excluding deaths from external causes such as accidents), PHS links NRS death registrations to hospital records and works out how much of their last six months was spent outside hospital: at home, in a care home or hospice, or elsewhere in the community. It is the measure Scotland uses in place of a place-of-death breakdown by area. The area is where the person lived, not where they died. The 2020/21 rise reflects the pandemic. The latest year is provisional.</p></div>
+  </div>
+</div>
+
+<script id="data">
+/* ==== DATA BLOCK: the monthly refresh replaces values in this script only ==== */
+var META={
+ waitsMonth:'August 2026',          // PHS Stage of Treatment, month ending of ongoing waits
+ aeMonth:'August 2026',             // PHS monthly A&E
+ hsmrPeriod:'April 2025 to March 2026', hsmrPublished:'11 August 2026',
+ eolPublished:'7 October 2025',
+ inspChecked:'6 October 2026'
+};
+var BOARDS=[
+ {id:'ty',code:'S08000030',name:'NHS Tayside',short:'Tayside',home:true,sites:'Ninewells (Dundee), Perth Royal Infirmary, Stracathro (Brechin)',ae:{p:88.1,att:8746,h12:5}},
+ {id:'fi',code:'S08000029',name:'NHS Fife',short:'Fife',sites:'Victoria Hospital (Kirkcaldy), Queen Margaret (Dunfermline)',ae:{p:72.7,att:8840,h12:81},dist:'about 25 miles from Dundee'},
+ {id:'gr',code:'S08000020',name:'NHS Grampian',short:'Grampian',sites:'Aberdeen Royal Infirmary, Dr Gray\'s (Elgin)',ae:{p:64.4,att:12388,h12:725},dist:'about 65 miles from Dundee'},
+ {id:'fv',code:'S08000019',name:'NHS Forth Valley',short:'Forth Valley',sites:'Forth Valley Royal (Larbert)',ae:{p:59.3,att:8003,h12:610},dist:'about 55 miles from Dundee'},
+ {id:'lo',code:'S08000024',name:'NHS Lothian',short:'Lothian',sites:'Royal Infirmary of Edinburgh, Western General, St John\'s (Livingston)',ae:{p:64.0,att:27520,h12:941},dist:'about 60 miles from Dundee'},
+ {id:'sc',code:'S92000003',name:'NHS Scotland',short:'Scotland',national:true,sites:'All NHS boards, for comparison',ae:null}
+];
+// Ongoing waits at month end. Each item: specialtyCode:waiting:over12weeks:medianDays ("-" = median suppressed)
+var WAITS={
+ op:{
+  ty:'A1:98:12:21 A2:759:352:76 A3:485:229:81 A6:13:1:- A7:4570:2523:110 A81:88:7:15.5 A82:164:9:11.5 A9:419:183:70 AF:474:113:33 AG:87:3:24 AH:946:516:97 AQ:1761:1081:118 AR:480:191:61.5 AV:93:2:33 C11:2667:1139:68 C12:386:206:88 C13:577:243:69 C3:11:9:- C31:426:317:117 C5:2785:1741:125 C6:176:5:19 C7:3131:1334:72 C8:3357:1787:91 C9:803:518:157 CA:181:34:53 CB:3357:2612:238 D3:1364:697:87 D4:885:678:181 D5:314:116:67 D6:433:158:70 D8:308:186:110 F2:3142:1789:103 H2:99:1:7 J4:104:27:42 J5:13:5:- Z9:34973:18824:96',
+  fi:'A2:279:39:38 A3:3:0:- A6:17:1:- A7:1184:138:26 A8:442:237:91 A9:281:12:25 AB:183:20:31 AD:22:0:11 AF:861:267:61 AG:88:34:71 AH:805:326:68 AQ:329:86:52 AR:665:428:129 C11:2371:1168:83 C12:519:290:103 C13:1029:377:67 C31:184:11:40 C5:2324:1121:81 C7:2865:1676:114 C8:3090:1153:59 C9:197:86:66 CA:187:108:102 CB:2130:1352:130 D5:71:4:35 F2:2833:1221:69 H2:93:1:26 J4:199:94:73 Z9:23669:10549:73',
+  gr:'A1:315:30:21 A2:3411:1973:104 A3:460:23:7 A6:104:40:46.5 A7:5628:3805:157 A8:394:7:35 A81:11:0:- A82:191:70:40 A9:2165:881:65 AB:106:25:46 AD:69:3:11 AF:895:252:45 AFA:2685:1995:168 AG:321:121:54 AH:2974:1824:122.5 AM:10:0:- AP:148:17:31.5 AQ:1068:465:68 AR:1207:517:67 AW:195:127:125 C11:5175:2834:102 C12:468:130:52 C13:2295:1409:118 C3:22:6:26 C31:1007:685:140 C41:15:0:- C42:14:0:- C5:4203:2419:103 C6:358:150:68 C7:5392:3303:122 C8:7611:4949:133 C9:965:402:66 CA:209:29:38 CB:1714:919:94 D3:123:64:327 D5:85:39:80 D6:472:256:94 E12:691:178:46 F2:4094:1890:74 H2:185:17:12 J3:171:62:52 J4:304:19:17 J5:119:27:48 Z9:58049:31962:101',
+  fv:'A1:77:10:34 A2:1477:869:104 A6:35:1:24 A7:3496:1642:81 A81:64:1:33 A82:110:44:69.5 A9:608:386:112 AB:205:69:60 AF:766:281:62 AG:174:101:108.5 AH:884:333:62 AP:4:3:- AQ:637:371:108 AR:268:61:42 C1:1218:133:32 C12:113:4:38 C13:655:3:28 C31:288:108:69 C5:877:18:35 C7:1028:404:67 C8:1217:116:26 C9:298:4:19.5 CA:23:0:24 CB:888:276:42 D5:227:113:83 F2:2378:1007:69 H2:47:1:11 J4:114:0:29 Z9:18176:6359:59',
+  lo:'A1:199:13:13 A2:1156:66:26 A6:99:11:20 A7:8647:4299:84 A8:34:17:81.5 A81:860:305:61.5 A82:549:178:48 A9:2633:800:49 AB:362:24:19 AD:74:0:6.5 AF:2553:1244:83 AG:73:1:34 AH:1032:145:25 AM:4:0:- AQ:2110:977:75 AR:3218:2098:124 AV:793:520:181 C11:6321:3421:96 C12:1438:747:89 C13:1359:787:110 C3:581:62:45 C41:77:2:31 C42:32:0:23.5 C5:4822:2211:76 C6:2053:1165:104 C7:12858:7115:100 C8:7824:4224:96 C9:2930:1540:90 CA:889:535:109 CB:2252:1060:81 D3:27:17:118 D4:6:5:- D5:354:248:131.5 D6:122:2:24 D8:363:113:60 F2:10421:6605:137 H2:236:0:11 J4:232:2:18 J5:5:0:- Z9:79598:40559:88',
+  sc:'A1:3950:1851:74 A2:19436:8650:74 A3:1035:281:31 A6:881:158:24 A7:57604:31748:98 A8:3060:1393:75 A81:5762:3006:91 A82:1665:422:34 A9:17294:9376:97 AB:2510:367:28 AD:324:3:11 AF:10650:4342:69 AFA:3899:2796:164 AG:2090:1068:88 AH:18200:9816:96 AM:163:11:22 AP:501:185:59 AQ:16285:8194:87 AR:11597:6343:97 AV:1462:809:98 AW:582:301:89.5 C1:10834:5370:84 C11:31547:16091:88 C12:6478:3183:83 C13:12909:6916:95 C3:1581:814:88 C31:3671:1889:89 C4:13:1:- C41:144:2:20 C42:146:0:19 C5:36417:18263:87 C51:80:23:33.5 C6:4906:2579:94 C7:57070:32521:103 C8:60551:33060:97 C9:8167:3855:76 CA:2447:1080:70 CB:20614:11108:97 D1:15:0:- D3:7349:4558:116 D4:1868:1068:119 D5:2354:1261:91 D6:2806:1462:90 D8:984:376:62 E12:694:178:46 F2:49502:26898:96 H2:1079:50:11 J3:375:80:34 J4:2337:511:33 J5:147:32:45 Z9:506512:264665:90'
+ },
+ ip:{
+  ty:'A1:1:1:- A2:310:101:48.5 A7:1:0:- A81:1:0:- A9:12:6:- AF:14:6:- AG:12:6:- AH:34:5:34 AQ:3:1:- AR:4:2:- C11:1538:1019:139 C12:74:23:33 C13:567:442:279 C31:1:1:- C5:494:207:63 C6:53:8:25 C7:3596:2804:215 C8:3784:2822:181 C9:404:267:159 CA:110:69:135.5 CB:1426:920:185.5 D1:98:32:38.5 D3:41:8:26 D8:20:9:75 F2:1229:1006:206 H2:270:12:18 J4:13:11:- Z9:14221:9837:174',
+  fi:'A2:146:80:103.5 A7:3:0:- A9:33:8:24 AD:42:1:18 AF:3:2:- AG:10:1:- AH:5:0:- AR:34:22:121.5 C11:1234:716:109 C12:14:1:- C13:189:63:47 C5:1251:898:168 C7:2559:1762:146 C8:2827:1787:125 C9:183:105:95 CA:33:15:80 CB:952:590:124 F2:386:188:82 H2:16:0:- J4:26:8:48.5 Z9:9947:6248:125',
+  gr:'A1:10:3:- A2:238:92:55.5 A9:22:8:33.5 AD:3:3:- AF:1:1:- AG:24:6:26 AQ:2:1:- C11:1366:884:159.5 C12:180:110:141 C13:291:208:172 C31:255:116:80 C41:46:10:40 C42:12:3:- C5:1204:898:193.5 C6:160:89:107 C7:2790:1876:126 C8:4174:3188:208 C9:366:225:130.5 CA:154:44:55 CB:1469:989:152 D1:2:2:- D8:446:251:101 E12:5:2:- F2:1053:826:218 H2:1:1:- J4:1:1:- Z9:14275:9837:157',
+  fv:'A2:13:0:- C1:814:378:81 C12:50:26:101.5 C13:90:6:34 C31:26:17:164.5 C5:709:497:139 C7:2483:1670:143 C8:2642:1891:153 C9:3:0:- CA:36:14:74 CB:377:213:115 F2:625:406:126 Z9:7868:5118:130',
+  lo:'A2:1383:762:97 A9:29:8:31 AD:71:1:11 AF:15:11:- AH:5:0:- AQ:11:0:- AR:11:0:- C11:3770:2541:150 C12:274:150:101 C13:171:102:110 C41:220:123:116 C42:105:45:62 C5:1423:801:105 C6:539:339:125 C7:2169:890:67 C8:4330:2839:133 C9:1807:957:97 C91:2:1:- CA:416:260:109 CB:2651:1845:157 D1:71:42:110 D3:180:141:282.5 D8:515:265:89 F2:1466:871:113 H1:42:19:62 H2:37:12:39 J4:60:1:8.5 Z9:21858:13026:115',
+  sc:'A1:99:26:42 A2:4151:2022:81 A6:1:1:- A7:20:0:12 A81:96:5:18 A9:280:46:19.5 AD:181:8:11 AF:130:35:26 AG:122:33:27.5 AH:73:20:33 AQ:205:62:28 AR:55:27:74 C1:5579:3213:110 C11:15945:9882:123 C12:1170:545:75.5 C13:3139:1966:131 C3:117:95:157 C31:436:160:63 C4:82:54:129 C41:476:167:58.5 C42:212:48:25.5 C5:13603:9324:160 C6:1304:787:122.5 C7:30341:18237:118 C8:41803:29591:159 C9:4926:2725:104 C91:32:15:80 CA:1647:990:112 CB:13596:8659:142 D1:1586:769:83 D3:746:509:151 D8:1400:858:122 E12:10:3:- F2:13019:9028:165 H1:70:21:38.5 H2:432:34:18 J4:164:39:26 Z9:157485:100078:131'
+ }
+};
+// A&E 4-hour % by board, last 12 months (all attendances, ED and minor injury units)
+var AE_TREND={months:['Sep 25','Oct 25','Nov 25','Dec 25','Jan 26','Feb 26','Mar 26','Apr 26','May 26','Jun 26','Jul 26','Aug 26'],
+ ty:[86.1,86.3,86.5,82.3,85.5,90.7,88.3,88.6,91.6,90.3,89.3,88.1],
+ fi:[70.9,69.5,71.4,69.3,69.7,69.1,69.5,70.3,74.7,76.1,73.0,72.7],
+ gr:[63.6,61.8,59.6,61.0,58.6,60.8,63.7,63.0,65.8,66.0,64.7,64.4],
+ fv:[60.5,56.3,58.3,59.3,56.9,59.3,59.3,61.3,59.6,63.6,60.2,59.3],
+ lo:[66.4,67.3,67.9,65.8,63.1,62.6,65.0,65.5,64.9,66.0,69.2,64.0]};
+// A&E sites, latest month: [board, site code, site name, type, attendances, % within 4h, over 8h, over 12h]
+var AE_SITES=[
+ ['ty','T101H','Ninewells Hospital, Dundee','ED',5680,88.0,33,3],
+ ['ty','T202H','Perth Royal Infirmary','ED',2421,85.3,30,2],
+ ['ty','T304H','Arbroath Infirmary','MIU',645,100,0,0],
+ ['fi','F704H','Victoria Hospital, Kirkcaldy','ED',6706,64.1,506,80],
+ ['fi','F805H','Queen Margaret Hospital, Dunfermline','MIU',1789,99.8,2,1],
+ ['fi','F709H','St Andrews Community Hospital','MIU',345,98.8,0,0],
+ ['gr','N101H','Aberdeen Royal Infirmary','ED',5886,46.6,1525,530],
+ ['gr','N411H','Dr Gray\'s Hospital, Elgin','ED',2652,63.1,374,194],
+ ['gr','N121H','Royal Aberdeen Children\'s Hospital','ED',1681,84.0,6,1],
+ ['gr','N335H','Jubilee Hospital, Huntly','MIU',853,99.1,1,0],
+ ['gr','N333H','Peterhead Community Hospital','MIU',780,99.7,1,0],
+ ['gr','N334H','Fraserburgh Hospital','MIU',467,98.7,1,0],
+ ['fv','V217H','Forth Valley Royal Hospital, Larbert','ED',5947,45.5,1541,610],
+ ['fv','V201H','Stirling Community Hospital','MIU',2056,99.2,2,0],
+ ['lo','S314H','Royal Infirmary of Edinburgh','ED',12387,48.6,1779,598],
+ ['lo','S116H','Western General Hospital','MIU',4317,70.1,270,97],
+ ['lo','S308H','St John\'s Hospital, Livingston','ED',6150,69.0,548,243],
+ ['lo','S319H','Royal Hospital for Children and Young People','ED',4666,92.6,13,3]
+];
+// HSMR by hospital: [code, name, board id or '', observed, predicted, patients, HSMR, crude rate %]
+var HSMR=[
+ ['T101H','Ninewells Hospital','ty',1827,1982.5,45233,0.922,4.04],
+ ['T202H','Perth Royal Infirmary','ty',436,476.6,8306,0.915,5.25],
+ ['T312H','Stracathro Hospital','ty',1,1.8,3123,0.559,0.03],
+ ['F704H','Victoria Hospital, Kirkcaldy','fi',1802,1864.5,30220,0.966,5.96],
+ ['N101H','Aberdeen Royal Infirmary','gr',1865,1728.3,39710,1.079,4.70],
+ ['N411H','Dr Gray\'s Hospital','gr',380,333.1,8533,1.141,4.45],
+ ['V217H','Forth Valley Royal Hospital','fv',1385,1475.7,34828,0.939,3.98],
+ ['S314H','Royal Infirmary of Edinburgh','lo',1807,1683.3,41031,1.073,4.40],
+ ['S116H','Western General Hospital','lo',894,1023.9,17015,0.873,5.25],
+ ['S308H','St John\'s Hospital','lo',619,633.3,21385,0.977,2.89],
+ ['A101H','Arran War Memorial Hospital','',29,34.1,275,0.851,10.55],
+ ['A111H','University Hospital Crosshouse','',1212,1260.0,27444,0.962,4.42],
+ ['A210H','University Hospital Ayr','',756,843.8,18683,0.896,4.05],
+ ['B120H','Borders General Hospital','',634,502.2,12290,1.262,5.16],
+ ['Y144H','Galloway Community Hospital','',162,174.7,1843,0.927,8.79],
+ ['Y146H','Dumfries & Galloway Royal Infirmary','',692,818.7,17906,0.845,3.86],
+ ['C121H','Lorn & Islands Hospital','',100,101.1,1656,0.989,6.04],
+ ['H103H','Caithness General Hospital','',121,103.7,1782,1.166,6.79],
+ ['H202H','Raigmore Hospital','',675,831.8,20531,0.812,3.29],
+ ['H212H','Belford Hospital','',58,67.8,1341,0.855,4.33],
+ ['R103H','The Balfour','',122,99.6,2821,1.225,4.32],
+ ['Z102H','Gilbert Bain Hospital','',84,76.7,2426,1.095,3.46],
+ ['W107H','Western Isles Hospital','',97,106.4,3128,0.912,3.10],
+ ['C313H','Inverclyde Royal Hospital','',500,488.5,10782,1.024,4.64],
+ ['C418H','Royal Alexandra Hospital','',1298,1236.3,27281,1.050,4.76],
+ ['G107H','Glasgow Royal Infirmary','',1471,1510.1,45037,0.974,3.27],
+ ['G405H','Queen Elizabeth University Hospital','',2747,2877.1,72002,0.955,3.82],
+ ['L106H','University Hospital Monklands','',956,968.8,22618,0.987,4.23],
+ ['L302H','University Hospital Hairmyres','',1059,1040.0,22625,1.018,4.68],
+ ['L308H','University Hospital Wishaw','',969,957.5,28869,1.012,3.36],
+ ['D102H','Golden Jubilee University National Hospital','',72,79.5,25044,0.906,0.29]
+];
+// Board HSMR: [board id, HSMR, observed, predicted]
+var HSMR_BOARD={ty:[0.963,2506,2603.1],fi:[0.960,1854,1931.3],gr:[1.111,2530,2278.1],fv:[0.937,1386,1479.0],lo:[1.021,3467,3396.4]};
+// HIS inspections: [hospital, board, type, report title month, published, good practice, recommendations, requirements, url, note]
+var INSP=[
+ ['Ninewells Hospital, Dundee','ty','Acute: follow-up','June 2026','16 Jun 2026',3,null,5,'https://www.healthcareimprovementscotland.scot/publications/ninewells-hospital-unannounced-follow-up-inspection-report-june-2026/','Visit Feb 2026. 2 new or updated requirements and 3 carried forward as not met.'],
+ ['Ninewells Hospital, Dundee','ty','Acute: safe delivery of care','May 2025','15 May 2025',10,1,14,'https://www.healthcareimprovementscotland.scot/publications/ninewells-hospital-safe-delivery-of-care-inspection-may-2025/','Visit Jan 2025.'],
+ ['Ninewells Hospital, Dundee','ty','Maternity: safe delivery of care','May 2025','15 May 2025',9,3,20,'https://www.healthcareimprovementscotland.scot/publications/ninewells-hospital-safe-delivery-of-care-inspection-may-2025/','Visit Jan 2025. HIS made an unannounced revisit over concerns that needed immediate improvement.'],
+ ['Perth Royal Infirmary','ty','Acute: follow-up','June 2026','16 Jun 2026',null,1,7,'https://www.healthcareimprovementscotland.scot/publications/perth-royal-infirmary-unannounced-follow-up-inspection-report-june-2026/','Visit Feb 2026. 6 new or updated requirements and 1 carried forward. HIS says it will return for a full inspection.'],
+ ['Victoria Hospital, Kirkcaldy','fi','Maternity: safe delivery of care','March 2026','19 Mar 2026',10,2,13,'https://www.healthcareimprovementscotland.scot/publications/victoria-hospital-maternity-safe-delivery-of-care-inspection-march-2026/','Visit Dec 2025.'],
+ ['Victoria Hospital, Kirkcaldy','fi','Acute: follow-up','March 2025','13 Mar 2025',9,1,13,'https://www.healthcareimprovementscotland.scot/publications/victoria-hospital-safe-delivery-of-care-inspection-march-2025/','Visit Dec 2024. Follows up the 2023 inspection, which was formally escalated.'],
+ ['Aberdeen Royal Infirmary','gr','Acute: safe delivery of care','February 2024',null,5,2,12,'https://www.healthcareimprovementscotland.scot/publications/aberdeen-royal-infirmary-safe-delivery-of-care-inspection-report-february-2024/','Visit Oct 2023. No later acute or maternity report found.'],
+ ['Forth Valley Royal Hospital','fv','Acute: follow-up','June 2026','23 Jun 2026',2,1,11,'https://www.healthcareimprovementscotland.scot/publications/forth-valley-royal-hospital-unannounced-follow-up-inspection-report-june-2026/','Visits Mar and Apr 2026, the second over patient safety concerns. 7 new or updated requirements and 4 carried forward as not met.'],
+ ['Forth Valley Royal Hospital','fv','Maternity: safe delivery of care','November 2025','27 Nov 2025',9,2,11,'https://www.healthcareimprovementscotland.scot/publications/forth-valley-royal-hospital-maternity-safe-delivery-of-care-inspection-november-2025/','Visit Aug 2025.'],
+ ['Royal Infirmary of Edinburgh','lo','Maternity: safe delivery of care','October 2025','29 Oct 2025',5,2,26,'https://www.healthcareimprovementscotland.scot/publications/edinburgh-royal-infirmary-safe-delivery-of-care-inspection-october-2025/','Visit Jun 2025.'],
+ ['Royal Infirmary of Edinburgh','lo','Acute: follow-up','December 2023','7 Dec 2023',4,1,1,'https://www.healthcareimprovementscotland.scot/publications/royal-infirmary-of-edinburgh-safe-delivery-of-care-inspection-report-december-2023/','Visit Sep 2023. Counts are new items only: 1 recommendation and 7 requirements from Feb 2023 were still outstanding.']
+];
+// End of life: % of last 6 months of life spent at home or in a community setting, and deaths. Financial years 2010/11 to 2024/25.
+var EOL_YEARS=['2010/11','2011/12','2012/13','2013/14','2014/15','2015/16','2016/17','2017/18','2018/19','2019/20','2020/21','2021/22','2022/23','2023/24','2024/25'];
+var EOL=[
+ ['Scotland','Country','85.3/50272 86.3/50205 86.5/52840 86.4/49863 86.6/53400 87.0/52896 87.4/53036 88.0/56433 88.0/52014 88.2/54811 90.2/61197 89.7/58443 88.9/61063 88.9/58310 89.2/58471'],
+ ['Dundee City','Council area','84.8/1570 86.2/1547 86.2/1617 87.0/1384 86.8/1608 86.8/1588 87.3/1571 88.8/1681 89.2/1507 89.5/1517 91.5/1766 91.6/1697 90.0/1705 90.9/1612 90.7/1657'],
+ ['Angus','Council area','87.0/1161 88.3/1204 88.1/1261 88.3/1211 89.1/1336 90.0/1251 89.5/1389 90.4/1382 91.0/1260 91.8/1310 92.9/1453 92.9/1431 92.1/1475 91.9/1411 91.8/1483'],
+ ['Perth and Kinross','Council area','87.5/1417 87.4/1410 88.1/1571 88.0/1445 87.8/1537 87.9/1526 88.2/1539 89.6/1677 89.6/1539 89.5/1598 90.2/1807 90.6/1671 88.7/1840 89.0/1781 90.1/1732'],
+ ['NHS Tayside','Health board','86.3/4148 87.2/4161 87.4/4449 87.8/4040 87.8/4481 88.1/4365 88.3/4499 89.5/4740 89.9/4306 90.2/4425 91.4/5026 91.7/4799 90.1/5020 90.5/4804 90.8/4872'],
+ ['NHS Fife','Health board','85.8/3424 86.0/3595 87.1/3714 86.3/3409 86.7/3624 87.2/3735 87.5/3772 88.7/4049 88.4/3692 88.3/3827 90.7/4149 90.1/4338 89.6/4422 90.1/4219 90.3/4183'],
+ ['NHS Grampian','Health board','86.7/4881 87.6/4833 88.0/5049 88.9/4972 88.5/5281 88.9/5221 89.4/5150 89.4/5473 89.9/5102 89.6/5437 91.7/5598 91.4/5609 90.5/5870 90.4/5736 92.2/5778'],
+ ['NHS Forth Valley','Health board','85.8/2669 86.1/2633 86.3/2862 85.1/2741 85.6/2830 86.0/2878 86.1/2910 86.7/3024 86.9/2909 87.6/3149 89.9/3488 88.9/3324 88.6/3503 88.5/3286 88.1/3341'],
+ ['NHS Lothian','Health board','83.4/6891 84.5/6944 84.2/7214 84.0/6857 84.5/7200 85.0/7172 85.6/7223 86.5/7704 85.9/7217 86.9/7439 88.9/8326 88.5/7977 88.1/8646 88.7/7957 88.8/8049'],
+ ['NHS Ayrshire and Arran','Health board','85.5/3966 86.8/3967 86.8/4148 86.6/4215 86.6/4280 87.5/4285 86.6/4229 86.8/4508 87.5/4240 88.0/4540 89.5/5042 88.6/4988 88.1/5033 88.1/4824 87.8/4895'],
+ ['NHS Borders','Health board','84.7/1149 84.1/1120 86.2/1215 85.7/1080 85.6/1320 85.6/1195 85.6/1197 86.9/1303 85.7/1251 86.0/1265 89.5/1322 88.2/1320 87.6/1463 87.1/1393 88.7/1335'],
+ ['NHS Dumfries and Galloway','Health board','87.2/1701 89.3/1593 89.4/1807 89.5/1775 89.7/1835 87.9/1738 87.5/1768 88.3/1918 88.0/1717 87.3/1858 90.2/2019 89.9/1963 88.4/2072 88.0/1961 87.5/1995'],
+ ['NHS Greater Glasgow and Clyde','Health board','84.2/11301 85.4/11173 85.7/11841 85.7/10982 85.5/11849 86.3/11416 86.9/11664 87.4/12378 87.4/11114 87.7/11758 89.5/13781 88.9/12188 88.0/12656 87.7/12089 88.0/12063'],
+ ['NHS Highland','Health board','88.3/3213 89.2/3205 89.5/3206 88.3/2978 89.1/3299 89.3/3458 89.4/3263 89.4/3467 89.3/3350 89.6/3474 91.6/3670 90.8/3689 89.6/3894 89.2/3759 89.7/3759'],
+ ['NHS Lanarkshire','Health board','84.7/6180 86.1/6227 86.2/6559 85.9/6126 86.9/6643 86.8/6663 87.9/6577 88.3/7091 88.7/6405 88.6/6888 90.5/7986 89.6/7406 88.8/7549 88.7/7421 88.9/7420'],
+ ['NHS Orkney','Health board','88.2/214 91.1/191 90.6/217 89.5/214 89.4/188 91.9/208 91.8/218 90.9/251 90.0/210 89.9/203 92.6/250 92.3/234 90.9/270 90.3/243 91.2/227'],
+ ['NHS Shetland','Health board','89.3/215 90.3/204 87.5/196 92.1/192 92.3/214 92.5/236 93.8/227 95.0/206 94.0/187 93.0/194 93.5/203 94.6/220 93.4/248 95.0/240 95.7/196'],
+ ['NHS Western Isles','Health board','83.9/320 83.7/359 87.6/363 86.0/282 87.3/356 87.7/326 86.5/339 87.4/321 88.1/314 86.7/354 90.6/337 90.5/388 90.0/417 90.1/378 88.4/358']
+];
+/* ==== END DATA BLOCK ==== */
+</script>
+
+<script>
+var SPEC={A1:'General Medicine',A11:'Acute Medicine',A2:'Cardiology',A3:'Clinical Genetics',A6:'Infectious Diseases',A7:'Dermatology',A8:'Endocrinology & Diabetes',A81:'Endocrinology',A82:'Diabetes',A9:'Gastroenterology',AB:'Geriatric Medicine',AD:'Medical Oncology',AF:'Paediatrics',AFA:'Community Child Health',AG:'Renal Medicine',AH:'Neurology',AM:'Palliative Medicine',AP:'Rehabilitation Medicine',AQ:'Respiratory Medicine',AR:'Rheumatology',AV:'Clinical Neurophysiology',AW:'Allergy',C1:'General Surgery (incl. vascular)',C11:'General Surgery (excl. vascular)',C12:'Vascular Surgery',C13:'Oral and Maxillofacial Surgery',C3:'Anaesthetics',C31:'Pain Management',C4:'Cardiothoracic Surgery',C41:'Cardiac Surgery',C42:'Thoracic Surgery',C5:'Ear, Nose and Throat',C51:'Audiological Medicine',C6:'Neurosurgery',C7:'Ophthalmology',C8:'Trauma and Orthopaedics',C9:'Plastic Surgery',C91:'Cleft Lip and Palate Surgery',CA:'Paediatric Surgery',CB:'Urology',D1:'Community Dental Practice',D3:'Oral Surgery',D4:'Oral Medicine',D5:'Orthodontics',D6:'Restorative Dentistry',D8:'Paediatric Dentistry',E12:'GP-led clinics',F2:'Gynaecology',H1:'Clinical Radiology',H2:'Clinical Oncology',J3:'Chemical Pathology',J4:'Haematology',J5:'Immunology'};
+var SURG=['C1','C11','C12','C13','C3','C4','C41','C42','C5','C6','C7','C8','C9','C91','CB'];
+function careOf(c){if(c==='F2')return "Women's health";if(c==='AF'||c==='AFA'||c==='CA')return "Children's";if(c.charAt(0)==='D')return 'Dental';if(SURG.indexOf(c)>=0)return 'Surgical';return 'Medical';}
+var CARE={};Object.keys(SPEC).forEach(function(c){CARE[SPEC[c]]=careOf(c);});
+var TRUSTS=BOARDS, TBY={};BOARDS.forEach(function(t){TBY[t.id]=t;});
+function parseW(s){return s.split(' ').map(function(x){var a=x.split(':');return {s:a[0],n:+a[1],o:+a[2],m:a[3]==='-'?null:+a[3]};});}
+var ALL={op:[],ip:[]},TOT={op:{},ip:{}};
+['op','ip'].forEach(function(k){Object.keys(WAITS[k]).forEach(function(b){parseW(WAITS[k][b]).forEach(function(r){
+  if(r.s==='Z9'){TOT[k][b]={n:r.n,p:Math.round(100*(r.n-r.o)/r.n),w:r.m==null?null:Math.round(r.m/7)};return;}
+  if(!SPEC[r.s]||r.m==null||!r.n)return;
+  ALL[k].push({t:b,code:r.s,s:SPEC[r.s],w:Math.round(r.m/7),wd:r.m,n:r.n,p:Math.round(100*(r.n-r.o)/r.n),c:careOf(r.s)});
+});});});
+
+var st={source:'waits',trusts:{ty:true,fi:true,gr:true,fv:true,lo:true,sc:false},stage:'op',care:'all',spec:'all',sort:'wait-desc',view:'list',small:false,band:'all'};
+try{var s0=JSON.parse(localStorage.getItem('tay-rw-state')||'null');if(s0&&s0.trusts){st=Object.assign(st,s0);}}catch(e){}
+function save(){try{localStorage.setItem('tay-rw-state',JSON.stringify(st));}catch(e){}}
+var $=function(id){return document.getElementById(id)};
+function fmt(n){return n.toLocaleString('en-GB');}
+function band(p){return p>=65?'g':(p>=50?'m':'r');}
+function pill(p){return '<span class="pill '+band(p)+'">'+p+'%</span>';}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');}
+function ROWS(){return ALL[st.stage];}
+function specList(){var seen={};ROWS().forEach(function(r){seen[r.s]=1;});return Object.keys(seen).sort();}
+
+function fixSpec(){
+  var sp=$('spec');
+  var list=specList().filter(function(s){return st.care==='all'||CARE[s]===st.care;});
+  if(st.spec!=='all'&&list.indexOf(st.spec)<0){st.spec='all';}
+  sp.innerHTML='<option value="all">All specialties</option>'+list.map(function(s){return '<option>'+esc(s)+'</option>';}).join('');
+  sp.value=st.spec;
+}
+function buildControls(){
+  var tc=$('trustChips');
+  tc.innerHTML=TRUSTS.map(function(t){
+    return '<button type="button" class="chip" data-t="'+t.id+'" aria-pressed="'+!!st.trusts[t.id]+'">'+t.short+(t.home?'<span class="home">HOME</span>':'')+(t.national?'<span class="nat">AVERAGE</span>':'')+'</button>';
+  }).join('');
+  tc.addEventListener('click',function(e){
+    var b=e.target.closest('.chip');if(!b)return;
+    var id=b.getAttribute('data-t');st.trusts[id]=!st.trusts[id];
+    b.setAttribute('aria-pressed',String(!!st.trusts[id]));save();render();renderAe();
+  });
+  $('stage').value=st.stage;$('care').value=st.care;$('sort').value=st.sort;$('small').checked=st.small;
+  fixSpec();
+  $('stage').onchange=function(){st.stage=this.value;fixSpec();save();render();};
+  $('care').onchange=function(){st.care=this.value;fixSpec();save();render();};
+  $('spec').onchange=function(){st.spec=this.value;save();render();};
+  $('sort').onchange=function(){st.sort=this.value;save();render();};
+  $('small').onchange=function(){st.small=this.checked;save();render();};
+  $('vList').onclick=function(){st.view='list';save();render();};
+  $('vHeat').onclick=function(){st.view='heat';save();render();};
+}
+function filtered(){
+  return ROWS().filter(function(r){
+    if(!st.trusts[r.t])return false;
+    if(st.care!=='all'&&r.c!==st.care)return false;
+    if(st.spec!=='all'&&r.s!==st.spec)return false;
+    if(!st.small&&r.n<100)return false;
+    if(st.band!=='all'&&band(r.p)!==st.band)return false;
+    return true;
+  });
+}
+function sorted(rows){
+  var f={'wait-desc':function(a,b){return b.wd-a.wd||b.n-a.n},'wait-asc':function(a,b){return a.wd-b.wd||b.n-a.n},'list-desc':function(a,b){return b.n-a.n},'pct-asc':function(a,b){return a.p-b.p},'pct-desc':function(a,b){return b.p-a.p},'list-asc':function(a,b){return a.n-b.n},'name-asc':function(a,b){return a.s.localeCompare(b.s)||a.t.localeCompare(b.t)},'name-desc':function(a,b){return b.s.localeCompare(a.s)||a.t.localeCompare(b.t)}}[st.sort];
+  return rows.slice().sort(f);
+}
+function renderTiles(rows){
+  var el=$('tiles');
+  var br=rows.filter(function(r){return !TBY[r.t].national;});
+  if(!br.length){el.innerHTML='';return;}
+  var tot=br.reduce(function(a,r){return a+r.n},0);
+  var wp=br.reduce(function(a,r){return a+r.p*r.n},0)/tot;
+  var wmed=br.reduce(function(a,r){return a+r.w*r.n},0)/tot;
+  var longest=br.reduce(function(a,r){return r.wd>a.wd?r:a},br[0]);
+  var shortest=br.reduce(function(a,r){return r.wd<a.wd?r:a},br[0]);
+  el.innerHTML=
+   '<div class="tile"><div class="k">Patients waiting</div><div class="v">'+fmt(tot)+'</div><div class="n">selected boards and clinics</div></div>'+
+   '<div class="tile"><div class="k">Within 12 weeks</div><div class="v">'+wp.toFixed(0)+'%</div><div class="n">weighted by list size</div></div>'+
+   '<div class="tile"><div class="k">Typical median</div><div class="v">'+wmed.toFixed(0)+' wk</div><div class="n">weighted by list size</div></div>'+
+   '<div class="tile hit" role="button" tabindex="0" data-spec="'+esc(longest.s)+'"><div class="k">Longest median</div><div class="v">'+longest.w+' wk</div><div class="n">'+esc(longest.s)+', '+TBY[longest.t].short+'</div></div>'+
+   '<div class="tile hit" role="button" tabindex="0" data-spec="'+esc(shortest.s)+'"><div class="k">Shortest median</div><div class="v">'+shortest.w+' wk</div><div class="n">'+esc(shortest.s)+', '+TBY[shortest.t].short+'</div></div>';
+}
+function th(l,k){var on=st.sort.indexOf(k+'-')===0;return '<button type="button" class="th" data-sort="'+k+'">'+l+(on?(st.sort.slice(-4)==='desc'?' ▼':' ▲'):'')+'</button>';}
+function renderList(rows){
+  if(!rows.length)return '<div class="empty">No clinics match these filters. Select a board or widen the care type.</div>';
+  var maxW=Math.max(30,Math.max.apply(null,rows.map(function(r){return r.w;})));
+  var h='<div class="row head"><div>'+th('Clinic and board','name')+'</div><div>'+th('Median wait so far (weeks)','wait')+'</div><div class="num">'+th('Within 12 wk','pct')+'</div><div class="num">'+th('On list','list')+'</div></div>';
+  h+=sorted(rows).map(function(r){
+    var t=TBY[r.t];var pct=Math.min(100,r.w/maxW*88);
+    return '<div class="row hit" role="button" tabindex="0" title="Compare '+esc(r.s)+' across boards" data-spec="'+esc(r.s)+'"><div class="who"><b>'+esc(r.s)+'</b><span>'+t.short+(t.home?' <span class="homebadge">· home board</span>':'')+(t.national?' · national average':'')+' · '+r.c+'</span></div>'+
+      '<div class="barcell"><div class="track"><div class="fill" style="width:'+pct+'%'+(t.national?';opacity:.45':'')+'"></div><span class="val" style="left:calc('+pct+'% + 6px)">'+r.w+' wk</span></div></div>'+
+      '<div class="num">'+pill(r.p)+'</div><div class="num">'+fmt(r.n)+'</div></div>';
+  }).join('');
+  return h;
+}
+function wband(w){return w<=12?'band-g':(w<=20?'band-m':(w<=30?'band-w':'band-b'));}
+function renderHeat(rows){
+  var ts=TRUSTS.filter(function(t){return st.trusts[t.id]});
+  var specs=specList().filter(function(s){return rows.some(function(r){return r.s===s});});
+  if(!ts.length||!specs.length)return '<div class="empty">No clinics match these filters. Select a board or widen the care type.</div>';
+  var idx={};rows.forEach(function(r){idx[r.t+'|'+r.s]=r;});
+  var h='<div class="scroll"><table class="heat"><thead><tr><th>Median wait, weeks</th>'+ts.map(function(t){return '<th class="hit" data-solo="'+t.id+'" title="Show only '+t.short+'">'+t.short+'</th>'}).join('')+'</tr></thead><tbody>';
+  specs.forEach(function(s){
+    h+='<tr'+(st.spec===s?' class="hl"':'')+'><td class="hit" data-spec="'+esc(s)+'">'+esc(s)+'</td>';
+    ts.forEach(function(t){
+      var r=idx[t.id+'|'+s];
+      h+= r?'<td class="c hit '+wband(r.w)+'" data-spec="'+esc(s)+'">'+r.w+'<span class="sm">'+fmt(r.n)+' waiting · '+r.p+'%</span></td>':'<td class="c na">n/a</td>';
+    });
+    h+='</tr>';
+  });
+  h+='</tbody></table></div><div class="legend" style="border-top:1px solid var(--line);border-bottom:0"><span>Shading by median: 12 weeks or less, 13 to 20, 21 to 30, over 30. Small print shows patients waiting and % within 12 weeks. n/a means no figure for that clinic (or a list under 100 when small lists are hidden).</span></div>';
+  return h;
+}
+function metCount(b){var rs=ROWS().filter(function(r){return r.t===b&&r.n>=100;});return rs.filter(function(r){return r.p>=95;}).length+' of '+rs.length;}
+function renderCards(){
+  var lab=st.stage==='op'?'new outpatients':'inpatients and day cases';
+  $('trustCards').innerHTML=TRUSTS.filter(function(t){return st.trusts[t.id]}).map(function(t){
+    var T=TOT[st.stage][t.id]||{n:0,p:0};
+    return '<div class="tcard hit" role="button" tabindex="0" data-solo="'+t.id+'" title="Show only this board"><h3>'+t.name+(t.home?' (home board)':'')+'</h3><p>'+t.sites+(t.dist?' · '+t.dist:'')+'</p><dl>'+
+      '<dt>Waiting, all '+lab+'</dt><dd>'+fmt(T.n)+'</dd>'+
+      '<dt>Within 12 weeks</dt><dd>'+T.p+'%</dd>'+
+      (t.ae?'<dt>A&amp;E within 4 hrs ('+META.aeMonth.split(' ')[0].slice(0,3)+')</dt><dd>'+t.ae.p.toFixed(1)+'%</dd><dt>A&amp;E stays over 12 hrs</dt><dd>'+fmt(t.ae.h12)+'</dd>':'')+
+      '<dt>Clinics at 95% within 12 wk</dt><dd>'+metCount(t.id)+'</dd></dl></div>';
+  }).join('');
+}
+function render(){
+  var rows=filtered();
+  renderTiles(rows);
+  $('vList').setAttribute('aria-pressed',String(st.view==='list'));
+  $('vHeat').setAttribute('aria-pressed',String(st.view==='heat'));
+  $('out').innerHTML=st.view==='list'?renderList(rows):renderHeat(rows);
+  renderCards();
+  $('stdNote').textContent=st.stage==='op'?'Standard: 95% of new outpatients within 12 weeks':'Treatment Time Guarantee: treatment within 12 weeks';
+  document.querySelectorAll('.lg').forEach(function(b){b.setAttribute('aria-pressed',String(st.band===b.dataset.band));});
+}
+function syncChips(){document.querySelectorAll('#trustChips .chip').forEach(function(b){b.setAttribute('aria-pressed',String(!!st.trusts[b.dataset.t]));});}
+function act(el){
+  var d=el.dataset;
+  if(d.sort){var k=d.sort,d0=(k==='name'||k==='pct')?'asc':'desc',o=d0==='asc'?'desc':'asc';st.sort=(st.sort===k+'-'+d0)?k+'-'+o:k+'-'+d0;$('sort').value=st.sort;}
+  else if(d.spec!==undefined){st.spec=(st.spec===d.spec)?'all':d.spec;if(st.spec!=='all'&&st.care!=='all'&&CARE[st.spec]!==st.care)st.care='all';$('care').value=st.care;fixSpec();}
+  else if(d.solo){var only=TRUSTS.every(function(t){return !!st.trusts[t.id]===(t.id===d.solo);});TRUSTS.forEach(function(t){st.trusts[t.id]=only?!t.national:t.id===d.solo;});syncChips();}
+  else if(d.band){st.band=st.band===d.band?'all':d.band;}
+  save();render();renderAe();
+}
+document.addEventListener('click',function(e){var el=e.target.closest('[data-sort],[data-spec],[data-solo],[data-band]');if(el)act(el);});
+document.addEventListener('keydown',function(e){if((e.key==='Enter'||e.key===' ')&&e.target.getAttribute('role')==='button'){e.preventDefault();act(e.target);}});
+$('reset').onclick=function(){TRUSTS.forEach(function(t){st.trusts[t.id]=!t.national;});st.care='all';st.spec='all';st.sort='wait-desc';st.small=false;st.band='all';$('care').value='all';$('sort').value='wait-desc';$('small').checked=false;fixSpec();syncChips();save();render();renderAe();};
+
+/* ---------- sources ---------- */
+var SOURCES={
+ waits:{inst:'Public Health Scotland',url:'https://publichealthscotland.scot/',ds:'Stage of treatment waiting times (open data)',dsurl:'https://www.opendata.nhs.scot/dataset/stage-of-treatment-waiting-times'},
+ insp:{inst:'Healthcare Improvement Scotland',url:'https://www.healthcareimprovementscotland.scot/',ds:'Inspection reports',dsurl:'https://www.healthcareimprovementscotland.scot/publications/'},
+ ae:{inst:'Public Health Scotland',url:'https://publichealthscotland.scot/',ds:'Monthly A&E activity and waiting times',dsurl:'https://www.opendata.nhs.scot/dataset/monthly-accident-and-emergency-activity-and-waiting-times'},
+ hsmr:{inst:'Public Health Scotland',url:'https://publichealthscotland.scot/',ds:'Hospital standardised mortality ratios',dsurl:'https://www.opendata.nhs.scot/dataset/hospital-standardised-mortality-ratios'},
+ eol:{inst:'Public Health Scotland, with National Records of Scotland deaths data',url:'https://publichealthscotland.scot/',ds:'Palliative and end of life care',dsurl:'https://www.opendata.nhs.scot/dataset/palliative-and-end-of-life-care'}
+};
+var SRCKEYS=['waits','insp','ae','hsmr','eol'];
+function showSource(){
+  if(!SOURCES[st.source])st.source='waits';
+  SRCKEYS.forEach(function(k){$('src-'+k).hidden=(k!==st.source);});
+  document.querySelectorAll('.src').forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-src')===st.source));});
+  var s=SOURCES[st.source];
+  $('srcinfo').innerHTML='<span>Institution: <a class="inst" href="'+s.url+'" rel="noopener" target="_blank">'+s.inst+'</a></span><span>Dataset: <a href="'+s.dsurl+'" rel="noopener" target="_blank">'+s.ds+'</a></span>';
+}
+$('srcs').addEventListener('click',function(e){var b=e.target.closest('.src');if(!b)return;st.source=b.getAttribute('data-src');save();showSource();});
+
+/* ---------- tooltip + charts ---------- */
+var TT=document.createElement('div');TT.className='tt';TT.hidden=true;document.body.appendChild(TT);
+document.addEventListener('mouseover',function(e){var t=e.target.closest('[data-tip]');if(!t){TT.hidden=true;return;}TT.innerHTML=t.getAttribute('data-tip');TT.hidden=false;});
+document.addEventListener('mousemove',function(e){if(TT.hidden)return;TT.style.left=Math.min(e.clientX+14,window.innerWidth-TT.offsetWidth-8)+'px';TT.style.top=(e.clientY+14)+'px';});
+document.addEventListener('mouseout',function(e){if(!e.relatedTarget||!e.relatedTarget.closest||!e.relatedTarget.closest('[data-tip]'))TT.hidden=true;});
+function f1(x){return x.toFixed(1)+'%';}
+function keyHtml(items){return items.map(function(k){return '<span><i style="background:'+k[1]+'"></i>'+esc(k[0])+'</span>';}).join('');}
+function lineChart(labels,series,opt){
+  opt=opt||{};
+  var W=640,H=260,L=46,R=16,T=12,B=28,n=labels.length;
+  var mx=0,mn=100;series.forEach(function(s){s.v.forEach(function(v){if(v==null)return;if(v>mx)mx=v;if(v<mn)mn=v;});});
+  var lo=opt.min!=null?opt.min:Math.max(0,Math.floor((mn-3)/5)*5), hi=opt.max!=null?opt.max:Math.min(100,Math.ceil((mx+2)/5)*5);
+  var span=hi-lo, step=span>40?10:span>15?5:2;
+  var X=function(i){return L+(W-L-R)*i/(n-1);},Y=function(v){return T+(H-T-B)*(1-(v-lo)/(hi-lo));};
+  var g='';
+  for(var v=lo;v<=hi+0.001;v+=step){g+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+Y(v)+'" y2="'+Y(v)+'" stroke="var(--line)" stroke-width="1"/><text x="'+(L-6)+'" y="'+(Y(v)+4)+'" text-anchor="end">'+v+'%</text>';}
+  if(opt.target!=null&&opt.target<=hi&&opt.target>=lo)g+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+Y(opt.target)+'" y2="'+Y(opt.target)+'" stroke="var(--ink2)" stroke-dasharray="4 3"/><text x="'+(W-R)+'" y="'+(Y(opt.target)-4)+'" text-anchor="end">'+opt.target+'% standard</text>';
+  labels.forEach(function(l,i){if(n<=12||i%2===0)g+='<text x="'+X(i)+'" y="'+(H-8)+'" text-anchor="middle">'+l+'</text>';});
+  series.forEach(function(s){
+    g+='<polyline fill="none" stroke="'+s.c+'" stroke-width="'+(s.w||2)+'" stroke-linejoin="round" stroke-linecap="round" points="'+s.v.map(function(v,i){return X(i)+','+Y(v);}).join(' ')+'"/>';
+    g+=s.v.map(function(v,i){return '<circle cx="'+X(i)+'" cy="'+Y(v)+'" r="'+(s.w>2?4:3)+'" fill="'+s.c+'" stroke="var(--surface)" stroke-width="2"/>';}).join('');
+  });
+  var hit='';
+  for(var i=0;i<n;i++){
+    var t='<b>'+labels[i]+'</b>'+series.map(function(s){return esc(s.name)+': '+f1(s.v[i])+(s.n?' ('+fmt(s.n[i])+' '+(opt.unit||'')+')':'');}).join('<br>');
+    var x0=i===0?L:(X(i)+X(i-1))/2,x1=i===n-1?W-R:(X(i)+X(i+1))/2;
+    hit+='<rect x="'+x0+'" y="'+T+'" width="'+(x1-x0)+'" height="'+(H-T-B)+'" fill="transparent" data-tip="'+t.replace(/"/g,'&quot;')+'"/>';
+  }
+  return '<svg class="line" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+esc(opt.label||'Line chart')+'">'+g+hit+'</svg>';
+}
+function tbl(head,rows){return '<div class="oscroll"><table class="od"><thead><tr>'+head.map(function(h){return '<th>'+esc(h)+'</th>';}).join('')+'</tr></thead><tbody>'+rows.map(function(r){return '<tr>'+r.map(function(c,i){return '<td>'+(i?c:esc(c))+'</td>';}).join('')+'</tr>';}).join('')+'</tbody></table></div>';}
+function fillSel(id,opts,val){var el=$(id);el.innerHTML=opts.map(function(o){return '<option value="'+esc(o[0])+'">'+esc(o[1])+'</option>';}).join('');el.value=String(val);}
+
+/* ---------- inspections ---------- */
+function buildInsp(){
+  $('inspBody').innerHTML=INSP.map(function(r){var t=TBY[r[1]];var yr=parseInt(r[3].slice(-4),10);
+    var c=function(v){return '<td class="n">'+(v==null?'':v)+'</td>';};
+    return '<tr'+(t.home?' class="hl"':'')+'><td><a href="'+r[8]+'" rel="noopener" target="_blank">'+esc(r[0])+'</a><br><span style="font-size:12px;color:var(--ink2)">'+t.name+(t.home?' · home board':'')+'</span></td><td><span class="tag">'+esc(r[2])+'</span></td><td>'+esc(r[3])+(yr<=2023?' <span class="old">older report</span>':'')+'</td>'+c(r[5])+c(r[6])+c(r[7])+'<td style="font-size:12px;color:var(--ink2);max-width:320px">'+esc(r[9])+'</td></tr>';}).join('');
+}
+
+/* ---------- A&E ---------- */
+var AS=Object.assign({type:'all'},st.ae||{});
+var BCOL={ty:'var(--accent)',fi:'var(--c2)',gr:'var(--c3)',fv:'var(--c4)',lo:'var(--c5)'};
+function renderAe(){
+  var bs=BOARDS.filter(function(b){return !b.national&&st.trusts[b.id];});
+  if(!bs.length)bs=BOARDS.filter(function(b){return !b.national;});
+  $('aType').value=AS.type;
+  var sites=AE_SITES.filter(function(s){return bs.some(function(b){return b.id===s[0];})&&(AS.type==='all'||s[3]===AS.type);});
+  var home=TBY.ty, best=bs.slice().sort(function(a,b){return b.ae.p-a.ae.p;})[0], h12=bs.reduce(function(a,b){return a+b.ae.h12;},0);
+  $('aTiles').innerHTML=
+    '<div class="tile"><div class="k">Tayside within 4 hrs</div><div class="v">'+home.ae.p.toFixed(1)+'%</div><div class="n">'+META.aeMonth+', '+fmt(home.ae.att)+' attendances</div></div>'+
+    '<div class="tile"><div class="k">Best of selected</div><div class="v">'+best.ae.p.toFixed(1)+'%</div><div class="n">'+best.name+'</div></div>'+
+    '<div class="tile"><div class="k">Stays over 12 hrs</div><div class="v">'+fmt(h12)+'</div><div class="n">selected boards, '+META.aeMonth+'</div></div>';
+  $('aKey').innerHTML=keyHtml(bs.map(function(b){return [b.short,BCOL[b.id]];}));
+  $('aChart').innerHTML=lineChart(AE_TREND.months,bs.map(function(b){return {name:b.short,c:BCOL[b.id],v:AE_TREND[b.id],w:b.home?3:2};}),{target:95,label:'A&E 4-hour performance by board',max:100});
+  $('aBody').innerHTML=sites.sort(function(a,b){return a[5]-b[5];}).map(function(s){var t=TBY[s[0]];var c=s[5]>=95?'g':s[5]>=75?'ri':'i';
+    return '<tr'+(t.home?' class="hl"':'')+'><td>'+esc(s[2])+'<br><span style="font-size:12px;color:var(--ink2)">'+t.name+'</span></td><td>'+(s[3]==='ED'?'Emergency department':'Minor injury unit')+'</td><td class="n">'+fmt(s[4])+'</td><td class="n"><span class="rate '+c+'">'+s[5].toFixed(1)+'%</span></td><td class="n">'+fmt(s[6])+'</td><td class="n">'+fmt(s[7])+'</td></tr>';}).join('')||'<tr><td colspan="6" class="empty">No sites match.</td></tr>';
+}
+$('aType').onchange=function(){AS.type=this.value;st.ae=AS;save();renderAe();};
+
+/* ---------- HSMR ---------- */
+var HB={1:'Above approx. upper limit',2:'Within limits',3:'Below approx. lower limit'};
+function lim(e){return [Math.max(0,1-3/Math.sqrt(e)),1+3/Math.sqrt(e)];}
+HSMR.forEach(function(r){var l=lim(r[4]);r.band=r[6]>l[1]?1:(r[6]<l[0]?3:2);});
+var HS=Object.assign({board:'all',band:'all',all:true},st.sh||{});
+function saveH(){st.sh=HS;save();}
+function buildHsmr(){
+  var el=$('hBoard');el.innerHTML='<option value="all">All your boards</option>'+BOARDS.filter(function(b){return !b.national;}).map(function(b){return '<option value="'+b.id+'">'+b.name+'</option>';}).join('');
+  el.value=HS.board;$('hBand').value=HS.band;$('hAll').checked=HS.all;
+  el.onchange=function(){HS.board=this.value;saveH();renderHsmr();};
+  $('hBand').onchange=function(){HS.band=this.value;saveH();renderHsmr();};
+  $('hAll').onchange=function(){HS.all=this.checked;saveH();renderHsmr();};
+  $('hReset').onclick=function(){HS={board:'all',band:'all',all:true};buildHsmr();saveH();renderHsmr();};
+}
+function renderHsmr(){
+  var mine=HSMR.filter(function(r){return r[2];}),sel=[];
+  mine.forEach(function(r){r.sel=(HS.board==='all'||r[2]===HS.board)&&(HS.band==='all'||String(r.band)===HS.band);if(r.sel)sel.push(r);});
+  var nb={1:0,2:0,3:0};HSMR.forEach(function(r){nb[r.band]++;});
+  var tb=HSMR_BOARD.ty;
+  $('hTiles').innerHTML=
+    '<div class="tile"><div class="k">NHS Tayside HSMR</div><div class="v">'+tb[0].toFixed(2)+'</div><div class="n">'+fmt(tb[1])+' deaths, '+fmt(Math.round(tb[2]))+' predicted</div></div>'+
+    '<div class="tile"><div class="k">Your hospitals shown</div><div class="v">'+sel.length+' of '+mine.length+'</div><div class="n">matching the filters</div></div>'+
+    '<div class="tile"><div class="k">Above upper limit</div><div class="v">'+nb[1]+'</div><div class="n">of '+HSMR.length+' Scottish hospitals</div></div>'+
+    '<div class="tile"><div class="k">Below lower limit</div><div class="v">'+nb[3]+'</div><div class="n">of '+HSMR.length+' hospitals</div></div>';
+  var W=640,H=320,L=46,R=16,T=12,B=36,X0=0,X1=3000,Y0=0.4,Y1=1.4;
+  var X=function(v){return L+(W-L-R)*(Math.min(v,X1)-X0)/(X1-X0);},Y=function(v){return T+(H-T-B)*(1-(Math.max(Y0,Math.min(Y1,v))-Y0)/(Y1-Y0));};
+  var g='',v;
+  for(v=0.4;v<=1.4001;v+=0.2){g+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+Y(v)+'" y2="'+Y(v)+'" stroke="var(--line)"/><text x="'+(L-6)+'" y="'+(Y(v)+3)+'" text-anchor="end">'+v.toFixed(1)+'</text>';}
+  for(v=0;v<=3000;v+=500){g+='<text x="'+X(v)+'" y="'+(H-20)+'" text-anchor="middle">'+fmt(v)+'</text>';}
+  g+='<text x="'+((L+W-R)/2)+'" y="'+(H-6)+'" text-anchor="middle">Deaths predicted (larger hospitals to the right)</text>';
+  g+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+Y(1)+'" y2="'+Y(1)+'" stroke="var(--ink2)" stroke-width="1.5"/>';
+  var pts=[];for(var e=25;e<=3000;e+=25)pts.push(e);
+  [0,1].forEach(function(k){g+='<polyline fill="none" stroke="var(--ink2)" stroke-width="1" stroke-dasharray="4 3" points="'+pts.map(function(e){return X(e)+','+Y(lim(e)[k]);}).join(' ')+'"/>';});
+  var tipf=function(r){var t='<b>'+esc(r[1])+'</b>HSMR '+r[6].toFixed(2)+' ('+HB[r.band].toLowerCase()+')<br>Observed '+fmt(r[3])+', predicted '+fmt(Math.round(r[4]))+' deaths<br>'+fmt(r[5])+' patients'+(r[2]?'<br>'+TBY[r[2]].name:'');return t.replace(/"/g,'&quot;');};
+  if(HS.all)HSMR.forEach(function(r){if(r[2]&&r.sel)return;g+='<circle cx="'+X(r[4])+'" cy="'+Y(r[6])+'" r="3" fill="var(--ink2)" opacity="'+(r[2]?.9:.45)+'" data-tip="'+tipf(r)+'"/>';});
+  sel.forEach(function(r){var x=X(r[4]),y=Y(r[6]);var left=x>W-150||r[0]==='S314H';
+    g+='<circle cx="'+x+'" cy="'+y+'" r="6" fill="var(--accent)" stroke="var(--surface)" stroke-width="2" data-tip="'+tipf(r)+'"/>';
+    g+='<text x="'+(x+(left?-10:10))+'" y="'+(y+3)+'" text-anchor="'+(left?'end':'start')+'" style="fill:var(--ink);paint-order:stroke;stroke:var(--surface);stroke-width:3px">'+esc(r[1].split(',')[0].replace(' Hospital','').replace('Royal Infirmary of Edinburgh','RIE'))+'</text>';});
+  $('hChart').innerHTML='<svg class="line" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Scatter chart of HSMR against predicted deaths for '+HSMR.length+' hospitals">'+g+'</svg>';
+  $('hBody').innerHTML=mine.slice().sort(function(a,b){return b[6]-a[6];}).map(function(r){var t=TBY[r[2]];var bc=r.band===1?'i':r.band===3?'g':'';
+    return '<tr'+(r.sel?'':' style="opacity:.4"')+(t.home?' class="hl"':'')+'><td>'+esc(r[1])+'</td><td>'+t.name+'</td><td class="n">'+r[6].toFixed(2)+'</td><td>'+(bc?'<span class="rate '+bc+'">':'<span>')+HB[r.band]+'</span></td><td class="n">'+fmt(r[3])+'</td><td class="n">'+fmt(Math.round(r[4]))+'</td><td class="n">'+fmt(r[5])+'</td></tr>';}).join('');
+}
+
+/* ---------- end of life ---------- */
+var EA=EOL.map(function(a){return {n:a[0],t:a[1],v:a[2].split(' ').map(function(x){var p=x.split('/');return {p:+p[0],d:+p[1]};})};});
+function eIdx(n){for(var i=0;i<EA.length;i++)if(EA[i].n===n)return i;return 0;}
+var ES=Object.assign({year:EOL_YEARS[EOL_YEARS.length-1],area:'Dundee City',table:false},st.eol||{});
+if(EOL_YEARS.indexOf(ES.year)<0)ES.year=EOL_YEARS[EOL_YEARS.length-1];
+function saveE(){st.eol=ES;save();}
+function buildEol(){
+  fillSel('eYear',EOL_YEARS.slice().reverse().map(function(y){return [y,y];}),ES.year);
+  var el=$('eArea'),last='',h='';
+  EA.forEach(function(a){if(a.t!==last){if(last)h+='</optgroup>';h+='<optgroup label="'+esc(a.t)+'">';last=a.t;}h+='<option'+(a.n===ES.area?' selected':'')+'>'+esc(a.n)+'</option>';});
+  el.innerHTML=h+'</optgroup>';$('eTable').checked=ES.table;
+  $('eYear').onchange=function(){ES.year=this.value;saveE();renderEol();};
+  el.onchange=function(){ES.area=this.value;saveE();renderEol();};
+  $('eTable').onchange=function(){ES.table=this.checked;saveE();renderEol();};
+}
+function renderEol(){
+  var yi=EOL_YEARS.indexOf(ES.year),ai=eIdx(ES.area),sc=EA[0],A=EA[ai];
+  var a=A.v[yi],s=sc.v[yi],prev=A.v[yi-1];
+  $('eTiles').innerHTML=
+    '<div class="tile"><div class="k">At home or in community</div><div class="v">'+f1(a.p)+'</div><div class="n">'+esc(A.n)+', '+ES.year+'</div></div>'+
+    '<div class="tile"><div class="k">Scotland</div><div class="v">'+f1(s.p)+'</div><div class="n">'+ES.year+'</div></div>'+
+    '<div class="tile"><div class="k">Deaths counted</div><div class="v">'+fmt(a.d)+'</div><div class="n">'+esc(A.n)+(prev?', '+(a.p>=prev.p?'up ':'down ')+Math.abs(a.p-prev.p).toFixed(1)+' pts on last year':'')+'</div></div>';
+  $('eT1').textContent='Last six months of life spent at home or in the community, '+ES.year;
+  $('eC1').textContent='Every Scottish health board, plus the three Tayside council areas. Your selected area is highlighted. Hover a row for numbers.';
+  var rows=EA.map(function(x,i){return {i:i,n:x.n,t:x.t,p:x.v[yi].p,d:x.v[yi].d};}).sort(function(x,y){return y.p-x.p;});
+  var lo=80,hi=100;
+  if(ES.table){$('eB1').innerHTML=tbl(['Area','Type','% at home or community','Deaths'],rows.map(function(r){return [r.n,esc(r.t),f1(r.p),fmt(r.d)];}));}
+  else $('eB1').innerHTML=rows.map(function(r){var hiL=r.i===ai,isS=r.i===0;var w=(r.p-lo)/(hi-lo)*88;
+    var t='<b>'+esc(r.n)+'</b>'+f1(r.p)+' of the last six months at home or in the community<br>'+fmt(r.d)+' deaths';
+    return '<div class="pl'+(hiL||isS?'':' muted')+'" data-tip="'+t.replace(/"/g,'&quot;')+'"><div>'+esc(r.n)+(r.t==='Council area'?' <span class="tag">council</span>':'')+'</div><div class="bars"><div class="bar '+(isS&&!hiL?'e':'a'+(hiL?'':' muted'))+'"><b style="width:'+w+'%"></b><span style="left:calc('+w+'% + 6px)">'+f1(r.p)+'</span></div></div></div>';}).join('')+'<p class="cap" style="margin:8px 0 0">Bars start at 80% so differences between areas are visible.</p>';
+  $('eT2').textContent='Trend, '+EOL_YEARS[0]+' to '+EOL_YEARS[EOL_YEARS.length-1]+': '+A.n;
+  $('eC2').textContent='Share of the last six months of life spent at home or in a community setting, compared with Scotland.';
+  var same=ai===0, ser=[{name:A.n,c:'var(--accent)',v:A.v.map(function(x){return x.p;}),n:A.v.map(function(x){return x.d;}),w:3}];
+  if(!same)ser.push({name:'Scotland',c:'var(--ink2)',v:sc.v.map(function(x){return x.p;}),n:sc.v.map(function(x){return x.d;})});
+  $('eK2').innerHTML=keyHtml(ser.map(function(s){return [s.name,s.c];}));
+  var lab=EOL_YEARS.map(function(y){return y.slice(2,4)+'/'+y.slice(5);});
+  $('eB2').innerHTML=ES.table?tbl(['Year',A.n+' %','Deaths'].concat(same?[]:['Scotland %']),EOL_YEARS.map(function(y,k){return [y,f1(A.v[k].p),fmt(A.v[k].d)].concat(same?[]:[f1(sc.v[k].p)]);})):lineChart(lab,ser,{unit:'deaths',label:'Trend in time spent at home in the last six months of life'});
+}
+
+/* ---------- page text ---------- */
+function pageText(){
+  $('waitsSource').innerHTML='<b>Source.</b> Public Health Scotland, <a href="https://www.opendata.nhs.scot/dataset/stage-of-treatment-waiting-times" rel="noopener" target="_blank">Stage of Treatment Waiting Times</a> open data, ongoing waits at the end of '+META.waitsMonth+'; A&amp;E figures for '+META.aeMonth+'. Low-volume specialties are left out of the specialty breakdown, so rows do not add up to the board total. Cross-check against the <a href="https://publichealthscotland.scot/publications/nhs-waiting-times-stage-of-treatment/" rel="noopener" target="_blank">PHS publication</a> before relying on it.';
+  $('inspSource').innerHTML='<b>Source.</b> <a href="https://www.healthcareimprovementscotland.scot/publications/" rel="noopener" target="_blank">Healthcare Improvement Scotland</a> acute hospital and maternity "safe delivery of care" inspection reports, latest available as checked on '+META.inspChecked+'. Stracathro has no HIS acute or maternity report. Read the report before relying on a count.';
+  $('aeSource').innerHTML='<b>Source.</b> Public Health Scotland, <a href="https://www.opendata.nhs.scot/dataset/monthly-accident-and-emergency-activity-and-waiting-times" rel="noopener" target="_blank">Monthly A&amp;E Activity and Waiting Times</a>, '+META.aeMonth+' and the 11 months before. Includes planned and unplanned attendances, as in the revised 4-hour standard.';
+  $('hsmrSource').innerHTML='<b>Source.</b> Public Health Scotland, <a href="https://www.opendata.nhs.scot/dataset/hospital-standardised-mortality-ratios" rel="noopener" target="_blank">Hospital Standardised Mortality Ratios</a>, '+META.hsmrPeriod+', published '+META.hsmrPublished+'. '+HSMR.length+' hospitals. HSMR is updated quarterly.';
+  $('eolSource').innerHTML='<b>Source.</b> Public Health Scotland, <a href="https://www.opendata.nhs.scot/dataset/palliative-and-end-of-life-care" rel="noopener" target="_blank">Palliative and End of Life Care</a> open data (published '+META.eolPublished+'), built from NRS death registrations and hospital records. Updated once a year, usually in October. NRS publishes deaths by cause and area in its <a href="https://www.nrscotland.gov.uk/publications/adoptions-births-deaths-marriages-and-civil-partnerships-in-scotland-2025-registrar-generals-annual-statistical-tables-of-vital-events/" rel="noopener" target="_blank">annual vital events tables</a>.';
+}
+
+pageText();
+$('asof').textContent='Waiting times to '+META.waitsMonth+'.';
+buildInsp();
+buildHsmr();renderHsmr();
+buildEol();renderEol();
+buildControls();
+render();
+renderAe();
+showSource();
+</script>
+
+</body></html>
