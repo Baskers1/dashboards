@@ -1,0 +1,1001 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>East Kent · Menu Watch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap">
+<script>try{if(location.hash==="#big"||(location.hash!=="#std"&&localStorage.getItem("lt-bigtext")==="1"))document.documentElement.classList.add("big")}catch(e){}</script>
+<style>
+/* Layout: one calm reading column (max 1040px). Headline number first, one sticky town switch, then
+New menus > Places > What people say > Complaints > Most-shared posts. Large type for readers over 60. */
+:root{
+--bg:#EEF3F4; --surface:#FFFFFF; --sunk:#E3EBED; --line:#C9D6DA;
+--ink:#132A33; --ink-2:#425A63; --accent:#0B6672; --accent-ink:#FFFFFF; --accent-soft:#D3EBEE;
+--new:#8A4300; --new-soft:#FFE7C4; --good:#1E6B3A; --good-soft:#DCF0E2;
+--warn:#7A4E00; --warn-soft:#FBEBC6; --bad:#9B2C22; --bad-soft:#F8E0DC;
+--display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+--body:"Atkinson Hyperlegible Next","Atkinson Hyperlegible","Segoe UI",system-ui,-apple-system,sans-serif;
+--r:14px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+--bg:#0D1B20; --surface:#14262C; --sunk:#1B3138; --line:#2B454D;
+--ink:#E8F1F2; --ink-2:#AFC4C9; --accent:#5CC6D2; --accent-ink:#062A30; --accent-soft:#18414A;
+--new:#FFC071; --new-soft:#4A3214; --good:#86D9A0; --good-soft:#173A25;
+--warn:#F1C66B; --warn-soft:#3F3212; --bad:#FF9C90; --bad-soft:#47201C; color-scheme:dark}}
+:root[data-theme="dark"]{
+--bg:#0D1B20; --surface:#14262C; --sunk:#1B3138; --line:#2B454D;
+--ink:#E8F1F2; --ink-2:#AFC4C9; --accent:#5CC6D2; --accent-ink:#062A30; --accent-soft:#18414A;
+--new:#FFC071; --new-soft:#4A3214; --good:#86D9A0; --good-soft:#173A25;
+--warn:#F1C66B; --warn-soft:#3F3212; --bad:#FF9C90; --bad-soft:#47201C; color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:150px}
+body{margin:0;background:var(--bg);color:var(--ink);font:1.125rem/1.6 var(--body);padding-inline:16px}
+:root.big body{font-size:1.375rem}
+.wrap{max-width:1040px;margin-inline:auto;padding-block:20px 64px;display:flex;flex-direction:column;gap:40px}
+.wrap>*{min-width:0}
+a{color:var(--accent);text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--display);line-height:1.15;margin:0;text-wrap:balance}
+h1{font-size:clamp(2rem,6vw,2.9rem);font-weight:800;letter-spacing:-.02em}
+h2{font-size:clamp(1.5rem,3.6vw,1.9rem);font-weight:800;letter-spacing:-.01em}
+h3{font-size:1.2rem;font-weight:600}
+p{margin:0}
+.sub{color:var(--ink-2);max-width:62ch}
+button,select,input{font:inherit;color:inherit}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:10px 20px;border-radius:999px;
+border:2px solid var(--accent);background:var(--surface);color:var(--accent);font-weight:700;cursor:pointer;text-decoration:none}
+.btn:hover{background:var(--accent-soft)}
+.btn.solid{background:var(--accent);color:var(--accent-ink)}
+.btn.solid:hover{filter:brightness(1.08)}
+.ic{width:1.15em;height:1.15em;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+.top{display:flex;flex-wrap:wrap;gap:16px 24px;justify-content:space-between;align-items:flex-start}
+.top>div{min-width:0}
+.eyebrow{font-weight:700;font-size:.95rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.stamp{margin-top:8px;color:var(--ink-2)}
+.stamp b{color:var(--ink)}
+.late{display:inline-block;margin-top:6px;padding:4px 12px;border-radius:999px;background:var(--warn-soft);color:var(--warn);font-weight:700}
+.hero{height:150px;margin:0;border-radius:var(--r);background:linear-gradient(180deg,transparent 35%,rgba(10,30,36,.7)),url("hero.jpg") center/cover,var(--sunk);background-color:var(--sunk);display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.hero .htown{font-family:var(--display);font-weight:800;font-size:1.7rem;line-height:1.1;color:#fff;padding:10px 16px;text-shadow:0 2px 6px rgba(0,0,0,.6)}
+.hero span{color:#fff;font-size:.9rem;padding:10px 14px;text-shadow:0 1px 3px rgba(0,0,0,.6)}
+.hero a{color:#fff}
+@media (max-width:640px){.hero{height:110px;flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:0}.hero .htown{font-size:1.35rem;padding:0 14px}.hero #hcred{font-size:.8rem;padding:2px 14px 8px}}
+
+.headline{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:16px}
+@media (max-width:760px){.headline{grid-template-columns:minmax(0,1fr)}.minis{grid-template-rows:none;grid-template-columns:1fr 1fr}.mini{flex-direction:column;align-items:flex-start;gap:6px}}
+.bignew{background:var(--surface);border:2px solid var(--new);border-radius:var(--r);padding:22px 24px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 20px;align-items:end}
+.bignew .n{font-family:var(--display);font-weight:800;font-size:clamp(4rem,12vw,5.6rem);line-height:.9;color:var(--new);font-variant-numeric:tabular-nums}
+.bignew .l{font-size:1.35rem;font-weight:700;margin-top:6px}
+.bignew .d{color:var(--ink-2)}
+.bignew .btn{grid-column:1/-1;justify-self:start;margin-top:8px;border-color:var(--new);color:var(--new)}
+.bignew .btn:hover{background:var(--new-soft)}
+.weeks{display:block;width:170px;height:auto;max-width:100%}
+@media (max-width:480px){.bignew{grid-template-columns:minmax(0,1fr)}.weeks{width:100%;max-width:260px}}
+.minis{display:grid;gap:16px;grid-template-rows:1fr 1fr}
+.mini{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px 20px;display:flex;align-items:center;gap:16px}
+.mini .n{font-family:var(--display);font-weight:800;font-size:2.4rem;line-height:1;font-variant-numeric:tabular-nums;min-width:3ch}
+.mini .l{font-weight:700}
+.mini .d{color:var(--ink-2);font-size:.95rem}
+
+.filters{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bg);padding-block:12px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:12px}
+.towns{display:flex;flex-wrap:wrap;gap:8px;padding:2px}
+.tbtn{flex:none;min-height:52px;padding:8px 16px;border-radius:999px;border:2px solid var(--line);background:var(--surface);font-weight:700;cursor:pointer;white-space:nowrap}
+.tbtn:hover{border-color:var(--accent)}
+.tbtn[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.more{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.more label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.more select,.more input{min-height:52px;padding:8px 14px;border-radius:12px;border:2px solid var(--line);background:var(--surface);min-width:0}
+.more input{flex:1 1 220px}
+.more select{flex:0 1 auto}
+.reset{background:none;border:0;color:var(--accent);font-weight:700;text-decoration:underline;text-underline-offset:3px;min-height:48px;padding:0 6px;cursor:pointer}
+.showing{color:var(--ink-2);font-size:1rem}
+@media (max-width:640px){.filters{position:static}.more select{flex:1 1 45%}}
+
+section{display:flex;flex-direction:column;gap:16px;scroll-margin-top:150px}
+.shead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 16px}
+.shead .count{color:var(--ink-2)}
+.empty{padding:20px;border-radius:var(--r);background:var(--sunk);color:var(--ink-2)}
+.moreBtn{align-self:flex-start}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:14px}
+.mcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.mcard .venue{font-family:var(--display);font-weight:600;font-size:1.25rem;line-height:1.2}
+.mcard .title{overflow-wrap:anywhere}
+.mcard .where{color:var(--ink-2);font-size:1rem}
+.mcard .when{color:var(--ink-2);font-size:1rem}
+.mcard .btn{margin-top:auto;align-self:flex-start}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:999px;background:var(--sunk);color:var(--ink-2);font-size:.95rem;font-weight:600;white-space:nowrap}
+.tag.new{background:var(--new-soft);color:var(--new)}
+.tag.fest{background:var(--accent-soft);color:var(--accent)}
+
+.rates{display:flex;flex-wrap:wrap;gap:6px}
+.rate{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:8px;font-size:.95rem;font-weight:700;text-decoration:none;border:1px solid var(--line);color:var(--ink);background:var(--surface)}
+.rate.good{background:var(--good-soft);border-color:transparent;color:var(--good)}
+.rate.bad{background:var(--bad-soft);border-color:transparent;color:var(--bad)}
+.rate.mid{background:var(--warn-soft);border-color:transparent;color:var(--warn)}
+.rate small{font-weight:400;font-size:.85rem}
+
+.sortrow{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sortrow select{min-height:48px;padding:6px 12px;border-radius:12px;border:2px solid var(--line);background:var(--surface)}
+.plist{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
+details.place{border-bottom:1px solid var(--line)}
+details.place:last-child{border-bottom:0}
+details.place>summary{list-style:none;cursor:pointer;padding:16px 18px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 16px;align-items:center;min-height:56px}
+details.place>summary::-webkit-details-marker{display:none}
+details.place>summary:hover{background:var(--sunk)}
+.pname{font-family:var(--display);font-weight:600;font-size:1.2rem}
+.pmeta{color:var(--ink-2);font-size:1rem}
+.chev{width:28px;height:28px;color:var(--accent);transition:transform .2s}
+details[open] .chev{transform:rotate(180deg)}
+.summ-r{grid-column:1/-1}
+.pbody{padding:4px 18px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px}
+.pbox{background:var(--sunk);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.pbox h4{margin:0;font-size:1rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2)}
+.pbox ul{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:6px}
+.pbox li{overflow-wrap:anywhere}
+.say{font-style:italic}
+.dl{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin:0}
+.dl dt{font-weight:700}
+.dl dd{margin:0;color:var(--ink-2)}
+.links{display:flex;flex-wrap:wrap;gap:8px 18px}
+
+.summary{font-size:1.2rem;max-width:62ch}
+.themes{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:14px}
+.theme{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.theme .meaning{font-size:1.05rem}
+.theme .ev{color:var(--ink-2);font-size:1rem;overflow-wrap:anywhere}
+.loved{display:flex;flex-wrap:wrap;gap:8px}
+.lchip{display:inline-flex;align-items:center;gap:6px;min-height:48px;padding:6px 14px;border-radius:999px;background:var(--good-soft);color:var(--good);font-weight:700;border:0;cursor:pointer;text-align:left}
+span.lchip{cursor:default;background:var(--sunk);color:var(--ink)}
+.lchip:hover{filter:brightness(.97)}
+.complaints{display:flex;flex-direction:column;gap:10px}
+.comp{background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--bad);border-radius:var(--r);padding:14px 18px;display:flex;flex-direction:column;gap:4px}
+.comp b{font-family:var(--display);font-size:1.15rem;font-weight:600}
+.comp .town{color:var(--ink-2);font-size:.95rem}
+.posts{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:14px}
+.post{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px;display:grid;grid-template-columns:88px minmax(0,1fr);gap:14px;text-decoration:none;color:var(--ink)}
+.post:hover{border-color:var(--accent)}
+.thumb{width:88px;height:110px;border-radius:10px;background:var(--sunk);overflow:hidden;display:grid;place-items:center;color:var(--accent)}
+.thumb>*{grid-area:1/1}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block;position:relative}
+.post .num{font-family:var(--display);font-weight:800;font-size:1.6rem;line-height:1;font-variant-numeric:tabular-nums}
+.post .num small{font-family:var(--body);font-weight:600;font-size:.95rem;color:var(--ink-2);margin-left:4px}
+.post .pt{font-weight:700;color:var(--accent);text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+.post .why{color:var(--ink-2);font-size:1rem}
+.post .plat{font-size:.9rem;color:var(--ink-2);font-weight:600}
+.notes{color:var(--ink-2);font-size:1rem;display:flex;flex-direction:column;gap:10px;max-width:75ch;border-top:1px solid var(--line);padding-top:20px}
+.notes h2{font-size:1.3rem;color:var(--ink)}
+.badge{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;flex:none;background:var(--accent-soft);color:var(--accent)}
+.badge .ic{width:26px;height:26px}
+.badge.sm{width:40px;height:40px;border-radius:12px}.badge.sm .ic{width:22px;height:22px}
+.badge.bad{background:var(--bad-soft);color:var(--bad)}
+.badge.good{background:var(--good-soft);color:var(--good)}
+.vhead{display:flex;align-items:center;gap:12px;min-width:0}
+.vhead>div{min-width:0}
+.pwho{display:flex;align-items:center;gap:14px;min-width:0}
+.pbox h4{display:flex;align-items:center;gap:8px}
+.comp{flex-direction:row!important;gap:14px!important;align-items:flex-start}
+.comp .icol{display:flex;flex-direction:column;gap:8px;flex:none}
+.comp>div{display:flex;flex-direction:column;gap:4px;min-width:0}
+.totop{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:30;display:inline-flex;align-items:center;gap:8px;min-height:56px;padding:0 20px 0 16px;border-radius:999px;border:0;background:var(--accent);color:var(--accent-ink);font:inherit;font-weight:700;box-shadow:0 6px 18px rgba(0,0,0,.25);cursor:pointer;transition:opacity .2s,transform .2s}
+body{padding-bottom:88px}
+.totop .ic{width:24px;height:24px}
+.totop[hidden]{display:inline-flex;opacity:0;transform:translateY(12px);pointer-events:none;visibility:hidden}
+.totop:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+<symbol id="i-ext" viewBox="0 0 24 24"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+<symbol id="i-play" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m10 9 5 3-5 3z"/></symbol>
+<symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/></symbol>
+<symbol id="c-cafe" viewBox="0 0 24 24"><path d="M17 8h1a4 4 0 1 1 0 8h-1M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/><path d="M6 2v2M10 2v2M14 2v2"/></symbol>
+<symbol id="c-pub" viewBox="0 0 24 24"><path d="M7 3h10l-1.2 17a1 1 0 0 1-1 1H9.2a1 1 0 0 1-1-1z"/><path d="M7.4 8h9.2"/></symbol>
+<symbol id="c-flame" viewBox="0 0 24 24"><path d="M12 21c-3.9 0-6.5-2.6-6.5-6.2 0-3.6 3-5.6 3.5-9.3 2.4 1.3 3.6 3.4 3.8 5.4 1-.7 1.6-1.9 1.7-3.1 2.3 1.8 4 4.3 4 7 0 3.6-2.6 6.2-6.5 6.2z"/></symbol>
+<symbol id="c-pizza" viewBox="0 0 24 24"><path d="M12 3 3 19c5.5 3 12.5 3 18 0z"/><path d="M6 14c3.8 1.6 8.2 1.6 12 0M10 11h.01M14 13h.01M12 8h.01"/></symbol>
+<symbol id="c-bowl" viewBox="0 0 24 24"><path d="M3 11h18a9 9 0 0 1-18 0zM8 21h8"/><path d="m9 8 3-6M13 8l3-6"/></symbol>
+<symbol id="c-chilli" viewBox="0 0 24 24"><path d="M16 6c-1.5 0-2.5 1-2.5 2.5C13.5 14 9 19 3 19c5 3.5 15 2 15-8 0-2.5-.8-4-2-5z"/><path d="M16 6c0-2 1.2-3.5 3.5-3.5"/></symbol>
+<symbol id="c-leaf" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10Z"/><path d="M2 21c0-3 1.9-5.4 5.1-6"/></symbol>
+<symbol id="c-plate" viewBox="0 0 24 24"><circle cx="12" cy="13" r="6.5"/><circle cx="12" cy="13" r="3"/><path d="M3 4v6M3 7h1.5M21 4v16"/></symbol>
+<symbol id="c-fish" viewBox="0 0 24 24"><path d="M6.5 12c.9-4.5 6.4-7 11.5-5 1.5.6 2.9 2.2 4 5-1.1 2.8-2.5 4.4-4 5-5.1 2-10.6-.5-11.5-5z"/><path d="M18 12h.01M2 10v4l4.5-2z"/></symbol>
+<symbol id="c-tapas" viewBox="0 0 24 24"><path d="M3 21 21 3"/><path d="m7.5 12.5 4 4 2.5-2.5-4-4zM12.5 7.5l4 4 2.5-2.5-4-4z"/></symbol>
+<symbol id="c-taco" viewBox="0 0 24 24"><path d="M3 14a9 9 0 0 1 18 0"/><path d="M3 14h18"/><path d="M7 14c0 2 .8 3.5 1.8 4.6M12 14c0 2.4.9 4 2 5M17 14c0 1.7-.6 3-1.4 4"/></symbol>
+<symbol id="c-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z"/></symbol>
+<symbol id="c-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></symbol>
+<symbol id="t-spark" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/></symbol>
+<symbol id="t-trophy" viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4a3 3 0 0 0 3 4M17 6h3a3 3 0 0 1-3 4"/></symbol>
+<symbol id="t-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+<symbol id="t-wave" viewBox="0 0 24 24"><path d="M2 12c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2 2-2 4-2M2 18c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2 2-2 4-2M12 3v4M9 6l3-3 3 3"/></symbol>
+<symbol id="t-train" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 11h14M9 21l-2-4M15 21l2-4M9 14h.01M15 14h.01"/></symbol>
+<symbol id="t-ice" viewBox="0 0 24 24"><path d="M8 11a4 4 0 1 1 8 0z"/><path d="m8 11 4 10 4-10"/></symbol>
+<symbol id="t-alert" viewBox="0 0 24 24"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></symbol>
+<symbol id="t-star" viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
+<symbol id="t-menu" viewBox="0 0 24 24"><path d="M6 2h12v20H6z"/><path d="M9 7h6M9 11h6M9 15h4"/></symbol>
+<symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
+</defs></svg>
+
+<div class="wrap">
+
+<header class="top">
+<div>
+<div class="eyebrow">Margate · Ramsgate · Broadstairs · nearby villages</div>
+<h1>Thanet Menu Watch</h1>
+<p class="sub">New menus from pubs, restaurants and cafés across Thanet, with hygiene ratings, review scores and what people are saying online.</p>
+<div class="stamp" id="stamp"></div>
+</div>
+<button type="button" class="btn" id="aa" aria-pressed="false"><span aria-hidden="true" style="font-family:var(--display);font-weight:800">Aa</span><span id="aa-l">Larger text</span></button>
+</header>
+
+<figure class="hero" id="hero" aria-labelledby="htown"><span class="htown" id="htown">All of Thanet</span><span id="hcred"></span></figure>
+
+<div class="headline" aria-label="This week in numbers">
+<div class="bignew">
+<div><div class="n" id="k-new">0</div><div class="l" id="k-new-l">new menus this week</div><div class="d" id="k-new-d"></div></div>
+<svg class="weeks" id="weeks" role="img" aria-label="New menus each week"></svg>
+<a class="btn" href="#new">See the new menus</a>
+</div>
+<div class="minis">
+<div class="mini"><div class="n" id="k-places">0</div><div><div class="l">places serving food</div><div class="d" id="k-places-d"></div></div></div>
+<div class="mini"><div class="n" id="k-menus">0</div><div><div class="l">menus you can open</div><div class="d">links to each venue's own menu</div></div></div>
+</div>
+</div>
+
+<div class="filters" role="region" aria-label="Choose what to show">
+<div class="towns" role="group" aria-label="Town" id="towns"></div>
+<div class="more">
+<label for="f-type">Type of place</label>
+<select id="f-type"><option value="all">All places</option><option value="pub">Pubs</option><option value="restaurant">Restaurants</option><option value="cafe">Cafés</option></select>
+<label for="f-cuisine">Cuisine</label>
+<select id="f-cuisine"></select>
+<label for="q">Find a place</label>
+<input type="search" id="q" placeholder="Find a place by name" autocomplete="off">
+<button type="button" class="reset" id="reset" hidden>Show everything</button>
+</div>
+<div class="showing" id="showing" aria-live="polite"></div>
+</div>
+
+<section id="new" aria-labelledby="h-new">
+<div class="shead"><h2 id="h-new">New menus this week</h2><span class="count" id="c-new"></span></div>
+<div class="cards" id="newcards"></div>
+<button type="button" class="btn moreBtn" id="more-new" hidden></button>
+</section>
+
+<section id="places" aria-labelledby="h-places">
+<div class="shead"><h2 id="h-places">Places and their ratings</h2><span class="count" id="c-places"></span></div>
+<div class="sortrow"><label for="sort">Order by</label>
+<select id="sort"><option value="ta">Best reviewed first</option><option value="name">Name, A to Z</option><option value="menus">Most menus first</option></select></div>
+<p class="sub">Tap a place to see its food hygiene rating, review scores, what people say about it, and its menus.</p>
+<div class="plist" id="plist"></div>
+<button type="button" class="btn moreBtn" id="more-places" hidden></button>
+</section>
+
+<section id="buzz" aria-labelledby="h-buzz">
+<div class="shead"><h2 id="h-buzz">What people are saying</h2><span class="count" id="c-buzz"></span></div>
+<p class="summary" id="summary"></p>
+<div class="themes" id="themes"></div>
+<h3>Best-liked places</h3>
+<div class="loved" id="loved"></div>
+</section>
+
+<section id="complaints" aria-labelledby="h-comp">
+<div class="shead"><h2 id="h-comp">Main complaints</h2></div>
+<div class="complaints" id="comps"></div>
+</section>
+
+<section id="posts" aria-labelledby="h-posts">
+<div class="shead"><h2 id="h-posts">Most-shared posts</h2><span class="count">Most viewed first</span></div>
+<div class="posts" id="postlist"></div>
+<button type="button" class="btn moreBtn" id="more-posts" hidden></button>
+</section>
+
+<footer class="notes">
+<h2>How this is put together</h2>
+<p>Every Monday each venue's own website is checked for menus. A menu counts as new when its link was not there the Monday before. Menus shown as pictures or PDFs are linked but not read, so check dates and dishes with the venue.</p>
+<p><b>Hygiene</b> is the Food Standards Agency rating from 0 to 5, where 5 is best. It reflects the last inspection, which may be some time ago. <b>TripAdvisor</b> scores are out of 5, with the number of reviews in brackets; a score from only a few reviews means less. <b>OpenTable</b> shows the place takes online bookings there.</p>
+<p id="buzznote"></p>
+</footer>
+</div>
+
+<button type="button" class="totop" id="totop" hidden><svg class="ic" aria-hidden="true"><use href="#i-up"/></svg>Back to top</button>
+<script>
+const DATA = {"generated":"2026-10-12","baseline":false,"run_number":4,"history":[{"date":"2026-09-25","venues":116,"menus":208,"new_menus":52},{"date":"2026-09-28","venues":129,"menus":225,"new_menus":47},{"date":"2026-10-05","venues":154,"menus":246,"new_menus":32},{"date":"2026-10-12","venues":165,"menus":306,"new_menus":85}],"venues":[
+{"id":"beaches-cafe-bar","name":"Beaches Cafe Bar","town":"Broadstairs","type":"cafe","address":"49 Albion St, Broadstairs CT10 1NE","website":"https://beachescafe.co.uk/","social":"https://www.facebook.com/beaches.broadstairs/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1938277,"d":"2026-04-10"},"menus":[{"title":"Breakfast & Brunch Menu","type":"main","url":"https://beachescafe.co.uk/menu"}],"notices":[{"text":"Website menu page blocked WebFetch (robots disallowed); TripAdvisor page for this venue redirected to the Broadstairs area listing instead of the specific restaurant page on two attempts, so bubble rating/review count could not be confirmed this week."}]},
+{"id":"havisham-and-cratchit","name":"Havisham & Cratchit at Bleak House","town":"Broadstairs","type":"cafe","address":"Bleak House, Fort Rd, Broadstairs CT10 1EY","website":"https://www.havishamandcratchit.co.uk/","social":"https://instagram.com/havishamandcratchit","cuisine":"Cafe & breakfast","trading":"unclear","fsa":{"r":"5","id":1792421,"d":"2025-01-09"},"ta":{"r":4.4,"n":7,"closed":false,"i":"g635678-d33248802"},"notices":[{"text":"The homepage's main heading now reads 'Havisham & Cratchit Closed', with no closure date or reopening information given. No corroborating closure news was found via search (a Broadstairs restaurant-closure story found this session was about a different venue, Twenty Seven, not this one). TripAdvisor still lists it as open (4.4/7 reviews, no permanent-closure flag) and the FSA record is unchanged, so this may be a stale banner or a temporary/day closure rather than a permanent one — flagging for manual confirmation.","url":"https://www.havishamandcratchit.co.uk/"},
+{"text":"Website homepage now shows a heading reading 'Havisham & Cratchit Closed' with no reason, reopening date, or refurbishment info given. Instagram not checked (likely to carry more current info)."}],"menus":[]},
+{"id":"seabird-margate","name":"Seabird Margate","town":"Margate","type":"cafe","address":"12-13 The Parade, Margate CT9 1EY","website":"https://www.seabirdflyhome.com/","social":"https://www.instagram.com/seabirdmargate/","cuisine":"Seafood & fish and chips","fsa":{"r":"5","id":1959632,"d":"2026-05-29"},"ta":{"r":3.6,"n":18,"closed":false,"i":"g503912-d34191290"},"menus":[{"title":"Daytimes Menu","type":"main","url":"https://www.seabirdflyhome.com/s/Margate-Menu-Daytimes-May-2026-FINAL-1.pdf","format":"pdf","valid_dates":"May 2026","signal":true},
+{"title":"Evening Menu","type":"main","url":"https://www.seabirdflyhome.com/s/Evening-Menu-May-2026-1.pdf","format":"pdf","valid_dates":"May 2026","signal":true},
+{"title":"Kids Menu","type":"seasonal","url":"https://www.seabirdflyhome.com/s/Kids-Menu-Summer-2026.pdf","format":"pdf","valid_dates":"Summer 2026","signal":true}]},
+{"id":"west-bay-cafe-westgate","name":"West Bay Café & Beach Bar","town":"Westgate-on-Sea","type":"cafe","address":"West Bay Promenade, off Sea Road, Westgate-on-Sea CT8 8QA (below Finbar's)","website":"https://www.westbaycafewestgate.co.uk/","social":"https://www.facebook.com/westbaycafewestgate/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":637794,"d":"2024-10-17"},"ta":{"r":3.8,"n":362,"closed":false,"i":"g2492487-d2445279"},"menus":[{"title":"Menus","type":"main","url":"https://www.westbaycafewestgate.co.uk/menus","signal":true},
+{"title":"What's on","type":"event","url":"https://www.westbaycafewestgate.co.uk/whats-on"},
+{"title":"West Bay Café Menu (PDF)","type":"main","url":"https://www.westbaycafewestgate.co.uk/files/68-1-1.pdf","format":"pdf","is_new_this_week":true}],"notices":[{"text":"Site notes food service times vary with weather: \"Food service times vary due to the weather. Please call us on 01843 831791 to see if we are still serving.\" A separate What's On page is linked but its content wasn't captured this session.","url":"https://www.westbaycafewestgate.co.uk/whats-on"},
+{"text":"What's on page lists Music Boogie Bingo (started Fri 18 Sept) and a monthly Quiz Night (last Tuesday, started 29 Sept) - recurring events, not new menus."}]},
+{"id":"njord-cafe-bar","name":"Njord Cafe & Bar","town":"Ramsgate","type":"cafe","address":"123a Saxon Reach, Sandwich Rd, Cliffsend, Ramsgate CT12 5JB","website":"https://www.njordcliffsend.co.uk/","social":"https://www.instagram.com/njord.pegwellbay","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1658810,"d":"2026-08-18"},"ta":{"r":4.5,"n":31,"i":"g27186438-d27451490"},"menus":[{"title":"Menus","type":"main","url":"https://www.njordcliffsend.co.uk/menus","signal":true},
+{"title":"Njord Autumn Menu","type":"seasonal","url":"https://www.njordcliffsend.co.uk/menus?location=Sandwich+Road&menu=njord-manu#1","valid_dates":"Available Mon-Sat from 12pm; no stated end date"},
+{"title":"Clay Oven Pizzas","type":"other","url":"https://www.njordcliffsend.co.uk/menus?location=Sandwich+Road&menu=sourdough-pizzas#1"},
+{"title":"Children's Menu","type":"other","url":"https://www.njordcliffsend.co.uk/menus?location=Sandwich+Road&menu=kids-specials#1"}],"notices":[{"text":"Homepage says \"We've recently renovated\" and has a \"special events\" sign-up section, but no event details are given yet.","url":"https://www.njordcliffsend.co.uk/"}]},
+{"id":"alisons-sea-view-cafe","name":"Alison's Sea View Cafe","town":"Ramsgate","type":"cafe","address":"Victoria Parade, Ramsgate CT11 8DE","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1034365,"d":"2026-06-18"},"ta":{"r":4.9,"n":49,"i":"g186314-d4881210"},"menus":[]},
+{"id":"good-egg","name":"The Good Egg Margate","town":"Margate","type":"restaurant","address":"49 Northdown Rd, Cliftonville CT9 2RN","website":"https://www.thegoodegg.co/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":895509,"d":"2025-10-07"},"ta":{"r":4.5,"n":27,"i":"g503912-d26251439"},"menus":[{"title":"Our Menus","type":"main","url":"https://www.thegoodegg.co/our-menus/","signal":true},
+{"title":"Margate brunch, September 2026","type":"monthly","url":"https://www.thegoodegg.co/wp-content/uploads/2026/09/Margate_SEP26.pdf","format":"pdf","valid_dates":"September 2026"},
+{"title":"Margate Breakfast Menu","type":"main","url":"https://www.thegoodegg.co/wp-content/uploads/2026/09/Margate-breakfast-double.pdf","format":"pdf","signal":true,"is_new_this_week":true}],"notices":[{"text":"Margate Restaurant Week, 2–6 February: three courses for £20.26. Reservations open via the site.","url":"https://www.thegoodegg.co/the-good-egg-restaurant-margate/"},
+{"text":"Site mentions \"Festive Feasts\" for the holidays but gives no further detail or link yet.","url":"https://www.thegoodegg.co/"},
+{"text":"Margate brunch+drinks PDF now served from a revised filename (Margate_SEP26-1.pdf) vs the one on record (Margate_SEP26.pdf) - likely an updated/reposted version of the same September menu."}]},
+{"id":"st-lawrence-tavern","name":"The St Lawrence Tavern","town":"Ramsgate","type":"pub","address":"High St, St Lawrence, Ramsgate CT11 0QP","social":"https://www.facebook.com/stlawrencetavern/","cuisine":"British pub food","fsa":{"r":"5","id":584493,"d":"2025-02-24"},"ta":{"r":2.7,"n":3,"i":"g186314-d2096690"},"notices":[{"text":"No OpenTable listing found for this pub this week; Facebook page blocked WebFetch (robots disallowed)."}],"menus":[]},
+{"id":"number-nine","name":"Number Nine (Chapel House)","town":"Ramsgate","type":"restaurant","address":"Thorne Hill, Ramsgate CT12 5DS","website":"https://chapelhouseestate.co.uk/feast-drink/restaurant/","social":"https://www.facebook.com/numberninerestaurant/","cuisine":"Modern British & European","fsa":{"r":"5","id":1559607,"d":"2024-09-17","m":"address"},"ta":{"r":4.9,"n":35,"i":"g1096571-d27472557"},"ot":{"u":"https://www.opentable.co.uk/r/number-nine-restaurant-chapel-drive","r":4.7,"n":264},"menus":[{"title":"Autumn Menu","type":"seasonal","url":"https://chapelhouseestate.co.uk/app/uploads/2026/10/autumn-at-number-nine.pdf","format":"pdf","valid_dates":"October–November 2026","signal":true},
+{"title":"Festive Menu","type":"festive","url":"https://chapelhouseestate.co.uk/app/uploads/2026/08/Festive-menu.pdf","format":"pdf","valid_dates":"Launches Fri 27 Nov 2026","signal":true},
+{"title":"Wood-fired barbecue night menu","type":"event","url":"https://chapelhouseestate.co.uk/app/uploads/2026/08/Wood-Fired-Barbecue-Menu-A5-3-1.pdf","format":"pdf","valid_dates":"Friday 25 September 2026"}],"notices":[{"text":"Autumn Menu runs through October & November, with the Festive Menu launching Friday 27 November 2026. Festive Lunches bookable Fri/Sat at £42pp for 3 courses + a festive drink.","url":"https://chapelhouseestate.co.uk/feast-drink/restaurant/"},
+{"text":"The Courtyard Kitchen, an open-fire dining area, is described as new for 2026. The Dine & Stay Experience is returning for 2026/2027. Cocktail masterclasses are advertised as an event.","url":"https://chapelhouseestate.co.uk/feast-drink/restaurant/"},
+{"text":"Festive Menu launches Friday 27 November 2026; Festive Lunch (3 courses + a festive drink, £42pp) now bookable Fri/Sat. Autumn Menu confirmed running through October-November. New 'Courtyard Kitchen' open-fire dining concept opened on site in 2026."}]},
+{"id":"powell","name":"The Powell Bar & Restaurant","town":"Birchington","type":"pub","address":"The Square, Birchington CT7 9AF","website":"https://thepowellpub.co.uk/","social":"https://www.facebook.com/people/The-Powell-Pub/61577689238465/","cuisine":"British pub food","fsa":{"r":"5","id":1859209,"d":"2025-08-01"},"ta":{"r":4.3,"n":410,"i":"g1192242-d2046673"},"menus":[{"title":"The Powell Bar Menu","type":"main","url":"http://thepowellpub.co.uk/wp-content/uploads/2026/01/The-Powell-Bar-Menu-Proof-read_.pdf","format":"pdf","valid_dates":"Uploaded Jan 2026","signal":true},
+{"title":"Sunday Roast Menu","type":"sunday-roast","url":"http://thepowellpub.co.uk/wp-content/uploads/2026/01/The-Powell-Bar-Sunday-Roast-Menu-Proof-read.pdf","format":"pdf","valid_dates":"Uploaded Jan 2026","signal":true}],"notices":[{"text":"Kitchen closed on Tuesdays during winter; otherwise food served 6/7 days a week. Sunday lunch advised to book early.","url":"https://thepowellpub.co.uk/"}]},
+{"id":"the-minster-meze-and-grill","name":"The Minster Meze & Grill","town":"Minster","type":"restaurant","address":"Monkton Rd, Minster CT12 4EA","website":"https://minstermezegrill.co.uk/","social":"https://www.facebook.com/p/The-Minster-Meze-and-Grill-100063785741327/","cuisine":"Mediterranean & Middle Eastern","fsa":{"r":"5","id":1339813,"d":"2025-02-03"},"ta":{"r":4.9,"n":314,"i":"g1096571-d23452922"},"menus":[{"title":"Lunch Deal","type":"specials","url":"https://minstermezegrill.co.uk/wp-content/uploads/2026/05/processed-85E0E1B2-3078-4B98-B38D-9FE1D33A191F-scaled.jpeg","format":"image","valid_dates":"Mon–Fri, 12pm–4pm","signal":true,"is_new_this_week":true},
+{"title":"Evening Menu","type":"main","url":"https://minstermezegrill.co.uk/wp-content/uploads/2026/03/Minster-Meze-New.png","format":"image","signal":true},
+{"title":"Full Menu page","type":"main","url":"https://minstermezegrill.co.uk/menu/","signal":true},
+{"title":"Takeaway Menu","type":"other","url":"https://minstermezegrill.co.uk/wp-content/uploads/2026/05/Minste-Meze-Takeaway-Menu.pdf","format":"pdf","valid_dates":"Uploaded May 2026"},
+{"title":"Desserts Menu","type":"other","url":"https://minstermezegrill.co.uk/wp-content/uploads/2024/07/dessert-menu-2022-web.pdf","format":"pdf","valid_dates":"2022 file"},
+{"title":"Table Menu (PDF)","type":"main","url":"https://minstermezegrill.co.uk/wp-content/uploads/2026/05/Minster-Meze-New-pdf.pdf","format":"pdf","is_new_this_week":true}],"notices":[{"text":"Mon–Fri lunch deal, 12pm–4pm: £17.99 for starter, main, bread, sauces, salad, baklava/kadaif and Turkish tea.","url":"https://minstermezegrill.co.uk/"}]},
+{"id":"bottega-caruso-margate","name":"Bottega Caruso","town":"Margate","type":"restaurant","address":"2-4 Broad St, Margate CT9 1EW","website":"https://www.bottegacaruso.com/","social":"https://www.facebook.com/bottegacaruso/","cuisine":"Italian","fsa":{"r":"5","id":1026839,"d":"2025-04-02"},"ta":{"r":4.7,"n":244,"closed":false,"i":"g503912-d12329054"},"menus":[{"title":"Sample menu (changes daily)","type":"specials","url":"https://www.bottegacaruso.com/menu","valid_dates":"Sample; undated, changes daily per site - nibbles, small plates, fresh pasta & mains, desserts"}]},
+{"id":"little-havana","name":"Little Havana","town":"Margate","type":"restaurant","address":"2 Prices Ave, Cliftonville CT9 2NR","website":"https://littlehavanauk.com/","cuisine":"Latin American","fsa":{"r":"5","id":1871165,"d":"2025-11-05"},"ta":{"r":4.7,"n":14,"i":"g503912-d34003558"},"menus":[{"title":"Menu","type":"main","url":"https://littlehavanauk.com/menu","signal":true}]},
+{"id":"the-queens-head-ramsgate","name":"The Queens Head","town":"Ramsgate","type":"pub","address":"78 Harbour Parade, Ramsgate CT11 8LP","cuisine":"British pub food","fsa":{"r":"5","id":637775,"d":"2025-01-28"},"ta":{"r":4.1,"n":56,"i":"g186314-d3626922","a":1},"menus":[]},
+{"id":"the-windmill-ramsgate","name":"The Windmill","town":"Ramsgate","type":"pub","address":"45 Newington Rd, Ramsgate CT12 6EW","website":"https://www.windmillramsgate.com/","social":"https://www.facebook.com/1737090313285567","cuisine":"British pub food","fsa":{"r":"5","id":943192,"d":"2024-12-09"},"ta":{"r":4.2,"n":44,"i":"g186314-d12212533"},"ot":{"u":"https://www.opentable.co.uk/r/the-windmill-ramsgate","r":3.2,"n":11},"menus":[{"title":"Food","type":"main","url":"https://www.windmillramsgate.com/food/","signal":true},
+{"title":"Christmas event","type":"festive","url":"https://www.windmillramsgate.com/event/christmas/","valid_dates":"Christmas 2026","signal":true}],"notices":[{"text":"Game Day Pass: 10% off selected drinks on chosen match days, usable from the start of the Premier League 26/27 season.","url":"https://www.windmillramsgate.com/promotions/game-day"}]},
+{"id":"quince-westgate","name":"Quince","town":"Westgate-on-Sea","type":"restaurant","address":"39 Station Rd, Westgate-on-Sea CT8 8QY","website":"https://quincewestgate.co.uk/","social":"https://www.instagram.com/quince_westgate/","cuisine":"Modern British & European","fsa":{"r":"5","id":1522819,"d":"2025-11-21"},"ta":{"r":5.0,"n":142,"i":"g2492487-d24098953"},"ot":{"u":"https://www.opentable.co.uk/r/quince-westgate-on-sea","r":4.9,"n":505},"menus":[{"title":"Sample Menu","type":"main","url":"https://quincewestgate.co.uk/#menu","signal":true},
+{"title":"Lunch Menu","type":"set-menu","url":"https://quincewestgate.co.uk/#lunch","valid_dates":"£32.50 for 3 courses / £29.50 for 2","signal":true},
+{"title":"Sample Sunday Lunch Menu","type":"sunday-roast","url":"https://quincewestgate.co.uk/#sunday","valid_dates":"£32.50 for 3 courses / £29.50 for 2","signal":true}],"notices":[{"text":"Instagram post re: Margate Restaurant Week says Quince is \"open our usual days\" during the event, bookable online or by phone; no specific dates given on-site.","url":"https://quincewestgate.co.uk/"},
+{"text":"Site mentions participating in 'Margate Restaurant Week' in November 2026 (via an embedded Instagram post); no separate restaurant-week menu was published on the page."}]},
+{"id":"little-kraken-ramsgate","name":"Little Kraken","town":"Ramsgate","type":"restaurant","address":"4c York Street, Ramsgate CT11 9DS","website":"https://www.facebook.com/Littlekrakenramsgate","social":"https://www.facebook.com/Littlekrakenramsgate","cuisine":"Seafood & fish and chips","menus":[{"title":"Seafood, oysters and steaks menu","type":"main","url":"https://www.visitramsgate.co.uk/little-kraken/"}]},
+{"id":"st-mildreds-bay-westgate","name":"The St Mildred's Bay Bar & Bistro","town":"Westgate-on-Sea","type":"restaurant","address":"St Mildred's Bay, Westgate-on-Sea CT8 8TP","website":"https://www.thestmildredsbay.com/","social":"https://www.facebook.com/thestmildredsbay/","cuisine":"Modern British & European","fsa":{"r":"5","id":1302095,"d":"2024-11-27","m":"St Mildreds Gardens, Westgate-on-Sea, Kent CT8 8TP"},"ta":{"r":4.1,"n":223,"i":"g2492487-d23767162"},"ot":{"u":"https://www.opentable.co.uk/r/the-st-mildreds-bay-westgate-on-sea","r":4.8,"n":881},"menus":[{"title":"Menus","type":"main","url":"https://www.thestmildredsbay.com/menus","signal":true},
+{"title":"Restaurant","type":"main","url":"https://www.thestmildredsbay.com/restaurant","signal":true},
+{"title":"Sunday Menu","type":"sunday-roast","url":"https://www.thestmildredsbay.com/documents/menus/sunday-menu.pdf","format":"pdf","valid_dates":"Sundays"},
+{"title":"Breakfast Menu","type":"main","url":"https://www.thestmildredsbay.com/documents/menus/breakfast.pdf","format":"pdf","is_new_this_week":true},
+{"title":"Daily Menu","type":"main","url":"https://www.thestmildredsbay.com/documents/menus/daily.pdf","format":"pdf","is_new_this_week":true}],"notices":[{"text":"Site mentions a Seasonal Specials Board that is \"proudly updated and displayed\" in person, but no contents are published online.","url":"https://www.thestmildredsbay.com/menus"}]},
+{"id":"naafi-cafe-manston","name":"NAAFI Cafe","town":"Manston","type":"cafe","address":"RAF Manston History Museum, 821 Manston Road, Ramsgate, Kent CT12 5DF","website":"https://rafmanston.co.uk/naafi/","social":"https://www.facebook.com/people/RAF-Manston-History-Museum/100090809325763/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1412321,"d":"2025-07-23","m":"RAF Manston History Museum, Manston Road, Minster, Kent CT12 5DF"},"ta":{"r":4.2,"n":25,"i":"g3681139-d25004771"},"menus":[{"title":"NAAFI Cafe Menu","type":"main","url":"http://rafmanston.co.uk/wp-content/uploads/2026/09/NAAFI-Cafe-Menu-September-2026-A4.pdf","format":"pdf","valid_dates":"September 2026","signal":true}]},
+{"id":"the-bouncing-bomb-cafe-birchington","name":"The Bouncing Bomb Cafe","town":"Birchington","type":"cafe","address":"151 Minnis Road, Minnis Bay, Birchington CT7 9NS","social":"https://www.facebook.com/p/The-Bouncing-Bomb-Cafe-100078872597086/","cuisine":"Cafe & breakfast","fsa":{"id":1542106,"d":"2026-08-05"},"ta":{"r":4.7,"n":20,"i":"g1192242-d24953945"},"notices":[{"text":"FSA page (business id 1542106) matches name and address exactly (151 Minnis Road, Birchington, CT7 9NS) and shows all three component scores as 'Very good/Good/Good' from the 5 Aug 2026 inspection, but the page did not display a single overall 0-5 rating number, so the rating value is left blank rather than inferred."}],"menus":[]},
+{"id":"papas-fish-chips-main-sands-ramsgate","name":"Papa's Fish & Chips (Main Sands)","town":"Ramsgate","type":"restaurant","address":"Royal Victoria Pavilion, Harbour Parade, Ramsgate CT11 8LS","cuisine":"Seafood & fish and chips","ta":{"r":4.0,"n":21,"closed":false,"i":"g186314-d34574370"},"notices":[{"text":"New opening confirmed: Papa's Fish & Chips (the Cleethorpes/Southport-founded chain, est. 1966) opened a new branch inside the Royal Victoria Pavilion on Harbour Parade, Ramsgate, reported as open by 18 Aug 2026. Offers freshly cooked fish and chips, children's meals, vegetarian and gluten-free options, dine-in and takeaway; opening hours not yet published (listed as TBA on one directory).","url":"https://theisleofthanetnews.com/2026/08/18/new-papas-fish-chips-at-ramsgate-harbour-nears-opening-date/"},
+{"text":"Local news (Isle of Thanet News, 18 Aug 2026) reported this Papa's Fish & Chips branch 'nears opening date' - i.e. it is a newly opened venue at the Royal Victoria Pavilion, which may explain no FSA rating or OpenTable listing being found yet. No website/social on file to check for menus directly."}],"menus":[]},
+{"id":"silver-compass-sports-bar-ramsgate","name":"Silver Compass Sports Bar","town":"Ramsgate","type":"pub","address":"Sovereign Heights, 34-38 Harbour St, Ramsgate CT11 8HA","cuisine":"British pub food","notices":[{"text":"New venue: Silver Compass Sports Bar opened in the former Slice/The Goose/The Sovereign unit on Harbour Street, Ramsgate, run by Charlotte Silver and Stefano Draper. Soft launch 15 July 2026 (England match), official opening Saturday 19 July 2026. As of the most recent report found, the kitchen was 'due to open soon' serving pub classics and light bites, with no menu published yet — current food status as of this session (Oct 2026) is unconfirmed.","url":"https://theisleofthanetnews.com/2026/07/15/the-silver-compass-sports-bar-gets-set-to-open-doors-at-former-slice-site-in-ramsgate/"},
+{"text":"Recently opened (reported July 2026) at the former Slice site, Harbour St. A business directory page (visitramsgate.co.uk) describes 'casual, sports-bar-style dining with options like burgers' but no menu is published online; venue has no website/social on record to check directly."}],"menus":[]},
+{"id":"bayside-cafe","name":"Bayside Cafe","town":"Broadstairs","type":"cafe","address":"Western Esplanade, Broadstairs CT10 1TD","website":"https://www.baysidecafe.co.uk/","social":"https://www.instagram.com/baysidecafe_/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1658814,"d":"2025-07-30"},"ta":{"r":4.7,"n":10,"closed":false,"i":"g635678-d33055739"},"notices":[{"text":"Site mentions themed restaurant/bar events in warmer months (Beach Party, BBQ Pop Up, Movie Night Pop Up flyers shown, no dates) - current events directed to Instagram","url":"https://www.baysidecafe.co.uk/"}],"menus":[]},
+{"id":"taddys-barn","name":"Taddy's Barn Tea Room & Eatery","town":"Broadstairs","type":"cafe","address":"Northdown Nursery, George Hill Rd, Broadstairs CT10 3BN","website":"https://www.taddysbarn.co.uk/","social":"https://www.facebook.com/taddysbarntearooms","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1591246,"d":"2026-08-13"},"ta":{"r":4.3,"n":106,"closed":false,"i":"g635678-d27865385"},"menus":[{"title":"Menu (breakfast, lunch, sides, desserts, drinks, afternoon tea)","type":"main","url":"https://www.taddysbarn.co.uk/menu"}]},
+{"id":"moka-at-mast-margate","name":"moka @ mast","town":"Margate","type":"cafe","address":"31-33 High Street, Margate CT9 1DX","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1920875,"d":"2026-02-19","m":"address"},"menus":[]},
+{"id":"kellys-cafe-westgate","name":"Kelly's Cafe","town":"Westgate-on-Sea","type":"cafe","address":"3 Lymington Road, Westgate-on-Sea CT8 8ES","social":"https://www.facebook.com/Bethanyswestgate/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1856246,"d":"2025-07-28"},"ta":{"r":5.0,"n":52,"closed":false,"i":"g2492487-d23581695"},"notices":[{"text":"The Facebook URL on record (facebook.com/Bethanyswestgate/) appears to be for a different business name ('Bethany's'), not 'Kelly's Cafe' — possible mismatched social link. Could not verify directly; page blocked by robots.txt."}],"menus":[]},
+{"id":"ship-shape-cafe-bar","name":"Ship Shape Cafe Bar","town":"Ramsgate","type":"cafe","address":"3 Military Rd, Ramsgate CT11 9LG (Royal Harbour arches)","social":"https://www.instagram.com/shipshape_cafe","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":637680,"d":"2025-07-09"},"ta":{"r":4.4,"n":311,"closed":false,"i":"g186314-d2072808"},"menus":[]},
+{"id":"viking-ship-cafe","name":"The Viking Ship Cafe","town":"Ramsgate","type":"cafe","address":"Sandwich Rd, Cliffsend, Ramsgate CT12 5JB","social":"https://www.instagram.com/thevikingshipcafe","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":658610,"d":"2026-04-16"},"ta":{"r":4.5,"n":161,"closed":false,"i":"g27186438-d4586721"},"menus":[]},
+{"id":"pearly-cow","name":"Pearly Cow","town":"Margate","type":"restaurant","address":"42 High St, Margate CT9 1DS","website":"https://pearlycow.co.uk/pearly-cow-margate/","social":"https://www.instagram.com/pearlycowmargate/","cuisine":"Modern British & European","fsa":{"r":"5","id":1658813,"d":"2026-08-10","m":"address"},"ta":{"r":3.9,"n":94,"closed":false,"i":"g503912-d26432578"},"menus":[{"title":"All Menus","type":"main","url":"https://pearlycow.co.uk/pearly-cow-margate/menus/"},
+{"title":"Sunday Roasts","type":"sunday-roast","url":"https://pearlycow.co.uk/pearly-cow-margate/sunday-roasts/","valid_dates":"Sundays 12-4.30pm, all trimmings included"},
+{"title":"Steak Night","type":"specials","url":"https://pearlycow.co.uk/pearly-cow-margate/offers/","valid_dates":"Thursdays 5-8.30pm, £20 fire-licked steak & fries (not running during Margate Restaurant Week)","is_new_this_week":true},
+{"title":"Steak Night","type":"weekly","url":"https://pearlycow.co.uk/pearly-cow-margate/menu/#steak-night","valid_dates":"Thursdays"},
+{"title":"Christmas Day lunch","type":"festive","url":"https://pearlycow.co.uk/pearly-cow-margate/menu/#christmas"},
+{"title":"New Year's Eve","type":"festive","url":"https://pearlycow.co.uk/pearly-cow-margate/menus/","format":"webpage","signal":true,"is_new_this_week":true}],"notices":[{"text":"Margate Restaurant Week: three extra evenings Mon-Fri 5-8.45pm, no Steak Night that week","url":"https://pearlycow.co.uk/pearly-cow-margate/offers/"},
+{"text":"Whisky & Vinyl Night, first session 13 October 7-9pm, £20pp","url":"https://pearlycow.co.uk/pearly-cow-margate/offers/"},
+{"text":"Seascape watercolour sessions 1-3pm with a trained artist: 5 Oct, 9 Nov, 7 Dec, £25pp incl. materials/drink/cake; 5 Oct session sold out","url":"https://pearlycow.co.uk/pearly-cow-margate/offers/"},
+{"text":"Christmas 2026 bookings now open (no festive menu or pricing posted yet)","url":"https://pearlycow.co.uk/pearly-cow-margate/"},
+{"text":"Instagram post: 'Christmas bookings now open!' for Christmas 2026 (no separate menu page/PDF found yet)."},
+{"text":"Rooftop Bar per Instagram now open Friday-Sunday evenings only — a reduced schedule worth confirming."}]},
+{"id":"belle-vue","name":"Belle Vue Tavern - Pegwell","town":"Ramsgate","type":"pub","address":"Pegwell Rd, Ramsgate CT11 0NJ","website":"https://www.thebellevuetavern.co.uk/","social":"https://www.facebook.com/thebalconyofkent/","cuisine":"British pub food","fsa":{"r":"4","id":608204,"d":"2025-08-13"},"ta":{"r":4.0,"n":557,"closed":false,"i":"g186314-d1830357"},"menus":[{"title":"Belle Vue Tavern Menu (Summer 2026)","type":"seasonal","url":"https://www.thebellevuetavern.co.uk/the-belle-vue-menu/","format":"pdf","valid_dates":"Summer 2026"},
+{"title":"Kids' Menu","type":"other","url":"https://www.thebellevuetavern.co.uk/the-belle-vue-menu/","format":"pdf"},
+{"title":"Sunday Roasts (all day)","type":"sunday-roast","url":"https://www.thebellevuetavern.co.uk/the-belle-vue-menu/","valid_dates":"From 12pm until sold out, started Sun 28 Sept 2026","signal":true},
+{"title":"Christmas Menu 2026","type":"festive","url":"https://www.thebellevuetavern.co.uk/wp-content/uploads/2026/09/Belle-Vue-Christmas-Menu_2026.png","format":"image","valid_dates":"December 2026","signal":true}],"notices":[{"text":"Sunday Roasts now served all day (sirloin of beef, garlic & thyme chicken, slow-cooked pork belly, veggie roast) from 28 Sept 2026, bookable via ResDiary","url":"https://booking.resdiary.com/widget/Standard/TheBelleVue1/63286"}]},
+{"id":"charles-dickens","name":"The Charles Dickens","town":"Broadstairs","type":"pub","address":"5-6 Victoria Parade, Broadstairs CT10 1QS","website":"https://www.charlesdickensbroadstairs.co.uk/","social":"https://www.facebook.com/thecharlesdickensbroadstairs/","cuisine":"British pub food","fsa":{"r":"5","id":370785,"d":"2025-06-03"},"ta":{"r":4.0,"n":957,"closed":false,"i":"g635678-d2105705"},"ot":{"u":"https://www.opentable.co.uk/the-charles-dickens","r":4.8,"n":1197},"menus":[{"title":"Main menu (June 2026, changes daily)","type":"main","url":"https://www.charlesdickensbroadstairs.co.uk/s/MAIN-MENU-JUN-2026.pdf","format":"pdf","valid_dates":"June 2026"},
+{"title":"Burger Club (Mondays)","type":"weekly","url":"https://www.charlesdickensbroadstairs.co.uk/s/BURGER-NIGHT-1.pdf","format":"pdf","valid_dates":"Mondays"},
+{"title":"Moules et Frites (Tuesdays)","type":"weekly","url":"https://www.charlesdickensbroadstairs.co.uk/s/Moules-et-Frites-Night-5.pdf","format":"pdf","valid_dates":"Tuesdays"},
+{"title":"Pie Night (Thursdays)","type":"weekly","url":"https://www.charlesdickensbroadstairs.co.uk/s/Pie-Night-4.pdf","format":"pdf","valid_dates":"Thursdays"},
+{"title":"Christmas menu (Aug 2026)","type":"festive","url":"https://www.charlesdickensbroadstairs.co.uk/s/37396-TT-Christmas-Separate-Menus-Aug-2026_Charles-Dickens.pdf","format":"pdf"},
+{"title":"Sunday menu","type":"sunday-roast","url":"https://www.charlesdickensbroadstairs.co.uk/s/Sunday-Menu-Summer-25.pdf","format":"pdf","valid_dates":"Sundays 12-6pm (file named Summer 25, may be dated)"},
+{"title":"Breakfast menu","type":"other","url":"https://www.charlesdickensbroadstairs.co.uk/s/Breakfast-Menu-2024.pdf","format":"pdf","valid_dates":"Mon-Fri 10-11:30, Sat 9-11:30"}]},
+{"id":"cow-shed","name":"The Cow Shed Bar & Grill","town":"Birchington","type":"restaurant","address":"3 The Square, Birchington CT7 9AE","website":"https://thecowshedbarandgrill.co.uk/","social":"https://www.facebook.com/thecowshedbarandgrill","cuisine":"Modern British & European","fsa":{"r":"4","id":1042038,"d":"2026-05-07"},"ta":{"r":4.3,"n":514,"closed":false,"i":"g1192242-d13541354"},"menus":[{"title":"Cow Shed Main Menu","type":"main","url":"https://thecowshedbarandgrill.co.uk/wp-content/uploads/2025/11/Cow-Shed-Menu-Nov-2025-A3-v12.pdf","format":"pdf","valid_dates":"Nov 2025 revision"},
+{"title":"Children's Menu","type":"other","url":"https://thecowshedbarandgrill.co.uk/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-19-at-16.36.45.jpeg","format":"image"},
+{"title":"Breakfast Menu","type":"main","url":"https://thecowshedbarandgrill.co.uk/wp-content/uploads/2024/02/Breakfast-Menu-Birch.pdf","format":"pdf"},
+{"title":"2026 Festive Menu","type":"festive","url":"https://thecowshedbarandgrill.co.uk/wp-content/uploads/2026/09/2026-Festive.pdf","format":"pdf","valid_dates":"Christmas 2026","signal":true},
+{"title":"Christmas Day Menu","type":"festive","url":"https://thecowshedbarandgrill.co.uk/wp-content/uploads/2026/09/Christmas-Day-2023.pdf","format":"pdf","valid_dates":"Uploaded to 2026 folder but filename reads 2023 - needs manual verification before publishing"}],"notices":[{"text":"Page references 'MOOving moments specials' with no further detail; also notes ~99% of menu is gluten free","url":"https://thecowshedbarandgrill.co.uk/"},
+{"text":"Christmas Day Menu PDF filename reads 'Christmas-Day-2023.pdf' despite being in the site's September 2026 upload folder — likely a stale/reused document; worth re-verifying with the venue before treating as the current 2026 Christmas Day menu."}]},
+{"id":"jolly-farmer-manston","name":"The Jolly Farmer","town":"Manston","type":"pub","address":"3 High St, Manston, Ramsgate CT12 5BG (venue list said Monkton; actual village is Manston)","website":"https://www.thejollyfarmermanston.com/","social":"https://www.facebook.com/thejollyfarmermanston/","cuisine":"British pub food","ta":{"r":4.1,"n":478,"closed":false,"i":"g3681139-d2537335"},"menus":[{"title":"Christmas Parties & Christmas Day Menu","type":"festive","url":"https://www.thejollyfarmermanston.com/christmas/","valid_dates":"1-25 December, from £29.95pp (pre-order via phone)","signal":true},
+{"title":"Main Menu","type":"main","url":"https://www.thejollyfarmermanston.com/menu/","valid_dates":"Seasonal dishes using local Kentish produce"},
+{"title":"Set Menu","type":"set-menu","url":"https://www.thejollyfarmermanston.com/set-menu/"},
+{"title":"Grill Meals + bottle of house wine offer","type":"specials","url":"https://www.facebook.com/thejollyfarmermanston/","format":"social"}],"notices":[{"text":"Monthly quiz nights and live local music, calendar on site","url":"https://www.thejollyfarmermanston.com/events/"}]},
+{"id":"buoy-and-oyster-margate","name":"Buoy and Oyster","town":"Margate","type":"restaurant","address":"44 High St, Margate CT9 1DS","website":"https://www.buoyandoyster.co.uk/","social":"https://www.instagram.com/buoyandoyster/","cuisine":"Seafood & fish and chips","fsa":{"r":"5","id":830474,"d":"2024-10-19"},"ta":{"r":4.6,"n":1975,"closed":false,"i":"g503912-d9712289"},"menus":[{"title":"Menus","type":"main","url":"https://www.buoyandoyster.co.uk/menus","is_new_this_week":true},
+{"title":"Sunday Roasts","type":"sunday-roast","url":"https://www.buoyandoyster.co.uk/sunday-roasts-in-margate"},
+{"title":"Afternoon Tea","type":"specials","url":"https://www.buoyandoyster.co.uk/afternoonteainmargate"},
+{"title":"Current Menu (autumn)","type":"seasonal","url":"https://www.buoyandoyster.co.uk/_files/ugd/6cd1dd_8dc53a1d93684f6d95cc349cdb45a57b.pdf","format":"pdf","valid_dates":"None printed; contains autumn items"},
+{"title":"Christmas Party Nights festive menu - 'Festive Set Menu 2025' (3 courses; Wed-Fri 3-19 Dec; DJ party nights Thursdays)","type":"festive","url":"https://www.buoyandoyster.co.uk/christmaspartynights","valid_dates":"Wed-Fri 3-19 Dec; page still shows Festive Set Menu 2025 as of 2026-10-05 - 2026 menu not yet published"},
+{"title":"Little Sailors (kids)","type":"other","url":"https://www.buoyandoyster.co.uk/_files/ugd/6cd1dd_7e3beb0363204d08b3e0f8c3a34d56dd.pdf","format":"pdf"},
+{"title":"Oyster Bar","type":"other","url":"https://www.buoyandoyster.co.uk/margateoysterbar"}],"notices":[{"text":"Beach Buoys beachfront takeaway currently open Thurs-Sun (page undated, may change)","url":"https://www.buoyandoyster.co.uk/"},
+{"text":"Christmas page exists (christmaspartynights) but no 2026 menu or pricing posted yet","url":"https://www.buoyandoyster.co.uk/christmaspartynights"}]},
+{"id":"dosa-palace","name":"Dosa Palace","town":"Margate","type":"restaurant","address":"182 Northdown Rd, Cliftonville CT9 2QN","website":"https://dosapalace.co.uk/","social":"https://www.facebook.com/p/Dosa-Palace-Indian-SriLankan-Restaurant-in-Margate-61581380956546/","cuisine":"Indian, Sri Lankan & Nepalese","fsa":{"r":"5","id":1859212,"d":"2025-08-05"},"ta":{"r":4.8,"n":57,"closed":false,"i":"g503912-d33440406"},"menus":[{"title":"Dosa Palace Food Menu","type":"main","url":"https://dosapalace.co.uk/food-menu/"}],"notices":[{"text":"'40% off' promotional banner on homepage, but no items, dates or terms given","url":"https://dosapalace.co.uk/"}]},
+{"id":"il-tricolore","name":"Il Tricolore","town":"Ramsgate","type":"restaurant","address":"13 Harbour St, Ramsgate CT11 8HA","website":"https://www.iltricoloreramsgate.co.uk/","cuisine":"Italian","fsa":{"r":"5","id":1081095,"d":"2025-01-31"},"ta":{"r":4.8,"n":963,"closed":false,"i":"g186314-d6548468"},"menus":[{"title":"Menu","type":"main","url":"https://www.iltricoloreramsgate.co.uk/menus"},
+{"title":"Food Menu","type":"main","url":"https://www.iltricoloreramsgate.co.uk/downloads/Il-Tricolore-Food-Menu-Aug-2025.pdf","format":"pdf","valid_dates":"Aug 2025","is_new_this_week":true}]},
+{"id":"posillipo-broadstairs","name":"Posillipo Restaurant","town":"Broadstairs","type":"restaurant","address":"14 Albion St, Broadstairs CT10 1LU","website":"https://www.posillipo.co.uk/","cuisine":"Italian","fsa":{"r":"3","id":681906,"d":"2025-09-27"},"ta":{"r":4.1,"n":1780,"closed":false,"i":"g635678-d730957"},"menus":[{"title":"Main Menu (Oct 2025 edition)","type":"main","url":"https://www.posillipo.co.uk/s/BS-FV-Menu-Oct-25.pdf","format":"pdf","valid_dates":"October 2025 edition"},
+{"title":"Vegan Menu (July 2025)","type":"other","url":"https://www.posillipo.co.uk/s/BS-FV-Vegan-Menu-July-25.pdf","format":"pdf","valid_dates":"July 2025 edition"},
+{"title":"Allergen Menu (Jan 2026)","type":"other","url":"https://www.posillipo.co.uk/s/Allergen-Menu-140126.pdf","format":"pdf","valid_dates":"January 2026 edition"},
+{"title":"Children's Menu","type":"other","url":"https://www.posillipo.co.uk/s/Kids-Menu.pdf","format":"pdf"},
+{"title":"Christmas 2026","type":"festive","url":"https://www.posillipo.co.uk/christmas-2026","format":"webpage","signal":true,"is_new_this_week":true}],"notices":[{"text":"OpenTable has a page for Posillipo (opentable.co.uk/r/posillipo-broadstairs, 4.3 rating, 71 reviews) but it explicitly states the restaurant is not on the OpenTable booking network — not a live bookable page, so no 'ot' record added."}]},
+{"id":"pauls-bar-bistro-westgate","name":"Paul's Bar & Bistro","town":"Westgate-on-Sea","type":"cafe","address":"42 Station Rd, Westgate-on-Sea CT8 8QY","website":"https://www.paulsbarandbistro.com/","social":"https://www.facebook.com/paulsbarandbistro/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":370783,"d":"2026-07-27"},"ta":{"r":4.3,"n":115,"closed":false,"i":"g2492487-d15602169"},"menus":[{"title":"Menus (all-day food)","type":"main","url":"https://www.paulsbarandbistro.com/menus"},
+{"title":"Roast Dinners","type":"sunday-roast","url":"https://www.paulsbarandbistro.com/roast-dinners","valid_dates":"Seasonal, served September to late spring"}],"notices":[{"text":"The linked breakfast/lunch/meals menu images all point to the same PDF dated February 2024 ('Pauls-Menu-February-2024.pdf') despite the site footer showing 2026 — likely stale; worth checking with the venue for a current menu."}]},
+{"id":"spiers-epitome-burger-bar-ramsgate","name":"The Spiers Epitome Burger Bar","town":"Ramsgate","type":"restaurant","address":"73 High Street, Ramsgate CT11 9RJ","social":"https://www.facebook.com/p/The-Spiers-Epitome-Burger-Bar-61585181730169/","cuisine":"Burgers, BBQ & American","fsa":{"r":"5","id":1888408,"d":"2025-11-06"},"ta":{"r":5.0,"n":1,"closed":false,"i":"g186314-d34075642"},"menus":[]},
+{"id":"millies-beach-bar-westgate","name":"Millie's Beach Bar","town":"Westgate-on-Sea","type":"cafe","address":"Westgate-on-Sea seafront, Kent","website":"https://www.milliesbeachbar.com/","social":"","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1302095,"d":"2024-11-27","m":"St Mildreds Gardens, Westgate-on-Sea, Kent CT8 8TP"},"ta":{"r":3.5,"n":294,"closed":false,"i":"g2492487-d12993046"},"menus":[{"title":"Festive Season / Pre-order","type":"festive","url":"https://www.milliesbeachbar.com/preorder","valid_dates":"Christmas 2026 (page live, no items/prices shown yet)","signal":true},
+{"title":"Main menu","type":"main","url":"https://www.milliesbeachbar.com/menu"},
+{"title":"Sunday menu","type":"sunday-roast","url":"https://www.milliesbeachbar.com/_files/ugd/250bcb_fb543ee82bfd4b21af06bbcb75f055d3.pdf","format":"pdf","is_new_this_week":true}],"notices":[{"text":"'What's On' page live promoting private hire for weddings, wakes, birthdays and live music, but no specific dates listed","url":"https://www.milliesbeachbar.com/event"}]},
+{"id":"spitfire-cafe-manston","name":"The Spitfire Cafe","town":"Manston","type":"cafe","address":"Spitfire & Hurricane Memorial Museum, Manston Road, Manston, Ramsgate, Kent CT12 4DQ","website":"https://www.spitfirecafemanston.com/","social":"https://www.facebook.com/p/Spitfire-Cafe-Manston-100084769613783/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":620114,"d":"2026-08-21"},"ta":{"r":4.1,"n":27,"closed":false,"i":"g3681139-d26311980"},"menus":[]},
+{"id":"driftwood-cafe-birchington","name":"Driftwood Cafe (Harbour Bakery)","town":"Birchington","type":"cafe","address":"59 Station Road, Birchington CT7 9RE","cuisine":"Cafe & breakfast","ta":{"r":4.3,"n":172,"closed":false,"i":"g1192242-d7899027"},"menus":[]},
+{"id":"rc-roastery-ramsgate","name":"RC Roastery","town":"Ramsgate","type":"cafe","address":"17-19 York Street, Ramsgate CT11 9DS","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1920865,"d":"2026-02-03"},"notices":[{"text":"New venue: coffee shop plus RC (radio-controlled) play attraction - drift car track, adult/kids construction-vehicle sites, 4x4 crawler track - opened on the former Red Cross charity shop site, York Street, early 2026","url":"https://theisleofthanetnews.com/?p=210401"}],"menus":[]},
+{"id":"vincents-ramsgate","name":"Vincent's","town":"Ramsgate","type":"cafe","address":"Sports Pavilion, Spencer Square, Ramsgate CT11 9LD","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1863772,"d":"2025-08-20","m":"third-party aggregator (eatible.co.uk), matched by exact name and address"},"ta":{"r":5.0,"n":20,"closed":false,"i":"g186314-d26309026"},"notices":[{"text":"Described as a small café hut by the tennis courts serving coffee and homemade cakes, licensed with wine/beer; hosts the Addington Street Vintage Trail stop, a mini community library and art exhibitions; dog friendly","url":"https://www.visitramsgate.co.uk/vincents"}],"menus":[]},
+{"id":"eds-cafe-broadstairs","name":"Ed's Cafe","town":"Broadstairs","type":"cafe","address":"19 High St, Broadstairs CT10 1LP","social":"https://www.facebook.com/p/Eds-Cafe-100088312815965/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1515226,"d":"2026-05-05"},"ta":{"r":4.9,"n":82,"closed":false,"i":"g635678-d24160827"},"menus":[]},
+{"id":"cabin-cafe-northdown-hill","name":"Cabin Cafe","town":"Broadstairs","type":"cafe","address":"Northdown Hill, Broadstairs CT10 3JH","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":608260,"d":"2026-01-20"},"ta":{"r":4.5,"n":40,"closed":false,"i":"g635678-d9755462"},"menus":[]},
+{"id":"the-dalby-cafe-margate","name":"The Dalby Cafe","town":"Margate","type":"cafe","address":"4-6 Dalby Road, Cliftonville, Margate CT9 2EX","social":"https://www.facebook.com/dalbycafe/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":608147,"d":"2024-12-19"},"ta":{"r":4.7,"n":270,"closed":false,"i":"g503912-d3649275"},"menus":[{"title":"The Dalby Cafe on Just Eat (third-party)","type":"main","url":"https://www.just-eat.co.uk/restaurants-the-dalby-cafe-margate/menu"}]},
+{"id":"best-beano-cafe-westgate","name":"The Best Beano Cafe Westgate","town":"Westgate-on-Sea","type":"cafe","address":"21 Station Road, Westgate-on-Sea CT8 8RB","social":"https://www.facebook.com/thebestbeanocafe/","cuisine":"Cafe & breakfast","fsa":{"r":"4","id":742199,"d":"2025-02-04"},"ta":{"r":4.2,"n":133,"i":"g2492487-d2515481"},"menus":[]},
+{"id":"rileys-cafe","name":"Riley's Cafe (CK Riley's)","town":"Ramsgate","type":"cafe","address":"8 Queen St, Ramsgate CT11 9DR","social":"https://www.instagram.com/ck_riley","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":962408,"d":"2025-05-14"},"ta":{"r":4.3,"n":149,"i":"g186314-d3191237"},"menus":[]},
+{"id":"george-heart","name":"The George & Heart House","town":"Margate","type":"pub","address":"44 King St, Margate CT9 1QE","website":"https://www.georgeandheart.com/","cuisine":"British pub food","fsa":{"r":"5","id":1212498,"d":"2025-12-05"},"ta":{"r":3.8,"n":117,"closed":false},"menus":[{"title":"Menus (main hub)","type":"main","url":"https://www.georgeandheart.com/menus"},
+{"title":"Eat With Us / Food & Drinks","type":"main","url":"https://www.georgeandheart.com/food-and-drinks"},
+{"title":"What's On","type":"event","url":"https://www.georgeandheart.com/whats-on","is_new_this_week":true},
+{"title":"Sample Set Menu","type":"set-menu","url":"https://www.georgeandheart.com/s/GH-new-menu-1-53kg.pdf","format":"pdf"},
+{"title":"The Roast (Sunday)","type":"sunday-roast","url":"https://www.georgeandheart.com/s/Roast-Menu.pdf","format":"pdf","valid_dates":"Every Sunday 12-7pm"}]},
+{"id":"willys","name":"Willy's","town":"Margate","type":"restaurant","address":"6 Dalby Square, Cliftonville CT9 2ER","website":"https://www.willys.co.uk/","cuisine":"Modern British & European","fsa":{"r":"5","id":1846000,"d":"2025-07-11","m":"address"},"ta":{"r":4.0,"n":20,"i":"g503912-d34021008"},"menus":[{"title":"Willy's Menu","type":"main","url":"https://www.willys.co.uk/menu"}]},
+{"id":"blackbird","name":"Blackbird Ramsgate","town":"Ramsgate","type":"pub","address":"2-3 The Broadway, Ramsgate CT11 9JN","social":"https://www.instagram.com/blackbirdramsgate","cuisine":"British pub food","fsa":{"r":"5","id":716503,"d":"2025-08-15","m":"address"},"ta":{"n":0,"closed":false,"a":1},"menus":[]},
+{"id":"no-23","name":"No 23 Brunch & Dinner","town":"Broadstairs","type":"restaurant","address":"23 Albion St, Broadstairs CT10 1LU","website":"https://no23brunch.uk/","social":"https://www.instagram.com/no23brunch/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1743672,"d":"2024-07-04","m":"address"},"ta":{"r":5.0,"n":3,"i":"g635678-d34660764"},"menus":[{"title":"Brunch Menu (featured items: Turkish Breakfast, The Mediterranean, The Broadstairsian, King of Menemen, Full House, Eggs Royale)","type":"main","url":"https://no23brunch.uk/menu"}],"notices":[{"text":"Instagram teaser mentions followers can 'preview upcoming dishes' but gives no specifics.","url":"https://no23brunch.uk/"}]},
+{"id":"swan-westgate","name":"The Swan by the Beach","town":"Westgate-on-Sea","type":"pub","address":"Westgate-on-Sea, Kent","website":"https://www.the-swan.pub/","social":"https://www.facebook.com/swanatwestgate/","cuisine":"British pub food","fsa":{"r":"5","id":1001597,"d":"2026-03-27"},"ta":{"r":4.3,"n":322,"closed":false},"menus":[{"title":"Main/Lunch Menu","type":"main","url":"https://www.the-swan.pub/mainmenu"},
+{"title":"Sunday Menu","type":"sunday-roast","url":"https://www.the-swan.pub/sundaymenu"},
+{"title":"Light Bites Menu","type":"main","url":"https://www.the-swan.pub/lightbitesmenu"},
+{"title":"Young Guests Menu","type":"other","url":"https://www.the-swan.pub/young-guests-menu"},
+{"title":"Festive Season","type":"festive","url":"https://www.the-swan.pub/festiveseason","valid_dates":"2026-12","signal":true},
+{"title":"Christmas Parties","type":"festive","url":"https://www.the-swan.pub/christmas-parties","valid_dates":"2026-12","signal":true},
+{"title":"Mid-Week Carvery","type":"specials","url":"https://www.the-swan.pub/midweek-carvery","signal":true},
+{"title":"New Year's Eve","type":"event","url":"https://www.the-swan.pub/newyearseve","valid_dates":"2026-12-31","signal":true,"is_new_this_week":true}]},
+{"id":"the-new-stag-monkton","name":"The New Stag Inn","town":"Monkton","type":"pub","address":"70 Monkton St, Monkton CT12 4JF","social":"https://www.facebook.com/photo.php?fbid=122120319722847501&set=a.122105086748847501&id=61575425056789","cuisine":"British pub food","ta":{"r":4.2,"n":46,"i":"g186314-d3699282"},"menus":[{"title":"Daily menu / roast dinner (Facebook post)","type":"other","url":"https://www.facebook.com/photo.php?fbid=122120319722847501&set=a.122105086748847501&id=61575425056789","format":"social","valid_dates":"Undated"}]},
+{"id":"angelas-margate","name":"Angela's","town":"Margate","type":"restaurant","address":"21 The Parade, Margate CT9 1EX","website":"https://angelasofmargate.com/","social":"https://www.facebook.com/Angelasofmargate/","cuisine":"Seafood & fish and chips","fsa":{"r":"5","id":1010330,"d":"2025-10-07"},"ta":{"r":4.7,"n":465,"closed":false,"i":"g503912-d12878619"},"menus":[{"title":"Angela's Menu","type":"main","url":"https://angelasofmargate.com/angelas-menu","is_new_this_week":true},
+{"title":"Dory's Classics (bar pop-up)","type":"event","url":"https://angelasofmargate.com/","valid_dates":"2026-10-12 to 2026-10-22","signal":true,"is_new_this_week":true},
+{"title":"Weekday Set Lunch","type":"set-menu","url":"https://angelasofmargate.com/","is_new_this_week":true},
+{"title":"Dory's Classics (bar pop-up while kitchen issue is fixed)","type":"event","url":"https://www.instagram.com/p/DeJPn3wDLRd/","format":"webpage","valid_dates":"12-22 October (year not stated on page, but matches current week)","signal":true,"is_new_this_week":true}],"notices":[{"text":"NOTABLE: Angela's homepage says the restaurant is 'closing for two weeks (to fix an unexpected problem)' but is running a 'Dory's classics' pop-up menu in the bar from 12-22 October (served 12-10pm, walk-ins welcome) — this window starts today (checked 2026-10-12), so the main restaurant may currently be shut while the bar pop-up runs.","url":"https://angelasofmargate.com/"},
+{"text":"Angela's main restaurant is closing for about two weeks to fix an unexpected problem (dates not explicitly stated, but the Dory's Classics bar pop-up covering the gap runs 12-22 October, i.e. this week)."}]},
+{"id":"gurkha-restaurant-and-bar-margate","name":"Gurkha Restaurant and Bar","town":"Margate","type":"restaurant","address":"16 Ethelbert Cres, Cliftonville CT9 2DY","website":"https://www.gurkharestaurantbar.co.uk/margate/","cuisine":"Indian, Sri Lankan & Nepalese","fsa":{"r":"5","id":1902169,"d":"2025-12-15"},"ta":{"r":4.9,"n":72,"i":"g503912-d34067978"},"menus":[{"title":"Main Menu","type":"main","url":"https://www.gurkharestaurantbar.co.uk/margate/menu.html"},
+{"title":"All You Can Eat (Mon-Thu, dine-in only, £25pp/£15 child)","type":"specials","url":"https://www.gurkharestaurantbar.co.uk/margate/menu.html","signal":true,"is_new_this_week":true},
+{"title":"All You Can Eat Buffet (Mon-Thu, dine-in only, GBP25 adult / GBP15 child)","type":"set-menu","url":"https://www.gurkharestaurantbar.co.uk/margate/"},
+{"title":"Home delivery ordering menu","type":"other","url":"https://www.gurkharestaurantbar.co.uk/margate/menu/home-delivery.html"}]},
+{"id":"the-galley-ramsgate","name":"The Galley","town":"Ramsgate","type":"cafe","address":"3 West Cliff Arcade, Ramsgate CT11 8LH","social":"https://www.facebook.com/thegalleyramsgate/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":637686,"d":"2025-07-21"},"ta":{"r":4.8,"n":283,"i":"g186314-d2031889"},"menus":[{"title":"Third-party online menu (Zmenu)","type":"main","url":"https://www.zmenu.com/the-galley-ramsgate-uk-online-menu/"}]},
+{"id":"the-little-sicilian-broadstairs","name":"The Little Sicilian","town":"Broadstairs","type":"restaurant","address":"45 York St, Broadstairs CT10 1PB","website":"https://thelittlesicilian.co.uk/","social":"https://www.facebook.com/TheLittleSicilianBroadstairs/","cuisine":"Italian","fsa":{"r":"5","id":1151976,"d":"2025-05-13"},"ta":{"r":4.6,"n":400,"closed":false},"menus":[{"title":"Main A La Carte Menu","type":"main","url":"https://thelittlesicilian.co.uk/menu/"},
+{"title":"Set Lunch Menu","type":"set-menu","url":"https://thelittlesicilian.co.uk/set-lunch-menu/"}],"notices":[{"text":"New private function/party room now available for up to 34 guests, with a fixed-price menu option on request.","url":"https://thelittlesicilian.co.uk/"}]},
+{"id":"finbars-of-west-bay-westgate","name":"Finbar's of West Bay","town":"Westgate-on-Sea","type":"restaurant","address":"West Bay Promenade, Westgate-on-Sea CT8 8QA","website":"https://www.finbarswestgate.co.uk/","social":"https://www.facebook.com/finbarsofwestbay/","cuisine":"Seafood & fish and chips","fsa":{"r":"5","id":1199871,"d":"2025-09-08"},"ta":{"r":4.4,"n":445,"i":"g2492487-d18190610"},"ot":{"u":"https://www.opentable.co.uk/r/finbars-of-west-bay-westgate-on-sea","r":4.5,"n":155},"menus":[{"title":"Lunch Menu","type":"main","url":"https://www.finbarswestgate.co.uk/menus"},
+{"title":"Evening Menu (a la carte)","type":"main","url":"https://www.finbarswestgate.co.uk/menus"},
+{"title":"Sunday Set Course Menu","type":"sunday-roast","url":"https://www.finbarswestgate.co.uk/menus"},
+{"title":"Kids Menu","type":"other","url":"https://www.finbarswestgate.co.uk/menus"},
+{"title":"Christmas Dining (5-course)","type":"festive","url":"https://www.finbarswestgate.co.uk/menus","valid_dates":"2026-12","signal":true},
+{"title":"Margate Restaurant Week","type":"event","url":"https://www.finbarswestgate.co.uk/menus","valid_dates":"2026-11-02 to 2026-11-06","signal":true,"is_new_this_week":true},
+{"title":"Lunch Menu","type":"set-menu","url":"https://www.finbarswestgate.co.uk/files/1416-1-1.jpg","format":"image","valid_dates":"Available Wed-Sat; no calendar dates"}],"notices":[{"text":"New weekly notice: a la carte + homemade pie night every Thursday, starting 8 October 2026.","url":"https://www.finbarswestgate.co.uk/"}]},
+{"id":"wimpy-birchington","name":"Wimpy Birchington","town":"Birchington","type":"restaurant","address":"44-46 Station Road, Birchington-on-Sea CT7 9DQ","website":"https://wimpy.uk.com/menus/anytime-meals/birchington-on-sea","cuisine":"Burgers, BBQ & American","fsa":{"r":"5","id":1863770,"d":"2025-07-21"},"ta":{"r":3.7,"n":15,"i":"g1192242-d33328274"},"menus":[{"title":"Mains Menu","type":"main","url":"https://wimpy.uk.com/menus/anytime-meals/birchington-on-sea"},
+{"title":"New dishes: Fish Burger, Club Sandwich, The Big Grill, Steakhouse Seasoned Chips, Mini Corn on the Cob, 10 Plant-based Strips","type":"specials","url":"https://wimpy.uk.com/menus/anytime-meals/birchington-on-sea","signal":true}],"notices":[{"text":"Menu page marks six items as 'New dish': Fish Burger, Club Sandwich, The Big Grill, Steakhouse Seasoned Chips, Mini Corn on the Cob, 10 Plant-based Strips. Recurring 'Wimpy Wednesday' deal (£8.50, one of four burgers + chips + drink) also confirmed.","url":"https://wimpy.uk.com/menus/anytime-meals/birchington-on-sea"}]},
+{"id":"perico-lounge-ramsgate","name":"Perico Lounge","town":"Ramsgate","type":"restaurant","address":"Unit 1, Beach Drive, Ramsgate, Kent CT11 8HF","website":"https://thelounges.co.uk/perico/","social":"https://www.facebook.com/pericolounge/","cuisine":"Modern British & European","fsa":{"r":"5","id":1736389,"d":"2025-12-03"},"ta":{"r":3.6,"n":70,"i":"g186314-d27758552"},"menus":[{"title":"Main Menu","type":"main","url":"https://thelounges.co.uk/perico/menus"},
+{"title":"Autumn/Winter 2026 Menu","type":"seasonal","url":"https://thelounges.co.uk/whats-on/autumn-winter-2026-menu","valid_dates":"2026 autumn/winter","signal":true},
+{"title":"Christmas Menu (Marry Me Santa, Pig-in-Blanket Mac & Cheese, Goan Spiced Parsnip Soup, Baileys Cheesecake, Chocolate Orange Mousse)","type":"festive","url":"https://thelounges.co.uk/christmas","valid_dates":"2026-11-19 to 2026-12-31","signal":true}],"notices":[{"text":"Running deals tied to the menu: Cheeky Mondays (from 5pm), Tapas Tuesday (£13.95 from 5pm), Lounge Cocktail Club (£13.25 for two, from 5pm), Lunch Deal (£6.95, Mon-Fri 12-5pm).","url":"https://thelounges.co.uk/perico/"}]},
+{"id":"pedaler-in-the-yard-manston","name":"The Pedaler in the Yard","town":"Manston","type":"cafe","address":"The Cattle Yard, Preston Road, Manston, Ramsgate, Kent CT12 5FQ","website":"https://thecattleyard.co.uk/pedaler-in-the-yard/","social":"https://www.instagram.com/theindiepedaler/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1675810,"d":"2025-10-25"},"ta":{"r":3.4,"n":86,"i":"g3681139-d26446085"},"menus":[{"title":"Pedaler in the Yard cafe menu","type":"main","url":"https://thecattleyard.co.uk/pedaler-in-the-yard/"}]},
+{"id":"the-tenth-cafe-bar-manston","name":"The Tenth Cafe Bar","town":"Manston","type":"cafe","address":"Manston Golf Centre, Greensole Lane, Manston CT12 5FG","cuisine":"Burgers, BBQ & American","fsa":{"r":"5","id":962411,"d":"2025-04-14"},"ta":{"r":4.0,"n":3,"i":"g3681139-d14143897"},"menus":[]},
+{"id":"the-lift-cafe-ramsgate","name":"The Lift Cafe","town":"Ramsgate","type":"cafe","address":"Harbour Parade, Ramsgate (base of the East Cliff Lift)","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1938296,"d":"2026-05-07","m":"address"},"menus":[{"title":"Takeaway food & drink kiosk","type":"other","url":"https://www.visitramsgate.co.uk/lift_cafe/","is_new_this_week":true}]},
+{"id":"foliage-cafe-broadstairs","name":"Foliage Cafe","town":"Broadstairs","type":"cafe","address":"7 Albion Street, Broadstairs, Kent CT10 1LU","website":"https://foliageplants.co.uk/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1859214,"d":"2025-07-31"},"menus":[{"title":"Cafe Menu (coffee, frappes, cakes incl. gluten-free/vegan, paninis, cheese & charcuterie boards, draught beer/wine, cocktails)","type":"main","url":"https://foliageplants.co.uk/"},
+{"title":"Afternoon Tea at Foliage","type":"specials","url":"https://foliageplants.co.uk/","signal":true,"is_new_this_week":true}],"notices":[{"text":"Friday evenings run late with music/events, with the full food & drinks menu available all evening.","url":"https://foliageplants.co.uk/"}]},
+{"id":"forts-cafe-broadstairs","name":"Forts Cafe","town":"Broadstairs","type":"cafe","address":"8 Dundonald Rd, Broadstairs CT10 1PE","social":"https://www.instagram.com/fortscoffee/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1920871,"d":"2026-01-26"},"ta":{"r":4.8,"n":21,"closed":false,"i":"g635678-d24835755"},"menus":[]},
+{"id":"joss-bay-cafe","name":"Joss Bay Cafe","town":"Broadstairs","type":"cafe","address":"Joss Gap Rd, Broadstairs CT10 3PG","website":"https://jossbaycafe.co.uk/","social":"https://www.facebook.com/TheJossBayCafe/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":658567,"d":"2026-07-30"},"ta":{"r":2.8,"n":6,"closed":false,"i":"g635678-d14177875"},"menus":[{"title":"Eat & Drink Menu","type":"main","url":"https://jossbaycafe.co.uk/eat-drink/"}]},
+{"id":"forts-cafe-margate","name":"Forts Café","town":"Margate","type":"cafe","address":"8 Cliff Terrace, Cliftonville, Margate CT9 1RU","social":"https://www.instagram.com/fortscoffee/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1273797,"d":"2026-05-21"},"ta":{"r":4.8,"n":95,"closed":false,"i":"g503912-d2424948"},"menus":[]},
+{"id":"fields-cafe-birchington","name":"Fields Café","town":"Birchington","type":"cafe","address":"8 The Square, Birchington-on-Sea CT7 9AB","website":"https://fieldscafe.co.uk/","social":"https://www.facebook.com/fieldsbirchington","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":810440,"d":"2024-11-29"},"ta":{"r":4.7,"n":29,"closed":false,"i":"g1192242-d25134790"},"menus":[{"title":"Menu","type":"main","url":"https://fieldscafe.co.uk/menus"},
+{"title":"Sunday Roast","type":"sunday-roast","url":"https://fieldscafe.co.uk/specials-%26-roasts","signal":true}],"notices":[{"text":"Now offering Sunday Roasts - check the Specials & Roasts page or Facebook for what's available","url":"https://fieldscafe.co.uk/specials-%26-roasts"}]},
+{"id":"golden-coffee-house","name":"Golden Coffee House","town":"Ramsgate","type":"cafe","address":"26 Harbour St, Ramsgate CT11 8HA","social":"https://tinyurl.com/FB-GoldenCoffeeHouse","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1938280,"d":"2026-04-22"},"menus":[]},
+{"id":"hooden-horse","name":"Hooden Horse","town":"Margate","type":"pub","address":"1 Richborough Cl, Margate CT9 4FA","website":"https://www.hungryhorse.co.uk/pubs/kent/hooden-horse","cuisine":"British pub food","fsa":{"r":"5","id":765466,"d":"2025-04-22"},"ta":{"r":3.7,"n":1686,"closed":false,"i":"g503912-d7913461"},"menus":[{"title":"Main Menu","type":"main","url":"https://www.hungryhorse.co.uk/pubs/kent/hooden-horse/menu"},
+{"title":"New Menu Highlights","type":"seasonal","url":"https://www.hungryhorse.co.uk/pubs/kent/hooden-horse/menu-highlights","signal":true,"is_new_this_week":true},
+{"title":"Breakfast Menu","type":"main","url":"https://www.hungryhorse.co.uk/pubs/kent/hooden-horse/breakfast"},
+{"title":"Daily Deals","type":"specials","url":"https://www.hungryhorse.co.uk/pubs/kent/hooden-horse/deals","is_new_this_week":true},
+{"title":"Christmas 2026","type":"festive","url":"https://www.hungryhorse.co.uk/pubs/kent/hooden-horse/christmas","valid_dates":"2026-12","signal":true},
+{"title":"Lunchtime deals (daily offers Mon-Fri)","type":"weekly","url":"https://www.hungryhorse.co.uk/pubs/kent/hooden-horse/deals/lunch","valid_dates":"Mon-Fri 12-4pm"},
+{"title":"Breakfast with Santa","type":"event","url":"https://www.hungryhorse.co.uk/pubs/kent/hooden-horse/christmas/dine-with-santa"},
+{"title":"NEW Loaded Menu (Smoky Rancher, Tingly Tedster, K-BBQ Burger, Full Monty Mixed Grill, Chicken Tikka Masala Platter, Chicken Parmigiana, Katsu Curry Feast)","type":"seasonal","url":"https://www.hungryhorse.co.uk/pubs/kent/hooden-horse/menu-highlights","format":"webpage","signal":true,"is_new_this_week":true}],"notices":[{"text":"\"Brand spanking new menu\" with fresh new dishes now live","url":"https://www.hungryhorse.co.uk/pubs/kent/hooden-horse/menu-highlights"},
+{"text":"Christmas 2026 bookings now open","url":"https://www.hungryhorse.co.uk/pubs/kent/hooden-horse/christmas"},
+{"text":"Page now headlined 'BRAND SPANKING NEW MENU' with new dish names vs. previous highlights content."}]},
+{"id":"la-trattoria","name":"La Trattoria","town":"Margate","type":"restaurant","address":"172 Northdown Rd, Cliftonville CT9 2QN","website":"https://latrattoriamargate.com/","social":"https://www.instagram.com/latrattoriamargate","cuisine":"Italian","fsa":{"r":"5","id":1792424,"d":"2025-01-10"},"ta":{"r":5.0,"n":9,"closed":false,"i":"g503912-d32704846"},"menus":[{"title":"Menu","type":"main","url":"https://latrattoriamargate.com/menu"}]},
+{"id":"marechiaro","name":"Marechiaro","town":"Ramsgate","type":"restaurant","address":"9-12 W Cliff Arcade, Ramsgate CT11 8LH","social":"https://www.instagram.com/marechiarorestaurant","cuisine":"Italian","fsa":{"r":"5","id":1920867,"d":"2026-02-04"},"ta":{"r":5.0,"n":28,"closed":false,"i":"g186314-d34032106"},"ot":{"u":"https://www.opentable.co.uk/r/marechiaro-ramsgate","r":4.8,"n":47},"menus":[]},
+{"id":"canterbury-bell","name":"Canterbury Bell","town":"Broadstairs","type":"pub","address":"481 Margate Rd, Westwood, Broadstairs CT10 2QD","website":"https://www.canterburybellpubthanet.co.uk/","cuisine":"British pub food","fsa":{"r":"5","id":716505,"d":"2024-10-05"},"ta":{"r":4.0,"n":1075,"closed":false,"i":"g635678-d7114438"},"menus":[{"title":"Set Menus","type":"set-menu","url":"https://www.canterburybellpubthanet.co.uk/menus","is_new_this_week":true},
+{"title":"Sunday Roast","type":"sunday-roast","url":"https://www.canterburybellpubthanet.co.uk/sunday-roast"},
+{"title":"Hawkstone Pie","type":"specials","url":"https://www.canterburybellpubthanet.co.uk/hawkstone-pie","signal":true,"is_new_this_week":true},
+{"title":"Christmas/Festive Menu","type":"festive","url":"https://www.canterburybellpubthanet.co.uk/Christmas","valid_dates":"2026-12","signal":true},
+{"title":"Pub lunch","type":"main","url":"https://www.canterburybellpubthanet.co.uk/pub-lunch"},
+{"title":"Pub grill","type":"main","url":"https://www.canterburybellpubthanet.co.uk/pub-grill"},
+{"title":"Vegetarian","type":"other","url":"https://www.canterburybellpubthanet.co.uk/vegetarian"}],"notices":[{"text":"New & Exclusive: Hawkstone Pie","url":"https://www.canterburybellpubthanet.co.uk/hawkstone-pie"},
+{"text":"Book from the festive menu by 31 Oct 2026 to earn a £10 voucher for a Nov/Jan return visit","url":"https://www.canterburybellpubthanet.co.uk/Christmas"},
+{"text":"40% off mains offer via sign-up code","url":"https://www.canterburybellpubthanet.co.uk/40offer"}]},
+{"id":"smugglers","name":"Smugglers","town":"Birchington","type":"restaurant","address":"212 Canterbury Rd, Birchington CT7 9AQ","website":"https://www.smugglersbirchington.co.uk/","social":"https://www.facebook.com/smugglersbirchington/","cuisine":"Modern British & European","fsa":{"r":"5","id":608277,"d":"2025-08-19"},"ta":{"r":4.3,"n":399,"closed":false,"i":"g1192242-d2096689"},"ot":{"u":"https://www.opentable.co.uk/r/smugglers-birchington","r":4.5,"n":29},"menus":[{"title":"£12 Autumn Main Courses (Tue & Fri)","type":"seasonal","url":"https://www.smugglersbirchington.co.uk/_resources/autumn-12.00-main-courses-menu-tuesdays-fridays.pdf","format":"pdf","valid_dates":"Autumn 2026","signal":true},
+{"title":"Food, Wine & Cocktails","type":"main","url":"https://www.smugglersbirchington.co.uk/foodanddrinkmenus","is_new_this_week":true},
+{"title":"Sunday Lunch","type":"sunday-roast","url":"https://www.smugglersbirchington.co.uk/sundaylunches"},
+{"title":"Afternoon Tea","type":"specials","url":"https://www.smugglersbirchington.co.uk/afternoontea"},
+{"title":"Christmas & New Year's Eve","type":"festive","url":"https://www.smugglersbirchington.co.uk/christmasnewyearseve","valid_dates":"2026-12","signal":true},
+{"title":"Late Summer main courses, 12 pounds, Tue-Fri","type":"set-menu","url":"https://www.smugglersbirchington.co.uk/_resources/Late-Summer-Main-Courses-Menu-Tuesdays-Fridays.pdf","format":"pdf","valid_dates":"Tue-Fri, final days"},
+{"title":"Autumn Menu 2026","type":"seasonal","url":"https://www.smugglersbirchington.co.uk/_resources/autumn-menu-2026.pdf","format":"pdf","signal":true,"is_new_this_week":true},
+{"title":"Autumn Sunday Menu 2026","type":"sunday-roast","url":"https://www.smugglersbirchington.co.uk/_resources/autumn-sunday-menu-2026.pdf","format":"pdf","signal":true,"is_new_this_week":true},
+{"title":"Party Menu 2026","type":"event","url":"https://www.smugglersbirchington.co.uk/_resources/Party%20Menu%202026.pdf","format":"pdf","signal":true,"is_new_this_week":true},
+{"title":"Finger Buffet Menu 2025","type":"event","url":"https://www.smugglersbirchington.co.uk/_resources/finger-buffet-menu-2025.pdf","format":"pdf","valid_dates":"2025","is_new_this_week":true},
+{"title":"Afternoon Tea Menu 2025 (PDF)","type":"specials","url":"https://www.smugglersbirchington.co.uk/_resources/afternoon-tea-menu-2025.pdf","format":"pdf","valid_dates":"2025","is_new_this_week":true}],"notices":[{"text":"New Autumn £12 Main Courses menu (Tuesdays & Fridays)","url":"https://www.smugglersbirchington.co.uk/_resources/autumn-12.00-main-courses-menu-tuesdays-fridays.pdf"},
+{"text":"Christmas Day Lunch, Boxing Day Lunch, Christmas Set Menu, Christmas Entertainment Party Menu and NYE now bookable","url":"https://www.smugglersbirchington.co.uk/christmasnewyearseve"},
+{"text":"Site now publishes dated 2026 seasonal/party/wine PDFs alongside the previously tracked undated Autumn/Late-Summer £12 mains PDFs; Christmas & NYE page (christmasnewyearseve) still referenced but not yet pulled."}]},
+{"id":"crown-inn-sarre","name":"Crown Inn","town":"Sarre","type":"pub","address":"Ramsgate Rd, Sarre CT7 0LF","website":"https://www.crowninnsarre.co.uk/menus","social":"https://www.facebook.com/p/The-crown-inn-sarre-100090052359013/","cuisine":"British pub food","fsa":{"r":"5","id":637592,"d":"2025-04-16"},"ta":{"r":4.5,"n":94,"closed":false,"i":"g1637606-d2163087"},"menus":[{"title":"Main Menu","type":"main","url":"https://snsites.co.uk/sites/default/files/2025-04/Crown%20Sarre%20Main%20Menu%20A4%200325.pdf","format":"pdf","valid_dates":"per filename, dated ~Mar 2025 — may be outdated"},
+{"title":"Sunday Menu","type":"sunday-roast","url":"https://snsites.co.uk/sites/default/files/2025-04/Crown%20Sarre%20Sunday%20Menu%20A4%200325.pdf","format":"pdf"},
+{"title":"Non-Gluten Menu","type":"other","url":"https://snsites.co.uk/sites/default/files/2025-04/Crown%20Sarre%20NGT%20Menu%20A4%200325.pdf","format":"pdf"}]},
+{"id":"sargasso-margate","name":"Sargasso","town":"Margate","type":"restaurant","address":"Stone Pier, Margate CT9 1AP","website":"https://www.sargasso.bar/","social":"https://www.instagram.com/sargasso.bar/","cuisine":"Modern British & European","fsa":{"r":"5","id":1199876,"d":"2026-09-11"},"ta":{"r":3.8,"n":150,"closed":false,"i":"g503912-d19266494"},"menus":[{"title":"Menu","type":"main","url":"https://www.sargasso.bar/menu/","is_new_this_week":true},
+{"title":"Feasting Menu","type":"event","url":"https://www.sargasso.bar/menu/feasting-menu/","format":"webpage","is_new_this_week":true}],"notices":[{"text":"Evolving menu now includes more bites, fried snacks and daily-changing dishes, under new Chef Patron Will Gleave","url":"https://www.sargasso.bar/menu/"}]},
+{"id":"veil-of-flavours","name":"Veil of Flavours (Secret Spices)","town":"Margate","type":"restaurant","address":"104 Ramsgate Rd, Margate CT9 4BH","website":"https://www.veilflavours.co.uk/","social":"https://www.facebook.com/secretspicesmargate/","cuisine":"Indian, Sri Lankan & Nepalese","fsa":{"r":"5","id":1907966,"d":"2025-12-17"},"ta":{"r":3.0,"n":4,"closed":false,"i":"g503912-d34276459"},"menus":[{"title":"Online Order Menu","type":"main","url":"https://chefonline.co.uk/veil-of-flavours-margate-margate-ct9/menu"},
+{"title":"'10% OFF' promo site (veilofflavour.co.uk)","type":"specials","url":"https://veilofflavour.co.uk/"}],"notices":[{"text":"Online order menu (chefonline.co.uk) still live; a TripAdvisor review confirms the business is the rebrand of 'Secret Spices' now trading as Veil of Flavours, dine-in/takeaway/collection/delivery all still offered."}]},
+{"id":"alexandra-ristorante-italiano","name":"Alexandra Ristorante Italiano","town":"Ramsgate","type":"restaurant","address":"70 Harbour Parade, Ramsgate CT11 8LP","website":"http://www.alexandraristorante.co.uk/","social":"https://www.facebook.com/alexandraristorante/","cuisine":"Italian","fsa":{"r":"5","id":658569,"d":"2024-11-01"},"ta":{"r":4.3,"n":402,"closed":false,"i":"g186314-d1647613"},"menus":[]},
+{"id":"bar-ingo-broadstairs","name":"Bar Ingo","town":"Broadstairs","type":"restaurant","address":"9 York St, Broadstairs CT10 1PD","website":"https://www.bar-ingo.co.uk/","social":"https://www.instagram.com/bar_ingo_broadstairs/","cuisine":"Spanish & tapas","fsa":{"r":"5","id":1754788,"d":"2026-08-27"},"ta":{"r":4.9,"n":36,"closed":false,"i":"g635678-d28012135"},"ot":{"u":"https://www.opentable.co.uk/r/bar-ingo-broadstairs","r":4.8,"n":176},"menus":[]},
+{"id":"thai-orchid-ramsgate","name":"Thai Orchid Restaurant","town":"Ramsgate","type":"restaurant","address":"1-2 West Cliff Arcade, Ramsgate CT11 8LH","website":"https://www.thaiorchidramsgate.co.uk/","social":"https://www.facebook.com/thaiorchidramsgate/","cuisine":"Thai","fsa":{"r":"5","id":584500,"d":"2025-12-04"},"ta":{"r":4.6,"n":311,"closed":false,"i":"g186314-d2002095"},"menus":[{"title":"Restaurant Menu","type":"main","url":"https://www.thaiorchidramsgate.co.uk/menu.html"}]},
+{"id":"xv-fifteen-square-metres-broadstairs","name":"XV (Fifteen Square Metres)","town":"Broadstairs","type":"restaurant","address":"15 Oscar Road, Broadstairs CT10 1QJ","website":"https://www.fifteensquaremetres.co.uk/","cuisine":"Global small plates","fsa":{"r":"5","id":1760707,"d":"2026-03-27"},"ta":{"r":5.0,"n":78,"closed":false,"i":"g635678-d28113924"},"menus":[{"title":"Menu","type":"seasonal","url":"https://www.fifteensquaremetres.co.uk/menu.html"},
+{"title":"Food Menu","type":"main","url":"https://www.fifteensquaremetres.co.uk/food-menu.html","format":"webpage","is_new_this_week":true}],"notices":[{"text":"Operates only 45 weeks/year and is closed Sun-Tue; previously tracked URL (menu.html) now splits into separate food/drinks pages."}]},
+{"id":"giant-coffee-ramsgate","name":"Giant Coffee Ramsgate","town":"Ramsgate","type":"cafe","address":"1 Charlotte Court, Ramsgate, Kent CT11 8HE","social":"https://www.instagram.com/giant_coffeeramsgate/","cuisine":"Vegan & vegetarian","menus":[]},
+{"id":"captain-ds-broadstairs","name":"Captain D's","town":"Broadstairs","type":"restaurant","address":"Unit R1, Westwood Cross, Margate Road, Broadstairs CT10 2BF","website":"https://www.captainds.com/","cuisine":"Seafood & fish and chips","fsa":{"r":"5","id":1888411,"d":"2025-10-29"},"ta":{"r":4.4,"n":15,"closed":false,"i":"g635678-d33985514"},"menus":[{"title":"Full Menu","type":"main","url":"https://www.captainds.com/our-menu/","is_new_this_week":true}]},
+{"id":"ask-italian-westwood-cross-broadstairs","name":"ASK Italian","town":"Broadstairs","type":"restaurant","address":"Unit 48, Westwood Cross, Margate Road, Broadstairs CT10 2BF","website":"https://www.askitalian.co.uk/italian-restaurants/south-east/westwood-cross","social":"https://www.facebook.com/ASKItalianWestwoodCross/","cuisine":"Italian","fsa":{"r":"5","id":658547,"d":"2025-04-14","m":"address"},"ta":{"r":3.7,"n":481,"closed":false,"i":"g635678-d1101211"},"ot":{"r":3.8,"n":8,"u":"https://www.opentable.co.uk/r/ask-italian-westwood-cross-broadstairs"},"menus":[{"title":"Full Menu","type":"main","url":"https://www.askitalian.co.uk/italian-restaurants/south-east/westwood-cross/menus","is_new_this_week":true},
+{"title":"Kids Set Menu","type":"set-menu","url":"https://www.askitalian.co.uk/italian-restaurants/south-east/westwood-cross/menus/kids-set-menu","is_new_this_week":true},
+{"title":"Autumn Menu (Calabria-inspired)","type":"seasonal","url":"https://www.askitalian.co.uk/the-slice/news/autumn-menu","valid_dates":"Autumn 2026","signal":true,"is_new_this_week":true},
+{"title":"Christmas Menu","type":"festive","url":"https://www.askitalian.co.uk/occasions/christmas","valid_dates":"from 2026-11-17","signal":true},
+{"title":"Lasagne Garlic Bread (Limited Time Special)","type":"specials","url":"https://www.askitalian.co.uk/italian-restaurants/south-east/westwood-cross/menus","format":"webpage","valid_dates":"2026-10-06 to 2026-10-22","signal":true,"is_new_this_week":true},
+{"title":"Spicy Chicken Crocchettes (Autumn Special)","type":"specials","url":"https://www.askitalian.co.uk/italian-restaurants/south-east/westwood-cross/menus","format":"webpage","signal":true,"is_new_this_week":true}],"notices":[{"text":"Brand new Autumn menu with Calabria-inspired spicy dishes now live","url":"https://www.askitalian.co.uk/the-slice/news/autumn-menu"},
+{"text":"Christmas menu sneak peek — launching at this restaurant 17 November 2026","url":"https://www.askitalian.co.uk/occasions/christmas"},
+{"text":"OpenTable listing is no longer bookable — the page now states the restaurant is not on the OpenTable booking network","url":"https://www.opentable.co.uk/r/ask-italian-westwood-cross-broadstairs"},
+{"text":"Christmas 'sneak peek' banner now live on site (book early, reward offer) but no 2026 Christmas menu details/dates posted yet"}]},
+{"id":"follys-dessert-cafe-ramsgate","name":"Folly's Dessert Cafe","town":"Ramsgate","type":"cafe","address":"Turner Street, Ramsgate","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1736394,"d":"2025-02-25","m":"address"},"menus":[]},
+{"id":"cubo-pizzeria-ramsgate","name":"Cubo Pizzeria","town":"Ramsgate","type":"restaurant","address":"Ramsgate Royal Harbour, Ramsgate","website":"https://www.cubopizza.co.uk/","cuisine":"Italian","fsa":{"r":"5","id":1938292,"d":"2026-04-22","m":"address"},"ta":{"r":5.0,"n":16,"closed":false,"i":"g186314-d27994860"},"menus":[]},
+{"id":"little-wave-deli","name":"Little Wave Deli","town":"Broadstairs","type":"cafe","address":"2 High St, Broadstairs CT10 1LH","social":"https://www.instagram.com/littlewave_broadstairs/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1760708,"d":"2026-09-14"},"ta":{"r":5.0,"n":6,"closed":false,"i":"g635678-d28133877"},"menus":[]},
+{"id":"viking-bay-cafe","name":"Viking Bay Cafe","town":"Broadstairs","type":"cafe","address":"Viking Bay, Broadstairs CT10 1PN","social":"https://www.facebook.com/vbcbroadstairs/","cuisine":"Cafe & breakfast","ta":{"r":4.8,"n":41,"i":"g635678-d4042607"},"menus":[]},
+{"id":"cliffs-cafe-margate","name":"Cliffs Cafe","town":"Margate","type":"cafe","address":"172 Northdown Road, Cliftonville, Margate CT9 2QN","website":"https://www.cliffsmargate.com/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":928482,"d":"2022-07-05"},"ta":{"r":4.6,"n":182,"i":"g503912-d12332921"},"menus":[{"title":"Food & Drinks","type":"main","url":"https://www.cliffsmargate.com/food","is_new_this_week":true}]},
+{"id":"cafe-b-birchington","name":"Cafe B","town":"Birchington","type":"cafe","address":"86 Station Road, Birchington-on-Sea CT7 9RA","social":"https://www.facebook.com/cafebbirchington/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":608297,"d":"2024-10-17"},"ta":{"r":4.5,"n":31,"i":"g1192242-d25359725"},"menus":[]},
+{"id":"home-front-tea-room","name":"The Home Front Tea Room","town":"Ramsgate","type":"cafe","address":"13a King St, Ramsgate CT11 8NN","website":"http://40stearoom.co.uk","social":"https://www.facebook.com/40stearoom/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":984444,"d":"2025-07-02"},"ta":{"r":4.9,"n":167,"i":"g186314-d12646396"},"menus":[{"title":"Menu","type":"main","url":"http://40stearoom.co.uk/menu"}]},
+{"id":"wellington","name":"The Wellington","town":"Margate","type":"pub","address":"1 Duke St, Margate CT9 1EP","website":"https://www.thewellingtonmargate.co.uk/","cuisine":"British pub food","fsa":{"r":"5","id":1892883,"d":"2025-12-03"},"ta":{"r":3.5,"n":19,"i":"g503912-d34069341"},"menus":[{"title":"Food Menu","type":"main","url":"https://www.thewellingtonmargate.co.uk/menu","is_new_this_week":true}]},
+{"id":"smoke-and-co","name":"Smoke & Co Margate","town":"Margate","type":"restaurant","address":"24 Marine Dr, Margate CT9 1DH","website":"https://smokeandco.co.uk/","social":"https://www.facebook.com/SmokeandCoThanet/","cuisine":"Burgers, BBQ & American","fsa":{"r":"5","id":1824879,"d":"2025-04-15"},"ta":{"r":3.9,"n":80,"i":"g503912-d33057790"},"ot":{"r":4.6,"n":389},"menus":[{"title":"Food Menu","type":"main","url":"https://smokeandco.co.uk/menu/"},
+{"title":"New Lunch Menu","type":"specials","url":"https://smokeandco.co.uk/menu/","format":"image","signal":true,"is_new_this_week":true}]},
+{"id":"porto-reale","name":"Porto Reale","town":"Ramsgate","type":"restaurant","address":"54-56 Harbour Parade, Ramsgate CT11 8LN","website":"https://portoreale.co.uk/","social":"https://www.facebook.com/p/Porto-Reale-61561763852910/","cuisine":"Italian","fsa":{"r":"5","id":1754790,"d":"2026-07-16"},"ta":{"r":4.8,"n":105,"i":"g186314-d28018497"},"menus":[{"title":"Dining Menu","type":"main","url":"https://portoreale.co.uk/"}]},
+{"id":"kebbells","name":"Kebbells Seafood Bar & Restaurant","town":"Broadstairs","type":"restaurant","address":"8 Victoria Parade, Broadstairs CT10 1QS","website":"https://kebbells.com/","social":"https://www.facebook.com/kebbells.seafoodbar/","cuisine":"Seafood & fish and chips","fsa":{"r":"5","id":1380678,"d":"2025-12-03"},"ta":{"r":4.7,"n":369,"i":"g635678-d23468718"},"menus":[{"title":"Brunch","type":"main","url":"https://kebbells.com/brunch","valid_dates":"Fri-Sun","signal":true},
+{"title":"Plates","type":"main","url":"https://kebbells.com/plates"},
+{"title":"Sunday Lunch","type":"sunday-roast","url":"https://kebbells.com/lunch-on-sundays","valid_dates":"Sundays"},
+{"title":"Christmas Menu","type":"festive","url":"https://kebbells.com/christmas-menu","valid_dates":"Christmas 2026","signal":true},
+{"title":"Desserts","type":"main","url":"https://kebbells.com/desserts"},
+{"title":"Lunch specials: moules and frites","type":"specials","url":"https://kebbells.com/"}],"notices":[{"text":"Five-course wine tasting evening with Yotes Court, 22 October from 7pm (per recent Instagram post).","url":"https://www.facebook.com/kebbells.seafoodbar/"},
+{"text":"Sunday lunch now served as two courses: sharing small plates to start, then a main of your choice (e.g. Spanish-style roast pork belly, chef's choice sirloin).","url":"https://kebbells.com/lunch-on-sundays"}]},
+{"id":"the-new-inn-minster","name":"The New Inn","town":"Minster","type":"pub","address":"2 Tothill St, Minster CT12 4AG","website":"https://www.thenewinn-minster.com/","social":"https://www.facebook.com/profile.php?id=61591180787118","cuisine":"British pub food","fsa":{"r":"4","id":962397,"d":"2026-01-21"},"ta":{"r":4.7,"n":338,"i":"g1096571-d2102437"},"menus":[{"title":"Sunday Roast / Carvery","type":"sunday-roast","url":"https://www.thenewinn-minster.com/menu","valid_dates":"Sundays from 12pm"},
+{"title":"Lunch Menu","type":"main","url":"https://www.thenewinn-minster.com/wp-content/themes/The%20New%20Inn/assets/menus/lunch-menu.jpg","format":"image"},
+{"title":"Dinner Menu","type":"main","url":"https://www.thenewinn-minster.com/wp-content/themes/The%20New%20Inn/assets/menus/dinner-menu.jpg","format":"image"},
+{"title":"This Week: weekly food offers (Monday buy-one-get-cheapest-free)","type":"weekly","url":"https://www.thenewinn-minster.com/","valid_dates":"Recurring weekly"},
+{"title":"Kids Menu","type":"other","url":"https://www.thenewinn-minster.com/wp-content/themes/The%20New%20Inn/assets/menus/kids-menu.jpg","format":"image"},
+{"title":"Menu page also carries ten WhatsApp images uploaded 2026-07-11 (likely menu/offer photos)","type":"other","url":"https://www.thenewinn-minster.com/menu/","format":"image","valid_dates":"Uploaded 2026-07-11"},
+{"title":"This Week: Wednesday Buy One Get Your Cheapest Meal Free","type":"weekly","url":"https://www.thenewinn-minster.com/","format":"webpage","signal":true,"is_new_this_week":true}],"notices":[{"text":"Wednesday Buy-One-Get-One-Free on main meals (excludes steaks and sharing platters, can't combine with other offers).","url":"https://www.thenewinn-minster.com/"},
+{"text":"Live event 'As Is Now' on Saturday 12 December at 8:30pm.","url":"https://www.thenewinn-minster.com/"},
+{"text":"Weekly deal day changed: previously recorded as Monday BOGOF, now shown as Wednesday 'buy one main, get cheapest meal free' (excludes steaks/sharing platters)"}]},
+{"id":"christies-wine-bar-bistro","name":"Christies Wine Bar & Bistro","town":"Birchington","type":"restaurant","address":"1-5 Station Approach, Birchington CT7 9RA (site says CT7 9RE)","website":"https://christieswinebar.wixsite.com/my-site-1","social":"https://www.facebook.com/ChristiesWineBar/","cuisine":"Modern British & European","fsa":{"r":"5","id":608213,"d":"2025-07-28"},"ta":{"r":4.7,"n":274,"i":"g1192242-d2059967"},"menus":[{"title":"Sunday Roast","type":"sunday-roast","url":"https://christieswinebar.wixsite.com/my-site-1/menu","valid_dates":"Sundays"},
+{"title":"Set offer GBP25 per person (Facebook snippet)","type":"event","url":"https://www.facebook.com/ChristiesWineBar/","format":"social","valid_dates":"Undated"},
+{"title":"Daytime Menu","type":"main","url":"https://christieswinebar.wixsite.com/my-site-1/menu","format":"webpage","is_new_this_week":true}],"notices":[{"text":"Sunday Roast content previously on record at this URL was not found on this check; page now shows a 'Daytime Menu' (Wed-Sat 12-3pm) with separate 'Sunday Menu' and 'Children's Menu' links whose contents weren't accessible from the homepage link structure"}]},
+{"id":"rose-in-june","name":"Rose in June","town":"Margate","type":"pub","address":"49-50 Trinity Square, Margate CT9 1HT","website":"https://www.roseinjune.co.uk/","social":"https://www.instagram.com/roseinjunemargate/","cuisine":"Burgers, BBQ & American","fsa":{"r":"5","id":637786,"d":"2025-10-13"},"ta":{"r":4.3,"n":8,"i":"g503912-d23407937"},"menus":[{"title":"Hay's burgers menu at Rose in June (Square online ordering)","type":"main","url":"https://haysburgs.square.site/"},
+{"title":"Instagram: Wed/Thu/Fri burger, fries, side and drink deal","type":"specials","url":"https://www.instagram.com/roseinjunemargate/?hl=en","format":"social"}]},
+{"id":"royal-harbour-brasserie","name":"Royal Harbour Brasserie","town":"Ramsgate","type":"restaurant","address":"Harbour Parade, East Pier, Ramsgate CT11 8LS","website":"https://www.royalharbourbrasserie.co.uk/","social":"https://www.facebook.com/RoyalHarbourBrasserie/","cuisine":"Modern British & European","trading":"unclear","fsa":{"r":"1","id":537319,"d":"2026-05-07"},"ta":{"r":3.8,"n":910,"i":"g186314-d3678425"},"menus":[{"title":"Royal Harbour Brasserie Menu (PDF, from menuweb)","type":"main","url":"https://weur-cdn.menuweb.menu/storage/media/companies_menu_pdf/92549085/royal-harbour-brasserie-ramsgate-menu.pdf","format":"pdf"}],"notices":[{"text":"Homepage currently states the restaurant is closed and 'will reopen on 1st October' — today is 12 Oct 2026, so this may be stale messaging left up after reopening; worth a manual check of current trading status"}]},
+{"id":"the-bedford-inn-ramsgate","name":"The Bedford Inn","town":"Ramsgate","type":"pub","address":"29 West Cliff Rd, Ramsgate CT11 9JP","website":"https://www.thebedfordinn.co.uk/","social":"https://www.facebook.com/p/Bedford-inn-29-westcliff-road-ramsgate-100069449001472/","cuisine":"British pub food","fsa":{"r":"5","id":947209,"d":"2026-08-15"},"ta":{"r":4.7,"n":94,"i":"g186314-d4556332","a":1},"menus":[{"title":"Main Menu","type":"main","url":"https://www.thebedfordinn.co.uk/main-menu"},
+{"title":"Pizza Menu","type":"main","url":"https://www.thebedfordinn.co.uk/pizza-menu"},
+{"title":"Sunday Roasts","type":"sunday-roast","url":"https://www.thebedfordinn.co.uk/copy-of-pizza-menu","valid_dates":"Sundays 12-6:30pm, from 6 Sept 2026","signal":true}],"notices":[{"text":"'Sunday roasts are back from 6th September', served 12-6:30pm — detailed roast menu says 'coming soon' on the site.","url":"https://www.thebedfordinn.co.uk/"},
+{"text":"2-for-£15 cocktails daily, 5-7pm.","url":"https://www.thebedfordinn.co.uk/cocktail-menu"}]},
+{"id":"forno-lounge-broadstairs","name":"Forno Lounge","town":"Broadstairs","type":"cafe","address":"16-18 Albion St, Broadstairs CT10 1LU","website":"https://thelounges.co.uk/forno/","social":"https://www.facebook.com/fornolounge/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1856244,"d":"2025-07-30"},"ta":{"r":4.2,"n":39,"i":"g635678-d33242264"},"menus":[{"title":"Full Menu","type":"main","url":"https://thelounges.co.uk/forno/menus"},
+{"title":"Autumn/Winter 2026 Menu","type":"seasonal","url":"https://thelounges.co.uk/whats-on/autumn-winter-2026-menu","valid_dates":"Autumn/Winter 2026","signal":true,"is_new_this_week":true},
+{"title":"Christmas Menu","type":"festive","url":"https://thelounges.co.uk/christmas","valid_dates":"19 Nov - 31 Dec 2026","signal":true}],"notices":[{"text":"Cheeky Mondays: free drink or pudding with a burger/main/salad from 5pm.","url":"https://thelounges.co.uk/forno/"},
+{"text":"Tapas Tuesday: three tapas plus a drink for £14.50 from 5pm.","url":"https://thelounges.co.uk/forno/"},
+{"text":"Lunch Deal: soup and half a grilled cheese toastie for £7.50, Mon-Fri 12-5pm.","url":"https://thelounges.co.uk/forno/"}]},
+{"id":"aster-broadstairs","name":"Aster","town":"Broadstairs","type":"restaurant","address":"1 Oscar Road, Broadstairs, Kent CT10 1QJ","website":"https://www.asterbroadstairs.com/","social":"https://www.facebook.com/profile.php?id=61580185031562","cuisine":"Vegan & vegetarian","fsa":{"r":"5","id":1892881,"d":"2025-11-13"},"ta":{"r":5.0,"n":19,"closed":false},"menus":[{"title":"Lunch Set Menu","type":"set-menu","url":"https://www.asterbroadstairs.com/","valid_dates":"Thu-Sat, 12pm & 2pm, £45pp"},
+{"title":"Dinner Set Menu","type":"set-menu","url":"https://www.asterbroadstairs.com/","valid_dates":"Wed-Sat, 6pm & 8pm, £75pp (7 courses)"},
+{"title":"Charity Sunday Roast","type":"sunday-roast","url":"https://www.asterbroadstairs.com/","valid_dates":"Last Sunday of the month, £35pp, proceeds to charity"},
+{"title":"Mushroom Wellington Roast","type":"sunday-roast","url":"https://www.asterbroadstairs.com/","valid_dates":"Second Sunday of the month, £25pp"}]},
+{"id":"sete-cliftonville","name":"Sète","town":"Margate","type":"restaurant","address":"Cliftonville, Margate CT9 2QD","website":"https://www.setemargate.com/","social":"https://www.facebook.com/100094037907036/","cuisine":"Modern British & European","fsa":{"r":"5","d":"2025-11-05","m":"address"},"ta":{"r":4.3,"n":35,"i":"g503912-d28550011"},"ot":{"u":"https://www.opentable.co.uk/r/sete-margate","r":4.7,"n":210},"menus":[{"title":"Saturday Lunch (incl. Moules Frites)","type":"specials","url":"https://www.setemargate.com/","valid_dates":"Saturdays 12-3pm","signal":true,"is_new_this_week":true},
+{"title":"The Sète Menu","type":"set-menu","url":"https://www.setemargate.com/","valid_dates":"Mon & Tue 5-6:30pm, 2 courses £22 / 3 courses £25","is_new_this_week":true}],"notices":[{"text":"Apéro Hour: selected wine by the glass £5 or £7, weekdays 5-6.30pm and Saturdays 3-5pm.","url":"https://www.setemargate.com/"},
+{"text":"Homepage displays a Sunday Lunch poster/image, but stated opening hours say the restaurant is closed Wednesday, Thursday and Sunday — discrepancy worth checking directly with the venue"}]},
+{"id":"wagamama-westwood-cross-broadstairs","name":"wagamama Westwood Cross","town":"Broadstairs","type":"restaurant","address":"23 Margate Road, Westwood Cross, Westwood, Broadstairs, Kent CT10 2BF","website":"https://www.wagamama.com/restaurants/broadstairs/westwood-cross","social":"https://www.instagram.com/wagamama_uk/","cuisine":"Japanese","ot":{"u":"https://www.opentable.co.uk/r/wagamama-westwood-cross-broadstairs","r":3.9,"n":5},"menus":[{"title":"wagamama menu","type":"main","url":"https://www.wagamama.com/menu"}]},
+{"id":"taco-bell-westwood-cross-broadstairs","name":"Taco Bell","town":"Broadstairs","type":"restaurant","address":"Unit R4, Westwood Cross Shopping Centre, Margate Road, Broadstairs CT10 2BF","website":"https://www.tacobell.co.uk/","cuisine":"Mexican & Tex-Mex","fsa":{"r":"5","id":1789172,"d":"2024-12-17"},"ta":{"r":2.3,"n":3,"i":"g635678-d32769129"},"notices":[{"text":"Taco Tuesday: Crunchy Taco + beer for £2 at participating restaurants; a related free-UberEats-delivery-over-£10 offer appears to have expired (stated end date 'November 30th' with no year given).","url":"https://www.tacobell.co.uk/"}],"menus":[]},
+{"id":"flavours-by-kumar-ramsgate","name":"Flavours by Kumar","town":"Ramsgate","type":"restaurant","address":"2 Effingham Street, Ramsgate, Kent, CT11 9AT","website":"https://www.flavoursbykumar.co.uk","social":"https://www.facebook.com/IndianRestaurantRamsgate","cuisine":"Indian, Sri Lankan & Nepalese","fsa":{"r":"5","id":637815,"d":"2026-01-30"},"ta":{"r":4.6,"n":1103,"i":"g186314-d5724141"},"menus":[{"title":"Our Menu","type":"main","url":"https://www.flavoursbykumar.co.uk/our-menu/"}],"notices":[{"text":"Celebrating its 10th anniversary; 10% off online orders over £15 (Ramsgate and Garlinge branches).","url":"https://www.flavoursbykumar.co.uk"}]},
+{"id":"little-brick-house-cafe-ramsgate","name":"Little Brick House Cafe","town":"Ramsgate","type":"cafe","serves_food":"unclear","cuisine":"Cafe & breakfast","trading":"unclear","menus":[]},
+{"id":"mariners-bar-ramsgate","name":"Mariners Bar","town":"Ramsgate","type":"pub","address":"34 York Street, Ramsgate, Kent","website":"https://marinersbar.co.uk/","social":"https://www.facebook.com/marinersbarramsgate/","cuisine":"British pub food","fsa":{"id":370786,"d":"2024-05-30","m":"address"},"ta":{"r":4.2,"n":170,"i":"g186314-d2256354"},"menus":[{"title":"Mariner's Menu","type":"main","url":"https://marinersbar.co.uk/wp-content/uploads/Main_Menu-1.pdf","format":"pdf","valid_dates":"10am-4pm daily","signal":true},
+{"title":"Rustic Pizza Menu","type":"main","url":"https://marinersbar.co.uk/wp-content/uploads/mariners-pizza-menu-2.pdf","format":"pdf","valid_dates":"10am-late","signal":true},
+{"title":"Pizza & Sides Menu","type":"main","url":"https://marinersbar.co.uk/wp-content/uploads/pizza-and-sides-menu-Oct25-1.pdf","format":"pdf","valid_dates":"dated Oct 2025 — may be superseded"},
+{"title":"Bar Menu (unlabelled PDF, linked under Open Mic/Live Entertainment/Seasonal Celebrations/Charity Pool Table sections)","type":"other","url":"https://marinersbar.co.uk/wp-content/uploads/mariners-bar-menu.pdf","format":"pdf","signal":true,"is_new_this_week":true}],"notices":[{"text":"Gin Bar (100+ gins) and charity pool table for the RNLI, daily from 12 Oct 2026.","url":"https://marinersbar.co.uk/"},
+{"text":"Live entertainment Friday/Saturday nights from 17 Oct 2026; open mic night first Wednesday of the month (next 4 Nov 2026).","url":"https://marinersbar.co.uk/"},
+{"text":"No Sunday roast or festive/Christmas food menu found on site despite a Christmas decor banner; existing pizza/main menus still linked."}]},
+{"id":"bessies-tea-parlour","name":"Bessie's Tea Parlour","town":"Broadstairs","type":"cafe","address":"45 Albion St, Broadstairs CT10 1NE","website":"https://bessiesbroadstairs.co.uk/","social":"https://www.instagram.com/bessiesbroadstairs/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":700024,"d":"2024-07-16"},"ta":{"r":4.6,"n":338,"closed":false,"i":"g635678-d6967923"},"menus":[{"title":"Menu","type":"main","url":"https://bessiesbroadstairs.co.uk/menu/"}],"notices":[{"text":"Change of management in 2025 - Karen handed running of the Tea Parlour to long-time staff member Jess. No new/seasonal/Christmas menu found.","url":"https://bessiesbroadstairs.co.uk/"}]},
+{"id":"jems-coffee-shop-minster","name":"Jem's Coffee Shop","town":"Minster","type":"cafe","address":"77 High St, Minster, Ramsgate CT12 4AB","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":984446,"d":"2025-05-22","m":"address"},"ta":{"r":4.6,"n":71,"closed":false,"i":"g1096571-d7251416"},"menus":[]},
+{"id":"glorias-lounge-cafe-margate","name":"Gloria's Lounge & Cafe","town":"Margate","type":"cafe","address":"259 Northdown Road, Cliftonville, Margate CT9 2PN","website":"https://www.glorias-lounge-cafe.co.uk/","social":"https://www.facebook.com/GloriasMargate/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":943198,"d":"2026-09-02"},"ta":{"r":4.9,"n":51,"i":"g503912-d10718257"},"menus":[{"title":"Main Menu","type":"main","url":"https://www.glorias-lounge-cafe.co.uk/images/Menu.pdf","format":"pdf"},
+{"title":"Kids Menu","type":"other","url":"https://www.glorias-lounge-cafe.co.uk/images/Menu.pdf","format":"pdf","is_new_this_week":true},
+{"title":"Takeaway Menu","type":"other","url":"https://www.glorias-lounge-cafe.co.uk/images/Menu.pdf","format":"pdf","is_new_this_week":true}]},
+{"id":"village-square-cafe-birchington","name":"Village Square Cafe","town":"Birchington","type":"cafe","address":"22-24 The Square, Birchington-on-Sea CT7 9AB","social":"https://www.facebook.com/profile.php?id=386751081400468","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":608391,"d":"2025-07-09"},"ta":{"r":4.4,"n":81,"i":"g1192242-d2536189"},"menus":[]},
+{"id":"coast-cafe-and-bar","name":"Coast Cafe and Bar","town":"Ramsgate","type":"cafe","address":"Victoria Parade, Ramsgate CT11 8DG","social":"https://www.instagram.com/coastramsgate/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":620159,"d":"2025-11-04","m":"address"},"ta":{"r":1.7,"n":3,"i":"g186314-d28257123"},"menus":[]},
+{"id":"faith-in-strangers","name":"Faith In Strangers","town":"Margate","type":"restaurant","address":"17 Ethelbert Cres, Cliftonville CT9 2DY","website":"https://faithinstrangers.co.uk/","social":"https://twitter.com/FISmargate","cuisine":"Modern British & European","fsa":{"r":"5","id":1422415,"d":"2025-04-25"},"ta":{"r":4.7,"n":26,"i":"g503912-d33054676"},"menus":[{"title":"Steak Frites Thursdays","type":"specials","url":"https://faithinstrangers.co.uk/steakfrites","valid_dates":"weekly, Thursdays from 6pm","signal":true,"is_new_this_week":true},
+{"title":"Sunday Roast","type":"sunday-roast","url":"https://faithinstrangers.co.uk/roast","valid_dates":"weekly, Sundays 12-5pm","signal":true},
+{"title":"Members Lunch (Work.Club)","type":"weekly","url":"https://faithinstrangers.co.uk/","valid_dates":"weekly, Wednesdays, £15pp","signal":true},
+{"title":"New Year's Eve Dinner 2026","type":"festive","url":"https://faithinstrangers.co.uk/events/new-years-eve-dinner-2026","valid_dates":"31 Dec 2026, 6:30pm","signal":true,"is_new_this_week":true},
+{"title":"Christmas Parties","type":"festive","url":"https://faithinstrangers.co.uk/christmas-parties","valid_dates":"Dec 2026","signal":true,"is_new_this_week":true},
+{"title":"Restaurant dinner (Fri 6pm, Sat from 4pm)","type":"main","url":"https://faithinstrangers.co.uk/restaurant","valid_dates":"Fri 6pm, Sat from 4pm"}],"notices":[{"text":"New Year's Eve Dinner 2026 bookable now.","url":"https://faithinstrangers.co.uk/events/new-years-eve-dinner-2026"},
+{"text":"Christmas Parties page live for 2026 bookings (no menu detail yet).","url":"https://faithinstrangers.co.uk/christmas-parties"}]},
+{"id":"churchill-tavern","name":"The Churchill Tavern","town":"Ramsgate","type":"pub","address":"19-21 Paragon, Ramsgate CT11 9JX","website":"https://churchilltavern.co.uk/","social":"https://www.facebook.com/p/Churchill-Tavern-CT11-61579947638468/","cuisine":"British pub food","fsa":{"r":"5","id":1977644,"d":"2026-07-29"},"ta":{"r":4.4,"n":302,"i":"g186314-d2145932"},"menus":[{"title":"Christmas Menu","type":"festive","url":"https://churchilltavern.co.uk/images/christmas/christmas_menu_23.jpeg","format":"image","valid_dates":"2023 (filename suggests outdated - needs reverification)","is_new_this_week":true},
+{"title":"Roostys at the Churchill Tavern (menus on roostys.co.uk)","type":"main","url":"https://churchilltavern.co.uk/restaurant"}],"notices":[{"text":"Christmas Menu link on site (christmas_menu_23.jpeg) is dated 2023 - no 2026 Christmas menu found on site; may need checking with venue/Roostys directly."}]},
+{"id":"wandering-hut","name":"Wandering Hut","town":"Ramsgate","type":"restaurant","address":"Custom House, Harbour Parade, Ramsgate CT11 8LP","website":"https://www.wanderinghut.com/","cuisine":"Mediterranean & Middle Eastern","fsa":{"r":"5","id":1846025,"d":"2025-06-17"},"ta":{"r":4.8,"n":114,"closed":false},"menus":[{"title":"Main Menu (Tapas, Meats & Fish, Pasta & Risotto, Salads, Breads)","type":"main","url":"https://images.squarespace-cdn.com/content/v1/67f7a0c373415b68b18bf5d4/0660fb16-793d-4308-8920-104da2d2682e/Menu+Hut++%28200+x+50+cm%29+%28420+x+297+mm%29.png","format":"image","is_new_this_week":true}]},
+{"id":"tartar-frigate","name":"The Tartar Frigate","town":"Broadstairs","type":"pub","address":"Harbour St, Broadstairs CT10 1EU","website":"https://www.tartarfrigate.co.uk/","social":"https://www.facebook.com/thetartarfrigate/","cuisine":"British pub food","fsa":{"r":"5","id":265665,"d":"2024-03-25"},"ta":{"r":4.6,"n":1309,"i":"g635678-d1524192"},"ot":{"u":"https://www.opentable.co.uk/tartar-frigate","r":4.7,"n":1280},"menus":[{"title":"Main Menu","type":"main","url":"https://www.tartarfrigate.co.uk/s/REST-WEB.pdf","format":"pdf"},
+{"title":"Bar Menu","type":"main","url":"https://www.tartarfrigate.co.uk/s/BAR.pdf","format":"pdf"},
+{"title":"Sunday Menu (June 2026)","type":"sunday-roast","url":"https://www.tartarfrigate.co.uk/s/37003-Tartar-Frigate-Sunday-Menu-June-2026-v2.pdf","format":"pdf","valid_dates":"June 2026","signal":true},
+{"title":"Christmas Menu 2026","type":"festive","url":"https://www.tartarfrigate.co.uk/s/37396-TT-Christmas-Separate-Menus-Aug-2026_Tartar-Frigate-gg3f.pdf","format":"pdf","valid_dates":"Dec 2026","signal":true},
+{"title":"Children's Menu","type":"other","url":"https://www.tartarfrigate.co.uk/s/CHILDS-MENU.pdf","format":"pdf"},
+{"title":"Boxing Day Lunch","type":"festive","url":"https://www.tartarfrigate.co.uk/","valid_dates":"26 Dec 2026, £45pp, 12:30/3:30 sittings","signal":true},
+{"title":"New Year's Day Lunch","type":"festive","url":"https://www.tartarfrigate.co.uk/","valid_dates":"1 Jan 2027, £45pp, 12:30/3:30 sittings","signal":true},
+{"title":"Pink Sunday (breast cancer charity lunch)","type":"event","url":"https://www.tartarfrigate.co.uk/","valid_dates":"25 Oct 2026, 12:30/3:30 sittings","signal":true,"is_new_this_week":true}],"notices":[{"text":"Christmas Pre-Order Sheet for party bookings now available.","url":"https://www.tartarfrigate.co.uk/s/FRIGATE-XMAS-PARTY-TICK-SHEET-2026.doc"},
+{"text":"Pink Sunday charity lunch for breast cancer awareness on 25 Oct 2026.","url":"https://www.tartarfrigate.co.uk/"},
+{"text":"Site now states 'We will be serving the new menu on Sundays in the Bar area' - possible new/separate Sunday bar menu alongside the existing dining-room Sunday Menu; no distinct URL found yet."},
+{"text":"Boxing Day and New Year's Day lunches confirmed as 4-course meals at £45pp, 12:30pm/3:30pm sittings; no standalone menu PDF linked."}]},
+{"id":"the-bell-inn-minster","name":"The Bell Inn","town":"Minster","type":"pub","address":"2 High St, Minster CT12 4BU","website":"https://thebellinnminster.weebly.com/","social":"https://www.facebook.com/thebellinnminster/","cuisine":"British pub food","fsa":{"r":"2","id":1067421,"d":"2026-07-28"},"ta":{"r":4.3,"n":354,"i":"g1096571-d4766241"},"menus":[{"title":"Menu","type":"main","url":"https://thebellinnminster.weebly.com/menu.html"},
+{"title":"Xmas Menu 2026","type":"festive","url":"https://thebellinnminster.weebly.com/xmas-menu-2026.html","valid_dates":"Dec 2026","signal":true},
+{"title":"Daily specials board (Facebook)","type":"specials","url":"https://www.facebook.com/thebellinnminster/","format":"social"}],"notices":[{"text":"Xmas Menu 2026 page now live.","url":"https://thebellinnminster.weebly.com/xmas-menu-2026.html"}]},
+{"id":"lafayettes-margate","name":"Lafayette's","town":"Margate","type":"restaurant","address":"13-15 High St, Margate CT9 1DL","website":"https://www.lafayettesmargate.co.uk/menus","social":"https://www.instagram.com/_lafayettes_/","cuisine":"Modern British & European","fsa":{"r":"5","id":1805282,"d":"2025-01-23"},"ta":{"r":4.7,"n":68,"i":"g503912-d27690814"},"menus":[{"title":"Breakfast Menu","type":"main","url":"https://www.lafayettesmargate.co.uk/menus?menu=breakfast-menu-1","valid_dates":"Fri-Sun, 10am-12:30pm"},
+{"title":"Main Menu","type":"main","url":"https://www.lafayettesmargate.co.uk/menus?location=Location+1&menu=main-menu#1"},
+{"title":"Dessert Menu","type":"main","url":"https://www.lafayettesmargate.co.uk/menus?location=Location+1&menu=dessert-menu#1"},
+{"title":"Sunday Menu","type":"sunday-roast","url":"https://www.lafayettesmargate.co.uk/menus?location=Location+1&menu=sunday-menu#1","is_new_this_week":true},
+{"title":"Monthly pan-Asian Sunday (first Sunday of each month)","type":"monthly","url":"https://www.lafayettesmargate.co.uk/menus","valid_dates":"First Sunday monthly"},
+{"title":"Dessert Menu","type":"other","url":"https://www.lafayettesmargate.co.uk/menus?location=Location+1&menu=dessert-menu"}]},
+{"id":"lilies-margate","name":"Lilie's","town":"Margate","type":"restaurant","address":"3 Cliff Terrace, Cliftonville, Margate CT9 1RU","website":"https://www.liliesmargate.com/","social":"https://www.instagram.com/lilies_margate/","cuisine":"Spanish & tapas","fsa":{"r":"5","id":1532183,"d":"2026-07-09"},"ta":{"r":4.8,"n":97,"i":"g503912-d24172264"},"menus":[{"title":"Menu","type":"main","url":"https://www.liliesmargate.com/menu"},
+{"title":"Specials menu","type":"specials","url":"https://www.liliesmargate.com/menu?menu=specials#1"},
+{"title":"Christmas & New Year celebrations","type":"festive","url":"https://www.liliesmargate.com/events"}],"notices":[{"text":"Homepage promotes a 'Celebrate Christmas & New Year Lilie's style' events page, but no festive menu or pricing details given yet.","url":"https://www.liliesmargate.com/events"}]},
+{"id":"the-waterfront-ramsgate","name":"The Waterfront","town":"Ramsgate","type":"pub","address":"88 Harbour Parade, Ramsgate CT11 8LP","website":"https://www.craftunionpubs.com/waterfront-pub-ramsgate","social":"https://www.facebook.com/thewaterfrontramsgate/","serves_food":"unclear","cuisine":"British pub food","fsa":{"r":"5","id":1126614,"d":"2025-02-18"},"ta":{"r":4.3,"n":11,"closed":false,"a":1},"menus":[{"title":"Third-party menu listing","type":"other","url":"https://mymenuweb.com/uk/restaurants/678369/"},
+{"title":"Food Truck events (occasional, local vendors)","type":"event","url":"https://www.craftunionpubs.com/waterfront-pub-ramsgate/food-events"}],"notices":[{"text":"Christmas 2026 occasion page live (drinks/booking focused, no food menu shown).","url":"https://www.craftunionpubs.com/pubs/waterfront-pub-ramsgate/occasions/christmas-pub"},
+{"text":"Halloween drinks promotion page live.","url":"https://www.craftunionpubs.com/pubs/waterfront-pub-ramsgate/occasions/halloween-drinks"},
+{"text":"Craft Union pub page for this venue currently shows only drinks offers (bombs, cider, draught deals) - no food menu content visible on the page at all; worth confirming whether food service is still offered."}]},
+{"id":"the-racing-greyhound-ramsgate","name":"The Racing Greyhound","town":"Ramsgate","type":"pub","address":"227 Hereson Rd, Ramsgate CT11 7EX","social":"https://www.facebook.com/rgreyhound/","cuisine":"British pub food","fsa":{"r":"5","id":637649,"d":"2025-05-23"},"ta":{"r":4.5,"n":339,"i":"g186314-d3454020"},"menus":[]},
+{"id":"le-vintage-broadstairs","name":"Le Vintage","town":"Broadstairs","type":"restaurant","address":"53 Albion St, Broadstairs CT10 1NE","website":"https://www.le-vintage.co.uk/","social":"https://www.facebook.com/profile.php?id=100092608237986","cuisine":"Modern British & European","fsa":{"r":"5","id":1412326,"d":"2023-09-27"},"ta":{"r":4.7,"n":74,"i":"g635678-d26636409"},"ot":{"u":"https://www.opentable.co.uk/r/le-vintage-broadstairs","r":4.8,"n":22},"menus":[{"title":"Food Menu","type":"main","url":"https://www.le-vintage.co.uk/menu/"},
+{"title":"Weekly Promotions (Wine Wednesday, Steak Night Thursday, Sunday Date Night)","type":"specials","url":"https://www.le-vintage.co.uk/promotions/","valid_dates":"Ongoing, no end date shown"}],"notices":[{"text":"Site now also links a 'Dessert Menu' PDF whose link tooltip oddly reads 'Click here for the Sunday menu' - possible mislabeled or undocumented new Sunday menu; no distinct URL captured."}]},
+{"id":"jetty-broadstairs","name":"Jetty Broadstairs","town":"Broadstairs","type":"restaurant","address":"Pier Head Kiosk, The Harbour, Broadstairs, Kent CT10 1JU","website":"https://www.jettybroadstairs.co.uk","social":"https://www.jettybroadstairs.co.uk","cuisine":"Modern British & European","fsa":{"r":"4","id":1422416,"d":"2026-09-22"},"ta":{"r":4.2,"n":257,"i":"g635678-d23646461"},"ot":{"u":"https://www.opentable.co.uk/r/jetty-seafood-broadstairs","r":4.6,"n":896},"menus":[{"title":"Bistro Menu","type":"main","url":"https://www.jettybroadstairs.co.uk/bistro-menu"},
+{"title":"Takeaway Menu","type":"other","url":"https://www.jettybroadstairs.co.uk/takeaway-menu"},
+{"title":"Breakfast Menu","type":"main","url":"https://www.jettybroadstairs.co.uk/bistro-menu","format":"webpage","signal":true,"is_new_this_week":true},
+{"title":"Specials","type":"specials","url":"https://www.jettybroadstairs.co.uk/bistro-menu","format":"webpage","signal":true,"is_new_this_week":true},
+{"title":"Bistro Kids","type":"other","url":"https://www.jettybroadstairs.co.uk/bistro-menu","format":"webpage","signal":true,"is_new_this_week":true},
+{"title":"Sunday Roast","type":"sunday-roast","url":"https://www.jettybroadstairs.co.uk/bistro-menu","format":"webpage","signal":true,"is_new_this_week":true},
+{"title":"Christmas Set Menu","type":"festive","url":"https://www.jettybroadstairs.co.uk/bistro-menu","format":"webpage","signal":true,"is_new_this_week":true}],"notices":[{"text":"Newly launched breakfast service: Wed-Sun 8am, last orders 10:45am, starting Wed 7 Oct (year not stated on page)."}]},
+{"id":"gb-pizza-co-margate","name":"GB Pizza Co","town":"Margate","type":"restaurant","address":"14a Marine Drive, Margate, Kent","website":"https://greatbritishpizza.com/","social":"https://www.instagram.com/gbpizzacomargate/","cuisine":"Italian","fsa":{"r":"5","id":555401,"d":"2025-06-11","m":"14A Marine Drive, Margate, Kent CT9 1DH"},"ta":{"r":4.3,"n":1018,"i":"g503912-d3315318"},"menus":[{"title":"Food & Drink Menu (Margate)","type":"main","url":"https://greatbritishpizza.com/home-margate-menu-margate-2/"}]},
+{"id":"giant-coffee-broadstairs","name":"Giant Coffee Broadstairs","town":"Broadstairs","type":"cafe","address":"35 Albion Street, Broadstairs, Kent CT10 1LU","social":"https://www.instagram.com/giant_coffeebroadstairs/","cuisine":"Vegan & vegetarian","fsa":{"r":"4","id":1837953,"d":"2025-05-08","m":"address"},"ta":{"r":4.9,"n":8,"i":"g635678-d33248805"},"menus":[]},
+{"id":"frankies-at-the-beach-ramsgate","name":"Frankie's at the Beach","town":"Ramsgate","type":"cafe","address":"Kiosk 1, Marina Esplanade, Ramsgate CT11 8LP","website":"https://www.visitramsgate.co.uk/frankies-at-the-beach/","cuisine":"Burgers, BBQ & American","ta":{"r":4.9,"n":754,"closed":false},"menus":[{"title":"Beach Kiosk Menu (burgers, hotdogs, ice cream, cocktails)","type":"main","url":"https://www.visitramsgate.co.uk/frankies-at-the-beach/","is_new_this_week":true}]},
+{"id":"tim-hortons-broadstairs","name":"Tim Hortons","town":"Broadstairs","type":"restaurant","address":"473a Margate Road, Broadstairs, Kent CT10 2PR","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1611313,"d":"2025-03-19"},"ta":{"r":2.7,"n":69,"i":"g635678-d25393820"},"menus":[]},
+{"id":"turkuaz-ramsgate","name":"Turkuaz","town":"Ramsgate","type":"restaurant","address":"Royal Oak Hotel, Ramsgate","cuisine":"Turkish","menus":[]},
+{"id":"olivias-pizza-kitchen-ramsgate","name":"Olivia's Pizza & Kitchen (Spitz Bar & Lounge)","town":"Ramsgate","type":"restaurant","social":"https://www.instagram.com/oliviaspizzaandkitchen","cuisine":"Italian","menus":[]},
+{"id":"old-curiosity-shop-cafe","name":"The Old Curiosity Shop Cafe","town":"Broadstairs","type":"cafe","address":"9 Harbour St, Broadstairs CT10 1ET","website":"https://www.curiosityshopbroadstairs.com/","social":"https://www.instagram.com/curiosityshopbroadstairs/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":745635,"d":"2025-02-04"},"ta":{"r":4.3,"n":274,"closed":false,"i":"g635678-d2251567"},"menus":[{"title":"Food & Drinks","type":"main","url":"https://www.curiosityshopbroadstairs.com/food-and-drinks/"},
+{"title":"Christmas Events 2026","type":"festive","url":"https://www.curiosityshopbroadstairs.com/christmas-events/","valid_dates":"2026","is_new_this_week":true},
+{"title":"Curious Catering","type":"other","url":"https://www.curiosityshopbroadstairs.com/curious-catering/","is_new_this_week":true}],"notices":[{"text":"Christmas Events 2026 page live but says 'watch this space for even more news soon' - no specific festive menu/dates posted yet","url":"https://www.curiosityshopbroadstairs.com/christmas-events/"},
+{"text":"Christmas Events 2026 page is live but says details are still to come ('watch this space') - no specific events/menu published yet as of Oct 2026."}]},
+{"id":"the-bus-cafe-margate","name":"The Bus Café","town":"Margate","type":"cafe","address":"The Sun Deck, Royal Crescent Promenade, Westbrook, Margate CT9 5AJ","website":"https://www.thebuscafe.co.uk/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":962407,"d":"2025-04-09"},"ta":{"r":4.7,"n":319,"closed":false,"i":"g503912-d10463902"},"menus":[{"title":"Breakfast & Lunch Menu","type":"main","url":"https://www.thebuscafe.co.uk/menu","format":"image"}]},
+{"id":"big-shot-margate","name":"Big Shot","town":"Margate","type":"cafe","address":"Marwell House, 3 Marine Drive, Margate CT9 1DH","website":"https://www.bigshotcoffee.co.uk/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1489165,"d":"2025-02-21"},"ta":{"r":4.5,"n":8,"closed":false,"i":"g503912-d23918902"},"menus":[{"title":"Margate Diner page (food, cocktails, coffee)","type":"main","url":"https://bigshotcoffee.co.uk/margatediner"},
+{"title":"Bottomless Brunch","type":"event","url":"https://bigshotcoffee.co.uk/bottomlessbrunchmargate"}],"notices":[{"text":"Site notes evening food pop-ups 'run regularly in autumn and winter' - watch socials for dates; no specific menu or URL found this week."}]},
+{"id":"marias-kitchen-birchington","name":"Maria's Kitchen","town":"Birchington","type":"cafe","address":"71 Station Road, Birchington-on-Sea CT7 9RE","social":"https://www.facebook.com/61565483433346","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1760712,"d":"2026-03-04"},"ta":{"r":4.9,"n":47,"closed":false,"i":"g1192242-d28403004"},"menus":[]},
+{"id":"the-lookout-cafe","name":"The Lookout Cafe","town":"Ramsgate","type":"cafe","address":"West Cliff Promenade, Ramsgate CT11 9JY","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":584528,"d":"2025-07-22"},"ta":{"r":3.6,"n":39,"closed":false,"i":"g186314-d3365377"},"menus":[]},
+{"id":"henrys-pub","name":"Henrys Pub","town":"Margate","type":"pub","address":"52 High St, Margate CT9 1DT","social":"https://www.instagram.com/henrysmargate/","cuisine":"Anglo-Indian","ta":{"r":5.0,"n":4,"closed":false,"i":"g503912-d34086638","a":1},"notices":[{"text":"Per theisleofthanetnews.com (22 Dec 2025): kitchen installed Jan 2026, authentic Indian street food/finger food menu planned to launch mid-to-late March 2026 under new landlord Paul Singh Tung - should now be live as of Oct 2026, but no menu page/URL found to confirm."}],"menus":[]},
+{"id":"bar-finns","name":"Bar Finn's","town":"Ramsgate","type":"pub","address":"6-7 W Cliff Arcade, Ramsgate CT11 8LH","website":"https://barfinns.com/","social":"https://www.instagram.com/barfinnsramsgate/","cuisine":"British pub food","fsa":{"r":"5","id":1846019,"d":"2025-06-17"},"ta":{"r":4.5,"n":10,"closed":false,"i":"g186314-d33283093"},"menus":[{"title":"Small plates / bar menu","type":"main","url":"https://barfinns.com/","is_new_this_week":true}],"notices":[{"text":"What's On: weekly live acoustic session, summer sunset harbour evenings, monthly wine tasting nights (events change seasonally)","url":"https://barfinns.com/"}]},
+{"id":"noa-rooftop","name":"Noa Rooftop","town":"Ramsgate","type":"restaurant","address":"The Granville Theatre, Victoria Parade, Ramsgate CT11 8DG","website":"https://www.noarooftop.co.uk/","cuisine":"Modern British & European","fsa":{"r":"5","id":620159,"d":"2025-11-04","m":"address"},"ta":{"r":5.0,"n":2,"closed":false,"i":"g186314-d34280493"},"menus":[{"title":"Summer Menu 2026","type":"seasonal","url":"https://www.noarooftop.co.uk/s/NOA-FOOD-MENU-A4-SUMMER-26-NEW.pdf","format":"pdf","valid_dates":"Summer 2026","signal":true},
+{"title":"Full Menu","type":"main","url":"https://www.noarooftop.co.uk/s/Full-Noa-Menu.pdf","format":"pdf"},
+{"title":"Roasts back in the Autumn","type":"sunday-roast","url":"https://www.noarooftop.co.uk/"}],"notices":[{"text":"Site says 'Our new summer menu is now live' and 'Roasts back in the Autumn!' (no specific date given for roast return)","url":"https://www.noarooftop.co.uk/"}]},
+{"id":"minnis-bay","name":"Minnis Bay Bar & Brasserie","town":"Birchington","type":"restaurant","address":"The Parade, Birchington CT7 9QP","website":"https://www.theminnis.co.uk/","social":"https://www.facebook.com/TheMinnis/","cuisine":"Modern British & European","fsa":{"r":"5","id":803021,"d":"2025-08-19","m":"address (matched as 'The Minnis Bar & Restaurant', The Parade, Birchington CT7 9QP - name differs slightly from venue record 'Minnis Bay Bar & Brasserie')"},"ta":{"r":3.3,"n":672,"closed":false,"i":"g1192242-d2005525"},"menus":[{"title":"Menus (breakfast/lunch/dinner)","type":"main","url":"https://www.theminnis.co.uk/menus"},
+{"title":"Christmas / festive dining","type":"festive","url":"https://www.theminnis.co.uk/","valid_dates":"2026","is_new_this_week":true},
+{"title":"Newly refurbished kiosk (ice creams & flatstone pizzas)","type":"specials","url":"https://www.theminnis.co.uk/","signal":true,"is_new_this_week":true},
+{"title":"Sunday Menu & Sharing Roasts","type":"sunday-roast","url":"https://www.theminnis.co.uk/menus","format":"webpage","signal":true,"is_new_this_week":true}],"notices":[{"text":"'Celebrate with us' section: chefs have created winter-produce menus with traditional Christmas favourites for 2026","url":"https://www.theminnis.co.uk/"},
+{"text":"Newly refurbished kiosk selling ice creams and flatstone pizzas, 12pm-6pm daily weather permitting","url":"https://www.theminnis.co.uk/"},
+{"text":"Sharing Roast now available every Sunday - must be booked and paid in full 72 hours in advance."}]},
+{"id":"smugglers-retreat-minster","name":"Smugglers Retreat (Queensway Inns)","town":"Minster","type":"pub","address":"Tothill St, Minster CT12 4AG","website":"https://queenswayinns.com/pubs/smugglers-retreat/","social":"https://www.facebook.com/TTSmugglersRetreat/","cuisine":"British pub food","fsa":{"r":"5","id":608364,"d":"2026-07-14","m":"address"},"ta":{"r":3.6,"n":1299,"closed":"stale 'CLOSED' heading shown on TripAdvisor despite confirmed reopening under Queensway Inns; trading status should be read from FSA/queenswayinns.com, not this TA label","i":"g1096571-d2230492"},"menus":[{"title":"Main Menu","type":"main","url":"https://queenswayinns.com/wp-content/uploads/2026/08/Main-Menu.pdf","format":"pdf","valid_dates":"Aug 2026","signal":true},
+{"title":"Breakfast Menu","type":"other","url":"https://queenswayinns.com/wp-content/uploads/2026/08/Breakfast-Menu.pdf","format":"pdf","valid_dates":"Aug 2026","signal":true},
+{"title":"Kids Menu","type":"other","url":"https://queenswayinns.com/wp-content/uploads/2026/08/Kids-Menu.pdf","format":"pdf","valid_dates":"Aug 2026","signal":true}],"notices":[{"text":"Drinks menu PDF found on pub page, same Aug 2026 upload batch as the Main/Breakfast/Kids menus already on record but not previously captured."}]},
+{"id":"the-pickled-fox-margate","name":"The Pickled Fox","town":"Margate","type":"restaurant","address":"7A Market Pl, Margate CT9 1EN","website":"https://www.thepickledfox.co.uk/","social":"https://www.instagram.com/thepickledfoxmargate/","cuisine":"Modern British & European","fsa":{"r":"5","id":1631582,"d":"2025-05-24"},"ta":{"r":4.6,"n":49,"closed":false,"i":"g503912-d25948269"},"menus":[{"title":"Menu","type":"main","url":"https://www.thepickledfox.co.uk/menu"},
+{"title":"Thursday/Friday special menu (3 courses GBP20.25/20.26)","type":"set-menu","url":"https://www.instagram.com/thepickledfoxmargate/","format":"social","valid_dates":"Undated snippet"}],"notices":[{"text":"Seasonal/variable trading hours: usually Fri from 5pm & weekends from midday; open all day every day except Wednesdays during school holidays; summer is walk-in only (no bookings)","url":"https://www.thepickledfox.co.uk/"}]},
+{"id":"cliftonville-dining-room","name":"Cliftonville Dining Room","town":"Margate","type":"restaurant","address":"1 Northdown Parade, 4 Prices Ave, Margate CT9 2NR","social":"https://www.instagram.com/cliftonville_diningroom/","cuisine":"Modern British & European","fsa":{"r":"5","id":1846006,"d":"2025-06-13"},"ta":{"r":4.9,"n":24,"closed":false,"i":"g32833261-d33410596"},"menus":[{"title":"Prix Fixe Menu (Fri & Sat) 2 courses GBP25, 3 courses GBP29","type":"set-menu","url":"https://www.instagram.com/cliftonville_diningroom/?hl=en","format":"social"},
+{"title":"Summer Sunday Menu / Sunday roast","type":"sunday-roast","url":"https://www.facebook.com/p/Cliftonville-Dining-Room-61579572977234/","format":"social"},
+{"title":"Menu listing on TheFork","type":"main","url":"https://www.thefork.co.uk/restaurant/cliftonville-dining-room-r864962/menu"}]},
+{"id":"royal-victoria-pavilion","name":"Royal Victoria Pavilion (Wetherspoon)","town":"Ramsgate","type":"pub","address":"Harbour Parade, Ramsgate CT11 8LP","website":"https://www.jdwetherspoon.com/pub-menus/royal-victoria-pavilion-ramsgate/","cuisine":"British pub food","fsa":{"r":"5","id":1001586,"d":"2025-07-28"},"ta":{"r":3.8,"n":931,"closed":false,"i":"g186314-d12863074"},"menus":[{"title":"Table menu","type":"main","url":"https://www.jdwetherspoon.com/wp-content/uploads/menus/currentmenus/MENU_5994.pdf?v=1790747503","format":"pdf","signal":true},
+{"title":"Allergen information","type":"other","url":"https://www.jdwetherspoon.com/food/allergen-information/?pub_id=5994","is_new_this_week":true}]},
+{"id":"sir-stanley-gray-ramsgate","name":"Sir Stanley Gray (Pegwell Bay Hotel)","town":"Ramsgate","type":"pub","address":"81 Pegwell Rd, Ramsgate CT11 0NJ","website":"https://www.pegwellbayhotel.co.uk/","cuisine":"British pub food","fsa":{"r":"5","id":575971,"d":"2026-04-14"},"ta":{"r":4.0,"n":419,"closed":false,"i":"g186314-d1012006"},"menus":[{"title":"Christmas Menus (Lunch/Dinner and Dinner & Dance)","type":"festive","url":"https://www.pegwellbayhotel.co.uk/s/37396-TT-Christmas-Separate-Menus-Aug-2026_Pegwell-Bay.pdf","format":"pdf","valid_dates":"Available 27 Nov - 23 Dec 2026"}],"notices":[{"text":"Hotel/pub now accessible from both Chilton Lane and Pegwell Road (access change, not a closure)","url":"https://www.pegwellbayhotel.co.uk/"}]},
+{"id":"the-red-lion-st-peters","name":"The Red Lion","town":"Broadstairs","type":"pub","address":"High Street, St Peters, Broadstairs CT10 2TQ","social":"https://www.facebook.com/p/Red-Lion-St-Peters-100058313266130/","cuisine":"British pub food","fsa":{"r":"5","id":991877,"d":"2025-04-14"},"ta":{"r":4.3,"n":6,"closed":false,"i":"g635678-d4174197","a":1},"notices":[{"text":"Per eatible.co.uk (mirrors FSA listing), venue 'specialises in Burgers and English Breakfasts' - confirms food service; no menu URL found."}],"menus":[]},
+{"id":"papas-fish-chips-ramsgate","name":"Papa's Fish & Chips","town":"Ramsgate","type":"restaurant","address":"Royal Victoria Pavilion, Harbour Parade, Ramsgate CT11 8LS","website":"https://papasfishandchips.com/","social":"@papasfishnchips","cuisine":"Seafood & fish and chips","fsa":{"r":"Awaiting","id":1963526},"ta":{"r":4.0,"n":21,"closed":false,"i":"g186314-d34574370"},"menus":[{"title":"Menus","type":"main","url":"https://papasfishandchips.com/menus/"}],"notices":[{"text":"Homepage banner about contact-free takeaway collection looks dated (footer copyright 2023, booking links reference 31 May 2025) - page may not reflect current operations; check Find Us page or call ahead","url":"https://papasfishandchips.com/find-us/"}]},
+{"id":"cafe-vinny-margate","name":"Cafe Vinny (Vinnys Cafe)","town":"Margate","type":"cafe","address":"Northdown Road, Cliftonville, Margate CT9 2PH","website":"","social":"","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":624994,"d":"2026-01-05","m":"address"},"ta":{"r":4.1,"n":32,"closed":false,"i":"g503912-d5955412"},"menus":[]},
+{"id":"chefs-of-india-minster","name":"Chefs of India","town":"Minster","type":"restaurant","address":"1 High Street, Minster, Ramsgate, Kent CT12 4BU","website":"https://chefsofindiaramsgate.com/","cuisine":"Indian, Sri Lankan & Nepalese","fsa":{"r":"5","id":1846028,"d":"2025-08-01","m":"address"},"ta":{"r":4.3,"n":12,"closed":false,"i":"g1096571-d33734564"},"menus":[{"title":"Menu","type":"main","url":"https://chefsofindiaramsgate.com/menu/","is_new_this_week":true},
+{"title":"Sunday Buffet","type":"specials","url":"https://chefsofindiaramsgate.com/sunday-buffet/","is_new_this_week":true}]},
+{"id":"pomus-margate","name":"Pomus","town":"Margate","type":"restaurant","address":"9 The Centre, Margate CT9 1JG","website":"https://www.pomus.co.uk/","social":"https://www.instagram.com/pomusmargate/","cuisine":"Modern British & European","ta":{"r":4.9,"n":62,"closed":false,"i":"g503912-d27739451"},"menus":[{"title":"Events","type":"event","url":"https://www.pomus.co.uk/events.html","is_new_this_week":true},
+{"title":"Pomus seasonal sharing menu","type":"seasonal","url":"https://www.pomus.co.uk/bookings-889692.html","format":"web page","valid_dates":"ongoing, changes seasonally"}],"notices":[{"text":"Pomus group now also operates Pomus Folkestone, Pom on the Pier, and Us @ Fort Road Hotel (sister sites, not separate dashboard venues)","url":"https://www.pomus.co.uk/"},
+{"text":"Events page says the events calendar is 'still in its early stages' with a promised 'summer of awesome events' - actual schedule is in an embedded widget not visible to the fetcher."}]},
+{"id":"bakers-baristas-westwood-cross-broadstairs","name":"Bakers + Baristas (Westwood Cross)","town":"Broadstairs","type":"cafe","address":"Westwood Cross Shopping Centre, Broadstairs, Kent (next to HSBC, opposite Riparo Lounge)","website":"https://www.bakersbaristas.com","social":"https://www.instagram.com/bakersandbaristas_bb/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1933907,"d":"2026-04-07"},"menus":[{"title":"What's New (seasonal bakes, lunch, drinks)","type":"seasonal","url":"https://www.bakersbaristas.com/pages/whats-new","valid_dates":"Autumn 2026","signal":true},
+{"title":"What's New (Autumn seasonal bakes, lunch, drinks)","type":"seasonal","url":"https://www.bakersbaristas.com/pages/whats-new","format":"webpage","signal":true,"is_new_this_week":true}],"notices":[{"text":"National chain site banner: 'Autumn has arrived' promoting latest bakes, lunch favourites and seasonal drinks (chain-wide, not Westwood Cross-specific)","url":"https://www.bakersbaristas.com/pages/whats-new"},
+{"text":"Page banner 'Autumn has arrived' - new items: Caramel Apple Muffin, Chocolate Fudge Brownie Muffin, Roast Beef & Red Onion Chutney Flatbread, Spiced Maple Pumpkin Matcha Latte, Salted Pistachio Latte, among others."}]},
+{"id":"the-ravensgate-ramsgate","name":"The Ravensgate","town":"Ramsgate","type":"pub","address":"56-58 King St, Ramsgate CT11 8NY","cuisine":"British pub food","menus":[]},
+{"id":"dough-eyes-pizza-ramsgate","name":"Dough Eyes Pizza","town":"Ramsgate","type":"cafe","address":"The Boating Pool, Royal Esplanade, Ramsgate CT11 0HE","cuisine":"Italian","ta":{"n":0,"closed":false,"i":"g186314-d24074965"},"menus":[]},
+{"id":"marina-view-rtyc-ramsgate","name":"MarinaView Restaurant (Royal Temple Yacht Club)","town":"Ramsgate","type":"restaurant","address":"6 Westcliff Mansions, Ramsgate CT11 9HY","website":"https://marinaview-restaurant.com","cuisine":"Modern British & European","fsa":{"r":"5","id":608319,"d":"2025-08-21","m":"address"},"notices":[{"text":"FSA record found under 'Royal Temple Yacht Club' (the club MarinaView Restaurant operates within), same address - matched by address/premises, not exact trading name."}],"menus":[]},
+{"id":"palms-pizzeria-margate","name":"Palms Pizzeria","town":"Margate","type":"restaurant","address":"Unit 16, The Centre, Margate CT9 1JG","website":"https://palmspizzeria.com","cuisine":"Italian","menus":[{"title":"Delivery menu (Deliveroo)","type":"other","url":"https://deliveroo.co.uk/menu/margate/margate/palms-pizzeria","format":"webpage","is_new_this_week":true},
+{"title":"Menu, hours & directions (Margate)","type":"main","url":"https://www.palmspizzeria.com/margate","format":"webpage","is_new_this_week":true}],"notices":[{"text":"Main site has no standalone menu beyond the per-location page; previously only a Deliveroo link was on record. Opening hours not shown on the location page."}]},
+{"id":"curve-coffee-roasters-margate","name":"Curve Coffee Roasters (Curve Coffee Store)","town":"Margate","type":"cafe","address":"12 The Centre, Margate CT9 1JG","website":"https://www.curveroasters.co.uk/","social":"https://www.instagram.com/curveroasters/","cuisine":"Cafe & breakfast","menus":[{"title":"Cafe","type":"main","url":"https://www.curveroasters.co.uk/cafe","format":"webpage","is_new_this_week":true},
+{"title":"Autumn / 'cosy season' specials (via Instagram)","type":"seasonal","url":"https://www.instagram.com/curveroasters/","format":"other","signal":true,"is_new_this_week":true}],"notices":[{"text":"Instagram posts mention an autumn menu update (baked beans with roasted squash and charred cabbage) and 'cosy season' additions (cinnamon sugar toasted brioche, Greek butter beans with tzatziki) - not reflected on the main site's cafe page."}]},
+{"id":"partenopei-broadstairs","name":"Partenopei","town":"Broadstairs","type":"restaurant","address":"43 Albion Street, Broadstairs CT10 1NE","website":"https://partenopei.co.uk/","social":"https://www.instagram.com/partenopeibroadstairs/","cuisine":"Italian","ot":{"u":"https://www.opentable.hk/r/partenopei-broadstairs","r":4.7,"n":28},"menus":[{"title":"Dining Menu","type":"other","url":"https://partenopei.co.uk/dining-menu/","format":"webpage","is_new_this_week":true}],"notices":[{"text":"Dining menu page unchanged from existing record. OpenTable listing found on the opentable.hk domain (OpenTable's own site, mirrors opentable.co.uk content) rather than opentable.co.uk itself."}]},
+{"id":"albarino-tapas-broadstairs","name":"Albariño Tapas Bar & Restaurant","town":"Broadstairs","type":"restaurant","address":"29 Albion Street, Broadstairs CT10 1LX","website":"https://albarino-tapas.tablein.com","cuisine":"Spanish & tapas","fsa":{"r":"5","id":637694,"d":"2026-03-20","m":"address"},"menus":[{"title":"Wednesday Paella Night","type":"specials","url":"https://albarino-tapas.tablein.com","format":"webpage","signal":true,"is_new_this_week":true}],"notices":[{"text":"£14pp paella night served in a pan, minimum 2 people - not previously on record. Booking page shows regular opening hours (Tue-Fri 17:00-23:30, Sat 12:00-23:30, closed Mon/Sun)."}]},
+{"id":"samworth-and-mee-broadstairs","name":"Samworth & Mee","town":"Broadstairs","type":"restaurant","address":"9-11 Albion Street, Broadstairs CT10 1LU","cuisine":"Seafood & fish and chips","fsa":{"r":"5","id":637792,"d":"2025-09-12"},"menus":[]},
+{"id":"seafarer-restaurant-broadstairs","name":"Seafarer Restaurant (Seafarer Fish & Chips)","town":"Broadstairs","type":"restaurant","address":"51 Albion Street, Broadstairs CT10 1NE","cuisine":"Seafood & fish and chips","fsa":{"r":"4","id":455637,"d":"2026-08-24"},"menus":[{"title":"Delivery menu (Deliveroo)","type":"other","url":"https://deliveroo.co.uk/menu/margate/broadstairs/seafarer-restaurant","format":"webpage","is_new_this_week":true}]},
+{"id":"little-kit-broadstairs","name":"Little Kit","town":"Broadstairs","type":"cafe","address":"Unit 3, Eldon Place, Broadstairs CT10 1NA","cuisine":"Cafe & breakfast","trading":"unclear","menus":[]},
+{"id":"new-old-bakehouse-broadstairs","name":"The New Old Bakehouse","town":"Broadstairs","type":"cafe","address":"15 High Street, Broadstairs","website":"https://www.thenewoldbakehousebroadstairs.com/","cuisine":"Cafe & breakfast","menus":[{"title":"The New Old Bakehouse Menu v4 (full menu)","type":"main","url":"https://www.thenewoldbakehousebroadstairs.com/","format":"webpage","is_new_this_week":true}],"notices":[{"text":"Site also lists Afternoon Tea and a Catering Buffet Menu (from £8.50/head) alongside breakfast, light lunches, sandwiches, hot/cold drinks and bakehouse specials - none previously on record (existing_menus was empty)."}]},
+{"id":"the-crown-cafe-bistro-broadstairs","name":"The Crown Cafe and Bistro","town":"Broadstairs","type":"cafe","address":"23 High Street, Broadstairs CT10 1LP","cuisine":"Cafe & breakfast","fsa":{"id":1126609,"d":"2026-03-25","m":"address"},"notices":[{"text":"FSA listing found under 'The Crown' (not 'The Crown Cafe and Bistro') at the matching address, 23 High Street CT10 1LP - name differs so treat as address-matched; overall numeric rating not shown on the page (only descriptive sub-scores), so left blank."}],"menus":[]},
+{"id":"twists-of-broadstairs","name":"Twist's","town":"Broadstairs","type":"cafe","address":"2 York Street, Broadstairs CT10 1PD","social":"https://facebook.com/twistsofbroadstairs","cuisine":"Cafe & breakfast","trading":"unclear","menus":[]}
+]};
+const BUZZ = {"pulled":{"Thanet":"1 Oct 2026","Ramsgate":"12 Oct 2026"},
+"summary":{"Thanet":"A wave of new openings landed this year. \"Thanet's best ___\" review videos draw the biggest audiences. Margate gets most of the restaurant talk; Ramsgate posts are mostly opening announcements.","Ramsgate":"A quiet month for real reviews. The attention has gone to newcomers: Little Kraken (seafood and steaks) and Lone Star BBQ opened in September, and Turkuaz Inn has taken over at the Royal Oak. The most-watched recent video is Max's Kitchen, a Jamaican food van, and local favourites such as La Magnolia and Il Tricolore (Italian) still come up first when people ask where to eat. A fire at Royal Harbour Brasserie on 28 September was the biggest news item, so please check before you go."},
+"themes":[
+{"scope":"Thanet","towns":["Ramsgate","Broadstairs"],"title":"New openings","evidence":[{"t":"Little Kraken","u":"https://www.tiktok.com/@communityadltd/video/7681683393007996182"},{"t":"Turkuaz Inn","u":"https://www.tiktok.com/@communityadltd/video/7689533432724081942"},{"t":"Papa's Fish & Chips","u":"https://www.tiktok.com/@communityadltd/video/7681681099487055126","n":"11.5k"},{"t":"Wagamama Broadstairs","u":"https://www.tiktok.com/@communityadltd/video/7675055825131506966"},{"t":"NO 23","u":"https://www.tiktok.com/@communityadltd/video/7679840059675200790","n":"8.5k"},{"t":"Aster","u":"https://www.tiktok.com/@asterbroadstairs/video/7636802755289451798"}],"meaning":"Ramsgate and Broadstairs both had a busy 2026. Most of these posts are announcements, and customer reviews are only starting to arrive."},
+{"scope":"Thanet","towns":["Ramsgate","Margate","Broadstairs"],"title":"\"Thanet's best ___\"","evidence":[{"t":"Best Chinese","u":"https://www.tiktok.com/@gone.in.3minz/video/7665043770735480086","n":"506k"},{"t":"best fry-up","u":"https://www.tiktok.com/@gone.in.3minz/video/7653847844461235478","n":"287k"},{"t":"best café","u":"https://www.tiktok.com/@gone.in.3minz/video/7618982387124292886","n":"199k"},{"t":"Thanet Tasty Chicken","u":"https://www.tiktok.com/@foodreviewclub/video/7460244907274374432","n":"754k"}],"meaning":"The strongest organic format in the area. Ranked lists travel far beyond Thanet itself."},
+{"scope":"Thanet","towns":["Ramsgate","Margate","Broadstairs"],"title":"Fish & chips","evidence":[{"t":"Newington Fish Bar \"Did you know\"","u":"https://www.tiktok.com/@newingtonfishbar/video/7688662982812847382","n":"92k"},{"t":"Broadstairs' ten chippies","u":"https://www.tiktok.com/@forkandscor/video/7659851323151633694"},{"t":"Peter's Fish Factory","u":"https://www.youtube.com/watch?v=vPs-BCABeJw"}],"meaning":"The standard local tip is Peter's chips with a pint at the Harbour Arms."},
+{"scope":"Thanet","towns":["Margate"],"title":"Margate weekends","evidence":[{"t":"Weekend in Margate","u":"https://www.tiktok.com/@evieeatsout/video/7627425271485975830","n":"95k"},{"t":"Best spots in Margate","u":"https://www.tiktok.com/@flabssometimesabs/video/7564073400574954774","n":"63k"},{"t":"GFG: Cantina Caruso","u":"https://www.youtube.com/watch?v=5dcQ_8xJHw4"}],"meaning":"Margate is sold as a food destination. Visitors want short \"where to eat\" lists."},
+{"scope":"Thanet","towns":["Margate","Ramsgate"],"title":"BBQ and platters","evidence":[{"t":"UK's most expensive BBQ","u":"https://www.youtube.com/watch?v=0-Ck973F-EA","n":"337k"},{"t":"Biggest BBQ platter in Kent","u":"https://www.instagram.com/reel/DO2vetoiCRH/"},{"t":"Lone Star brisket","u":"https://www.instagram.com/reel/DaaqU2bo2-5/"}],"meaning":"A signature dish brings repeat creator coverage. Smoke & Co is the reference point."},
+{"scope":"Thanet","towns":["Ramsgate","Margate","Broadstairs"],"title":"Turkish & Med","evidence":[{"t":"Zeti","u":"https://www.tiktok.com/@zetirestaurant/video/7631281437794209046","n":"10k"},{"t":"Turkuaz Inn","u":"https://www.instagram.com/reel/Dd3k13ABEkL/"},{"t":"r/Margate thread","u":"https://www.reddit.com/r/Margate/comments/13aashz/recommendations_for_food_and_drinks_in_margate/"}],"meaning":"A growing cluster, mostly in Broadstairs and Ramsgate."},
+{"scope":"Thanet","towns":["Margate"],"title":"Brunch & cafés","evidence":[{"t":"Dalby Café","u":"https://www.instagram.com/reel/DamkDJftCFE/","n":"4.4k likes"},{"t":"r/Margate brunch threads","u":"https://www.reddit.com/r/Margate/comments/1lt3fxm/breakfastlunch_recommendations/"}],"meaning":"These come up in nearly every recommendation thread."},
+{"scope":"Ramsgate","towns":["Ramsgate"],"title":"Fish & chips","evidence":[{"t":"Golden Fish Bar","u":"https://www.tiktok.com/@flabssometimesabs/video/7593274705117826326","n":"135k views"},{"t":"a harbour seafood stall","u":"https://www.tiktok.com/@gone.in.3minz/video/7556626080518376726","n":"177k"},{"t":"Peters Fish Factory","u":"https://www.tiktok.com/@flabssometimesabs/video/7598472605229714710","n":"24k"},{"t":"Shakey Shakey vegan chippy","u":"https://www.tiktok.com/@nadias_vegan_adventures/video/7244415389990407451","n":"14k"}],"meaning":"Still the biggest talking point, though these videos are a few months old. Comment sections turn into \"best chippy in Kent\" debates, and nothing new has overtaken them this month."},
+{"scope":"Ramsgate","towns":["Ramsgate"],"title":"New openings","evidence":[{"t":"Little Kraken","u":"https://www.instagram.com/reel/DcRpRrBtI_I/","n":"141 likes"},{"t":"Papa's Fish & Chips","u":"https://www.tiktok.com/@communityadltd/video/7681681099487055126"},{"t":"Turkuaz Inn","u":"https://www.tiktok.com/@communityadltd/video/7689533432724081942","n":"3.5k, 25 Sep"},{"t":"Lone Star BBQ","u":"https://www.tiktok.com/@lonestar.bbq1/video/7688800971584982294","n":"2.3k"},{"t":"Silver Compass Sports Bar","u":"https://theisleofthanetnews.com/2026/07/15/the-silver-compass-sports-bar-gets-set-to-open-doors-at-former-slice-site-in-ramsgate/"}],"meaning":"Mostly announcements from the businesses and a local news account; few customer reviews yet. Comments are friendly, with one wry \"yet another Turkish restaurant in Thanet\"."},
+{"scope":"Ramsgate","towns":["Ramsgate"],"title":"Treats & street food","evidence":[{"t":"Scoop ice-cream doughnuts","u":"https://www.tiktok.com/@travelwithus606/video/7685720277371587872","n":"3.8k, 122 likes"},{"t":"Chippy on the Hill","u":"https://www.tiktok.com/@chippyonthehill/video/7691338024025623830","n":"3.3k"},{"t":"Max's Kitchen Jamaican food van","u":"https://www.tiktok.com/@maxs_kitchen/video/7692348461177376022","n":"15.6k"}],"meaning":"Sweet treats and mobile traders still draw the most views this month. Viewers ask the van where it will be next, which suggests real demand."},
+{"scope":"Ramsgate","towns":["Ramsgate"],"title":"Seafront dining","evidence":[{"t":"Belle Vue","u":"https://www.tiktok.com/@_mylifeinfood/video/7598981201197600022","n":"6.9k"},{"t":"Wandering Hut lunch spot","u":"https://www.tiktok.com/@atlanta.allenn/video/7685046216626818336","n":"1.5k"},{"t":"Noa Rooftop","u":"https://www.tiktok.com/@chiaralouisastone/video/7686050176565284118"},{"t":"Royal Harbour eating spots","u":"https://www.facebook.com/groups/184572175211655/posts/2180389428963243/"}],"meaning":"Setting and views are the hook more often than the menu. Noa Rooftop and Wandering Hut are the two seafront names creators are posting about now."},
+{"scope":"Ramsgate","towns":["Ramsgate"],"title":"The big Spoons","evidence":[{"t":"\"UK's largest Wetherspoons\"","u":"https://www.tiktok.com/@alexdodman/video/7643814332932902166","n":"35.8k"},{"t":"r/fryup thread","u":"https://www.reddit.com/r/fryup/comments/1r5lwk3/wetherspoons_ramsgate/","n":"115 upvotes"},{"t":"YouTube review","u":"https://www.youtube.com/watch?v=NhlnTnHepiI","n":"340k views"}],"meaning":"People love the setting and the price. Opinions on the food are mixed."},
+{"scope":"Ramsgate","towns":["Ramsgate"],"title":"Locals' favourites","evidence":[{"t":"r/Ramsgate: restaurant recommendations","u":"https://www.reddit.com/r/Ramsgate/comments/10moj7k/recommendations_restaurants/","n":"8 comments"},{"t":"Facebook: good restaurants near the harbour","u":"https://www.facebook.com/groups/1765271366889536/posts/7848448398571772/"},{"t":"Facebook: where to eat in Ramsgate","u":"https://www.facebook.com/groups/1921339337922455/posts/8882934951762824/"}],"meaning":"The same names keep coming up: La Magnolia, Il Tricolore, Jah Jah, Thai Orchid and Papa George, plus the Bedford Inn for Sunday roast. These are older threads, but nobody has replaced them."},
+{"scope":"Ramsgate","towns":["Ramsgate"],"title":"London day trips","evidence":[{"t":"day-trip guide","u":"https://www.tiktok.com/@lu_san_odyssey/video/7648662061810994454","n":"8.4k"},{"t":"vegan day trip","u":"https://www.tiktok.com/@veganbeautygirl/video/7660892525128895766","n":"5.4k"},{"t":"YouTube first-visit vlog","u":"https://www.youtube.com/watch?v=AY6n19vZNzw","n":"31k"}],"meaning":"Visitors want short \"where to eat\" lists."}
+],
+"places":[
+{"name":"Bottega Caruso","town":"Margate","kind":"Southern Italian, fresh pasta","why":"Named the best restaurant in Margate again and again on Reddit; in the Michelin Guide","links":[{"t":"Website","u":"https://www.bottegacaruso.com/"},{"t":"Sample menu","u":"https://www.bottegacaruso.com/menu"}],"venue":"bottega-caruso-margate"},
+{"name":"Cantina Caruso","town":"Margate","kind":"Italian deli and kitchen, sister to Bottega","why":"Good Food Guide 100 Best Local Restaurants 2026","links":[{"t":"Website","u":"https://www.cantinacaruso.com/"}],"venue":null},
+{"name":"Angela's","town":"Margate","kind":"Seafood restaurant with rooms","why":"A Reddit favourite for dinner; in the Michelin Guide","links":[{"t":"Website","u":"https://angelasofmargate.com/"},{"t":"Sample menu","u":"https://angelasofmargate.com/angelas-menu"}],"venue":"angelas-margate"},
+{"name":"Sargasso","town":"Margate","kind":"Seafood small plates, Harbour Arm","why":"\"Something a bit special\"; in the Michelin Guide","links":[{"t":"Website","u":"https://www.sargasso.bar/"},{"t":"Menu","u":"https://www.sargasso.bar/menu/"}],"venue":"sargasso-margate"},
+{"name":"Pomus","town":"Margate","kind":"Neighbourhood restaurant and wine bar","why":"Top-voted reply in r/kentuk's nicest-restaurants thread","links":[{"t":"Website","u":"https://www.pomus.co.uk/"},{"t":"Menu","u":"https://www.pomus.co.uk/menu.html"}],"venue":"pomus-margate"},
+{"name":"Sète","town":"Margate","kind":"French wine bar and restaurant, Northdown Road","why":"\"Lovely\", with people dying to go back","links":[{"t":"Website","u":"https://www.setemargate.com/"},{"t":"Dinner menu","u":"https://www.setemargate.com/food-menu"}],"venue":"sete-cliftonville"},
+{"name":"Palms Pizzeria","town":"Margate","kind":"New York-style pizza by the slice","why":"\"The best pizza I've ever had in my life\"","links":[{"t":"Website","u":"https://www.palmspizzeria.com/margate"},{"t":"Menu on page","u":"https://www.palmspizzeria.com/margate"}],"venue":null},
+{"name":"George & Heart","town":"Margate","kind":"Pub, King Street","why":"\"Easily the best pub here\", great Sunday roast","links":[{"t":"Website","u":"https://www.georgeandheart.com/"},{"t":"Menus","u":"https://www.georgeandheart.com/menus"}],"venue":"george-heart"},
+{"name":"Forts Café","town":"Margate","kind":"Brunch, Cliftonville","why":"The default brunch pick on Reddit (expect queues)","links":[{"t":"Instagram","u":"https://www.instagram.com/fortscoffee/"}],"venue":"forts-cafe-margate"},
+{"name":"Dalby Café","town":"Margate","kind":"Greasy spoon since 1946","why":"\"The king of traditional breakfasts\"","links":[{"t":"Website","u":"https://thedalbycafe.com/"},{"t":"Menu","u":"https://thedalbycafe.com/menu/"}],"venue":"the-dalby-cafe-margate"},
+{"name":"Smoke & Co","town":"Margate","kind":"BBQ smokehouse, Marine Drive","why":"Viral platters and a 337k-view YouTube review","links":[{"t":"Website","u":"https://smokeandco.co.uk/"},{"t":"Menu","u":"https://smokeandco.co.uk/menu/"}],"venue":"smoke-and-co"},
+{"name":"Kebbells","town":"Broadstairs","kind":"Seafood bar and restaurant, Victoria Parade","why":"Top Broadstairs TikTok post (55k); in the Michelin Guide","links":[{"t":"Website","u":"https://kebbells.com/"},{"t":"Plates menu","u":"https://kebbells.com/plates"}],"venue":"kebbells"},
+{"name":"Zeti","town":"Broadstairs","kind":"Turkish and Mediterranean, Albion Street","why":"Regular TikTok presence; British Kebab Awards semi-finalist","links":[{"t":"Website","u":"https://zetirestaurant.co.uk/"},{"t":"Just Eat menu","u":"https://www.just-eat.co.uk/restaurants-zeti-restaurant-broadstairs/menu"}],"venue":null},
+{"name":"Morelli's","town":"Broadstairs","kind":"Ice cream parlour since 1932","why":"On every Broadstairs recommendation list","links":[{"t":"Website","u":"https://www.morellisgelato.com/morellis-broadstairs-kent-uk"},{"t":"Products","u":"https://www.morellisgelato.com/our-products"}],"venue":null},
+{"name":"Aster","town":"Broadstairs","kind":"Vegan wild-food set menu, 8 covers","why":"New in 2026; listed by the Good Food Guide","links":[{"t":"Website","u":"https://www.asterbroadstairs.com/"}],"venue":"aster-broadstairs"},
+{"name":"Rise & Bun","town":"Margate","kind":"Bakery","why":"On creator weekend lists, with comments like 'INSANE' and 'amazing'","links":[{"t":"TikTok","u":"https://www.tiktok.com/@evieeatsout/video/7627425271485975830"},{"t":"Instagram","u":"https://www.instagram.com/reel/DcbmCfZCHcp/"}],"venue":null},
+{"name":"Please Sir","town":"Broadstairs","kind":"Smash burgers","why":"Recommended without being asked in three different comment sections","links":[{"t":"TikTok","u":"https://www.tiktok.com/@flabssometimesabs/video/7665012647779224854"},{"t":"TikTok","u":"https://www.tiktok.com/@8uwanl/video/7598870845330640131"},{"t":"Reddit","u":"https://www.reddit.com/r/kentuk/comments/1o7af86/are_whitstable_oysters_really_worth_trying/"}],"venue":null},
+{"name":"Number Nine","town":"Ramsgate","kind":"Chapel House Estate, Minster","why":"Tasting-style seasonal menu, the top TikTok pick (86.8k views)","links":[{"t":"Website","u":"https://chapelhouseestate.co.uk/feast-drink/restaurant/"}],"venue":"number-nine"},
+{"name":"Wandering Hut","town":"Ramsgate","kind":"Mediterranean","why":"#1 on TripAdvisor (4.8) and praised in TikTok comments","links":[{"t":"Website","u":"https://www.wanderinghut.com/"}],"venue":"wandering-hut"},
+{"name":"Il Tricolore","town":"Ramsgate","kind":"Italian","why":"TripAdvisor 4.8 and recommended on Reddit","links":[{"t":"Website","u":"https://www.iltricoloreramsgate.co.uk/"},{"t":"Menus","u":"https://www.iltricoloreramsgate.co.uk/menus"}],"venue":"il-tricolore"},
+{"name":"La Magnolia","town":"Ramsgate","kind":"Italian","why":"Repeat favourite on r/Ramsgate","links":[{"t":"Website","u":"https://lamagnolia.co.uk/"},{"t":"Menus","u":"https://lamagnolia.co.uk/authentic-italian-menus/"}],"venue":null},
+{"name":"Noa Rooftop","town":"Ramsgate","kind":"Pizza and rooftop bar, Granville Theatre","why":"Creators are praising the views, gluten-free choices and pizza (September TikTok)","links":[{"t":"Website","u":"https://www.noarooftop.co.uk/"},{"t":"Food menu (PDF)","u":"https://www.noarooftop.co.uk/s/NOA-FOOD-MENU-A4-SUMMER-26-NEW.pdf"}],"venue":"noa-rooftop"},
+{"name":"Jah Jah","town":"Ramsgate","kind":"Caribbean","why":"Recommended on r/Ramsgate and by Kent Live","links":[{"t":"Website","u":"https://jahjah.co.uk/"},{"t":"Uber Eats menu","u":"https://www.ubereats.com/gb/store/jah-jah/u7Ptf_esXVeaGVUATDDUXw"}],"venue":null},
+{"name":"The Belle Vue","town":"Ramsgate","kind":"Pub at Pegwell Bay","why":"Sunday roasts with a sea view, now served all day from 28 September","links":[{"t":"Website","u":"https://www.thebellevuetavern.co.uk/"},{"t":"Menus","u":"https://www.thebellevuetavern.co.uk/the-belle-vue-menu/"}],"venue":"belle-vue"},
+{"name":"Little Kraken","town":"Ramsgate","kind":"Seafood, oysters and steaks, York Street","why":"Opened 10 September 2026; the most talked-about opening, with an Instagram teaser reel","links":[{"t":"Instagram","u":"https://www.instagram.com/littlekraken.ramsgate/"}],"venue":"little-kraken-ramsgate"},
+{"name":"Lone Star BBQ","town":"Ramsgate","kind":"Texas smokehouse, Northwood Road","why":"Opened 24 September; brisket meat feasts and platters. No website found, so this is the delivery menu","links":[{"t":"Just Eat menu","u":"https://www.just-eat.co.uk/restaurants-lone-star-barbeque-ramsgate-ct12/menu"},{"t":"TripAdvisor","u":"https://www.tripadvisor.co.uk/Restaurant_Review-g186314-d25450244-Reviews-Lone_Star_Barbecue-Ramsgate_Isle_of_Thanet_Kent_England.html"}],"venue":null}
+],
+"complaints":[
+{"towns":["Margate"],"title":"Buoy & Oyster, Margate","text":"Opinions are split. Reddit users call it \"below the standard I would expect for the money\" and its calamari \"sub par\", though others love it."},
+{"towns":["Margate"],"title":"Pearly Cow, Margate","text":"Called \"disappointing\" in the main thread on Margate's nicest restaurants."},
+{"towns":["Margate"],"title":"Sargasso, Margate","text":"Well liked, but \"on the pricey end for what you get\"."},
+{"towns":["Margate"],"title":"Forts, Margate","text":"Long queues. One visitor waited 30 minutes and was then told they couldn't be seated before closing."},
+{"towns":["Margate","Broadstairs"],"title":"The off-season","text":"Locals warn that Margate and Broadstairs are \"dead, cold and miserable\" in winter, and traffic around Westwood Cross is getting worse."},
+{"towns":["Margate"],"title":"Hype vs. value","text":"Locals push back on creator-hyped spots: a Margate chippy video's top comment called it \"very overpriced and small portions\" (465 likes). Smoke & Co was called \"over rated and too expensive\"; one commenter said a £400 group was refused dessert, a single unverified anecdote.","link":"https://www.tiktok.com/@charliebetts_/video/7623907243775266070"},
+{"towns":["Margate","Ramsgate","Broadstairs"],"title":"Takeaway quality","text":"The Thanet Tasty Chicken review (754k views) is mostly mocked: \"Were those chips cooked with a heated argument\" (1.5k likes) and \"Ain't no good chicken shops in Kent\".","link":"https://www.tiktok.com/@foodreviewclub/video/7460244907274374432"},
+{"towns":["Ramsgate"],"title":"Fish and chip prices","text":"Golden Fish Bar was shown at \"£18+\" and drew pushback (TikTok, a few months old). Commenters say Peters in Margate is better.","link":"https://www.tiktok.com/@flabssometimesabs/video/7593274705117826326"},
+{"towns":["Ramsgate"],"title":"Lobster Pot","text":"A YouTube video titled \"The worst food and service I have ever had!\" It's three years old and the only strongly negative review found."},
+{"towns":["Ramsgate"],"title":"Royal Harbour Brasserie fire","text":"A fire at the harbour-arm brasserie on 28 September; a man was arrested on suspicion of arson (Kent Online). A TikTok of it drew 2.5k views. Check it is open before booking.","link":"https://www.tiktok.com/@brommerz2361/video/7690410002443488534"},
+{"towns":["Ramsgate"],"title":"Town mood","text":"Some Reddit threads (r/kentuk, August) are negative about Ramsgate in general: one commenter called the marina lovely but \"the rest\" a poor area. It is not about the food.","link":"https://www.reddit.com/r/kentuk/comments/1vvd01z/ramsgate_today/"},
+{"towns":["Ramsgate"],"title":"Wetherspoons food","text":"At the Royal Victoria Pavilion, Ramsgate: \"Tomatoes and mushrooms look dire, bacon dry as boot leather\" (r/fryup). People also warn about seagulls stealing food on the terrace."},
+{"towns":["Ramsgate"],"title":"Few reviews of the newcomers","text":"Little Kraken, Lone Star BBQ and Turkuaz Inn are only a few weeks old and have no real customer reviews online yet. Turkuaz has said a new team and menu are coming soon, so judge them later."}
+],
+"posts":[
+{"towns":["Broadstairs"],"title":"Kebbells: a Michelin Guide restaurant by the sea","url":"https://www.tiktok.com/@flabssometimesabs/video/7550714069280460054","n":"55k","unit":"views","extra":"1.2k likes","why":"The top Broadstairs restaurant post.","platform":"TikTok","thumb":"thumbs/6c5a6729fd.jpg"},
+{"towns":["Broadstairs","Margate","Ramsgate"],"title":"Apparently this is Thanet's best Chinese","url":"https://www.tiktok.com/@gone.in.3minz/video/7665043770735480086","n":"506k","unit":"views","extra":"25k likes","why":"The template for the \"best in Thanet\" series.","platform":"TikTok","thumb":"thumbs/00c288c786.jpg"},
+{"towns":["Margate"],"title":"Spend a weekend in Margate","url":"https://www.tiktok.com/@evieeatsout/video/7627425271485975830","n":"95k","unit":"views","extra":"3.7k likes","why":"Rise & Bun, Oast, Sub Rosa, The Wellington and more.","platform":"TikTok","thumb":"thumbs/5268ccf27a.jpg"},
+{"towns":["Margate"],"title":"r/kentuk: Nicest restaurants in Margate?","url":"https://www.reddit.com/r/kentuk/comments/1vsl752/nicest_restaurants_in_margate/","n":"39","unit":"comments","extra":"Aug 2026","why":"The best single source for rankings and complaints.","platform":"Reddit","thumb":null},
+{"towns":["Margate"],"title":"Good Food Guide: Cantina Caruso, 100 Best Local 2026","url":"https://www.youtube.com/watch?v=5dcQ_8xJHw4","n":"586","unit":"views","extra":"","why":"An independent accolade backing the Reddit consensus.","platform":"YouTube","thumb":"thumbs/3d6477cd0b.jpg"},
+{"towns":["Broadstairs"],"title":"\"My favourite Italian restaurant in England\"","url":"https://www.tiktok.com/@oh.thats.jenny","n":"24.2k","unit":"likes","extra":"","why":"@oh.thats.jenny on an Italian spot in Broadstairs.","platform":"TikTok","thumb":null},
+{"towns":["Broadstairs"],"title":"Top restaurants to try in Broadstairs","url":"https://www.tiktok.com/@buckingham_mews","n":"15.4k","unit":"likes","extra":"","why":"@buckingham_mews round-up post.","platform":"TikTok","thumb":null},
+{"towns":["Margate"],"title":"42 oysters and a Margate day trip","url":"https://www.tiktok.com/@hrhgeorgiana/video/7661552135141674262","n":"1060k","unit":"views","extra":"147k likes","why":"Biggest post in the East Kent pull. Comments are jokes, not reviews.","platform":"TikTok","thumb":null},
+{"towns":["Margate"],"title":"Margate fish & chips","url":"https://www.tiktok.com/@charliebetts_/video/7623907243775266070","n":"707k","unit":"views","extra":"57k likes","why":"Local backlash on price, with rival chippies named.","platform":"TikTok","thumb":null},
+{"towns":["Margate","Ramsgate","Broadstairs"],"title":"Thanet Tasty Chicken","url":"https://www.tiktok.com/@foodreviewclub/video/7460244907274374432","n":"754k","unit":"views","extra":"18k likes","why":"Most-ridiculed review in the East Kent pull.","platform":"TikTok","thumb":null},
+{"towns":["Margate"],"title":"Smoke & Co BBQ","url":"https://www.tiktok.com/@bigdaddybsfoods/video/7637804798967860502","n":"107k","unit":"views","extra":"4k likes","why":"A celebrity endorsement, but the comments say it's overrated.","platform":"TikTok","thumb":null},
+{"towns":["Margate"],"title":"Margate weekend reel","url":"https://www.instagram.com/reel/DcbmCfZCHcp/","n":"68k","unit":"views","extra":"3k likes","why":"Visitor itinerary. Locals add Rose in June, Pom, High Dive and Forts.","platform":"Instagram","thumb":null},
+{"towns":["Ramsgate"],"title":"Royal Harbour Brasserie fire","url":"https://www.tiktok.com/@kent_online/video/7690561982549757206","n":"26k","unit":"views","extra":"28 Sep 2026","why":"Kent Online news clip of the fire on the East Pier.","platform":"TikTok"},
+{"towns":["Ramsgate"],"title":"Max's Kitchen: Ramsgate & Margate Jamaican food van","url":"https://www.tiktok.com/@maxs_kitchen/video/7692348461177376022","n":"15.6k","unit":"views","extra":"3 Oct 2026","why":"Best-viewed recent food post; a mobile trader with fans asking where it is next (246 likes).","platform":"TikTok","thumb":"thumbs/44953e2748.jpg"},
+{"towns":["Ramsgate"],"title":"Little Kraken opens on York Street","url":"https://www.tiktok.com/@communityadltd/video/7681683393007996182","n":"4.3k","unit":"views","extra":"Sep 2026","why":"Typical of the recent wave of opening announcements.","platform":"TikTok","thumb":"thumbs/62cba05d32.jpg"},
+{"towns":["Ramsgate"],"title":"Scoop: ice-cream doughnuts, Ramsgate","url":"https://www.tiktok.com/@travelwithus606/video/7685720277371587872","n":"3.8k","unit":"views","extra":"15 Sep 2026","why":"“Unreal” verdict from a visiting creator (122 likes).","platform":"TikTok","thumb":"thumbs/f93e9ad36a.jpg"},
+{"towns":["Ramsgate"],"title":"Turkuaz Inn opens at the Royal Oak","url":"https://www.tiktok.com/@communityadltd/video/7689533432724081942","n":"3.5k","unit":"views","extra":"25 Sep 2026","why":"New restaurant and bar on Harbour Parade; friendly comments, no reviews yet.","platform":"TikTok","thumb":"thumbs/e8aea17e19.jpg"},
+{"towns":["Ramsgate"],"title":"Lone Star BBQ: open tomorrow, Northwood Road","url":"https://www.tiktok.com/@lonestar.bbq1/video/7688800971584982294","n":"2.3k","unit":"views","extra":"23 Sep 2026","why":"Opening announcement with meal deals and meat feasts.","platform":"TikTok","thumb":"thumbs/9112b20267.jpg"},
+{"towns":["Ramsgate"],"title":"Wandering Hut: a cute lunch spot","url":"https://www.tiktok.com/@atlanta.allenn/video/7685046216626818336","n":"1.5k","unit":"views","extra":"13 Sep 2026","why":"A visitor's lunch pick, backing up its high TripAdvisor score.","platform":"TikTok","thumb":"thumbs/eedcf7a093.jpg"},
+{"towns":["Ramsgate"],"title":"Golden Fish Bar: best fish & chips in Kent, ep 1","url":"https://www.tiktok.com/@flabssometimesabs/video/7593274705117826326","n":"135k","unit":"views","extra":"","why":"Older, but still the best comment section (393 comments) for local opinions on chippies.","platform":"TikTok","thumb":"thumbs/96e88f9c95.jpg"}
+]};
+(function(){
+var K="lt-bigtext",h=document.documentElement,b=document.getElementById("aa");
+function put(v){try{localStorage.setItem(K,v?"1":"0")}catch(e){}}
+function apply(on){h.classList.toggle("big",on);b.setAttribute("aria-pressed",String(on));document.getElementById("aa-l").textContent=on?"Standard text":"Larger text";}
+apply(h.classList.contains("big"));
+b.addEventListener("click",function(){var on=!h.classList.contains("big");apply(on);put(on);});
+addEventListener("hashchange",function(){if(location.hash==="#big"){apply(true);put(true);}else if(location.hash==="#std"){apply(false);put(false);}});
+})();
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const safe = u => /^https?:\/\//i.test(u||"") ? u : null;
+const ext = (u, t, cls) => safe(u) ? `<a ${cls?`class="${cls}" `:""}href="${esc(u)}" target="_blank" rel="noopener">${t}</a>` : t;
+const fmtDate = iso => new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"});
+const fmtLong = iso => new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long"});
+function nextMonday(iso){ const d=new Date(iso+"T12:00:00"); d.setDate(d.getDate()+(((8-d.getDay())%7)||7)); return d.toISOString().slice(0,10); }
+
+const V = DATA.venues.map(v => ({serves_food:"yes", trading:"confirmed", ...v, menus:(v.menus||[]).map(m => ({format:"html", ...m}))}));
+const BYID = Object.fromEntries(V.map(v=>[v.id,v]));
+const MAIN = ["Margate","Ramsgate","Broadstairs"];
+const TOWNS = [["all","All of Thanet"],["Margate","Margate"],["Ramsgate","Ramsgate"],["Broadstairs","Broadstairs"],["villages","Nearby villages"]];
+const townKey = t => MAIN.includes(t) ? t : "villages";
+const KIND = {main:"Main menu",seasonal:"Seasonal",weekly:"Weekly",monthly:"Monthly",specials:"Specials","sunday-roast":"Sunday roast","set-menu":"Set menu",festive:"Christmas & festive",event:"Event",other:"Other"};
+const TYPE = {pub:"Pub",restaurant:"Restaurant",cafe:"Café"};
+const FMT = {pdf:"PDF",image:"Picture",social:"Social media post"};
+const SAY = {};
+(BUZZ.places||[]).forEach(p=>{ if(p.venue) SAY[p.venue]=p; });
+
+const CUI = {"Cafe & breakfast":"c-cafe","British pub food":"c-pub","Burgers, BBQ & American":"c-flame","Italian":"c-pizza","Thai":"c-bowl","Japanese":"c-bowl","Indian, Sri Lankan & Nepalese":"c-chilli","Anglo-Indian":"c-chilli","Mediterranean & Middle Eastern":"c-leaf","Turkish":"c-leaf","Vegan & vegetarian":"c-leaf","Modern British & European":"c-plate","Seafood & fish and chips":"c-fish","Spanish & tapas":"c-tapas","Latin American":"c-taco","Mexican & Tex-Mex":"c-taco","Global small plates":"c-globe"};
+const TYPEI = {pub:"c-pub",cafe:"c-cafe",restaurant:"c-plate"};
+const ico = (id, cls) => `<span class="badge${cls?" "+cls:""}" aria-hidden="true"><svg class="ic"><use href="#${id}"/></svg></span>`;
+const vIcon = (v, cls) => ico(CUI[v.cuisine] || TYPEI[v.type] || "c-pin", cls);
+const THEMEI = [[/open/i,"t-spark"],[/best/i,"t-trophy"],[/fish|sea ?food/i,"c-fish"],[/weekend/i,"t-sun"],[/bbq|grill|platter/i,"c-flame"],[/turk|med|kebab/i,"c-leaf"],[/brunch|caf/i,"c-cafe"],[/treat|street|ice|dessert/i,"t-ice"],[/seafront|beach|harbour|view/i,"t-wave"],[/spoon|pub|pint/i,"c-pub"],[/london|day trip|train/i,"t-train"],[/portion|indie/i,"c-plate"]];
+const themeIcon = t => (THEMEI.find(([r])=>r.test(t))||[0,"i-chat"])[1];
+const norm = t => String(t).toLowerCase().replace(/&/g,"and").replace(/[^a-z0-9 ]/g,"").replace(/\s+/g," ").trim();
+const COMPK = [[/fish|chip|oyster|lobster|seafood/i,"c-fish","Seafood & fish and chips"],[/spoons|pub|pint/i,"c-pub","Pub food"],[/caf|coffee|brunch/i,"c-cafe","Cafés"],[/season|mood|town|traffic|parking/i,"c-pin","The town itself"]];
+function compKind(c){
+const n=norm(c.title.split(",")[0]);
+const v=V.find(v=>{const vn=norm(v.name.split(" (")[0]); return vn.length>3 && (n.startsWith(vn)||vn.startsWith(n));});
+if(v) return {i:CUI[v.cuisine]||TYPEI[v.type]||"c-plate", l:v.cuisine||TYPE[v.type]||"Restaurant"};
+const k=COMPK.find(([r])=>r.test(c.title+" "+c.text));
+return k?{i:k[1],l:k[2]}:{i:"c-plate",l:"Restaurant"};
+}
+const mini = id => `<svg class="ic" aria-hidden="true"><use href="#${id}"/></svg>`;
+const st = {town:"all", type:"all", cuisine:"all", q:"", sort:"ta", nNew:6, nPlaces:12, nPosts:6};
+try{ const t=localStorage.getItem("tmw-town"); if(TOWNS.some(x=>x[0]===t)) st.town=t; }catch(e){}
+
+function inScope(v){
+if(st.town!=="all" && townKey(v.town)!==st.town) return false;
+if(st.type!=="all" && v.type!==st.type) return false;
+if(st.cuisine!=="all" && (v.cuisine||"Not classified")!==st.cuisine) return false;
+if(st.q && !(v.name+" "+v.town).toLowerCase().includes(st.q.toLowerCase())) return false;
+return true;
+}
+const townLabel = () => TOWNS.find(t=>t[0]===st.town)[1];
+
+function rates(v, big){
+const out=[];
+if(v.fsa){ const r=v.fsa.r, n=+r;
+const cls = r==="Awaiting" ? "" : n>=4 ? "good" : n>=3 ? "mid" : "bad";
+out.push(`<a class="rate ${cls}" href="https://ratings.food.gov.uk/business/${+v.fsa.id}" target="_blank" rel="noopener" title="Food Standards Agency hygiene rating">${r==="Awaiting"?"Hygiene: awaiting inspection":"Hygiene "+esc(r)+" out of 5"}</a>`); }
+if(v.ta && !v.ta.closed && v.ta.r){ const a=v.ta;
+out.push(`<a class="rate${a.r>=4.5&&a.n>=10?" good":""}" href="https://www.tripadvisor.co.uk/${a.a?"Attraction":"Restaurant"}_Review-${esc(a.i)}-Reviews-x.html" target="_blank" rel="noopener">TripAdvisor ${a.r.toFixed(1)} <small>(${a.n.toLocaleString("en-GB")} reviews)</small></a>`); }
+if(v.ta && v.ta.closed) out.push(`<span class="rate bad">TripAdvisor says closed</span>`);
+if(v.ot && safe(v.ot.u)) out.push(`<a class="rate" href="${esc(v.ot.u)}" target="_blank" rel="noopener">OpenTable${v.ot.r?" "+v.ot.r.toFixed(1):""}</a>`);
+return out.length ? `<div class="rates">${out.join("")}</div>` : (big?`<div class="rates"><span class="rate">No ratings found yet</span></div>`:"");
+}
+
+function towns(){
+$("towns").innerHTML = TOWNS.map(([k,l])=>`<button type="button" class="tbtn" data-t="${k}" aria-pressed="${st.town===k}">${esc(l)}</button>`).join("");
+$("towns").querySelectorAll("button").forEach(b=>b.onclick=()=>{ st.town=b.dataset.t; st.q=""; $("q").value=""; st.nNew=6; st.nPlaces=12; st.nPosts=6; try{localStorage.setItem("tmw-town",st.town)}catch(e){} render(); });
+}
+
+function headline(){
+const h=DATA.history, prev=h.length>1?h[h.length-2]:null;
+const newM = V.flatMap(v=>v.menus).filter(m=>m.is_new_this_week).length;
+$("k-new").textContent = DATA.baseline ? "–" : newM;
+$("k-new-l").textContent = newM===1 ? "new menu this week" : "new menus this week";
+$("k-new-d").textContent = DATA.baseline ? "Counting starts next Monday" : prev ? `${prev.new_menus} the week before (${fmtDate(prev.date)})` : "";
+$("k-places").textContent = V.filter(v=>v.serves_food==="yes").length;
+$("k-places-d").textContent = "in "+new Set(V.map(v=>v.town)).size+" towns and villages";
+$("k-menus").textContent = V.reduce((s,v)=>s+v.menus.length,0);
+const hh=h.slice(-6), W=170, H=96, slot=(W-12)/hh.length, bw=Math.min(36,slot-10), max=Math.max(...hh.map(x=>x.new_menus),1);
+$("weeks").setAttribute("viewBox",`0 0 ${W} ${H}`);
+$("weeks").innerHTML = hh.map((x,i)=>{ const bh=(x.new_menus/max)*(H-40), xx=6+i*slot+(slot-bw)/2, last=i===hh.length-1;
+return `<rect x="${xx.toFixed(1)}" y="${(H-20-bh).toFixed(1)}" width="${bw.toFixed(1)}" height="${bh.toFixed(1)}" rx="4" fill="${last?"var(--new)":"var(--line)"}"/>`+
+`<text x="${(xx+bw/2).toFixed(1)}" y="${(H-24-bh).toFixed(1)}" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">${x.new_menus}</text>`+
+`<text x="${(xx+bw/2).toFixed(1)}" y="${H-4}" text-anchor="middle" font-size="11" fill="var(--ink-2)">${new Date(x.date+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"short"})}</text>`; }).join("");
+const next=nextMonday(DATA.generated), today=new Date().toISOString().slice(0,10);
+$("stamp").innerHTML = `Menus checked <b>${fmtLong(DATA.generated)}</b>. `+(today>next?`<br><span class="late">This week's check is running late</span>`:`Next check <b>${fmtLong(next)}</b>.`);
+}
+
+function cuisines(){
+const c=[...new Set(V.map(v=>v.cuisine||"Not classified"))].sort((a,b)=>(a==="Not classified")-(b==="Not classified")||a.localeCompare(b));
+$("f-cuisine").innerHTML = `<option value="all">All cuisines</option>`+c.map(x=>`<option>${esc(x)}</option>`).join("");
+}
+
+function newCards(){
+const rows = V.filter(inScope).flatMap(v=>v.menus.filter(m=>m.is_new_this_week).map(m=>({m,v})))
+.sort((a,b)=>(b.m.type==="festive")-(a.m.type==="festive")||a.v.name.localeCompare(b.v.name));
+$("c-new").textContent = `${rows.length} in ${townLabel()}`;
+$("newcards").innerHTML = rows.length ? rows.slice(0,st.nNew).map(({m,v})=>`<article class="mcard">
+<div class="tags"><span class="tag new">New</span><span class="tag${m.type==="festive"?" fest":""}">${esc(KIND[m.type]||m.type)}</span>${FMT[m.format]?`<span class="tag">${FMT[m.format]}</span>`:""}</div>
+<div class="vhead">${vIcon(v)}<div><div class="venue">${esc(v.name)}</div><div class="title">${esc(m.title)}</div></div></div>
+<div class="where">${esc(v.town)} · ${esc(TYPE[v.type]||v.type)} · ${esc(v.cuisine||"")}</div>
+${m.valid_dates?`<div class="when">${esc(m.valid_dates)}</div>`:""}
+${rates(v)}
+${safe(m.url)?ext(m.url,`Open the menu <svg class="ic" aria-hidden="true"><use href="#i-ext"/></svg>`,"btn solid"):""}
+</article>`).join("") : `<div class="empty">No new menus in ${esc(townLabel())} this week with these choices. Try “All of Thanet” or “Show everything”.</div>`;
+const b=$("more-new"); b.hidden = rows.length<=st.nNew; b.textContent=`Show all ${rows.length} new menus`;
+}
+
+function placeRow(v){
+const say=SAY[v.id], menus=v.menus;
+const ml = menus.map(m=>`<li>${ext(m.url,esc(m.title))}${m.is_new_this_week?` <span class="tag new">New</span>`:""}${m.valid_dates?`<br><span class="pmeta">${esc(m.valid_dates)}</span>`:""}</li>`).join("");
+const fsa = v.fsa ? (v.fsa.r==="Awaiting" ? "Awaiting first inspection" : `${esc(v.fsa.r)} out of 5${v.fsa.d?", inspected "+new Date(v.fsa.d+"T12:00:00").toLocaleDateString("en-GB",{month:"long",year:"numeric"}):""}`) : "Not found";
+const ta = v.ta ? (v.ta.closed ? "Marked closed" : v.ta.r ? `${v.ta.r.toFixed(1)} out of 5 from ${v.ta.n.toLocaleString("en-GB")} reviews` : "Listed, no reviews yet") : "Not found";
+const notes = (v.notices||[]).map(n=>`<li>${ext(n.url, esc(n.text||n.note||""))}</li>`).join("");
+return `<details class="place"><summary><div class="pwho">${vIcon(v,"sm")}<div><div class="pname">${esc(v.name)}</div><div class="pmeta">${esc(v.town)} · ${esc(TYPE[v.type]||v.type)} · ${esc(v.cuisine||"Not classified")} · ${menus.length} menu${menus.length===1?"":"s"}${v.trading!=="confirmed"?" · check it's open":""}</div></div></div><svg class="chev" aria-hidden="true"><use href="#i-chev"/></svg><div class="summ-r">${rates(v)}</div></summary>
+<div class="pbody">
+<div class="pbox"><h4>${mini("t-star")}Ratings</h4><dl class="dl"><dt>Hygiene</dt><dd>${fsa}</dd><dt>TripAdvisor</dt><dd>${ta}</dd><dt>OpenTable</dt><dd>${v.ot?ext(v.ot.u,"Bookable online"):"Not listed"}</dd></dl></div>
+<div class="pbox"><h4>${mini("i-chat")}What people say</h4>${say?`<p class="say">${esc(say.why)}.</p><p class="pmeta">${esc(say.kind)}</p>`:`<p class="pmeta">No social media comments found about this place yet.</p>`}<div class="links">${ext(v.website,"Website")}${ext(v.social,"Social page")}</div><p class="pmeta">${esc(v.address)}</p></div>
+<div class="pbox"><h4>${mini("t-menu")}Menus</h4>${ml?`<ul>${ml}</ul>`:`<p class="pmeta">No menu found on its own pages.</p>`}${notes?`<h4>News</h4><ul>${notes}</ul>`:""}</div>
+</div></details>`;
+}
+function places(){
+const rows=V.filter(v=>v.serves_food!=="no" && inScope(v));
+const taS=v=>v.ta&&!v.ta.closed&&v.ta.r?(v.ta.r*v.ta.n+4*25)/(v.ta.n+25):0;
+rows.sort(st.sort==="name"?(a,b)=>a.name.localeCompare(b.name):st.sort==="menus"?(a,b)=>b.menus.length-a.menus.length||a.name.localeCompare(b.name):(a,b)=>taS(b)-taS(a)||a.name.localeCompare(b.name));
+$("c-places").textContent=`${rows.length} in ${townLabel()}`;
+$("plist").innerHTML = rows.length ? rows.slice(0,st.nPlaces).map(placeRow).join("") : `<div class="empty">No places match. Try “Show everything”.</div>`;
+const b=$("more-places"); b.hidden=rows.length<=st.nPlaces; b.textContent=`Show all ${rows.length} places`;
+}
+
+function buzz(){
+const scoped = st.town==="all"||MAIN.includes(st.town);
+const t = scoped && st.town!=="all" ? st.town : "Thanet";
+$("summary").textContent = !scoped ? "No social media research covers the villages yet, so this part shows all of Thanet." : (BUZZ.summary[t] || "");
+let th = BUZZ.themes.filter(x=>x.scope===t);
+if(!th.length) th = BUZZ.themes.filter(x=>x.scope==="Thanet" && x.towns.includes(t));
+$("themes").innerHTML = th.map(x=>`<article class="theme"><div class="vhead">${ico(themeIcon(x.title),"sm")}<h3>${esc(x.title)}</h3></div><p class="meaning">${esc(x.meaning)}</p><p class="ev">${x.evidence.map(e=>ext(e.u,esc(e.t))+(e.n?` (${esc(e.n)})`:"")).join(", ")}</p></article>`).join("");
+const lp = BUZZ.places.filter(p=>t==="Thanet"||p.town===t);
+$("loved").innerHTML = lp.map(p=>p.venue&&BYID[p.venue]?`<button type="button" class="lchip" data-v="${esc(p.venue)}" title="${esc(p.why)}">${mini(CUI[BYID[p.venue].cuisine]||"i-heart")}${esc(p.name)}</button>`:`<span class="lchip" title="${esc(p.why)}">${mini("i-heart")}${esc(p.name)}</span>`).join("");
+$("loved").querySelectorAll("button").forEach(b=>b.onclick=()=>openPlace(b.dataset.v));
+$("c-buzz").textContent = "From TikTok, Reddit, YouTube, Instagram and Facebook";
+const cs = BUZZ.complaints.filter(c=>t==="Thanet"||c.towns.includes(t));
+$("comps").innerHTML = cs.length ? cs.map(c=>`<div class="comp">${(k=>`<div class="icol">${ico("t-alert","sm bad")}${ico(k.i,"sm")}</div><div><b>${esc(c.title)}</b><span class="town">${esc(c.towns.join(", "))} · ${esc(k.l)}</span>`)(compKind(c))}<p>${esc(c.text)}${c.link?" "+ext(c.link,"See the post"):""}</p></div></div>`).join("") : `<div class="empty">No complaints turned up for ${esc(t)} in the posts we read.</div>`;
+const num = p => { const m=/^([\d.]+)(k?)$/i.exec(p.n||""); const v=m?parseFloat(m[1])*(m[2]?1000:1):0; return /view|like/.test(p.unit)?v:v/100; };
+const ps = BUZZ.posts.filter(p=>t==="Thanet"||p.towns.includes(t)).sort((a,b)=>num(b)-num(a));
+const icon = p => p.platform==="Reddit"||p.platform==="Facebook" ? "i-chat" : "i-play";
+$("postlist").innerHTML = ps.slice(0,st.nPosts).map(p=>`<a class="post" href="${esc(safe(p.url)||"#")}" target="_blank" rel="noopener">
+<span class="thumb"><svg class="ic" aria-hidden="true" style="width:32px;height:32px"><use href="#${icon(p)}"/></svg>${p.thumb?`<img src="${esc(p.thumb)}" alt="" loading="lazy" width="88" height="110" onerror="this.remove()">`:""}</span>
+<span style="display:flex;flex-direction:column;gap:6px;min-width:0"><span class="num">${esc(p.n)}<small>${esc(p.unit)}</small></span><span class="pt">${esc(p.title)}</span><span class="why">${esc(p.why)}</span><span class="plat">${esc(p.platform)} · ${esc(p.towns.join(", "))}</span></span></a>`).join("");
+const b=$("more-posts"); b.hidden=ps.length<=st.nPosts; b.textContent=`Show all ${ps.length} posts`;
+$("buzznote").innerHTML = `<b>What people are saying</b> comes from public posts on TikTok, Reddit, YouTube, Instagram and Facebook, read on ${esc(BUZZ.pulled.Thanet)} for all of Thanet and ${esc(BUZZ.pulled.Ramsgate)} for Ramsgate. Results about places with the same name abroad were left out. It is a snapshot of public talk, not a survey.`;
+}
+
+function openPlace(id){
+const v=BYID[id]; if(!v) return;
+Object.assign(st,{town:townKey(v.town),type:"all",cuisine:"all",q:v.name});
+$("q").value=v.name; $("f-type").value="all"; $("f-cuisine").value="all";
+render();
+const d=$("plist").querySelector("details"); if(d){ d.open=true; d.scrollIntoView({block:"start"}); d.querySelector("summary").focus(); }
+}
+
+const HERO = {
+all:{f:"hero.jpg",alt:"Boats moored in a sunny harbour",n:"Phil Hearing",u:"philhearing"},
+Margate:{f:"heroes/margate.jpg",alt:"The Dreamland sign in Margate",n:"Francesca Grima",u:"francescagrima"},
+Ramsgate:{f:"heroes/ramsgate.jpg",alt:"Ramsgate Royal Harbour and marina from above",n:"Patrick Federi",u:"federi"},
+Broadstairs:{f:"heroes/broadstairs.jpg",alt:"Broadstairs seafront and Viking Bay",n:"Nick Hawkes",u:"hypn0fiddl3r"},
+villages:{f:"heroes/villages.jpg",alt:"The sea at Minnis Bay, Birchington",n:"Rich Tervet",u:"byrichtervet"}};
+function hero(){
+const h=HERO[st.town]||HERO.all, q="utm_source=thanet-menu-watch&amp;utm_medium=referral";
+$("hero").style.backgroundImage=`linear-gradient(180deg,transparent 35%,rgba(10,30,36,.7)),url("${h.f}"),url("hero.jpg")`;
+$("hero").setAttribute("title",h.alt);
+$("htown").textContent=townLabel();
+$("hcred").innerHTML=`Photo: <a href="https://unsplash.com/@${h.u}?${q}" target="_blank" rel="noopener">${esc(h.n)}</a> / <a href="https://unsplash.com/?${q}" target="_blank" rel="noopener">Unsplash</a>`;
+}
+function render(){
+hero();
+towns();
+const filtered = st.type!=="all"||st.cuisine!=="all"||st.q;
+$("reset").hidden=!filtered && st.town==="all";
+const bits=[townLabel()]; if(st.type!=="all") bits.push(TYPE[st.type]+"s"); if(st.cuisine!=="all") bits.push(st.cuisine); if(st.q) bits.push(`“${st.q}”`);
+$("showing").textContent = "Showing: "+bits.join(" · ");
+newCards(); places(); buzz();
+}
+
+headline(); cuisines(); render();
+$("f-type").onchange=e=>{st.type=e.target.value;render();};
+$("f-cuisine").onchange=e=>{st.cuisine=e.target.value;render();};
+$("q").oninput=e=>{st.q=e.target.value.trim();render();};
+$("sort").onchange=e=>{st.sort=e.target.value;places();};
+$("reset").onclick=()=>{Object.assign(st,{town:"all",type:"all",cuisine:"all",q:""});$("q").value="";$("f-type").value="all";$("f-cuisine").value="all";try{localStorage.setItem("tmw-town","all")}catch(e){}render();};
+$("more-new").onclick=()=>{st.nNew=1e4;newCards();};
+$("more-places").onclick=()=>{st.nPlaces=1e4;places();};
+$("more-posts").onclick=()=>{st.nPosts=1e4;buzz();};
+{ const t=$("totop"); const f=()=>{t.hidden=scrollY<700;}; addEventListener("scroll",f,{passive:true}); f();
+t.onclick=()=>{scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"}); const h=document.querySelector("h1"); if(h){h.setAttribute("tabindex","-1"); h.focus({preventScroll:true});}}; }
+</script>
+
+</body></html>
