@@ -1,4 +1,4 @@
-<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-6dykGDEwRJL37We90fueYqwphHpBAWBtVGFZkhTItXg=' 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
+<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'sha256-wtfvOTAIuZhtj82dWvEg0+on4rCosj8hLM1oIZWcRl4=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
 var SCHEME=/^\s*([a-z][a-z0-9+.\-]*):/i,HREF={http:1,https:1,mailto:1,tel:1},SRC={http:1,https:1,blob:1};
 function okUrl(v,isSrc){var c=String(v).replace(/[\u0000- ]/g,""),m=SCHEME.exec(c);if(!m)return true;var s=m[1].toLowerCase();
 if(isSrc&&s==="data")return /^data:image\//i.test(c);return !!(isSrc?SRC:HREF)[s];}
@@ -137,13 +137,39 @@ dt{font-weight:600;color:var(--ink)} dd{margin:0}
 </div>
 
 <script>
-const D = {"cme":[{"id":"2026-10-05T01:26","t":"2026-10-05T01:26Z","loc":"S21W71","ar":14546,"sp":340.0,"ty":"S","ha":18.0,"earth":null,"imp":[{"loc":"Mars","t":"2026-10-10T12:00Z"},{"loc":"Psyche","t":"2026-10-10T16:00Z"},{"loc":"STEREO A","t":"2026-10-08T12:00Z"}]},{"id":"2026-10-05T07:48","t":"2026-10-05T07:48Z","loc":"","ar":null,"sp":701.0,"ty":"C","ha":40.0,"earth":null,"imp":[{"loc":"BepiColombo","t":"2026-10-06T12:00Z"},{"loc":"BepiColombo","t":"2026-10-06T13:00Z"}]},{"id":"2026-10-05T11:24","t":"2026-10-05T11:24Z","loc":"S17E60","ar":null,"sp":629.0,"ty":"C","ha":10.0,"earth":null,"imp":[{"loc":"Europa Clipper","t":"2026-10-08T00:00Z"},{"loc":"OSIRIS-APEX","t":"2026-10-08T18:00Z"},{"loc":"Parker Solar Probe","t":"2026-10-07T12:00Z"}]},{"id":"2026-10-05T21:12","t":"2026-10-05T21:12Z","loc":"","ar":null,"sp":266.0,"ty":"S","ha":35.0,"earth":null,"imp":[{"loc":"Psyche","t":"2026-10-13T11:00Z"},{"loc":"STEREO A","t":"2026-10-10T13:00Z"}]},{"id":"2026-10-06T00:00","t":"2026-10-06T00:00Z","loc":"S19W88","ar":14546,"sp":325.0,"ty":"S","ha":17.0,"earth":null,"imp":[{"loc":"Mars","t":"2026-10-11T23:30Z"},{"loc":"Psyche","t":"2026-10-13T00:00Z"},{"loc":"STEREO A","t":"2026-10-09T10:00Z"}]},{"id":"2026-10-06T06:23","t":"2026-10-06T06:23Z","loc":"N10E12","ar":14549,"sp":570.0,"ty":"C","ha":40.0,"earth":{"t":"2026-10-09T02:21Z","kp":[null,4,6,7],"gb":false},"imp":[{"loc":"Europa Clipper","t":"2026-10-09T00:02Z"},{"loc":"Juice","t":"2026-10-08T23:26Z"},{"loc":"Mars","t":"2026-10-11T06:00Z"},{"loc":"OSIRIS-APEX","t":"2026-10-10T00:00Z"},{"loc":"Solar Orbiter","t":"2026-10-08T12:09Z"},{"loc":"STEREO A","t":"2026-10-09T08:00Z"},{"loc":"Europa Clipper","t":"2026-10-08T19:18Z"},{"loc":"Juice","t":"2026-10-08T21:49Z"},{"loc":"Mars","t":"2026-10-11T06:00Z"},{"loc":"OSIRIS-APEX","t":"2026-10-09T09:12Z"},{"loc":"Parker Solar Probe","t":"2026-10-08T04:00Z"},{"loc":"Solar Orbiter","t":"2026-10-08T11:26Z"},{"loc":"STEREO A","t":"2026-10-09T06:00Z"}]},{"id":"2026-10-06T09:53","t":"2026-10-06T09:53Z","loc":"N08E07","ar":14549,"sp":424.0,"ty":"S","ha":24.0,"earth":{"t":"2026-10-09T20:00Z","kp":[null,3,4,4],"gb":false},"imp":[{"loc":"Europa Clipper","t":"2026-10-09T06:00Z"},{"loc":"Juice","t":"2026-10-09T17:41Z"}]},{"id":"2026-10-06T13:08","t":"2026-10-06T13:08Z","loc":"N40E10","ar":null,"sp":438.0,"ty":"S","ha":11.0,"earth":null,"imp":[]},{"id":"2026-10-07T13:53","t":"2026-10-07T13:53Z","loc":"N10W04","ar":14549,"sp":310.0,"ty":"S","ha":36.0,"earth":{"t":"2026-10-11T06:00Z","kp":[null,2,4,4],"gb":true},"imp":[{"loc":"Europa Clipper","t":"2026-10-10T16:00Z"},{"loc":"Juice","t":"2026-10-10T22:00Z"},{"loc":"OSIRIS-APEX","t":"2026-10-11T18:00Z"},{"loc":"Solar Orbiter","t":"2026-10-10T18:00Z"}]},{"id":"2026-10-08T16:12","t":"2026-10-08T16:12Z","loc":"","ar":null,"sp":449.0,"ty":"S","ha":24.0,"earth":null,"imp":[]},{"id":"2026-10-08T16:24","t":"2026-10-08T16:24Z","loc":"N05W25","ar":null,"sp":579.0,"ty":"C","ha":28.0,"earth":{"t":"2026-10-11T20:14Z","kp":[null,3,4,5],"gb":false},"imp":[{"loc":"Juice","t":"2026-10-11T16:00Z"},{"loc":"Mars","t":"2026-10-13T12:00Z"},{"loc":"Psyche","t":"2026-10-14T00:00Z"},{"loc":"Solar Orbiter","t":"2026-10-11T02:26Z"},{"loc":"STEREO A","t":"2026-10-11T12:00Z"},{"loc":"Juice","t":"2026-10-11T14:01Z"},{"loc":"Mars","t":"2026-10-13T12:00Z"},{"loc":"Psyche","t":"2026-10-14T00:00Z"},{"loc":"Solar Orbiter","t":"2026-10-11T02:07Z"},{"loc":"STEREO A","t":"2026-10-11T12:00Z"}]},{"id":"2026-10-08T16:53","t":"2026-10-08T16:53Z","loc":"N12W20","ar":14549,"sp":723.0,"ty":"C","ha":35.0,"earth":{"t":"2026-10-11T20:14Z","kp":[null,3,4,5],"gb":false},"imp":[{"loc":"Europa Clipper","t":"2026-10-11T00:00Z"},{"loc":"Juice","t":"2026-10-11T03:34Z"},{"loc":"Mars","t":"2026-10-13T18:00Z"},{"loc":"Solar Orbiter","t":"2026-10-10T21:51Z"},{"loc":"STEREO A","t":"2026-10-11T18:00Z"},{"loc":"Juice","t":"2026-10-11T14:45Z"},{"loc":"Solar Orbiter","t":"2026-10-11T07:42Z"},{"loc":"STEREO A","t":"2026-10-12T00:00Z"},{"loc":"Juice","t":"2026-10-11T14:01Z"},{"loc":"Mars","t":"2026-10-13T12:00Z"},{"loc":"Psyche","t":"2026-10-14T00:00Z"},{"loc":"Solar Orbiter","t":"2026-10-11T02:07Z"},{"loc":"STEREO A","t":"2026-10-11T12:00Z"}]},{"id":"2026-10-08T20:12","t":"2026-10-08T20:12Z","loc":"N15W85","ar":14547,"sp":453.0,"ty":"S","ha":38.0,"earth":null,"imp":[]},{"id":"2026-10-09T00:45","t":"2026-10-09T00:45Z","loc":"","ar":null,"sp":293.0,"ty":"S","ha":27.0,"earth":null,"imp":[]},{"id":"2026-10-09T07:15","t":"2026-10-09T07:15Z","loc":"N15W90","ar":14547,"sp":391.0,"ty":"S","ha":21.0,"earth":null,"imp":[]},{"id":"2026-10-09T08:00","t":"2026-10-09T08:00Z","loc":"","ar":null,"sp":270.0,"ty":"S","ha":10.0,"earth":null,"imp":[]},{"id":"2026-10-09T14:36","t":"2026-10-09T14:36Z","loc":"N15W94","ar":14547,"sp":315.0,"ty":"S","ha":41.0,"earth":null,"imp":[{"loc":"STEREO A","t":"2026-10-13T10:00Z"}]},{"id":"2026-10-10T08:36","t":"2026-10-10T08:36Z","loc":"N16W105","ar":14547,"sp":368.0,"ty":"S","ha":40.0,"earth":null,"imp":[{"loc":"Mars","t":"2026-10-16T07:00Z"},{"loc":"Psyche","t":"2026-10-16T18:00Z"},{"loc":"STEREO A","t":"2026-10-14T04:00Z"}]},{"id":"2026-10-10T12:23","t":"2026-10-10T12:23Z","loc":"","ar":null,"sp":763.0,"ty":"C","ha":10.0,"earth":null,"imp":[]},{"id":"2026-10-10T16:15","t":"2026-10-10T16:15Z","loc":"N08W54","ar":14549,"sp":844.0,"ty":"C","ha":43.0,"earth":{"t":"2026-10-12T00:43Z","kp":[null,8,9,9],"gb":false},"imp":[{"loc":"Mars","t":"2026-10-14T19:05Z"},{"loc":"Psyche","t":"2026-10-15T06:00Z"},{"loc":"Solar Orbiter","t":"2026-10-12T14:33Z"},{"loc":"STEREO A","t":"2026-10-13T02:33Z"},{"loc":"Europa Clipper","t":"2026-10-11T19:12Z"},{"loc":"Juice","t":"2026-10-11T22:12Z"},{"loc":"Mars","t":"2026-10-14T15:00Z"},{"loc":"OSIRIS-APEX","t":"2026-10-12T07:22Z"},{"loc":"Psyche","t":"2026-10-15T18:00Z"},{"loc":"Solar Orbiter","t":"2026-10-11T23:43Z"},{"loc":"STEREO A","t":"2026-10-12T21:00Z"}]},{"id":"2026-10-10T22:00","t":"2026-10-10T22:00Z","loc":"","ar":null,"sp":351.0,"ty":"S","ha":11.0,"earth":null,"imp":[]},{"id":"2026-10-11T09:12","t":"2026-10-11T09:12Z","loc":"","ar":null,"sp":374.0,"ty":"S","ha":17.0,"earth":null,"imp":[]},{"id":"2026-10-11T23:15","t":"2026-10-11T23:15Z","loc":"S20E30","ar":null,"sp":457.0,"ty":"S","ha":10.0,"earth":null,"imp":[{"loc":"Solar Orbiter","t":"2026-10-14T22:00Z"}]}],"flr":[{"id":"2026-09-19T17:57","b":"2026-09-19T17:57Z","p":"2026-09-19T18:17Z","e":"2026-09-19T18:32Z","c":"C3.3","loc":"N14E90","ar":14535},{"id":"2026-09-30T02:30","b":"2026-09-30T02:30Z","p":"2026-09-30T02:46Z","e":"2026-09-30T03:05Z","c":"C8.6","loc":"N11W48","ar":14535},{"id":"2026-10-04T06:13","b":"2026-10-04T06:13Z","p":"2026-10-04T06:19Z","e":"2026-10-04T06:21Z","c":"B3.2","loc":"S20W62","ar":14546},{"id":"2026-10-04T06:21","b":"2026-10-04T06:21Z","p":"2026-10-04T06:30Z","e":"2026-10-04T06:39Z","c":"B9.3","loc":"S19W62","ar":14546},{"id":"2026-10-05T18:36","b":"2026-10-05T18:36Z","p":"2026-10-05T18:48Z","e":"2026-10-05T18:57Z","c":"M1.0","loc":"N20E10","ar":14545},{"id":"2026-10-06T05:38","b":"2026-10-06T05:38Z","p":"2026-10-06T06:10Z","e":"2026-10-06T06:51Z","c":"M1.4","loc":"N10E12","ar":14549},{"id":"2026-10-06T07:47","b":"2026-10-06T07:47Z","p":"2026-10-06T08:05Z","e":"2026-10-06T08:13Z","c":"M1.8","loc":"N08E07","ar":14549},{"id":"2026-10-07T12:49","b":"2026-10-07T12:49Z","p":"2026-10-07T13:17Z","e":"2026-10-07T13:44Z","c":"C7.9","loc":"N10W04","ar":14549},{"id":"2026-10-08T15:29","b":"2026-10-08T15:29Z","p":"2026-10-08T15:48Z","e":"2026-10-08T15:58Z","c":"M6.7","loc":"N12W20","ar":14549},{"id":"2026-10-09T13:55","b":"2026-10-09T13:55Z","p":"2026-10-09T14:09Z","e":"2026-10-09T14:17Z","c":"M1.3","loc":"N15W90","ar":14547},{"id":"2026-10-10T13:56","b":"2026-10-10T13:56Z","p":"2026-10-10T14:12Z","e":"2026-10-10T14:27Z","c":"M1.2","loc":"N08W51","ar":14549},{"id":"2026-10-10T14:58","b":"2026-10-10T14:58Z","p":"2026-10-10T15:10Z","e":"2026-10-10T15:20Z","c":"M6.4","loc":"N08W54","ar":14549}],"sep":[],"ips":[{"t":"2026-09-14T09:24Z","loc":"Earth","ins":6,"lk":["2026-09-09T16:00"]},{"t":"2026-09-15T11:28Z","loc":"Earth","ins":6,"lk":["2026-09-13T19:48"]},{"t":"2026-09-17T01:24Z","loc":"Earth","ins":6,"lk":["2026-09-13T21:12","2026-09-14T11:08"]},{"t":"2026-09-17T15:10Z","loc":"STEREO A","ins":2,"lk":["2026-09-14T11:08"]},{"t":"2026-09-21T00:33Z","loc":"STEREO A","ins":2,"lk":[]},{"t":"2026-09-23T15:30Z","loc":"Earth","ins":6,"lk":[]},{"t":"2026-09-28T08:32Z","loc":"STEREO A","ins":2,"lk":[]},{"t":"2026-10-03T01:26Z","loc":"Earth","ins":6,"lk":["2026-09-30T03:12"]},{"t":"2026-10-03T23:41Z","loc":"Earth","ins":6,"lk":[]},{"t":"2026-10-09T10:41Z","loc":"Earth","ins":6,"lk":["2026-10-06T06:23"]},{"t":"2026-10-10T01:48Z","loc":"STEREO A","ins":2,"lk":["2026-10-08T16:24"]},{"t":"2026-10-10T14:33Z","loc":"Earth","ins":6,"lk":["2026-10-06T06:23","2026-10-06T09:53","2026-10-07T13:53"]}],"hss":[{"t":"2026-09-15T23:36Z","ins":["SOLAR-1: MAG","SOLAR-1: SWiPS","IMAP: SWAPI","IMAP: MAG","ACE: MAG","ACE: SWEPAM"]},{"t":"2026-09-21T12:15Z","ins":["STEREO A: IMPACT","STEREO A: PLASTIC"]},{"t":"2026-09-24T08:09Z","ins":["SOLAR-1: MAG","ACE: SWEPAM","IMAP: SWAPI","IMAP: MAG","ACE: MAG","SOLAR-1: SWiPS"]},{"t":"2026-09-29T00:34Z","ins":["STEREO A: IMPACT","STEREO A: PLASTIC"]},{"t":"2026-10-03T23:40Z","ins":["SOLAR-1: SWiPS","ACE: SWEPAM","ACE: MAG","SOLAR-1: MAG","IMAP: MAG","IMAP: SWAPI"]}],"rbe":[{"t":"2026-09-23T16:10Z","ins":["GOES-P: SEISS >2MeV"],"lk":["2026-09-15T23:36-HSS-001"]},{"t":"2026-09-26T14:10Z","ins":["GOES-P: SEISS >2MeV"],"lk":["2026-09-24T08:09-HSS-001"]},{"t":"2026-10-05T16:20Z","ins":["GOES-P: SEISS >2MeV"],"lk":["2026-10-03T23:40-HSS-001"]},{"t":"2026-10-10T14:35Z","ins":["GOES-P: SEISS >2MeV"],"lk":["2026-10-06T06:23-CME-001","2026-10-06T09:53-CME-001","2026-10-07T13:53-CME-001"]}],"note":[{"t":"2026-10-02T14:34Z","ty":"RBE","id":"20261002-AL-001"},{"t":"2026-10-04T12:40Z","ty":"MPC","id":"20261004-AL-001"},{"t":"2026-10-04T12:48Z","ty":"IPS","id":"20261004-AL-002"},{"t":"2026-10-04T21:06Z","ty":"GST","id":"20261004-AL-003"},{"t":"2026-10-04T21:33Z","ty":"GST","id":"20261004-AL-004"},{"t":"2026-10-05T15:05Z","ty":"CME","id":"20261005-AL-001"},{"t":"2026-10-05T16:30Z","ty":"RBE","id":"20261005-AL-002"},{"t":"2026-10-05T16:43Z","ty":"RBE","id":"20261005-AL-003"},{"t":"2026-10-05T17:32Z","ty":"CME","id":"20261005-AL-004"},{"t":"2026-10-06T12:46Z","ty":"CME","id":"20261006-AL-001"},{"t":"2026-10-06T20:49Z","ty":"CME","id":"20261006-AL-002"},{"t":"2026-10-07T16:48Z","ty":"RBE","id":"20261007-AL-001"},{"t":"2026-10-07T20:35Z","ty":"Report","id":"20261007-7D-001"},{"t":"2026-10-08T15:48Z","ty":"FLR","id":"20261008-AL-001"},{"t":"2026-10-08T15:56Z","ty":"FLR","id":"20261008-AL-002"},{"t":"2026-10-08T21:09Z","ty":"CME","id":"20261008-AL-003"},{"t":"2026-10-08T22:05Z","ty":"CME","id":"20261008-AL-004"},{"t":"2026-10-09T11:14Z","ty":"IPS","id":"20261009-AL-001"},{"t":"2026-10-09T11:30Z","ty":"CME","id":"20261009-AL-002"},{"t":"2026-10-10T15:04Z","ty":"IPS","id":"20261010-AL-001"},{"t":"2026-10-10T15:11Z","ty":"RBE","id":"20261010-AL-002"},{"t":"2026-10-10T15:13Z","ty":"FLR","id":"20261010-AL-003"},{"t":"2026-10-10T15:20Z","ty":"FLR","id":"20261010-AL-004"},{"t":"2026-10-10T15:50Z","ty":"MPC","id":"20261010-AL-005"},{"t":"2026-10-10T18:03Z","ty":"GST","id":"20261010-AL-006"},{"t":"2026-10-10T18:30Z","ty":"GST","id":"20261010-AL-007"},{"t":"2026-10-10T19:49Z","ty":"CME","id":"20261010-AL-008"}],"gst":[{"t":"2026-10-04T18:00Z","kp":5.67},{"t":"2026-10-10T15:00Z","kp":7.0}],"mpc":[{"t":"2026-10-04T07:26Z"},{"t":"2026-10-10T15:33Z"}],"meta":{"start":"2026-09-12","end":"2026-10-12","cmeStart":"2026-10-05","cmeEnd":"2026-10-11","pulled":"12 Oct 2026 04:55 UTC","pulledIso":"2026-10-12T04:55Z"}};
-D.gst=D.gst||[]; D.mpc=D.mpc||[]; D.note=D.note||[];
-const M=D.meta;
 const $=(s,r=document)=>r.querySelector(s);
 const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
 const T=s=>new Date(s.endsWith('Z')?s:s+'Z');
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+/* ---------- page chrome that does not depend on data (set up once) ---------- */
+const root=document.documentElement;
+const isDark=()=>root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;
+const thSync=()=>{$('#thbtn').textContent=isDark()?'Light mode':'Dark mode'};
+const savedTh=store.get('donki-theme');if(savedTh==='light'||savedTh==='dark')root.dataset.theme=savedTh;
+$('#thbtn').onclick=()=>{const n=isDark()?'light':'dark';root.dataset.theme=n;store.set('donki-theme',n);thSync()};
+thSync();
+document.addEventListener('click',e=>{
+  const t=e.target.closest('button[data-tbl]');
+  if(t){const c=t.closest('.card'),on=t.getAttribute('aria-pressed')!=='true';t.setAttribute('aria-pressed',on);t.textContent=on?'View as chart':'View as table';c.querySelector('.chartwrap').hidden=on;c.querySelector('.tblwrap').hidden=!on;return}
+  const m=e.target.closest('button[data-more]');
+  if(m){m.previousElementSibling.querySelectorAll('tr[data-x]').forEach(r=>r.hidden=false);m.remove()}
+});
+const tipEl=document.createElement('div');tipEl.id='tip';tipEl.setAttribute('role','tooltip');document.body.append(tipEl);
+const hideTip=()=>tipEl.classList.remove('on');
+function showTip(el){const hd=document.createElement('b');hd.textContent='In plain English';tipEl.replaceChildren(hd,document.createTextNode(el.dataset.tip||''));tipEl.classList.add('on');
+  const r=el.getBoundingClientRect(),w=tipEl.offsetWidth,h=tipEl.offsetHeight;
+  const x=Math.min(Math.max(12,r.left+r.width/2-w/2),innerWidth-w-12);let y=r.top-h-10;
+  if(y<8)y=Math.min(r.bottom+10,innerHeight-h-8);
+  tipEl.style.left=x+'px';tipEl.style.top=y+'px'}
+document.addEventListener('mouseover',e=>{const t=e.target.closest('[data-tip]');t?showTip(t):hideTip()});
+document.addEventListener('focusin',e=>{const t=e.target.closest('[data-tip]');if(t)showTip(t)});
+document.addEventListener('focusout',hideTip);
+document.addEventListener('click',hideTip);
+document.addEventListener('scroll',hideTip,{passive:true});
+/* ---------- everything that renders data; re-run on each fresh delivery ---------- */
+function start(D){
+D.gst=D.gst||[]; D.mpc=D.mpc||[]; D.note=D.note||[];
+const M=D.meta;
 
 /* ---------- plain-English hover text ---------- */
 const TIPS=[
@@ -174,9 +200,10 @@ const tipFor=t=>{t=String(t||'');const h=TIPS.find(p=>p[0].test(t));return h?h[1
 const tp=t=>{const x=tipFor(t);return x?' data-tip="'+esc(x)+'" tabindex="0"':''};
 /* free-text fields from the feed are escaped once, here, before any markup is built */
 const sx=v=>v==null?v:esc(v);
-D.flr.forEach(f=>{f.loc=sx(f.loc)});
-D.cme.forEach(c=>{c.loc=sx(c.loc);c.imp.forEach(i=>{i.loc=sx(i.loc)})});
+D.flr.forEach(f=>{f.loc=sx(f.loc);f.c=sx(f.c);f.ar=sx(f.ar)});
+D.cme.forEach(c=>{c.loc=sx(c.loc);c.ar=sx(c.ar);c.ty=sx(c.ty);c.imp.forEach(i=>{i.loc=sx(i.loc)})});
 D.ips.forEach(i=>{i.loc=sx(i.loc)});
+D.note.forEach(n=>{n.ty=sx(n.ty);n.id=sx(n.id)});
 [D.sep,D.hss,D.rbe].forEach(a=>a.forEach(r=>{r.ins=(r.ins||[]).map(sx)}));
 const NOW=Date.now();
 const MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -194,7 +221,7 @@ const hoursTxt=h=>h<1?'under 1 h':h<48?Math.round(h)+' h':Math.round(h/24)+' day
 
 /* ---------- data helpers ---------- */
 const cmeById=Object.fromEntries(D.cme.map(c=>[c.id,c]));
-const flux=c=>({C:1e-6,M:1e-5,X:1e-4}[c[0]]*parseFloat(c.slice(1)));
+const flux=c=>{const b={A:1e-8,B:1e-7,C:1e-6,M:1e-5,X:1e-4}[String(c||'')[0]],m=parseFloat(String(c).slice(1));return b&&m>0?b*m:1e-6};
 const mFlares=D.flr.filter(f=>f.c[0]==='M'||f.c[0]==='X');
 const earthIps=D.ips.filter(i=>i.loc==='Earth');
 const gScale=k=>k>=9?'G5 extreme':k>=8?'G4 severe':k>=7?'G3 strong':k>=6?'G2 moderate':k>=5?'G1 minor':'below storm level';
@@ -272,14 +299,14 @@ const shapeAt=(t,x,y,r,col,title,fillOp)=>{
 /* ---------- charts ---------- */
 function chartFlares(){
   const W=720,H=300,L=46,R=16,Tp=14,B=34,days=WDAYS;
-  const lo=Math.log10(1e-6),hi=Math.log10(4e-5);
+  const fx=D.flr.map(f=>flux(f.c)),lo=Math.log10(Math.min(1e-6,...fx)),hi=Math.log10(Math.max(4e-5,...fx.map(v=>v*1.6)));
   const y=v=>Tp+(H-Tp-B)*(1-(Math.log10(v)-lo)/(hi-lo));
   const X=d=>L+(W-L-R)*d/days;
   let s='<rect x="'+X(CO)+'" y="'+Tp+'" width="'+(X(CO+CDAYS)-X(CO))+'" height="'+(H-Tp-B)+'" fill="var(--band)"/>';
-  [[1e-6,'C1'],[3e-6,'C3'],[1e-5,'M1'],[3e-5,'M3']].forEach(a=>{s+='<line class="grid" x1="'+L+'" x2="'+(W-R)+'" y1="'+y(a[0])+'" y2="'+y(a[0])+'"/><text x="'+(L-6)+'" y="'+(y(a[0])+3)+'" text-anchor="end">'+a[1]+'</text>'});
+  [[1e-7,'B1'],[1e-6,'C1'],[3e-6,'C3'],[1e-5,'M1'],[3e-5,'M3'],[1e-4,'X1'],[3e-4,'X3'],[1e-3,'X10']].filter(a=>Math.log10(a[0])>=lo-1e-9&&Math.log10(a[0])<=hi).forEach(a=>{s+='<line class="grid" x1="'+L+'" x2="'+(W-R)+'" y1="'+y(a[0])+'" y2="'+y(a[0])+'"/><text x="'+(L-6)+'" y="'+(y(a[0])+3)+'" text-anchor="end">'+a[1]+'</text>'});
   for(let d=0;d<days-2;d+=5){s+='<line class="grid" x1="'+X(d)+'" x2="'+X(d)+'" y1="'+Tp+'" y2="'+(H-B)+'"/><text x="'+X(d)+'" y="'+(H-B+16)+'" text-anchor="middle">'+dlab(d)+'</text>'}
   s+='<line class="axis" x1="'+L+'" x2="'+(W-R)+'" y1="'+(H-B)+'" y2="'+(H-B)+'"/>';
-  D.flr.forEach(f=>{const m=f.c[0]!=='C';const x=xDay(f.p,L,W-R,days),yy=y(flux(f.c));
+  D.flr.forEach(f=>{const m=f.c[0]==='M'||f.c[0]==='X';const x=xDay(f.p,L,W-R,days),yy=y(flux(f.c));
     s+='<line x1="'+x+'" x2="'+x+'" y1="'+(H-B)+'" y2="'+yy+'" stroke="'+(m?'var(--accent)':'var(--c-s)')+'" stroke-width="1.5"/>'+shapeAt(m?'D':'S',x,yy,m?5:3.5,m?'var(--accent)':'var(--c-s)',f.c+' flare, peak '+fmt(f.p)+' '+tzName()+', '+f.loc);
     if(m)s+='<text x="'+x+'" y="'+(yy-11)+'" text-anchor="middle" style="fill:var(--ink)">'+f.c+'</text>'});
   const lab=D.flr.length+' flares in '+winLabel+', '+mFlares.length+' of them M-class or stronger'+(mFlares.length?', strongest '+mFlares.slice().sort((a,b)=>flux(b.c)-flux(a.c))[0].c:'')+'. The shaded band is '+cmeLabel+'. A table view is available.';
@@ -363,7 +390,7 @@ solar(){
   +'<div class="stats">'+stat(D.cme.length,'CMEs, '+cmeLabel)+stat(D.cme.filter(c=>c.sp>=1000).length,'at 1000 km/s or faster')+stat(D.flr.length,'flares, '+winLabel)+stat(D.sep.length,'particle event records')+'</div>'
   +figure('CME speed and width','Each mark is one CME. Height is speed, size is half-angle, shape is class. Hover or focus a mark for detail, or use the table view.',chartCmeSpeed(),[{h:'Start ('+tzName()+')'},{h:'Source'},{h:'Speed km/s',n:1},{h:'Half-angle',n:1},{h:'Class'}],rows,legendSCO)
   +'<h3 style="margin-top:22px">Flares</h3><p class="sub">'+D.flr.length+' flares recorded for '+winLabel+', newest first.</p>'
-  +table([{h:'Class'},{h:'Begin'},{h:'Peak'},{h:'End'},{h:'Source'},{h:'Region',n:1}],D.flr.slice().sort((a,b)=>T(b.p)-T(a.p)).map(f=>['<span class="pill'+(f.c[0]==='C'?'':' m')+'">'+f.c+'</span>',fmt(f.b),fmt(f.p),fmt(f.e),f.loc,f.ar||'none']),{limit:10,cap:'Solar flares'})
+  +table([{h:'Class'},{h:'Begin'},{h:'Peak'},{h:'End'},{h:'Source'},{h:'Region',n:1}],D.flr.slice().sort((a,b)=>T(b.p)-T(a.p)).map(f=>['<span class="pill'+(f.c[0]==='M'||f.c[0]==='X'?' m':'')+'">'+f.c+'</span>',fmt(f.b),fmt(f.p),fmt(f.e),f.loc,f.ar||'none']),{limit:10,cap:'Solar flares'})
   +'<h3>Solar energetic particle events</h3><p class="sub">Each row is one instrument record. Records close together in time usually belong to one event.</p>'
   +(D.sep.length?table([{h:'Time ('+tzName()+')'},{h:'Instrument'}],D.sep.map(s=>[fmt(s.t),s.ins[0]||'n/a']),{limit:8,cap:'Solar energetic particle events'}):empty('No particle events logged','The SEP feed returned no events for '+winLabel+'.'))
   +'<h3>CMEs</h3><p class="sub">Most accurate analysis for each of the '+D.cme.length+' CMEs.</p>'
@@ -416,22 +443,23 @@ const GLOSS=[['CME','Coronal mass ejection: a cloud of solar plasma thrown into 
  ['WSA-Enlil','The model NASA uses to forecast when a CME will arrive. Arrival times can be off by several hours.']];
 function footHtml(){
   return '<details><summary>Glossary</summary><dl>'+GLOSS.map(g=>'<dt>'+g[0]+'</dt><dd>'+g[1]+'</dd>').join('')+'</dl></details>'
-   +'<p>Source: NASA CCMC DONKI API. Data pulled '+esc(M.pulled)+'. This page is rebuilt on a schedule; it does not update while you read it.</p>'
+   +'<p>Source: NASA CCMC DONKI API. Data pulled '+esc(M.pulled)+'. Fetched live from NASA through your TinyFish connector each time the page opens, then refreshed every 30 minutes while it stays open.</p>'
    +'<p>'+(partial?'<strong>Coverage.</strong> The CME list covers '+cmeLabel+' only; flares, shocks and other feeds cover '+winLabel+'.':'<strong>Coverage.</strong> All feeds cover '+winLabel+'.')+' An empty list means no events were logged.</p>';
 }
 
 /* ---------- render, tabs, controls ---------- */
 const tabs=$('#tabs'),main=$('#panels');
+tabs.replaceChildren();main.replaceChildren();
 let cur=keys[0];
 keys.forEach(k=>{
   const b=document.createElement('button');b.type='button';b.setAttribute('role','tab');b.id='t-'+k;b.setAttribute('aria-controls','p-'+k);b.textContent=labels[k];b.onclick=()=>show(k);tabs.append(b);
   const s=document.createElement('section');s.className='panel';s.id='p-'+k;s.setAttribute('role','tabpanel');s.setAttribute('aria-labelledby','t-'+k);main.append(s);
 });
-tabs.addEventListener('keydown',e=>{
+tabs.onkeydown=e=>{
   const i=keys.indexOf(cur);let j=-1;
   if(e.key==='ArrowRight')j=(i+1)%keys.length;else if(e.key==='ArrowLeft')j=(i+keys.length-1)%keys.length;else if(e.key==='Home')j=0;else if(e.key==='End')j=keys.length-1;
   if(j>=0){e.preventDefault();show(keys[j]);$('#t-'+keys[j]).focus()}
-});
+};
 function show(k,noHash){
   cur=k;
   keys.forEach(n=>{const sel=n===k;$('#p-'+n).hidden=!sel;const t=$('#t-'+n);t.setAttribute('aria-selected',sel);t.tabIndex=sel?0:-1});
@@ -449,32 +477,180 @@ function render(){
   show(cur,true);
 }
 $('#tzbtn').onclick=()=>{TZ=TZ==='UTC'?'Europe/London':'UTC';store.set('donki-tz',TZ==='UTC'?'utc':'uk');render()};
-const root=document.documentElement;
-const isDark=()=>root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;
-const thSync=()=>{$('#thbtn').textContent=isDark()?'Light mode':'Dark mode'};
-const savedTh=store.get('donki-theme');if(savedTh==='light'||savedTh==='dark')root.dataset.theme=savedTh;
-$('#thbtn').onclick=()=>{const n=isDark()?'light':'dark';root.dataset.theme=n;store.set('donki-theme',n);thSync()};
-thSync();
-document.addEventListener('click',e=>{
-  const t=e.target.closest('button[data-tbl]');
-  if(t){const c=t.closest('.card'),on=t.getAttribute('aria-pressed')!=='true';t.setAttribute('aria-pressed',on);t.textContent=on?'View as chart':'View as table';c.querySelector('.chartwrap').hidden=on;c.querySelector('.tblwrap').hidden=!on;return}
-  const m=e.target.closest('button[data-more]');
-  if(m){m.previousElementSibling.querySelectorAll('tr[data-x]').forEach(r=>r.hidden=false);m.remove()}
-});
-const tipEl=document.createElement('div');tipEl.id='tip';tipEl.setAttribute('role','tooltip');document.body.append(tipEl);
-const hideTip=()=>tipEl.classList.remove('on');
-function showTip(el){tipEl.innerHTML='<b>In plain English</b>'+el.dataset.tip;tipEl.classList.add('on');
-  const r=el.getBoundingClientRect(),w=tipEl.offsetWidth,h=tipEl.offsetHeight;
-  const x=Math.min(Math.max(12,r.left+r.width/2-w/2),innerWidth-w-12);let y=r.top-h-10;
-  if(y<8)y=Math.min(r.bottom+10,innerHeight-h-8);
-  tipEl.style.left=x+'px';tipEl.style.top=y+'px'}
-document.addEventListener('mouseover',e=>{const t=e.target.closest('[data-tip]');t?showTip(t):hideTip()});
-document.addEventListener('focusin',e=>{const t=e.target.closest('[data-tip]');if(t)showTip(t)});
-document.addEventListener('focusout',hideTip);
-document.addEventListener('click',hideTip);
-document.addEventListener('scroll',hideTip,{passive:true});
 render();
 const h0=(location.hash||'').slice(1);show(labels[h0]?h0:'overview');
+}
+/* ---------- live data: NASA DONKI via the viewer's TinyFish connector ----------
+   One fetch_content call carries all nine feeds (TinyFish takes up to 10 URLs, and
+   fetch is free). The response is the raw feed text: no summariser, nothing retyped.
+   Every record is validated before it reaches the page, exactly as build_donki.py did. */
+const SERVER='TinyFish', TOOL='fetch_content', API='https://ccmc.gsfc.nasa.gov/DONKI-API/get/';
+const ISO=/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2}(\.\d+)?)?Z?$/, FCLASS=/^[ABCMX]\d+(\.\d+)?$/;
+const TIMEKEY={CME:'startTime',FLR:'peakTime',SEP:'eventTime',IPS:'eventTime',HSS:'eventTime',RBE:'eventTime',GST:'startTime',MPC:'eventTime',notifications:'messageIssueTime'};
+const LABEL={CME:'CMEs',FLR:'flares',SEP:'particle events',IPS:'shocks',HSS:'high speed streams',RBE:'radiation belt',GST:'storms',MPC:'magnetopause',notifications:'notifications'};
+const MONS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const ymd=d=>d.toISOString().slice(0,10);
+function window30(now){
+  const s=n=>ymd(new Date(now-n*864e5));
+  return {start:s(30),start11:s(11),end:s(0)};
+}
+function feedUrls(w){
+  const u=(k,s,x='')=>API+k+'?startDate='+s+'&endDate='+w.end+x;
+  return {FLR:u('FLR',w.start),SEP:u('SEP',w.start),IPS:u('IPS',w.start,'&location=ALL&catalog=ALL'),
+    HSS:u('HSS',w.start),RBE:u('RBE',w.start),GST:u('GST',w.start),MPC:u('MPC',w.start),
+    notifications:u('notifications',w.start11,'&type=all'),CME:u('CME',w.start)};
+}
+/* TinyFish returns markdown, which escapes characters such as _ ("M2M\_CATALOG").
+   Those are never valid JSON escapes, so drop the backslash; keep real JSON escapes. */
+const unmd=t=>t.replace(/\\(["\\/bfnrtu])|\\(.)/g,(m,keep,ch)=>keep?m:ch);
+function parseFeed(text){
+  const t=unmd(String(text||'')).trim();
+  if(!t) return [];
+  const v=JSON.parse(t);
+  if(!Array.isArray(v)) throw new Error('not a list');
+  return v;
+}
+const iso=v=>typeof v==='string'&&ISO.test(v);
+const numOrNull=v=>v==null||(typeof v==='number'&&isFinite(v));
+function shapeOk(kind,r){
+  if(!r||typeof r!=='object') return false;
+  if(kind==='FLR') return iso(r.beginTime)&&iso(r.peakTime)&&(r.endTime==null||iso(r.endTime))&&typeof r.classType==='string'&&FCLASS.test(r.classType)&&typeof r.flrID==='string';
+  if(kind==='CME') return typeof r.activityID==='string'&&(r.cmeAnalyses||[]).every(a=>numOrNull(a.speed)&&numOrNull(a.halfAngle)&&[null,undefined,'S','C','O','R','ER'].includes(a.type));
+  if(kind==='GST') return (r.allKpIndex||[]).every(k=>numOrNull(k.kpIndex));
+  if(['SEP','HSS','RBE','IPS'].includes(kind)) return Array.isArray(r.instruments);
+  return true;
+}
+function validate(kind,data,start,end){
+  const kept=[];let oow=0,bad=0;
+  for(const r of data){
+    const t=r&&r[TIMEKEY[kind]];
+    if(!iso(t)||!shapeOk(kind,r)){bad++;continue}
+    const d=t.slice(0,10);
+    if(d<start||d>end){oow++;continue}
+    kept.push(r);
+  }
+  return {kept,oow,bad};
+}
+/* Slim the raw feeds into the shape the page renders (same as build_donki.py did). */
+function slim(F,w,pulledMs){
+  const ins=s=>(s.instruments||[]).map(i=>i&&i.displayName).filter(x=>typeof x==='string');
+  const id16=s=>String(s).slice(0,16);
+  const cme=F.CME.map(c=>{
+    const an=c.cmeAnalyses||[], a=an.find(x=>x.isMostAccurate)||an[0]||{};
+    let earth=null;const imp=[];
+    for(const x of an) for(const e of x.enlilList||[]){
+      if(iso(e.estimatedShockArrivalTime)) earth={t:e.estimatedShockArrivalTime,kp:['kp_18','kp_90','kp_135','kp_180'].map(k=>typeof e[k]==='number'?e[k]:null),gb:!!e.isEarthGB};
+      for(const i of e.impactList||[]) if(i&&typeof i.location==='string'&&iso(i.arrivalTime)) imp.push({loc:i.location,t:i.arrivalTime});
+    }
+    return {id:id16(c.activityID),t:c.startTime,loc:c.sourceLocation,ar:c.activeRegionNum,sp:a.speed,ty:a.type,ha:a.halfAngle,earth,imp};
+  });
+  const days=cme.map(c=>c.t.slice(0,10)).sort();
+  const p=new Date(pulledMs);
+  return {
+    cme,
+    flr:F.FLR.map(f=>({id:id16(f.flrID),b:f.beginTime,p:f.peakTime,e:f.endTime||f.peakTime,c:f.classType,loc:f.sourceLocation,ar:f.activeRegionNum})),
+    sep:F.SEP.map(s=>({t:s.eventTime,ins:ins(s),n:(s.sentNotifications||[]).length})),
+    ips:F.IPS.map(s=>({t:s.eventTime,loc:s.location,ins:s.instruments.length,lk:(s.linkedEvents||[]).map(l=>l&&l.activityID).filter(a=>typeof a==='string'&&a.includes('CME')).map(id16)})),
+    hss:F.HSS.map(s=>({t:s.eventTime,ins:ins(s)})),
+    rbe:F.RBE.map(s=>({t:s.eventTime,ins:ins(s),lk:(s.linkedEvents||[]).map(l=>l&&l.activityID).filter(a=>typeof a==='string').map(a=>a.slice(0,16)+a.slice(19))})),
+    note:F.notifications.map(n=>({t:n.messageIssueTime,ty:n.messageType,id:n.messageID})),
+    gst:F.GST.map(x=>({t:x.startTime,kp:Math.max(0,...(x.allKpIndex||[]).map(k=>k.kpIndex).filter(v=>v!=null))})),
+    mpc:F.MPC.map(x=>({t:x.eventTime})),
+    meta:{start:w.start,end:w.end,cmeStart:days[0]||w.start,cmeEnd:days[days.length-1]||w.end,
+      pulled:p.getUTCDate()+' '+MONS[p.getUTCMonth()]+' '+p.getUTCFullYear()+' '+p.toISOString().slice(11,16)+' UTC',
+      pulledIso:p.toISOString().slice(0,16)+'Z'}
+  };
+}
+/* Turn one fetch_content payload into page data. */
+function buildData(payload,w,urls,pulledMs){
+  const byUrl={};for(const r of (payload&&payload.results)||[]) if(r) byUrl[r.url]=r;
+  const failed=new Set(((payload&&payload.errors)||[]).map(e=>e&&e.url));
+  const F={},problems=[];
+  for(const [kind,url] of Object.entries(urls)){
+    const r=byUrl[url];F[kind]=[];
+    if(!r||failed.has(url)){problems.push(LABEL[kind]+': not fetched');continue}
+    let raw;try{raw=parseFeed(r.text)}catch(e){problems.push(LABEL[kind]+': unreadable response');continue}
+    const v=validate(kind,raw,kind==='notifications'?w.start11:w.start,w.end);
+    if(raw.length&&!v.kept.length){problems.push(LABEL[kind]+': every record failed checks');continue}
+    if(v.oow||v.bad) problems.push(LABEL[kind]+': '+(v.oow+v.bad)+' of '+raw.length+' records skipped');
+    F[kind]=v.kept;
+  }
+  return {D:slim(F,w,pulledMs),problems,usable:F.FLR.length+F.CME.length>0};
+}
+/* Payload is normally the parsed {results, errors} object; fall back to the text block. */
+function payloadOf(res){
+  let p=res&&res.payload;
+  if(typeof p==='string'){try{p=JSON.parse(p)}catch(e){p=null}}
+  if(!p||!p.results){const t=((res&&res.content)||[]).find(b=>b&&b.type==='text');try{p=JSON.parse(t.text)}catch(e){}}
+  return p;
+}
+
+function pageMessage(lv,h,d,btn){
+  const s=$('#status');
+  s.innerHTML='<div class="status" data-lv="'+lv+'"><span class="g" aria-hidden="true">'+(lv==='good'?'…':lv==='warn'?'▲':'■')+'</span><div><h2></h2><p></p>'+(btn?'<p style="margin-top:8px"><button type="button" class="btn sm" id="msgbtn"></button></p>':'')+'</div></div>';
+  s.querySelector('h2').textContent=h;s.querySelector('p').textContent=d;
+  if(btn){const b=$('#msgbtn');b.textContent=btn.label;b.onclick=btn.go}
+}
+/* Copy per error code, so each message names the fix that applies. */
+function explain(err){
+  const c=err&&err.code;
+  if(c==='server_not_connected'||c==='server_not_found'||c==='selection_required') return ['TinyFish is not connected','This dashboard reads NASA data through your TinyFish connector. Add or choose TinyFish in claude.ai Settings → Connectors, then reload.'];
+  if(c==='needs_reauth') return ['TinyFish needs reconnecting','Reconnect TinyFish in claude.ai Settings → Connectors, then reload.'];
+  if(c==='not_in_manifest'||c==='consent_required') return ['TinyFish is switched off for this page','Allow TinyFish in this page\'s Permissions menu to load live data.'];
+  if(c==='approval_required') return ['Approval needed','The page needs your OK to fetch from NASA through TinyFish.'];
+  if(c==='blocked_by_policy') return ['Blocked by your organisation','Your organisation\'s policy does not allow TinyFish here.'];
+  if(c==='tool_error') return ['TinyFish could not fetch the feeds','It reported: '+(err.message||'no detail')+'. NASA\'s DONKI service may be down; try again later.'];
+  if(c==='server_unavailable'||c==='rate_limited') return ['TinyFish is not answering','This is usually brief.'];
+  return ['Live data could not load',(err&&err.message)||'Unknown problem.'];
+}
+
+let haveData=false;
+function deliver(res,w,urls){
+  const p=payloadOf(res);
+  if(!p||!p.results){if(!haveData)pageMessage('crit','Live data could not load','TinyFish answered, but not in the expected shape.');return}
+  const out=buildData(p,w,urls,(res.cache&&res.cache.storedAt)||Date.now());
+  if(!out.usable){if(!haveData)pageMessage('crit','No usable data','Neither the flare nor the CME feed came back usable. '+out.problems.join('; ')+'.');return}
+  haveData=true;
+  start(out.D);
+  if(out.problems.length){const c=$('#cover');c.textContent=(c.textContent?c.textContent+' ':'')+'Some feeds had problems: '+out.problems.join('; ')+'.'}
+}
+async function boot(){
+  pageMessage('good','Loading live data','Fetching nine NASA DONKI feeds through your TinyFish connector.');
+  const mcp=await claude.use('mcp');
+  if(!mcp){pageMessage('warn','Live data is not available here','Open this page in claude.ai, signed in with TinyFish connected, to load NASA data.');return}
+  const w=window30(Date.now()),urls=feedUrls(w);
+  const input={urls:Object.values(urls),format:'markdown',links:false,image_links:false,iframe_links:false,page_metadata:false,ttl:900,
+    purpose:'NASA DONKI space weather feeds (raw JSON) for a personal dashboard'};
+  const cache={staleTime:300000,gcTime:86400000};
+  const fetchOnce=()=>mcp.callTool(SERVER,TOOL,input,{cache}).then(r=>deliver(r,w,urls))
+    .catch(e=>{const [h,d]=explain(e);if(!haveData)pageMessage('crit',h,d)});
+  mcp.watchTool(SERVER,TOOL,input,ev=>{
+    if(ev.type==='data') return deliver(ev.result,w,urls);
+    const e=ev.error||{},c=e.code;
+    if(['needs_reauth','server_not_connected','blocked_by_policy','not_in_manifest'].includes(c)) haveData=false; // a denial retracts data
+    if(haveData){const f=$('#fresh');if(!f.textContent.startsWith('▲ Refresh failed'))f.textContent='▲ Refresh failed. '+f.textContent;f.classList.add('stale');return}
+    const [h,d]=explain(e);
+    if(c==='approval_required') return pageMessage('warn',h,d,{label:'Allow and load',go:fetchOnce});
+    if(e.retryable) return pageMessage('warn',h,d,{label:'Try again',go:fetchOnce});
+    pageMessage('crit',h,d);
+  },{cache,refetchInterval:1800000});
+}
+/* Outside Claude (the GitHub Pages copy) there is no connector: read the snapshot that the
+   repo's GitHub Actions job commits to data/donki.json. Same {results, errors} shape as TinyFish. */
+const SNAPSHOT='../../data/donki.json';
+async function bootSnapshot(){
+  pageMessage('good','Loading the latest snapshot','Reading the NASA DONKI snapshot saved by the scheduled job.');
+  let s;
+  try{const r=await fetch(SNAPSHOT,{cache:'no-cache'});if(!r.ok)throw new Error('HTTP '+r.status);s=await r.json()}
+  catch(e){return pageMessage('crit','Snapshot unavailable','The saved NASA data could not be read ('+e.message+'). Open the dashboard in claude.ai for live data.')}
+  const w=s&&s.window;
+  if(!w||!/^\d{4}-\d{2}-\d{2}$/.test(w.end||'')||!s.payload) return pageMessage('crit','Snapshot unreadable','The saved NASA data is not in the expected shape.');
+  const fetched=Date.parse(s.fetchedAt);
+  deliver({payload:s.payload,cache:isNaN(fetched)?undefined:{storedAt:fetched}},w,feedUrls(w));
+}
+if(window.claude&&window.claude.use) boot();
+else bootSnapshot();
+
 </script>
 
 </body></html>
