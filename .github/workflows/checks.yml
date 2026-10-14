@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Self-tests for tools/fetch_donki.py
+        run: python3 tools/test_fetch_donki.py
       - name: Self-tests for tools/sync.py
         run: python3 tools/test_sync.py
       - name: Published pages already follow the publishing rules
