@@ -112,4 +112,16 @@ try:
     assert [n for n in os.listdir(os.path.dirname(dst)) if n.startswith(".sync-")] == [], "temp dir left behind"
 finally:
     s.ROOT = real_root; shutil.rmtree(root); shutil.rmtree(src)
+
+# redact.json patterns: mobiles and personal-provider emails go, images and kept values don't
+t = s.redact('"how":"contact chair Anna on 07704 539008.","get":"Email pontyvolunteers@yahoo.com.","c":"cgcc@hotmail.co.uk"')
+assert "07704" not in t and "pontyvolunteers" not in t and "cgcc@" not in t, t
+assert "(number on group website)" in t and "(email on group website)." in t, t
+assert s.redact("call 07415172208 or AgeFriendly@pkc.gov.uk") == "call (number on group website) or AgeFriendly@pkc.gov.uk"
+img = "data:image/png;base64,AAAA+07123456789/BBBB=="
+assert s.redact(f'<img src="{img}">') == f'<img src="{img}">', "base64 must never be edited"
+assert "'" not in s.PATTERNS[0][1] + s.PATTERNS[1][1], "replacements sit inside JS strings: no quotes"
+s.KEEP.add("07000 111222")
+assert s.redact("ring 07000 111222") == "ring 07000 111222", "keep list"
+s.KEEP.discard("07000 111222")
 print("ok")

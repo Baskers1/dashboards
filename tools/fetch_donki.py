@@ -7,6 +7,8 @@ TinyFish; the GitHub Pages copy reads this snapshot instead. The file uses the s
 {results:[{url,text}], errors:[{url,error}]} shape as TinyFish's fetch_content, so the page
 parses and validates both the same way. No API key is needed.
 Exits non-zero and leaves the old snapshot alone when neither flares nor CMEs came back.
+Leaves the file untouched when the data hasn't changed (and it's under a day old), so the
+workflow only commits real changes.
 """
 import datetime as dt, json, os, sys, urllib.request
 
@@ -52,9 +54,29 @@ def build(fetch=get, now=None):
             "payload": {"results": results, "errors": errors}}
 
 
+REFRESH_HOURS = 24  # rewrite an unchanged snapshot this often, so "fetched at" doesn't go stale
+
+
+def unchanged(old, new, hours=REFRESH_HOURS):
+    """True when the feeds returned the same data as the saved snapshot and it isn't old yet."""
+    try:
+        age = (dt.datetime.strptime(new["fetchedAt"], "%Y-%m-%dT%H:%M:%SZ")
+               - dt.datetime.strptime(old["fetchedAt"], "%Y-%m-%dT%H:%M:%SZ"))
+        return old["payload"] == new["payload"] and age < dt.timedelta(hours=hours)
+    except (KeyError, TypeError, ValueError):
+        return False
+
+
 def main(argv):
     out = argv[1] if len(argv) > 1 else os.path.join(ROOT, "data", "donki.json")
     snap = build()
+    try:
+        with open(out, encoding="utf-8") as f:
+            if unchanged(json.load(f), snap):
+                print("unchanged since", snap["fetchedAt"], "- keeping the saved snapshot (no commit)")
+                return 0
+    except (OSError, ValueError):
+        pass  # no snapshot yet, or unreadable: write a fresh one
     os.makedirs(os.path.dirname(out), exist_ok=True)
     tmp = out + ".tmp"
     with open(tmp, "w", encoding="utf-8") as f:
