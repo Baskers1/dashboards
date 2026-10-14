@@ -22,4 +22,19 @@ try:
     f.build(fake({"FLR", "CME"}), NOW); raise AssertionError("should refuse when FLR and CME both fail")
 except SystemExit:
     pass
+
+# only commit real changes: same payload within a day is skipped, otherwise rewritten
+later = f.build(fake(), NOW + dt.timedelta(hours=3))
+assert f.unchanged(s, later), "same data 3h later: keep old file"
+assert not f.unchanged(s, f.build(fake(), NOW + dt.timedelta(hours=25))), "refresh at least daily"
+assert not f.unchanged(s, f.build(fake({"CME"}), NOW + dt.timedelta(hours=3))), "different data: write"
+assert not f.unchanged({}, later) and not f.unchanged({"fetchedAt": "junk", "payload": {}}, later)
+import json, tempfile
+d = tempfile.mkdtemp(); out = os.path.join(d, "donki.json")
+json.dump(s, open(out, "w")); before = open(out).read()
+real, f.build = f.build, lambda: later
+try:
+    assert f.main(["x", out]) == 0 and open(out).read() == before, "unchanged run must not touch the file"
+finally:
+    f.build = real
 print("fetch_donki ok")

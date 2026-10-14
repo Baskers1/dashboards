@@ -26,7 +26,11 @@ BY_ID = {d["id"]: d for d in M["dashboards"]}
 LOOKUP = {**BY_ID, **{a: d for d in M["dashboards"] for a in d.get("aliases", [])}}
 LINK = re.compile(r"https://claude\.ai/(?:code/)?artifact/"
                   r"([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}|[A-Za-z0-9]{22})")
-REDACT = json.load(open(os.path.join(ROOT, "tools", "redact.json"), encoding="utf-8"))["replacements"]
+_R = json.load(open(os.path.join(ROOT, "tools", "redact.json"), encoding="utf-8"))
+REDACT = _R["replacements"]
+PATTERNS = [(re.compile(r["regex"]), r["replace"]) for r in _R.get("patterns", [])]
+KEEP = set(_R.get("keep", []))
+BASE64 = re.compile(r"data:[a-z0-9.+/-]+;base64,[A-Za-z0-9+/=]+", re.I)
 SAFE_NAME = re.compile(r"^[a-z0-9][a-z0-9-]*$")
 PUBLIC_EXT = {".html", ".htm", ".css", ".js", ".jpg", ".jpeg", ".png", ".gif", ".webp", ".avif",
               ".svg", ".ico", ".woff", ".woff2"}
@@ -49,7 +53,18 @@ def rewrite_links(text):
 def redact(text):
     for r in REDACT:
         text = text.replace(r["find"], r["replace"])
-    return text
+    if not PATTERNS:
+        return text
+    def scrub(part):
+        for rx, rep in PATTERNS:
+            part = rx.sub(lambda m: m.group(0) if m.group(0) in KEEP else rep, part)
+        return part
+    # never touch embedded images: a digit run inside base64 could look like a phone number
+    out, last = [], 0
+    for m in BASE64.finditer(text):
+        out += [scrub(text[last:m.start()]), m.group(0)]
+        last = m.end()
+    return "".join(out) + scrub(text[last:])
 
 
 def check(page):
@@ -112,7 +127,11 @@ def fix_pages(dst):
 def build_hub():
     rows = []
     for key, label in M["areas"].items():
-        items = [d for d in M["dashboards"] if d["area"] == key and os.path.exists(os.path.join(folder(d), "index.html"))]
+        listed = [d for d in M["dashboards"] if d["area"] == key]
+        items = [d for d in listed if os.path.exists(os.path.join(folder(d), "index.html"))]
+        for d in listed:
+            if d not in items:
+                print(f"WARNING not on the hub (no page published yet): {key}/{d['slug']}")
         if not items:
             continue
         links = "".join(f'<li><a href="{key}/{d["slug"]}/">{html.escape(d["name"])}</a></li>' for d in items)
