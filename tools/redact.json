@@ -1,9 +1,20 @@
 {
- "_comment": "Exact-text replacements applied to every published HTML page by tools/sync.py. Use for personal details (private phone numbers, personal email addresses) that should not be on the public site.",
+ "_comment": "Applied to every published HTML page by tools/sync.py. 'replacements' are exact-text swaps; 'patterns' are regexes for personal contact details (mobile numbers, personal email providers) - point people at the group's own website instead. Put any matched value that should stay public in 'keep'.",
  "replacements": [
   {
    "find": "Contact details are on the group website.",
    "replace": "Contact details are on the group's own page."
   }
- ]
+ ],
+ "patterns": [
+  {
+   "regex": "(?<![\\w+/])07\\d{3} ?\\d{3} ?\\d{3}(?![\\w/])",
+   "replace": "(number on group website)"
+  },
+  {
+   "regex": "[A-Za-z0-9._%+-]+@(?:gmail|googlemail|hotmail|outlook|live|yahoo|icloud|me|btinternet|aol|sky)\\.(?:com|co\\.uk|net)\\b",
+   "replace": "(email on group website)"
+  }
+ ],
+ "keep": []
 }
