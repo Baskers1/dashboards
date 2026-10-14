@@ -114,14 +114,14 @@ finally:
     s.ROOT = real_root; shutil.rmtree(root); shutil.rmtree(src)
 
 # redact.json patterns: mobiles and personal-provider emails go, images and kept values don't
-t = s.redact('"how":"contact chair Anna on (number on group website).","get":"Email (email on group website).","c":"(email on group website)"')
-assert "07704" not in t and "pontyvolunteers" not in t and "cgcc@" not in t, t
+t = s.redact('"how":"contact chair Anna on 07700 900123.","get":"Email example.group@yahoo.com.","c":"example.club@hotmail.co.uk"')
+assert "07700 900123" not in t and "example.group" not in t and "example.club@" not in t, t
 assert "(number on group website)" in t and "(email on group website)." in t, t
-assert s.redact("call (number on group website) or AgeFriendly@pkc.gov.uk") == "call (number on group website) or AgeFriendly@pkc.gov.uk"
+assert s.redact("call 07700900456 or help@example.gov.uk") == "call (number on group website) or help@example.gov.uk"
 img = "data:image/png;base64,AAAA+07123456789/BBBB=="
 assert s.redact(f'<img src="{img}">') == f'<img src="{img}">', "base64 must never be edited"
 assert "'" not in s.PATTERNS[0][1] + s.PATTERNS[1][1], "replacements sit inside JS strings: no quotes"
-s.KEEP.add("(number on group website)")
-assert s.redact("ring (number on group website)") == "ring (number on group website)", "keep list"
-s.KEEP.discard("(number on group website)")
+s.KEEP.add("07700 900789")
+assert s.redact("ring 07700 900789") == "ring 07700 900789", "keep list"
+s.KEEP.discard("07700 900789")
 print("ok")
