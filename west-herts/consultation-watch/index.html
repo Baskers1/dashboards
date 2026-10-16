@@ -1,4 +1,4 @@
-<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-82V4vejuqb/YxVhWU5t6W90fTlN7HREJOPH+/bB/nhU=' 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
+<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'sha256-sA4xOWmF3oZQzTks/zp1SHQomYtKovMqhqFLmCAuWow=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
 var SCHEME=/^\s*([a-z][a-z0-9+.\-]*):/i,HREF={http:1,https:1,mailto:1,tel:1},SRC={http:1,https:1,blob:1};
 function okUrl(v,isSrc){var c=String(v).replace(/[\u0000- ]/g,""),m=SCHEME.exec(c);if(!m)return true;var s=m[1].toLowerCase();
 if(isSrc&&s==="data")return /^data:image\//i.test(c);return !!(isSrc?SRC:HREF)[s];}
@@ -12,6 +12,7 @@ function fixTree(n){if(n.nodeType!==1)return;fixOne(n);var all=n.getElementsByTa
 new MutationObserver(function(ms){for(var i=0;i<ms.length;i++){var m=ms[i];if(m.type==="attributes")fixOne(m.target);
 else for(var j=0;j<m.addedNodes.length;j++)fixTree(m.addedNodes[j]);}}).observe(document.documentElement,{childList:true,subtree:true,attributes:true});
 })();</script><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+
 <meta charset="utf-8">
 <title>West Herts · Consultation Watch</title>
 <style>/* Atkinson Hyperlegible and Bricolage Grotesque, SIL Open Font License, via Fontsource */
@@ -328,7 +329,7 @@ body.big .mode button{min-height:56px;padding:12px 22px}
     <p data-ic="clock"><span><strong>Closing times.</strong> Where a card gives a date but no exact time, the organiser has not published one on its page. Check the consultation page for the exact time.</span></p>
     <p data-ic="info"><span><strong>How to read this.</strong> A filled dot beside a group or habitat means a source names it. A hollow dot is my reading of a likely effect, so treat it as a prompt to check, not a finding.</span></p>
     <p data-ic="search"><span><strong>Sources we check.</strong> <a href="https://www.watford.gov.uk/directory/1/new-parking-schemes-and-consultations/category/11" target="_blank" rel="noopener">Watford Borough Council</a>, <a href="https://haveyoursay.threerivers.gov.uk/projects" target="_blank" rel="noopener">Three Rivers Have Your Say</a>, <a href="https://letstalk.dacorum.gov.uk/projects" target="_blank" rel="noopener">Let's Talk Dacorum</a>, <a href="https://www.hertfordshire.gov.uk/about-the-council/consultations/consultations.aspx" target="_blank" rel="noopener">Hertfordshire County Council</a> and its <a href="https://letstalktransport.hertfordshire.gov.uk/" target="_blank" rel="noopener">Let's Talk Transport</a> site, the <a href="https://www.hertfordshire-lgr.co.uk/" target="_blank" rel="noopener">Herts reorganisation site</a>, the <a href="https://www.herts-pcc.gov.uk/news/latest-news/" target="_blank" rel="noopener">Police and Crime Commissioner</a>, the <a href="https://www.centraleast.icb.nhs.uk/" target="_blank" rel="noopener">Central East ICB</a>, <a href="https://www.batchworth-ecc.gov.uk/" target="_blank" rel="noopener">Batchworth Community Council</a>, <a href="https://www.croxleygreen-pc.gov.uk/" target="_blank" rel="noopener">Croxley Green</a>, <a href="https://sarrattparishcouncil.gov.uk/" target="_blank" rel="noopener">Sarratt</a> and <a href="https://www.chorleywood-pc.gov.uk/" target="_blank" rel="noopener">Chorleywood</a> parish councils and <a href="https://www.batchworth-ecc.gov.uk/" target="_blank" rel="noopener">Batchworth Community Council</a> (none running its own consultation when checked), <a href="https://www.stalbans.gov.uk/consultations" target="_blank" rel="noopener">St Albans</a> as a neighbour, Defra's Citizen Space hub and GOV.UK, the Planning Inspectorate, the Environment Agency, Affinity Water and Ofwat consultation pages, and local news. For the Buckinghamshire towns: <a href="https://yourvoicebucks.citizenspace.com/" target="_blank" rel="noopener">Your Voice Bucks</a> and the <a href="https://www.buckinghamshire.gov.uk/local-plan" target="_blank" rel="noopener">Buckinghamshire Local Plan</a> pages, plus <a href="https://www.tring.gov.uk/" target="_blank" rel="noopener">Tring</a>, <a href="https://amersham-tc.gov.uk/" target="_blank" rel="noopener">Amersham</a> and <a href="https://www.chesham.gov.uk/" target="_blank" rel="noopener">Chesham</a> town councils and <a href="https://www.littlechalfont-pc.gov.uk/" target="_blank" rel="noopener">Little Chalfont Parish Council</a> (no consultation of their own was open at Tring, Amersham or Little Chalfont when checked, beyond the new Chesham Conservation Area item above). Thames Water, Affinity Water, the Environment Agency, National Highways, Network Rail, TfL, Chiltern Railways and Hertfordshire Fire and Rescue had no open consultation found affecting this area this time. Charity and company consultations were not found open, so those filters are thin or empty.</span></p>
-    <p data-ic="cal"><span>Dates and times come from the council, government or news pages linked on each card, collected on 15 October 2026. Days left are worked out from today's date in London. Always confirm the closing time on the consultation page before you rely on it.</span></p>
+    <p data-ic="cal"><span>Dates and times come from the council, government or news pages linked on each card, collected on 16 October 2026. Days left are worked out from today's date in London. Always confirm the closing time on the consultation page before you rely on it.</span></p>
   </div>
 </div>
 <script>
@@ -613,7 +614,7 @@ const ITEMS = [
   deadline: "2026-12-31", time: "inquiry closed; no decision date published",
   topics: ["homes", "nature"],
   plain: "A developer is appealing the refusal of about 600 homes on roughly 40 hectares of Green Belt at Croxley Green. The public inquiry opened on 27 August 2026 and has closed. The Inspector's decision is awaited.",
-  detail: "The scheme includes a primary school, a local centre, a country park and 50 percent affordable homes. The council withdrew two of its refusal reasons. An August 2026 national planning policy framework replaced the December 2024 one mid-appeal. The legal agreement includes a £1.065m contribution to TfL. References: PINS 6004972; TRDC 24/2073/OUT; appeal 26/0012/REF. A Change.org 'Save our Green Belt' petition stood at 3,221 signatures on both 12 and 13 October 2026 and had risen to 3,254 by 15 October 2026; a separate, differently named Change.org petition about the same site, 'Save Little Green Lane', had around 2,800 signatures. Council records cited by campaigners report that 708 of 741 council responses were objections. The date shown on this card is a sort position only. As of 15 October 2026, the Planning Inspectorate's own online appeal tracker for reference 6004972 still showed the appeal as 'closed for comment, awaiting decision', consistent with Three Rivers' own planning appeals page; no Inspector's decision had been issued.",
+  detail: "The scheme includes a primary school, a local centre, a country park and 50 percent affordable homes. The council withdrew two of its refusal reasons. An August 2026 national planning policy framework replaced the December 2024 one mid-appeal. The legal agreement includes a £1.065m contribution to TfL. References: PINS 6004972; TRDC 24/2073/OUT; appeal 26/0012/REF. A Change.org 'Save our Green Belt' petition stood at 3,221 signatures on both 12 and 13 October 2026, had risen to 3,254 by 15 October 2026, and stood at 3,256 when checked again on 16 October 2026; a separate, differently named Change.org petition about the same site, 'Save Little Green Lane', had around 2,800 signatures. Council records cited by campaigners report that 708 of 741 council responses were objections. The date shown on this card is a sort position only. As of 16 October 2026, the Planning Inspectorate's own online appeal tracker for reference 6004972 still showed the appeal as 'closed for comment, awaiting decision' (Three Rivers describes the same reference as app. 24/2073/OUT), consistent with Three Rivers' own planning appeals page, which also says the decision will be published when available; no Inspector's decision had been issued.",
   how: "The inquiry is over. Watch the Three Rivers planning appeals page, or the Planning Inspectorate's own appeal tracker for reference 6004972, for the decision.",
   url: "https://www.threerivers.gov.uk/services/planning/planning-appeals", urlLabel: "See planning appeals",
   src: "https://appeal-planning-decision.service.gov.uk/comment-planning-appeal/appeals/6004972",
@@ -752,7 +753,7 @@ const ITEMS = [
   detail: "Opened 28 September 2026. Replaces the county's 2018 Local Transport Plan. An earlier engagement on the plan's vision and themes ran in 2025 and was approved by the Environment, Transport and Growth Cabinet Panel on 26 January 2026; this consultation covers the resulting full draft document, including comments on statutory environmental assessments.",
   how: "Respond online at the consultation page, or send comments on the environmental assessments to LTP@hertfordshire.gov.uk.",
   url: "https://www.hertfordshire.gov.uk/about-the-council/consultations/transport-and-highways/new-local-transport-plan.aspx", urlLabel: "Have your say",
-  src: "https://www.hertfordshire.gov.uk/services/highways-roads-and-pavements/road-safety/local-transport-plan.aspx",
+  src: "https://www.hertfordshire.gov.uk/services/recycling-waste-and-environment/planning-in-hertfordshire/transport-planning/local-transport-plan.aspx",
   a: {
     people: [["Drivers, bus users, cyclists and walkers across Hertfordshire", 1], ["Older and disabled residents needing accessible transport", 0], ["People living near roads affected by future schemes", 0]],
     groups: [["Parish and town councils across the county", 0], ["Transport and accessibility campaign groups", 0]],
@@ -814,10 +815,10 @@ const ITEMS = [
 {
   id: "hayling-play", title: "Hayling Road Play Area, South Oxhey: refurbishment design",
   body: "Three Rivers District Council", sector: "local", status: "closed",
-  deadline: "2026-10-07", time: "closed 7 October 2026 (date given on the council's own social media; the consultation page itself did not state an exact closing time); outcome not yet published",
+  deadline: "2026-10-09", closes: "12:00", time: "closed 9 October 2026, 12 noon (the project's own key-dates page gives this date, correcting an earlier 7 October date reported on the council's social media); outcome not yet published",
   topics: ["services"],
   plain: "Three Rivers wants views on a new design for Hayling Road Play Area in South Oxhey, whose equipment is at the end of its life.",
-  detail: "Opened 11 September 2026. The proposed design blends play and nature. Feedback will inform a tender the council says is due to be issued in late October 2026. The project's own milestone tracker says a consultation report will be available 'mid-October'; as of 13 October 2026 no report, outcome or next steps had yet been published on the council's consultation pages.",
+  detail: "Opened 11 September 2026. The proposed design blends play and nature. Feedback will inform a tender the council says is due to be issued in late October 2026. The project's own milestone tracker says a consultation report will be available 'mid-October'; as of 16 October 2026 no report, outcome or next steps had yet been published on the council's consultation pages.",
   how: "Respond through Three Rivers Have Your Say.",
   url: "https://haveyoursay.threerivers.gov.uk/hayling-road-play-area-refurbishment", urlLabel: "Have your say",
   src: "https://haveyoursay.threerivers.gov.uk/hayling-road-play-area-refurbishment",
@@ -868,7 +869,7 @@ const ITEMS = [
   deadline: "2026-10-20", time: "the main consultation closed at 11.59pm on 6 September 2026; the extended deadline for the transport model documents and the Green Belt Assessment is 20 October 2026",
   topics: ["homes", "nature", "travel"],
   plain: "The final draft plan for where homes, jobs and transport go in Buckinghamshire up to 2045, covering Little Chalfont, Amersham and Chesham. Only comments on a few named extra documents are still being taken.",
-  detail: "The Regulation 19 consultation opened on 23 July 2026 and the main consultation closed at 11.59pm on Sunday 6 September 2026. Buckinghamshire Council then extended the deadline for comments on particular technical documents: the housing and Gypsy and Traveller documents closed on 20 September 2026, and the transport model documents and the Green Belt Assessment close on 20 October 2026. Comments at this stage must be about those documents only. Little Chalfont Parish Council says the draft plan proposes three small sites in Little Chalfont, at Station Approach, Elizabeth Avenue and land to the rear of St George's Church, and that it was not necessary to allocate any new green belt or grey belt site there. As of 13 October 2026 the council's own page sets out only a generic next-steps sequence (review representations, then submission to the Planning Inspectorate subject to approvals, independent examination, the Inspector's report, then adoption) with no specific dates; an earlier November 2026 Council date and 31 December 2026 submission date could not be reconfirmed on this check, so treat them as unconfirmed rather than fixed.",
+  detail: "The Regulation 19 consultation opened on 23 July 2026 and the main consultation closed at 11.59pm on Sunday 6 September 2026. Buckinghamshire Council then extended the deadline for comments on particular technical documents: the housing and Gypsy and Traveller documents closed on 20 September 2026, and the transport model documents and the Green Belt Assessment close on 20 October 2026. Comments at this stage must be about those documents only. Little Chalfont Parish Council says the draft plan proposes three small sites in Little Chalfont, at Station Approach, Elizabeth Avenue and land to the rear of St George's Church, and that it was not necessary to allocate any new green belt or grey belt site there. As of 16 October 2026 the council's own consultation page now states plainly that once this consultation closes, the draft plan and responses go to Council in November 2026 for a decision on submission, and that if agreed the plan will be submitted to the Planning Inspectorate, with all responses, by no later than 31 December 2026; no specific Council meeting date or submission date beyond that 'no later than' has yet been published.",
   how: "Respond through buckinghamshire.gov.uk/local-plan, keeping comments to the extended documents.",
   url: "https://www.buckinghamshire.gov.uk/planning-building-and-environment/policy/buckinghamshire-local-plan/reg-19-consultation/", urlLabel: "See the consultation page",
   src: "https://yourvoicebucks.citizenspace.com/planning/new-local-plan/",
@@ -966,12 +967,12 @@ const ITEMS = [
 },
 {
   id: "chesham-pond", title: "Skottowes Pond, Lowndes Park, Chesham: see the detailed design",
-  body: "Chesham Town Council with Project Groundwater and the River Chess Smarter Water Catchment", sector: "local", status: "open",
-  deadline: "2026-10-15", time: "drop-in from 3pm to 7pm on Thursday 15 October 2026; no separate written deadline published",
+  body: "Chesham Town Council with Project Groundwater and the River Chess Smarter Water Catchment", sector: "local", status: "closed",
+  deadline: "2026-10-15", time: "the 15 October drop-in has passed; no written deadline was ever published, and the project page gives no further date",
   topics: ["nature", "services"],
-  plain: "Chesham Town Council is showing its detailed design for improving Skottowes Pond in Lowndes Park before building starts, and wants your comments.",
-  detail: "An informal outdoor drop-in at the performance area above the pond in Lowndes Park on Thursday 15 October 2026, from 3pm to 7pm, moving into Chesham Town Hall, HP5 1DS, if it rains. The work is to improve the water quality and wildlife of Skottowes Pond, and the council says the design has already been shaped by earlier resident feedback. No online form or written deadline is published, so the drop-in is the way to comment.",
-  how: "Go to the drop-in on 15 October, or contact Chesham Town Council if you cannot get there.",
+  plain: "Chesham Town Council showed its detailed design for improving Skottowes Pond in Lowndes Park before building starts. The drop-in has passed; you can still send views by email.",
+  detail: "This was the second drop-in on the design (the first was 9 July 2026), run jointly by Chesham Town Council, Buckinghamshire Council's Project Groundwater and the River Chess Smarter Water Catchment, looking at nature-based ways to cut pollution and improve water quality reaching the pond. The 15 October 2026 drop-in, 3pm to 7pm at the performance area above the pond in Lowndes Park, has now taken place. There was never an online form or written deadline; anyone who missed the drop-in can still send views by emailing hello@projectgroundwater.co.uk. The next step is for the project team to review and summarise feedback to help finalise the detailed design; no outcome had been published as of 16 October 2026.",
+  how: "The drop-in has passed. Send views by emailing hello@projectgroundwater.co.uk.",
   url: "https://www.chesham.gov.uk/2026/10/help-shape-the-future-of-skottowes-pond-2/", urlLabel: "Have your say",
   src: "https://www.chesham.gov.uk/2026/10/help-shape-the-future-of-skottowes-pond-2/",
   a: {
@@ -1147,9 +1148,9 @@ const STATUS = {"lgr": "On hold", "croxley-appeal": "Awaiting Inspector", "sarra
 const DECISION_LABEL = "Decision pending";
 const TABS = [["open", "Open now"], ["decision", "Decisions and watch"], ["closed", "Recently closed"], ["all", "All"]];
 const MORE_LABEL = "Who and what is affected";
-const WATCH_NOTE = "No charity or non-profit consultation was found open on 15 October 2026. These organisations are the likeliest to run one.";
-const EMPTY_CHARITY = "No charity or non-profit consultation was found open on 15 October 2026. Try the places to watch.";
-const COLLECTED = "15 October 2026";
+const WATCH_NOTE = "No charity or non-profit consultation was found open on 16 October 2026. These organisations are the likeliest to run one.";
+const EMPTY_CHARITY = "No charity or non-profit consultation was found open on 16 October 2026. Try the places to watch.";
+const COLLECTED = "16 October 2026";
 const MODE_KEY = "wcw-mode2";
 const HERTS_WIDE = ["watford", "threerivers", "hemel", "tring", "abbotslangley", "chorleywood"];
 const BUCKS_WIDE = ["littlechalfont", "amersham", "chesham"];
@@ -1422,5 +1423,6 @@ setInterval(() => {
   if (statusKey() !== before) render();
 }, 60000);
 </script>
+
 
 </body></html>

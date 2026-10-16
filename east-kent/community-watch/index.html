@@ -1,4 +1,4 @@
-<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'sha256-kXbRcnh8//YkgViHG65JSqyFbn/k5MP8+cv9IPybrw8=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
+<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'sha256-kTxVelIP9+cP0gKx6hPEIjk1gtCjv+uJ7JTRyAK4274=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
 var SCHEME=/^\s*([a-z][a-z0-9+.\-]*):/i,HREF={http:1,https:1,mailto:1,tel:1},SRC={http:1,https:1,blob:1};
 function okUrl(v,isSrc){var c=String(v).replace(/[\u0000- ]/g,""),m=SCHEME.exec(c);if(!m)return true;var s=m[1].toLowerCase();
 if(isSrc&&s==="data")return /^data:image\//i.test(c);return !!(isSrc?SRC:HREF)[s];}
@@ -175,7 +175,7 @@ body.big .back-to-top{width:60px;height:60px;font-size:1.6rem;right:16px;bottom:
     <div class="brand">
       <h1>Thanet Community Watch</h1>
       <p>Who is doing what across Thanet: social enterprises, volunteering and community groups, plus the council and government plans that affect them, local people and wildlife. Deadlines are flagged as they get close.</p>
-      <div class="asof" id="asof"></div>
+      <div class="asof" id="asof">Information collected on 16 October 2026</div>
     </div>
     <div class="mode" role="group" aria-label="Choose display">
       <button type="button" id="m-std" aria-pressed="true">Standard</button>
@@ -236,7 +236,7 @@ body.big .back-to-top{width:60px;height:60px;font-size:1.6rem;right:16px;bottom:
   <div class="foot">
     <p><strong>How to read this.</strong> Days left are counted from today's date in London. "Closes" is the last day to reply, apply or sign up. "Happens" is the day of an event. Red means 7 days or fewer, amber 21 days or fewer. A group marked "Check before you go" was found in a search result or an older article, so confirm it is still running before you travel or hand over money.</p>
     <p><strong>What is not here.</strong> No repair cafes or residents' association lists turned up, and no Environment Agency sea defence scheme dated 2026 was found. Some group sites blocked automated reading. The list will miss small groups that only use Facebook or word of mouth.</p>
-    <p><strong>Sources.</strong> Thanet District Council's <a href="https://yourvoice.thanet.gov.uk/en-GB/" target="_blank" rel="noopener">Your Voice Thanet</a>, <a href="https://letstalk.kent.gov.uk/" target="_blank" rel="noopener">Let's Talk Kent</a>, <a href="https://www.gov.uk/" target="_blank" rel="noopener">GOV.UK</a>, <a href="https://consult.defra.gov.uk/" target="_blank" rel="noopener">Defra Citizen Space</a>, the <a href="https://www.thanetcoast.org.uk/events-and-activities/" target="_blank" rel="noopener">Thanet Coast Project</a>, group websites, and the <a href="https://theisleofthanetnews.com/category/community/" target="_blank" rel="noopener">Isle of Thanet News</a>. Information collected on 15 October 2026. Always confirm dates and times on the linked page before you rely on them.</p>
+    <p><strong>Sources.</strong> Thanet District Council's <a href="https://yourvoice.thanet.gov.uk/en-GB/" target="_blank" rel="noopener">Your Voice Thanet</a>, <a href="https://letstalk.kent.gov.uk/" target="_blank" rel="noopener">Let's Talk Kent</a>, <a href="https://www.gov.uk/" target="_blank" rel="noopener">GOV.UK</a>, <a href="https://consult.defra.gov.uk/" target="_blank" rel="noopener">Defra Citizen Space</a>, the <a href="https://www.thanetcoast.org.uk/events-and-activities/" target="_blank" rel="noopener">Thanet Coast Project</a>, group websites, and the <a href="https://theisleofthanetnews.com/category/community/" target="_blank" rel="noopener">Isle of Thanet News</a>. Information collected on 16 October 2026. Always confirm dates and times on the linked page before you rely on them.</p>
   </div>
 </div>
 
@@ -297,12 +297,12 @@ const ITEMS = [
   how:"Complete the survey on Your Voice Thanet.",
   aff:["Overwintering wading birds and migrating geese at Birchington","Pegwell Bay wildlife","Dog owners and walkers","Blue Flag and Seaside Award beaches"],
   url:"https://yourvoice.thanet.gov.uk/en-GB/projects/dog-control-pspo", urlLabel:"Have your say", src:"https://theisleofthanetnews.com/2026/08/29/consultation-open-for-proposed-renewed-dog-beach-ban-or-on-lead-order-for-isle-sites/" },
-{ id:"flytip", title:"Conditional cautions for fly-tipping", body:"Defra", level:"central", kind:"Consultation", status:"open",
+{ id:"flytip", title:"Conditional cautions for fly-tipping", body:"Defra", level:"central", kind:"Consultation", status:"closed",
   deadline:"2026-10-16", time:"time not stated", topics:["nature","services"], lenses:["res","marsh"],
-  plain:"Government proposes to let councils, including Thanet, issue conditional cautions to people caught fly-tipping.",
-  detail:"National consultation. It was the only open Defra consultation I found that touches coasts, litter or countryside. Confirm the closing time on the Defra page.",
-  how:"Respond on Defra's Citizen Space.",
-  aff:["Litter and fly-tipping on rural verges and the coast"], url:"https://consult.defra.gov.uk/fly-tipping-and-litter-policy/conditional-caution-powers-to-local-authorities/", urlLabel:"Have your say", src:"https://consult.defra.gov.uk/fly-tipping-and-litter-policy/conditional-caution-powers-to-local-authorities/" },
+  plain:"Government proposed to let councils, including Thanet, issue conditional cautions to people caught fly-tipping.",
+  detail:"National consultation. Closed 16 October 2026.",
+  how:"The window to respond has closed.",
+  aff:["Litter and fly-tipping on rural verges and the coast"], url:"https://consult.defra.gov.uk/fly-tipping-and-litter-policy/conditional-caution-powers-to-local-authorities/", urlLabel:"See the consultation", src:"https://consult.defra.gov.uk/fly-tipping-and-litter-policy/conditional-caution-powers-to-local-authorities/" },
 { id:"housing", title:"Housing, Homelessness and Rough Sleeper Strategy (draft)", body:"Thanet District Council", level:"local", kind:"Consultation", status:"open",
   deadline:"2026-10-25", time:"the page showed 19:59, so confirm", topics:["homes","services"], lenses:["home","old","vcse","res"],
   plain:"Draft plan on housing affordability, an ageing population and preventing homelessness.",
