@@ -25,13 +25,19 @@
    "id": "XCuXsnqRJTJe4DYG8o9kL4",
    "area": "east-kent",
    "slug": "whats-on",
-   "name": "What's On"
+   "name": "What's On",
+   "refresh_tasks": [
+    "trig_014XLpbAjuzMS4HBkgRokoU8"
+   ]
   },
   {
    "id": "Aaj8aLdLJ6798nYerVQLH2",
    "area": "east-kent",
    "slug": "whats-on-big",
-   "name": "What's On (big buttons)"
+   "name": "What's On (big buttons)",
+   "refresh_tasks": [
+    "trig_014XLpbAjuzMS4HBkgRokoU8"
+   ]
   },
   {
    "id": "6t1FK9Bbev1o8oKj7ES2qZ",
@@ -85,13 +91,19 @@
    "id": "TYydvMg8TWjFTxuWNcjwSg",
    "area": "west-herts",
    "slug": "whats-on",
-   "name": "What's On"
+   "name": "What's On",
+   "refresh_tasks": [
+    "trig_013u4nh5ykFCos8buoeZ5SGk"
+   ]
   },
   {
    "id": "DRa7jk3F6d2WKcFWY7WyUa",
    "area": "west-herts",
    "slug": "whats-on-big",
-   "name": "What's On (big buttons)"
+   "name": "What's On (big buttons)",
+   "refresh_tasks": [
+    "trig_013u4nh5ykFCos8buoeZ5SGk"
+   ]
   },
   {
    "id": "9pV7MTwWTFSoUF6pvyngQD",
@@ -145,13 +157,19 @@
    "id": "QrJxtLuXYS4iDG38ftF4dY",
    "area": "tayside",
    "slug": "whats-on",
-   "name": "What's On"
+   "name": "What's On",
+   "refresh_tasks": [
+    "trig_012SeWDFSz9P1m2BMoTyxycr"
+   ]
   },
   {
    "id": "QqFJGqbF14S4tK2eeUyi7f",
    "area": "tayside",
    "slug": "whats-on-big",
-   "name": "What's On (big buttons)"
+   "name": "What's On (big buttons)",
+   "refresh_tasks": [
+    "trig_012SeWDFSz9P1m2BMoTyxycr"
+   ]
   },
   {
    "id": "LNr1ihua7i7PGGWJgDB4J8",
@@ -259,31 +277,48 @@
    "id": "NvPaKgRWa6JmtNSsPp5MFH",
    "area": "sky",
    "slug": "space-weather",
-   "name": "Space Weather (NASA DONKI)"
+   "name": "Space Weather (NASA DONKI)",
+   "refresh_tasks": []
   },
   {
    "id": "local:sky-ramsgate",
    "area": "sky",
    "slug": "ramsgate",
-   "name": "Ramsgate night sky"
+   "name": "Ramsgate night sky",
+   "refresh_tasks": [
+    "trig_01WU8ya3eJ2qbznz9X5qChUp",
+    "trig_01575SzYtwaVj7PWhwE2t5bM"
+   ]
   },
   {
    "id": "local:sky-ammanford",
    "area": "sky",
    "slug": "ammanford",
-   "name": "Ammanford night sky"
+   "name": "Ammanford night sky",
+   "refresh_tasks": [
+    "trig_01WU8ya3eJ2qbznz9X5qChUp",
+    "trig_01575SzYtwaVj7PWhwE2t5bM"
+   ]
   },
   {
    "id": "local:sky-dundee",
    "area": "sky",
    "slug": "dundee",
-   "name": "Dundee night sky"
+   "name": "Dundee night sky",
+   "refresh_tasks": [
+    "trig_01WU8ya3eJ2qbznz9X5qChUp",
+    "trig_01575SzYtwaVj7PWhwE2t5bM"
+   ]
   },
   {
    "id": "local:sky-carnoustie",
    "area": "sky",
    "slug": "carnoustie",
-   "name": "Carnoustie night sky"
+   "name": "Carnoustie night sky",
+   "refresh_tasks": [
+    "trig_01WU8ya3eJ2qbznz9X5qChUp",
+    "trig_01575SzYtwaVj7PWhwE2t5bM"
+   ]
   }
  ]
 }
