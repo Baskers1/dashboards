@@ -1,4 +1,4 @@
-<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-4Nto6LAyUvJsfAnUoSMGkdNmRcAYQb78/mELeGsnCBg=' 'sha256-QztCj9EXWgGzdz0omkwc4TIvx9/Y8Wd0rHGIEf5/16s=' 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
+<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-4Nto6LAyUvJsfAnUoSMGkdNmRcAYQb78/mELeGsnCBg=' 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'sha256-p7N48LpAg48KHfoE/Y+APFY62F8PHHLeGXRGkKp//OQ=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
 var SCHEME=/^\s*([a-z][a-z0-9+.\-]*):/i,HREF={http:1,https:1,mailto:1,tel:1},SRC={http:1,https:1,blob:1};
 function okUrl(v,isSrc){var c=String(v).replace(/[\u0000- ]/g,""),m=SCHEME.exec(c);if(!m)return true;var s=m[1].toLowerCase();
 if(isSrc&&s==="data")return /^data:image\//i.test(c);return !!(isSrc?SRC:HREF)[s];}
@@ -304,6 +304,18 @@ body{padding-bottom:88px}
 <div class="shead"><h2 id="h-posts">Most-shared posts</h2><span class="count">Most viewed first</span></div>
 <div class="posts" id="postlist"></div>
 <button type="button" class="btn moreBtn" id="more-posts" hidden></button>
+</section>
+
+<section id="eastkent" aria-labelledby="h-ek">
+<div class="shead"><h2 id="h-ek">Beyond Thanet</h2><span class="count" id="c-ek"></span></div>
+<p class="summary" id="ek-summary"></p>
+<div class="themes" id="ek-themes"></div>
+<h3>Best-liked places</h3>
+<div class="loved" id="ek-loved"></div>
+<h3>Complaints</h3>
+<div class="complaints" id="ek-comps"></div>
+<h3>Most-shared posts</h3>
+<div class="posts" id="ek-posts"></div>
 </section>
 
 <footer class="notes">
@@ -834,8 +846,40 @@ const BUZZ = {"pulled":{"Thanet":"1 Oct 2026","Ramsgate":"19 Oct 2026"},
 {"towns":["Ramsgate"],"title":"Papa's Fish & Chips opens on Harbour Parade","url":"https://www.tiktok.com/@communityadltd/video/7681681099487055126","n":"11.7k","unit":"views","extra":"204 likes, 4 Sep 2026","why":"New fish and chip shop in the Royal Victoria Pavilion; opening announcement.","platform":"TikTok","thumb":"thumbs/0e0afb00b3.jpg"},
 {"towns":["Ramsgate"],"title":"Lone Star BBQ: Texas smokehouse, Northwood Road","url":"https://www.tiktok.com/@lonestar.bbq1/video/7697187143956909334","n":"5.4k","unit":"views","extra":"143 likes, 16 Oct 2026","why":"Dine-in, delivery and collection times for the new smokehouse; comments are light-hearted.","platform":"TikTok","thumb":"thumbs/ab0822b1b0.jpg"},
 {"towns":["Ramsgate"],"title":"Little Kraken opens on York Street","url":"https://www.tiktok.com/@communityadltd/video/7681683393007996182","n":"4.5k","unit":"views","extra":"85 likes, 4 Sep 2026","why":"Opening announcement for the new seafood and steak restaurant.","platform":"TikTok","thumb":"thumbs/62cba05d32.jpg"},
-{"towns":["Ramsgate"],"title":"Scoop: ice-cream doughnuts, Ramsgate","url":"https://www.tiktok.com/@travelwithus606/video/7685720277371587872","n":"4.0k","unit":"views","extra":"125 likes, 15 Sep 2026","why":"“Unreal” verdict from a visiting creator.","platform":"TikTok","thumb":"thumbs/f93e9ad36a.jpg"}
-]};
+{"towns":["Ramsgate"],"title":"Scoop: ice-cream doughnuts, Ramsgate","url":"https://www.tiktok.com/@travelwithus606/video/7685720277371587872","n":"4.0k","unit":"views","extra":"125 likes, 15 Sep 2026","why":"“Unreal” verdict from a visiting creator.","platform":"TikTok","thumb":"thumbs/f93e9ad36a.jpg"},
+{"towns":["Ramsgate","Margate","Broadstairs"],"title":"Finding Thanet's best fry-up","url":"https://www.tiktok.com/@gone.in.3minz/video/7617869144259726614","n":"211k","unit":"views","why":"The comments became a list of local cafés: Ship Shape, Kelly's in Westgate, Olympia.","platform":"TikTok"}
+],
+"eastkent":{"pulled":"6 Oct 2026",
+"summary":"Outside Thanet, Whitstable oysters get the biggest audience, mostly London day-trippers. Canterbury locals stick with long-running favourites. Deal, Sandwich and Folkestone get attention for chippies, big platters and a few new openings.",
+"themes":[
+{"towns":["Whitstable"],"title":"Oysters and seafood day trips","evidence":[{"t":"60 oysters in Whitstable","u":"https://www.instagram.com/reel/DG7oM6CtG6i/","n":"1.3M views"},{"t":"Are Whitstable oysters worth trying?","u":"https://www.reddit.com/r/kentuk/comments/1o7af86/are_whitstable_oysters_really_worth_trying/"}],"meaning":"Oysters are the most-watched food subject in East Kent. In the comments, locals talk more about water quality and price than taste."},
+{"towns":["Deal","Sandwich","Folkestone"],"title":"Fish & chips debates","evidence":[{"t":"Papa's Fish & Chips, Sandwich","u":"https://www.youtube.com/watch?v=phQeriLtjn8","n":"26k views"},{"t":"Mario's Fish Bar, Deal","u":"https://www.facebook.com/FoodReviewClub/posts/the-best-in-town-we-stopped-off-to-try-marios-fish-bar-located-in-deal-kent/1043855398030079/"},{"t":"Harbour Fish Bar, Folkestone","u":"https://www.facebook.com/groups/781610218635613/posts/4198381830291751/"}],"meaning":"Any chippy post fills up with locals naming their own. In Deal, commenters say Middle Street is still the one to beat."},
+{"towns":["Deal"],"title":"BBQ and platters","evidence":[{"t":"£125 Jamaican platter, Soul Chef Kitchen","u":"https://www.tiktok.com/@flabssometimesabs/video/7573240674909277462","n":"474k views"}],"meaning":"Huge sharing boards with the price in the caption do best, and the comments are all positive."},
+{"towns":["Canterbury"],"title":"Locals' favourites","evidence":[{"t":"r/canterbury: Favourite place to eat","u":"https://www.reddit.com/r/canterbury/comments/1sabrkl/favourite_place_to_eat_in_canterbury/"},{"t":"r/canterbury: Nice affordable restaurants","u":"https://www.reddit.com/r/canterbury/comments/1tn88e7/nice_affordable_restaurants/"}],"meaning":"Canterbury locals keep naming long-running places rather than new openings."},
+{"towns":["Sandwich"],"title":"Paid campaigns","evidence":[{"t":"Hellmann's: the sandwich that started it all","u":"https://www.tiktok.com/@charliebetts_/video/7624580870468373782","n":"739k views"}],"meaning":"A mayonnaise brand's \"home of the first sandwich\" campaign got big reach. It's a paid ad, so it doesn't count as diner opinion."}
+],
+"places":[
+{"name":"The Goods Shed","town":"Canterbury","why":"The top comment in r/canterbury's favourites thread (28 upvotes)."},
+{"name":"Café du Soleil","town":"Canterbury","why":"\"Never had a bad meal\" in over a decade, though the drinks are pricey."},
+{"name":"Café des Amis","town":"Canterbury","why":"Mexican, named again and again on r/canterbury."},
+{"name":"Happy Samurai","town":"Canterbury","why":"Japanese, popular for value and a student discount."},
+{"name":"The Corner House","town":"Canterbury","why":"\"Always exceptional\" on r/canterbury."},
+{"name":"Soul Chef Kitchen","town":"Deal","why":"Jamaican, inside the Port Arms. The most-viewed restaurant post outside the oyster videos."},
+{"name":"Papa's Fish & Chips","town":"Sandwich","why":"\"Brilliant hidden gem\", according to Food Review Club (Aug 2026)."}
+],
+"complaints":[
+{"towns":["Whitstable"],"title":"Whitstable oysters","text":"Some locals say they avoid oysters because of sewage discharges, a few describe getting ill, and one paid £20 for six.","link":"https://www.reddit.com/r/kentuk/comments/1o7af86/are_whitstable_oysters_really_worth_trying/"},
+{"towns":["Canterbury"],"title":"Eating cheaply","text":"Threads asking for affordable places in Canterbury tend to end with Wetherspoons.","link":"https://www.reddit.com/r/canterbury/comments/1dzpdkv/cheap_places_to_eat_in_canterbury/"}
+],
+"posts":[
+{"towns":["Whitstable"],"title":"60 oysters in Whitstable","url":"https://www.instagram.com/reel/DG7oM6CtG6i/","n":"1.3M","unit":"views","why":"A ready-made crawl: The Forge, Wheelers and more.","platform":"Instagram","thumb":"thumbs/ek-whitstable-oysters.jpg"},
+{"towns":["Sandwich"],"title":"A sandwich fit for the Earl (ad)","url":"https://www.tiktok.com/@charliebetts_/video/7624580870468373782","n":"739k","unit":"views","why":"A paid Hellmann's campaign about the town of Sandwich.","platform":"TikTok"},
+{"towns":["Deal"],"title":"The biggest Jamaican platter in Kent","url":"https://www.tiktok.com/@flabssometimesabs/video/7573240674909277462","n":"474k","unit":"views","why":"Soul Chef Kitchen at the Port Arms, £125.","platform":"TikTok"},
+{"towns":["Canterbury"],"title":"Salt Steakhouse, Canterbury","url":"https://www.tiktok.com/@8uwanl/video/7598870845330640131","n":"118k","unit":"views","why":"Compared to Swiss Butter in London. The comments are split.","platform":"TikTok"},
+{"towns":["Folkestone"],"title":"Kazoku all-you-can-eat sushi","url":"https://www.tiktok.com/@libraryofsofia/video/7686570316205739286","n":"108k","unit":"views","why":"A September 2026 opening getting attention.","platform":"TikTok"},
+{"towns":["Sandwich"],"title":"Papa's Fish & Chips, Sandwich","url":"https://www.youtube.com/watch?v=phQeriLtjn8","n":"26k","unit":"views","why":"Food Review Club: \"brilliant hidden gem\".","platform":"YouTube","thumb":"thumbs/ek-papas-sandwich.jpg"},
+{"towns":["Canterbury"],"title":"r/canterbury: Favourite place to eat","url":"https://www.reddit.com/r/canterbury/comments/1sabrkl/favourite_place_to_eat_in_canterbury/","n":"58","unit":"comments","why":"The clearest local ranking for Canterbury.","platform":"Reddit"}
+]}};
 (function(){
 var K="lt-bigtext",h=document.documentElement,b=document.getElementById("aa");
 function put(v){try{localStorage.setItem(K,v?"1":"0")}catch(e){}}
@@ -990,7 +1034,19 @@ $("postlist").innerHTML = ps.slice(0,st.nPosts).map(p=>`<a class="post" href="${
 <span class="thumb"><svg class="ic" aria-hidden="true" style="width:32px;height:32px"><use href="#${icon(p)}"/></svg>${p.thumb?`<img src="${esc(p.thumb)}" alt="" loading="lazy" width="88" height="110" onerror="this.remove()">`:""}</span>
 <span style="display:flex;flex-direction:column;gap:6px;min-width:0"><span class="num">${esc(p.n)}<small>${esc(p.unit)}</small></span><span class="pt">${esc(p.title)}</span><span class="why">${esc(p.why)}</span><span class="plat">${esc(p.platform)} · ${esc(p.towns.join(", "))}</span></span></a>`).join("");
 const b=$("more-posts"); b.hidden=ps.length<=st.nPosts; b.textContent=`Show all ${ps.length} posts`;
-$("buzznote").innerHTML = `<b>What people are saying</b> comes from public posts on TikTok, Reddit, YouTube, Instagram and Facebook, read on ${esc(BUZZ.pulled.Thanet)} for all of Thanet and ${esc(BUZZ.pulled.Ramsgate)} for Ramsgate. Results about places with the same name abroad were left out. It is a snapshot of public talk, not a survey.`;
+$("buzznote").innerHTML = `<b>What people are saying</b> comes from public posts on TikTok, Reddit, YouTube, Instagram and Facebook, read on ${esc(BUZZ.pulled.Thanet)} for all of Thanet and ${esc(BUZZ.pulled.Ramsgate)} for Ramsgate. Results about places with the same name abroad were left out. It is a snapshot of public talk, not a survey.${BUZZ.eastkent?` <b>Beyond Thanet</b> covers Canterbury, Whitstable, Deal, Sandwich and Folkestone, from posts read on ${esc(BUZZ.eastkent.pulled)}.`:""}`;
+}
+
+function eastKent(){
+const E=BUZZ.eastkent; if(!E){ $("eastkent").hidden=true; return; }
+$("c-ek").textContent = "Canterbury, Whitstable, Deal, Sandwich, Folkestone";
+$("ek-summary").textContent = E.summary;
+$("ek-themes").innerHTML = E.themes.map(x=>`<article class="theme"><div class="vhead">${ico(themeIcon(x.title),"sm")}<h3>${esc(x.title)}</h3></div><p class="meaning">${esc(x.meaning)}</p><p class="ev">${x.evidence.map(e=>ext(e.u,esc(e.t))+(e.n?` (${esc(e.n)})`:"")).join(", ")}</p><span class="town">${esc(x.towns.join(", "))}</span></article>`).join("");
+$("ek-loved").innerHTML = E.places.map(p=>`<span class="lchip" title="${esc(p.why)}">${mini("i-heart")}${esc(p.name)} · ${esc(p.town)}</span>`).join("");
+$("ek-comps").innerHTML = E.complaints.map(c=>`<div class="comp"><div><b>${esc(c.title)}</b> <span class="town">${esc(c.towns.join(", "))}</span><p>${esc(c.text)}${c.link?" "+ext(c.link,"See the post"):""}</p></div></div>`).join("");
+$("ek-posts").innerHTML = E.posts.map(p=>`<a class="post" href="${esc(safe(p.url)||"#")}" target="_blank" rel="noopener">
+<span class="thumb"><svg class="ic" aria-hidden="true" style="width:32px;height:32px"><use href="#${p.platform==="Reddit"||p.platform==="Facebook"?"i-chat":"i-play"}"/></svg>${p.thumb?`<img src="${esc(p.thumb)}" alt="" loading="lazy" width="88" height="110" onerror="this.remove()">`:""}</span>
+<span style="display:flex;flex-direction:column;gap:6px;min-width:0"><span class="num">${esc(p.n)}<small>${esc(p.unit)}</small></span><span class="pt">${esc(p.title)}</span><span class="why">${esc(p.why)}</span><span class="plat">${esc(p.platform)} · ${esc(p.towns.join(", "))}</span></span></a>`).join("");
 }
 
 function openPlace(id){
@@ -1024,7 +1080,7 @@ $("showing").textContent = "Showing: "+bits.join(" · ");
 newCards(); places(); buzz();
 }
 
-headline(); cuisines(); render();
+headline(); cuisines(); render(); eastKent();
 $("f-type").onchange=e=>{st.type=e.target.value;render();};
 $("f-cuisine").onchange=e=>{st.cuisine=e.target.value;render();};
 $("q").oninput=e=>{st.q=e.target.value.trim();render();};
