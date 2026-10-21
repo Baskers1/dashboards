@@ -1,0 +1,1576 @@
+<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-4Nto6LAyUvJsfAnUoSMGkdNmRcAYQb78/mELeGsnCBg=' 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'sha256-ZiTqu5JT78nnvogcvonoiV/AzOyNRkWBfWiEugkjUTI=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
+var SCHEME=/^\s*([a-z][a-z0-9+.\-]*):/i,HREF={http:1,https:1,mailto:1,tel:1},SRC={http:1,https:1,blob:1};
+function okUrl(v,isSrc){var c=String(v).replace(/[\u0000- ]/g,""),m=SCHEME.exec(c);if(!m)return true;var s=m[1].toLowerCase();
+if(isSrc&&s==="data")return /^data:image\//i.test(c);return !!(isSrc?SRC:HREF)[s];}
+function fixOne(n){if(n.nodeType!==1)return;var a=n.attributes;
+for(var j=a.length-1;j>=0;j--){var k=a[j].name.toLowerCase(),v=a[j].value;
+if(k.slice(0,2)==="on"){if(!(k==="onerror"&&v==="this.remove()"))n.removeAttribute(a[j].name);}
+else if((k==="href"||k==="xlink:href"||k==="action"||k==="formaction")&&!okUrl(v,false))n.removeAttribute(a[j].name);
+else if((k==="src"||k==="srcset"||k==="poster")&&!okUrl(v,true))n.removeAttribute(a[j].name);}
+if(n.tagName==="A"&&n.getAttribute("target")==="_blank"&&n.getAttribute("rel")!=="noopener noreferrer")n.setAttribute("rel","noopener noreferrer");}
+function fixTree(n){if(n.nodeType!==1)return;fixOne(n);var all=n.getElementsByTagName("*");for(var i=0;i<all.length;i++)fixOne(all[i]);}
+new MutationObserver(function(ms){for(var i=0;i<ms.length;i++){var m=ms[i];if(m.type==="attributes")fixOne(m.target);
+else for(var j=0;j<m.addedNodes.length;j++)fixTree(m.addedNodes[j]);}}).observe(document.documentElement,{childList:true,subtree:true,attributes:true});
+})();</script><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Plymouth &amp; Ivybridge · Menu Watch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap">
+<script>try{if(location.hash==="#big"||(location.hash!=="#std"&&localStorage.getItem("lt-bigtext")==="1"))document.documentElement.classList.add("big")}catch(e){}</script>
+<style>
+/* Layout: one calm reading column (max 1040px). Headline number first, one sticky town switch, then
+New menus > Places > What people say > Complaints > Most-shared posts. Large type for readers over 60. */
+:root{
+--bg:#EEF3F4; --surface:#FFFFFF; --sunk:#E3EBED; --line:#C9D6DA;
+--ink:#132A33; --ink-2:#425A63; --accent:#0B6672; --accent-ink:#FFFFFF; --accent-soft:#D3EBEE;
+--new:#8A4300; --new-soft:#FFE7C4; --good:#1E6B3A; --good-soft:#DCF0E2;
+--warn:#7A4E00; --warn-soft:#FBEBC6; --bad:#9B2C22; --bad-soft:#F8E0DC;
+--display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+--body:"Atkinson Hyperlegible Next","Atkinson Hyperlegible","Segoe UI",system-ui,-apple-system,sans-serif;
+--r:14px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+--bg:#0D1B20; --surface:#14262C; --sunk:#1B3138; --line:#2B454D;
+--ink:#E8F1F2; --ink-2:#AFC4C9; --accent:#5CC6D2; --accent-ink:#062A30; --accent-soft:#18414A;
+--new:#FFC071; --new-soft:#4A3214; --good:#86D9A0; --good-soft:#173A25;
+--warn:#F1C66B; --warn-soft:#3F3212; --bad:#FF9C90; --bad-soft:#47201C; color-scheme:dark}}
+:root[data-theme="dark"]{
+--bg:#0D1B20; --surface:#14262C; --sunk:#1B3138; --line:#2B454D;
+--ink:#E8F1F2; --ink-2:#AFC4C9; --accent:#5CC6D2; --accent-ink:#062A30; --accent-soft:#18414A;
+--new:#FFC071; --new-soft:#4A3214; --good:#86D9A0; --good-soft:#173A25;
+--warn:#F1C66B; --warn-soft:#3F3212; --bad:#FF9C90; --bad-soft:#47201C; color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:150px}
+body{margin:0;background:var(--bg);color:var(--ink);font:1.125rem/1.6 var(--body);padding-inline:16px}
+:root.big body{font-size:1.375rem}
+.wrap{max-width:1040px;margin-inline:auto;padding-block:20px 64px;display:flex;flex-direction:column;gap:40px}
+.wrap>*{min-width:0}
+a{color:var(--accent);text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--display);line-height:1.15;margin:0;text-wrap:balance}
+h1{font-size:clamp(2rem,6vw,2.9rem);font-weight:800;letter-spacing:-.02em}
+h2{font-size:clamp(1.5rem,3.6vw,1.9rem);font-weight:800;letter-spacing:-.01em}
+h3{font-size:1.2rem;font-weight:600}
+p{margin:0}
+.sub{color:var(--ink-2);max-width:62ch}
+button,select,input{font:inherit;color:inherit}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:10px 20px;border-radius:999px;
+border:2px solid var(--accent);background:var(--surface);color:var(--accent);font-weight:700;cursor:pointer;text-decoration:none}
+.btn:hover{background:var(--accent-soft)}
+.btn.solid{background:var(--accent);color:var(--accent-ink)}
+.btn.solid:hover{filter:brightness(1.08)}
+.ic{width:1.15em;height:1.15em;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+.top{display:flex;flex-wrap:wrap;gap:16px 24px;justify-content:space-between;align-items:flex-start}
+.top>div{min-width:0}
+.eyebrow{font-weight:700;font-size:.95rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.stamp{margin-top:8px;color:var(--ink-2)}
+.stamp b{color:var(--ink)}
+.late{display:inline-block;margin-top:6px;padding:4px 12px;border-radius:999px;background:var(--warn-soft);color:var(--warn);font-weight:700}
+.hero{height:150px;margin:0;border-radius:var(--r);background:linear-gradient(180deg,transparent 35%,rgba(10,30,36,.7)),url("hero.jpg") center/cover,var(--sunk);background-color:var(--sunk);display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.hero .htown{font-family:var(--display);font-weight:800;font-size:1.7rem;line-height:1.1;color:#fff;padding:10px 16px;text-shadow:0 2px 6px rgba(0,0,0,.6)}
+.hero span{color:#fff;font-size:.9rem;padding:10px 14px;text-shadow:0 1px 3px rgba(0,0,0,.6)}
+.hero a{color:#fff}
+@media (max-width:640px){.hero{height:110px;flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:0}.hero .htown{font-size:1.35rem;padding:0 14px}.hero #hcred{font-size:.8rem;padding:2px 14px 8px}}
+
+.headline{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:16px}
+@media (max-width:760px){.headline{grid-template-columns:minmax(0,1fr)}.minis{grid-template-rows:none;grid-template-columns:1fr 1fr}.mini{flex-direction:column;align-items:flex-start;gap:6px}}
+.bignew{background:var(--surface);border:2px solid var(--new);border-radius:var(--r);padding:22px 24px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 20px;align-items:end}
+.bignew .n{font-family:var(--display);font-weight:800;font-size:clamp(4rem,12vw,5.6rem);line-height:.9;color:var(--new);font-variant-numeric:tabular-nums}
+.bignew .l{font-size:1.35rem;font-weight:700;margin-top:6px}
+.bignew .d{color:var(--ink-2)}
+.bignew .btn{grid-column:1/-1;justify-self:start;margin-top:8px;border-color:var(--new);color:var(--new)}
+.bignew .btn:hover{background:var(--new-soft)}
+.weeks{display:block;width:170px;height:auto;max-width:100%}
+@media (max-width:480px){.bignew{grid-template-columns:minmax(0,1fr)}.weeks{width:100%;max-width:260px}}
+.minis{display:grid;gap:16px;grid-template-rows:1fr 1fr}
+.mini{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px 20px;display:flex;align-items:center;gap:16px}
+.mini .n{font-family:var(--display);font-weight:800;font-size:2.4rem;line-height:1;font-variant-numeric:tabular-nums;min-width:3ch}
+.mini .l{font-weight:700}
+.mini .d{color:var(--ink-2);font-size:.95rem}
+
+.filters{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bg);padding-block:12px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:12px}
+.towns{display:flex;flex-wrap:wrap;gap:8px;padding:2px}
+.tbtn{flex:none;min-height:52px;padding:8px 16px;border-radius:999px;border:2px solid var(--line);background:var(--surface);font-weight:700;cursor:pointer;white-space:nowrap}
+.tbtn:hover{border-color:var(--accent)}
+.tbtn[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.more{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.more label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.more select,.more input{min-height:52px;padding:8px 14px;border-radius:12px;border:2px solid var(--line);background:var(--surface);min-width:0}
+.more input{flex:1 1 220px}
+.more select{flex:0 1 auto}
+.reset{background:none;border:0;color:var(--accent);font-weight:700;text-decoration:underline;text-underline-offset:3px;min-height:48px;padding:0 6px;cursor:pointer}
+.showing{color:var(--ink-2);font-size:1rem}
+@media (max-width:640px){.filters{position:static}.more select{flex:1 1 45%}}
+
+section{display:flex;flex-direction:column;gap:16px;scroll-margin-top:150px}
+.shead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 16px}
+.shead .count{color:var(--ink-2)}
+.empty{padding:20px;border-radius:var(--r);background:var(--sunk);color:var(--ink-2)}
+.moreBtn{align-self:flex-start}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:14px}
+.mcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.mcard .venue{font-family:var(--display);font-weight:600;font-size:1.25rem;line-height:1.2}
+.mcard .title{overflow-wrap:anywhere}
+.mcard .where{color:var(--ink-2);font-size:1rem}
+.mcard .when{color:var(--ink-2);font-size:1rem}
+.mcard .btn{margin-top:auto;align-self:flex-start}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:999px;background:var(--sunk);color:var(--ink-2);font-size:.95rem;font-weight:600;white-space:nowrap}
+.tag.new{background:var(--new-soft);color:var(--new)}
+.tag.fest{background:var(--accent-soft);color:var(--accent)}
+
+.rates{display:flex;flex-wrap:wrap;gap:6px}
+.rate{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:8px;font-size:.95rem;font-weight:700;text-decoration:none;border:1px solid var(--line);color:var(--ink);background:var(--surface)}
+.rate.good{background:var(--good-soft);border-color:transparent;color:var(--good)}
+.rate.bad{background:var(--bad-soft);border-color:transparent;color:var(--bad)}
+.rate.mid{background:var(--warn-soft);border-color:transparent;color:var(--warn)}
+.rate small{font-weight:400;font-size:.85rem}
+
+.sortrow{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sortrow select{min-height:48px;padding:6px 12px;border-radius:12px;border:2px solid var(--line);background:var(--surface)}
+.plist{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
+details.place{border-bottom:1px solid var(--line)}
+details.place:last-child{border-bottom:0}
+details.place>summary{list-style:none;cursor:pointer;padding:16px 18px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 16px;align-items:center;min-height:56px}
+details.place>summary::-webkit-details-marker{display:none}
+details.place>summary:hover{background:var(--sunk)}
+.pname{font-family:var(--display);font-weight:600;font-size:1.2rem}
+.pmeta{color:var(--ink-2);font-size:1rem}
+.chev{width:28px;height:28px;color:var(--accent);transition:transform .2s}
+details[open] .chev{transform:rotate(180deg)}
+.summ-r{grid-column:1/-1}
+.pbody{padding:4px 18px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px}
+.pbox{background:var(--sunk);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.pbox h4{margin:0;font-size:1rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2)}
+.pbox ul{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:6px}
+.pbox li{overflow-wrap:anywhere}
+.say{font-style:italic}
+.dl{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin:0}
+.dl dt{font-weight:700}
+.dl dd{margin:0;color:var(--ink-2)}
+.links{display:flex;flex-wrap:wrap;gap:8px 18px}
+
+.summary{font-size:1.2rem;max-width:62ch}
+.themes{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:14px}
+.theme{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.theme .meaning{font-size:1.05rem}
+.theme .ev{color:var(--ink-2);font-size:1rem;overflow-wrap:anywhere}
+.loved{display:flex;flex-wrap:wrap;gap:8px}
+.lchip{display:inline-flex;align-items:center;gap:6px;min-height:48px;padding:6px 14px;border-radius:999px;background:var(--good-soft);color:var(--good);font-weight:700;border:0;cursor:pointer;text-align:left}
+span.lchip{cursor:default;background:var(--sunk);color:var(--ink)}
+.lchip:hover{filter:brightness(.97)}
+.complaints{display:flex;flex-direction:column;gap:10px}
+.comp{background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--bad);border-radius:var(--r);padding:14px 18px;display:flex;flex-direction:column;gap:4px}
+.comp b{font-family:var(--display);font-size:1.15rem;font-weight:600}
+.comp .town{color:var(--ink-2);font-size:.95rem}
+.posts{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:14px}
+.post{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px;display:grid;grid-template-columns:88px minmax(0,1fr);gap:14px;text-decoration:none;color:var(--ink)}
+.post:hover{border-color:var(--accent)}
+.thumb{width:88px;height:110px;border-radius:10px;background:var(--sunk);overflow:hidden;display:grid;place-items:center;color:var(--accent)}
+.thumb>*{grid-area:1/1}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block;position:relative}
+.post .num{font-family:var(--display);font-weight:800;font-size:1.6rem;line-height:1;font-variant-numeric:tabular-nums}
+.post .num small{font-family:var(--body);font-weight:600;font-size:.95rem;color:var(--ink-2);margin-left:4px}
+.post .pt{font-weight:700;color:var(--accent);text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+.post .why{color:var(--ink-2);font-size:1rem}
+.post .plat{font-size:.9rem;color:var(--ink-2);font-weight:600}
+.notes{color:var(--ink-2);font-size:1rem;display:flex;flex-direction:column;gap:10px;max-width:75ch;border-top:1px solid var(--line);padding-top:20px}
+.notes h2{font-size:1.3rem;color:var(--ink)}
+.badge{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;flex:none;background:var(--accent-soft);color:var(--accent)}
+.badge .ic{width:26px;height:26px}
+.badge.sm{width:40px;height:40px;border-radius:12px}.badge.sm .ic{width:22px;height:22px}
+.badge.bad{background:var(--bad-soft);color:var(--bad)}
+.badge.good{background:var(--good-soft);color:var(--good)}
+.vhead{display:flex;align-items:center;gap:12px;min-width:0}
+.vhead>div{min-width:0}
+.pwho{display:flex;align-items:center;gap:14px;min-width:0}
+.pbox h4{display:flex;align-items:center;gap:8px}
+.comp{flex-direction:row!important;gap:14px!important;align-items:flex-start}
+.comp .icol{display:flex;flex-direction:column;gap:8px;flex:none}
+.comp>div{display:flex;flex-direction:column;gap:4px;min-width:0}
+.totop{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:30;display:inline-flex;align-items:center;gap:8px;min-height:56px;padding:0 20px 0 16px;border-radius:999px;border:0;background:var(--accent);color:var(--accent-ink);font:inherit;font-weight:700;box-shadow:0 6px 18px rgba(0,0,0,.25);cursor:pointer;transition:opacity .2s,transform .2s}
+body{padding-bottom:88px}
+.totop .ic{width:24px;height:24px}
+.totop[hidden]{display:inline-flex;opacity:0;transform:translateY(12px);pointer-events:none;visibility:hidden}
+.totop:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+<symbol id="i-ext" viewBox="0 0 24 24"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+<symbol id="i-play" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m10 9 5 3-5 3z"/></symbol>
+<symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/></symbol>
+<symbol id="c-cafe" viewBox="0 0 24 24"><path d="M17 8h1a4 4 0 1 1 0 8h-1M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/><path d="M6 2v2M10 2v2M14 2v2"/></symbol>
+<symbol id="c-pub" viewBox="0 0 24 24"><path d="M7 3h10l-1.2 17a1 1 0 0 1-1 1H9.2a1 1 0 0 1-1-1z"/><path d="M7.4 8h9.2"/></symbol>
+<symbol id="c-flame" viewBox="0 0 24 24"><path d="M12 21c-3.9 0-6.5-2.6-6.5-6.2 0-3.6 3-5.6 3.5-9.3 2.4 1.3 3.6 3.4 3.8 5.4 1-.7 1.6-1.9 1.7-3.1 2.3 1.8 4 4.3 4 7 0 3.6-2.6 6.2-6.5 6.2z"/></symbol>
+<symbol id="c-pizza" viewBox="0 0 24 24"><path d="M12 3 3 19c5.5 3 12.5 3 18 0z"/><path d="M6 14c3.8 1.6 8.2 1.6 12 0M10 11h.01M14 13h.01M12 8h.01"/></symbol>
+<symbol id="c-bowl" viewBox="0 0 24 24"><path d="M3 11h18a9 9 0 0 1-18 0zM8 21h8"/><path d="m9 8 3-6M13 8l3-6"/></symbol>
+<symbol id="c-chilli" viewBox="0 0 24 24"><path d="M16 6c-1.5 0-2.5 1-2.5 2.5C13.5 14 9 19 3 19c5 3.5 15 2 15-8 0-2.5-.8-4-2-5z"/><path d="M16 6c0-2 1.2-3.5 3.5-3.5"/></symbol>
+<symbol id="c-leaf" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10Z"/><path d="M2 21c0-3 1.9-5.4 5.1-6"/></symbol>
+<symbol id="c-plate" viewBox="0 0 24 24"><circle cx="12" cy="13" r="6.5"/><circle cx="12" cy="13" r="3"/><path d="M3 4v6M3 7h1.5M21 4v16"/></symbol>
+<symbol id="c-fish" viewBox="0 0 24 24"><path d="M6.5 12c.9-4.5 6.4-7 11.5-5 1.5.6 2.9 2.2 4 5-1.1 2.8-2.5 4.4-4 5-5.1 2-10.6-.5-11.5-5z"/><path d="M18 12h.01M2 10v4l4.5-2z"/></symbol>
+<symbol id="c-tapas" viewBox="0 0 24 24"><path d="M3 21 21 3"/><path d="m7.5 12.5 4 4 2.5-2.5-4-4zM12.5 7.5l4 4 2.5-2.5-4-4z"/></symbol>
+<symbol id="c-taco" viewBox="0 0 24 24"><path d="M3 14a9 9 0 0 1 18 0"/><path d="M3 14h18"/><path d="M7 14c0 2 .8 3.5 1.8 4.6M12 14c0 2.4.9 4 2 5M17 14c0 1.7-.6 3-1.4 4"/></symbol>
+<symbol id="c-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z"/></symbol>
+<symbol id="c-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></symbol>
+<symbol id="t-spark" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/></symbol>
+<symbol id="t-trophy" viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4a3 3 0 0 0 3 4M17 6h3a3 3 0 0 1-3 4"/></symbol>
+<symbol id="t-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+<symbol id="t-wave" viewBox="0 0 24 24"><path d="M2 12c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2 2-2 4-2M2 18c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2 2-2 4-2M12 3v4M9 6l3-3 3 3"/></symbol>
+<symbol id="t-train" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 11h14M9 21l-2-4M15 21l2-4M9 14h.01M15 14h.01"/></symbol>
+<symbol id="t-ice" viewBox="0 0 24 24"><path d="M8 11a4 4 0 1 1 8 0z"/><path d="m8 11 4 10 4-10"/></symbol>
+<symbol id="t-alert" viewBox="0 0 24 24"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></symbol>
+<symbol id="t-star" viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
+<symbol id="t-menu" viewBox="0 0 24 24"><path d="M6 2h12v20H6z"/><path d="M9 7h6M9 11h6M9 15h4"/></symbol>
+<symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
+</defs></svg>
+
+<div class="wrap">
+
+<header class="top">
+<div>
+<div class="eyebrow">Plymouth · Plympton · Ivybridge · Plymstock &amp; villages</div>
+<h1>Plymouth &amp; Ivybridge Menu Watch</h1>
+<p class="sub">New menus from pubs, restaurants and cafés across Plymouth, Ivybridge and the villages between, with hygiene ratings, review scores and what people are saying online.</p>
+<div class="stamp" id="stamp"></div>
+</div>
+<button type="button" class="btn" id="aa" aria-pressed="false"><span aria-hidden="true" style="font-family:var(--display);font-weight:800">Aa</span><span id="aa-l">Larger text</span></button>
+</header>
+
+<figure class="hero" id="hero" aria-labelledby="htown"><span class="htown" id="htown">All of Plymouth &amp; Ivybridge</span><span id="hcred"></span></figure>
+
+<div class="headline" aria-label="This week in numbers">
+<div class="bignew">
+<div><div class="n" id="k-new">0</div><div class="l" id="k-new-l">new menus this week</div><div class="d" id="k-new-d"></div></div>
+<svg class="weeks" id="weeks" role="img" aria-label="New menus each week"></svg>
+<a class="btn" href="#new">See the new menus</a>
+</div>
+<div class="minis">
+<div class="mini"><div class="n" id="k-places">0</div><div><div class="l">places serving food</div><div class="d" id="k-places-d"></div></div></div>
+<div class="mini"><div class="n" id="k-menus">0</div><div><div class="l">menus you can open</div><div class="d">links to each venue's own menu</div></div></div>
+</div>
+</div>
+
+<div class="filters" role="region" aria-label="Choose what to show">
+<div class="towns" role="group" aria-label="Town" id="towns"></div>
+<div class="more">
+<label for="f-type">Type of place</label>
+<select id="f-type"><option value="all">All places</option><option value="pub">Pubs</option><option value="restaurant">Restaurants</option><option value="cafe">Cafés</option></select>
+<label for="f-cuisine">Cuisine</label>
+<select id="f-cuisine"></select>
+<label for="q">Find a place</label>
+<input type="search" id="q" placeholder="Find a place by name" autocomplete="off">
+<button type="button" class="reset" id="reset" hidden>Show everything</button>
+</div>
+<div class="showing" id="showing" aria-live="polite"></div>
+</div>
+
+<section id="new" aria-labelledby="h-new">
+<div class="shead"><h2 id="h-new">New menus this week</h2><span class="count" id="c-new"></span></div>
+<div class="cards" id="newcards"></div>
+<button type="button" class="btn moreBtn" id="more-new" hidden></button>
+</section>
+
+<section id="places" aria-labelledby="h-places">
+<div class="shead"><h2 id="h-places">Places and their ratings</h2><span class="count" id="c-places"></span></div>
+<div class="sortrow"><label for="sort">Order by</label>
+<select id="sort"><option value="ta">Best reviewed first</option><option value="name">Name, A to Z</option><option value="menus">Most menus first</option></select></div>
+<p class="sub">Tap a place to see its food hygiene rating, review scores, what people say about it, and its menus.</p>
+<div class="plist" id="plist"></div>
+<button type="button" class="btn moreBtn" id="more-places" hidden></button>
+</section>
+
+<section id="buzz" aria-labelledby="h-buzz">
+<div class="shead"><h2 id="h-buzz">What people are saying</h2><span class="count" id="c-buzz"></span></div>
+<p class="summary" id="summary"></p>
+<div class="themes" id="themes"></div>
+<h3>Best-liked places</h3>
+<div class="loved" id="loved"></div>
+</section>
+
+<section id="complaints" aria-labelledby="h-comp">
+<div class="shead"><h2 id="h-comp">Main complaints</h2></div>
+<div class="complaints" id="comps"></div>
+</section>
+
+<section id="posts" aria-labelledby="h-posts">
+<div class="shead"><h2 id="h-posts">Most-shared posts</h2><span class="count">Most viewed first</span></div>
+<div class="posts" id="postlist"></div>
+<button type="button" class="btn moreBtn" id="more-posts" hidden></button>
+</section>
+
+<footer class="notes">
+<h2>How this is put together</h2>
+<p>Every Monday each venue's own website is checked for menus. A menu counts as new when its link was not there at the previous check. Menus shown as pictures or PDFs are linked but not read, so check dates and dishes with the venue.</p>
+<p><b>Hygiene</b> is the Food Standards Agency rating from 0 to 5, where 5 is best. It reflects the last inspection, which may be some time ago. <b>TripAdvisor</b> scores are out of 5, with the number of reviews in brackets; a score from only a few reviews means less. <b>OpenTable</b> shows the place takes online bookings there.</p>
+<p id="buzznote"></p>
+</footer>
+</div>
+
+<button type="button" class="totop" id="totop" hidden><svg class="ic" aria-hidden="true"><use href="#i-up"/></svg>Back to top</button>
+<script>
+const DATA = {"generated":"2026-10-21","baseline":true,"run_number":1,"history":[{"date":"2026-10-21","venues":116,"menus":154,"new_menus":0}],"venues":[
+{"id":"rockfish-plymouth","name":"Rockfish","town":"Plymouth","type":"restaurant","address":"3 Rope Walk, Sutton Harbour, Plymouth PL4 0LB","website":"https://therockfish.co.uk/pages/restaurant/plymouth","cuisine":"Seafood & fish and chips","fsa":{"r":"5","id":570501,"d":"2026-04-02"},"menus":[{"title":"Restaurant menu","type":"main","url":"https://therockfish.co.uk/pages/restaurant-menu/plymouth"},
+{"title":"Seasonal set menu","type":"set-menu","url":"https://therockfish.co.uk/blogs/good-things-to-know/seasonal-set-menu"},
+{"title":"Takeaway","type":"other","url":"https://therockfish.co.uk/pages/takeaway/plymouth"}]},
+{"id":"barbican-kitchen-plymouth","name":"Barbican Kitchen","town":"Plymouth","type":"restaurant","address":"Plymouth Gin Distillery, 60 Southside Street, Plymouth PL1 2LQ","website":"https://barbicankitchen.com/","cuisine":"Modern British & European","menus":[{"title":"Food & drinks menu","type":"main","url":"https://barbicankitchen.com/main-menus/"},
+{"title":"Party & group menus","type":"set-menu","url":"https://barbicankitchen.com/party-group-menu/"},
+{"title":"Set lunch & early evening Christmas menu 2026","type":"festive","url":"https://barbicankitchen.com/wp-content/uploads/2024/07/Set-Lunch-Early-Evening-3-Course-Christmas-Menu-2026_0-1.jpg","format":"image","valid_dates":"Christmas 2026"},
+{"title":"Christmas party menu 2026","type":"festive","url":"https://barbicankitchen.com/wp-content/uploads/2024/08/Christmas-Party-Menu-2026_0-1.jpg","format":"image","valid_dates":"Christmas 2026"}],"notices":[{"text":"Christmas 2026 set lunch and party menus published","url":"https://barbicankitchen.com/xmas-26-menus/"}]},
+{"id":"the-boathouse-plymouth","name":"The Boathouse","town":"Plymouth","type":"restaurant","address":"2-5 Commercial Wharf, The Barbican, Plymouth PL1 2NX","website":"https://www.theboathouseplymouth.co.uk/","cuisine":"Seafood & fish and chips","fsa":{"r":"3","id":85906,"d":"2026-05-07"},"menus":[{"title":"Main menu (Mar 2026)","type":"main","url":"https://www.theboathouseplymouth.co.uk/wp-content/themes/boathouse/menus/Boathouse-Main-Menu-Mar26.pdf","format":"pdf"},
+{"title":"Christmas menu 2026","type":"festive","url":"https://www.theboathouseplymouth.co.uk/wp-content/themes/boathouse/menus/Boathouse-Xmas-Menu-2026.pdf","format":"pdf","valid_dates":"Christmas 2026"}],"notices":[{"text":"Christmas menu 2026 published","url":"https://www.theboathouseplymouth.co.uk/wp-content/themes/boathouse/menus/Boathouse-Xmas-Menu-2026.pdf"}]},
+{"id":"harbourside-fish-chips-plymouth","name":"Harbourside Fish & Chips","town":"Plymouth","type":"restaurant","address":"35 Southside Street, Barbican, Plymouth PL1 2LE","website":"https://harboursidefishandchips.co.uk/","social":"https://www.facebook.com/HarboursideFishChips/","cuisine":"Seafood & fish and chips","fsa":{"r":"5","id":135603,"d":"2022-07-14"},"menus":[{"title":"Restaurant menu (Apr 2026)","type":"main","url":"https://harboursidefishandchips.co.uk/wp-content/uploads/2026/07/A4-MainMenu-APR2026.pdf","format":"pdf"}]},
+{"id":"the-greedy-goose-plymouth","name":"The Greedy Goose","town":"Plymouth","type":"restaurant","address":"Prysten House, Finewell Street, Plymouth PL1 2AE","website":"http://www.thegreedygoose.co.uk/","cuisine":"Modern British & European","trading":"unclear","menus":[{"title":"Sample menu & Sunday lunch (OpenTable)","type":"main","url":"https://www.opentable.co.uk/the-greedy-goose-reservations-plymouth"}]},
+{"id":"platters-plymouth","name":"Platters","town":"Plymouth","type":"restaurant","address":"12 The Barbican, Plymouth PL1 2LS","website":"http://www.platters-restaurant.co.uk/index.html","cuisine":"Seafood & fish and chips","trading":"unclear","fsa":{"r":"4","id":130084,"d":"2025-08-07"},"menus":[]},
+{"id":"tudor-rose-tea-rooms-plymouth","name":"Tudor Rose Tea Rooms","town":"Plymouth","type":"cafe","address":"36 New Street, Plymouth PL1 2NA","website":"https://tudorrosetearooms.com/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":369101,"d":"2026-06-12"},"menus":[{"title":"Breakfast","type":"main","url":"https://tudorrosetearooms.com/#breakfast"},
+{"title":"Afternoon tea","type":"other","url":"https://tudorrosetearooms.com/#afternoon-tea"},
+{"title":"Sunday lunch","type":"sunday-roast","url":"https://tudorrosetearooms.com/#sunday-lunch"}]},
+{"id":"quay-33-plymouth","name":"Quay 33","town":"Plymouth","type":"restaurant","address":"Southside Street, The Barbican, Plymouth","website":"http://www.quay33.co.uk/","cuisine":"Modern British & European","menus":[]},
+{"id":"marco-pierre-white-steakhouse-bar-grill-plymouth","name":"Marco Pierre White Steakhouse Bar & Grill","town":"Plymouth","type":"restaurant","address":"Crowne Plaza, Armada Way, Plymouth PL1 2HJ","website":"https://www.mpwrestaurants.co.uk/our-brands/steakhouse-bar-and-grill/plymouth","cuisine":"Steakhouse & grill","fsa":{"r":"5","id":965554,"d":"2024-07-16"},"menus":[{"title":"Menus","type":"main","url":"https://www.mpwrestaurants.co.uk/our-brands/steakhouse-bar-and-grill/plymouth/menus/"},
+{"title":"Sunday roast","type":"sunday-roast","url":"https://www.mpwrestaurants.co.uk/our-brands/steakhouse-bar-and-grill/plymouth/sunday-lunch/"},
+{"title":"1961 menu - two courses under £21","type":"set-menu","url":"https://www.mpwrestaurants.co.uk/our-brands/steakhouse-bar-and-grill/plymouth/two-courses-for-under-21/"},
+{"title":"Afternoon tea","type":"other","url":"https://www.mpwrestaurants.co.uk/our-brands/steakhouse-bar-and-grill/plymouth/afternoon-tea/"},
+{"title":"Festive dining 2026","type":"festive","url":"https://www.mpwrestaurants.co.uk/wp-content/uploads/2026/10/Plymouth-MPW-Xmas-2026-FS-FESTIVE-1.pdf","format":"pdf","valid_dates":"30 Nov - 30 Dec 2026 (not 25 Dec)"},
+{"title":"Christmas Day 2026","type":"festive","url":"https://www.mpwrestaurants.co.uk/wp-content/uploads/2026/10/Plymouth-MPW-Xmas-2026-FS-CHRISTMAS-DAY.pdf","format":"pdf","valid_dates":"25 Dec 2026"}],"notices":[{"text":"Christmas 2026 festive menu published (2 courses £29.95, 30 Nov-30 Dec); Christmas Day fully booked","url":"https://www.mpwrestaurants.co.uk/our-brands/steakhouse-bar-and-grill/plymouth/christmas/"}]},
+{"id":"the-terrace-plymouth","name":"The Terrace","town":"Plymouth","type":"cafe","address":"74 Madeira Road, The Hoe, Plymouth PL1 2NY","website":"https://www.terraceplymouth.co.uk/","cuisine":"Modern British & European","fsa":{"r":"5","id":130269,"d":"2026-06-12"},"menus":[{"title":"Main menu (Aug 2026)","type":"main","url":"https://www.terraceplymouth.co.uk/info/The-Terrace-Menu-Aug2026.pdf","format":"pdf"},
+{"title":"Christmas menu 2026","type":"festive","url":"https://www.terraceplymouth.co.uk/info/Xmas-Menu-2026.pdf","format":"pdf","valid_dates":"Christmas 2026"}],"notices":[{"text":"Christmas menu 2026 published","url":"https://www.terraceplymouth.co.uk/info/Xmas-Menu-2026.pdf"}]},
+{"id":"tinside-lido-cafe-plymouth","name":"Tinside Lido Cafe","town":"Plymouth","type":"cafe","address":"Tinside Lido, Hoe Road, Plymouth PL1 2AA","website":"https://tinsidelido.co.uk/eat/","cuisine":"Cafe & breakfast","menus":[{"title":"Coffee Pod menu","type":"main","url":"https://tinsidelido.co.uk/wp-content/uploads/2026/07/104522-Tinside-Lido-Coffee-Pod-Menu-RWA-1500x850mm-FINAL-EXT.pdf","format":"pdf"},
+{"title":"Poolside menu","type":"other","url":"https://tinsidelido.co.uk/wp-content/uploads/2026/07/Pool-Hatch-Menu-RWA-750x1500mm-FINAL-EXT_bleedonly.pdf","format":"pdf"}],"notices":[{"text":"Closing for winter from Monday 2 November 2026; back spring 2027","url":"https://tinsidelido.co.uk/eat/"}]},
+{"id":"the-waterfront-plymouth","name":"The Waterfront","town":"Plymouth","type":"pub","address":"9 Grand Parade, West Hoe, Plymouth PL1 3DQ","website":"https://www.waterfront-plymouth.co.uk/","cuisine":"British pub food","menus":[{"title":"Food menu","type":"main","url":"https://menus.tenkites.com/staustell/waterfront"}]},
+{"id":"himalayan-spice-plymouth","name":"Himalayan Spice","town":"Plymouth","type":"restaurant","address":"31 New Street, The Barbican, Plymouth PL1 2NA","website":"https://www.himalayanspice.net/welcome/","cuisine":"Indian, Sri Lankan & Nepalese","fsa":{"r":"3","id":130155,"d":"2026-02-03"},"menus":[{"title":"Menu","type":"main","url":"https://www.himalayanspice.net/wp-content/uploads/2026/01/Himalayan-Spice-Menu.pdf","format":"pdf"}]},
+{"id":"cosmic-kitchen-plymouth","name":"Cosmic Kitchen","town":"Plymouth","type":"restaurant","address":"Sir John Hawkins Square, Palace Street, Plymouth PL1 2AY","website":"https://cosmickitchen.co.uk/","cuisine":"Vegan & vegetarian","fsa":{"r":"5","id":1279243,"d":"2025-06-24"},"menus":[{"title":"Food menu","type":"main","url":"https://cosmickitchen.co.uk/pages/menu"}]},
+{"id":"the-promenade-cafe-bar-plymouth","name":"The Promenade Cafe & Bar","town":"Plymouth","type":"cafe","address":"Hoe Lodge, The Promenade, Plymouth Hoe, Plymouth PL1 2AA","website":"https://www.the-promenade.co.uk/","cuisine":"Cafe & breakfast","menus":[{"title":"Menu","type":"main","url":"https://www.the-promenade.co.uk/_files/ugd/64f725_8932a5b5e27f460796efb6eb4f6087d9.pdf","format":"pdf"}]},
+{"id":"capn-jaspers-plymouth","name":"Cap'n Jaspers","town":"Plymouth","type":"cafe","address":"Whitehouse Pier, The Barbican, Plymouth PL1 2LR","website":"http://www.capn-jaspers.co.uk/","cuisine":"Cafe & breakfast","menus":[]},
+{"id":"boston-tea-party-plymouth","name":"Boston Tea Party","town":"Plymouth","type":"cafe","address":"Jamaica House, 82-84 Vauxhall Street, Sutton Harbour, Plymouth PL4 0EX","website":"https://bostonteaparty.co.uk/cafes/plymouth/","cuisine":"Cafe & breakfast","fsa":{"r":"1","id":784996,"d":"2026-02-26"},"menus":[{"title":"Autumn 2026 menu","type":"seasonal","url":"https://bostonteaparty.co.uk/media/gizngioz/autumn-2026-menu_1a.pdf","format":"pdf","valid_dates":"Autumn 2026"},
+{"title":"Food & drink menus","type":"main","url":"https://bostonteaparty.co.uk/our-menus/"}],"notices":[{"text":"Autumn 2026 menu published","url":"https://bostonteaparty.co.uk/media/gizngioz/autumn-2026-menu_1a.pdf"}]},
+{"id":"turtle-bay-plymouth","name":"Turtle Bay","town":"Plymouth","type":"restaurant","address":"5 St Andrews Cross, Plymouth PL1 1AB","website":"https://turtlebay.co.uk/restaurants/plymouth","cuisine":"Caribbean","fsa":{"r":"5","id":1017104,"d":"2026-03-30"},"menus":[{"title":"Menu","type":"main","url":"https://turtlebay.co.uk/menu/plymouth"},
+{"title":"Pre-theatre express menu (2 courses £20)","type":"set-menu","url":"https://turtlebay.co.uk/set-menu/plymouth"}]},
+{"id":"suphas-street-food-emporium-plymouth","name":"Supha's Street Food Emporium","town":"Plymouth","type":"restaurant","address":"Unit 1 East Quay House, Sutton Harbour, Plymouth PL4 0HX","website":"https://www.suphas.co.uk/","cuisine":"Thai","fsa":{"r":"5","id":85619,"d":"2025-10-31"},"menus":[{"title":"Menu (order online)","type":"main","url":"https://suphas.touchtakeaway.net/menu"}]},
+{"id":"grecian-on-the-barbican-plymouth","name":"Grecian on the Barbican","town":"Plymouth","type":"restaurant","address":"48 Southside Street, The Barbican, Plymouth PL1 2LD","website":"https://grecianonthebarbican.co.uk/","cuisine":"Greek","trading":"unclear","fsa":{"r":"3","id":552184,"d":"2025-10-30"},"menus":[]},
+{"id":"arribas-plymouth","name":"Arribas","town":"Plymouth","type":"restaurant","address":"58 Notte Street, The Barbican, Plymouth PL1 2AG","website":"http://www.arribasmexican.com/","cuisine":"Latin American","trading":"unclear","fsa":{"r":"1","id":130200,"d":"2026-03-16"},"menus":[]},
+{"id":"montys-cafe-plymouth","name":"Monty's Cafe","town":"Plymouth","type":"cafe","address":"13 The Barbican, Plymouth PL1 2LS","website":"https://www.montyscafeplymouth.co.uk/","cuisine":"Cafe & breakfast","fsa":{"r":"4","id":75831,"d":"2026-08-27","m":"address"},"menus":[{"title":"Main menu","type":"main","url":"https://www.montyscafeplymouth.co.uk/_files/ugd/39d791_96bf9cfd1e414cf7b8e40b7e2a08c606.pdf","format":"pdf"}]},
+{"id":"salumi-bar-eatery-plymouth","name":"Salumi Bar & Eatery","town":"Plymouth","type":"pub","address":"18 Millbay Road, Plymouth PL1 3LH","website":"http://www.eatsalumi.co.uk/","cuisine":"Modern British & European","fsa":{"r":"5","id":117983,"d":"2026-02-18"},"menus":[{"title":"Main menu (27 Mar 2026)","type":"main","url":"https://www.eatsalumi.co.uk/s/Main-Menu-270326.pdf","format":"pdf"},
+{"title":"Eat page","type":"other","url":"https://www.eatsalumi.co.uk/eat"}]},
+{"id":"the-fishermans-arms-plymouth","name":"The Fisherman's Arms","town":"Plymouth","type":"pub","address":"31 Lambhay Street, The Barbican, Plymouth PL1 2NN","website":"https://fishermansarms.co.uk/","cuisine":"British pub food","fsa":{"r":"5","id":330701,"d":"2024-07-18"},"menus":[{"title":"Main menu 2026","type":"main","url":"https://d2jalnzbhyl80b.cloudfront.net/fishermansarms/wp-content/uploads/2026/09/04132359/Main-menu-2026-scaled.jpg","format":"image"},
+{"title":"Sunday roast menu 2026","type":"sunday-roast","url":"https://d2jalnzbhyl80b.cloudfront.net/fishermansarms/wp-content/uploads/2026/09/04132417/Sunday-menu-2026-scaled.jpg","format":"image"},
+{"title":"Christmas menu 2026","type":"festive","url":"https://d2jalnzbhyl80b.cloudfront.net/fishermansarms/wp-content/uploads/2026/09/04132448/Christmas-Printable-2026.jpg","format":"image","valid_dates":"Christmas 2026"},
+{"title":"Cocktails & bar grazing","type":"other","url":"https://d2jalnzbhyl80b.cloudfront.net/fishermansarms/wp-content/uploads/2026/09/04132547/Cocktails-Grazing-1-4-2026-scaled.jpg","format":"image"}],"notices":[{"text":"Christmas menu 2026 published","url":"https://d2jalnzbhyl80b.cloudfront.net/fishermansarms/wp-content/uploads/2026/09/04132448/Christmas-Printable-2026.jpg"}]},
+{"id":"the-village-restaurant-plymouth","name":"The Village Restaurant","town":"Plymouth","type":"restaurant","address":"32 Southside Street, The Barbican, Plymouth PL1 2LE","website":"http://thevillagerestaurantplymouth.co.uk/","cuisine":"Seafood & fish and chips","fsa":{"r":"4","id":507864,"d":"2026-05-28"},"menus":[{"title":"A la carte","type":"main","url":"https://thevillagerestaurantplymouth.co.uk/wp-content/uploads/2026/06/VillageMenu.pdf","format":"pdf"},
+{"title":"Evening 2-course menu","type":"set-menu","url":"https://thevillagerestaurantplymouth.co.uk/wp-content/uploads/2026/06/2-course-evening.pdf","format":"pdf"},
+{"title":"2-course lunch","type":"set-menu","url":"https://thevillagerestaurantplymouth.co.uk/wp-content/uploads/2026/03/Lunch-2-Course-Lunch.pdf","format":"pdf"}],"notices":[{"text":"Only Christmas menu online is the 2025 one (xmass_menu25.pdf); no 2026 Christmas menu yet","url":"https://thevillagerestaurantplymouth.co.uk/wp-content/uploads/2025/04/xmass_menu25.pdf"}]},
+{"id":"the-gog-and-magog-plymouth","name":"The Gog and Magog","town":"Plymouth","type":"pub","address":"57-59 Southside Street, Plymouth PL1 2LA","website":"https://www.jdwetherspoon.com/pubs/all-pubs/england/devon/the-gog-and-magog-plymouth","cuisine":"British pub food","fsa":{"r":"5","id":427257,"d":"2025-07-30"},"menus":[{"title":"Wetherspoon pub menu","type":"main","url":"https://www.jdwetherspoon.com/pub-menus/the-gog-and-magog-plymouth/"}]},
+{"id":"the-bottling-plant-plymouth","name":"The Bottling Plant","town":"Plymouth","type":"restaurant","address":"5 Southside Street, Plymouth PL1 2LA","website":"https://thebottlingplant.co.uk/","cuisine":"Modern British & European","fsa":{"r":"5","id":1279246,"d":"2023-07-27"},"menus":[{"title":"Winter menu 2026 - mains","type":"seasonal","url":"https://thebottlingplant.co.uk/wp-content/uploads/2026/10/Winter-Menu-2026-Mains.jpg","format":"image","valid_dates":"Winter 2026"},
+{"title":"Winter menu 2026 - starters","type":"seasonal","url":"https://thebottlingplant.co.uk/wp-content/uploads/2026/10/Winter-Menu-2026-Starters.jpg","format":"image","valid_dates":"Winter 2026"},
+{"title":"Winter set menu 2026","type":"set-menu","url":"https://thebottlingplant.co.uk/wp-content/uploads/2026/10/Winter-Set-Menu-2026.jpg","format":"image","valid_dates":"Winter 2026"},
+{"title":"Afternoon tea packages 2026","type":"other","url":"https://thebottlingplant.co.uk/wp-content/uploads/2026/10/Afternoon-Tea-Packages-2026.jpg","format":"image"},
+{"title":"Christmas menu - mains & desserts","type":"festive","url":"https://thebottlingplant.co.uk/wp-content/uploads/2026/08/Christmas-Mains.jpg","format":"image"}],"notices":[{"text":"Winter menu 2026 published","url":"https://thebottlingplant.co.uk/book-a-table/"},
+{"text":"Christmas menu published (files dated Aug 2026; year not stated on page)","url":"https://thebottlingplant.co.uk/book-a-table/#christmas-menu"}]},
+{"id":"steak-omelette-plymouth","name":"Steak & Omelette","town":"Plymouth","type":"restaurant","address":"116-118 Cornwall Street, Plymouth PL1 1NF","website":"http://www.steakandomelette.com/","cuisine":"Steakhouse & grill","trading":"unclear","fsa":{"r":"5","id":623366,"d":"2024-08-14"},"menus":[{"title":"Menu (March 2026)","type":"main","url":"http://steakandomelette.com/wp-content/uploads/2026/03/SO-Menu-March-2026.pdf","format":"pdf"}]},
+{"id":"olive-twist-plymouth","name":"Olive & Twist","town":"Plymouth","type":"cafe","address":"9 Old Town Street, Plymouth PL1 1DD","website":"https://www.oliveandtwistuk.com/plymouth-city-centre/","cuisine":"Cafe & breakfast","menus":[{"title":"Food menu","type":"main","url":"https://oliveandtwistuk.com/food/"},
+{"title":"Lunch menu","type":"main","url":"https://oliveandtwistuk.com/lunch-menu/"},
+{"title":"Evening menu","type":"main","url":"https://oliveandtwistuk.com/evening-food-menu/"},
+{"title":"Christmas food menu","type":"festive","url":"https://oliveandtwistuk.com/christmas-food-menu/"}],"notices":[{"text":"Christmas season food menu published (files dated Oct 2026)","url":"https://oliveandtwistuk.com/christmas-food-menu/"}]},
+{"id":"the-bank-plymouth","name":"The Bank","town":"Plymouth","type":"pub","address":"Old George Street, Plymouth PL1 2TG","website":"http://www.thebankplymouth.co.uk/","cuisine":"British pub food","fsa":{"r":"5","id":117778,"d":"2025-08-27"},"menus":[{"title":"Christmas 2026 festive menu","type":"festive","url":"https://www.thebankplymouth.co.uk/christmas/festive-menu","valid_dates":"Christmas 2026"},
+{"title":"Christmas 2026 festive buffet","type":"festive","url":"https://www.thebankplymouth.co.uk/christmas/festive-buffet","valid_dates":"Christmas 2026"}],"notices":[{"text":"Christmas 2026 festive and buffet menus published","url":"https://www.thebankplymouth.co.uk/christmas"}]},
+{"id":"ocean-view-at-the-dome-plymouth","name":"Ocean View at The Dome","town":"Plymouth","type":"restaurant","address":"The Dome, Hoe Road, Plymouth PL1 2NZ","website":"https://oceanviewplymouth.co.uk/","cuisine":"Modern British & European","fsa":{"r":"5","id":522235,"d":"2025-11-19"},"menus":[{"title":"Food menu","type":"main","url":"https://oceanviewplymouth.co.uk/eat/"},
+{"title":"Sunday roast & dessert offer","type":"sunday-roast","url":"https://oceanviewplymouth.co.uk/sunday-roast-dessert-offer/"},
+{"title":"Christmas party menu","type":"festive","url":"https://oceanviewplymouth.co.uk/christmas-party-menu/","valid_dates":"24 Nov - 24 Dec 2026"}],"notices":[{"text":"Christmas party menu and festive afternoon tea bookable, 24 Nov-24 Dec","url":"https://oceanviewplymouth.co.uk/christmas-party-menu/"}]},
+{"id":"pier-one-plymouth","name":"Pier One","town":"Plymouth","type":"restaurant","address":"135 Hoe Road, Plymouth PL1 3DE","website":"https://www.pieroneplymouth.co.uk/","cuisine":"Modern British & European","trading":"unclear","fsa":{"r":"4","id":401873,"d":"2025-09-18"},"menus":[{"title":"Menu","type":"main","url":"https://www.pieroneplymouth.co.uk/menu"}]},
+{"id":"franco-manca-plymouth","name":"Franco Manca","town":"Plymouth","type":"restaurant","address":"The Barcode, Drake Circus, Plymouth","website":"https://www.francomanca.co.uk/restaurants/plymouth/","cuisine":"Italian","menus":[]},
+{"id":"barbican-pasty-co-plymouth","name":"Barbican Pasty Co","town":"Plymouth","type":"cafe","address":"22 Southside Street, The Barbican, Plymouth PL1 2LD","website":"http://www.barbicanpastyco.co.uk/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":75497,"d":"2018-02-06"},"menus":[{"title":"Pasty range (on homepage)","type":"main","url":"http://www.barbicanpastyco.co.uk/"}]},
+{"id":"bistrot-pierre-plymouth","name":"Bistrot Pierre","town":"Plymouth","type":"restaurant","address":"New Cooperage, Royal William Yard, Plymouth PL1 3RP","website":"https://www.bistrotpierre.co.uk/locations/plymouth","cuisine":"Modern British & European","fsa":{"r":"5","id":544936,"d":"2025-05-08"},"menus":[{"title":"Menus (Plymouth: à la carte, breakfast, Sunday roast)","type":"main","url":"https://www.bistrotpierre.co.uk/menus/?location=plymouth"},
+{"title":"Truffle Guys x Bistrot Pierre four-course menu","type":"event","url":"https://www.bistrotpierre.co.uk/events/truffle-guys-event/","valid_dates":"15 Oct - 15 Nov 2026"},
+{"title":"Soirée Gastronomique (six courses, 2nd & 4th Tuesday)","type":"event","url":"https://www.bistrotpierre.co.uk/events/soiree-gastronomique/"}],"notices":[{"text":"Truffle Guys four-course menu running 15 Oct - 15 Nov","url":"https://www.bistrotpierre.co.uk/events/truffle-guys-event/"}]},
+{"id":"le-vignoble-plymouth","name":"Le Vignoble","town":"Plymouth","type":"restaurant","address":"New Cooperage, Royal William Yard, Plymouth PL1 3RP","website":"https://levignoble.co.uk/pages/wine-bar-plymouth","cuisine":"Spanish & tapas","fsa":{"r":"5","id":656424,"d":"2026-09-17"},"menus":[{"title":"Plymouth Food Menu Autumn 2026","type":"seasonal","url":"https://cdn.shopify.com/s/files/1/0919/0604/8342/files/Plymouth_Food_Menu_Autumn_2026.pdf?v=1790960605","format":"pdf","valid_dates":"Autumn 2026"}],"notices":[{"text":"Autumn 2026 food menu published","url":"https://cdn.shopify.com/s/files/1/0919/0604/8342/files/Plymouth_Food_Menu_Autumn_2026.pdf?v=1790960605"}]},
+{"id":"seco-lounge-plymouth","name":"Seco Lounge","town":"Plymouth","type":"cafe","address":"12-15 Mills Bakery, Royal William Yard, Plymouth PL1 3RP","website":"https://thelounges.co.uk/seco/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":330694,"d":"2026-03-12"},"ta":{"r":3.7,"n":1132,"i":"g186258-d1762809"},"menus":[{"title":"Seco menus","type":"main","url":"https://thelounges.co.uk/seco/menus"},
+{"title":"Autumn/Winter 2026 Menu","type":"seasonal","url":"https://thelounges.co.uk/whats-on/autumn-winter-2026-menu","valid_dates":"Autumn/Winter 2026"},
+{"title":"Christmas flyer menu (Lounges group)","type":"festive","url":"https://bunny-wp-pullzone-lgrcnjwfpd.b-cdn.net/wp-content/uploads/2026/08/LO-CFM-08.26_Christmas-Flyer-Menu_NOPRICES_WEB_Artwork_21.08.pdf","format":"pdf","valid_dates":"19 Nov - 31 Dec 2026"}],"notices":[{"text":"Christmas 2026 menu published (19 Nov - 31 Dec)","url":"https://thelounges.co.uk/christmas"},
+{"text":"Autumn/Winter 2026 menu launched","url":"https://thelounges.co.uk/whats-on/autumn-winter-2026-menu"}]},
+{"id":"the-hook-and-line-plymouth","name":"The Hook & Line","town":"Plymouth","type":"restaurant","address":"Royal William Yard, Plymouth PL1 3GE","cuisine":"Seafood & fish and chips","trading":"unclear","menus":[]},
+{"id":"block-cafe-plymouth","name":"BLOCK Cafe","town":"Plymouth","type":"cafe","address":"Melville, Royal William Yard, Plymouth PL1 3RP","cuisine":"Cafe & breakfast","fsa":{"r":"4","id":1534562,"d":"2024-10-04","m":"address"},"ta":{"r":4.7,"n":3,"i":"g186258-d24721623"},"menus":[]},
+{"id":"victualling-office-tavern-plymouth","name":"Victualling Office Tavern","town":"Plymouth","type":"pub","address":"10 Cremyll Street, Stonehouse, Plymouth PL1 3RB","social":"https://facebook.com/281883215217202","cuisine":"British pub food","fsa":{"r":"5","id":522240,"d":"2025-10-17"},"menus":[]},
+{"id":"jolly-jacks-plymouth","name":"Jolly Jacks","town":"Plymouth","type":"restaurant","address":"Richmond Walk, Mayflower Marina, Plymouth PL1 4LS","website":"https://www.jollyjacks.co.uk/","cuisine":"Modern British & European","fsa":{"r":"5","id":130564,"d":"2026-03-30"},"ta":{"r":4.6,"n":392,"i":"g186258-d1830715"},"menus":[{"title":"Breakfast","type":"main","url":"https://www.jollyjacks.co.uk/_files/ugd/f4fb1c_720991ddafb34d0eb92f215115fb39ad.pdf","format":"pdf"},
+{"title":"Lunch & Dinner","type":"main","url":"https://www.jollyjacks.co.uk/_files/ugd/f4fb1c_2600d57bc09941389c2ac25ff2627274.pdf","format":"pdf"},
+{"title":"Sunday Lunch","type":"sunday-roast","url":"https://www.jollyjacks.co.uk/_files/ugd/f4fb1c_bf507dffb4a64f19b7f2fd5cd1737974.pdf","format":"pdf"},
+{"title":"Christmas 2026 menu","type":"festive","url":"https://www.jollyjacks.co.uk/_files/ugd/efacdd_5297ae54aab7468f8f180672632dd36e.pdf","format":"pdf","valid_dates":"Christmas 2026"}],"notices":[{"text":"Christmas 2026 menu published (2 or 3 courses, pre-order essential)","url":"https://www.jollyjacks.co.uk/_files/ugd/efacdd_5297ae54aab7468f8f180672632dd36e.pdf"}]},
+{"id":"lord-high-admiral-plymouth","name":"Lord High Admiral","town":"Plymouth","type":"pub","address":"33 Stonehouse Street, Stonehouse, Plymouth PL1 3PE","website":"https://www.the-lha.co.uk","social":"https://facebook.com/thelhaplymouth","cuisine":"British pub food","fsa":{"r":"5","id":117879,"d":"2025-08-15"},"menus":[{"title":"LHA Sunday Roast (Autumn 26)","type":"sunday-roast","url":"https://www.the-lha.co.uk/s/ROAST_AUTUMN_26.pdf","format":"pdf","valid_dates":"Sundays 12-5pm, autumn 2026"},
+{"title":"SLAB Detroit-style pizza menu","type":"main","url":"https://www.slab-detroitstylepizza.co.uk/menu"}],"notices":[{"text":"Autumn 2026 Sunday roast menu published","url":"https://www.the-lha.co.uk/s/ROAST_AUTUMN_26.pdf"}]},
+{"id":"rock-salt-plymouth","name":"Rock Salt Café & Brasserie","town":"Plymouth","type":"restaurant","address":"31 Stonehouse Street, Plymouth PL1 3PE","website":"http://www.rocksaltcafe.co.uk","cuisine":"Modern British & European","menus":[]},
+{"id":"salumi-plymouth","name":"Salumi Bar & Eatery","town":"Plymouth","type":"restaurant","address":"18 Millbay Road, Plymouth PL1 3LH","website":"https://www.eatsalumi.co.uk/","cuisine":"Modern British & European","fsa":{"r":"5","id":117983,"d":"2026-02-18"},"menus":[{"title":"Main Menu","type":"main","url":"https://www.eatsalumi.co.uk/s/Main-Menu-270326.pdf","format":"pdf"},
+{"title":"Dessert Menu","type":"main","url":"https://www.eatsalumi.co.uk/s/Desserts-Menu-200326.pdf","format":"pdf"},
+{"title":"Sample Sunday Lunch","type":"sunday-roast","url":"https://www.eatsalumi.co.uk/s/Sunday-lunch-menu-020225.pdf","format":"pdf"}],"notices":[{"text":"Only Sunday lunch menu online has a Feb 2025 filename (sample, may be out of date)","url":"https://www.eatsalumi.co.uk/s/Sunday-lunch-menu-020225.pdf"}]},
+{"id":"terra-nova-cafe-plymouth","name":"Terra Nova Cafe","town":"Plymouth","type":"cafe","address":"41 Chapel Street, Devonport, Plymouth PL1 4DU","cuisine":"Cafe & breakfast","ta":{"r":4.6,"n":40,"i":"g186258-d23982952"},"menus":[]},
+{"id":"devonport-park-pavilion-cafe-plymouth","name":"Devonport Park Pavilion Cafe","town":"Plymouth","type":"cafe","address":"Devonport Park, Plymouth PL1 4BU","cuisine":"Cafe & breakfast","fsa":{"r":"4","id":85745,"d":"2026-03-20"},"ta":{"r":3.5,"n":138,"i":"g186258-d3667279"},"menus":[]},
+{"id":"brunel-view-plymouth","name":"Brunel View","town":"Plymouth","type":"pub","address":"7 Barne Road, St Budeaux, Plymouth PL5 1EF","cuisine":"British pub food","trading":"unclear","fsa":{"r":"5","id":1534572,"d":"2025-06-04"},"menus":[]},
+{"id":"ferry-house-inn-plymouth","name":"Ferry House Inn","town":"Plymouth","type":"pub","address":"888 Wolseley Road, Saltash Passage, Plymouth PL5 1LA","website":"https://www.ferryhouseinn.com/","cuisine":"British pub food","fsa":{"r":"5","id":119172,"d":"2019-07-10"},"menus":[{"title":"Main Menu (incl. Sunday roast & Wednesday steak night)","type":"main","url":"https://www.ferryhouseinn.com/menus?menu=main-menu"},
+{"title":"Gourmet Burger Night","type":"event","url":"https://www.ferryhouseinn.com/menus?menu=gourmet-burger-night"},
+{"title":"American Diner Night","type":"event","url":"https://www.ferryhouseinn.com/menus?menu=american-diner-night"},
+{"title":"Festive Feast Menu","type":"festive","url":"https://www.ferryhouseinn.com/festive-feast-menu"}],"notices":[{"text":"Festive Feast menu online but no year stated - may not be the 2026 version","url":"https://www.ferryhouseinn.com/festive-feast-menu"}]},
+{"id":"firkin-scholar-plymouth","name":"Firkin Scholar","town":"Plymouth","type":"pub","address":"1 Paradise Place, Stoke, Plymouth PL1 5QU","cuisine":"British pub food","trading":"unclear","fsa":{"r":"5","id":439405,"d":"2022-10-14"},"menus":[]},
+{"id":"hyde-park-plymouth","name":"The Hyde Park","town":"Plymouth","type":"pub","address":"88 Mutley Plain, Plymouth PL4 6LG","website":"https://www.hydeparkpub.co.uk/","social":"https://www.facebook.com/thehydeparkpub/","cuisine":"British pub food","fsa":{"r":"5","id":140856,"d":"2025-09-18"},"menus":[{"title":"Breakfast Menu","type":"main","url":"https://www.hydeparkpub.co.uk/menus-1?menu=breakfast-menu"},
+{"title":"Main Menu","type":"main","url":"https://www.hydeparkpub.co.uk/menus-1?location=Mutley+Plain&menu=main-menu"},
+{"title":"Sunday Menu","type":"sunday-roast","url":"https://www.hydeparkpub.co.uk/menus-1?location=Mutley+Plain&menu=roast-menu-1"},
+{"title":"Festive Set Menu 2026","type":"festive","url":"https://www.hydeparkpub.co.uk/copy-of-curry-steak-night","format":"image","valid_dates":"Christmas 2026"},
+{"title":"Afternoon Tea","type":"other","url":"https://www.hydeparkpub.co.uk/afternoontea"}],"notices":[{"text":"Christmas 2026 festive set menu published","url":"https://www.hydeparkpub.co.uk/copy-of-curry-steak-night"}]},
+{"id":"the-mannamead-plymouth","name":"The Mannamead (Wetherspoon)","town":"Plymouth","type":"pub","address":"61-63 Mutley Plain, Plymouth PL4 6JH","website":"https://www.jdwetherspoon.com/pubs/the-mannamead-plymouth/","cuisine":"British pub food","fsa":{"r":"5","id":408176,"d":"2025-06-19"},"menus":[{"title":"Table menu","type":"main","url":"https://www.jdwetherspoon.com/pub-menus/the-mannamead-plymouth/"}]},
+{"id":"the-little-kitchen-plymouth","name":"The Little Kitchen","town":"Plymouth","type":"cafe","address":"40 Mutley Plain, Plymouth PL4 6LE","cuisine":"Cafe & breakfast","fsa":{"r":"4","id":771430,"d":"2025-09-23"},"ta":{"r":4.5,"n":113,"i":"g186258-d21049389"},"menus":[]},
+{"id":"rapscallion-records-coffee-plymouth","name":"Rapscallion Records & Coffee","town":"Plymouth","type":"cafe","address":"1 Alexandra Road, Mutley, Plymouth PL4 7ED","cuisine":"Cafe & breakfast","trading":"unclear","fsa":{"r":"5","id":1911354,"d":"2026-02-11"},"menus":[]},
+{"id":"roam-brewery-tap-plymouth","name":"Roam Brewery Tap","town":"Plymouth","type":"pub","address":"New Victoria House, Western Park Road, Peverell, Plymouth PL3 4NU","website":"https://www.roambrewco.uk/","social":"https://facebook.com/roambrewco","cuisine":"Italian","fsa":{"r":"4","id":1181271,"d":"2023-04-22","m":"address"},"menus":[{"title":"Taproom Pizza Menu","type":"main","url":"https://images.squarespace-cdn.com/content/v1/61094a40933ddf61bf554398/9fa548cf-7ad2-449a-adde-ed97c536fda1/Copy+of+Pizza+menu+july-4.jpg","format":"image"}]},
+{"id":"golden-hind-plymouth","name":"Golden Hind","town":"Plymouth","type":"pub","address":"260 Mannamead Road, Plymouth PL3 5RJ","website":"https://www.greeneking.co.uk/pubs/devon/golden-hind","cuisine":"British pub food","fsa":{"r":"5","id":140679,"d":"2024-11-19"},"ta":{"r":4.2,"n":293,"i":"g186258-d1315502"},"menus":[{"title":"Main menu","type":"main","url":"https://www.greeneking.co.uk/pubs/devon/golden-hind/menu"},
+{"title":"Sunday Roasts deal","type":"sunday-roast","url":"https://www.greeneking.co.uk/pubs/devon/golden-hind/deals/sunday-roasts-deal"},
+{"title":"Festive Menu 2026","type":"festive","url":"https://www.greeneking.co.uk/pubs/devon/golden-hind/christmas/festive-menu","valid_dates":"12 Nov 2026 - 3 Jan 2027"},
+{"title":"Christmas Day 2026","type":"festive","url":"https://www.greeneking.co.uk/pubs/devon/golden-hind/christmas/christmas-day","valid_dates":"25 Dec 2026"}],"notices":[{"text":"Festive menu 2026 published (2 courses £18.95 / 3 courses £21.95); pre-orders open 21 Oct","url":"https://www.greeneking.co.uk/pubs/devon/golden-hind/christmas/festive-menu"}]},
+{"id":"rising-sun-inn-plymouth","name":"Rising Sun Inn","town":"Plymouth","type":"pub","address":"138 Eggbuckland Road, Higher Compton, Plymouth PL3 5JT","website":"https://therisingsunplymouth.com","social":"https://facebook.com/102715171357459","cuisine":"British pub food","trading":"unclear","fsa":{"r":"3","id":118757,"d":"2026-09-23"},"menus":[]},
+{"id":"tamar-plymouth","name":"Tamar (Flaming Grill)","town":"Plymouth","type":"pub","address":"1-7 Morshead Road, Crownhill, Plymouth PL6 5AD","website":"https://www.flaminggrillpubs.co.uk/pubs/devon/tamar","cuisine":"Burgers, BBQ & American","fsa":{"r":"5","id":220458,"d":"2025-11-18","m":"address"},"ta":{"r":4.2,"n":870,"i":"g186258-d4911460"},"menus":[{"title":"Menu","type":"main","url":"https://www.flaminggrillpubs.co.uk/pubs/devon/tamar/menu"},
+{"title":"Festive Menu 2026","type":"festive","url":"https://www.flaminggrillpubs.co.uk/pubs/devon/tamar/christmas/festive-menu","valid_dates":"12 Nov 2026 - 3 Jan 2027"},
+{"title":"Christmas Day 2026","type":"festive","url":"https://www.flaminggrillpubs.co.uk/pubs/devon/tamar/christmas/christmas-day","valid_dates":"25 Dec 2026"},
+{"title":"New Year's Eve","type":"event","url":"https://www.flaminggrillpubs.co.uk/pubs/devon/tamar/christmas/new-years-eve","valid_dates":"31 Dec 2026"}],"notices":[{"text":"Festive menu 2026 published (2 courses £19.99 / 3 courses £22.99)","url":"https://www.flaminggrillpubs.co.uk/pubs/devon/tamar/christmas/festive-menu"}]},
+{"id":"the-jack-rabbit-plymouth","name":"The Jack Rabbit","town":"Plymouth","type":"pub","address":"8 Bracken Lane, Derriford, Plymouth PL6 8BD","website":"https://www.vintageinn.co.uk/restaurants/south-west/thejackrabbitplymouth","cuisine":"British pub food","menus":[{"title":"Menus / seasonal dishes","type":"main","url":"https://www.vintageinn.co.uk/restaurants/south-west/thejackrabbitplymouth/restaurantsfood"}]},
+{"id":"windmill-chargrill-plymouth","name":"Windmill Chargrill","town":"Plymouth","type":"restaurant","address":"Thurlestone Walk, Leigham, Plymouth PL6 8QB","website":"https://www.windmillchargrill.com/","cuisine":"Burgers, BBQ & American","ta":{"r":4.8,"n":190,"i":"g186258-d17347406"},"menus":[]},
+{"id":"prince-maurice-plymouth","name":"Prince Maurice","town":"Plymouth","type":"pub","address":"3 Church Hill, Eggbuckland, Plymouth PL6 5RJ","social":"https://facebook.com/theprincemaurice","cuisine":"British pub food","fsa":{"r":"3","id":369107,"d":"2026-07-16"},"menus":[]},
+{"id":"seven-stars-inn-plymouth","name":"Seven Stars Inn","town":"Plymouth","type":"pub","address":"Seven Stars Lane, Tamerton Foliot, Plymouth PL5 4NN","cuisine":"British pub food","trading":"unclear","fsa":{"r":"4","id":1393822,"d":"2026-04-08"},"menus":[]},
+{"id":"the-ship-inn-newton-ferrers","name":"The Ship Inn","town":"Newton Ferrers","type":"pub","address":"Noss Mayo, South Devon, PL8 1EW","website":"https://www.theshipinn-nossmayo.co.uk/","cuisine":"British pub food","fsa":{"r":"Awaiting","id":1701170},"ta":{"r":4.3,"n":1886,"i":"g1799470-d1788409"},"menus":[{"title":"Autumn Main Menu (Mon-Sat) & Sunday menu","type":"main","url":"https://www.theshipinn-nossmayo.co.uk/food-drink"},
+{"title":"Festive Menu (3 courses £36)","type":"festive","url":"https://www.theshipinn-nossmayo.co.uk/wp-content/uploads/sites/44/2026/05/Ship-Inn_1362_festive.pdf","format":"pdf","valid_dates":"Christmas 2026"},
+{"title":"Festive Sharers","type":"festive","url":"https://www.theshipinn-nossmayo.co.uk/wp-content/uploads/sites/44/2026/05/Ship-Inn_1362_sharers.pdf_1362_sharers.pdf","format":"pdf","valid_dates":"Christmas 2026"},
+{"title":"Festive Menu - Youngsters","type":"festive","url":"https://www.theshipinn-nossmayo.co.uk/wp-content/uploads/sites/44/2026/05/Ship-Inn_1362_festive_youngsters.pdf","format":"pdf","valid_dates":"Christmas 2026"},
+{"title":"Christmas Day (£95)","type":"festive","url":"https://www.theshipinn-nossmayo.co.uk/wp-content/uploads/sites/44/2026/05/Ship-Inn_1362_day.pdf","format":"pdf","valid_dates":"25 Dec 2026"},
+{"title":"Christmas Day - Youngsters","type":"festive","url":"https://www.theshipinn-nossmayo.co.uk/wp-content/uploads/sites/44/2026/05/Ship-Inn_1362_day_youngsters.pdf","format":"pdf","valid_dates":"25 Dec 2026"}],"notices":[{"text":"Christmas 2026 festive and Christmas Day menus published; bookings open","url":"https://www.theshipinn-nossmayo.co.uk/christmas"}]},
+{"id":"the-swan-inn-newton-ferrers","name":"The Swan Inn","town":"Newton Ferrers","type":"pub","address":"Pillory Hill, Noss Mayo, PL8 1EE","website":"https://www.swaninnnossmayo.com/","social":"https://www.facebook.com/theswannossmayo/","cuisine":"Seafood & fish and chips","fsa":{"r":"5","id":1436973,"d":"2025-06-06"},"ta":{"r":4.6,"n":227,"i":"g1799470-d1557586"},"menus":[]},
+{"id":"the-dolphin-inn-newton-ferrers","name":"The Dolphin Inn","town":"Newton Ferrers","type":"pub","address":"Riverside Road East, Newton Ferrers, PL8 1AE","social":"https://www.facebook.com/thedolphinnewtonferrers","cuisine":"British pub food","fsa":{"r":"5","id":1428370,"d":"2026-08-05"},"ta":{"r":4.6,"n":134,"i":"g3200954-d876323"},"menus":[]},
+{"id":"rose-and-crown-yealmpton","name":"Rose & Crown","town":"Yealmpton","type":"pub","address":"Market Street, Yealmpton, PL8 2EB","website":"https://www.theroseandcrown.co.uk/","cuisine":"British pub food","fsa":{"r":"5","id":1429208,"d":"2025-03-19"},"menus":[{"title":"Food menu","type":"main","url":"https://menus.tenkites.com/staustell/rosecrown"}]},
+{"id":"the-volunteer-yealmpton","name":"The Volunteer","town":"Yealmpton","type":"pub","address":"15 Fore Street, Yealmpton, PL8 2JN","cuisine":"British pub food","trading":"unclear","fsa":{"r":"5","id":1428119,"d":"2025-07-03"},"menus":[]},
+{"id":"kitley-house-hotel-yealmpton","name":"Kitley House Hotel","town":"Yealmpton","type":"restaurant","address":"Kitley Estate, Yealmpton (overlooking the Yealm estuary)","website":"https://www.kitleyhousehotel.com/","cuisine":"Modern British & European","menus":[]},
+{"id":"the-odd-wheel-wembury","name":"The Odd Wheel","town":"Wembury","type":"pub","address":"Knighton Road, Wembury, PL9 0JD","website":"http://www.theoddwheel.co.uk/","cuisine":"British pub food","fsa":{"r":"5","id":1701169,"d":"2026-09-04"},"ta":{"r":4.5,"n":1180,"i":"g186258-d3545531"},"menus":[]},
+{"id":"the-mussel-inn-wembury","name":"The Mussel Inn","town":"Wembury","type":"pub","address":"Down Thomas, Plymouth, PL9 0AQ","website":"https://musselinn.co.uk/","cuisine":"British pub food","fsa":{"r":"5","id":1895024,"d":"2026-01-30"},"ta":{"r":4.6,"n":415,"i":"g186258-d1770844"},"menus":[{"title":"Main Menu","type":"main","url":"https://musselinn.co.uk/menus/main-menu/"},
+{"title":"Sunday Menu","type":"sunday-roast","url":"https://musselinn.co.uk/menus/sunday-menu/"},
+{"title":"Kids Menu & Desserts","type":"other","url":"https://musselinn.co.uk/menus/dessert-menu/"}]},
+{"id":"the-eddystone-inn-wembury","name":"The Eddystone Inn","town":"Wembury","type":"pub","address":"Heybrook Drive, Heybrook Bay, PL9 0BN","website":"https://www.eddystoneinn.co.uk/","cuisine":"British pub food","fsa":{"r":"5","id":1428461,"d":"2025-08-06"},"menus":[{"title":"Main Menu - Winter 2026","type":"seasonal","url":"https://www.eddystoneinn.co.uk/wp-content/uploads/2026/09/The-Eddystone-Inn-Main-Menu-winter-2026-final-1.pdf","format":"pdf","valid_dates":"Winter 2026"},
+{"title":"Sunday Menu - Winter 2026","type":"sunday-roast","url":"https://www.eddystoneinn.co.uk/wp-content/uploads/2026/09/The-Eddystone-Inn-Sunday-Menu-Winter-2026-1-724x1024.jpg","format":"image","valid_dates":"Winter 2026"},
+{"title":"Dessert Menu","type":"other","url":"https://www.eddystoneinn.co.uk/wp-content/uploads/2026/07/Dessert-Menus.pdf","format":"pdf"},
+{"title":"Takeaway Menu","type":"other","url":"https://www.eddystoneinn.co.uk/takeaway/"},
+{"title":"Gluten Free Menu","type":"other","url":"https://www.eddystoneinn.co.uk/gfmenu/"}],"notices":[{"text":"Winter 2026 main and Sunday menus published (Sept 2026); set menu runs Oct-Feb","url":"https://www.eddystoneinn.co.uk/mainmenu/"},
+{"text":"Xmas menu page still shows Christmas 2022 ('new menu coming soon') - not current","url":"https://www.eddystoneinn.co.uk/xmasmenu/"}]},
+{"id":"old-mill-cafe-wembury","name":"The Old Mill Café","town":"Wembury","type":"cafe","address":"Wembury Beach, Wembury","cuisine":"Cafe & breakfast","ta":{"r":4.1,"n":205,"i":"g2618974-d3535929"},"menus":[]},
+{"id":"staddon-heights-golf-club-wembury","name":"Horizon's Restaurant, Staddon Heights Golf Club","town":"Wembury","type":"restaurant","address":"Staddon Heights, Down Thomas, PL9 9SP","website":"https://www.staddonheightsgolf.co.uk/","cuisine":"Modern British & European","trading":"unclear","fsa":{"r":"3","id":41120,"d":"2026-07-07"},"menus":[]},
+{"id":"acleaf-plympton","name":"Àclèaf at Boringdon Hall","town":"Plympton","type":"restaurant","address":"Boringdon Hall Hotel, Plympton, Plymouth, PL7 4DP","website":"https://boringdonhall.co.uk/dining-drinks/acleaf-2/","cuisine":"Modern British & European","fsa":{"r":"5","id":131211,"d":"2026-02-24"},"menus":[{"title":"Main Menu (Aug 2026)","type":"main","url":"https://hotelcms-production.imgix.net/boringdonhall.co.uk/wp-content/uploads/2026/09/Acleaf-TDH_BOR-_Aug-26.pdf?fm=pdf","format":"pdf"},
+{"title":"Tasting Menu (Aug 2026)","type":"set-menu","url":"https://hotelcms-production.imgix.net/boringdonhall.co.uk/wp-content/uploads/2026/09/Acleaf-7-Tasting-BOR-Aug-26.pdf?fm=pdf","format":"pdf"}],"notices":[{"text":"Opening Mon-Sun to 31 Dec 2026, then Wed-Sun Jan-Mar 2027; Michelin star retained 2026","url":"https://boringdonhall.co.uk/dining-drinks/acleaf-2/"}]},
+{"id":"mayflower-brasserie-plympton","name":"The Mayflower Brasserie at Boringdon Hall","town":"Plympton","type":"restaurant","address":"Boringdon Hall Hotel, Plympton, Plymouth, PL7 4DP","website":"https://boringdonhall.co.uk/dining-drinks/the-mayflower-brasserie/","cuisine":"Modern British & European","fsa":{"r":"5","id":131211,"d":"2026-02-24","m":"address"},"menus":[{"title":"Lunch (Lounge Menu Oct 2026)","type":"main","url":"https://hotelcms-production.imgix.net/boringdonhall.co.uk/wp-content/uploads/2026/10/Lounge-Menu-BOR-Oct2026.pdf?fm=pdf","format":"pdf","valid_dates":"Oct 2026"},
+{"title":"Evening Menu (Oct 2026)","type":"main","url":"https://hotelcms-production.imgix.net/boringdonhall.co.uk/wp-content/uploads/2026/10/Mayflower-Menu_BOR_Oct_26.pdf?fm=pdf","format":"pdf","valid_dates":"Oct 2026"},
+{"title":"Dessert Menu (Jun 2026)","type":"other","url":"https://hotelcms-production.imgix.net/boringdonhall.co.uk/wp-content/uploads/2026/07/Mayflower-Dessert-Menu_BOR_Jun_26.pdf?fm=pdf","format":"pdf"},
+{"title":"Afternoon Tea","type":"other","url":"https://boringdonhall.co.uk/dining-drinks/afternoon-tea/"},
+{"title":"Festive events & dining (party nights, festive afternoon teas, NYE)","type":"festive","url":"https://boringdonhall.co.uk/house-of-christmas/festive-events/","valid_dates":"Dec 2026"}],"notices":[{"text":"New October 2026 lunch and evening menus uploaded","url":"https://boringdonhall.co.uk/dining-drinks/the-mayflower-brasserie/"}]},
+{"id":"elfordleigh-hotel-plympton","name":"Elfordleigh Hotel (Brasserie Bar & Churchill Restaurant)","town":"Plympton","type":"restaurant","address":"Colebrook, Plympton, Plymouth, PL7 5EB","website":"https://www.elfordleigh.co.uk/","cuisine":"Modern British & European","fsa":{"r":"5","id":1428903,"d":"2025-05-08"},"menus":[{"title":"Main Menu (April 2026)","type":"main","url":"https://www.elfordleigh.co.uk/wp-content/uploads/Main-Menu-April-2026.pdf","format":"pdf"},
+{"title":"Light Bites - Brasserie (April 2026)","type":"main","url":"https://www.elfordleigh.co.uk/wp-content/uploads/Light-Bites-Brasserie-April-2026.pdf","format":"pdf"},
+{"title":"Dessert Menu (April 2026)","type":"other","url":"https://www.elfordleigh.co.uk/wp-content/uploads/Dessert-Menu-Brasserie-April-2026.pdf","format":"pdf"},
+{"title":"Kids Menu (Jan 2026)","type":"other","url":"https://www.elfordleigh.co.uk/wp-content/uploads/Childrens-Menu-Jan-2026.pdf","format":"pdf"},
+{"title":"Afternoon Tea (Aug 2026)","type":"other","url":"https://www.elfordleigh.co.uk/wp-content/uploads/Afternoon-Tea-Menu-August-2026.pdf","format":"pdf"},
+{"title":"Festive Lunch (£33.95, daily in December)","type":"festive","url":"https://www.elfordleigh.co.uk/wp-content/uploads/ELF-Christmas-Menus-Festive-Lunch-July-2026.pdf","format":"pdf","valid_dates":"December 2026"},
+{"title":"Christmas Day 5-course lunch (£98)","type":"festive","url":"https://www.elfordleigh.co.uk/wp-content/uploads/ELF-Christmas-Menus-5-Course-July-2026.pdf","format":"pdf","valid_dates":"25 Dec 2026"},
+{"title":"Halloween Afternoon Tea","type":"event","url":"https://www.elfordleigh.co.uk/halloween-afternoon-tea/","valid_dates":"Oct 2026"}],"notices":[{"text":"Christmas 2026 festive lunch menu published; Christmas Day 2026 fully booked","url":"https://www.elfordleigh.co.uk/festive-dining/"}]},
+{"id":"saltram-cafes-plympton","name":"Saltram Park Café & Chapel Café (National Trust)","town":"Plympton","type":"cafe","address":"Saltram, Plympton, Plymouth, PL7 1UH","website":"https://www.nationaltrust.org.uk/visit/devon/saltram/eating-and-shopping-at-saltram","cuisine":"Cafe & breakfast","menus":[]},
+{"id":"the-stannary-court-plympton","name":"The Stannary Court (Wetherspoon)","town":"Plympton","type":"pub","address":"95-99 Ridgeway, Plympton, PL7 2AA","website":"https://www.jdwetherspoon.com/pubs/the-stannary-court-plympton/","cuisine":"British pub food","fsa":{"r":"5","id":623340,"d":"2025-01-30"},"menus":[{"title":"Menu","type":"main","url":"https://www.jdwetherspoon.com/pub-menus/the-stannary-court-plympton/"}]},
+{"id":"the-colebrook-inn-plympton","name":"The Colebrook Inn","town":"Plympton","type":"pub","address":"Colebrook Road, Colebrook, Plympton, PL7 4AA","website":"https://colebrookinn.jimdofree.com/","cuisine":"British pub food","fsa":{"r":"5","id":669962,"d":"2024-10-04"},"menus":[{"title":"Menu","type":"main","url":"https://colebrookinn.jimdofree.com/menu/"},
+{"title":"Buffet Menu","type":"other","url":"https://colebrookinn.jimdofree.com/buffet-menu/"}]},
+{"id":"jaguar-restaurant-dartmoor-zoo-sparkwell","name":"Jaguar Restaurant, Dartmoor Zoo","town":"Sparkwell","type":"cafe","address":"Dartmoor Zoo, Sparkwell, Plymouth, PL7 5DG","website":"https://www.dartmoorzoo.org.uk/yourvisit/food-and-drink/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1429061,"d":"2026-08-19","m":"address"},"menus":[{"title":"New Menu 2026","type":"main","url":"https://www.dartmoorzoo.org.uk/wp-content/uploads/2026/10/New-Menu-2026.pdf","format":"pdf","valid_dates":"2026"}],"notices":[{"text":"New 2026 menu uploaded October 2026","url":"https://www.dartmoorzoo.org.uk/wp-content/uploads/2026/10/New-Menu-2026.pdf"}]},
+{"id":"welbeck-manor-hotel-sparkwell","name":"Welbeck Manor Hotel","town":"Sparkwell","type":"restaurant","address":"Sparkwell, Plymouth, PL7 5DF","website":"https://www.welbeckmanor.co.uk/","cuisine":"Modern British & European","trading":"unclear","fsa":{"r":"5","id":1429176,"d":"2025-04-30"},"menus":[]},
+{"id":"the-plymstock-inn-plymstock","name":"The Plymstock Inn","town":"Plymstock","type":"pub","address":"88 Church Road, Plymstock, PL9 9BD","website":"https://theplymstockinn.co.uk/","cuisine":"British pub food","fsa":{"r":"5","id":330702,"d":"2025-09-23"},"menus":[{"title":"Main Food Menu (Sept 2026)","type":"main","url":"https://theplymstockinn.co.uk/plymstock-menu-sept-2026/","valid_dates":"Sept 2026"},
+{"title":"Winter 26 menu","type":"seasonal","url":"https://theplymstockinn.co.uk/wp-content/uploads/2026/10/Winter-26-scaled.jpg","format":"image","valid_dates":"Winter 2026"},
+{"title":"Carvery","type":"sunday-roast","url":"https://theplymstockinn.co.uk/carvery/"}],"notices":[{"text":"Winter 26 menu image and Christmas event graphic uploaded October 2026","url":"https://theplymstockinn.co.uk/food-menu/"}]},
+{"id":"elburton-inn-plymstock","name":"Elburton Inn","town":"Plymstock","type":"pub","address":"221 Elburton Road, Elburton, PL9 8HX","cuisine":"British pub food","fsa":{"r":"5","id":427301,"d":"2024-09-06"},"menus":[]},
+{"id":"royal-oak-hooe-plymstock","name":"Royal Oak","town":"Plymstock","type":"pub","address":"Lake Road, Hooe, Plymstock, PL9 8QY","website":"http://royaloakhooe.co.uk/","cuisine":"British pub food","menus":[]},
+{"id":"blue-peter-plymstock","name":"Blue Peter","town":"Plymstock","type":"pub","address":"68 Pomphlett Road, Pomphlett, Plymstock, PL9 7BN","cuisine":"British pub food","trading":"unclear","fsa":{"r":"5","id":507862,"d":"2025-09-24"},"menus":[]},
+{"id":"ships-tavern-plymstock","name":"Ships Tavern","town":"Plymstock","type":"pub","address":"Arcadia Road, Elburton, Plymstock, PL9 8EG","cuisine":"British pub food","trading":"unclear","fsa":{"r":"3","id":119507,"d":"2026-07-16"},"menus":[]},
+{"id":"hotel-mount-batten-plymstock","name":"Hotel Mount Batten","town":"Plymstock","type":"restaurant","address":"Lawrence Road, Mount Batten, Plymouth, PL9 9SJ","website":"https://www.hotelmountbatten.co.uk/","cuisine":"Modern British & European","trading":"unclear","fsa":{"r":"5","id":127806,"d":"2025-11-27"},"menus":[]},
+{"id":"clovelly-bay-inn-turnchapel","name":"Clovelly Bay Inn","town":"Turnchapel","type":"pub","address":"1 Boringdon Road, Turnchapel, Plymouth, PL9 9TB","website":"http://www.clovellybayinn.co.uk/","cuisine":"British pub food","trading":"unclear","fsa":{"r":"4","id":110767,"d":"2025-09-03"},"menus":[]},
+{"id":"boringdon-arms-turnchapel","name":"Boringdon Arms","town":"Turnchapel","type":"pub","address":"13 Boringdon Terrace, Turnchapel, Plymouth, PL9 9TQ","website":"https://www.boringdonarms.co.uk/","social":"https://www.facebook.com/theboringdonarms","cuisine":"British pub food","trading":"unclear","fsa":{"r":"5","id":119519,"d":"2026-07-22"},"notices":[{"text":"Website shows 'Coming Soon - venue under new management'","url":"https://www.boringdonarms.co.uk/"}],"menus":[]},
+{"id":"stus-at-ivybridge-ivybridge","name":"Stu's @ Ivybridge","town":"Ivybridge","type":"restaurant","address":"15 Fore Street, Ivybridge PL21 9AB","website":"https://www.stusrestaurants.co.uk/","cuisine":"Modern British & European","fsa":{"r":"5","id":1886487,"d":"2025-12-04"},"ta":{"r":4.9,"n":32,"i":"g551646-d34100092"},"menus":[{"title":"Breakfast, lunch & supper menus","type":"main","url":"https://www.stusrestaurants.co.uk/menus/"},
+{"title":"Sunday menu","type":"sunday-roast","url":"https://www.stusrestaurants.co.uk/wp-content/uploads/2026/09/upscayl-sunday-menu-A4-final.pdf","format":"pdf"},
+{"title":"Christmas supper set menu 2026","type":"festive","url":"https://www.stusrestaurants.co.uk/wp-content/uploads/2026/09/Stus_Christmas_Menu_2026_A4_Print.pdf","format":"pdf","valid_dates":"2, 3, 10 & 11 Dec 2026"}],"notices":[{"text":"Christmas supper set menu 2026 published: £45 for 3 courses, four dates in December","url":"https://www.stusrestaurants.co.uk/events-and-specials/christmas-supper-set-menu/"}]},
+{"id":"freddies-coffee-shop-ivybridge","name":"Freddie's Coffee Shop","town":"Ivybridge","type":"cafe","address":"40 Fore Street, Ivybridge PL21 9AE","social":"https://www.facebook.com/freddiescoffeeshop","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1796922,"d":"2025-03-25"},"ta":{"r":5.0,"n":41,"i":"g551646-d33036548"},"menus":[]},
+{"id":"hetties-ivybridge","name":"Hettie's Coffee Shop","town":"Ivybridge","type":"cafe","address":"46 Fore Street, Ivybridge PL21 9AE","social":"https://www.facebook.com/Hetties-coffee-shop-152619061761506/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1431219,"d":"2025-07-28"},"menus":[]},
+{"id":"rochelles-river-cafe-ivybridge","name":"Rochelle's River Cafe","town":"Ivybridge","type":"cafe","address":"16 Glanvilles Mill, Ivybridge PL21 9PS","website":"https://www.rochellesrivercafe.co.uk/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1428118,"d":"2025-07-30"},"menus":[{"title":"Breakfast menu","type":"main","url":"https://www.rochellesrivercafe.co.uk/menus/breakfast-menu","format":"image"},
+{"title":"Lunchtime menu","type":"main","url":"https://www.rochellesrivercafe.co.uk/menus/lunch-menu","format":"image"}]},
+{"id":"nandon-ivybridge","name":"Nandon","town":"Ivybridge","type":"restaurant","address":"43 Fore Street, Ivybridge PL21 9AE","website":"https://www.nandon.co.uk/","cuisine":"Indian, Sri Lankan & Nepalese","fsa":{"r":"4","id":1428682,"d":"2026-03-27"},"ta":{"r":4.3,"n":302,"i":"g551646-d2042588"},"menus":[]},
+{"id":"the-ivy-fish-bar-ivybridge","name":"The Ivy Fish Bar","town":"Ivybridge","type":"restaurant","address":"42 Fore Street, Ivybridge PL21 9AE","cuisine":"Seafood & fish and chips","fsa":{"r":"5","id":1428675,"d":"2025-07-28"},"ta":{"r":4.1,"n":187,"i":"g551646-d3392818"},"menus":[]},
+{"id":"the-old-smithy-ivybridge","name":"The Old Smithy","town":"Ivybridge","type":"pub","address":"45 Fore Street, Ivybridge PL21 9AE","social":"https://facebook.com/oldsmithyivybridge","cuisine":"British pub food","fsa":{"r":"4","id":1428360,"d":"2024-02-08"},"menus":[]},
+{"id":"the-imperial-ivybridge","name":"The Imperial Inn","town":"Ivybridge","type":"pub","address":"28 Western Road, Ivybridge PL21 9AN","cuisine":"British pub food","fsa":{"r":"5","id":1696661,"d":"2026-03-27"},"ta":{"r":4.5,"n":92,"i":"g551646-d4740830"},"menus":[]},
+{"id":"duke-of-cornwall-ivybridge","name":"Duke of Cornwall","town":"Ivybridge","type":"pub","address":"3-4 Keaton Road, Ivybridge PL21 9DH","website":"https://www.dukeofcornwallpub.co.uk/","social":"https://facebook.com/100057072291905","cuisine":"British pub food","ta":{"r":4.3,"n":56,"i":"g551646-d2400621"},"menus":[]},
+{"id":"trehill-arms-ivybridge","name":"Trehill Arms","town":"Ivybridge","type":"pub","address":"1 Harford Road, Ivybridge PL21 0AS","social":"https://facebook.com/TrehillArms","cuisine":"British pub food","fsa":{"r":"4","id":1435252,"d":"2025-07-01"},"ta":{"r":4.0,"n":319,"i":"g551646-d10758697"},"menus":[]},
+{"id":"the-ivy-bean-ivybridge","name":"The Ivy Bean","town":"Ivybridge","type":"cafe","address":"South Dartmoor Leisure Centre, Leonards Road, Ivybridge PL21 0SL","cuisine":"Cafe & breakfast","trading":"unclear","fsa":{"r":"5","id":1934519,"d":"2026-04-08"},"menus":[]},
+{"id":"lukesland-garden-tea-room-ivybridge","name":"Lukesland Garden Tea Room","town":"Ivybridge","type":"cafe","address":"Lukesland House, Harford, Ivybridge PL21 0JF","website":"https://www.lukesland.co.uk/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1428377,"d":"2025-05-21"},"notices":[{"text":"Autumn season: open with the garden Sundays and Wednesdays 11am–5pm until 15 November","url":"https://www.lukesland.co.uk/"}],"menus":[]},
+{"id":"the-westward-inn-lee-mill","name":"The Westward Inn","town":"Lee Mill","type":"pub","address":"Plymouth Road, Lee Mill Bridge, Ivybridge PL21 9EE","cuisine":"British pub food","fsa":{"r":"3","id":1914773,"d":"2026-03-20"},"ta":{"r":4.3,"n":166,"i":"g551646-d3459474"},"menus":[]},
+{"id":"the-hunting-lodge-lee-mill","name":"The Hunting Lodge","town":"Lee Mill","type":"pub","address":"Cadleigh Park, Ivybridge PL21 9JN","social":"https://facebook.com/687000221743215","cuisine":"British pub food","fsa":{"r":"5","id":1429094,"d":"2025-05-16"},"ta":{"r":3.7,"n":419,"i":"g551646-d1414176"},"menus":[]},
+{"id":"rusty-tractor-farm-cafe-lee-mill","name":"Rusty Tractor Farm Cafe","town":"Lee Mill","type":"cafe","address":"Cadleigh Park, Ivybridge PL21 9JL","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1636594,"d":"2026-08-10"},"ta":{"r":3.9,"n":100,"i":"g551646-d26496769"},"menus":[]},
+{"id":"gool-food-lee-mill","name":"Gool Food","town":"Lee Mill","type":"cafe","address":"14B Central Avenue, Lee Mill Industrial Estate, Ivybridge PL21 9PE","cuisine":"Latin American","fsa":{"r":"5","id":1779391,"d":"2025-01-09"},"ta":{"r":4.7,"n":12,"i":"g551646-d32697303"},"menus":[]},
+{"id":"cornwood-inn-cornwood","name":"Cornwood Inn","town":"Cornwood","type":"pub","address":"The Square, Cornwood, Ivybridge PL21 9PU","website":"https://www.cornwood-inn.com/","social":"https://www.facebook.com/TheCornwoodInn/","cuisine":"British pub food","fsa":{"r":"3","id":1792258,"d":"2026-06-11"},"ta":{"r":4.5,"n":148,"i":"g551646-d2264975"},"menus":[]},
+{"id":"the-crooked-spire-ermington","name":"The Crooked Spire","town":"Ermington","type":"pub","address":"The Square, Ermington PL21 9LP","social":"https://facebook.com/ermingtoncrookedspire","cuisine":"British pub food","fsa":{"r":"5","id":1630997,"d":"2025-06-10"},"menus":[]},
+{"id":"plantation-house-ermington","name":"Plantation House Hotel & Restaurant","town":"Ermington","type":"restaurant","address":"Totnes Road, Ermington PL21 9NS","website":"https://www.plantationhousehotel.co.uk/","cuisine":"Modern British & European","fsa":{"r":"5","id":1428920,"d":"2026-03-12"},"menus":[{"title":"Sample dinner menu (£49 inclusive)","type":"set-menu","url":"https://www.plantationhousehotel.co.uk/dinner-menu.html"},
+{"title":"Sample breakfast menu","type":"main","url":"https://www.plantationhousehotel.co.uk/breakfast-menu.html"}]},
+{"id":"the-white-hart-modbury","name":"The White Hart Hotel","town":"Modbury","type":"pub","address":"2 Church Street, Modbury PL21 0QW","social":"https://facebook.com/TheWhiteHartHotelModbury","cuisine":"British pub food","fsa":{"r":"4","id":1855584,"d":"2026-06-30"},"menus":[]},
+{"id":"the-exeter-inn-modbury","name":"The Exeter Inn","town":"Modbury","type":"pub","address":"Church Street, Modbury PL21 0QR","social":"https://facebook.com/theexeterinnmodbury","cuisine":"British pub food","fsa":{"r":"3","id":1428585,"d":"2026-09-03"},"menus":[]},
+{"id":"the-modbury-inn-modbury","name":"The Modbury Inn","town":"Modbury","type":"pub","address":"Brownston Street, Modbury PL21 0RQ","social":"https://facebook.com/themodburyinn","cuisine":"British pub food","fsa":{"r":"5","id":1428295,"d":"2025-07-25"},"menus":[]},
+{"id":"royal-gurkha-spice-modbury","name":"Royal Gurkha Spice","town":"Modbury","type":"restaurant","address":"9 Broad Street, Modbury PL21 0PU","cuisine":"Indian, Sri Lankan & Nepalese","fsa":{"r":"5","id":1428243,"d":"2025-09-25"},"menus":[]},
+{"id":"california-country-inn-modbury","name":"California Country Inn","town":"Modbury","type":"pub","address":"California Cross, Ivybridge PL21 0SG","website":"https://thecaliforniainn.co.uk/","cuisine":"British pub food","fsa":{"r":"3","id":1428112,"d":"2026-07-31"},"ta":{"r":4.0,"n":507,"i":"g551646-d1575531"},"menus":[{"title":"Starters & à la carte","type":"main","url":"https://img1.wsimg.com/blobby/go/21f1c675-8d22-4727-8f3d-2e4bf23d28f4/downloads/f0c3a119-ae0b-44c0-8626-75191b99bcea/Starters%20%5EL0%20A%20La%20Carte.pdf?ver=1787314034516","format":"pdf"},
+{"title":"Specials board","type":"specials","url":"https://img1.wsimg.com/blobby/go/21f1c675-8d22-4727-8f3d-2e4bf23d28f4/downloads/f7644d00-db84-4a7d-973b-f121aa310cf4/Specials%20Board.pdf?ver=1787314034516","format":"pdf"},
+{"title":"Function menu (parties of 8+)","type":"set-menu","url":"https://thecaliforniainn.co.uk/menus"},
+{"title":"Sunday menu (Summer 2025)","type":"sunday-roast","url":"https://img1.wsimg.com/blobby/go/21f1c675-8d22-4727-8f3d-2e4bf23d28f4/downloads/0dbe5bb8-84e9-4f6c-ba88-0627f9ddfca8/California%20Country%20Inn%20Sunday%20Menu%20Summer%202025.pdf?ver=1787314034516","format":"pdf","valid_dates":"Summer 2025"}],"notices":[{"text":"Only Sunday menu online is labelled Summer 2025, so it may be out of date","url":"https://thecaliforniainn.co.uk/menus"}]},
+{"id":"the-ship-inn-ugborough","name":"The Ship Inn","town":"Ugborough","type":"pub","address":"Ware Hill, Ugborough PL21 0NS","website":"https://shipinnugborough.com/","social":"https://www.facebook.com/shipinnugborough","cuisine":"British pub food","fsa":{"r":"5","id":1428544,"d":"2025-03-06"},"menus":[{"title":"Sample menu & specials","type":"main","url":"https://shipinnugborough.com/mains/","format":"image"},
+{"title":"Sunday roast","type":"sunday-roast","url":"https://shipinnugborough.com/sundayroast/","format":"image"},
+{"title":"Ciabattas","type":"other","url":"https://shipinnugborough.com/ciabattas/","format":"image"},
+{"title":"Children's menu","type":"other","url":"https://shipinnugborough.com/childrens-menu/","format":"image"},
+{"title":"Christmas menu 2026","type":"festive","url":"https://shipinnugborough.com/christmas/","format":"image","valid_dates":"1–23 Dec 2026, Tue–Fri"}],"notices":[{"text":"Christmas menu 2026 published (Tue–Fri, 1–23 December; £5 pp deposit)","url":"https://shipinnugborough.com/christmas/"}]},
+{"id":"the-anchor-inn-ugborough","name":"The Anchor Inn","town":"Ugborough","type":"pub","address":"1 Lutterburn Street, Ugborough PL21 0NG","website":"https://www.anchorinnugborough.co.uk/","social":"https://www.facebook.com/anchorinnugborough/","cuisine":"British pub food","fsa":{"r":"4","id":1875987,"d":"2025-12-04"},"menus":[{"title":"Dine with us (main & Sunday menus)","type":"main","url":"https://www.anchorinnugborough.co.uk/dine-with-us"}]},
+{"id":"horse-and-groom-ugborough","name":"Horse & Groom, Bittaford","town":"Ugborough","type":"pub","address":"Exeter Road, Bittaford, Ivybridge PL21 0EL","website":"https://www.horseandgroombittaford.com/","social":"https://www.facebook.com/horseandgroombittaford/","cuisine":"British pub food","fsa":{"r":"5","id":1429155,"d":"2025-03-06"},"ta":{"r":4.3,"n":85,"i":"g551646-d3512558"},"menus":[{"title":"Menu","type":"main","url":"https://www.horseandgroombittaford.com/menu","format":"image"}]},
+{"id":"the-refectory-at-fowlescombe-ugborough","name":"The Refectory at Fowlescombe Farm","town":"Ugborough","type":"restaurant","address":"Fowlescombe Farm, Ugborough PL21 0HW","website":"https://fowlescombe.com/","social":"https://www.instagram.com/fowlescombe/","cuisine":"Modern British & European","fsa":{"r":"5","id":1850192,"d":"2025-10-22"},"menus":[{"title":"Daily-changing four-course seasonal set dinner","type":"set-menu","url":"https://fowlescombe.com/dine/"},
+{"title":"Christmas at Fowlescombe 2026 (stay & dine)","type":"festive","url":"https://fowlescombe.com/christmas/","valid_dates":"23–27 Dec 2026"}],"notices":[{"text":"Christmas 2026 stay-and-dine package published, 23–27 December","url":"https://fowlescombe.com/christmas/"},
+{"text":"Carols with the Cows festive supper returns in December; tickets on sale soon","url":"https://fowlescombe.com/carols-with-the-cows/"}]}
+]};
+const BUZZ = {
+"pulled": {
+"Area": "21 October 2026"
+},
+"summary": {
+"Area": "The first full read of public social media, on 21 October 2026. The Barbican and Plymouth Market take almost all of the praise, Fletchers is the most-recommended restaurant by a clear margin, and the loudest complaint by some distance is what breakfast now costs. Away from the city it is nearly all about the Sunday roast.",
+"Plymouth": "Talk about Plymouth splits three ways: the Barbican for atmosphere, the Market for value, and a settled list of independents — Fletchers, Salumi, Nora's — for a treat. Breakfast is the one thing people keep asking about and never agree on.",
+"Plympton": "Plympton talk is almost all Sunday roasts and carveries, and it happens in Facebook groups rather than on Reddit. The Lyneham Inn, The Brook Inn and The Chaddlewood Inn come up again and again.",
+"Ivybridge": "Very little online talk names Ivybridge itself. What there is asks the same question — a Sunday roast within driving distance, ideally with a view — and the answers point outwards, to Cornwood, Lee Mill and the coast."
+},
+"themes": [
+{
+"scope": "Area",
+"towns": [
+"Plymouth"
+],
+"title": "The harbour end is loved by day, avoided after 7pm",
+"meaning": "The Barbican draws more warmth than anything else in the area, and the year's most-upvoted local posts are simply photographs of it. The same people then warn each other off it at busy times: after 7pm on a sunny evening, on match days and on bank holidays.",
+"evidence": [
+{
+"u": "https://reddit.com/r/plymouth/comments/1u0589f/the_barbican_is_the_most_unexpectedly_lovely_part/",
+"t": "“The most unexpectedly lovely part of any city I have visited in the southwest”",
+"n": "119 upvotes"
+},
+{
+"u": "https://reddit.com/r/plymouth/comments/1syt976/the_barbican_looked_like_a_total_postcard_the/",
+"t": "“Looked like a total postcard”",
+"n": "652 upvotes"
+}
+]
+},
+{
+"scope": "Area",
+"towns": [
+"Plymouth"
+],
+"title": "Plymouth Market is now rated the best value in the city",
+"meaning": "The clearest change in the data. The market stalls have stopped being a cheap fallback and become the answer people give first, with Tea and Bun named more often than any other budget spot. One person who moved away five years ago still mentions missing it.",
+"evidence": [
+{
+"u": "https://reddit.com/r/plymouth/comments/1tunymz/plymouth_market/",
+"t": "“Now one of the very best parts of Plymouth's food scene”",
+"n": "252 upvotes"
+},
+{
+"u": "https://reddit.com/r/plymouth/comments/1pao9vh/best_budget_eats_in_plymouth_right_now/",
+"t": "Best budget eats thread",
+"n": "27 comments"
+}
+]
+},
+{
+"scope": "Area",
+"towns": [
+"Plymouth",
+"Plympton",
+"Ivybridge"
+],
+"title": "Michelin prices, school-dinner portions",
+"meaning": "The angriest reaction anywhere in the pull is to the price of breakfast. A £15 plate at a Michelin-starred farm restaurant in Saltash and a £13.95 fry-up in Torpoint were both taken apart in public, and the complaint is explicitly about inflation rather than about fussy cooking.",
+"evidence": [
+{
+"u": "https://reddit.com/r/fryup/comments/1og1gp4/crocadon_farm_saltash_cornwall_15/",
+"t": "“Pretentious and overpriced, surprised it's not served on a slate”",
+"n": "88 comments"
+},
+{
+"u": "https://reddit.com/r/fryup/comments/1raw6cz/regular_fry_up_hearts_cafekitchen_torpoint/",
+"t": "“Not great value”",
+"n": "22 comments"
+}
+]
+},
+{
+"scope": "Area",
+"towns": [
+"Plymouth"
+],
+"title": "New openings get far more attention than old favourites",
+"meaning": "On TikTok the posts that travel are all about places that have just opened or just moved into permanent premises — Taccy Tacos leaving its horse box for the Barbican, Honey Butter Deli on Southside Street, Stringers' Cuban toasties. Reddit, meanwhile, keeps naming the same settled restaurants. The two platforms are describing different things.",
+"evidence": [
+{
+"u": "https://www.tiktok.com/@wasson.plymouth/video/7676825719393111318",
+"t": "Taccy Tacos' first permanent spot",
+"n": "1,877 likes"
+},
+{
+"u": "https://www.tiktok.com/@curlygaz1/video/7694715687998180630",
+"t": "“This little deli is smashing it”",
+"n": "1,438 likes"
+}
+]
+},
+{
+"scope": "Area",
+"towns": [
+"Plymouth"
+],
+"title": "Breakfast and brunch: plenty of demand, no agreed winner",
+"meaning": "One Sunday breakfast question drew 55 replies naming about fourteen different places, with almost no two people agreeing. Nothing else in the pull is this contested, which makes it the clearest gap in the local market.",
+"evidence": [
+{
+"u": "https://reddit.com/r/plymouth/comments/1qtv8uw/breakfast_on_sunday_in_plymouth/",
+"t": "Breakfast on Sunday in Plymouth",
+"n": "55 comments"
+},
+{
+"u": "https://reddit.com/r/UK_Food/comments/1w0kj1i/full_english_in_plymouth/",
+"t": "Full English at the Dock Café",
+"n": "51 upvotes"
+}
+]
+},
+{
+"scope": "Area",
+"towns": [
+"Plymouth",
+"Plympton",
+"Ivybridge"
+],
+"title": "Independents win, and Spoons is the benchmark they beat",
+"meaning": "Across roughly fifty venue recommendations almost none are chains, and where a chain does appear it is as the thing to do better than. The one defence of Wetherspoons is strictly practical — fast turnover means a fresh pint — rather than affectionate.",
+"evidence": [
+{
+"u": "https://www.facebook.com/groups/TavistockParish/posts/2590210607851071/",
+"t": "“Spoons if you want fast food, The Cornish Arms if you want quality food”",
+"n": "27 comments"
+},
+{
+"u": "https://reddit.com/r/plymouth/comments/1saj8b4/best_pint_in_plymouth/",
+"t": "Best pint in Plymouth",
+"n": "36 comments"
+}
+]
+},
+{
+"scope": "Area",
+"towns": [
+"Plympton",
+"Ivybridge"
+],
+"title": "A Sunday roast with a view is what the villages ask for",
+"meaning": "Outside Plymouth almost every request is roast-shaped, and the view matters nearly as much as the food. Answers routinely send people out of their own village — Ivybridge residents are pointed to Cornwood, Lee Mill and the coast.",
+"evidence": [
+{
+"u": "https://www.facebook.com/groups/1087928221246709/posts/24482404948039040/",
+"t": "Sunday lunch near Ivybridge, with a view",
+"n": "23 comments"
+},
+{
+"u": "https://www.facebook.com/groups/818213141641283/posts/27520316124337622/",
+"t": "Pub food in Plympton",
+"n": "68 comments"
+}
+]
+},
+{
+"scope": "Area",
+"towns": [
+"Plymouth",
+"Plympton",
+"Ivybridge"
+],
+"title": "People have stopped trusting star ratings",
+"meaning": "A recurring reason these questions get asked at all is that star ratings are no longer believed. One visitor described searching online and finding “the usual sea of places that all magically have between 4 and 5 star reviews”. Not everyone agrees — one Tavistock commenter pushed back that TripAdvisor beats asking on Facebook.",
+"evidence": [
+{
+"u": "https://reddit.com/r/plymouth/comments/1s2t0g2/first_ever_visit/",
+"t": "“The usual sea of places that all magically have between 4 and 5 stars”",
+"n": "16 comments"
+}
+]
+}
+],
+"places": [
+{
+"name": "Fletchers",
+"venue": null,
+"town": "Plymouth",
+"kind": "Named in 8 separate recommendations — the most of anywhere",
+"why": "The clear first answer whenever anyone asks where to eat well in Plymouth, on both Reddit and Facebook. “Fletchers every time”"
+},
+{
+"name": "Barbican Kitchen",
+"venue": "barbican-kitchen-plymouth",
+"town": "Plymouth",
+"kind": "Named on Reddit, Facebook and TikTok",
+"why": "Recommended for a treat or an occasion across every platform, and local pride when its 19-year-old chef reached the South West Chef of the Year final"
+},
+{
+"name": "Salumi",
+"venue": "salumi-plymouth",
+"town": "Plymouth",
+"kind": "Named in 5 recommendations",
+"why": "Picked out for the cooking rather than the setting — “Salumi for the flavours” — and the same owners' Bow Deli gets its own mentions for breakfast"
+},
+{
+"name": "Nora's",
+"venue": null,
+"town": "Plymouth",
+"kind": "Named in 5 recommendations",
+"why": "The go-to for steak, Sunday lunch or an occasion, described as a neighbourhood restaurant rather than a special-occasion one"
+},
+{
+"name": "Tea and Bun",
+"venue": null,
+"town": "Plymouth",
+"kind": "The strongest budget consensus found",
+"why": "Named more than any other cheap option, usually for a ramen bowl around £10. One person who left Plymouth five years ago still says they dream about it"
+},
+{
+"name": "Cosmic Kitchen",
+"venue": "cosmic-kitchen-plymouth",
+"town": "Plymouth",
+"kind": "Recommended by meat-eaters as well",
+"why": "Recommended even by people who say they are not vegan — “every meal I've had there was amazing” — and locally shared as TripAdvisor's third-best vegan restaurant in the world"
+},
+{
+"name": "Supha's",
+"venue": "suphas-street-food-emporium-plymouth",
+"town": "Plymouth",
+"kind": "Named in 4 recommendations",
+"why": "Comes up in both the budget and the best-of threads — “better and cheaper than most”"
+},
+{
+"name": "Fig Tree at 36",
+"venue": null,
+"town": "Plymouth",
+"kind": "Named in 3 recommendations",
+"why": "Mentioned specifically as a treat: “Fig Tree at 36 is a lovely treat”"
+},
+{
+"name": "The Early Bird",
+"venue": null,
+"town": "Plymouth",
+"kind": "Most-named breakfast spot",
+"why": "The nearest thing to a winner in a badly split breakfast field, named for both the Mutley and Mayflower Street sites"
+},
+{
+"name": "Rockets & Rascals",
+"venue": null,
+"town": "Plymouth",
+"kind": "Named by 3 people for breakfast",
+"why": "A repeat recommendation for breakfast and brunch on the Barbican"
+},
+{
+"name": "Yield",
+"venue": null,
+"town": "Plymouth",
+"kind": "4 positive comments, no negatives",
+"why": "A Ridgeway bakery with an unusually clean sweep of praise — “best pasty in Plymouth” and “their pasties are fabulous”"
+},
+{
+"name": "Monty's Cafe",
+"venue": "montys-cafe-plymouth",
+"town": "Plymouth",
+"kind": "Named twice for breakfast",
+"why": "Recommended for breakfast on the Barbican — “always a winner” and “cracking”, with the Dolphin next door for afterwards"
+},
+{
+"name": "Taccy Tacos",
+"venue": null,
+"town": "Plymouth",
+"kind": "Highest-engagement post in the whole pull",
+"why": "The story of moving from a horse box to a permanent Barbican site travelled further than any other local food post"
+},
+{
+"name": "Honey Butter Deli",
+"venue": null,
+"town": "Plymouth",
+"kind": "Covered by two creators within days",
+"why": "A new Southside Street deli that drew independent coverage from two separate TikTok accounts in the same week"
+},
+{
+"name": "Kuku Sushi & Robata",
+"venue": null,
+"town": "Plymouth",
+"kind": "Named on Reddit and TikTok",
+"why": "Recommended for Japanese food, with advice to sit at the sushi bar and watch the chefs"
+},
+{
+"name": "Veggie Perrins",
+"venue": null,
+"town": "Plymouth",
+"kind": "Named twice, once emphatically",
+"why": "Called “the best Indian restaurant around, by a long shot”, and separately recommended for South Indian cooking"
+},
+{
+"name": "Dunya",
+"venue": null,
+"town": "Plymouth",
+"kind": "Named in 3 recommendations",
+"why": "Repeatedly recommended for Turkish food at Derry's Cross — “Dunya food is amazing”"
+},
+{
+"name": "Roam Brewery Tap",
+"venue": "roam-brewery-tap-plymouth",
+"town": "Plymouth",
+"kind": "Named for both food and beer",
+"why": "Comes up for sourdough pizza and for beer in the same breath — “Roam for pizza and pints” — and was named in the best-pint thread too"
+},
+{
+"name": "Harbourside Fish & Chips",
+"venue": "harbourside-fish-chips-plymouth",
+"town": "Plymouth",
+"kind": "452 likes, 61 comments on TikTok",
+"why": "The most-discussed fish and chip post on the Barbican"
+},
+{
+"name": "Grecian on the Barbican",
+"venue": "grecian-on-the-barbican-plymouth",
+"town": "Plymouth",
+"kind": "TikTok review, May 2026",
+"why": "“Never fails to impress — it's not possible to leave hungry, and do not skip dessert”"
+},
+{
+"name": "The Bank",
+"venue": "the-bank-plymouth",
+"town": "Plymouth",
+"kind": "Named on Reddit twice",
+"why": "Recommended for “excellent food at reasonable prices” near the Theatre Royal, and again in the best-pint thread for its range"
+},
+{
+"name": "Ocean View at The Dome",
+"venue": "ocean-view-at-the-dome-plymouth",
+"town": "Plymouth",
+"kind": "Named on Reddit and in a Facebook group",
+"why": "Recommended for a seafront Sunday lunch — “food was amazing and quite reasonable price wise” — and for a two-for-one breakfast deal"
+},
+{
+"name": "The Fisherman's Arms",
+"venue": "the-fishermans-arms-plymouth",
+"town": "Plymouth",
+"kind": "Named in the first-visit thread",
+"why": "One of the Barbican pubs a local listed when asked where to take a visitor for a pint and a casual meal"
+},
+{
+"name": "The Boathouse",
+"venue": "the-boathouse-plymouth",
+"town": "Plymouth",
+"kind": "Named in the first-visit thread",
+"why": "Listed among the Barbican restaurants a resident recommends to first-time visitors"
+},
+{
+"name": "Lord High Admiral",
+"venue": "lord-high-admiral-plymouth",
+"town": "Plymouth",
+"kind": "Named twice in the best-pint thread",
+"why": "A repeat answer for the best pint in the city, and listed among the pubs with the best atmosphere"
+},
+{
+"name": "Seco Lounge",
+"venue": "seco-lounge-plymouth",
+"town": "Plymouth",
+"kind": "Named for breakfast and for beer",
+"why": "Recommended for breakfast at Royal William Yard, and in the best-pint thread for its selection, though called pricey"
+},
+{
+"name": "The Little Kitchen",
+"venue": "the-little-kitchen-plymouth",
+"town": "Plymouth",
+"kind": "Named for breakfast",
+"why": "“The Little Kitchen on Mutley Plain is a favourite”"
+},
+{
+"name": "Cap'n Jaspers",
+"venue": "capn-jaspers-plymouth",
+"town": "Plymouth",
+"kind": "Mentioned fondly, from memory",
+"why": "Still asked after 25 years on — “I used to get a burger and cup of tea from there regularly”"
+},
+{
+"name": "The Lyneham Inn",
+"venue": null,
+"town": "Plympton",
+"kind": "The most-named roast in the area",
+"why": "Around seven separate Facebook recommendations, several of them calling it simply the best roast"
+},
+{
+"name": "The Brook Inn",
+"venue": null,
+"town": "Plympton",
+"kind": "Named in 4 recommendations",
+"why": "Praised for value as much as cooking — “amazing 3 course meals only £16.99” — and for its Sunday carvery"
+},
+{
+"name": "The Chaddlewood Inn",
+"venue": null,
+"town": "Plympton",
+"kind": "Named in about 6 recommendations",
+"why": "A steady Facebook favourite — “definitely fresh cooked food always” — and noted as having a new menu"
+},
+{
+"name": "Àclèaf at Boringdon Hall",
+"venue": "acleaf-plympton",
+"town": "Plympton",
+"kind": "Named once, for a special occasion",
+"why": "Raised alongside Barbican Kitchen when someone asked where to go for a treat"
+},
+{
+"name": "The Stannary Court",
+"venue": "the-stannary-court-plympton",
+"town": "Plympton",
+"kind": "Named in a Plympton pub-food list",
+"why": "Included in a resident's list of Plympton pubs worth eating at"
+},
+{
+"name": "The Colebrook Inn",
+"venue": "the-colebrook-inn-plympton",
+"town": "Plympton",
+"kind": "Named in a Plympton pub-food list",
+"why": "Included in a resident's list of Plympton pubs worth eating at"
+},
+{
+"name": "The Plymstock Inn",
+"venue": "the-plymstock-inn-plymstock",
+"town": "Plymstock",
+"kind": "Named on Reddit and Facebook",
+"why": "Described as one of the more food-focused places in the Plymstock area, and its lunches praised in a local Facebook group"
+},
+{
+"name": "Cornwood Inn",
+"venue": "cornwood-inn-cornwood",
+"town": "Ivybridge",
+"kind": "The only village pub with repeat praise",
+"why": "In Cornwood. The one village pub praised more than once, and separately suggested to people asking from Plympton"
+},
+{
+"name": "The Eddystone Inn",
+"venue": "the-eddystone-inn-wembury",
+"town": "Ivybridge",
+"kind": "Named for a roast with a sea view",
+"why": "At Heybrook Bay. The answer given when someone wanted Sunday lunch with a sea view within reach of Ivybridge"
+},
+{
+"name": "The Mussel Inn",
+"venue": "the-mussel-inn-wembury",
+"town": "Wembury",
+"kind": "Subject of a YouTube roast review",
+"why": "Its Sunday roast was reviewed at length by a local YouTube channel"
+},
+{
+"name": "The Westward Inn",
+"venue": "the-westward-inn-lee-mill",
+"town": "Ivybridge",
+"kind": "Named for Sunday lunch",
+"why": "At Lee Mill. Suggested to an Ivybridge resident looking for a Sunday roast nearby"
+},
+{
+"name": "The Hunting Lodge",
+"venue": "the-hunting-lodge-lee-mill",
+"town": "Ivybridge",
+"kind": "Named for its carvery",
+"why": "At Lee Mill. Put forward as the carvery option within reach of Ivybridge"
+},
+{
+"name": "The Ship Inn, Noss Mayo",
+"venue": "the-ship-inn-newton-ferrers",
+"town": "Ivybridge",
+"kind": "Named for Sunday lunch with a view",
+"why": "At Noss Mayo. Recommended warmly when someone asked for Sunday lunch near Ivybridge with a nice view"
+},
+{
+"name": "Welbeck Manor",
+"venue": "welbeck-manor-hotel-sparkwell",
+"town": "Sparkwell",
+"kind": "Named in a Plymouth dining thread",
+"why": "“The food at Welbeck Manor is fab and the venue is lovely”"
+},
+{
+"name": "Tamar Lounge, Torpoint",
+"venue": null,
+"town": "Torpoint",
+"kind": "Best positive signal outside Plymouth",
+"why": "“Freshly cooked to order, delicious, and six very happy customers”, with the view and the specials board singled out. Torpoint sits outside this dashboard's venue list"
+},
+{
+"name": "Lynn's American Diner, Tavistock",
+"venue": null,
+"town": "Tavistock",
+"kind": "6 TikTok posts, the most of any Tavistock venue",
+"why": "“Fab American diner with great food and decor — the burgers especially good”. Tavistock sits outside this dashboard's venue list"
+},
+{
+"name": "The Annex, Tavistock",
+"venue": null,
+"town": "Tavistock",
+"kind": "Covered by 3 separate creators",
+"why": "A tapas bar that three different food accounts filmed independently — “add this to your must-visit list”. Tavistock sits outside this dashboard's venue list"
+},
+{
+"name": "Aroma Cafe, Tavistock",
+"venue": null,
+"town": "Tavistock",
+"kind": "4 TikTok posts",
+"why": "“I wasn't expecting to love this café as much as I did.” Turkish coffee and cakes. Tavistock sits outside this dashboard's venue list"
+}
+],
+"complaints": [
+{
+"title": "Michelin prices for a small plate of breakfast",
+"towns": [
+"Plymouth",
+"Plympton",
+"Ivybridge"
+],
+"text": "The strongest negative reaction anywhere in this read. A £15 breakfast at Crocadon, the Michelin-starred farm restaurant at Saltash, drew 88 mostly hostile comments: “pretentious and overpriced, surprised it's not served on a slate”, “worth a fiver max”, and “style over substance”. The objection is about price and portion, not about ambition — the same thread complained that “the prices of these are getting worse and worse every week”.",
+"link": "https://reddit.com/r/fryup/comments/1og1gp4/crocadon_farm_saltash_cornwall_15/"
+},
+{
+"title": "A £13.95 fry-up in Torpoint called a rip-off",
+"towns": [
+"Plymouth"
+],
+"text": "A second breakfast post went the same way, which suggests the reaction is about money rather than about fancy cooking: “not great value”, “that's a rip off” and “you got done there”. Torpoint is outside this dashboard's venue list but the same customers cross the Tamar both ways.",
+"link": "https://reddit.com/r/fryup/comments/1raw6cz/regular_fry_up_hearts_cafekitchen_torpoint/"
+},
+{
+"title": "The Barbican is too crowded to enjoy at peak times",
+"towns": [
+"Plymouth"
+],
+"text": "Residents now warn each other off the area they otherwise praise most. “Best place ever, but not when the football is on or a sunny bank holiday”, and “it's good in the day but don't bother after 7pm on a sunny day”. One of the year's most-upvoted comments is a local only half-joking that they would rather visitors did not hear about it.",
+"link": "https://reddit.com/r/plymouth/comments/1u0589f/the_barbican_is_the_most_unexpectedly_lovely_part/"
+},
+{
+"title": "Nobody believes the star ratings any more",
+"towns": [
+"Plymouth",
+"Plympton",
+"Ivybridge"
+],
+"text": "A visitor planning a first trip summed up why these questions keep getting asked: “I have looked online and it's the usual sea of places that all magically have between 4 and 5 star reviews.” The trust question is genuinely unsettled, though — a Tavistock commenter argued the opposite, that TripAdvisor beats asking on Facebook.",
+"link": "https://reddit.com/r/plymouth/comments/1s2t0g2/first_ever_visit/"
+},
+{
+"title": "Good service is treated as the exception",
+"towns": [
+"Plympton",
+"Ivybridge"
+],
+"text": "A Facebook post praising two young staff at a Tavistock café drew 209 reactions, and the telling reply was “you hear so much of bad service, so good to hear some positive comments”. The praise stood out precisely because people did not expect it.",
+"link": "https://www.facebook.com/groups/TavistockParish/posts/3143825305822929/"
+},
+{
+"title": "Parking decides where people will eat",
+"towns": [
+"Plymouth",
+"Plympton",
+"Ivybridge"
+],
+"text": "In a Facebook thread asking for fine dining for a group, parking was the second question asked and the answers led with it — “plenty of free parking”, “parking right outside”. A separate thread about a Royal William Yard parking ticket drew 22 comments. For anywhere without easy parking this is a real filter, not a detail.",
+"link": "https://www.facebook.com/groups/wowplymouthuk/posts/3582617555214082/"
+},
+{
+"title": "Closures and a city centre people feel is emptying",
+"towns": [
+"Plymouth"
+],
+"text": "Food venues are being judged against a background of decline. A thread on shops people miss drew 91 comments and the line “you don't even have to go as far as the sundial to see the downturn”. Local news reports in the same period cover Franco Manca at The Barcode closing, a seafood restaurant shutting with substantial debts and a café describing a “devastating” summer. Those reports were found through search and their reaction volumes have not been checked.",
+"link": "https://reddit.com/r/plymouth/comments/1qx71se/which_plymouth_shop_do_you_miss_most/"
+},
+{
+"title": "Some asks get nothing back but a shrug",
+"towns": [
+"Plympton"
+],
+"text": "Not every complaint is detailed. The 68-comment Plympton pub food thread includes a flat “yeah don't bother” with no venue named and no reason given. It carries no information, but it is worth noticing that it was said at all.",
+"link": "https://www.facebook.com/groups/818213141641283/posts/27520316124337622/"
+}
+],
+"posts": [
+{
+"platform": "YouTube",
+"n": "23.9k",
+"unit": "views",
+"towns": [
+"Plymouth"
+],
+"title": "I tried Plymouth's spiciest Naga burger",
+"why": "By far the widest reach of any local food post. Challenge and extreme-heat framing travels much further here than a straight review does.",
+"url": "https://www.youtube.com/watch?v=kWoyywY6Vsg"
+},
+{
+"platform": "TikTok",
+"n": "1.9k",
+"unit": "likes",
+"towns": [
+"Plymouth"
+],
+"title": "Taccy Tacos' first permanent spot on the Barbican",
+"why": "The highest-engagement social post in the pull. Two travellers brought Peruvian and American flavours home, went from a horse box to bricks, and that story carried it.",
+"url": "https://www.tiktok.com/@wasson.plymouth/video/7676825719393111318"
+},
+{
+"platform": "TikTok",
+"n": "1.4k",
+"unit": "likes",
+"towns": [
+"Plymouth"
+],
+"title": "“This little deli is smashing it” — Honey Butter, Southside Street",
+"why": "A genuine new-opening spike: a second creator covered the same deli independently within days.",
+"url": "https://www.tiktok.com/@curlygaz1/video/7694715687998180630"
+},
+{
+"platform": "TikTok",
+"n": "1.2k",
+"unit": "likes",
+"towns": [
+"Plymouth"
+],
+"title": "“One thing about us is we like to eat” — a Plymouth food crawl",
+"why": "Shows the format that works locally: several places in one video rather than a single review.",
+"url": "https://www.tiktok.com/@carlybrownx0/video/7679886162562911510"
+},
+{
+"platform": "TikTok",
+"n": "991",
+"unit": "likes",
+"towns": [
+"Plymouth"
+],
+"title": "Trying cafés in Plymouth and nearby, part 8",
+"why": "Part eight of a running series, which tells you café content sustains an audience here rather than spiking once.",
+"url": "https://www.tiktok.com/@courtneyedwards__/video/7618169042506910998"
+},
+{
+"platform": "TikTok",
+"n": "922",
+"unit": "likes",
+"towns": [
+"Plymouth"
+],
+"title": "Second visit to the Barbican pasta bar",
+"why": "“Huge portions and reasonably priced” — portion size and price are what gets praised, even on video.",
+"url": "https://www.tiktok.com/@ktanne_/video/7697975597791710486"
+},
+{
+"platform": "TikTok",
+"n": "889",
+"unit": "likes",
+"towns": [
+"Plymouth"
+],
+"title": "“If I could wake up to a new café every Saturday morning”",
+"why": "More evidence that breakfast and brunch is the category with the most appetite behind it.",
+"url": "https://www.tiktok.com/@jennifer.bennetttt/video/7694978385897901334"
+},
+{
+"platform": "TikTok",
+"n": "577",
+"unit": "likes",
+"towns": [
+"Plymouth"
+],
+"title": "KIBO on Mutley Plain",
+"why": "One of the few high-reach posts away from the waterfront, and the creator asks viewers where to go next.",
+"url": "https://www.tiktok.com/@luca.danciu/video/7689849094109465889"
+},
+{
+"platform": "TikTok",
+"n": "526",
+"unit": "likes",
+"towns": [
+"Plymouth"
+],
+"title": "“This is exactly what Plymouth needed” — The Mermaid Boil",
+"why": "A seafood boil pop-up on only its third outing. Worth watching: pop-ups are where several of this year's permanent openings started.",
+"url": "https://www.instagram.com/reel/DOJN3c6jIwk"
+},
+{
+"platform": "TikTok",
+"n": "452",
+"unit": "likes",
+"towns": [
+"Plymouth"
+],
+"title": "Harbourside fish and chips, the Barbican",
+"why": "61 comments, the most argued-over fish and chip post found.",
+"url": "https://www.tiktok.com/@foodreviewswithalfie/video/7604433051573062934"
+},
+{
+"platform": "YouTube",
+"n": "3.7k",
+"unit": "views",
+"towns": [
+"Plymouth"
+],
+"title": "Is this really the best Indian restaurant in Plymouth?",
+"why": "Indian food is the one cuisine people argue about by name, on YouTube and on Reddit alike.",
+"url": "https://www.youtube.com/watch?v=ej1P7GwF5mM"
+},
+{
+"platform": "Reddit",
+"n": "652",
+"unit": "upvotes",
+"towns": [
+"Plymouth"
+],
+"title": "“The Barbican looked like a total postcard the other day”",
+"why": "The year's most-upvoted local post is a photograph, not a meal. Atmosphere is doing the heavy lifting for the area's food scene.",
+"url": "https://reddit.com/r/plymouth/comments/1syt976/the_barbican_looked_like_a_total_postcard_the/"
+},
+{
+"platform": "Reddit",
+"n": "252",
+"unit": "upvotes",
+"towns": [
+"Plymouth"
+],
+"title": "Plymouth Market",
+"why": "The market-as-destination case made by locals, including a visitor from Nottingham who says it is reason enough to come.",
+"url": "https://reddit.com/r/plymouth/comments/1tunymz/plymouth_market/"
+},
+{
+"platform": "Reddit",
+"n": "119",
+"unit": "upvotes",
+"towns": [
+"Plymouth"
+],
+"title": "“The most unexpectedly lovely part of any city I have visited in the southwest”",
+"why": "Outsider delight and local gatekeeping in one thread, and the source of several smaller recommendations.",
+"url": "https://reddit.com/r/plymouth/comments/1u0589f/the_barbican_is_the_most_unexpectedly_lovely_part/"
+},
+{
+"platform": "Reddit",
+"n": "88",
+"unit": "comments",
+"towns": [
+"Plymouth",
+"Plympton",
+"Ivybridge"
+],
+"title": "A £15 breakfast at a Michelin-starred farm restaurant",
+"why": "The most revealing thread in the pull. The person who posted it called it the best breakfast they had ever eaten; 88 comments disagreed, almost entirely about the price.",
+"url": "https://reddit.com/r/fryup/comments/1og1gp4/crocadon_farm_saltash_cornwall_15/"
+},
+{
+"platform": "Reddit",
+"n": "55",
+"unit": "comments",
+"towns": [
+"Plymouth"
+],
+"title": "Breakfast on Sunday in Plymouth",
+"why": "Fourteen or so places named and almost no agreement. The clearest unmet demand found anywhere in this read.",
+"url": "https://reddit.com/r/plymouth/comments/1qtv8uw/breakfast_on_sunday_in_plymouth/"
+},
+{
+"platform": "Reddit",
+"n": "27",
+"unit": "comments",
+"towns": [
+"Plymouth"
+],
+"title": "Best budget eats in Plymouth right now?",
+"why": "The cost-of-living thread, and the single richest source of budget recommendations in the pull.",
+"url": "https://reddit.com/r/plymouth/comments/1pao9vh/best_budget_eats_in_plymouth_right_now/"
+},
+{
+"platform": "Reddit",
+"n": "24",
+"unit": "comments",
+"towns": [
+"Plymouth"
+],
+"title": "Best restaurants and cafés in Plymouth",
+"why": "The canonical list, and where most of the best-liked names above come from.",
+"url": "https://reddit.com/r/plymouth/comments/1pzlfx2/best_restaurantscafes/"
+},
+{
+"platform": "Facebook",
+"n": "68",
+"unit": "comments",
+"towns": [
+"Plympton"
+],
+"title": "Recommendations for pub food in Plympton",
+"why": "The busiest Facebook thread found. The Lyneham, the Brook and the Chaddlewood emerge as Plympton's three.",
+"url": "https://www.facebook.com/groups/818213141641283/posts/27520316124337622/"
+},
+{
+"platform": "Facebook",
+"n": "93",
+"unit": "comments",
+"towns": [
+"Plymstock",
+"Plympton"
+],
+"title": "Steak, but with a child, and not the usual chains",
+"why": "93 replies to a very specific ask. Shows how quickly these groups answer when the question is precise.",
+"url": "https://www.facebook.com/groups/818213141641283/posts/7005799706215898/"
+},
+{
+"platform": "Facebook",
+"n": "23",
+"unit": "comments",
+"towns": [
+"Ivybridge"
+],
+"title": "Sunday lunch near Ivybridge, with a nice view",
+"why": "The only substantial village-level food thread found, and it confirms roast-plus-view as the rural ask.",
+"url": "https://www.facebook.com/groups/1087928221246709/posts/24482404948039040/"
+},
+{
+"platform": "Facebook",
+"n": "14",
+"unit": "comments",
+"towns": [
+"Torpoint"
+],
+"title": "“Have to recommend the Tamar Lounge, Torpoint”",
+"why": "The best positive signal outside Plymouth, with named dishes and repeat customers in the replies.",
+"url": "https://www.facebook.com/groups/TorpointandRame/posts/1657692538246692/"
+},
+{
+"platform": "Reddit",
+"n": "36",
+"unit": "comments",
+"towns": [
+"Plymouth"
+],
+"title": "Best pint in Plymouth?",
+"why": "Not strictly food, but it maps the pub estate and explains the one grudging defence of Wetherspoons.",
+"url": "https://reddit.com/r/plymouth/comments/1saj8b4/best_pint_in_plymouth/"
+},
+{
+"platform": "TikTok",
+"n": "248",
+"unit": "likes",
+"towns": [
+"Tavistock"
+],
+"title": "Tapas and small plates at The Annex, Tavistock",
+"why": "The strongest Tavistock restaurant content, and one of three creators who filmed the same place.",
+"url": "https://www.tiktok.com/@fabulashemily/video/7639411292322663702"
+}
+]
+};
+(function(){
+var K="lt-bigtext",h=document.documentElement,b=document.getElementById("aa");
+function put(v){try{localStorage.setItem(K,v?"1":"0")}catch(e){}}
+function apply(on){h.classList.toggle("big",on);b.setAttribute("aria-pressed",String(on));document.getElementById("aa-l").textContent=on?"Standard text":"Larger text";}
+apply(h.classList.contains("big"));
+b.addEventListener("click",function(){var on=!h.classList.contains("big");apply(on);put(on);});
+addEventListener("hashchange",function(){if(location.hash==="#big"){apply(true);put(true);}else if(location.hash==="#std"){apply(false);put(false);}});
+})();
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const safe = u => /^https?:\/\//i.test(u||"") ? u : null;
+const ext = (u, t, cls) => safe(u) ? `<a ${cls?`class="${cls}" `:""}href="${esc(u)}" target="_blank" rel="noopener">${t}</a>` : t;
+const fmtDate = iso => new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"});
+const fmtLong = iso => new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long"});
+function nextMonday(iso){ const d=new Date(iso+"T12:00:00"); d.setDate(d.getDate()+(((8-d.getDay())%7)||7)); return d.toISOString().slice(0,10); }
+
+const V = DATA.venues.map(v => ({serves_food:"yes", trading:"confirmed", ...v, menus:(v.menus||[]).map(m => ({format:"html", ...m}))}));
+const BYID = Object.fromEntries(V.map(v=>[v.id,v]));
+const MAIN = ["Plymouth","Plympton","Ivybridge"];
+const TOWNS = [["all","All of Plymouth & Ivybridge"],["Plymouth","Plymouth"],["Plympton","Plympton"],["Ivybridge","Ivybridge"],["villages","Plymstock & villages"]];
+const townKey = t => MAIN.includes(t) ? t : "villages";
+const KIND = {main:"Main menu",seasonal:"Seasonal",weekly:"Weekly",monthly:"Monthly",specials:"Specials","sunday-roast":"Sunday roast","set-menu":"Set menu",festive:"Christmas & festive",event:"Event",other:"Other"};
+const TYPE = {pub:"Pub",restaurant:"Restaurant",cafe:"Café"};
+const FMT = {pdf:"PDF",image:"Picture",social:"Social media post"};
+const SAY = {};
+(BUZZ.places||[]).forEach(p=>{ if(p.venue) SAY[p.venue]=p; });
+
+const CUI = {"Cafe & breakfast":"c-cafe","British pub food":"c-pub","Burgers, BBQ & American":"c-flame","Italian":"c-pizza","Thai":"c-bowl","Japanese":"c-bowl","Indian, Sri Lankan & Nepalese":"c-chilli","Anglo-Indian":"c-chilli","Mediterranean & Middle Eastern":"c-leaf","Turkish":"c-leaf","Vegan & vegetarian":"c-leaf","Modern British & European":"c-plate","Seafood & fish and chips":"c-fish","Spanish & tapas":"c-tapas","Latin American":"c-taco","Mexican & Tex-Mex":"c-taco","Global small plates":"c-globe"};
+const TYPEI = {pub:"c-pub",cafe:"c-cafe",restaurant:"c-plate"};
+const ico = (id, cls) => `<span class="badge${cls?" "+cls:""}" aria-hidden="true"><svg class="ic"><use href="#${id}"/></svg></span>`;
+const vIcon = (v, cls) => ico(CUI[v.cuisine] || TYPEI[v.type] || "c-pin", cls);
+const THEMEI = [[/open/i,"t-spark"],[/best/i,"t-trophy"],[/fish|sea ?food/i,"c-fish"],[/weekend/i,"t-sun"],[/bbq|grill|platter/i,"c-flame"],[/turk|med|kebab/i,"c-leaf"],[/brunch|caf/i,"c-cafe"],[/treat|street|ice|dessert/i,"t-ice"],[/seafront|beach|harbour|view/i,"t-wave"],[/spoon|pub|pint/i,"c-pub"],[/london|day trip|train/i,"t-train"],[/portion|indie/i,"c-plate"]];
+const themeIcon = t => (THEMEI.find(([r])=>r.test(t))||[0,"i-chat"])[1];
+const norm = t => String(t).toLowerCase().replace(/&/g,"and").replace(/[^a-z0-9 ]/g,"").replace(/\s+/g," ").trim();
+const COMPK = [[/fish|chip|oyster|lobster|seafood/i,"c-fish","Seafood & fish and chips"],[/spoons|pub|pint/i,"c-pub","Pub food"],[/caf|coffee|brunch/i,"c-cafe","Cafés"],[/season|mood|town|traffic|parking/i,"c-pin","The town itself"]];
+function compKind(c){
+const n=norm(c.title.split(",")[0]);
+const v=V.find(v=>{const vn=norm(v.name.split(" (")[0]); return vn.length>3 && (n.startsWith(vn)||vn.startsWith(n));});
+if(v) return {i:CUI[v.cuisine]||TYPEI[v.type]||"c-plate", l:v.cuisine||TYPE[v.type]||"Restaurant"};
+const k=COMPK.find(([r])=>r.test(c.title+" "+c.text));
+return k?{i:k[1],l:k[2]}:{i:"c-plate",l:"Restaurant"};
+}
+const mini = id => `<svg class="ic" aria-hidden="true"><use href="#${id}"/></svg>`;
+const st = {town:"all", type:"all", cuisine:"all", q:"", sort:"ta", nNew:6, nPlaces:12, nPosts:6};
+try{ const t=localStorage.getItem("pmw-town"); if(TOWNS.some(x=>x[0]===t)) st.town=t; }catch(e){}
+
+function inScope(v){
+if(st.town!=="all" && townKey(v.town)!==st.town) return false;
+if(st.type!=="all" && v.type!==st.type) return false;
+if(st.cuisine!=="all" && (v.cuisine||"Not classified")!==st.cuisine) return false;
+if(st.q && !(v.name+" "+v.town).toLowerCase().includes(st.q.toLowerCase())) return false;
+return true;
+}
+const townLabel = () => TOWNS.find(t=>t[0]===st.town)[1];
+
+function rates(v, big){
+const out=[];
+if(v.fsa){ const r=v.fsa.r, n=+r;
+const cls = r==="Awaiting" ? "" : n>=4 ? "good" : n>=3 ? "mid" : "bad";
+out.push(`<a class="rate ${cls}" href="https://ratings.food.gov.uk/business/${+v.fsa.id}" target="_blank" rel="noopener" title="Food Standards Agency hygiene rating">${r==="Awaiting"?"Hygiene: awaiting inspection":"Hygiene "+esc(r)+" out of 5"}</a>`); }
+if(v.ta && !v.ta.closed && v.ta.r){ const a=v.ta;
+out.push(`<a class="rate${a.r>=4.5&&a.n>=10?" good":""}" href="https://www.tripadvisor.co.uk/${a.a?"Attraction":"Restaurant"}_Review-${esc(a.i)}-Reviews-x.html" target="_blank" rel="noopener">TripAdvisor ${a.r.toFixed(1)} <small>(${a.n.toLocaleString("en-GB")} reviews)</small></a>`); }
+if(v.ta && v.ta.closed) out.push(`<span class="rate bad">TripAdvisor says closed</span>`);
+if(v.ot && safe(v.ot.u)) out.push(`<a class="rate" href="${esc(v.ot.u)}" target="_blank" rel="noopener">OpenTable${v.ot.r?" "+v.ot.r.toFixed(1):""}</a>`);
+return out.length ? `<div class="rates">${out.join("")}</div>` : (big?`<div class="rates"><span class="rate">No ratings found yet</span></div>`:"");
+}
+
+function towns(){
+$("towns").innerHTML = TOWNS.map(([k,l])=>`<button type="button" class="tbtn" data-t="${k}" aria-pressed="${st.town===k}">${esc(l)}</button>`).join("");
+$("towns").querySelectorAll("button").forEach(b=>b.onclick=()=>{ st.town=b.dataset.t; st.q=""; $("q").value=""; st.nNew=6; st.nPlaces=12; st.nPosts=6; try{localStorage.setItem("pmw-town",st.town)}catch(e){} render(); });
+}
+
+function headline(){
+const h=DATA.history, prev=h.length>1?h[h.length-2]:null;
+const newM = V.flatMap(v=>v.menus).filter(m=>m.is_new_this_week).length;
+$("k-new").textContent = DATA.baseline ? "–" : newM;
+$("k-new-l").textContent = newM===1 ? "new menu this week" : "new menus this week";
+$("k-new-d").textContent = DATA.baseline ? `Counting starts today — first additions show on ${fmtLong(nextMonday(DATA.generated))}` : prev ? `${prev.new_menus} the week before (${fmtDate(prev.date)})` : "";
+$("k-places").textContent = V.filter(v=>v.serves_food==="yes").length;
+$("k-places-d").textContent = "in "+new Set(V.map(v=>v.town)).size+" towns and villages";
+$("k-menus").textContent = V.reduce((s,v)=>s+v.menus.length,0);
+const hh=h.slice(-6), W=170, H=96, slot=(W-12)/hh.length, bw=Math.min(36,slot-10), max=Math.max(...hh.map(x=>x.new_menus),1);
+$("weeks").setAttribute("viewBox",`0 0 ${W} ${H}`);
+$("weeks").innerHTML = hh.map((x,i)=>{ const bh=(x.new_menus/max)*(H-40), xx=6+i*slot+(slot-bw)/2, last=i===hh.length-1;
+return `<rect x="${xx.toFixed(1)}" y="${(H-20-bh).toFixed(1)}" width="${bw.toFixed(1)}" height="${bh.toFixed(1)}" rx="4" fill="${last?"var(--new)":"var(--line)"}"/>`+
+`<text x="${(xx+bw/2).toFixed(1)}" y="${(H-24-bh).toFixed(1)}" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">${x.new_menus}</text>`+
+`<text x="${(xx+bw/2).toFixed(1)}" y="${H-4}" text-anchor="middle" font-size="11" fill="var(--ink-2)">${new Date(x.date+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"short"})}</text>`; }).join("");
+const next=nextMonday(DATA.generated), today=new Date().toISOString().slice(0,10);
+$("stamp").innerHTML = `Menus checked <b>${fmtLong(DATA.generated)}</b>. `+(today>next?`<br><span class="late">This week's check is running late</span>`:`Next check <b>${fmtLong(next)}</b>.`);
+}
+
+function cuisines(){
+const c=[...new Set(V.map(v=>v.cuisine||"Not classified"))].sort((a,b)=>(a==="Not classified")-(b==="Not classified")||a.localeCompare(b));
+$("f-cuisine").innerHTML = `<option value="all">All cuisines</option>`+c.map(x=>`<option>${esc(x)}</option>`).join("");
+}
+
+function newCards(){
+const rows = V.filter(inScope).flatMap(v=>v.menus.filter(m=>m.is_new_this_week).map(m=>({m,v})))
+.sort((a,b)=>(b.m.type==="festive")-(a.m.type==="festive")||a.v.name.localeCompare(b.v.name));
+$("c-new").textContent = `${rows.length} in ${townLabel()}`;
+$("newcards").innerHTML = rows.length ? rows.slice(0,st.nNew).map(({m,v})=>`<article class="mcard">
+<div class="tags"><span class="tag new">New</span><span class="tag${m.type==="festive"?" fest":""}">${esc(KIND[m.type]||m.type)}</span>${FMT[m.format]?`<span class="tag">${FMT[m.format]}</span>`:""}</div>
+<div class="vhead">${vIcon(v)}<div><div class="venue">${esc(v.name)}</div><div class="title">${esc(m.title)}</div></div></div>
+<div class="where">${esc(v.town)} · ${esc(TYPE[v.type]||v.type)} · ${esc(v.cuisine||"")}</div>
+${m.valid_dates?`<div class="when">${esc(m.valid_dates)}</div>`:""}
+${rates(v)}
+${safe(m.url)?ext(m.url,`Open the menu <svg class="ic" aria-hidden="true"><use href="#i-ext"/></svg>`,"btn solid"):""}
+</article>`).join("") : `<div class="empty">No new menus in ${esc(townLabel())} this week with these choices. Try “All of Plymouth & Ivybridge” or “Show everything”.</div>`;
+const b=$("more-new"); b.hidden = rows.length<=st.nNew; b.textContent=`Show all ${rows.length} new menus`;
+}
+
+function placeRow(v){
+const say=SAY[v.id], menus=v.menus;
+const ml = menus.map(m=>`<li>${ext(m.url,esc(m.title))}${m.is_new_this_week?` <span class="tag new">New</span>`:""}${m.valid_dates?`<br><span class="pmeta">${esc(m.valid_dates)}</span>`:""}</li>`).join("");
+const fsa = v.fsa ? (v.fsa.r==="Awaiting" ? "Awaiting first inspection" : `${esc(v.fsa.r)} out of 5${v.fsa.d?", inspected "+new Date(v.fsa.d+"T12:00:00").toLocaleDateString("en-GB",{month:"long",year:"numeric"}):""}`) : "Not found";
+const ta = v.ta ? (v.ta.closed ? "Marked closed" : v.ta.r ? `${v.ta.r.toFixed(1)} out of 5 from ${v.ta.n.toLocaleString("en-GB")} reviews` : "Listed, no reviews yet") : "Not found";
+const notes = (v.notices||[]).map(n=>`<li>${ext(n.url, esc(n.text||n.note||""))}</li>`).join("");
+return `<details class="place"><summary><div class="pwho">${vIcon(v,"sm")}<div><div class="pname">${esc(v.name)}</div><div class="pmeta">${esc(v.town)} · ${esc(TYPE[v.type]||v.type)} · ${esc(v.cuisine||"Not classified")} · ${menus.length} menu${menus.length===1?"":"s"}${v.trading!=="confirmed"?" · check it's open":""}</div></div></div><svg class="chev" aria-hidden="true"><use href="#i-chev"/></svg><div class="summ-r">${rates(v)}</div></summary>
+<div class="pbody">
+<div class="pbox"><h4>${mini("t-star")}Ratings</h4><dl class="dl"><dt>Hygiene</dt><dd>${fsa}</dd><dt>TripAdvisor</dt><dd>${ta}</dd><dt>OpenTable</dt><dd>${v.ot?ext(v.ot.u,"Bookable online"):"Not listed"}</dd></dl></div>
+<div class="pbox"><h4>${mini("i-chat")}What people say</h4>${say?`<p class="say">${esc(say.why)}.</p><p class="pmeta">${esc(say.kind)}</p>`:`<p class="pmeta">No social media comments found about this place yet.</p>`}<div class="links">${ext(v.website,"Website")}${ext(v.social,"Social page")}</div><p class="pmeta">${esc(v.address)}</p></div>
+<div class="pbox"><h4>${mini("t-menu")}Menus</h4>${ml?`<ul>${ml}</ul>`:`<p class="pmeta">No menu found on its own pages.</p>`}${notes?`<h4>News</h4><ul>${notes}</ul>`:""}</div>
+</div></details>`;
+}
+function places(){
+const rows=V.filter(v=>v.serves_food!=="no" && inScope(v));
+const taS=v=>v.ta&&!v.ta.closed&&v.ta.r?(v.ta.r*v.ta.n+4*25)/(v.ta.n+25):0;
+rows.sort(st.sort==="name"?(a,b)=>a.name.localeCompare(b.name):st.sort==="menus"?(a,b)=>b.menus.length-a.menus.length||a.name.localeCompare(b.name):(a,b)=>taS(b)-taS(a)||a.name.localeCompare(b.name));
+$("c-places").textContent=`${rows.length} in ${townLabel()}`;
+$("plist").innerHTML = rows.length ? rows.slice(0,st.nPlaces).map(placeRow).join("") : `<div class="empty">No places match. Try “Show everything”.</div>`;
+const b=$("more-places"); b.hidden=rows.length<=st.nPlaces; b.textContent=`Show all ${rows.length} places`;
+}
+
+function buzz(){
+const scoped = st.town==="all"||MAIN.includes(st.town);
+const t = scoped && st.town!=="all" ? st.town : "Area";
+$("summary").textContent = !scoped ? "Only a little online talk names the villages by name, so this part shows the whole area." : (BUZZ.summary[t] || "");
+let th = BUZZ.themes.filter(x=>x.scope===t);
+if(!th.length) th = BUZZ.themes.filter(x=>x.scope==="Area" && x.towns.includes(t));
+$("themes").innerHTML = th.map(x=>`<article class="theme"><div class="vhead">${ico(themeIcon(x.title),"sm")}<h3>${esc(x.title)}</h3></div><p class="meaning">${esc(x.meaning)}</p><p class="ev">${x.evidence.map(e=>ext(e.u,esc(e.t))+(e.n?` (${esc(e.n)})`:"")).join(", ")}</p></article>`).join("");
+const lp = BUZZ.places.filter(p=>t==="Area"||p.town===t);
+$("loved").innerHTML = lp.map(p=>p.venue&&BYID[p.venue]?`<button type="button" class="lchip" data-v="${esc(p.venue)}" title="${esc(p.why)}">${mini(CUI[BYID[p.venue].cuisine]||"i-heart")}${esc(p.name)}</button>`:`<span class="lchip" title="${esc(p.why)}">${mini("i-heart")}${esc(p.name)}</span>`).join("");
+$("loved").querySelectorAll("button").forEach(b=>b.onclick=()=>openPlace(b.dataset.v));
+$("c-buzz").textContent = "From TikTok, Reddit, YouTube, Instagram and Facebook";
+const cs = BUZZ.complaints.filter(c=>t==="Area"||c.towns.includes(t));
+$("comps").innerHTML = cs.length ? cs.map(c=>`<div class="comp">${(k=>`<div class="icol">${ico("t-alert","sm bad")}${ico(k.i,"sm")}</div><div><b>${esc(c.title)}</b><span class="town">${esc(c.towns.join(", "))} · ${esc(k.l)}</span>`)(compKind(c))}<p>${esc(c.text)}${c.link?" "+ext(c.link,"See the post"):""}</p></div></div>`).join("") : `<div class="empty">No complaints turned up for ${esc(t)} in the posts we read.</div>`;
+const num = p => { const m=/^([\d.]+)(k?)$/i.exec(p.n||""); const v=m?parseFloat(m[1])*(m[2]?1000:1):0; return /view|like/.test(p.unit)?v:v/100; };
+const ps = BUZZ.posts.filter(p=>t==="Area"||p.towns.includes(t)).sort((a,b)=>num(b)-num(a));
+const icon = p => p.platform==="Reddit"||p.platform==="Facebook" ? "i-chat" : "i-play";
+$("postlist").innerHTML = ps.slice(0,st.nPosts).map(p=>`<a class="post" href="${esc(safe(p.url)||"#")}" target="_blank" rel="noopener">
+<span class="thumb"><svg class="ic" aria-hidden="true" style="width:32px;height:32px"><use href="#${icon(p)}"/></svg>${p.thumb?`<img src="${esc(p.thumb)}" alt="" loading="lazy" width="88" height="110" onerror="this.remove()">`:""}</span>
+<span style="display:flex;flex-direction:column;gap:6px;min-width:0"><span class="num">${esc(p.n)}<small>${esc(p.unit)}</small></span><span class="pt">${esc(p.title)}</span><span class="why">${esc(p.why)}</span><span class="plat">${esc(p.platform)} · ${esc(p.towns.join(", "))}</span></span></a>`).join("");
+const b=$("more-posts"); b.hidden=ps.length<=st.nPosts; b.textContent=`Show all ${ps.length} posts`;
+$("buzznote").innerHTML = `<b>What people are saying</b> comes from public posts on TikTok, Reddit, YouTube, Instagram and Facebook, ${BUZZ.pulled.Area?`read on ${esc(BUZZ.pulled.Area)}`:`not gathered yet; the first round-up arrives with the Monday refresh`}. Results about places with the same name abroad were left out. It is a snapshot of public talk, not a survey.`;
+}
+
+function openPlace(id){
+const v=BYID[id]; if(!v) return;
+Object.assign(st,{town:townKey(v.town),type:"all",cuisine:"all",q:v.name});
+$("q").value=v.name; $("f-type").value="all"; $("f-cuisine").value="all";
+render();
+const d=$("plist").querySelector("details"); if(d){ d.open=true; d.scrollIntoView({block:"start"}); d.querySelector("summary").focus(); }
+}
+
+const HERO = {
+all:{f:"hero.jpg",alt:"Plymouth Hoe and Smeaton's Tower across the water",n:"Patrick Owen PR",u:"owenpr"},
+Plymouth:{f:"heroes/plymouth.jpg",alt:"Boats in the harbour at Plymouth's Barbican",n:"Anthony",u:"inspiredimages"},
+Ivybridge:{f:"heroes/ivybridge.jpg",alt:"A clapper bridge over a moorland stream on Dartmoor",n:"Ben Wrigley",u:"jammin_photos"},
+villages:{f:"heroes/villages.jpg",alt:"A granite tor on Dartmoor at sunset",n:"Nick Fewings",u:"jannerboy62"}};
+function hero(){
+const h=HERO[st.town]||HERO.all, q="utm_source=plymouth-ivybridge-menu-watch&amp;utm_medium=referral";
+$("hero").style.backgroundImage=`linear-gradient(180deg,transparent 35%,rgba(10,30,36,.7)),url("${h.f}"),url("hero.jpg")`;
+$("hero").setAttribute("title",h.alt);
+$("htown").textContent=townLabel();
+$("hcred").innerHTML=`Photo: <a href="https://unsplash.com/@${h.u}?${q}" target="_blank" rel="noopener">${esc(h.n)}</a> / <a href="https://unsplash.com/?${q}" target="_blank" rel="noopener">Unsplash</a>`;
+}
+function render(){
+hero();
+towns();
+const filtered = st.type!=="all"||st.cuisine!=="all"||st.q;
+$("reset").hidden=!filtered && st.town==="all";
+const bits=[townLabel()]; if(st.type!=="all") bits.push(TYPE[st.type]+"s"); if(st.cuisine!=="all") bits.push(st.cuisine); if(st.q) bits.push(`“${st.q}”`);
+$("showing").textContent = "Showing: "+bits.join(" · ");
+newCards(); places(); buzz();
+}
+
+headline(); cuisines(); render();
+$("f-type").onchange=e=>{st.type=e.target.value;render();};
+$("f-cuisine").onchange=e=>{st.cuisine=e.target.value;render();};
+$("q").oninput=e=>{st.q=e.target.value.trim();render();};
+$("sort").onchange=e=>{st.sort=e.target.value;places();};
+$("reset").onclick=()=>{Object.assign(st,{town:"all",type:"all",cuisine:"all",q:""});$("q").value="";$("f-type").value="all";$("f-cuisine").value="all";try{localStorage.setItem("pmw-town","all")}catch(e){}render();};
+$("more-new").onclick=()=>{st.nNew=1e4;newCards();};
+$("more-places").onclick=()=>{st.nPlaces=1e4;places();};
+$("more-posts").onclick=()=>{st.nPosts=1e4;buzz();};
+{ const t=$("totop"); const f=()=>{t.hidden=scrollY<700;}; addEventListener("scroll",f,{passive:true}); f();
+t.onclick=()=>{scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"}); const h=document.querySelector("h1"); if(h){h.setAttribute("tabindex","-1"); h.focus({preventScroll:true});}}; }
+</script>
+
+</body></html>
