@@ -1,4 +1,4 @@
-<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-4Nto6LAyUvJsfAnUoSMGkdNmRcAYQb78/mELeGsnCBg=' 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'sha256-ZiTqu5JT78nnvogcvonoiV/AzOyNRkWBfWiEugkjUTI=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
+<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-4Nto6LAyUvJsfAnUoSMGkdNmRcAYQb78/mELeGsnCBg=' 'sha256-N77vMVFXA0x2W45nQxDOhjcrbnt9pEHUk8y9S7wvT8I=' 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
 var SCHEME=/^\s*([a-z][a-z0-9+.\-]*):/i,HREF={http:1,https:1,mailto:1,tel:1},SRC={http:1,https:1,blob:1};
 function okUrl(v,isSrc){var c=String(v).replace(/[\u0000- ]/g,""),m=SCHEME.exec(c);if(!m)return true;var s=m[1].toLowerCase();
 if(isSrc&&s==="data")return /^data:image\//i.test(c);return !!(isSrc?SRC:HREF)[s];}
@@ -532,847 +532,102 @@ const DATA = {"generated":"2026-10-21","baseline":true,"run_number":1,"history":
 {"title":"Christmas at Fowlescombe 2026 (stay & dine)","type":"festive","url":"https://fowlescombe.com/christmas/","valid_dates":"23–27 Dec 2026"}],"notices":[{"text":"Christmas 2026 stay-and-dine package published, 23–27 December","url":"https://fowlescombe.com/christmas/"},
 {"text":"Carols with the Cows festive supper returns in December; tickets on sale soon","url":"https://fowlescombe.com/carols-with-the-cows/"}]}
 ]};
-const BUZZ = {
-"pulled": {
-"Area": "21 October 2026"
-},
-"summary": {
-"Area": "The first full read of public social media, on 21 October 2026. The Barbican and Plymouth Market take almost all of the praise, Fletchers is the most-recommended restaurant by a clear margin, and the loudest complaint by some distance is what breakfast now costs. Away from the city it is nearly all about the Sunday roast.",
-"Plymouth": "Talk about Plymouth splits three ways: the Barbican for atmosphere, the Market for value, and a settled list of independents — Fletchers, Salumi, Nora's — for a treat. Breakfast is the one thing people keep asking about and never agree on.",
-"Plympton": "Plympton talk is almost all Sunday roasts and carveries, and it happens in Facebook groups rather than on Reddit. The Lyneham Inn, The Brook Inn and The Chaddlewood Inn come up again and again.",
-"Ivybridge": "Very little online talk names Ivybridge itself. What there is asks the same question — a Sunday roast within driving distance, ideally with a view — and the answers point outwards, to Cornwood, Lee Mill and the coast."
-},
-"themes": [
-{
-"scope": "Area",
-"towns": [
-"Plymouth"
+const BUZZ = {"pulled":{"Area":"21 October 2026"},
+"summary":{"Area":"The first full read of public social media, on 21 October 2026. The Barbican and Plymouth Market take almost all of the praise, Fletchers is the most-recommended restaurant by a clear margin, and the loudest complaint by some distance is what breakfast now costs. Away from the city it is nearly all about the Sunday roast.","Plymouth":"Talk about Plymouth splits three ways: the Barbican for atmosphere, the Market for value, and a settled list of independents — Fletchers, Salumi, Nora's — for a treat. Breakfast is the one thing people keep asking about and never agree on.","Plympton":"Plympton talk is almost all Sunday roasts and carveries, and it happens in Facebook groups rather than on Reddit. The Lyneham Inn, The Brook Inn and The Chaddlewood Inn come up again and again.","Ivybridge":"Very little online talk names Ivybridge itself. What there is asks the same question — a Sunday roast within driving distance, ideally with a view — and the answers point outwards, to Cornwood, Lee Mill and the coast."},
+"themes":[
+{"scope":"Area","towns":["Plymouth"],"title":"The harbour end is loved by day, avoided after 7pm","meaning":"The Barbican draws more warmth than anything else in the area, and the year's most-upvoted local posts are simply photographs of it. The same people then warn each other off it at busy times: after 7pm on a sunny evening, on match days and on bank holidays.","evidence":[{"u":"https://reddit.com/r/plymouth/comments/1u0589f/the_barbican_is_the_most_unexpectedly_lovely_part/","t":"“The most unexpectedly lovely part of any city I have visited in the southwest”","n":"119 upvotes"},{"u":"https://reddit.com/r/plymouth/comments/1syt976/the_barbican_looked_like_a_total_postcard_the/","t":"“Looked like a total postcard”","n":"652 upvotes"}]},
+{"scope":"Area","towns":["Plymouth"],"title":"Plymouth Market is now rated the best value in the city","meaning":"The clearest change in the data. The market stalls have stopped being a cheap fallback and become the answer people give first, with Tea and Bun named more often than any other budget spot. One person who moved away five years ago still mentions missing it.","evidence":[{"u":"https://reddit.com/r/plymouth/comments/1tunymz/plymouth_market/","t":"“Now one of the very best parts of Plymouth's food scene”","n":"252 upvotes"},{"u":"https://reddit.com/r/plymouth/comments/1pao9vh/best_budget_eats_in_plymouth_right_now/","t":"Best budget eats thread","n":"27 comments"}]},
+{"scope":"Area","towns":["Plymouth","Plympton","Ivybridge"],"title":"Michelin prices, school-dinner portions","meaning":"The angriest reaction anywhere in the pull is to the price of breakfast. A £15 plate at a Michelin-starred farm restaurant in Saltash and a £13.95 fry-up in Torpoint were both taken apart in public, and the complaint is explicitly about inflation rather than about fussy cooking.","evidence":[{"u":"https://reddit.com/r/fryup/comments/1og1gp4/crocadon_farm_saltash_cornwall_15/","t":"“Pretentious and overpriced, surprised it's not served on a slate”","n":"88 comments"},{"u":"https://reddit.com/r/fryup/comments/1raw6cz/regular_fry_up_hearts_cafekitchen_torpoint/","t":"“Not great value”","n":"22 comments"}]},
+{"scope":"Area","towns":["Plymouth"],"title":"New openings get far more attention than old favourites","meaning":"On TikTok the posts that travel are all about places that have just opened or just moved into permanent premises — Taccy Tacos leaving its horse box for the Barbican, Honey Butter Deli on Southside Street, Stringers' Cuban toasties. Reddit, meanwhile, keeps naming the same settled restaurants. The two platforms are describing different things.","evidence":[{"u":"https://www.tiktok.com/@wasson.plymouth/video/7676825719393111318","t":"Taccy Tacos' first permanent spot","n":"1,877 likes"},{"u":"https://www.tiktok.com/@curlygaz1/video/7694715687998180630","t":"“This little deli is smashing it”","n":"1,438 likes"}]},
+{"scope":"Area","towns":["Plymouth"],"title":"Breakfast and brunch: plenty of demand, no agreed winner","meaning":"One Sunday breakfast question drew 55 replies naming about fourteen different places, with almost no two people agreeing. Nothing else in the pull is this contested, which makes it the clearest gap in the local market.","evidence":[{"u":"https://reddit.com/r/plymouth/comments/1qtv8uw/breakfast_on_sunday_in_plymouth/","t":"Breakfast on Sunday in Plymouth","n":"55 comments"},{"u":"https://reddit.com/r/UK_Food/comments/1w0kj1i/full_english_in_plymouth/","t":"Full English at the Dock Café","n":"51 upvotes"}]},
+{"scope":"Area","towns":["Plymouth","Plympton","Ivybridge"],"title":"Independents win, and Spoons is the benchmark they beat","meaning":"Across roughly fifty venue recommendations almost none are chains, and where a chain does appear it is as the thing to do better than. The one defence of Wetherspoons is strictly practical — fast turnover means a fresh pint — rather than affectionate.","evidence":[{"u":"https://www.facebook.com/groups/TavistockParish/posts/2590210607851071/","t":"“Spoons if you want fast food, The Cornish Arms if you want quality food”","n":"27 comments"},{"u":"https://reddit.com/r/plymouth/comments/1saj8b4/best_pint_in_plymouth/","t":"Best pint in Plymouth","n":"36 comments"}]},
+{"scope":"Area","towns":["Plympton","Ivybridge"],"title":"A Sunday roast with a view is what the villages ask for","meaning":"Outside Plymouth almost every request is roast-shaped, and the view matters nearly as much as the food. Answers routinely send people out of their own village — Ivybridge residents are pointed to Cornwood, Lee Mill and the coast.","evidence":[{"u":"https://www.facebook.com/groups/1087928221246709/posts/24482404948039040/","t":"Sunday lunch near Ivybridge, with a view","n":"23 comments"},{"u":"https://www.facebook.com/groups/818213141641283/posts/27520316124337622/","t":"Pub food in Plympton","n":"68 comments"}]},
+{"scope":"Area","towns":["Plymouth","Plympton","Ivybridge"],"title":"People have stopped trusting star ratings","meaning":"A recurring reason these questions get asked at all is that star ratings are no longer believed. One visitor described searching online and finding “the usual sea of places that all magically have between 4 and 5 star reviews”. Not everyone agrees — one Tavistock commenter pushed back that TripAdvisor beats asking on Facebook.","evidence":[{"u":"https://reddit.com/r/plymouth/comments/1s2t0g2/first_ever_visit/","t":"“The usual sea of places that all magically have between 4 and 5 stars”","n":"16 comments"}]}
 ],
-"title": "The harbour end is loved by day, avoided after 7pm",
-"meaning": "The Barbican draws more warmth than anything else in the area, and the year's most-upvoted local posts are simply photographs of it. The same people then warn each other off it at busy times: after 7pm on a sunny evening, on match days and on bank holidays.",
-"evidence": [
-{
-"u": "https://reddit.com/r/plymouth/comments/1u0589f/the_barbican_is_the_most_unexpectedly_lovely_part/",
-"t": "“The most unexpectedly lovely part of any city I have visited in the southwest”",
-"n": "119 upvotes"
-},
-{
-"u": "https://reddit.com/r/plymouth/comments/1syt976/the_barbican_looked_like_a_total_postcard_the/",
-"t": "“Looked like a total postcard”",
-"n": "652 upvotes"
-}
-]
-},
-{
-"scope": "Area",
-"towns": [
-"Plymouth"
+"places":[
+{"name":"Fletchers","venue":null,"town":"Plymouth","kind":"Named in 8 separate recommendations — the most of anywhere","why":"The clear first answer whenever anyone asks where to eat well in Plymouth, on both Reddit and Facebook. “Fletchers every time”"},
+{"name":"Barbican Kitchen","venue":"barbican-kitchen-plymouth","town":"Plymouth","kind":"Named on Reddit, Facebook and TikTok","why":"Recommended for a treat or an occasion across every platform, and local pride when its 19-year-old chef reached the South West Chef of the Year final"},
+{"name":"Salumi","venue":"salumi-plymouth","town":"Plymouth","kind":"Named in 5 recommendations","why":"Picked out for the cooking rather than the setting — “Salumi for the flavours” — and the same owners' Bow Deli gets its own mentions for breakfast"},
+{"name":"Nora's","venue":null,"town":"Plymouth","kind":"Named in 5 recommendations","why":"The go-to for steak, Sunday lunch or an occasion, described as a neighbourhood restaurant rather than a special-occasion one"},
+{"name":"Tea and Bun","venue":null,"town":"Plymouth","kind":"The strongest budget consensus found","why":"Named more than any other cheap option, usually for a ramen bowl around £10. One person who left Plymouth five years ago still says they dream about it"},
+{"name":"Cosmic Kitchen","venue":"cosmic-kitchen-plymouth","town":"Plymouth","kind":"Recommended by meat-eaters as well","why":"Recommended even by people who say they are not vegan — “every meal I've had there was amazing” — and locally shared as TripAdvisor's third-best vegan restaurant in the world"},
+{"name":"Supha's","venue":"suphas-street-food-emporium-plymouth","town":"Plymouth","kind":"Named in 4 recommendations","why":"Comes up in both the budget and the best-of threads — “better and cheaper than most”"},
+{"name":"Fig Tree at 36","venue":null,"town":"Plymouth","kind":"Named in 3 recommendations","why":"Mentioned specifically as a treat: “Fig Tree at 36 is a lovely treat”"},
+{"name":"The Early Bird","venue":null,"town":"Plymouth","kind":"Most-named breakfast spot","why":"The nearest thing to a winner in a badly split breakfast field, named for both the Mutley and Mayflower Street sites"},
+{"name":"Rockets & Rascals","venue":null,"town":"Plymouth","kind":"Named by 3 people for breakfast","why":"A repeat recommendation for breakfast and brunch on the Barbican"},
+{"name":"Yield","venue":null,"town":"Plymouth","kind":"4 positive comments, no negatives","why":"A Ridgeway bakery with an unusually clean sweep of praise — “best pasty in Plymouth” and “their pasties are fabulous”"},
+{"name":"Monty's Cafe","venue":"montys-cafe-plymouth","town":"Plymouth","kind":"Named twice for breakfast","why":"Recommended for breakfast on the Barbican — “always a winner” and “cracking”, with the Dolphin next door for afterwards"},
+{"name":"Taccy Tacos","venue":null,"town":"Plymouth","kind":"Highest-engagement post in the whole pull","why":"The story of moving from a horse box to a permanent Barbican site travelled further than any other local food post"},
+{"name":"Honey Butter Deli","venue":null,"town":"Plymouth","kind":"Covered by two creators within days","why":"A new Southside Street deli that drew independent coverage from two separate TikTok accounts in the same week"},
+{"name":"Kuku Sushi & Robata","venue":null,"town":"Plymouth","kind":"Named on Reddit and TikTok","why":"Recommended for Japanese food, with advice to sit at the sushi bar and watch the chefs"},
+{"name":"Veggie Perrins","venue":null,"town":"Plymouth","kind":"Named twice, once emphatically","why":"Called “the best Indian restaurant around, by a long shot”, and separately recommended for South Indian cooking"},
+{"name":"Dunya","venue":null,"town":"Plymouth","kind":"Named in 3 recommendations","why":"Repeatedly recommended for Turkish food at Derry's Cross — “Dunya food is amazing”"},
+{"name":"Roam Brewery Tap","venue":"roam-brewery-tap-plymouth","town":"Plymouth","kind":"Named for both food and beer","why":"Comes up for sourdough pizza and for beer in the same breath — “Roam for pizza and pints” — and was named in the best-pint thread too"},
+{"name":"Harbourside Fish & Chips","venue":"harbourside-fish-chips-plymouth","town":"Plymouth","kind":"452 likes, 61 comments on TikTok","why":"The most-discussed fish and chip post on the Barbican"},
+{"name":"Grecian on the Barbican","venue":"grecian-on-the-barbican-plymouth","town":"Plymouth","kind":"TikTok review, May 2026","why":"“Never fails to impress — it's not possible to leave hungry, and do not skip dessert”"},
+{"name":"The Bank","venue":"the-bank-plymouth","town":"Plymouth","kind":"Named on Reddit twice","why":"Recommended for “excellent food at reasonable prices” near the Theatre Royal, and again in the best-pint thread for its range"},
+{"name":"Ocean View at The Dome","venue":"ocean-view-at-the-dome-plymouth","town":"Plymouth","kind":"Named on Reddit and in a Facebook group","why":"Recommended for a seafront Sunday lunch — “food was amazing and quite reasonable price wise” — and for a two-for-one breakfast deal"},
+{"name":"The Fisherman's Arms","venue":"the-fishermans-arms-plymouth","town":"Plymouth","kind":"Named in the first-visit thread","why":"One of the Barbican pubs a local listed when asked where to take a visitor for a pint and a casual meal"},
+{"name":"The Boathouse","venue":"the-boathouse-plymouth","town":"Plymouth","kind":"Named in the first-visit thread","why":"Listed among the Barbican restaurants a resident recommends to first-time visitors"},
+{"name":"Lord High Admiral","venue":"lord-high-admiral-plymouth","town":"Plymouth","kind":"Named twice in the best-pint thread","why":"A repeat answer for the best pint in the city, and listed among the pubs with the best atmosphere"},
+{"name":"Seco Lounge","venue":"seco-lounge-plymouth","town":"Plymouth","kind":"Named for breakfast and for beer","why":"Recommended for breakfast at Royal William Yard, and in the best-pint thread for its selection, though called pricey"},
+{"name":"The Little Kitchen","venue":"the-little-kitchen-plymouth","town":"Plymouth","kind":"Named for breakfast","why":"“The Little Kitchen on Mutley Plain is a favourite”"},
+{"name":"Cap'n Jaspers","venue":"capn-jaspers-plymouth","town":"Plymouth","kind":"Mentioned fondly, from memory","why":"Still asked after 25 years on — “I used to get a burger and cup of tea from there regularly”"},
+{"name":"The Lyneham Inn","venue":null,"town":"Plympton","kind":"The most-named roast in the area","why":"Around seven separate Facebook recommendations, several of them calling it simply the best roast"},
+{"name":"The Brook Inn","venue":null,"town":"Plympton","kind":"Named in 4 recommendations","why":"Praised for value as much as cooking — “amazing 3 course meals only £16.99” — and for its Sunday carvery"},
+{"name":"The Chaddlewood Inn","venue":null,"town":"Plympton","kind":"Named in about 6 recommendations","why":"A steady Facebook favourite — “definitely fresh cooked food always” — and noted as having a new menu"},
+{"name":"Àclèaf at Boringdon Hall","venue":"acleaf-plympton","town":"Plympton","kind":"Named once, for a special occasion","why":"Raised alongside Barbican Kitchen when someone asked where to go for a treat"},
+{"name":"The Stannary Court","venue":"the-stannary-court-plympton","town":"Plympton","kind":"Named in a Plympton pub-food list","why":"Included in a resident's list of Plympton pubs worth eating at"},
+{"name":"The Colebrook Inn","venue":"the-colebrook-inn-plympton","town":"Plympton","kind":"Named in a Plympton pub-food list","why":"Included in a resident's list of Plympton pubs worth eating at"},
+{"name":"The Plymstock Inn","venue":"the-plymstock-inn-plymstock","town":"Plymstock","kind":"Named on Reddit and Facebook","why":"Described as one of the more food-focused places in the Plymstock area, and its lunches praised in a local Facebook group"},
+{"name":"Cornwood Inn","venue":"cornwood-inn-cornwood","town":"Ivybridge","kind":"The only village pub with repeat praise","why":"In Cornwood. The one village pub praised more than once, and separately suggested to people asking from Plympton"},
+{"name":"The Eddystone Inn","venue":"the-eddystone-inn-wembury","town":"Ivybridge","kind":"Named for a roast with a sea view","why":"At Heybrook Bay. The answer given when someone wanted Sunday lunch with a sea view within reach of Ivybridge"},
+{"name":"The Mussel Inn","venue":"the-mussel-inn-wembury","town":"Wembury","kind":"Subject of a YouTube roast review","why":"Its Sunday roast was reviewed at length by a local YouTube channel"},
+{"name":"The Westward Inn","venue":"the-westward-inn-lee-mill","town":"Ivybridge","kind":"Named for Sunday lunch","why":"At Lee Mill. Suggested to an Ivybridge resident looking for a Sunday roast nearby"},
+{"name":"The Hunting Lodge","venue":"the-hunting-lodge-lee-mill","town":"Ivybridge","kind":"Named for its carvery","why":"At Lee Mill. Put forward as the carvery option within reach of Ivybridge"},
+{"name":"The Ship Inn, Noss Mayo","venue":"the-ship-inn-newton-ferrers","town":"Ivybridge","kind":"Named for Sunday lunch with a view","why":"At Noss Mayo. Recommended warmly when someone asked for Sunday lunch near Ivybridge with a nice view"},
+{"name":"Welbeck Manor","venue":"welbeck-manor-hotel-sparkwell","town":"Sparkwell","kind":"Named in a Plymouth dining thread","why":"“The food at Welbeck Manor is fab and the venue is lovely”"},
+{"name":"Tamar Lounge, Torpoint","venue":null,"town":"Torpoint","kind":"Best positive signal outside Plymouth","why":"“Freshly cooked to order, delicious, and six very happy customers”, with the view and the specials board singled out. Torpoint sits outside this dashboard's venue list"},
+{"name":"Lynn's American Diner, Tavistock","venue":null,"town":"Tavistock","kind":"6 TikTok posts, the most of any Tavistock venue","why":"“Fab American diner with great food and decor — the burgers especially good”. Tavistock sits outside this dashboard's venue list"},
+{"name":"The Annex, Tavistock","venue":null,"town":"Tavistock","kind":"Covered by 3 separate creators","why":"A tapas bar that three different food accounts filmed independently — “add this to your must-visit list”. Tavistock sits outside this dashboard's venue list"},
+{"name":"Aroma Cafe, Tavistock","venue":null,"town":"Tavistock","kind":"4 TikTok posts","why":"“I wasn't expecting to love this café as much as I did.” Turkish coffee and cakes. Tavistock sits outside this dashboard's venue list"}
 ],
-"title": "Plymouth Market is now rated the best value in the city",
-"meaning": "The clearest change in the data. The market stalls have stopped being a cheap fallback and become the answer people give first, with Tea and Bun named more often than any other budget spot. One person who moved away five years ago still mentions missing it.",
-"evidence": [
-{
-"u": "https://reddit.com/r/plymouth/comments/1tunymz/plymouth_market/",
-"t": "“Now one of the very best parts of Plymouth's food scene”",
-"n": "252 upvotes"
-},
-{
-"u": "https://reddit.com/r/plymouth/comments/1pao9vh/best_budget_eats_in_plymouth_right_now/",
-"t": "Best budget eats thread",
-"n": "27 comments"
-}
-]
-},
-{
-"scope": "Area",
-"towns": [
-"Plymouth",
-"Plympton",
-"Ivybridge"
+"complaints":[
+{"title":"Michelin prices for a small plate of breakfast","towns":["Plymouth","Plympton","Ivybridge"],"text":"The strongest negative reaction anywhere in this read. A £15 breakfast at Crocadon, the Michelin-starred farm restaurant at Saltash, drew 88 mostly hostile comments: “pretentious and overpriced, surprised it's not served on a slate”, “worth a fiver max”, and “style over substance”. The objection is about price and portion, not about ambition — the same thread complained that “the prices of these are getting worse and worse every week”.","link":"https://reddit.com/r/fryup/comments/1og1gp4/crocadon_farm_saltash_cornwall_15/"},
+{"title":"A £13.95 fry-up in Torpoint called a rip-off","towns":["Plymouth"],"text":"A second breakfast post went the same way, which suggests the reaction is about money rather than about fancy cooking: “not great value”, “that's a rip off” and “you got done there”. Torpoint is outside this dashboard's venue list but the same customers cross the Tamar both ways.","link":"https://reddit.com/r/fryup/comments/1raw6cz/regular_fry_up_hearts_cafekitchen_torpoint/"},
+{"title":"The Barbican is too crowded to enjoy at peak times","towns":["Plymouth"],"text":"Residents now warn each other off the area they otherwise praise most. “Best place ever, but not when the football is on or a sunny bank holiday”, and “it's good in the day but don't bother after 7pm on a sunny day”. One of the year's most-upvoted comments is a local only half-joking that they would rather visitors did not hear about it.","link":"https://reddit.com/r/plymouth/comments/1u0589f/the_barbican_is_the_most_unexpectedly_lovely_part/"},
+{"title":"Nobody believes the star ratings any more","towns":["Plymouth","Plympton","Ivybridge"],"text":"A visitor planning a first trip summed up why these questions keep getting asked: “I have looked online and it's the usual sea of places that all magically have between 4 and 5 star reviews.” The trust question is genuinely unsettled, though — a Tavistock commenter argued the opposite, that TripAdvisor beats asking on Facebook.","link":"https://reddit.com/r/plymouth/comments/1s2t0g2/first_ever_visit/"},
+{"title":"Good service is treated as the exception","towns":["Plympton","Ivybridge"],"text":"A Facebook post praising two young staff at a Tavistock café drew 209 reactions, and the telling reply was “you hear so much of bad service, so good to hear some positive comments”. The praise stood out precisely because people did not expect it.","link":"https://www.facebook.com/groups/TavistockParish/posts/3143825305822929/"},
+{"title":"Parking decides where people will eat","towns":["Plymouth","Plympton","Ivybridge"],"text":"In a Facebook thread asking for fine dining for a group, parking was the second question asked and the answers led with it — “plenty of free parking”, “parking right outside”. A separate thread about a Royal William Yard parking ticket drew 22 comments. For anywhere without easy parking this is a real filter, not a detail.","link":"https://www.facebook.com/groups/wowplymouthuk/posts/3582617555214082/"},
+{"title":"Closures and a city centre people feel is emptying","towns":["Plymouth"],"text":"Food venues are being judged against a background of decline. A thread on shops people miss drew 91 comments and the line “you don't even have to go as far as the sundial to see the downturn”. Local news reports in the same period cover Franco Manca at The Barcode closing, a seafood restaurant shutting with substantial debts and a café describing a “devastating” summer. Those reports were found through search and their reaction volumes have not been checked.","link":"https://reddit.com/r/plymouth/comments/1qx71se/which_plymouth_shop_do_you_miss_most/"},
+{"title":"Some asks get nothing back but a shrug","towns":["Plympton"],"text":"Not every complaint is detailed. The 68-comment Plympton pub food thread includes a flat “yeah don't bother” with no venue named and no reason given. It carries no information, but it is worth noticing that it was said at all.","link":"https://www.facebook.com/groups/818213141641283/posts/27520316124337622/"}
 ],
-"title": "Michelin prices, school-dinner portions",
-"meaning": "The angriest reaction anywhere in the pull is to the price of breakfast. A £15 plate at a Michelin-starred farm restaurant in Saltash and a £13.95 fry-up in Torpoint were both taken apart in public, and the complaint is explicitly about inflation rather than about fussy cooking.",
-"evidence": [
-{
-"u": "https://reddit.com/r/fryup/comments/1og1gp4/crocadon_farm_saltash_cornwall_15/",
-"t": "“Pretentious and overpriced, surprised it's not served on a slate”",
-"n": "88 comments"
-},
-{
-"u": "https://reddit.com/r/fryup/comments/1raw6cz/regular_fry_up_hearts_cafekitchen_torpoint/",
-"t": "“Not great value”",
-"n": "22 comments"
-}
-]
-},
-{
-"scope": "Area",
-"towns": [
-"Plymouth"
-],
-"title": "New openings get far more attention than old favourites",
-"meaning": "On TikTok the posts that travel are all about places that have just opened or just moved into permanent premises — Taccy Tacos leaving its horse box for the Barbican, Honey Butter Deli on Southside Street, Stringers' Cuban toasties. Reddit, meanwhile, keeps naming the same settled restaurants. The two platforms are describing different things.",
-"evidence": [
-{
-"u": "https://www.tiktok.com/@wasson.plymouth/video/7676825719393111318",
-"t": "Taccy Tacos' first permanent spot",
-"n": "1,877 likes"
-},
-{
-"u": "https://www.tiktok.com/@curlygaz1/video/7694715687998180630",
-"t": "“This little deli is smashing it”",
-"n": "1,438 likes"
-}
-]
-},
-{
-"scope": "Area",
-"towns": [
-"Plymouth"
-],
-"title": "Breakfast and brunch: plenty of demand, no agreed winner",
-"meaning": "One Sunday breakfast question drew 55 replies naming about fourteen different places, with almost no two people agreeing. Nothing else in the pull is this contested, which makes it the clearest gap in the local market.",
-"evidence": [
-{
-"u": "https://reddit.com/r/plymouth/comments/1qtv8uw/breakfast_on_sunday_in_plymouth/",
-"t": "Breakfast on Sunday in Plymouth",
-"n": "55 comments"
-},
-{
-"u": "https://reddit.com/r/UK_Food/comments/1w0kj1i/full_english_in_plymouth/",
-"t": "Full English at the Dock Café",
-"n": "51 upvotes"
-}
-]
-},
-{
-"scope": "Area",
-"towns": [
-"Plymouth",
-"Plympton",
-"Ivybridge"
-],
-"title": "Independents win, and Spoons is the benchmark they beat",
-"meaning": "Across roughly fifty venue recommendations almost none are chains, and where a chain does appear it is as the thing to do better than. The one defence of Wetherspoons is strictly practical — fast turnover means a fresh pint — rather than affectionate.",
-"evidence": [
-{
-"u": "https://www.facebook.com/groups/TavistockParish/posts/2590210607851071/",
-"t": "“Spoons if you want fast food, The Cornish Arms if you want quality food”",
-"n": "27 comments"
-},
-{
-"u": "https://reddit.com/r/plymouth/comments/1saj8b4/best_pint_in_plymouth/",
-"t": "Best pint in Plymouth",
-"n": "36 comments"
-}
-]
-},
-{
-"scope": "Area",
-"towns": [
-"Plympton",
-"Ivybridge"
-],
-"title": "A Sunday roast with a view is what the villages ask for",
-"meaning": "Outside Plymouth almost every request is roast-shaped, and the view matters nearly as much as the food. Answers routinely send people out of their own village — Ivybridge residents are pointed to Cornwood, Lee Mill and the coast.",
-"evidence": [
-{
-"u": "https://www.facebook.com/groups/1087928221246709/posts/24482404948039040/",
-"t": "Sunday lunch near Ivybridge, with a view",
-"n": "23 comments"
-},
-{
-"u": "https://www.facebook.com/groups/818213141641283/posts/27520316124337622/",
-"t": "Pub food in Plympton",
-"n": "68 comments"
-}
-]
-},
-{
-"scope": "Area",
-"towns": [
-"Plymouth",
-"Plympton",
-"Ivybridge"
-],
-"title": "People have stopped trusting star ratings",
-"meaning": "A recurring reason these questions get asked at all is that star ratings are no longer believed. One visitor described searching online and finding “the usual sea of places that all magically have between 4 and 5 star reviews”. Not everyone agrees — one Tavistock commenter pushed back that TripAdvisor beats asking on Facebook.",
-"evidence": [
-{
-"u": "https://reddit.com/r/plymouth/comments/1s2t0g2/first_ever_visit/",
-"t": "“The usual sea of places that all magically have between 4 and 5 stars”",
-"n": "16 comments"
-}
-]
-}
-],
-"places": [
-{
-"name": "Fletchers",
-"venue": null,
-"town": "Plymouth",
-"kind": "Named in 8 separate recommendations — the most of anywhere",
-"why": "The clear first answer whenever anyone asks where to eat well in Plymouth, on both Reddit and Facebook. “Fletchers every time”"
-},
-{
-"name": "Barbican Kitchen",
-"venue": "barbican-kitchen-plymouth",
-"town": "Plymouth",
-"kind": "Named on Reddit, Facebook and TikTok",
-"why": "Recommended for a treat or an occasion across every platform, and local pride when its 19-year-old chef reached the South West Chef of the Year final"
-},
-{
-"name": "Salumi",
-"venue": "salumi-plymouth",
-"town": "Plymouth",
-"kind": "Named in 5 recommendations",
-"why": "Picked out for the cooking rather than the setting — “Salumi for the flavours” — and the same owners' Bow Deli gets its own mentions for breakfast"
-},
-{
-"name": "Nora's",
-"venue": null,
-"town": "Plymouth",
-"kind": "Named in 5 recommendations",
-"why": "The go-to for steak, Sunday lunch or an occasion, described as a neighbourhood restaurant rather than a special-occasion one"
-},
-{
-"name": "Tea and Bun",
-"venue": null,
-"town": "Plymouth",
-"kind": "The strongest budget consensus found",
-"why": "Named more than any other cheap option, usually for a ramen bowl around £10. One person who left Plymouth five years ago still says they dream about it"
-},
-{
-"name": "Cosmic Kitchen",
-"venue": "cosmic-kitchen-plymouth",
-"town": "Plymouth",
-"kind": "Recommended by meat-eaters as well",
-"why": "Recommended even by people who say they are not vegan — “every meal I've had there was amazing” — and locally shared as TripAdvisor's third-best vegan restaurant in the world"
-},
-{
-"name": "Supha's",
-"venue": "suphas-street-food-emporium-plymouth",
-"town": "Plymouth",
-"kind": "Named in 4 recommendations",
-"why": "Comes up in both the budget and the best-of threads — “better and cheaper than most”"
-},
-{
-"name": "Fig Tree at 36",
-"venue": null,
-"town": "Plymouth",
-"kind": "Named in 3 recommendations",
-"why": "Mentioned specifically as a treat: “Fig Tree at 36 is a lovely treat”"
-},
-{
-"name": "The Early Bird",
-"venue": null,
-"town": "Plymouth",
-"kind": "Most-named breakfast spot",
-"why": "The nearest thing to a winner in a badly split breakfast field, named for both the Mutley and Mayflower Street sites"
-},
-{
-"name": "Rockets & Rascals",
-"venue": null,
-"town": "Plymouth",
-"kind": "Named by 3 people for breakfast",
-"why": "A repeat recommendation for breakfast and brunch on the Barbican"
-},
-{
-"name": "Yield",
-"venue": null,
-"town": "Plymouth",
-"kind": "4 positive comments, no negatives",
-"why": "A Ridgeway bakery with an unusually clean sweep of praise — “best pasty in Plymouth” and “their pasties are fabulous”"
-},
-{
-"name": "Monty's Cafe",
-"venue": "montys-cafe-plymouth",
-"town": "Plymouth",
-"kind": "Named twice for breakfast",
-"why": "Recommended for breakfast on the Barbican — “always a winner” and “cracking”, with the Dolphin next door for afterwards"
-},
-{
-"name": "Taccy Tacos",
-"venue": null,
-"town": "Plymouth",
-"kind": "Highest-engagement post in the whole pull",
-"why": "The story of moving from a horse box to a permanent Barbican site travelled further than any other local food post"
-},
-{
-"name": "Honey Butter Deli",
-"venue": null,
-"town": "Plymouth",
-"kind": "Covered by two creators within days",
-"why": "A new Southside Street deli that drew independent coverage from two separate TikTok accounts in the same week"
-},
-{
-"name": "Kuku Sushi & Robata",
-"venue": null,
-"town": "Plymouth",
-"kind": "Named on Reddit and TikTok",
-"why": "Recommended for Japanese food, with advice to sit at the sushi bar and watch the chefs"
-},
-{
-"name": "Veggie Perrins",
-"venue": null,
-"town": "Plymouth",
-"kind": "Named twice, once emphatically",
-"why": "Called “the best Indian restaurant around, by a long shot”, and separately recommended for South Indian cooking"
-},
-{
-"name": "Dunya",
-"venue": null,
-"town": "Plymouth",
-"kind": "Named in 3 recommendations",
-"why": "Repeatedly recommended for Turkish food at Derry's Cross — “Dunya food is amazing”"
-},
-{
-"name": "Roam Brewery Tap",
-"venue": "roam-brewery-tap-plymouth",
-"town": "Plymouth",
-"kind": "Named for both food and beer",
-"why": "Comes up for sourdough pizza and for beer in the same breath — “Roam for pizza and pints” — and was named in the best-pint thread too"
-},
-{
-"name": "Harbourside Fish & Chips",
-"venue": "harbourside-fish-chips-plymouth",
-"town": "Plymouth",
-"kind": "452 likes, 61 comments on TikTok",
-"why": "The most-discussed fish and chip post on the Barbican"
-},
-{
-"name": "Grecian on the Barbican",
-"venue": "grecian-on-the-barbican-plymouth",
-"town": "Plymouth",
-"kind": "TikTok review, May 2026",
-"why": "“Never fails to impress — it's not possible to leave hungry, and do not skip dessert”"
-},
-{
-"name": "The Bank",
-"venue": "the-bank-plymouth",
-"town": "Plymouth",
-"kind": "Named on Reddit twice",
-"why": "Recommended for “excellent food at reasonable prices” near the Theatre Royal, and again in the best-pint thread for its range"
-},
-{
-"name": "Ocean View at The Dome",
-"venue": "ocean-view-at-the-dome-plymouth",
-"town": "Plymouth",
-"kind": "Named on Reddit and in a Facebook group",
-"why": "Recommended for a seafront Sunday lunch — “food was amazing and quite reasonable price wise” — and for a two-for-one breakfast deal"
-},
-{
-"name": "The Fisherman's Arms",
-"venue": "the-fishermans-arms-plymouth",
-"town": "Plymouth",
-"kind": "Named in the first-visit thread",
-"why": "One of the Barbican pubs a local listed when asked where to take a visitor for a pint and a casual meal"
-},
-{
-"name": "The Boathouse",
-"venue": "the-boathouse-plymouth",
-"town": "Plymouth",
-"kind": "Named in the first-visit thread",
-"why": "Listed among the Barbican restaurants a resident recommends to first-time visitors"
-},
-{
-"name": "Lord High Admiral",
-"venue": "lord-high-admiral-plymouth",
-"town": "Plymouth",
-"kind": "Named twice in the best-pint thread",
-"why": "A repeat answer for the best pint in the city, and listed among the pubs with the best atmosphere"
-},
-{
-"name": "Seco Lounge",
-"venue": "seco-lounge-plymouth",
-"town": "Plymouth",
-"kind": "Named for breakfast and for beer",
-"why": "Recommended for breakfast at Royal William Yard, and in the best-pint thread for its selection, though called pricey"
-},
-{
-"name": "The Little Kitchen",
-"venue": "the-little-kitchen-plymouth",
-"town": "Plymouth",
-"kind": "Named for breakfast",
-"why": "“The Little Kitchen on Mutley Plain is a favourite”"
-},
-{
-"name": "Cap'n Jaspers",
-"venue": "capn-jaspers-plymouth",
-"town": "Plymouth",
-"kind": "Mentioned fondly, from memory",
-"why": "Still asked after 25 years on — “I used to get a burger and cup of tea from there regularly”"
-},
-{
-"name": "The Lyneham Inn",
-"venue": null,
-"town": "Plympton",
-"kind": "The most-named roast in the area",
-"why": "Around seven separate Facebook recommendations, several of them calling it simply the best roast"
-},
-{
-"name": "The Brook Inn",
-"venue": null,
-"town": "Plympton",
-"kind": "Named in 4 recommendations",
-"why": "Praised for value as much as cooking — “amazing 3 course meals only £16.99” — and for its Sunday carvery"
-},
-{
-"name": "The Chaddlewood Inn",
-"venue": null,
-"town": "Plympton",
-"kind": "Named in about 6 recommendations",
-"why": "A steady Facebook favourite — “definitely fresh cooked food always” — and noted as having a new menu"
-},
-{
-"name": "Àclèaf at Boringdon Hall",
-"venue": "acleaf-plympton",
-"town": "Plympton",
-"kind": "Named once, for a special occasion",
-"why": "Raised alongside Barbican Kitchen when someone asked where to go for a treat"
-},
-{
-"name": "The Stannary Court",
-"venue": "the-stannary-court-plympton",
-"town": "Plympton",
-"kind": "Named in a Plympton pub-food list",
-"why": "Included in a resident's list of Plympton pubs worth eating at"
-},
-{
-"name": "The Colebrook Inn",
-"venue": "the-colebrook-inn-plympton",
-"town": "Plympton",
-"kind": "Named in a Plympton pub-food list",
-"why": "Included in a resident's list of Plympton pubs worth eating at"
-},
-{
-"name": "The Plymstock Inn",
-"venue": "the-plymstock-inn-plymstock",
-"town": "Plymstock",
-"kind": "Named on Reddit and Facebook",
-"why": "Described as one of the more food-focused places in the Plymstock area, and its lunches praised in a local Facebook group"
-},
-{
-"name": "Cornwood Inn",
-"venue": "cornwood-inn-cornwood",
-"town": "Ivybridge",
-"kind": "The only village pub with repeat praise",
-"why": "In Cornwood. The one village pub praised more than once, and separately suggested to people asking from Plympton"
-},
-{
-"name": "The Eddystone Inn",
-"venue": "the-eddystone-inn-wembury",
-"town": "Ivybridge",
-"kind": "Named for a roast with a sea view",
-"why": "At Heybrook Bay. The answer given when someone wanted Sunday lunch with a sea view within reach of Ivybridge"
-},
-{
-"name": "The Mussel Inn",
-"venue": "the-mussel-inn-wembury",
-"town": "Wembury",
-"kind": "Subject of a YouTube roast review",
-"why": "Its Sunday roast was reviewed at length by a local YouTube channel"
-},
-{
-"name": "The Westward Inn",
-"venue": "the-westward-inn-lee-mill",
-"town": "Ivybridge",
-"kind": "Named for Sunday lunch",
-"why": "At Lee Mill. Suggested to an Ivybridge resident looking for a Sunday roast nearby"
-},
-{
-"name": "The Hunting Lodge",
-"venue": "the-hunting-lodge-lee-mill",
-"town": "Ivybridge",
-"kind": "Named for its carvery",
-"why": "At Lee Mill. Put forward as the carvery option within reach of Ivybridge"
-},
-{
-"name": "The Ship Inn, Noss Mayo",
-"venue": "the-ship-inn-newton-ferrers",
-"town": "Ivybridge",
-"kind": "Named for Sunday lunch with a view",
-"why": "At Noss Mayo. Recommended warmly when someone asked for Sunday lunch near Ivybridge with a nice view"
-},
-{
-"name": "Welbeck Manor",
-"venue": "welbeck-manor-hotel-sparkwell",
-"town": "Sparkwell",
-"kind": "Named in a Plymouth dining thread",
-"why": "“The food at Welbeck Manor is fab and the venue is lovely”"
-},
-{
-"name": "Tamar Lounge, Torpoint",
-"venue": null,
-"town": "Torpoint",
-"kind": "Best positive signal outside Plymouth",
-"why": "“Freshly cooked to order, delicious, and six very happy customers”, with the view and the specials board singled out. Torpoint sits outside this dashboard's venue list"
-},
-{
-"name": "Lynn's American Diner, Tavistock",
-"venue": null,
-"town": "Tavistock",
-"kind": "6 TikTok posts, the most of any Tavistock venue",
-"why": "“Fab American diner with great food and decor — the burgers especially good”. Tavistock sits outside this dashboard's venue list"
-},
-{
-"name": "The Annex, Tavistock",
-"venue": null,
-"town": "Tavistock",
-"kind": "Covered by 3 separate creators",
-"why": "A tapas bar that three different food accounts filmed independently — “add this to your must-visit list”. Tavistock sits outside this dashboard's venue list"
-},
-{
-"name": "Aroma Cafe, Tavistock",
-"venue": null,
-"town": "Tavistock",
-"kind": "4 TikTok posts",
-"why": "“I wasn't expecting to love this café as much as I did.” Turkish coffee and cakes. Tavistock sits outside this dashboard's venue list"
-}
-],
-"complaints": [
-{
-"title": "Michelin prices for a small plate of breakfast",
-"towns": [
-"Plymouth",
-"Plympton",
-"Ivybridge"
-],
-"text": "The strongest negative reaction anywhere in this read. A £15 breakfast at Crocadon, the Michelin-starred farm restaurant at Saltash, drew 88 mostly hostile comments: “pretentious and overpriced, surprised it's not served on a slate”, “worth a fiver max”, and “style over substance”. The objection is about price and portion, not about ambition — the same thread complained that “the prices of these are getting worse and worse every week”.",
-"link": "https://reddit.com/r/fryup/comments/1og1gp4/crocadon_farm_saltash_cornwall_15/"
-},
-{
-"title": "A £13.95 fry-up in Torpoint called a rip-off",
-"towns": [
-"Plymouth"
-],
-"text": "A second breakfast post went the same way, which suggests the reaction is about money rather than about fancy cooking: “not great value”, “that's a rip off” and “you got done there”. Torpoint is outside this dashboard's venue list but the same customers cross the Tamar both ways.",
-"link": "https://reddit.com/r/fryup/comments/1raw6cz/regular_fry_up_hearts_cafekitchen_torpoint/"
-},
-{
-"title": "The Barbican is too crowded to enjoy at peak times",
-"towns": [
-"Plymouth"
-],
-"text": "Residents now warn each other off the area they otherwise praise most. “Best place ever, but not when the football is on or a sunny bank holiday”, and “it's good in the day but don't bother after 7pm on a sunny day”. One of the year's most-upvoted comments is a local only half-joking that they would rather visitors did not hear about it.",
-"link": "https://reddit.com/r/plymouth/comments/1u0589f/the_barbican_is_the_most_unexpectedly_lovely_part/"
-},
-{
-"title": "Nobody believes the star ratings any more",
-"towns": [
-"Plymouth",
-"Plympton",
-"Ivybridge"
-],
-"text": "A visitor planning a first trip summed up why these questions keep getting asked: “I have looked online and it's the usual sea of places that all magically have between 4 and 5 star reviews.” The trust question is genuinely unsettled, though — a Tavistock commenter argued the opposite, that TripAdvisor beats asking on Facebook.",
-"link": "https://reddit.com/r/plymouth/comments/1s2t0g2/first_ever_visit/"
-},
-{
-"title": "Good service is treated as the exception",
-"towns": [
-"Plympton",
-"Ivybridge"
-],
-"text": "A Facebook post praising two young staff at a Tavistock café drew 209 reactions, and the telling reply was “you hear so much of bad service, so good to hear some positive comments”. The praise stood out precisely because people did not expect it.",
-"link": "https://www.facebook.com/groups/TavistockParish/posts/3143825305822929/"
-},
-{
-"title": "Parking decides where people will eat",
-"towns": [
-"Plymouth",
-"Plympton",
-"Ivybridge"
-],
-"text": "In a Facebook thread asking for fine dining for a group, parking was the second question asked and the answers led with it — “plenty of free parking”, “parking right outside”. A separate thread about a Royal William Yard parking ticket drew 22 comments. For anywhere without easy parking this is a real filter, not a detail.",
-"link": "https://www.facebook.com/groups/wowplymouthuk/posts/3582617555214082/"
-},
-{
-"title": "Closures and a city centre people feel is emptying",
-"towns": [
-"Plymouth"
-],
-"text": "Food venues are being judged against a background of decline. A thread on shops people miss drew 91 comments and the line “you don't even have to go as far as the sundial to see the downturn”. Local news reports in the same period cover Franco Manca at The Barcode closing, a seafood restaurant shutting with substantial debts and a café describing a “devastating” summer. Those reports were found through search and their reaction volumes have not been checked.",
-"link": "https://reddit.com/r/plymouth/comments/1qx71se/which_plymouth_shop_do_you_miss_most/"
-},
-{
-"title": "Some asks get nothing back but a shrug",
-"towns": [
-"Plympton"
-],
-"text": "Not every complaint is detailed. The 68-comment Plympton pub food thread includes a flat “yeah don't bother” with no venue named and no reason given. It carries no information, but it is worth noticing that it was said at all.",
-"link": "https://www.facebook.com/groups/818213141641283/posts/27520316124337622/"
-}
-],
-"posts": [
-{
-"platform": "YouTube",
-"n": "23.9k",
-"unit": "views",
-"towns": [
-"Plymouth"
-],
-"title": "I tried Plymouth's spiciest Naga burger",
-"why": "By far the widest reach of any local food post. Challenge and extreme-heat framing travels much further here than a straight review does.",
-"url": "https://www.youtube.com/watch?v=kWoyywY6Vsg"
-},
-{
-"platform": "TikTok",
-"n": "1.9k",
-"unit": "likes",
-"towns": [
-"Plymouth"
-],
-"title": "Taccy Tacos' first permanent spot on the Barbican",
-"why": "The highest-engagement social post in the pull. Two travellers brought Peruvian and American flavours home, went from a horse box to bricks, and that story carried it.",
-"url": "https://www.tiktok.com/@wasson.plymouth/video/7676825719393111318"
-},
-{
-"platform": "TikTok",
-"n": "1.4k",
-"unit": "likes",
-"towns": [
-"Plymouth"
-],
-"title": "“This little deli is smashing it” — Honey Butter, Southside Street",
-"why": "A genuine new-opening spike: a second creator covered the same deli independently within days.",
-"url": "https://www.tiktok.com/@curlygaz1/video/7694715687998180630"
-},
-{
-"platform": "TikTok",
-"n": "1.2k",
-"unit": "likes",
-"towns": [
-"Plymouth"
-],
-"title": "“One thing about us is we like to eat” — a Plymouth food crawl",
-"why": "Shows the format that works locally: several places in one video rather than a single review.",
-"url": "https://www.tiktok.com/@carlybrownx0/video/7679886162562911510"
-},
-{
-"platform": "TikTok",
-"n": "991",
-"unit": "likes",
-"towns": [
-"Plymouth"
-],
-"title": "Trying cafés in Plymouth and nearby, part 8",
-"why": "Part eight of a running series, which tells you café content sustains an audience here rather than spiking once.",
-"url": "https://www.tiktok.com/@courtneyedwards__/video/7618169042506910998"
-},
-{
-"platform": "TikTok",
-"n": "922",
-"unit": "likes",
-"towns": [
-"Plymouth"
-],
-"title": "Second visit to the Barbican pasta bar",
-"why": "“Huge portions and reasonably priced” — portion size and price are what gets praised, even on video.",
-"url": "https://www.tiktok.com/@ktanne_/video/7697975597791710486"
-},
-{
-"platform": "TikTok",
-"n": "889",
-"unit": "likes",
-"towns": [
-"Plymouth"
-],
-"title": "“If I could wake up to a new café every Saturday morning”",
-"why": "More evidence that breakfast and brunch is the category with the most appetite behind it.",
-"url": "https://www.tiktok.com/@jennifer.bennetttt/video/7694978385897901334"
-},
-{
-"platform": "TikTok",
-"n": "577",
-"unit": "likes",
-"towns": [
-"Plymouth"
-],
-"title": "KIBO on Mutley Plain",
-"why": "One of the few high-reach posts away from the waterfront, and the creator asks viewers where to go next.",
-"url": "https://www.tiktok.com/@luca.danciu/video/7689849094109465889"
-},
-{
-"platform": "TikTok",
-"n": "526",
-"unit": "likes",
-"towns": [
-"Plymouth"
-],
-"title": "“This is exactly what Plymouth needed” — The Mermaid Boil",
-"why": "A seafood boil pop-up on only its third outing. Worth watching: pop-ups are where several of this year's permanent openings started.",
-"url": "https://www.instagram.com/reel/DOJN3c6jIwk"
-},
-{
-"platform": "TikTok",
-"n": "452",
-"unit": "likes",
-"towns": [
-"Plymouth"
-],
-"title": "Harbourside fish and chips, the Barbican",
-"why": "61 comments, the most argued-over fish and chip post found.",
-"url": "https://www.tiktok.com/@foodreviewswithalfie/video/7604433051573062934"
-},
-{
-"platform": "YouTube",
-"n": "3.7k",
-"unit": "views",
-"towns": [
-"Plymouth"
-],
-"title": "Is this really the best Indian restaurant in Plymouth?",
-"why": "Indian food is the one cuisine people argue about by name, on YouTube and on Reddit alike.",
-"url": "https://www.youtube.com/watch?v=ej1P7GwF5mM"
-},
-{
-"platform": "Reddit",
-"n": "652",
-"unit": "upvotes",
-"towns": [
-"Plymouth"
-],
-"title": "“The Barbican looked like a total postcard the other day”",
-"why": "The year's most-upvoted local post is a photograph, not a meal. Atmosphere is doing the heavy lifting for the area's food scene.",
-"url": "https://reddit.com/r/plymouth/comments/1syt976/the_barbican_looked_like_a_total_postcard_the/"
-},
-{
-"platform": "Reddit",
-"n": "252",
-"unit": "upvotes",
-"towns": [
-"Plymouth"
-],
-"title": "Plymouth Market",
-"why": "The market-as-destination case made by locals, including a visitor from Nottingham who says it is reason enough to come.",
-"url": "https://reddit.com/r/plymouth/comments/1tunymz/plymouth_market/"
-},
-{
-"platform": "Reddit",
-"n": "119",
-"unit": "upvotes",
-"towns": [
-"Plymouth"
-],
-"title": "“The most unexpectedly lovely part of any city I have visited in the southwest”",
-"why": "Outsider delight and local gatekeeping in one thread, and the source of several smaller recommendations.",
-"url": "https://reddit.com/r/plymouth/comments/1u0589f/the_barbican_is_the_most_unexpectedly_lovely_part/"
-},
-{
-"platform": "Reddit",
-"n": "88",
-"unit": "comments",
-"towns": [
-"Plymouth",
-"Plympton",
-"Ivybridge"
-],
-"title": "A £15 breakfast at a Michelin-starred farm restaurant",
-"why": "The most revealing thread in the pull. The person who posted it called it the best breakfast they had ever eaten; 88 comments disagreed, almost entirely about the price.",
-"url": "https://reddit.com/r/fryup/comments/1og1gp4/crocadon_farm_saltash_cornwall_15/"
-},
-{
-"platform": "Reddit",
-"n": "55",
-"unit": "comments",
-"towns": [
-"Plymouth"
-],
-"title": "Breakfast on Sunday in Plymouth",
-"why": "Fourteen or so places named and almost no agreement. The clearest unmet demand found anywhere in this read.",
-"url": "https://reddit.com/r/plymouth/comments/1qtv8uw/breakfast_on_sunday_in_plymouth/"
-},
-{
-"platform": "Reddit",
-"n": "27",
-"unit": "comments",
-"towns": [
-"Plymouth"
-],
-"title": "Best budget eats in Plymouth right now?",
-"why": "The cost-of-living thread, and the single richest source of budget recommendations in the pull.",
-"url": "https://reddit.com/r/plymouth/comments/1pao9vh/best_budget_eats_in_plymouth_right_now/"
-},
-{
-"platform": "Reddit",
-"n": "24",
-"unit": "comments",
-"towns": [
-"Plymouth"
-],
-"title": "Best restaurants and cafés in Plymouth",
-"why": "The canonical list, and where most of the best-liked names above come from.",
-"url": "https://reddit.com/r/plymouth/comments/1pzlfx2/best_restaurantscafes/"
-},
-{
-"platform": "Facebook",
-"n": "68",
-"unit": "comments",
-"towns": [
-"Plympton"
-],
-"title": "Recommendations for pub food in Plympton",
-"why": "The busiest Facebook thread found. The Lyneham, the Brook and the Chaddlewood emerge as Plympton's three.",
-"url": "https://www.facebook.com/groups/818213141641283/posts/27520316124337622/"
-},
-{
-"platform": "Facebook",
-"n": "93",
-"unit": "comments",
-"towns": [
-"Plymstock",
-"Plympton"
-],
-"title": "Steak, but with a child, and not the usual chains",
-"why": "93 replies to a very specific ask. Shows how quickly these groups answer when the question is precise.",
-"url": "https://www.facebook.com/groups/818213141641283/posts/7005799706215898/"
-},
-{
-"platform": "Facebook",
-"n": "23",
-"unit": "comments",
-"towns": [
-"Ivybridge"
-],
-"title": "Sunday lunch near Ivybridge, with a nice view",
-"why": "The only substantial village-level food thread found, and it confirms roast-plus-view as the rural ask.",
-"url": "https://www.facebook.com/groups/1087928221246709/posts/24482404948039040/"
-},
-{
-"platform": "Facebook",
-"n": "14",
-"unit": "comments",
-"towns": [
-"Torpoint"
-],
-"title": "“Have to recommend the Tamar Lounge, Torpoint”",
-"why": "The best positive signal outside Plymouth, with named dishes and repeat customers in the replies.",
-"url": "https://www.facebook.com/groups/TorpointandRame/posts/1657692538246692/"
-},
-{
-"platform": "Reddit",
-"n": "36",
-"unit": "comments",
-"towns": [
-"Plymouth"
-],
-"title": "Best pint in Plymouth?",
-"why": "Not strictly food, but it maps the pub estate and explains the one grudging defence of Wetherspoons.",
-"url": "https://reddit.com/r/plymouth/comments/1saj8b4/best_pint_in_plymouth/"
-},
-{
-"platform": "TikTok",
-"n": "248",
-"unit": "likes",
-"towns": [
-"Tavistock"
-],
-"title": "Tapas and small plates at The Annex, Tavistock",
-"why": "The strongest Tavistock restaurant content, and one of three creators who filmed the same place.",
-"url": "https://www.tiktok.com/@fabulashemily/video/7639411292322663702"
-}
-]
-};
+"posts":[
+{"platform":"YouTube","n":"23.9k","unit":"views","towns":["Plymouth"],"title":"I tried Plymouth's spiciest Naga burger","why":"By far the widest reach of any local food post. Challenge and extreme-heat framing travels much further here than a straight review does.","url":"https://www.youtube.com/watch?v=kWoyywY6Vsg"},
+{"platform":"TikTok","n":"1.9k","unit":"likes","towns":["Plymouth"],"title":"Taccy Tacos' first permanent spot on the Barbican","why":"The highest-engagement social post in the pull. Two travellers brought Peruvian and American flavours home, went from a horse box to bricks, and that story carried it.","url":"https://www.tiktok.com/@wasson.plymouth/video/7676825719393111318"},
+{"platform":"TikTok","n":"1.4k","unit":"likes","towns":["Plymouth"],"title":"“This little deli is smashing it” — Honey Butter, Southside Street","why":"A genuine new-opening spike: a second creator covered the same deli independently within days.","url":"https://www.tiktok.com/@curlygaz1/video/7694715687998180630"},
+{"platform":"TikTok","n":"1.2k","unit":"likes","towns":["Plymouth"],"title":"“One thing about us is we like to eat” — a Plymouth food crawl","why":"Shows the format that works locally: several places in one video rather than a single review.","url":"https://www.tiktok.com/@carlybrownx0/video/7679886162562911510"},
+{"platform":"TikTok","n":"991","unit":"likes","towns":["Plymouth"],"title":"Trying cafés in Plymouth and nearby, part 8","why":"Part eight of a running series, which tells you café content sustains an audience here rather than spiking once.","url":"https://www.tiktok.com/@courtneyedwards__/video/7618169042506910998"},
+{"platform":"TikTok","n":"922","unit":"likes","towns":["Plymouth"],"title":"Second visit to the Barbican pasta bar","why":"“Huge portions and reasonably priced” — portion size and price are what gets praised, even on video.","url":"https://www.tiktok.com/@ktanne_/video/7697975597791710486"},
+{"platform":"TikTok","n":"889","unit":"likes","towns":["Plymouth"],"title":"“If I could wake up to a new café every Saturday morning”","why":"More evidence that breakfast and brunch is the category with the most appetite behind it.","url":"https://www.tiktok.com/@jennifer.bennetttt/video/7694978385897901334"},
+{"platform":"TikTok","n":"577","unit":"likes","towns":["Plymouth"],"title":"KIBO on Mutley Plain","why":"One of the few high-reach posts away from the waterfront, and the creator asks viewers where to go next.","url":"https://www.tiktok.com/@luca.danciu/video/7689849094109465889"},
+{"platform":"TikTok","n":"526","unit":"likes","towns":["Plymouth"],"title":"“This is exactly what Plymouth needed” — The Mermaid Boil","why":"A seafood boil pop-up on only its third outing. Worth watching: pop-ups are where several of this year's permanent openings started.","url":"https://www.instagram.com/reel/DOJN3c6jIwk"},
+{"platform":"TikTok","n":"452","unit":"likes","towns":["Plymouth"],"title":"Harbourside fish and chips, the Barbican","why":"61 comments, the most argued-over fish and chip post found.","url":"https://www.tiktok.com/@foodreviewswithalfie/video/7604433051573062934"},
+{"platform":"YouTube","n":"3.7k","unit":"views","towns":["Plymouth"],"title":"Is this really the best Indian restaurant in Plymouth?","why":"Indian food is the one cuisine people argue about by name, on YouTube and on Reddit alike.","url":"https://www.youtube.com/watch?v=ej1P7GwF5mM"},
+{"platform":"Reddit","n":"652","unit":"upvotes","towns":["Plymouth"],"title":"“The Barbican looked like a total postcard the other day”","why":"The year's most-upvoted local post is a photograph, not a meal. Atmosphere is doing the heavy lifting for the area's food scene.","url":"https://reddit.com/r/plymouth/comments/1syt976/the_barbican_looked_like_a_total_postcard_the/"},
+{"platform":"Reddit","n":"252","unit":"upvotes","towns":["Plymouth"],"title":"Plymouth Market","why":"The market-as-destination case made by locals, including a visitor from Nottingham who says it is reason enough to come.","url":"https://reddit.com/r/plymouth/comments/1tunymz/plymouth_market/"},
+{"platform":"Reddit","n":"119","unit":"upvotes","towns":["Plymouth"],"title":"“The most unexpectedly lovely part of any city I have visited in the southwest”","why":"Outsider delight and local gatekeeping in one thread, and the source of several smaller recommendations.","url":"https://reddit.com/r/plymouth/comments/1u0589f/the_barbican_is_the_most_unexpectedly_lovely_part/"},
+{"platform":"Reddit","n":"88","unit":"comments","towns":["Plymouth","Plympton","Ivybridge"],"title":"A £15 breakfast at a Michelin-starred farm restaurant","why":"The most revealing thread in the pull. The person who posted it called it the best breakfast they had ever eaten; 88 comments disagreed, almost entirely about the price.","url":"https://reddit.com/r/fryup/comments/1og1gp4/crocadon_farm_saltash_cornwall_15/"},
+{"platform":"Reddit","n":"55","unit":"comments","towns":["Plymouth"],"title":"Breakfast on Sunday in Plymouth","why":"Fourteen or so places named and almost no agreement. The clearest unmet demand found anywhere in this read.","url":"https://reddit.com/r/plymouth/comments/1qtv8uw/breakfast_on_sunday_in_plymouth/"},
+{"platform":"Reddit","n":"27","unit":"comments","towns":["Plymouth"],"title":"Best budget eats in Plymouth right now?","why":"The cost-of-living thread, and the single richest source of budget recommendations in the pull.","url":"https://reddit.com/r/plymouth/comments/1pao9vh/best_budget_eats_in_plymouth_right_now/"},
+{"platform":"Reddit","n":"24","unit":"comments","towns":["Plymouth"],"title":"Best restaurants and cafés in Plymouth","why":"The canonical list, and where most of the best-liked names above come from.","url":"https://reddit.com/r/plymouth/comments/1pzlfx2/best_restaurantscafes/"},
+{"platform":"Facebook","n":"68","unit":"comments","towns":["Plympton"],"title":"Recommendations for pub food in Plympton","why":"The busiest Facebook thread found. The Lyneham, the Brook and the Chaddlewood emerge as Plympton's three.","url":"https://www.facebook.com/groups/818213141641283/posts/27520316124337622/"},
+{"platform":"Facebook","n":"93","unit":"comments","towns":["Plymstock","Plympton"],"title":"Steak, but with a child, and not the usual chains","why":"93 replies to a very specific ask. Shows how quickly these groups answer when the question is precise.","url":"https://www.facebook.com/groups/818213141641283/posts/7005799706215898/"},
+{"platform":"Facebook","n":"23","unit":"comments","towns":["Ivybridge"],"title":"Sunday lunch near Ivybridge, with a nice view","why":"The only substantial village-level food thread found, and it confirms roast-plus-view as the rural ask.","url":"https://www.facebook.com/groups/1087928221246709/posts/24482404948039040/"},
+{"platform":"Facebook","n":"14","unit":"comments","towns":["Torpoint"],"title":"“Have to recommend the Tamar Lounge, Torpoint”","why":"The best positive signal outside Plymouth, with named dishes and repeat customers in the replies.","url":"https://www.facebook.com/groups/TorpointandRame/posts/1657692538246692/"},
+{"platform":"Reddit","n":"36","unit":"comments","towns":["Plymouth"],"title":"Best pint in Plymouth?","why":"Not strictly food, but it maps the pub estate and explains the one grudging defence of Wetherspoons.","url":"https://reddit.com/r/plymouth/comments/1saj8b4/best_pint_in_plymouth/"},
+{"platform":"TikTok","n":"248","unit":"likes","towns":["Tavistock"],"title":"Tapas and small plates at The Annex, Tavistock","why":"The strongest Tavistock restaurant content, and one of three creators who filmed the same place.","url":"https://www.tiktok.com/@fabulashemily/video/7639411292322663702"}
+]};
 (function(){
 var K="lt-bigtext",h=document.documentElement,b=document.getElementById("aa");
 function put(v){try{localStorage.setItem(K,v?"1":"0")}catch(e){}}
@@ -1510,7 +765,7 @@ const b=$("more-places"); b.hidden=rows.length<=st.nPlaces; b.textContent=`Show 
 function buzz(){
 const scoped = st.town==="all"||MAIN.includes(st.town);
 const t = scoped && st.town!=="all" ? st.town : "Area";
-$("summary").textContent = !scoped ? "Only a little online talk names the villages by name, so this part shows the whole area." : (BUZZ.summary[t] || "");
+$("summary").textContent = !scoped ? "No social media research covers the villages yet, so this part shows the whole area." : (BUZZ.summary[t] || "");
 let th = BUZZ.themes.filter(x=>x.scope===t);
 if(!th.length) th = BUZZ.themes.filter(x=>x.scope==="Area" && x.towns.includes(t));
 $("themes").innerHTML = th.map(x=>`<article class="theme"><div class="vhead">${ico(themeIcon(x.title),"sm")}<h3>${esc(x.title)}</h3></div><p class="meaning">${esc(x.meaning)}</p><p class="ev">${x.evidence.map(e=>ext(e.u,esc(e.t))+(e.n?` (${esc(e.n)})`:"")).join(", ")}</p></article>`).join("");
