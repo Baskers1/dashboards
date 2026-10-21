@@ -4,6 +4,7 @@
   "west-herts": "West Herts (Rickmansworth, Croxley & Chilterns)",
   "tayside": "Tayside (Dundee & Carnoustie)",
   "ammanford": "Ammanford",
+  "plymouth": "Plymouth & Ivybridge (Plympton, Plymstock & villages)",
   "staffordshire": "Staffordshire",
   "sky": "Sky & space"
  },
@@ -266,6 +267,36 @@
    "aliases": [
     "121f1000-6cc0-4731-9b17-6dc374662ef1"
    ]
+  },
+  {
+   "id": "LeV1ruVRf99iohVKqx4Fsz",
+   "area": "plymouth",
+   "slug": "weather",
+   "name": "Weather"
+  },
+  {
+   "id": "JNqonEAe5oTtJsAMb2uNHW",
+   "area": "plymouth",
+   "slug": "menu-watch",
+   "name": "Menu Watch"
+  },
+  {
+   "id": "WqWnaRE8QoJi8sVpC2qMbd",
+   "area": "plymouth",
+   "slug": "whats-on",
+   "name": "What's On"
+  },
+  {
+   "id": "6ThmgZwjDLhGX5jsP75EKd",
+   "area": "plymouth",
+   "slug": "referral-waits",
+   "name": "Referral Waits"
+  },
+  {
+   "id": "GaRAts7QJcRgJehP4GhYHz",
+   "area": "plymouth",
+   "slug": "waiting-charts",
+   "name": "Waiting & Outcome Charts"
   },
   {
    "id": "FtnSqUFf4fa9q8kCZKJAVT",
