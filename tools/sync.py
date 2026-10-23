@@ -34,6 +34,12 @@ BASE64 = re.compile(r"data:[a-z0-9.+/-]+;base64,[A-Za-z0-9+/=]+", re.I)
 SAFE_NAME = re.compile(r"^[a-z0-9][a-z0-9-]*$")
 PUBLIC_EXT = {".html", ".htm", ".css", ".js", ".jpg", ".jpeg", ".png", ".gif", ".webp", ".avif",
               ".svg", ".ico", ".woff", ".woff2"}
+# Data files the page fetches at runtime. Allowed ONLY at the artifact root and
+# redacted like a page: PUBLIC_EXT otherwise keeps every .json out, which is what
+# stops working data, research and playbooks reaching the public site. A data file
+# carries the same "how"/"get" contact text that redact.json strips from the HTML,
+# so it must never be published unredacted.
+PUBLIC_DATA = {"data.json"}
 
 
 def folder(d):
@@ -77,6 +83,19 @@ def check(page):
     return None
 
 
+def check_data(dst):
+    """A published data file must parse, or the page fetches it and renders nothing."""
+    for n in sorted(PUBLIC_DATA):
+        p = os.path.join(dst, n)
+        if os.path.exists(p):
+            try:
+                with open(p, encoding="utf-8") as f:
+                    json.load(f)
+            except (ValueError, UnicodeDecodeError) as e:
+                return f"{n} is not valid JSON ({e})"
+    return None
+
+
 def sync_one(src_root, d):
     src = os.path.join(src_root, d["id"])
     page = os.path.join(src, "index.html")
@@ -93,6 +112,9 @@ def sync_one(src_root, d):
         staged = os.path.join(tmp, "new")
         shutil.copytree(src, staged)
         fix_pages(staged)
+        bad = check_data(staged)
+        if bad:
+            return f"{d['id']}: {bad}"
         if os.path.isdir(dst):
             os.rename(dst, os.path.join(tmp, "old"))  # exact mirror: drop files the artifact no longer has
         os.rename(staged, dst)
@@ -109,7 +131,14 @@ def fix_pages(dst):
         for n in names:
             p = os.path.join(dirpath, n)
             ext = os.path.splitext(n)[1].lower()
-            if ext not in PUBLIC_EXT:
+            if dirpath == dst and n in PUBLIC_DATA:
+                with open(p, encoding="utf-8", newline="") as f:
+                    t = f.read()
+                t2 = redact(rewrite_links(t))
+                if t2 != t:
+                    with open(p, "w", encoding="utf-8", newline="") as f:
+                        f.write(t2)
+            elif ext not in PUBLIC_EXT:
                 os.remove(p)
                 removed.append(os.path.relpath(p, dst))
             elif ext in (".html", ".htm"):

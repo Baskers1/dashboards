@@ -124,4 +124,50 @@ assert "'" not in s.PATTERNS[0][1] + s.PATTERNS[1][1], "replacements sit inside 
 s.KEEP.add("07700 900789")
 assert s.redact("ring 07700 900789") == "ring 07700 900789", "keep list"
 s.KEEP.discard("07700 900789")
+# --- PUBLIC_DATA: a root data.json is published and redacted; elsewhere it still goes ---
+tmp = tempfile.mkdtemp()
+try:
+    body = '{"how":"contact chair Anna on 07700 900123.","u":"https://claude.ai/artifact/' + known["id"] + '"}'
+    for rel, text in {"index.html": "<html><head><title>t</title></head><body>x</body></html>",
+                      "data.json": body,
+                      "nested/data.json": "{}", "other.json": "{}"}.items():
+        os.makedirs(os.path.dirname(os.path.join(tmp, rel)) or tmp, exist_ok=True)
+        open(os.path.join(tmp, rel), "w").write(text)
+    removed = s.fix_pages(tmp)
+    assert "data.json" not in removed, "a root data.json must survive: the page fetches it"
+    assert sorted(removed) == sorted(["nested/data.json", "other.json"]), removed
+    kept = open(os.path.join(tmp, "data.json")).read()
+    assert "07700 900123" not in kept, "a published data file MUST be redacted like a page"
+    assert "(number on group website)" in kept, kept
+    assert s.BASE_URL + known["area"] in kept, "artifact links in data are repointed at the mirror"
+    import json as _j
+    _j.loads(kept)  # redaction must leave it valid JSON
+finally:
+    shutil.rmtree(tmp)
+
+# check_data: valid, absent, and corrupt
+tmp = tempfile.mkdtemp()
+try:
+    assert s.check_data(tmp) is None, "no data file is fine"
+    open(os.path.join(tmp, "data.json"), "w").write('{"a":1}')
+    assert s.check_data(tmp) is None
+    open(os.path.join(tmp, "data.json"), "w").write('{"a":1,')
+    assert "not valid JSON" in s.check_data(tmp)
+finally:
+    shutil.rmtree(tmp)
+
+# sync_one rejects a corrupt data file and leaves the live folder untouched
+root, src = tempfile.mkdtemp(), tempfile.mkdtemp()
+real_root, s.ROOT = s.ROOT, root
+try:
+    dst = s.folder(known); os.makedirs(dst)
+    open(os.path.join(dst, "index.html"), "w").write("live page")
+    os.makedirs(os.path.join(src, known["id"]))
+    open(os.path.join(src, known["id"], "index.html"), "w").write("<html><head><title>t</title></head><body>" + "x" * 10_000 + "</body></html>")
+    open(os.path.join(src, known["id"], "data.json"), "w").write("{oops")
+    assert "not valid JSON" in s.sync_one(src, known)
+    assert open(os.path.join(dst, "index.html")).read() == "live page", "live page must be untouched"
+finally:
+    s.ROOT = real_root; shutil.rmtree(root); shutil.rmtree(src)
+
 print("ok")
