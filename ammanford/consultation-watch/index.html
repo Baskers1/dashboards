@@ -261,6 +261,11 @@ body.big .mode button{min-height:56px;padding:12px 22px}
 .pl-txt{display:flex;flex-direction:column;align-items:flex-start;text-align:left;line-height:1.25}
 .pl-txt small{display:block;font-weight:400;font-size:1rem;margin-top:2px}
 .places button .ic{flex:none}
+
+/* Phones: the place buttons carry a village sub-line, so a 13rem min-width put
+   one button per row (10 rows, ~880px) before any consultation. Narrow them to
+   two per row and hold the sub-line to two lines. Unchanged at 461px and wider. */
+@media (max-width:460px){.places button{min-width:min(9.5rem,100%)}.places .pl-txt{min-width:0;align-items:center;text-align:center}.places .pl-txt small{display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:.85rem;line-height:1.2}}
 </style>
 <div class="wrap">
   <div class="hero" data-place="all">
