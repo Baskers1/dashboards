@@ -1,4 +1,4 @@
-<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-3DzvRK/vnTiaY/o75M5Sr2Gze44Vi6Rlh19KGD8XDFw=' 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
+<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'sha256-rNnCIQjgFKagNzE9REGwq2/WKdQyTH8Kte7E3R4+TDE=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
 var SCHEME=/^\s*([a-z][a-z0-9+.\-]*):/i,HREF={http:1,https:1,mailto:1,tel:1},SRC={http:1,https:1,blob:1};
 function okUrl(v,isSrc){var c=String(v).replace(/[\u0000- ]/g,""),m=SCHEME.exec(c);if(!m)return true;var s=m[1].toLowerCase();
 if(isSrc&&s==="data")return /^data:image\//i.test(c);return !!(isSrc?SRC:HREF)[s];}
@@ -310,404 +310,7 @@ body.big .mode button{min-height:56px;padding:12px 22px}
 <script>
 document.documentElement.lang = "en-GB";
 /* Affects entries: [text, named] where named=1 means a source names it, 0 means my reading of likely effect. */
-const ITEMS = [
-{
-  id: "angus-sds-rates", title: "Fair Cost of Care rates for direct payments (self-directed support Option 1)",
-  body: "Angus Health and Social Care Partnership / Angus Council", sector: "health", status: "decision", nodate: true,
-  deadline: "2026-10-23", time: "the personal assistant survey's reported closing date (23 October 2026, from a partnership social media post seen only in search results) has passed; on 26 October 2026 the four Engage Angus rates pages still showed survey links but no closing date, so check before you rely on any of them being open",
-  topics: ["health"],
-  plain: "Angus is considering paying set Fair Cost of Care rates when people arrange their own care with a direct payment. It wants views from care at home providers, personal assistants, their employers who get direct payments, and staff.",
-  detail: "The Engage Angus page for care at home providers says the council is considering the Fair Cost of Care rates for Option 1 (direct payments), which are already used in Options 2 and 3 in Angus, and that feedback will help it understand the impact of set rates and inform any future decisions. Engage Angus lists separate surveys for personal assistants, staff, care at home providers and direct payment recipients; I could open only the care at home providers page. The surveys are anonymous. The partnership's social media post says the personal assistant survey closes on 23 October 2026 and will help inform future discussions about PA rates; I could not open the post itself, and I did not confirm whether the other surveys close on the same day. What the rates are, and whether they would change direct payment amounts, is not stated on the page I read. On 26 October 2026 the Engage Angus pages for personal assistants, staff, care at home providers and direct payment recipients were all still listed as published with survey links, but none showed a closing date; it is listed as Watch, not Open, for that reason.",
-  how: "Choose the survey for your role on Engage Angus (search the projects list for 'Rates'). If you are unsure which applies to you, ask the Angus Health and Social Care Partnership.",
-  url: "https://engage.angus.gov.uk/rates-care-at-home-providers", urlLabel: "Have your say",
-  src: "https://engage.angus.gov.uk/rates-care-at-home-providers",
-  a: { people: [["People who get a direct payment to arrange their own care", 1], ["Personal assistants employed through direct payments", 1], ["Older and disabled people who use care at home", 0], ["Unpaid carers", 0]], groups: [["Care at home providers in Angus", 1], ["Health and social care partnership staff", 1]], systems: [["Social care rates and direct payment budgets", 1]] }
-},
-{
-  id: "sg-localgov", title: "Council reform: proposal for regional and community authorities",
-  body: "Scottish Government (Local Government and Housing Directorate)", sector: "central", status: "decision", nodate: true,
-  deadline: "2026-09-21", time: "discussion paper published 21 September 2026; no public response form or closing date found on 14 October 2026; the government wants a shared direction before the end of 2026",
-  topics: ["services"],
-  plain: "An opening proposal to replace Scotland's 32 councils with 6 to 10 regional authorities and 120 to 160 community authorities. Local news reports say Dundee, Angus and Perth and Kinross could be merged into one Tayside authority.",
-  detail: "The paper says regional authorities would handle strategic matters such as economic development, housing, strategic planning, transport, waste and education, and community authorities would handle local decisions such as householder planning applications, licensing, green spaces, town centre regeneration and local leisure and culture. Councillors would still be elected by ward and sit on both. Social care and social work are part of the same three-month dialogue. The paper does not name the regions; the possible Tayside merger comes from reports in The Courier, not from the paper. The dialogue is mainly with councils, COSLA, trade unions and care providers; the paper says more detailed proposals will follow for Parliament, councils and communities. I found no form for members of the public to respond.",
-  how: "No public consultation is open. Read the paper, and contact your councillors or MSP if you want to give a view. Watch for the more detailed proposals the government says will follow.",
-  url: "https://www.gov.scot/publications/public-sector-reform-proposal/", urlLabel: "Read the proposal",
-  src: "https://www.gov.scot/publications/public-sector-reform-proposal/",
-  a: { people: [["All Dundee and Angus residents", 0], ["People who use social care and social work", 1]], groups: [["Dundee City Council and Angus Council", 0], ["Councillors", 1], ["Trade unions and care providers", 1], ["Community councils and community groups", 0]], systems: [["Council structure and local decision making", 1], ["Housing, planning, transport and education", 1], ["Social care and social work", 1]] }
-},
-{
-  id: "sg-regfees", title: "Registration services: fees review",
-  body: "Scottish Government (National Records of Scotland)", sector: "central", status: "closed",
-  deadline: "2026-10-04", time: "closed 4 October 2026; no outcome found on 14 October 2026",
-  topics: ["services"],
-  plain: "Closed. A national review of the fees charged for registering births, deaths and marriages.",
-  detail: "Listed as open on the Scottish Government consultation hub on 2 October 2026 with a closing date of 4 October 2026. It no longer appeared on the hub's open list on 9, 12, 13 or 14 October 2026. Responses and an analysis report are usually published some months after closing.",
-  how: "The consultation has closed. Watch the hub for the published responses.",
-  url: "https://consult.gov.scot/national-records-of-scotland/registration-services-fees-review/", urlLabel: "Have your say",
-  src: "https://consult.gov.scot/consultation_finder/?sort_on=iconsultable_enddate&st=open&sort_order=ascending&in=main+hub&advanced=1",
-  a: { people: [["All Dundee and Angus residents who register a birth, death or marriage", 0]], systems: [["Registration service fees", 1]] }
-},
-{
-  id: "sg-bsl", title: "Scottish building safety levy: technical consultation",
-  body: "Scottish Government", sector: "central", status: "closed",
-  deadline: "2026-10-09", time: "closed 9 October 2026; no outcome found on 14 October 2026",
-  topics: ["homes"],
-  plain: "A technical consultation on how a levy on new residential building to pay for building safety work would work in Scotland. It closed on 9 October.",
-  detail: "The hub showed it as closing on 9 October 2026, and it was no longer on the hub's open list on 12, 13 or 14 October 2026. It covers the floorspace method for working out the levy, possible further exemptions or reliefs, and payment flexibilities for some kinds of development, ahead of the levy's planned introduction on 1 April (the year is cut off in the hub summary). I did not open the full consultation paper.",
-  how: "The consultation has closed. Watch the hub for the published responses.",
-  url: "https://consult.gov.scot/taxation-and-fiscal-sustainability/scottish_building_safety_levy/", urlLabel: "Have your say",
-  src: "https://consult.gov.scot/taxation-and-fiscal-sustainability/scottish_building_safety_levy/",
-  a: { people: [["Home builders and developers in Dundee and Angus", 0], ["Future home buyers and renters", 0]], systems: [["Housing and building safety", 1], ["Levy costs on new homes", 1]] }
-},
-{
-  id: "sg-legal", title: "Legal aid reform",
-  body: "Scottish Government", sector: "central", status: "closed",
-  deadline: "2026-10-13", time: "closed 13 October 2026; no outcome found on 14 October 2026",
-  topics: ["services"],
-  plain: "Closed. The Scottish Government asked how legal aid should be reformed, ahead of a new Legal Aid (Scotland) Bill. It applies to everyone in Scotland, including Dundee and Carnoustie.",
-  detail: "The hub showed it as closing on 13 October 2026, and it was no longer on the hub's open list on 14 October 2026. It consulted on a new Legal Aid (Scotland) Bill: a clear purpose and objectives for legal aid set by Scottish Ministers, fewer and simpler aid types, simpler eligibility, contributions and repayments, data sharing with bodies such as Social Security Scotland to ease benefit passporting, a voluntary 'high-trust' model for accredited solicitors, and the option to commission services through grants, contracts or directly employed solicitors. The page says legal aid should stay broadly available and targeted at those least able to pay. There are 22 questions, an Easy Read version and British Sign Language translations.",
-  how: "The consultation has closed. Watch the hub for the published responses and the Scottish Government's analysis. Enquiries to LegalAidReform@gov.scot.",
-  url: "https://consult.gov.scot/justice/reforming-legal-aid-in-scotland/", urlLabel: "Have your say",
-  src: "https://www.gov.scot/publications/legal-aid-reform-consultation/pages/respond/",
-  a: { people: [["People who may need legal aid", 1], ["Households on low incomes who may qualify", 0]], groups: [["Solicitors and advice services", 1]], systems: [["Access to legal help", 1], ["Legal aid eligibility and contributions", 1]] }
-},
-{
-  id: "sg-passivhaus", title: "Scottish equivalent to the Passivhaus standard: Stage 2",
-  body: "Scottish Government (Building Standards)", sector: "central", status: "closed",
-  deadline: "2026-10-16", time: "closed 16 October 2026; no outcome found on 19 October 2026",
-  topics: ["homes"],
-  plain: "Closed. Proposed energy and environmental targets for a new Scottish building standard for new homes and other buildings.",
-  detail: "Opened 24 July 2026. 33 questions on fabric performance, ventilation, compliance processes, indoor air quality and overheating. The page gives a revised implementation date of autumn 2029, with guidance and approved methods expected in autumn 2027. It was no longer on the hub's open list on 19 October 2026.",
-  how: "The consultation has closed. Watch the hub for the published responses. Questions to bsdenergystandardsreview@gov.scot.",
-  url: "https://consult.gov.scot/local-government-and-housing/building-regulations-passivhaus-equivalent-stage-2/", urlLabel: "Have your say",
-  src: "https://consult.gov.scot/local-government-and-housing/building-regulations-passivhaus-equivalent-stage-2/",
-  a: { people: [["Future home buyers and tenants (energy bills and comfort)", 0]], groups: [["Builders, architects and designers", 0]], systems: [["Energy use in new buildings", 1], ["Indoor air quality and overheating", 1]] }
-},
-{
-  id: "sg-pbsa", title: "Ending student tenancies in purpose-built student accommodation",
-  body: "Scottish Government", sector: "central", status: "closed",
-  deadline: "2026-10-22", time: "closed 22 October 2026; no outcome found on 26 October 2026",
-  topics: ["homes"],
-  plain: "Closed. When students living in purpose-built student accommodation should be allowed to end their tenancy early, what evidence they would need, and how the process should work. It applies across Scotland, including student halls and private student blocks in Dundee.",
-  detail: "The Housing (Scotland) Act 2025 lets Scottish Ministers make regulations so students in purpose-built student accommodation can end a tenancy in set circumstances. At present these tenancies run for a fixed term matching the academic year and students must pay for the whole period, even if they leave. The consultation proposes a list of circumstances, a 28-day notice period with up to 20 more days to ask for further evidence, and asks what a fair way to challenge a refusal would be. There are four questions. The page asks for views from students who have lived in this kind of accommodation, their families, universities and colleges, student representative councils, and providers, developers and investors. The page does not name Dundee; the link to Dundee's students is my reading.",
-  how: "The consultation has closed; it was no longer on the hub's open list on 26 October 2026. Watch the hub for the published responses.",
-  url: "https://consult.gov.scot/learning-directorate/ending-student-tenancies-in-purpose-built-accommod/", urlLabel: "Have your say",
-  src: "https://consult.gov.scot/learning-directorate/ending-student-tenancies-in-purpose-built-accommod/",
-  a: { people: [["Student tenants in purpose-built student accommodation", 1], ["Families of students", 1], ["Students at the University of Dundee and Abertay University", 0]], groups: [["Universities, colleges and student representative councils", 1], ["Student accommodation providers, developers and investors", 1]], systems: [["Housing rights for student tenants", 1]] }
-},
-{
-  id: "sg-vehicle-recovery", title: "Review of vehicle recovery charges",
-  body: "Scottish Government (Safer Communities)", sector: "central", status: "open",
-  deadline: "2026-12-04", time: "closing time not stated on the consultation page (checked 15 October 2026)",
-  topics: ["travel"],
-  plain: "Proposed new charges for when the police or the council remove, store or dispose of a vehicle, including a 31% rise in line with inflation. It applies across Scotland, including Dundee and Angus.",
-  detail: "The charges were last reviewed in 2019. Most removals are done for the police under the Vehicle Recovery Scheme; councils also remove abandoned or illegally parked vehicles. The questions ask about a 31% uplift to removal, storage and disposal fees and to the flat ferry fee, a time-based charge for ferry delays, replacing the flat mileage rate with tiered rates based on the vehicle's maximum authorised mass, a more streamlined process for future routine reviews, and risks such as more vehicles being abandoned. The page does not say when new charges would start.",
-  how: "Respond on the Scottish Government consultation hub; you can save and return before it closes.",
-  url: "https://consult.gov.scot/safer-communities/review-of-the-vehicle-recovery-legislation/", urlLabel: "Have your say",
-  src: "https://consult.gov.scot/safer-communities/review-of-the-vehicle-recovery-legislation/",
-  a: { people: [["Drivers whose vehicles are removed by the police or the council", 1], ["Households on low incomes facing recovery fees", 0]], groups: [["Vehicle recovery operators", 1], ["Police Scotland and Dundee and Angus councils", 0]], systems: [["Vehicle removal, storage and disposal fees", 1]] }
-},
-{
-  id: "angus-forfar", title: "Proposed 20mph speed limit, Dundee Road, Forfar",
-  body: "Angus Council (Angus, not Carnoustie)", sector: "local", status: "closed",
-  deadline: "2026-10-23", time: "closed 23 October 2026; no outcome published on 26 October 2026",
-  topics: ["travel"],
-  plain: "Closed. Angus Council is considering cutting the limit on Dundee Road, Forfar, from 30mph to 20mph, possibly as a wider 20mph zone. It is in Forfar, so only a guide to how Angus treats speed limits.",
-  detail: "Follows resident concerns. The council is looking at a unified 20mph zone on adjoining roads to avoid confusing drivers. Paper copies are at libraries, Forfar Community Campus, Forfar Library and Angus House reception. Only residents of the affected streets were asked to comment. On 26 October 2026 the Engage Angus page said the consultation had concluded and that officers will review the data and report the findings to a council committee; no committee date was given.",
-  how: "The survey has closed. Watch Angus Council committee papers for the officers' report.",
-  url: "https://engage.angus.gov.uk/proposed-20mph-speed-limit-forfar", urlLabel: "Have your say",
-  src: "https://engage.angus.gov.uk/proposed-20mph-speed-limit-forfar",
-  a: { people: [["Residents and drivers on Dundee Road, Forfar", 1], ["Pedestrians, cyclists and children", 1]], systems: [["Road safety and traffic noise", 1]] }
-},
-{
-  id: "angus-wav", title: "Wheelchair accessible taxis and private hire vehicles in Angus",
-  body: "Angus Council (Licensing)", sector: "local", status: "open",
-  deadline: "2026-10-30", closes: "17:00", time: "5pm on Friday 30 October 2026",
-  topics: ["travel"],
-  plain: "Angus Council wants more wheelchair accessible taxis and private hire cars across Angus, including Carnoustie and Monifieth, and is asking licensed drivers and operators how to get there.",
-  detail: "Opened 1 October 2026. The options are a revised fee structure with discounts for wheelchair accessible vehicles, removing the Angus zones limitation for these vehicles only, not requiring the knowledge test for a driver's licence where zones are removed for them, and licence conditions so an existing wheelchair accessible vehicle can only be replaced by a similar type. Background is in Committee Report 209/26 and a licensing cost comparison appendix. Officers will report the responses to the Civic Licensing Committee, which makes the final decision. The survey is aimed at licensed drivers and operators; the effect on wheelchair users is my reading of the purpose.",
-  how: "Licensed drivers and operators can complete the online survey on Engage Angus. For a Word or PDF copy, email LAWLicensing@angus.gov.uk.",
-  url: "https://engage.angus.gov.uk/expansion-of-wheelchair-accessible-taxi-and-private-hire-vehicle-provision-in-angus", urlLabel: "Have your say",
-  src: "https://engage.angus.gov.uk/expansion-of-wheelchair-accessible-taxi-and-private-hire-vehicle-provision-in-angus",
-  a: { people: [["Licensed taxi and private hire drivers in Angus", 1], ["Disabled people and wheelchair users who need accessible taxis", 0]], groups: [["Taxi and private hire operators", 1], ["Civic Licensing Committee", 1]], systems: [["Taxi licensing fees, zones and conditions", 1]] }
-},
-{
-  id: "angus-asn", title: "Additional support needs (ASN) options for children and young people in Angus",
-  body: "Angus Council", sector: "local", status: "open",
-  deadline: "2026-10-30", time: "closing time not stated on the page (closing date Friday 30 October 2026 confirmed on 19 October 2026)",
-  topics: ["schools"],
-  plain: "Six options for supporting children and young people with additional support needs across Angus, including Carnoustie. The council says it is not proposing a new special school.",
-  detail: "Opened 2 September 2026. Options: expand resourced primary schools, add School and Pupil Support Assistants, more Principal Teacher (Inclusion) management time, more ASN teaching staff by locality, look at school building capacity that could be repurposed, and identify vacant buildings that could be used. The Engage Angus page now says there are eight drop-in sessions, one in each town, and you can go to whichever suits you. The council's 2 September news release listed four: Monifieth Learning Campus (14 September), Forfar Academy, Brechin High School and Abbeyview Campus, Arbroath (22 October, 6.30pm to 7.30pm). A council social media post seen only in search results mentions a Carnoustie High School session, 2pm to 3pm, and an Arbroath session on 26 October; I could not open it to confirm the dates, so check with the council. Focus groups are offered for children and young people. Feedback goes to the Family, Education and Justice Committee in January 2027.",
-  how: "Complete the online survey, attend a drop-in, or ask for paper copies on 03452 777 778.",
-  url: "https://engage.angus.gov.uk/asn-options-engagement", urlLabel: "Have your say",
-  src: "https://www.angus.gov.uk/news/have_your_say_on_additional_support_needs_asn_provision_in_angus",
-  a: { people: [["Children and young people with additional support needs", 1], ["Parents and carers", 1], ["Pupils at Angus schools, including Carnoustie", 0]], groups: [["School staff and teachers", 1], ["Third sector and advocacy groups", 0]], systems: [["School buildings and resourced provision", 1], ["Education staffing", 1]] }
-},
-{
-  id: "sg-mhcode", title: "Mental Health Act Code of Practice: restraint and seclusion",
-  body: "Scottish Government", sector: "central", status: "open",
-  deadline: "2026-10-29", time: "closing time not checked; confirm on the consultation page",
-  topics: ["health"],
-  plain: "Updated guidance on when restraint and seclusion can be used on people being treated for mental illness, with specific guidance for children and young people.",
-  detail: "Opened 6 August 2026. Covers definitions and legal limits of restraint and seclusion, protections for autistic people and people with learning disabilities, nasogastric tube feeding, monitoring and staff training, plus two technical updates from the Mental Health (Scotland) Act 2015. It is aimed at practitioners, people with lived experience, families, carers and human-rights organisations.",
-  how: "Open the consultation portal and choose Begin consultation. Questions to mentalhealthlaw@gov.scot.",
-  url: "https://consult.gov.scot/mental-health/updates-code-of-practice-mental-health/", urlLabel: "Have your say",
-  src: "https://consult.gov.scot/mental-health/updates-code-of-practice-mental-health/",
-  a: { people: [["People treated under mental health law", 1], ["Children and young people", 1], ["Autistic people and people with learning disabilities", 1], ["Families and carers", 1]], groups: [["Mental health practitioners and NHS staff", 1], ["Human rights and advocacy organisations", 1]], systems: [["Mental health services", 1]] }
-},
-{
-  id: "nhs-mhld", title: "NHS Tayside Mental Health and Learning Disabilities Strategy (draft)",
-  body: "NHS Tayside", sector: "health", status: "open",
-  deadline: "2026-10-31", closes: "12:00", time: "12 noon",
-  topics: ["health"],
-  plain: "The draft five-year plan for mental health and learning disability services across Tayside, which covers Dundee, Angus and Perth and Kinross.",
-  detail: "Welcomes third sector groups, community groups, partner organisations, people with lived experience, carers, families, advocates, staff and members of the public. An online drop-in on Microsoft Teams was held on Thursday 15 October 2026, 10am to 12 noon. The PKAVS notice still gave the closing date as 12 noon on 31 October 2026 when checked on 19 October. The notice was published by PKAVS (the Perth and Kinross third sector body), so check NHS Tayside's own page for any later change.",
-  how: "Complete the Microsoft feedback form, or ask PKAVS for a Word version: 01738 567076, admin@pkavs.org.uk.",
-  url: "https://www.pkavs.org.uk/2026/09/14/15300/", urlLabel: "Read and respond",
-  src: "https://www.pkavs.org.uk/2026/09/14/15300/",
-  a: { people: [["People with lived experience of mental ill health or learning disability", 1], ["Carers and families", 1], ["Residents of Dundee, Angus and Perth and Kinross", 1]], groups: [["Third sector and community groups", 1], ["Advocates", 1], ["NHS Tayside staff", 1]], systems: [["Mental health and learning disability services across Tayside", 1]] }
-},
-{
-  id: "dundee-ev", title: "Electric vehicle charger site suggestions",
-  body: "Dundee City Council", sector: "local", status: "open",
-  deadline: "2027-01-01", time: "closing time not stated on the page; the council's page now shows the dates as 25 August 2026 to 1 January 2027 (previously 1 November 2026)",
-  topics: ["travel"],
-  plain: "Drop a pin on a map to say where Dundee needs electric vehicle chargers, especially streets without off-street parking.",
-  detail: "Opened 25 August 2026. When checked on 26 October 2026 the council's consultations page showed the end date as 1 January 2027, later than the 1 November 2026 shown earlier; the page does not say why. The council wants suggestions for homes without driveways, workplaces, schools, community spaces and parks, and for busy places such as shops and service stations.",
-  how: "Complete the online survey and use the interactive map.",
-  url: "https://www.dundeecity.gov.uk/consultations-and-surveys/electric-vehicle-charger-site-suggestions", urlLabel: "Have your say",
-  src: "https://www.dundeecity.gov.uk/consultations-and-surveys/electric-vehicle-charger-site-suggestions",
-  a: { people: [["Electric vehicle drivers and people planning to switch", 1], ["Residents in streets without off-street parking", 1]], groups: [["Businesses and workplaces wanting charging", 1]], systems: [["Charging points and parking space", 1]] }
-},
-{
-  id: "engage-dundee", title: "Engage Dundee 2026 city survey",
-  body: "Dundee Partnership / Dundee City Council", sector: "local", status: "open",
-  deadline: "2026-10-30", time: "closing time not stated on the page",
-  topics: ["services"],
-  plain: "A city-wide survey on what matters to residents. It informs the next ten-year City Plan and the council's 2027/28 budget decisions.",
-  detail: "Started Monday 21 September 2026 and runs for six weeks. Topics: cost of living, health and wellbeing, communities, neighbourhoods, local environment, belonging and housing. Paper copies are in community centres and libraries. The council's consultations page now gives the dates as 21 September to 30 October 2026. Developed with Dundee Health and Social Care Partnership, NHS Tayside and local people; answers are confidential. Council social media posts, seen only in search results, list drop-in help sessions including Broughty Ferry Library (2pm to 4pm on Monday 19 October and 5pm to 7pm on Monday 26 October), Ardler Complex (12 noon to 2pm on Wednesday 21 October) and Charleston Community Centre (12 noon to 2pm on Tuesday 27 October); I could not open the posts, so check with the council before you go.",
-  how: "Complete the survey online at Engage Dundee, or use a paper copy from a community centre or library.",
-  url: "https://www.dundeecity.gov.uk/consultations-and-surveys/engage-dundee-survey", urlLabel: "Have your say",
-  src: "https://www.dundeecity.gov.uk/consultations-and-surveys/engage-dundee-survey",
-  a: { people: [["All Dundee residents", 1], ["Households facing cost-of-living pressures", 1], ["Tenants and people needing housing", 1]], groups: [["Community groups and neighbourhood organisations", 0]], systems: [["The ten-year City Plan", 1], ["The 2027/28 council budget", 1], ["Housing, health and local environment", 1]] }
-},
-{
-  id: "dundee-levy", title: "Dundee visitor levy: have your say",
-  body: "Dundee City Council", sector: "local", status: "open",
-  deadline: "2026-11-27", time: "closing time not stated on the page",
-  topics: ["visitors"],
-  plain: "A small charge on overnight stays in Dundee. Two options: 5% of the nightly room rate, or a flat £5 per room per night, both capped at seven nights.",
-  detail: "Opened 31 August 2026 under the Visitor Levy (Scotland) Act 2024. Applies to hotels, guesthouses, B&Bs, hostels, self-catering and short-term lets. Money must be held separately, reported each year and spent only on visitor facilities and services. Dundee had over 1.4 million visitors in 2024, with more than 600,000 overnight stays. Councillors decide after the consultation. If approved, Scottish law needs at least 18 months' notice, so the earliest start is 2028/29. Paper copies are at The McManus and the Central Library; events are listed on Eventbrite, and a council social media post lists a session at the Central Library on Tuesday 20 October, 10.30am to 12.30pm. An Eventbrite listing also shows an online session on Wednesday 21 October (10am to 11.30am UK time, converted from the time zone the listing showed me). Business sessions run through Dundee and Angus Chamber of Commerce.",
-  how: "Take the roughly 10-minute online survey, use a paper copy, or phone 01382 549946.",
-  url: "https://www.dundeecity.gov.uk/consultations-and-surveys/visitor-levy-have-your-say", urlLabel: "Have your say",
-  src: "https://www.dundeecity.gov.uk/consultations-and-surveys/visitor-levy-have-your-say",
-  a: { people: [["Visitors staying overnight", 1], ["Residents who rent out rooms or homes short term", 1]], groups: [["Hotels, B&Bs, hostels and self-catering operators", 1], ["Dundee and Angus Chamber of Commerce", 1]], systems: [["Visitor facilities and services funded by the levy", 1], ["Dundee tourism and the city centre", 1]] }
-},
-{
-  id: "sg-phones", title: "Restricting mobile phones in Scotland's schools",
-  body: "Scottish Government", sector: "central", status: "open",
-  deadline: "2026-11-17", time: "closing time not checked; confirm on the consultation page",
-  topics: ["schools"],
-  plain: "How far personal mobile phone use should be restricted during the school day, to shape new law. It covers every school in Scotland, including Dundee and Carnoustie.",
-  detail: "Opened 25 August 2026. Asks about the extent of restrictions, their impacts, exemptions, and whether they should cover independent schools and wearable devices. It does not cover phone use outside school or social media at home. Pupils, parents, teachers, school staff and education authorities can respond.",
-  how: "Respond on the consultation portal; you can save and return. Questions to relationshipsandbehaviourinschools@gov.scot.",
-  url: "https://consult.gov.scot/education/restricting-mobile-phones-in-scotlands-schools/", urlLabel: "Have your say",
-  src: "https://consult.gov.scot/education/restricting-mobile-phones-in-scotlands-schools/",
-  a: { people: [["Pupils", 1], ["Parents and carers", 1], ["Teachers and school staff", 1]], groups: [["Education authorities such as Dundee and Angus councils", 1], ["Independent schools", 1]], systems: [["School rules and learning", 1]] }
-},
-{
-  id: "sg-food", title: "Price controls on essential food items: draft legislation",
-  body: "Scottish Government", sector: "central", status: "open",
-  deadline: "2026-11-24", time: "closing time not checked; confirm on the consultation page",
-  topics: ["services"],
-  plain: "Draft legal provisions for controlling the price of essential food items in Scotland.",
-  detail: "Listed on the Scottish Government consultation hub with a closing date of 24 November 2026. I did not open the consultation paper, so the details are not summarised here.",
-  how: "Respond online through the Scottish Government consultation hub.",
-  url: "https://consult.gov.scot/business-and-better-regulation/price-controls-on-essential-food-items-draft-legis/", urlLabel: "Have your say",
-  src: "https://consult.gov.scot/business-and-better-regulation/price-controls-on-essential-food-items-draft-legis/",
-  a: { people: [["Shoppers and households on low incomes", 0]], groups: [["Food shops and suppliers", 0]], systems: [["Food prices", 1]] }
-},
-{
-  id: "sg-mpas", title: "Fisheries management in Scottish inshore Marine Protected Areas",
-  body: "Scottish Government (Marine Directorate)", sector: "central", status: "open",
-  deadline: "2027-01-18", time: "closing time not checked; confirm on the consultation page",
-  topics: ["services"],
-  plain: "Fisheries management options for 166 protected sites and areas in Scotland's inshore waters. You can browse by marine region.",
-  detail: "The page does not name individual sites. I could not confirm which, if any, are in the Firth of Tay or off the Angus coast, so check the Site and Area Proposal Document linked from the consultation. The hub announced maintenance from 7am on Wednesday 14 October until midday on Thursday 15 October 2026, when documents, the map and responses were unavailable; the notice was still on the page on the morning of 15 October, so check the platform is working again before you respond. The Marine Directorate is also running online and in-person engagement sessions, listed on its blog.",
-  how: "Respond on the consultation portal, choosing the marine region you care about.",
-  url: "https://consult.gov.scot/marine-scotland/fisheries-management-measures-for-inshore-mpas/", urlLabel: "Have your say",
-  src: "https://consult.gov.scot/marine-scotland/fisheries-management-measures-for-inshore-mpas/",
-  a: { people: [["Inshore fishers", 0]], wildlife: [["Marine species and habitats in protected sites", 1]], systems: [["Fishing rules in protected sea areas", 1]] }
-},
-{
-  id: "angus-rent", title: "Angus Council rent review 2027/28: stage two to come",
-  body: "Angus Council", sector: "local", status: "decision",
-  deadline: "2026-09-30", time: "stage one closed 5pm on 30 September 2026; stage two date not announced",
-  topics: ["homes"],
-  plain: "Stage one asked council tenants which housing services and investments matter most. A second consultation on proposed rent and investment options is due later in 2026.",
-  detail: "Launched 14 September 2026. Stage one covered how rental income should be split across repairs, home improvements, tenancy services, estate management, compliance, tenant engagement, digital services, debt repayment, new housing and staffing. Responses will shape the rent increase scenarios in stage two. No stage two date had been published as of 12 October 2026.",
-  how: "No survey is open now. Watch Engage Angus and the Angus Council news page for stage two.",
-  url: "https://www.angus.gov.uk/news/angus_council_launches_first_stage_of_rent_review_consultation_for_202728", urlLabel: "Read the council notice",
-  src: "https://engage.angus.gov.uk/embeds/projects/33779/survey-tools/60493",
-  a: { people: [["Angus Council tenants, including in Carnoustie", 1]], groups: [["Tenant participation groups", 0]], systems: [["Rents and housing investment", 1]] }
-},
-{
-  id: "dundee-ldp", title: "Dundee Local Development Plan: next stage awaited",
-  body: "Dundee City Council", sector: "local", status: "decision",
-  deadline: "2026-03-31", time: "call for sites and ideas closed 31 March 2026; no active planning consultation on 12 October 2026",
-  topics: ["homes"],
-  plain: "The call for sites and ideas for the next plan for where new development should and should not go in Dundee has closed. The council's planning consultations page shows nothing open.",
-  detail: "The call opened with a publication date of 17 December 2025. The council described the plan as having a huge influence on what Dundee will look like. I did not find a published date for the next stage.",
-  how: "No consultation is open. Check the council's planning consultations page for the next stage.",
-  url: "https://www.dundeecity.gov.uk/service-area/city-development/local-development-plan/planning-division-consultations", urlLabel: "See planning consultations",
-  src: "https://www.dundeecity.gov.uk/news/article?article_ref=5023",
-  a: { people: [["All Dundee residents", 1], ["Landowners and developers", 1]], groups: [["Community councils and community groups", 0]], systems: [["Housing sites and land use", 1], ["Infrastructure and climate policies", 1]] }
-},
-{
-  id: "carnoustie-golf", title: "Carnoustie Golf Links: phase two consultation not yet announced",
-  body: "Angus Council / Carnoustie Golf Links Management Committee", sector: "local", status: "decision",
-  deadline: "2024-09-18", time: "phase one consultation closed 18 September 2024; I found no 2026 consultation",
-  topics: ["services"],
-  plain: "The 2024 consultation covered moving day-to-day running of the golf links to a private operator, CGHH, with a Golf Access Rights Agreement for local golfers. The documents say longer-term phase two plans need their own consultation.",
-  detail: "Phase one ran to March 2033 only. Proposed season ticket rises would follow the Consumer Prices Index, with independent five-yearly reviews and a cap at 75% of provision costs (65% for the first decade). I could not confirm the current position from sources I found on 2 October 2026, so treat this as a place to watch, not a live item.",
-  how: "No consultation is open. Watch Engage Angus and Carnoustie Community Council.",
-  url: "https://engage.angus.gov.uk/carnoustie-golf", urlLabel: "See the project page",
-  src: "https://www.angus.gov.uk/sites/default/files/2024-07/Report%20206_24%20Carnoustie%20Golf%20-%20Public%20Consultation_App%202.pdf",
-  a: { people: [["Local golfers and season ticket holders in Carnoustie", 1], ["Carnoustie residents", 0]], groups: [["Carnoustie Golf Links Management Committee", 1], ["Local hospitality businesses", 0]], systems: [["Golf access and pricing", 1], ["Carnoustie as an Open Championship venue", 1]] }
-},
-{
-  id: "angus-montrose-golf", title: "Montrose Golf Links: proposed 99-year lease",
-  body: "Angus Council (Montrose, not Carnoustie)", sector: "local", status: "closed",
-  deadline: "2026-10-09", time: "closed 9 October 2026; results go to a full council meeting, date not found on 12 October 2026",
-  topics: ["services"],
-  plain: "Angus Council proposes leasing Montrose Golf Links, a Common Good asset, for 99 years to Montrose Golf Links Ltd, with The Ancient Links Golf Company running the courses. It closed on 9 October. It is in Montrose, but it is a guide to how Angus may handle golf links such as Carnoustie's.",
-  detail: "Statutory consultation under section 104 of the Community Empowerment (Scotland) Act 2015, which opened on 13 August 2026. Proposals: at least £3 million of investment in the first five years, rent of £30,000 a year to the Montrose Common Good Fund, public access to the 1562 and Broomfield courses, and priority and discounted prices for Angus residents. The draft Angus resident season ticket would rise from £720 in 2026/27 to £999 in 2031/32. Junior and juvenile season tickets are free. Results go to a full council meeting, and the lease would also need Sheriff Court approval.",
-  how: "The consultation has closed (Engage Angus lists the project as archived). It was by email to CommEngagement@angus.gov.uk or write to Vibrant Communities, Angus House, Orchardbank Business Park, Sylvie Way, Forfar DD8 1AN. Representations are published anonymously.",
-  url: "https://engage.angus.gov.uk/montrose-golf-links", urlLabel: "Have your say",
-  src: "https://engage.angus.gov.uk/montrose-golf-links",
-  a: { people: [["Local golfers and season ticket holders in Montrose", 1], ["Angus residents who play golf", 1], ["Junior golfers", 1]], groups: [["Montrose Golf Links Ltd and The Ancient Links Golf Company", 1], ["Local hospitality businesses", 0]], systems: [["Golf access and pricing", 1], ["Montrose Common Good Fund", 1], ["Coastal erosion risk to the links", 1]] }
-},
-{
-  id: "dundee-camperdown", title: "Pride in Place: Camperdown Park play designs",
-  body: "Dundee City Council", sector: "local", status: "open",
-  deadline: "2026-10-31", time: "closing time not stated on the page",
-  topics: ["services"],
-  plain: "Draft designs for new play facilities in Camperdown Park, shaped by a year of ideas from local groups, schools and park users. The council also wants views on the wider park experience.",
-  detail: "Runs from 25 September to 31 October 2026. The council says the designs include suggestions on inclusive play, accessibility and unique features. The survey link on the council page is a shortened bit.ly address.",
-  how: "Follow the survey link on the council's consultation page.",
-  url: "https://www.dundeecity.gov.uk/consultations-and-surveys/pride-in-place-camperdown-park", urlLabel: "Have your say",
-  src: "https://www.dundeecity.gov.uk/consultations-and-surveys/pride-in-place-camperdown-park",
-  a: { people: [["Children and families who use Camperdown Park", 1], ["Disabled children and park users needing accessible play", 1]], groups: [["Local groups and schools", 1]], systems: [["Play facilities and park design", 1]] }
-},
-{
-  id: "sg-cvd", title: "Quality prescribing guidance for cardiovascular risk reduction 2026-2029",
-  body: "Scottish Government", sector: "central", status: "open",
-  deadline: "2026-11-20", time: "closing time not checked; confirm on the consultation page",
-  topics: ["health"],
-  plain: "Draft national guidance for GPs and other prescribers on lowering the risk of heart disease and stroke: medicine reviews, blood pressure, cholesterol, diabetes, weight-loss medicines and stopping smoking.",
-  detail: "Opened 28 September 2026. Recommendations include the ASSIGN v2.0 risk score, atorvastatin 20mg as the first-choice statin for prevention, incretin-based weight-loss medicines for people who meet the criteria, and asking permission before discussing weight. A virtual consultation event is planned; register interest by emailing EPandT@gov.scot.",
-  how: "Respond on the consultation portal; you can save and return.",
-  url: "https://consult.gov.scot/health-and-social-care/quality-prescribing-guidance-for-cardiovascular-ri/", urlLabel: "Have your say",
-  src: "https://consult.gov.scot/health-and-social-care/quality-prescribing-guidance-for-cardiovascular-ri/",
-  a: { people: [["Patients with or at risk of heart disease, stroke or diabetes", 1], ["Older people taking several medicines", 0]], groups: [["GPs, pharmacists and NHS staff", 0]], systems: [["Prescribing and health services in Tayside GP practices", 0]] }
-},
-{
-  id: "sg-pubs", title: "Review of the Scottish Pubs Code and Adjudicator",
-  body: "Scottish Government", sector: "central", status: "open",
-  deadline: "2026-12-03", time: "closing time not checked; confirm on the consultation page",
-  topics: ["services"],
-  plain: "A review of the rules for tied pubs, where a pub company owns the pub and the tenant must buy some or all of their drinks and services from it.",
-  detail: "Listed on the Scottish Government consultation hub with a closing date of 3 December 2026; it opened on 10 September 2026. It reviews the Scottish Pubs Code and the role of the Scottish Pubs Code Adjudicator. I did not open the consultation paper, and I did not check how many Dundee or Angus pubs are tied.",
-  how: "Respond online through the Scottish Government consultation hub.",
-  url: "https://consult.gov.scot/agriculture-and-rural-economy/scottish-pubs-code-and-adjudicator-review/", urlLabel: "Have your say",
-  src: "https://consult.gov.scot/consultation_finder/?sort_on=iconsultable_enddate&st=open&sort_order=ascending&in=main+hub&advanced=1",
-  a: { people: [["Tied pub tenants", 1]], groups: [["Pub-owning businesses", 1], ["Local hospitality businesses", 0]], systems: [["Pub rents and supply prices", 0]] }
-},
-{
-  id: "angus-ldp-evidence", title: "Angus Local Development Plan: draft evidence chapters (batches 5 and 6)",
-  body: "Angus Council", sector: "local", status: "open",
-  deadline: "2026-11-16", time: "closing time not stated on the page",
-  topics: ["homes"],
-  plain: "Angus Council wants views on the evidence behind its next Local Development Plan, which will guide where homes and other development go across Angus, including Carnoustie and Monifieth, for ten years.",
-  detail: "Batch 5 covers flooding and water management, housing, soils, and health, safety and wellbeing. Batch 6 covers biodiversity and natural places, community wealth building, and the site assessment methodology. There is a separate survey for each chapter. The council says the chapters are technical and asks for views on the data used, the analysis and the conclusions, at an Angus-wide level; local, place-by-place engagement comes later. The finished Evidence Report goes to the Planning and Environmental Appeals Division for a 'Gatecheck'. Earlier batches (transport, town centres, business and rural development) closed on 6 October 2026.",
-  how: "Read each draft chapter and complete its survey on Engage Angus. Paper copies of the chapters and surveys can be requested at ANGUSalive libraries. Questions to ldp@angus.gov.uk.",
-  url: "https://engage.angus.gov.uk/draft-evidence-report-chapters", urlLabel: "Have your say",
-  src: "https://engage.angus.gov.uk/draft-evidence-report-chapters",
-  a: { people: [["Angus residents, including Carnoustie and Monifieth", 0], ["People needing housing", 1]], groups: [["Landowners and developers", 0], ["Community councils and community groups", 0]], wildlife: [["Habitats and biodiversity in Angus", 1]], systems: [["Housing sites and land use", 1], ["Flooding and water management", 1], ["Soils and natural places", 1]] }
-},
-{
-  id: "angus-budget", title: "Angus Council budget consultation 2027/28: phase 1",
-  body: "Angus Council", sector: "local", status: "open",
-  deadline: "2026-11-16", time: "closing time not stated on the page (dates 19 October to 16 November 2026, checked 26 October 2026)",
-  topics: ["services"],
-  plain: "Angus Council wants to know which services and issues matter most to people where they live, including Carnoustie and Monifieth, before it sets its budget for 2027/28.",
-  detail: "Opened 19 October 2026. The Engage Angus page says rising costs for food, fuel and heating, and higher demand for children's and adult care services, make it harder to afford all current services, and that the council must balance its budget and meet its legal duties. Phase 1 asks general questions about where you live; a second survey later in the year will ask more specific questions about where the council should spend money. An Easy Read version is offered for the first time, and other formats can be requested through the council's accessibility feedback form. Background is in Committee Report 273/26. The page gives no budget gap figure and lists no drop-in events.",
-  how: "Take the online survey on Engage Angus, or download the Easy Read version.",
-  url: "https://engage.angus.gov.uk/angus-council-budget-consultation-2027-28", urlLabel: "Have your say",
-  src: "https://engage.angus.gov.uk/angus-council-budget-consultation-2027-28",
-  a: { people: [["Angus residents, including Carnoustie and Monifieth", 1], ["Children and adults who use care services", 0], ["People who need Easy Read information", 1]], groups: [["Community councils and community groups", 0]], systems: [["The 2027/28 council budget", 1], ["Council services and priorities", 1]] }
-},
-{
-  id: "angus-play", title: "Outdoor play consultation",
-  body: "Angus Council", sector: "local", status: "open",
-  deadline: "2026-11-04", time: "closing date from the project's key dates; closing time not stated",
-  topics: ["services"],
-  plain: "Angus Council wants to hear from children, young people and adults about where they play outdoors, in parks, streets, gardens, woodland and play areas, and how to make it better.",
-  detail: "Opened 17 September 2026. There are separate surveys for children under 6 (with a drawing activity), for children 6 and over and teenagers, for groups led by a teacher or youth leader, and for adults, plus a map tool to pin places that matter. The adult survey says views will help develop the council's open spaces. The closing date, 4 November 2026, comes from the project's key dates as shown in search results; the main page did not show it when I checked.",
-  how: "Choose the survey for your age group on Engage Angus and use the map tool. Paper copies are in local libraries, community campuses and country parks.",
-  url: "https://engage.angus.gov.uk/play-sufficiency-consultation", urlLabel: "Have your say",
-  src: "https://engage.angus.gov.uk/play-sufficiency-consultation",
-  a: { people: [["Children and young people in Angus", 1], ["Parents and carers", 1]], groups: [["Teachers and youth leaders", 1]], systems: [["Play areas, parks and open spaces", 1]] }
-},
-{
-  id: "inchcape-fund", title: "Inch Cape offshore wind community benefit fund: how it should work",
-  body: "Inch Cape Offshore Wind Farm, with SKS Scotland CIC (Montrose, not Carnoustie)", sector: "community", status: "closed",
-  deadline: "2026-10-23", time: "survey closed 23 October 2026; wider engagement with communities and stakeholders runs to the end of November; no results published on 26 October 2026",
-  topics: ["services"],
-  plain: "Closed. A short survey on how a community fund of about £1.9 million from the Inch Cape wind farm off the Angus coast should be shared out in Montrose, Ferryden and Craig, and possibly wider Angus.",
-  detail: "Inch Cape is being built about 15 to 22km off the Angus coast and is expected to be fully operational in 2027, run from a new base at the Port of Montrose. The survey takes about 3 minutes and asks how funding should be split between Montrose, Ferryden and Craig and wider Angus, who can apply, who decides, what grant types to offer and what the fund should achieve. It is not taking funding applications. SKS Scotland says the survey findings will be combined with conversations with communities and stakeholders to develop recommendations for how the fund should be structured, managed and distributed. It is in Montrose, so it is shown under Carnoustie as an Angus comparison; charities and community councils are invited to respond.",
-  how: "The survey has closed. For the wider engagement, contact Nicky Hesketh at SKS Scotland, nickyhesketh@sksscotland.co.uk.",
-  url: "https://www.surveymonkey.com/r/inchcape-fund", urlLabel: "Have your say",
-  src: "https://www.sksscotland.co.uk/inch-cape/",
-  a: { people: [["Residents of Montrose, Ferryden and Craig", 1]], groups: [["Charities, social enterprises and community groups", 1], ["Community councils", 1], ["Local businesses and schools", 1]], systems: [["Community benefit funding from offshore wind", 1]] }
-},
-{
-  id: "nhs-pharmacy", title: "Community pharmacy services in Tayside: public survey",
-  body: "NHS Tayside", sector: "health", status: "decision", nodate: true,
-  deadline: "2026-10-05", time: "survey posted by NHS Tayside on 5 October 2026; the post gives no closing date or time, so check the survey before you rely on it",
-  topics: ["health"],
-  plain: "NHS Tayside wants to hear from people across Tayside, including Dundee, Broughty Ferry, Monifieth and Carnoustie, about using their local community pharmacy and what they know about the services it offers.",
-  detail: "NHS Tayside's social media post says community pharmacies dispense prescriptions, give advice and treatment for minor illnesses, and support people with their medicines and other health needs. The survey asks about your experience of using community pharmacy services and your awareness of what is available. NHS Tayside says the feedback will help it understand local needs, find where improvements may be needed and raise awareness of the services. The survey takes about 10 minutes. The link in the post is a shortened tinyurl address, and I could not open the survey itself, so I could not see a closing date. It is listed as Watch, not Open, for that reason.",
-  how: "Follow the survey link in NHS Tayside's post (the button below opens the same short link).",
-  url: "https://tinyurl.com/h83fzrac", urlLabel: "Take the survey",
-  src: "https://www.instagram.com/p/DeHWOOfCL5P/",
-  a: { people: [["People across Tayside who use community pharmacies", 1], ["Older people and people taking several medicines", 0]], groups: [["Community pharmacies and pharmacy staff", 0]], systems: [["Community pharmacy services and health advice", 1]] }
-},
-{
-  id: "bield-rent", title: "Bield rent plans 2027/28: stage one tenant survey (charity)",
-  body: "Bield Housing and Care (charity and housing association)", sector: "community", status: "decision",
-  deadline: "2026-10-16", time: "stage one survey closed 16 October 2026; Bield says a wider consultation with rent options will follow later in the year, date not announced",
-  topics: ["homes"],
-  plain: "Bield, a housing charity for older people with homes in Angus and across Scotland, asked its tenants what matters most before it sets rent options for 2027/28. A second consultation with costed rent options is due later in the year.",
-  detail: "Bield's page says this was the first stage of its rent consultation, to understand tenants' priorities before it develops detailed rent proposals; decisions affect what tenants pay and the services, investment and support Bield can provide. The later consultation will set out proposed rent options and what each means for tenants in pounds and pence. The survey was for Bield tenants only. Bield's site lists homes such as Clyde Court in Arbroath and Ashgrove Court in Blairgowrie; I did not check which Bield homes are in Dundee, Broughty Ferry, Monifieth or Carnoustie.",
-  how: "Stage one has closed. Bield tenants should watch for the second-stage consultation on Bield's website or contact Bield.",
-  url: "https://www.bield.co.uk/help-shape-bield-s-rent-plans-for-2027-28/", urlLabel: "Read Bield's notice",
-  src: "https://www.bield.co.uk/help-shape-bield-s-rent-plans-for-2027-28/",
-  a: { people: [["Bield tenants, mainly older people, including in Angus", 1]], groups: [["Bield Housing and Care", 1], ["Tenant participation groups", 0]], systems: [["Rents and housing investment", 1]] }
-},
-{
-  id: "naturescot-spbm", title: "Scottish Planning Biodiversity Metric",
-  body: "NatureScot (for the Scottish Government)", sector: "central", status: "open",
-  deadline: "2026-11-30", time: "closing time not stated on the page",
-  topics: ["services"],
-  plain: "A proposed standard way to measure how big developments affect wildlife habitats, and whether they leave nature better off, used in planning decisions across Scotland, including Dundee and Angus.",
-  detail: "Opened 31 August 2026 for 13 weeks. The metric adapts England's biodiversity metric to Scotland and supports National Planning Framework 4 policy 3b, which says national, major or EIA developments should only be supported if they deliver significant biodiversity enhancements. It includes a user guide, an Excel calculation tool and habitat condition sheets (which may not suit assistive technology). NatureScot also wants feedback on a rapid assessment tool for peatland. Version 1 is expected in spring 2027. There are no plans for Scottish legislation on biodiversity metrics.",
-  how: "Respond on NatureScot's Commonplace consultation site. You can also use the Word form and email it, or write to NatureScot, Meadowbank House, 153 London Road, Edinburgh EH8 7AU.",
-  url: "https://spbm.commonplace.is/en-GB/en-GB", urlLabel: "Have your say",
-  src: "https://www.nature.scot/doc/scottish-planning-biodiversity-metric-consultation",
-  a: { people: [["Members of the public with an interest in nature", 1], ["Landowners and land managers", 1]], groups: [["Developers and ecological consultants", 1], ["Planning authorities such as Dundee and Angus councils", 1], ["Environmental groups and NGOs", 1]], wildlife: [["Habitats and wildlife affected by major developments", 1], ["Peatland habitats", 1]], systems: [["Planning decisions on biodiversity", 1]] }
-}
-];
+let ITEMS = [];
 const SECTORS = {local:"Local government", central:"Scottish Government", health:"NHS and health", community:"Business, charity and community"};
 const CATS = {people:"People and communities", groups:"Groups and organisations", wildlife:"Sea and nature", systems:"Services and systems"};
 const LENSES = [
@@ -733,16 +336,7 @@ const LENSES = [
   {cat:"systems", id:"s-tour", label:"Tourism and the city centre", re:/tourism|visitor|golf/i},
   {cat:"systems", id:"s-money", label:"Budgets, rents and prices", re:/budget|rent|price|levy|fees/i}
 ];
-const WATCH = [
-  ["Dundee City Council consultations and surveys", "https://www.dundeecity.gov.uk/consultations-and-surveys"],
-  ["Dundee planning consultations", "https://www.dundeecity.gov.uk/service-area/city-development/local-development-plan/planning-division-consultations"],
-  ["Engage Angus (all projects)", "https://engage.angus.gov.uk/projects"],
-  ["Angus Council news", "https://www.angus.gov.uk/news"],
-  ["Carnoustie Community Council", "https://www.carnoustiecommunitycouncil.org.uk/"],
-  ["Scottish Government consultations", "https://consult.gov.scot/"],
-  ["NatureScot consultations", "https://www.nature.scot/about-naturescot/consultations"],
-  ["NHS Tayside Board", "https://www.nhstayside.scot.nhs.uk/YourHealthBoard/TheBoardanditsCommittees/TaysideNHSBoard/index.htm"]
-];
+let WATCH = [];
 const BIG = [
   {k:"open", label:"Open now"},
   {k:"soon", label:"Closing soonest"},
@@ -812,7 +406,7 @@ function info(it) {
 }
 function daysText(d, c) { return d === 0 ? "Closes today" + (c ? " at " + c : "") : d === 1 ? "1 day left" : d + " days left"; }
 const withStatus = () => ITEMS.map(it => Object.assign({}, it, {i: info(it)}));
-let allInfo = withStatus();
+let allInfo = [];
 const statusKey = () => allInfo.map(x => x.i.phase + x.i.d).join();
 /* Items tied to one place. Everything else (Scottish Government, NHS Tayside) applies to both. */
 const PLACE = {"dundee-ev":"dundee","engage-dundee":"dundee","dundee-levy":"dundee","dundee-ldp":"dundee","dundee-camperdown":"dundee",
@@ -822,8 +416,10 @@ const HEROES = {
   carnoustie: 'Photo: Carnoustie Golf Links clubhouse and hotel, by <a href="https://commons.wikimedia.org/wiki/User:Macieklew" target="_blank" rel="noopener">Macieklew</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Carnoustie_Golf_Links.jpg" target="_blank" rel="noopener">Wikimedia Commons</a> (cropped)'
 };
 let withInfo = [];
+/* Filled by boot() from data.json. dataOk gates render so a failed fetch shows a
+   plain message instead of an empty list that reads like "nothing is open". */
+let COLLECTED = "", dataOk = false, dataErr = "";
 function scope() { withInfo = allInfo.filter(x => !PLACE[x.id] || PLACE[x.id] === st.place); }
-scope();
 
 function lensesOf(it) {
   return LENSES.filter(l => (it.a[l.cat] || []).some(e => l.re.test(e[0])));
@@ -965,7 +561,8 @@ function render() {
   document.querySelectorAll("[data-place]").forEach(b => { if (b.tagName === "BUTTON") b.setAttribute("aria-pressed", b.dataset.place === st.place); });
   $("m-std").setAttribute("aria-pressed", st.mode === "std");
   $("m-big").setAttribute("aria-pressed", st.mode === "big");
-  $("asof").textContent = "Today in " + (st.place === "dundee" ? "Dundee" : "Carnoustie") + ": " + fmt(todayStr) + ". Information collected 26 October 2026.";
+  $("asof").textContent = "Today in " + (st.place === "dundee" ? "Dundee" : "Carnoustie") + ": " + fmt(todayStr) + (COLLECTED ? ". Information collected " + COLLECTED + "." : ".");
+  if (!dataOk) { showFailure(); return; }
   renderAlert(); renderRunway(); renderControls(); renderList();
 }
 document.addEventListener("click", e => {
@@ -991,12 +588,43 @@ document.addEventListener("click", e => {
 (function () { const t = $("totop"); const f = () => { t.hidden = window.scrollY < 700; };
   window.addEventListener("scroll", f, {passive: true}); t.addEventListener("click", () => window.scrollTo({top: 0, behavior: "smooth"})); f(); })();
 document.querySelectorAll('[data-ic]').forEach(e => e.insertAdjacentHTML('afterbegin', ic(e.dataset.ic)));
-render();
-setInterval(() => {
-  const before = statusKey();
-  todayStr = londonDay(); nowHM = londonHM(); allInfo = withStatus();
-  if (statusKey() !== before) render();
-}, 60000);
+function showFailure() {
+  $("alert").innerHTML = '<div class="alert urgent"><div class="sym" aria-hidden="true">' + ic("warn") +
+    '</div><div><strong>The consultation list could not be loaded</strong><span>This page reads its consultations from data.json, which did not load (' +
+    esc(dataErr) + '). Nothing shown here is out of date \u2014 there is simply nothing to show. Reload the page, and if it keeps failing use the official pages below.</span></div></div>';
+  $("runway").innerHTML = "";
+  $("list").innerHTML = '<div class="empty-msg"><strong>No consultations could be loaded.</strong><br>' +
+    'Check the official sources directly: ' +
+    '<a href="https://www.dundeecity.gov.uk/consultations-and-surveys" target="_blank" rel="noopener">Dundee City Council</a>, ' +
+    '<a href="https://engage.angus.gov.uk/projects" target="_blank" rel="noopener">Engage Angus</a>, ' +
+    '<a href="https://consult.gov.scot/" target="_blank" rel="noopener">the Scottish Government hub</a>.</div>';
+  ["bigbar", "tabs", "sectors", "lenses", "watch", "lensbar"].forEach(id => { $(id).innerHTML = ""; });
+}
+async function boot() {
+  try {
+    const r = await fetch("data.json", {cache: "no-cache"});
+    if (!r.ok) throw new Error("data.json returned HTTP " + r.status);
+    const d = await r.json();
+    if (!Array.isArray(d.items)) throw new Error("data.json has no items array");
+    if (!d.items.length) throw new Error("data.json contains no consultations");
+    ITEMS = d.items;
+    WATCH = Array.isArray(d.watch) ? d.watch : [];
+    COLLECTED = typeof d.collected === "string" ? d.collected : "";
+    allInfo = withStatus();
+    dataOk = true;
+    render();
+    setInterval(() => {
+      const before = statusKey();
+      todayStr = londonDay(); nowHM = londonHM(); allInfo = withStatus();
+      if (statusKey() !== before) render();
+    }, 60000);
+  } catch (e) {
+    dataOk = false;
+    dataErr = (e && e.message) ? e.message : String(e);
+    render();
+  }
+}
+boot();
 </script>
 
 
