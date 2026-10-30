@@ -1,0 +1,5 @@
+{
+  "name": "guardrails",
+  "version": "0.1.0",
+  "description": "Denies destructive shell commands and blocks credential-shaped strings before they are written or echoed"
+}

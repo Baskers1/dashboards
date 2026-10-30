@@ -1,0 +1,5 @@
+{
+  "name": "decision-log",
+  "version": "0.1.0",
+  "description": "Catches decisions stated in conversation and appends them, dated, to memory/decisions.md"
+}

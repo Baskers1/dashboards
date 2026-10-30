@@ -1,0 +1,43 @@
+{
+  "name": "baskers-mods",
+  "description": "Claude Code interface mods: guardrails, session telemetry, an asks pane, a GOV.UK house-style brief, a decision log and ship commands",
+  "owner": { "name": "baskers1" },
+  "plugins": [
+    {
+      "name": "guardrails",
+      "description": "Denies destructive shell commands and blocks credential-shaped strings before they are written or echoed",
+      "version": "0.1.0",
+      "source": "./claude-mods/guardrails"
+    },
+    {
+      "name": "session-pulse",
+      "description": "Context fill on the status line, spend above the prompt, and a chime when a long run finishes",
+      "version": "0.1.0",
+      "source": "./claude-mods/session-pulse"
+    },
+    {
+      "name": "task-pane",
+      "description": "A pane beside the chat listing everything you asked for this session, ticked as each lands",
+      "version": "0.1.0",
+      "source": "./claude-mods/task-pane"
+    },
+    {
+      "name": "house-style",
+      "description": "Adds GOV.UK content style, WCAG 2.2 AA and Service Standard expectations to the system prompt, toggleable per machine",
+      "version": "0.1.0",
+      "source": "./claude-mods/house-style"
+    },
+    {
+      "name": "decision-log",
+      "description": "Catches decisions stated in conversation and appends them, dated, to memory/decisions.md",
+      "version": "0.1.0",
+      "source": "./claude-mods/decision-log"
+    },
+    {
+      "name": "ship-kit",
+      "description": "/adr drafts a numbered Architecture Decision Record; /ship runs the repo's own checks and pushes only when they are green",
+      "version": "0.1.0",
+      "source": "./claude-mods/ship-kit"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "name": "house-style",
+  "version": "0.1.0",
+  "description": "Adds GOV.UK content style, WCAG 2.2 AA and Service Standard expectations to the system prompt, toggleable per machine"
+}
