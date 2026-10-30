@@ -1,0 +1,5 @@
+{
+  "name": "ship-kit",
+  "version": "0.1.0",
+  "description": "/adr drafts a numbered Architecture Decision Record; /ship runs the repo's own checks and pushes only when they are green"
+}

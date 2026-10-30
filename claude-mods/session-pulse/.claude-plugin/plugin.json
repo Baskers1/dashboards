@@ -1,0 +1,6 @@
+{
+  "name": "session-pulse",
+  "version": "0.1.0",
+  "description": "Context fill on the status line, spend above the prompt, and a chime when a long run finishes",
+  "types": "./types/index.d.ts"
+}

@@ -1,0 +1,6 @@
+{
+  "name": "task-pane",
+  "version": "0.1.0",
+  "description": "A pane beside the chat listing everything you asked for this session, ticked as each lands",
+  "types": "./types/index.d.ts"
+}
