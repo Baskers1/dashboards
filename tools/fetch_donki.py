@@ -2,13 +2,12 @@
 """Fetch the NASA DONKI feeds for the Space Weather dashboard and save a snapshot.
 
 Usage: python3 tools/fetch_donki.py [out_path]     (default data/donki.json)
-Run by .github/workflows/donki.yml. The live page in Claude fetches the same feeds through
-TinyFish; the GitHub Pages copy reads this snapshot instead. The file uses the same
-{results:[{url,text}], errors:[{url,error}]} shape as TinyFish's fetch_content, so the page
-parses and validates both the same way. No API key is needed.
+Run every 3 hours by tools/donki-update.sh (launchd job com.dashboards.donki on the iMac).
+sky/space-weather/index.html reads the snapshot, shaped {results:[{url,text}], errors:[{url,error}]},
+and validates every record. No API key is needed.
 Exits non-zero and leaves the old snapshot alone when neither flares nor CMEs came back.
 Leaves the file untouched when the data hasn't changed (and it's under a day old), so the
-workflow only commits real changes.
+job only commits real changes.
 """
 import datetime as dt, json, os, sys, urllib.request
 
