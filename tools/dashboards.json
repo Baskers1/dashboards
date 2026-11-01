@@ -336,6 +336,13 @@
    "refresh_tasks": []
   },
   {
+   "id": "local:sky-iss",
+   "area": "sky",
+   "slug": "iss",
+   "name": "ISS live position",
+   "refresh_tasks": []
+  },
+  {
    "id": "local:sky-ramsgate",
    "area": "sky",
    "slug": "ramsgate",

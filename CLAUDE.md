@@ -87,14 +87,50 @@ So it was an ad-hoc publish that ran part of the task's step 3 by hand, copying
 four stale `work/<town>/dashboard.html` files left over from the morning build
 and omitting the `--harden-only` line.
 
-The structural gap: the harden step exists only inside those two task prompts.
-Nothing in this repository enforces it, so any manual or ad-hoc publish bypasses
-it silently, and `sync-rules` only catches it once it is already on `main` —
-where a red run on a push nobody reads is invisible. Before publishing a sky
-page by hand, run `python3 tools/sync.py --harden-only` and confirm
-`grep -c 'id="dash-guard"' sky/<town>/index.html` prints 1. A pre-commit hook
-rejecting a commit that stages an unhardened `sky/*/index.html` would move the
-guard from two prompts into the repo; not implemented yet.
+That was possible because the harden step existed only inside those two task
+prompts. Nothing in the repository enforced it, so any ad-hoc publish bypassed it
+silently, and `sync-rules` only caught the result once it was already on `main` —
+where a red run on a push nobody reads is invisible.
+
+## The pre-commit guard
+
+`tools/githooks/pre-commit` now refuses any commit that stages a published page
+`tools/sync.py` would still change. It is tracked, so it travels with the repo,
+but git never enables a hook automatically — **install it once per clone**:
+
+    git config core.hooksPath tools/githooks
+
+It checks the *staged* text, not the working tree, since that is what a commit
+publishes. `tools/check_hardened.py` does the work by applying
+`sync.page_text()` — the same `harden(redact(rewrite_links(t)))` pipeline
+`fix_pages` writes with — and refusing anything it would alter. That shared
+function is deliberate: a hook that grepped for `dash-guard` would drift from
+what `sync.py` actually requires, and would wave through a page that is hardened
+but still carries an unrewritten link or an unredacted contact detail.
+
+Two properties worth preserving if it is ever edited:
+
+- It looks for python only once HTML is actually staged, so the launchd jobs that
+  commit data files alone (`data/iss.json`, `data/donki.json`) never reach that
+  code and cannot be broken by it.
+- It fails closed. No python, or a `git diff` that errors, refuses the commit
+  rather than passing; `git commit --no-verify` is the deliberate bypass.
+
+`python3 tools/test_check_hardened.py` covers it and runs in CI.
+
+## A page absent from dashboards.json is never hardened
+
+`sync.py --harden-only` iterates `tools/dashboards.json`, so a page published
+without an entry there is outside the harden regime *and* invisible to
+`sync-rules`, which only compares what that command would write. `sky/iss/`
+was added in `cbfde37` and served live with an inline script, no CSP and no
+dash-guard for exactly that reason — the same class of bug as the drift above,
+with no red CI to betray it.
+
+It now has a `local:sky-iss` entry, mirroring `space-weather` (a sky dashboard
+with no town, refreshed by its own job), which brings it under both the harden
+command and CI, and lists it on the hub. When adding a published page, add its
+`dashboards.json` entry in the same commit, or nothing will ever check it.
 
 ## Known weak spot in `~/bin/sync-dashboards.sh`
 

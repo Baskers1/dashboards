@@ -123,6 +123,16 @@ def sync_one(src_root, d):
     return None
 
 
+def page_text(t):
+    """The exact text a published HTML page must carry.
+
+    The one place this pipeline is spelled out: tools/check_hardened.py applies it to
+    staged pages so the pre-commit hook and this sync can never disagree about what
+    "already hardened" means.
+    """
+    return harden(redact(rewrite_links(t)))
+
+
 def fix_pages(dst):
     """Drop non-browser files, then fix links, redact and harden every HTML page under dst.
     Returns the paths removed, relative to dst."""
@@ -144,7 +154,7 @@ def fix_pages(dst):
             elif ext in (".html", ".htm"):
                 with open(p, encoding="utf-8", newline="") as f:
                     t = f.read()
-                t2 = harden(redact(rewrite_links(t)))
+                t2 = page_text(t)
                 if t2 != t:
                     with open(p, "w", encoding="utf-8", newline="") as f:
                         f.write(t2)
