@@ -33,14 +33,15 @@ Three habits to keep:
 
 ## Scheduled jobs on the iMac (`baskersimac@iMac`)
 
-Both are launchd agents in `~/Library/LaunchAgents`, run only while the user is
+All three are launchd agents in `~/Library/LaunchAgents`, run only while the user is
 logged in, and hardcode
 `/Users/baskersimac/.pyenv/versions/3.13.15/bin/python3` because launchd
-supplies a bare `PATH`. A pyenv upgrade silently breaks both.
+supplies a bare `PATH`. A pyenv upgrade silently breaks them all.
 
 | Job | Script | Interval | Repo | Logs |
 |---|---|---|---|---|
 | `com.dashboards.iss` | `tools/iss-update.sh` (in this repo) | 600s | `~/dashboards`, SSH remote | `/tmp/dashboards-iss.{log,err}` |
+| `com.dashboards.donki` | `tools/donki-update.sh` (in this repo) | 10800s | `~/dashboards`, SSH remote | `/tmp/dashboards-donki.{log,err}` |
 | hourly sync | `~/bin/sync-dashboards.sh` (not in this repo) | hourly at :10 | `~/dashboards-source`, HTTPS + keychain | `~/dashboards-source/.last-sync-status.txt` |
 
 Credentials: the keychain works fine under launchd — do not "fix" it. This
