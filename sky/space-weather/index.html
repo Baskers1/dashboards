@@ -1,4 +1,4 @@
-<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'sha256-wtfvOTAIuZhtj82dWvEg0+on4rCosj8hLM1oIZWcRl4=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
+<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'sha256-dpp01xCHKITWlwnhX5q9yx9St9UDCQD5WN/nBBMMjA4=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
 var SCHEME=/^\s*([a-z][a-z0-9+.\-]*):/i,HREF={http:1,https:1,mailto:1,tel:1},SRC={http:1,https:1,blob:1};
 function okUrl(v,isSrc){var c=String(v).replace(/[\u0000- ]/g,""),m=SCHEME.exec(c);if(!m)return true;var s=m[1].toLowerCase();
 if(isSrc&&s==="data")return /^data:image\//i.test(c);return !!(isSrc?SRC:HREF)[s];}
@@ -443,7 +443,7 @@ const GLOSS=[['CME','Coronal mass ejection: a cloud of solar plasma thrown into 
  ['WSA-Enlil','The model NASA uses to forecast when a CME will arrive. Arrival times can be off by several hours.']];
 function footHtml(){
   return '<details><summary>Glossary</summary><dl>'+GLOSS.map(g=>'<dt>'+g[0]+'</dt><dd>'+g[1]+'</dd>').join('')+'</dl></details>'
-   +'<p>Source: NASA CCMC DONKI API. Data pulled '+esc(M.pulled)+'. Fetched live from NASA through your TinyFish connector each time the page opens, then refreshed every 30 minutes while it stays open.</p>'
+   +'<p>Source: NASA CCMC DONKI API. Data pulled '+esc(M.pulled)+'. Fetched from NASA every 3 hours by a scheduled job on an iMac; this page shows the latest saved copy.</p>'
    +'<p>'+(partial?'<strong>Coverage.</strong> The CME list covers '+cmeLabel+' only; flares, shocks and other feeds cover '+winLabel+'.':'<strong>Coverage.</strong> All feeds cover '+winLabel+'.')+' An empty list means no events were logged.</p>';
 }
 
@@ -480,11 +480,10 @@ $('#tzbtn').onclick=()=>{TZ=TZ==='UTC'?'Europe/London':'UTC';store.set('donki-tz
 render();
 const h0=(location.hash||'').slice(1);show(labels[h0]?h0:'overview');
 }
-/* ---------- live data: NASA DONKI via the viewer's TinyFish connector ----------
-   One fetch_content call carries all nine feeds (TinyFish takes up to 10 URLs, and
-   fetch is free). The response is the raw feed text: no summariser, nothing retyped.
-   Every record is validated before it reaches the page, exactly as build_donki.py did. */
-const SERVER='TinyFish', TOOL='fetch_content', API='https://ccmc.gsfc.nasa.gov/DONKI-API/get/';
+/* ---------- data: the NASA DONKI snapshot in data/donki.json ----------
+   Written every 3 hours by tools/donki-update.sh on the owner's iMac (launchd).
+   Every record is validated before it reaches the page. */
+const API='https://ccmc.gsfc.nasa.gov/DONKI-API/get/';
 const ISO=/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2}(\.\d+)?)?Z?$/, FCLASS=/^[ABCMX]\d+(\.\d+)?$/;
 const TIMEKEY={CME:'startTime',FLR:'peakTime',SEP:'eventTime',IPS:'eventTime',HSS:'eventTime',RBE:'eventTime',GST:'startTime',MPC:'eventTime',notifications:'messageIssueTime'};
 const LABEL={CME:'CMEs',FLR:'flares',SEP:'particle events',IPS:'shocks',HSS:'high speed streams',RBE:'radiation belt',GST:'storms',MPC:'magnetopause',notifications:'notifications'};
@@ -500,8 +499,7 @@ function feedUrls(w){
     HSS:u('HSS',w.start),RBE:u('RBE',w.start),GST:u('GST',w.start),MPC:u('MPC',w.start),
     notifications:u('notifications',w.start11,'&type=all'),CME:u('CME',w.start)};
 }
-/* TinyFish returns markdown, which escapes characters such as _ ("M2M\_CATALOG").
-   Those are never valid JSON escapes, so drop the backslash; keep real JSON escapes. */
+/* Drop invalid JSON escapes such as \_ (older snapshots came from markdown); keep real ones. */
 const unmd=t=>t.replace(/\\(["\\/bfnrtu])|\\(.)/g,(m,keep,ch)=>keep?m:ch);
 function parseFeed(text){
   const t=unmd(String(text||'')).trim();
@@ -591,65 +589,29 @@ function pageMessage(lv,h,d,btn){
   s.querySelector('h2').textContent=h;s.querySelector('p').textContent=d;
   if(btn){const b=$('#msgbtn');b.textContent=btn.label;b.onclick=btn.go}
 }
-/* Copy per error code, so each message names the fix that applies. */
-function explain(err){
-  const c=err&&err.code;
-  if(c==='server_not_connected'||c==='server_not_found'||c==='selection_required') return ['TinyFish is not connected','This dashboard reads NASA data through your TinyFish connector. Add or choose TinyFish in claude.ai Settings → Connectors, then reload.'];
-  if(c==='needs_reauth') return ['TinyFish needs reconnecting','Reconnect TinyFish in claude.ai Settings → Connectors, then reload.'];
-  if(c==='not_in_manifest'||c==='consent_required') return ['TinyFish is switched off for this page','Allow TinyFish in this page\'s Permissions menu to load live data.'];
-  if(c==='approval_required') return ['Approval needed','The page needs your OK to fetch from NASA through TinyFish.'];
-  if(c==='blocked_by_policy') return ['Blocked by your organisation','Your organisation\'s policy does not allow TinyFish here.'];
-  if(c==='tool_error') return ['TinyFish could not fetch the feeds','It reported: '+(err.message||'no detail')+'. NASA\'s DONKI service may be down; try again later.'];
-  if(c==='server_unavailable'||c==='rate_limited') return ['TinyFish is not answering','This is usually brief.'];
-  return ['Live data could not load',(err&&err.message)||'Unknown problem.'];
-}
 
 let haveData=false;
 function deliver(res,w,urls){
   const p=payloadOf(res);
-  if(!p||!p.results){if(!haveData)pageMessage('crit','Live data could not load','TinyFish answered, but not in the expected shape.');return}
+  if(!p||!p.results){if(!haveData)pageMessage('crit','Data could not load','The snapshot is not in the expected shape.');return}
   const out=buildData(p,w,urls,(res.cache&&res.cache.storedAt)||Date.now());
   if(!out.usable){if(!haveData)pageMessage('crit','No usable data','Neither the flare nor the CME feed came back usable. '+out.problems.join('; ')+'.');return}
   haveData=true;
   start(out.D);
   if(out.problems.length){const c=$('#cover');c.textContent=(c.textContent?c.textContent+' ':'')+'Some feeds had problems: '+out.problems.join('; ')+'.'}
 }
-async function boot(){
-  pageMessage('good','Loading live data','Fetching nine NASA DONKI feeds through your TinyFish connector.');
-  const mcp=await claude.use('mcp');
-  if(!mcp){pageMessage('warn','Live data is not available here','Open this page in claude.ai, signed in with TinyFish connected, to load NASA data.');return}
-  const w=window30(Date.now()),urls=feedUrls(w);
-  const input={urls:Object.values(urls),format:'markdown',links:false,image_links:false,iframe_links:false,page_metadata:false,ttl:900,
-    purpose:'NASA DONKI space weather feeds (raw JSON) for a personal dashboard'};
-  const cache={staleTime:300000,gcTime:86400000};
-  const fetchOnce=()=>mcp.callTool(SERVER,TOOL,input,{cache}).then(r=>deliver(r,w,urls))
-    .catch(e=>{const [h,d]=explain(e);if(!haveData)pageMessage('crit',h,d)});
-  mcp.watchTool(SERVER,TOOL,input,ev=>{
-    if(ev.type==='data') return deliver(ev.result,w,urls);
-    const e=ev.error||{},c=e.code;
-    if(['needs_reauth','server_not_connected','blocked_by_policy','not_in_manifest'].includes(c)) haveData=false; // a denial retracts data
-    if(haveData){const f=$('#fresh');if(!f.textContent.startsWith('▲ Refresh failed'))f.textContent='▲ Refresh failed. '+f.textContent;f.classList.add('stale');return}
-    const [h,d]=explain(e);
-    if(c==='approval_required') return pageMessage('warn',h,d,{label:'Allow and load',go:fetchOnce});
-    if(e.retryable) return pageMessage('warn',h,d,{label:'Try again',go:fetchOnce});
-    pageMessage('crit',h,d);
-  },{cache,refetchInterval:1800000});
-}
-/* Outside Claude (the GitHub Pages copy) there is no connector: read the snapshot that the
-   repo's GitHub Actions job commits to data/donki.json. Same {results, errors} shape as TinyFish. */
 const SNAPSHOT='../../data/donki.json';
 async function bootSnapshot(){
-  pageMessage('good','Loading the latest snapshot','Reading the NASA DONKI snapshot saved by the scheduled job.');
+  pageMessage('good','Loading the latest snapshot','Reading the NASA DONKI snapshot saved by the iMac job.');
   let s;
   try{const r=await fetch(SNAPSHOT,{cache:'no-cache'});if(!r.ok)throw new Error('HTTP '+r.status);s=await r.json()}
-  catch(e){return pageMessage('crit','Snapshot unavailable','The saved NASA data could not be read ('+e.message+'). Open the dashboard in claude.ai for live data.')}
+  catch(e){return pageMessage('crit','Snapshot unavailable','The saved NASA data could not be read ('+e.message+').')}
   const w=s&&s.window;
   if(!w||!/^\d{4}-\d{2}-\d{2}$/.test(w.end||'')||!s.payload) return pageMessage('crit','Snapshot unreadable','The saved NASA data is not in the expected shape.');
   const fetched=Date.parse(s.fetchedAt);
   deliver({payload:s.payload,cache:isNaN(fetched)?undefined:{storedAt:fetched}},w,feedUrls(w));
 }
-if(window.claude&&window.claude.use) boot();
-else bootSnapshot();
+bootSnapshot();
 
 </script>
 

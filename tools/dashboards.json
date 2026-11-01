@@ -329,7 +329,10 @@
    "name": "Referral Waits"
   },
   {
-   "id": "NvPaKgRWa6JmtNSsPp5MFH",
+   "id": "local:space-weather",
+   "aliases": [
+    "NvPaKgRWa6JmtNSsPp5MFH"
+   ],
    "area": "sky",
    "slug": "space-weather",
    "name": "Space Weather (NASA DONKI)",
