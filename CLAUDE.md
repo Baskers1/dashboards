@@ -118,6 +118,18 @@ Two properties worth preserving if it is ever edited:
 
 `python3 tools/test_check_hardened.py` covers it and runs in CI.
 
+`tools/githooks/pre-push` lives beside it and guards `main` against force-pushes
+and deletions (installed 2026-10-21, originally in `.git/hooks`). Both hooks are
+served from the one directory because **`core.hooksPath` replaces `.git/hooks`
+wholesale rather than adding to it**: setting it silently disabled this pre-push
+hook until it was moved here, since `tools/githooks/` held only `pre-commit`.
+Verified, not assumed — with `core.hooksPath` set, a `.git/hooks/pre-push` that
+exits 1 does not run and the push succeeds. So any hook this repo relies on must
+live in `tools/githooks/`, and before telling anyone to set `core.hooksPath`,
+check `ls .git/hooks/ | grep -v '\.sample$'` for hooks that would be switched
+off. Fast-forward pushes, including the ISS job's, are unaffected;
+`git push --no-verify` is the deliberate bypass.
+
 ## A page absent from dashboards.json is never hardened
 
 `sync.py --harden-only` iterates `tools/dashboards.json`, so a page published
