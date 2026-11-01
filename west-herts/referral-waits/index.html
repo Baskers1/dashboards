@@ -1,4 +1,4 @@
-<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'sha256-qcxkPNBBVAompRVCDS4UUEoQI1Fk51xE4CxC6PLYbJg=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
+<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-CcXqEycPx/2dgA9geGoGRrWvOmt2sFAqG6+FLGy5k8Y=' 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'sha256-aFzpM0gtnnsaPkYmPtptXD3ThWjZwdfYgLLvc8/T/z8=' 'sha256-kCiKSO6CV8ufGz0k/uy82ro5pb5DG8GVZlErOJsOB7s=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
 var SCHEME=/^\s*([a-z][a-z0-9+.\-]*):/i,HREF={http:1,https:1,mailto:1,tel:1},SRC={http:1,https:1,blob:1};
 function okUrl(v,isSrc){var c=String(v).replace(/[\u0000- ]/g,""),m=SCHEME.exec(c);if(!m)return true;var s=m[1].toLowerCase();
 if(isSrc&&s==="data")return /^data:image\//i.test(c);return !!(isSrc?SRC:HREF)[s];}
@@ -12,15 +12,17 @@ function fixTree(n){if(n.nodeType!==1)return;fixOne(n);var all=n.getElementsByTa
 new MutationObserver(function(ms){for(var i=0;i<ms.length;i++){var m=ms[i];if(m.type==="attributes")fixOne(m.target);
 else for(var j=0;j<m.addedNodes.length;j++)fixTree(m.addedNodes[j]);}}).observe(document.documentElement,{childList:true,subtree:true,attributes:true});
 })();</script><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>West Herts · Referral Waits</title>
+<title>NHS West Herts Referral and Waiting Data</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Fraunces:opsz,wght@9..144,600&display=swap">
 <style>
+[hidden]{display:none!important}
+html{font-size:100%}
 :root{
   --bg:#f3f6f7; --surface:#ffffff; --surface2:#e9eff1; --line:#d3dde1;
   --ink:#13232b; --ink2:#4a5d66; --accent:#0a5c6e; --accent-ink:#ffffff; --home:#0a5c6e;
-  --good:#2b7a4b; --mid:#5f8f3a; --warn:#b5741a; --bad:#b03a3a;
+  --good:#2b7a4b; --mid:#5f8f3a; --warn:#9a5f0e; --bad:#b03a3a;
   --bar:#0a5c6e; --bar-track:#e3eaed;
   --font:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
   --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
@@ -41,65 +43,66 @@ else for(var j=0;j<m.addedNodes.length;j++)fixTree(m.addedNodes[j]);}}).observe(
   --bar:#57b9cc; --bar-track:#20393f; color-scheme:dark;
 }
 *{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:14px;line-height:1.45;padding-inline:16px;padding-block:20px 40px}
+body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:0.875rem;line-height:1.45;padding-inline:16px;padding-block:20px 40px}
 .wrap{max-width:1100px;margin:0 auto}
 h1{font-family:var(--display);font-weight:600;font-size:clamp(1.6rem,4vw,2.1rem);margin:0 0 4px;letter-spacing:-.01em;text-wrap:balance}
 .sub{color:var(--ink2);margin:0 0 18px;max-width:70ch}
 .filters{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px;display:grid;gap:14px;margin-bottom:16px}
 .frow{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
-.lbl{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin-bottom:6px;font-weight:600}
+.lbl{display:block;font-size:0.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin-bottom:6px;font-weight:600}
 select{width:100%;font:inherit;color:var(--ink);background:var(--surface2);border:1px solid var(--line);border-radius:4px;padding:8px 10px}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{font:inherit;font-size:13px;color:var(--ink);background:var(--surface2);border:1px solid var(--line);border-radius:999px;padding:5px 12px;cursor:pointer}
+.chip{font:inherit;font-size:0.8125rem;color:var(--ink);background:var(--surface2);border:1px solid var(--line);border-radius:999px;padding:5px 12px;cursor:pointer}
 .chip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
-.chip .home{font-size:10px;opacity:.85;margin-left:6px;letter-spacing:.06em}
+h2.ph{font-size:1.0625rem;margin:0 0 10px;font-weight:600}
+.chip .home{font-size:0.75rem;opacity:.85;margin-left:6px;letter-spacing:.06em}
 button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .seg{display:inline-flex;border:1px solid var(--line);border-radius:4px;overflow:hidden}
 .seg button{font:inherit;background:var(--surface2);color:var(--ink);border:0;padding:7px 14px;cursor:pointer}
 .seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
-.check{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--ink2)}
+.check{display:flex;gap:8px;align-items:center;font-size:0.8125rem;color:var(--ink2)}
 .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:16px}
 .tile{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px}
-.tile .k{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);font-weight:600}
+.tile .k{font-size:0.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);font-weight:600}
 .tile .v{font-family:var(--mono);font-size:1.5rem;font-weight:500;margin-top:2px;font-variant-numeric:tabular-nums}
-.tile .n{font-size:12px;color:var(--ink2)}
+.tile .n{font-size:0.75rem;color:var(--ink2)}
 .panel{background:var(--surface);border:1px solid var(--line);border-radius:6px;overflow:hidden}
-.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--ink2);padding:10px 14px;border-bottom:1px solid var(--line)}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:0.75rem;color:var(--ink2);padding:10px 14px;border-bottom:1px solid var(--line)}
 .legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
 .row{display:grid;grid-template-columns:minmax(150px,1.3fr) minmax(160px,2fr) 104px 76px;gap:14px;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line)}
 .row:last-child{border-bottom:0}
-.row.head{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);font-weight:600;background:var(--surface2)}
+.row.head{font-size:0.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);font-weight:600;background:var(--surface2)}
 .who b{display:block;font-weight:500}
-.who span{font-size:12px;color:var(--ink2)}
+.who span{font-size:0.75rem;color:var(--ink2)}
 .who .homebadge{color:var(--home);font-weight:600}
 .track{position:relative;height:18px;background:var(--bar-track);border-radius:3px}
 .fill{position:absolute;inset:0 auto 0 0;background:var(--bar);border-radius:3px}
-.track .val{position:absolute;top:0;line-height:18px;font-family:var(--mono);font-size:12px;color:var(--ink);white-space:nowrap}
+.track .val{position:absolute;top:0;line-height:18px;font-family:var(--mono);font-size:0.75rem;color:var(--ink);white-space:nowrap}
 .num{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right}
-.pill{display:inline-block;font-family:var(--mono);font-size:12px;padding:2px 8px;border-radius:999px;border:1px solid currentColor;font-variant-numeric:tabular-nums}
-.pill.g{color:var(--good)}.pill.m{color:var(--warn)}.pill.r{color:var(--bad)}
+.pill{display:inline-block;font-family:var(--mono);font-size:0.75rem;padding:2px 8px;border-radius:999px;border:1px solid currentColor;font-variant-numeric:tabular-nums}
+.st-good{color:var(--good)}.st-mid{color:var(--warn)}.st-bad{color:var(--bad)}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .scroll{overflow-x:auto}
 table.heat{border-collapse:collapse;width:100%;min-width:640px}
 .heat th,.heat td{padding:8px 10px;text-align:center;border-bottom:1px solid var(--line)}
-.heat th{font-size:12px;font-weight:600;color:var(--ink2);background:var(--surface2)}
+.heat th{font-size:0.75rem;font-weight:600;color:var(--ink2);background:var(--surface2)}
 .heat th:first-child,.heat td:first-child{text-align:left;font-weight:500;color:var(--ink)}
 .heat td.c{font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--ink)}
 .heat td.na{color:var(--ink2)}
-.heat tr.hl td:first-child{box-shadow:inset 3px 0 0 var(--accent)}
-.heat .sm{display:block;font-size:10px;color:var(--ink2);font-family:var(--font)}
+.heat tr.hl>:first-child{box-shadow:inset 3px 0 0 var(--accent)}
+.heat .sm{display:block;font-size:0.75rem;color:var(--ink2);font-family:var(--font)}
 .heat .band-g{background:color-mix(in srgb,var(--good) 24%,var(--surface))}
 .heat .band-m{background:color-mix(in srgb,var(--mid) 24%,var(--surface))}
 .heat .band-w{background:color-mix(in srgb,var(--warn) 28%,var(--surface))}
 .heat .band-b{background:color-mix(in srgb,var(--bad) 30%,var(--surface))}
 .trusts{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin-top:16px}
 .tcard{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px}
-.tcard h3{font-size:14px;margin:0 0 4px}
-.tcard p{margin:0 0 6px;font-size:12px;color:var(--ink2)}
-.tcard dl{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;margin:0;font-size:12px}
+.tcard h3{font-size:0.875rem;margin:0 0 4px}
+.tcard p{margin:0 0 6px;font-size:0.75rem;color:var(--ink2)}
+.tcard dl{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;margin:0;font-size:0.75rem}
 .tcard dt{color:var(--ink2)}.tcard dd{margin:0;font-family:var(--mono);text-align:right;font-variant-numeric:tabular-nums}
-.areanote{margin:0;padding:10px 12px;background:var(--surface2);border-radius:4px;font-size:13px;color:var(--ink)}
 .empty{padding:28px;text-align:center;color:var(--ink2)}
-.notes{margin-top:18px;font-size:12px;color:var(--ink2);max-width:80ch}
+.notes{margin-top:18px;font-size:0.75rem;color:var(--ink2);max-width:80ch}
 .notes p{margin:0 0 8px}
 .notes a{color:var(--accent)}
 button.th{font:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-align:inherit}
@@ -109,7 +112,7 @@ button.th:hover{color:var(--accent)}
 .row.hit:hover{background:var(--surface2)}
 .tile.hit:hover,.tcard.hit:hover{border-color:var(--accent)}
 .heat td.hit:hover,.heat th.hit:hover{outline:2px solid var(--accent);outline-offset:-2px}
-.lg{font:inherit;font-size:12px;color:var(--ink2);background:none;border:1px solid transparent;border-radius:999px;padding:2px 8px;cursor:pointer}
+.lg{font:inherit;font-size:0.75rem;color:var(--ink2);background:none;border:1px solid transparent;border-radius:999px;padding:2px 8px;cursor:pointer}
 .lg[aria-pressed="true"]{border-color:var(--accent);color:var(--ink);background:var(--surface2)}
 .btn{font:inherit;color:var(--ink);background:var(--surface2);border:1px solid var(--line);border-radius:4px;padding:7px 14px;cursor:pointer}
 .btn:hover{border-color:var(--accent)}
@@ -119,14 +122,127 @@ button.th:hover{color:var(--accent)}
   .row .barcell{grid-column:1 / -1;order:3}
   .row.head{display:none}
 }
+
+.srcbar{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px;margin-bottom:16px}
+.srcs{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:10px}
+.src{font:inherit;text-align:left;color:var(--ink);background:var(--surface2);border:1px solid var(--line);border-radius:6px;padding:10px 12px;cursor:pointer}
+.src b{display:block;font-weight:600}
+.src span{display:block;font-size:0.75rem;color:var(--ink2);margin-top:2px}
+.src[aria-selected="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);background:var(--surface)}
+.src:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.srcinfo{margin-top:12px;font-size:0.8125rem;color:var(--ink2);display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center}
+.srcinfo a,.notes a,.plain a{color:var(--accent)}
+.srcinfo .inst{color:var(--ink);font-weight:600}
+.plain{padding:14px}
+.plain p{margin:0 0 10px;max-width:75ch}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;font-size:0.8125rem;margin:0 0 12px}
+.kv dt{color:var(--ink2)}.kv dd{margin:0}
+.rate{display:inline-block;font-size:0.75rem;padding:2px 8px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.rate.o{color:var(--good);font-weight:600}.rate.g{color:var(--good)}.rate.ri{color:var(--warn)}.rate.i{color:var(--bad)}
+table.cqc{border-collapse:collapse;width:100%;min-width:1000px}.cqc tbody th{min-width:190px}.cqc a{color:var(--accent)}.cqc .rate{font-size:0.75rem;padding:2px 7px}
+.cqc th,.cqc td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--line);font-size:0.8125rem}
+.cqc th{font-size:0.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);background:var(--surface2);font-weight:600}
+.cqc tr.hl>:first-child{box-shadow:inset 3px 0 0 var(--accent)}
+.heat tbody th,.cqc tbody th,.od tbody th{background:none;font-size:inherit;letter-spacing:normal;text-transform:none;color:var(--ink);font-weight:500;text-align:left}
+.old{color:var(--warn);font-size:0.75rem}
+.btnlink{display:inline-block;font:inherit;color:var(--ink);background:var(--surface2);border:1px solid var(--line);border-radius:4px;padding:7px 14px;text-decoration:none;margin:0 8px 8px 0}
+.btnlink:hover{border-color:var(--accent)}
+.ebar{display:grid;grid-template-columns:minmax(160px,1.2fr) minmax(160px,2fr) 60px;gap:14px;align-items:center;padding:9px 14px;border-bottom:1px solid var(--line)}
+.ebar:last-child{border-bottom:0}
+.ebar.head{font-size:0.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);font-weight:600;background:var(--surface2)}
+.ebar.all{background:var(--surface2)}
+@media (max-width:640px){.ebar{grid-template-columns:1fr 50px}.ebar .barcell{grid-column:1 / -1;order:3}.ebar.head{display:none}}
+
+.tabs2{display:inline-flex;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.tabs2 button{font:inherit;background:var(--surface2);color:var(--ink);border:0;padding:7px 14px;cursor:pointer}
+.tabs2 button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.ochart{padding:14px}
+.ochart h3{font-size:0.875rem;margin:0 0 2px}
+.ochart .cap{font-size:0.75rem;color:var(--ink2);margin:0 0 10px}
+.key{display:flex;gap:16px;flex-wrap:wrap;font-size:0.75rem;color:var(--ink2);margin-bottom:10px}
+.key i{display:inline-block;width:12px;height:4px;border-radius:2px;margin-right:6px;vertical-align:middle}
+.pl{display:grid;grid-template-columns:minmax(150px,1.1fr) minmax(200px,3fr);gap:6px 14px;align-items:center;padding:6px 0;border-bottom:1px solid var(--line)}
+.pl:last-child{border-bottom:0}
+.pl .bars{display:grid;gap:3px}
+.bar{position:relative;height:10px;background:var(--bar-track);border-radius:2px}
+.bar>b{position:absolute;inset:0 auto 0 0;border-radius:0 4px 4px 0}
+.bar.a>b{background:var(--accent)}.bar.a.muted>b{background:var(--ink2);opacity:.4}.bar.e>b{background:var(--ink2);opacity:.7}
+.pl.muted>div:first-child{color:var(--ink2)}
+.bar span{position:absolute;top:-3px;font:0.75rem var(--mono);color:var(--ink);white-space:nowrap}
+.tt{position:fixed;z-index:9;pointer-events:none;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:8px 10px;font-size:0.75rem;box-shadow:0 2px 8px rgba(0,0,0,.18);max-width:260px}
+.tt b{display:block;margin-bottom:2px}
+.chart [data-tip]:focus{outline:2px solid var(--ink);outline-offset:1px}
+.tbtn{margin:10px 0 0}
+svg.line{width:100%;height:auto;display:block}
+svg.line text{font:0.75rem var(--font);fill:var(--ink2)}
+.oscroll{overflow-x:auto}
+table.od{border-collapse:collapse;width:100%;font-size:0.8125rem}
+.od th,.od td{padding:7px 10px;text-align:right;border-bottom:1px solid var(--line)}
+.od th:first-child,.od td:first-child{text-align:left}
+.od th{font-size:0.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);background:var(--surface2)}
+.ogrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+@media (max-width:640px){.pl{grid-template-columns:1fr}}
+.areanote{margin:0;padding:10px 12px;background:var(--surface2);border-radius:4px;font-size:0.8125rem;color:var(--ink)}
+.views{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.views button{font:inherit;font-weight:600;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:8px 16px;cursor:pointer}
+.views button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.views button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+/* D1-D3: dot-and-range chart. Labels are HTML in rem, so they stay 12px+ on a phone. */
+.rkey{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:0.75rem;color:var(--ink2);padding:10px 14px;border-bottom:1px solid var(--line)}
+.rkey i{display:inline-block;vertical-align:-1px;margin-right:6px}
+.rkey .kd{width:10px;height:10px;border-radius:50%;background:var(--home)}
+.rkey .kb{width:18px;height:8px;border-radius:2px;background:var(--home);opacity:.45}
+.rkey .kl{width:0;height:12px;border-left:2px dashed var(--ink)}
+.rg{display:grid;grid-template-columns:minmax(130px,1fr) minmax(200px,2.6fr) 88px minmax(150px,1.1fr);grid-auto-flow:dense;gap:4px 14px;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line)}
+.rg.rhead{font-size:0.75rem;color:var(--ink2);font-weight:600;background:var(--surface2);align-items:end}
+.rg.rfoot{border-bottom:0;padding-top:4px;padding-bottom:4px}
+.rwho b{display:block;font-weight:500}.rwho span{font-size:0.75rem;color:var(--ink2)}
+.rg.home .rwho b{font-weight:700}.rg.home .rwho span{color:var(--home);font-weight:600}
+.rtrack,.ptrack{position:relative;height:16px}
+.rtrack::before,.ptrack::before{content:'';position:absolute;left:0;right:0;top:7px;height:2px;background:var(--bar-track)}
+.rbar,.ptrack b{position:absolute;left:0;top:3px;height:10px;border-radius:0 3px 3px 0;background:var(--ink2);opacity:.35}
+.rg.home .rbar{background:var(--home);opacity:.45}
+.ptrack b{opacity:.55}.rg.home .ptrack b{background:var(--home);opacity:1}
+.rdot{position:absolute;top:2px;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:var(--ink2);border:2px solid var(--surface);box-sizing:content-box;margin-top:-2px}
+.rg.home .rdot{background:var(--home)}
+.rref{position:absolute;top:-6px;bottom:-6px;border-left:2px dashed var(--ink);opacity:.75}
+.rnum{font-family:var(--mono);font-size:0.75rem;color:var(--ink2);margin-top:4px}
+.rlabs{position:relative}
+.rlab{position:absolute;transform:translateX(-50%);white-space:nowrap;color:var(--ink);font-weight:500}
+.rlab.end{transform:translateX(-100%)}
+.rtick{position:absolute;top:0;transform:translateX(-50%);font-family:var(--mono);font-size:0.75rem;color:var(--ink2)}
+.rtick:first-child{transform:none}.rtick.last{transform:translateX(-100%)}
+.rfoot .rtk{position:relative;height:1.2rem}
+svg.spark{display:block;color:var(--ink2)}.rg.home svg.spark{color:var(--home)}
+.rnote{margin:0;padding:10px 14px;font-size:0.75rem;color:var(--ink2);border-top:1px solid var(--line)}
+@media (max-width:640px){.rg{grid-template-columns:1fr 88px}.rg>.rbarcell,.rg>.rpct{grid-column:1 / -1}.rg.rhead>.rwho,.rg.rhead>.rsp,.rg.rfoot>.rwho{display:none}}
 </style>
-
+</head><body>
 <div class="wrap">
-  <h1>West Herts Referral Waits</h1>
-  <p class="sub">Hospital waiting lists for referrals from Watford, Croxley Green, Rickmansworth, Hemel Hempstead and Sarratt, with neighbouring trusts you can refer to under Right to Choose. Data through July 2026.</p>
+  <h1 id="pageTitle">NHS West Herts Referral and Waiting Data</h1>
+  <p class="sub" id="pageSub"></p>
+  <p class="sub" id="meta"></p>
 
-  <p style="margin:0 0 16px;padding:10px 14px;background:var(--surface);border:1px solid var(--line);border-radius:6px;font-size:13px;color:var(--ink2)">Related dashboard: <a href="https://baskers1.github.io/dashboards/west-herts/waiting-charts/" target="_blank" rel="noopener" style="color:var(--accent);font-weight:600">West Herts Waiting &amp; Outcome Charts</a> — the fuller view with CQC ratings, ONS deaths, hospital mortality (SHMI) and inpatient satisfaction by ethnicity.</p>
+  <nav class="views" aria-label="Dashboard view">
+    <button type="button" class="viewbtn" data-view="waits" aria-pressed="true">Referral waits</button>
+    <button type="button" class="viewbtn" data-view="quality" aria-pressed="false">Quality &amp; outcomes</button>
+  </nav>
 
+  <section class="srcbar" aria-label="Data source">
+    <div class="lbl" id="l-src">Data source</div>
+    <div class="srcs" id="srcs" role="tablist" aria-labelledby="l-src">
+
+      <button type="button" class="src" role="tab" id="t-waits" data-src="waits" aria-controls="src-waits" aria-selected="true" tabindex="0"><b>Waiting times</b><span>NHS England RTT, per trust</span></button>
+      <button type="button" class="src" role="tab" id="t-cqc" data-src="cqc" aria-controls="src-cqc" aria-selected="false" tabindex="-1"><b>CQC ratings</b><span>Care Quality Commission, per trust</span></button>
+      <button type="button" class="src" role="tab" id="t-shmi" data-src="shmi" aria-controls="src-shmi" aria-selected="false" tabindex="-1"><b>Hospital mortality</b><span>SHMI, NHS England, per trust</span></button>
+      <button type="button" class="src" role="tab" id="t-ons" data-src="ons" aria-controls="src-ons" aria-selected="false" tabindex="-1"><b>Deaths registered</b><span>Office for National Statistics</span></button>
+    </div>
+    <div class="srcinfo" id="srcinfo" aria-live="polite"></div>
+  </section>
+
+
+  <div id="src-waits" class="srcpanel" role="tabpanel" aria-labelledby="t-waits">
+  <h2 class="ph">Waiting times by clinic</h2>
   <section class="filters" aria-label="Filters">
     <div>
       <div class="lbl" id="l-trust">Hospital trust</div>
@@ -163,7 +279,8 @@ button.th:hover{color:var(--accent)}
       <div>
         <div class="lbl">View</div>
         <div class="seg" role="group" aria-label="View">
-          <button type="button" id="vList" aria-pressed="true">Ranked list</button>
+          <button type="button" id="vRange" aria-pressed="true">Compare trusts</button>
+          <button type="button" id="vList" aria-pressed="false">Ranked list</button>
           <button type="button" id="vHeat" aria-pressed="false">Matrix</button>
         </div>
       </div>
@@ -176,10 +293,10 @@ button.th:hover{color:var(--accent)}
 
   <section class="panel">
     <div class="legend">
-      <button type="button" class="lg" data-band="g" aria-pressed="false"><i style="background:var(--good)"></i>65% or more within 18 weeks</button>
-      <button type="button" class="lg" data-band="m" aria-pressed="false"><i style="background:var(--warn)"></i>50 to 64%</button>
-      <button type="button" class="lg" data-band="r" aria-pressed="false"><i style="background:var(--bad)"></i>under 50%</button>
-      <span>Constitutional standard: 92%</span><span>Click a legend key, clinic, trust or tile to filter.</span>
+      <button type="button" class="lg" data-band="g" data-st="good" aria-pressed="false"><i style="background:var(--good)"></i>65% or more within 18 weeks</button>
+      <button type="button" class="lg" data-band="m" data-st="mid" aria-pressed="false"><i style="background:var(--warn)"></i>50 to 64%</button>
+      <button type="button" class="lg" data-band="r" data-st="bad" aria-pressed="false"><i style="background:var(--bad)"></i>under 50%</button>
+      <span>These bands are this dashboard's own; the national standard is 92%.</span><span>Click a legend key, clinic, trust or tile to filter.</span>
     </div>
     <div id="out"></div>
   </section>
@@ -188,47 +305,262 @@ button.th:hover{color:var(--accent)}
 
   <div class="notes">
     <p><b>What the numbers mean.</b> Median wait is how long patients currently on the list have waited so far. It is not the time a new referral will wait. The 18-week figure is the share of everyone on the list who has waited 18 weeks or less since referral. Care type groups are my own grouping of NHS treatment specialties.</p>
-    <p><b>Site level.</b> NHS England publishes these figures per trust, not per hospital site, day surgery unit or town. West Hertfordshire's figures cover Watford General, Hemel Hempstead and St Albans City together. The area note above gives approximate distances only.</p>
-    <p><b>Source.</b> NHS England Referral to Treatment (RTT) incomplete pathways, data through July 2026, and A&amp;E for August 2026, as compiled by <a href="https://hospitalwaits.co.uk" rel="noopener">HospitalWaits</a>. Cross-check against the <a href="https://www.england.nhs.uk/statistics/statistical-work-areas/rtt-waiting-times/" rel="noopener">NHS England RTT release</a> before relying on it.</p>
+    <div id="siteNote"></div>
+    <p id="waitsSource"></p>
+  </div>
+  </div>
+
+  <div id="src-cqc" class="srcpanel" role="tabpanel" aria-labelledby="t-cqc" hidden>
+  <h2 class="ph">CQC ratings</h2>
+    <section class="panel"><div class="scroll" tabindex="0"><table class="cqc">
+      <caption class="vh" id="cqcCap">CQC ratings by trust</caption><thead><tr><th scope="col">Trust</th><th scope="col">Overall</th><th scope="col">Safe</th><th scope="col">Effective</th><th scope="col">Caring</th><th scope="col">Responsive</th><th scope="col">Well-led</th><th scope="col">Latest report</th></tr></thead>
+      <tbody id="cqcBody"></tbody></table></div>
+      <div class="legend" style="border-top:1px solid var(--line);border-bottom:0"><span>Ratings are as shown on each trust's CQC provider page; Overall is CQC's combined rating. Older reports may not reflect current quality. Trust names link to the CQC page.</span></div>
+    </section>
+    <div class="notes"><p><b>Source.</b> <a href="https://www.cqc.org.uk/" rel="noopener">Care Quality Commission</a>, the independent regulator of health and social care in England. Ratings run from Outstanding, Good and Requires improvement to Inadequate. The Overall column is CQC's combined rating, which also takes in a separate use of resources rating not shown as its own column. Check the CQC page before relying on a rating.</p></div>
+  </div>
+
+  <div id="src-ons" class="srcpanel" role="tabpanel" aria-labelledby="t-ons" hidden>
+  <h2 class="ph">Deaths registered</h2>
+    <section class="filters" aria-label="Deaths filters">
+      <div class="frow">
+        <div><div class="lbl">View</div><div class="tabs2" role="group" aria-label="Deaths view">
+          <button type="button" id="oArea" aria-pressed="true">By area</button>
+          <button type="button" id="oCause" aria-pressed="false">By cause and age</button></div></div>
+        <div><label class="lbl" for="oYear">Year of registration</label><select id="oYear"></select></div>
+        <div><label class="lbl" for="oSex">Sex</label><select id="oSex"><option value="0">All people</option><option value="1">Male</option><option value="2">Female</option></select></div>
+        <div id="fArea"><label class="lbl" for="oAreaSel">Area of usual residence</label><select id="oAreaSel"></select></div>
+        <div id="fPlace"><label class="lbl" for="oPlace">Place of death (trend)</label><select id="oPlace"></select></div>
+        <div id="fCause" hidden><label class="lbl" for="oCauseSel">Cause of death (ICD-10 chapter)</label><select id="oCauseSel"></select></div>
+        <div id="fAge" hidden><label class="lbl" for="oAge">Age group</label><select id="oAge"></select></div>
+      </div>
+      <div class="frow" style="align-items:center"><div><button type="button" class="btn" id="oReset">Reset filters</button></div></div>
+    </section>
+    <section class="tiles" id="oTiles" aria-live="polite"></section>
+    <section class="panel ochart"><h3 id="oT1"></h3><p class="cap" id="oC1"></p><div class="key" id="oK1"></div><div id="oB1"></div></section>
+    <section class="panel ochart" id="oS2" style="margin-top:16px"><h3 id="oT2"></h3><p class="cap" id="oC2"></p><div class="key" id="oK2"></div><div id="oB2"></div></section>
+    <div class="notes"><p><b>Source.</b> <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/datasets/deathsregisteredinenglandandwalesseriesdrreferencetables" rel="noopener">ONS, Deaths registered in England and Wales, <span class="m-onsEdition"></span></a> (released <span class="m-onsReleased"></span>): Table 5 (cause, age and place of death, national) and Table 6 (place of death by area of usual residence). Years are year of registration, 2016 to 2025, extended back to 2010-2014 using earlier ONS annual reference tables (2015 and 2006-2009 are not available). For 2010-2014, area-of-usual-residence breakdowns are only available at Country/Region level; current NHS Integrated Care Boards and Local Health Boards did not yet exist and are shown as unavailable for those years.</p>
+    <p><b>Institution here means type of place, not a named hospital.</b> ONS records where a death occurred (NHS hospitals, care homes, hospices, home and so on). It does not name individual hospitals or trusts and carries no CQC rating, so those cannot be filters on this data. The area is where the person usually lived, not where they died. Percentages are the share of that area's deaths.</p></div>
+  </div>
+
+  <div id="src-shmi" class="srcpanel" role="tabpanel" aria-labelledby="t-shmi" hidden>
+  <h2 class="ph">Hospital mortality (SHMI)</h2>
+    <p class="sub" id="shmiPeriod" hidden></p>
+    <section class="filters" aria-label="Mortality filters">
+      <div class="frow">
+        <div id="fRate"><label class="lbl" for="hRate">CQC overall rating</label><select id="hRate"><option value="all">All ratings</option><option>Outstanding</option><option>Good</option><option>Requires improvement</option><option>Inadequate</option></select></div>
+        <div><label class="lbl" for="hBand">SHMI band</label><select id="hBand"><option value="all">All bands</option><option value="1">Higher than expected</option><option value="2">As expected</option><option value="3">Lower than expected</option></select></div>
+        <div><div class="lbl">Context</div><label class="check" for="hAll"><input type="checkbox" id="hAll" checked> <span>Show all <span class="m-shmiN"></span> trusts in grey</span></label></div>
+        <div><div class="lbl">&nbsp;</div><button type="button" class="btn" id="hReset">Reset filters</button></div>
+      </div>
+    </section>
+    <section class="tiles" id="hTiles" aria-live="polite"></section>
+    <section class="panel ochart"><h3>Deaths compared with expected, by trust</h3><p class="cap">Each dot is a trust. Height is the SHMI (1.00 means deaths matched what was expected). Dashed lines are the limits within which a trust is banded "as expected". Hover a dot for numbers.</p>
+      <div class="key"><span><i style="background:var(--accent)"></i>Your trusts (shown by filters)</span><span><i style="background:var(--ink2);opacity:.5"></i>Other trusts</span><span><i style="background:none;border-top:2px dashed var(--ink2);height:0"></i>Expected-range limits</span></div>
+      <div id="hChart"></div></section>
+    <section class="panel" style="margin-top:16px"><div class="scroll" tabindex="0"><table class="cqc" style="min-width:820px">
+      <caption class="vh" id="shmiCap">Hospital mortality (SHMI) by trust, highest first</caption><thead><tr><th scope="col">Trust</th><th scope="col">CQC overall</th><th scope="col">SHMI</th><th scope="col">SHMI band</th><th scope="col">Deaths observed</th><th scope="col">Deaths expected</th><th scope="col">Spells</th></tr></thead><tbody id="hBody"></tbody></table></div></section>
+    <div class="notes"><p><b>Source.</b> <a href="https://digital.nhs.uk/data-and-information/publications/statistical/shmi" rel="noopener">NHS England Digital, Summary Hospital-level Mortality Indicator (SHMI)</a>, <span class="m-shmiN"></span> trusts. CQC ratings are from the CQC tab.</p>
+    <p><b>Reading it carefully.</b> The SHMI compares deaths in hospital or within 30 days of discharge with the number expected for that trust's patients. It is not a measure of avoidable deaths or of quality on its own, and a higher figure does not show poor care. Observed and expected counts in the file are rounded to the nearest 5.<span id="shmiCaveat"></span></p></div>
   </div>
 </div>
 
+<script id="data">
+var DATA_META={"region":"west-herts","title":"West Herts","nation":"england","orgs":[{"id":"wh","name":"West Hertfordshire Teaching Hospitals","short":"West Herts","sites":"Watford General, Hemel Hempstead, St Albans City","home":true,"code":"RWG"},{"id":"enh","name":"East and North Hertfordshire","short":"East & North Herts","sites":"Lister (Stevenage), QEII (Welwyn), Mount Vernon (Northwood)","dist":"Mount Vernon is a few miles from Rickmansworth","code":"RWH"},{"id":"rfl","name":"Royal Free London","short":"Royal Free","sites":"Royal Free (Hampstead), Barnet, Chase Farm","code":"RAL"},{"id":"lnw","name":"London North West University Healthcare","short":"London North West","sites":"Northwick Park (Harrow), Ealing, Central Middlesex","code":"R1K"},{"id":"buc","name":"Buckinghamshire Healthcare","short":"Buckinghamshire","sites":"Wycombe, Stoke Mandeville, Amersham","code":"RXQ"}],"benchmark":{"id":"eng","code":"E92000001","name":"England"},"ons_area":"NHS Hertfordshire and West Essex","comparator_ons_areas":["NHS North Central London","NHS North West London","NHS Buckinghamshire, Oxfordshire and Berkshire West","England"],"langs":["en"],"standard":{"weeks":18,"target_pct":92},"intro":"Hospital waiting lists for referrals from Watford, Croxley Green, Rickmansworth, Hemel Hempstead and Sarratt, with neighbouring trusts you can refer to under Right to Choose.","site_note":"\u003cp>\u003cb>Site level.\u003c/b> NHS England publishes these figures per trust, not per hospital site, day surgery unit or town. West Hertfordshire's figures cover Watford General, Hemel Hempstead and St Albans City together. The area note above gives approximate distances only.\u003c/p>","areas":{"Watford":"Watford General is the nearest acute hospital and the main site for clinics, operations and emergency care.","Croxley Green":"Watford General is the nearest acute hospital, roughly 2 to 3 miles away.","Rickmansworth":"Watford General is roughly 4 to 5 miles away. Mount Vernon Hospital in Northwood (East and North Herts) is also a few miles away.","Hemel Hempstead":"Hemel Hempstead Hospital is local for outpatient clinics. Watford General, about 8 miles away, is the nearest acute hospital.","Sarratt":"Watford General is roughly 5 to 6 miles away. Mount Vernon Hospital in Northwood (East and North Herts) is a similar distance."},"data_through":"2026-08","fetched_at":"2026-11-01T11:22:43Z","sources_failed":[],"periods":{"rtt_england":"2026-08","ae_england":"2026-09","cqc":"https://www.cqc.org.uk/system/files/2026-10/01_October_2026_Latest_ratings.ods","shmi":"Jun25-May26","ons":"2025"},"waits_calculated":true};
+var DATA_AE=[["wh",87.2,15,"2026-09"],["enh",72.4,89,"2026-09"],["rfl",80.1,2031,"2026-09"],["lnw",75.4,657,"2026-09"],["buc",77.6,164,"2026-09"]];
+var DATA_ONS={"years":[2010,2011,2012,2013,2014,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025],"places":["All places","Private homes","Local authority care homes","Non-local authority care homes","NHS hospices","Non-NHS hospices","NHS hospitals","Non-NHS hospitals","Other communal establishments","Elsewhere"],"areas":[{"n":"NHS Hertfordshire and West Essex","t":"Integrated Care Board (ICB)"},{"n":"NHS North Central London","t":"Integrated Care Board (ICB)"},{"n":"NHS North West London","t":"Integrated Care Board (ICB)"},{"n":"NHS Buckinghamshire, Oxfordshire and Berkshire West","t":"Integrated Care Board (ICB)"},{"n":"England","t":"Country"}],"t6":[[null,null,null,null,null,[[11892,2462,273,2407,51,777,5636,47,33,206],[5667,1305,71,884,27,378,2831,19,14,138],[6225,1157,202,1523,24,399,2805,28,19,68]],[[12481,2619,317,2589,80,605,5990,28,50,203],[5977,1392,94,930,41,326,3015,13,25,141],[6504,1227,223,1659,39,279,2975,15,25,62]],[[12574,2775,302,2651,30,702,5812,32,36,234],[6011,1504,75,927,7,362,2939,11,20,166],[6563,1271,227,1724,23,340,2873,21,16,68]],[[12243,2746,332,2603,6,708,5578,27,34,209],[5895,1483,113,932,4,347,2841,13,17,145],[6348,1263,219,1671,2,361,2737,14,17,64]],[[13992,3468,418,3036,6,762,5919,45,55,283],[6845,1853,115,1098,2,386,3170,22,27,172],[7147,1615,303,1938,4,376,2749,23,28,111]],[[13039,3396,326,2463,1,650,5886,20,22,275],[6368,1747,93,875,1,308,3160,9,9,166],[6671,1649,233,1588,0,342,2726,11,13,109]],[[12627,3471,316,2477,9,587,5470,12,22,263],[6364,1930,108,881,4,289,2962,6,9,175],[6263,1541,208,1596,5,298,2508,6,13,88]],[[13026,3556,322,2572,7,708,5530,21,24,286],[6440,1936,98,962,0,355,2874,13,14,188],[6586,1620,224,1610,7,353,2656,8,10,98]],[[12609,3378,287,2745,2,744,5132,15,33,273],[6322,1806,96,1039,2,352,2810,4,18,195],[6287,1572,191,1706,0,392,2322,11,15,78]],[[13082,3530,279,2936,4,746,5224,17,37,309],[6513,1948,102,1130,0,374,2717,8,20,214],[6569,1582,177,1806,4,372,2507,9,17,95]]],[null,null,null,null,null,[[7709,1795,142,935,1,596,3996,59,7,178],[3978,1019,51,349,0,277,2117,32,5,128],[3731,776,91,586,1,319,1879,27,2,50]],[[7894,1867,164,932,2,583,4098,59,10,179],[3925,1034,59,342,1,288,2056,24,9,112],[3969,833,105,590,1,295,2042,35,1,67]],[[8016,1935,162,1005,0,571,4112,44,10,177],[4088,1039,56,379,0,290,2177,22,3,122],[3928,896,106,626,0,281,1935,22,7,55]],[[7826,1934,150,977,1,572,3897,50,17,228],[4004,1041,51,394,1,279,2060,17,8,153],[3822,893,99,583,0,293,1837,33,9,75]],[[9600,2761,202,1421,0,475,4413,41,13,274],[5025,1499,85,542,0,236,2460,23,8,172],[4575,1262,117,879,0,239,1953,18,5,102]],[[9057,2796,114,1001,0,468,4366,38,11,263],[4733,1517,44,397,0,244,2314,19,8,190],[4324,1279,70,604,0,224,2052,19,3,73]],[[8266,2483,84,1035,2,428,3941,32,9,252],[4197,1313,31,403,2,210,2057,13,6,162],[4069,1170,53,632,0,218,1884,19,3,90]],[[8087,2351,115,1013,0,462,3835,49,15,247],[4133,1254,48,381,0,207,2025,28,12,178],[3954,1097,67,632,0,255,1810,21,3,69]],[[8016,2367,123,1076,2,382,3771,42,20,233],[4171,1329,48,422,0,170,2022,18,8,154],[3845,1038,75,654,2,212,1749,24,12,79]],[[8310,2329,115,1198,0,358,3956,63,25,266],[4290,1276,41,495,0,178,2080,26,16,178],[4020,1053,74,703,0,180,1876,37,9,88]]],[null,null,null,null,null,[[11265,2679,148,1458,184,495,5866,90,60,285],[5803,1490,51,585,103,240,3065,42,22,205],[5462,1189,97,873,81,255,2801,48,38,80]],[[11539,2714,169,1484,212,483,6037,76,58,306],[5943,1469,61,602,110,247,3197,39,23,195],[5596,1245,108,882,102,236,2840,37,35,111]],[[11960,2870,156,1567,159,509,6215,85,71,328],[6224,1621,69,634,85,246,3251,49,29,240],[5736,1249,87,933,74,263,2964,36,42,88]],[[11503,2842,140,1522,3,532,5979,70,83,332],[5991,1591,48,652,1,245,3167,36,34,217],[5512,1251,92,870,2,287,2812,34,49,115]],[[14348,3841,241,1915,115,589,7012,63,99,473],[7703,2123,97,797,55,287,3942,28,50,324],[6645,1718,144,1118,60,302,3070,35,49,149]],[[13842,3995,113,1494,119,548,6895,55,81,542],[7372,2188,37,623,55,254,3799,31,28,357],[6470,1807,76,871,64,294,3096,24,53,185]],[[12345,3649,132,1410,110,504,5966,61,67,446],[6564,2026,50,569,54,250,3246,33,32,304],[5781,1623,82,841,56,254,2720,28,35,142]],[[12368,3640,133,1383,97,551,6039,51,69,405],[6561,2008,59,595,45,258,3267,29,28,272],[5807,1632,74,788,52,293,2772,22,41,133]],[[12103,3436,82,1536,122,513,5855,57,49,453],[6421,1859,37,652,54,240,3189,35,25,330],[5682,1577,45,884,68,273,2666,22,24,123]],[[11880,3458,82,1551,120,503,5687,57,49,373],[6207,1870,29,657,51,243,3052,32,29,244],[5673,1588,53,894,69,260,2635,25,20,129]]],[null,null,null,null,null,[[12957,3064,189,2784,466,455,5748,12,41,198],[6329,1646,57,965,239,221,3034,5,23,139],[6628,1418,132,1819,227,234,2714,7,18,59]],[[13294,3026,165,3083,474,409,5818,16,54,249],[6530,1675,39,1087,262,208,3053,7,27,172],[6764,1351,126,1996,212,201,2765,9,27,77]],[[13237,3035,109,3091,434,501,5732,16,46,273],[6470,1667,21,1111,221,266,2972,6,20,186],[6767,1368,88,1980,213,235,2760,10,26,87]],[[13299,3097,124,3104,458,454,5738,8,49,267],[6743,1793,34,1205,235,226,3047,2,21,180],[6556,1304,90,1899,223,228,2691,6,28,87]],[[15118,4131,194,3802,476,359,5798,9,52,297],[7533,2225,73,1422,237,174,3173,5,28,196],[7585,1906,121,2380,239,185,2625,4,24,101]],[[14677,4184,115,3060,369,389,6200,6,48,306],[7551,2276,40,1139,195,187,3486,3,24,201],[7126,1908,75,1921,174,202,2714,3,24,105]],[[14621,4158,98,3122,424,487,5931,10,43,348],[7374,2288,33,1158,217,249,3188,5,16,220],[7247,1870,65,1964,207,238,2743,5,27,128]],[[14925,4278,105,3304,612,508,5748,5,50,315],[7435,2322,36,1256,300,243,3023,2,22,231],[7490,1956,69,2048,312,265,2725,3,28,84]],[[14607,4165,113,3425,551,572,5428,4,35,314],[7440,2304,37,1351,274,291,2948,2,21,212],[7167,1861,76,2074,277,281,2480,2,14,102]],[[14786,4231,124,3578,578,512,5365,6,49,343],[7496,2345,42,1417,267,214,2934,3,23,251],[7290,1886,82,2161,311,298,2431,3,26,92]]],[[[461017,95831,6145,78967,2536,22115,244844,726,1465,8388],[222366,53926,1688,25816,1301,11288,121729,349,663,5606],[238651,41905,4457,53151,1235,10827,123115,377,802,2782]],[[452862,98645,6359,81723,2726,22764,230162,688,1381,8414],[219068,55142,1885,27172,1394,11612,115257,316,617,5673],[233794,43503,4474,54551,1332,11152,114905,372,764,2741]],[[466779,103011,6740,91623,2816,23875,228355,604,1541,8214],[224460,57047,1931,31134,1475,12129,114262,276,681,5525],[242319,45964,4809,60489,1341,11746,114093,328,860,2689]],[[473552,105802,6747,95345,2909,23192,228709,637,1565,8646],[229291,59261,2037,32907,1486,11711,115111,329,686,5763],[244261,46541,4710,62438,1423,11481,113598,308,879,2883]],[[468875,107411,6327,94843,2929,23889,222469,538,1643,8826],[229116,59758,1868,33698,1474,11945,113402,258,767,5946],[239759,47653,4459,61145,1455,11944,109067,280,876,2880]],[[490791,114726,6615,99994,3047,24694,230403,496,1710,9106],[240721,63504,2072,35985,1544,12362,117982,230,816,6226],[250070,51222,4543,64009,1503,12332,112421,266,894,2880]],[[498882,117552,6914,104301,3601,25251,230015,413,1683,9152],[245464,65485,2141,37522,1869,12871,118449,202,820,6105],[253418,52067,4773,66779,1732,12380,111566,211,863,3047]],[[505859,120057,6853,106650,3709,25759,230250,379,1743,10459],[250012,67228,2200,38849,1879,12839,118921,185,803,7108],[255847,52829,4653,67801,1830,12920,111329,194,940,3351]],[[496370,120467,6639,104546,3427,25185,223634,319,1810,10343],[247894,67534,2253,39296,1742,12695,116217,153,945,7059],[248476,52933,4386,65250,1685,12490,107417,166,865,3284]],[[569700,155815,8651,125807,3216,22150,239222,372,2065,12402],[288742,86056,2931,47670,1671,11146,130135,187,1037,7909],[280958,69759,5720,78137,1545,11004,109087,185,1028,4493]],[[549349,157339,6605,103806,3099,20814,242620,261,1820,12985],[279173,86037,2109,38401,1600,10399,131217,130,891,8389],[270176,71302,4496,65405,1499,10415,111403,131,929,4596]],[[540333,154715,6116,104239,3157,22214,235346,241,1729,12576],[273579,85294,2068,38576,1601,10986,125738,109,848,8359],[266754,69421,4048,65663,1556,11228,109608,132,881,4217]],[[544055,154256,5959,107819,3369,24717,233417,257,1716,12545],[276252,85314,2054,40966,1669,12369,124378,128,894,8480],[267803,68942,3905,66853,1700,12348,109039,129,822,4065]],[[531954,149208,5721,108039,3465,25652,225512,239,1704,12414],[270860,82918,1913,41938,1706,12646,120185,118,890,8546],[261094,66290,3808,66101,1759,13006,105327,121,814,3868]],[[534020,149935,5761,113070,3690,26420,220674,274,1682,12514],[272517,83375,2044,44300,1837,13149,118152,134,926,8600],[261503,66560,3717,68770,1853,13271,102522,140,756,3914]]]],"ages":["All ages","Neonatal deaths (under 28 days)","All ages (excluding neonatal deaths)","Postneonatal deaths (28 days) - 4 years","5 to 14","15 to 44","45 to 64","65 to 74","75 to 84","85 years and over"],"chap":["All causes","Certain infectious and parasitic diseases","Neoplasms","Diseases of the blood and blood-forming organs and certain disorders involving the immune mechanism","Endocrine, nutritional and metabolic diseases","Mental and behavioural disorders","Diseases of the nervous system","Diseases of the eye and adnexa","Diseases of the ear and mastoid process","Diseases of the circulatory system","Diseases of the respiratory system","Diseases of the digestive system","Diseases of the skin and subcutaneous tissue","Diseases of the musculoskeletal system and connective tissue","Diseases of the genitourinary system","Pregnancy, childbirth and the puerperium","Certain conditions originating in the perinatal period","Congenital malformations, deformations and chromosomal abnormalities","Symptoms, signs and abnormal clinical and laboratory findings, not elsewhere classified","External causes of morbidity and mortality","Codes for special purposes"],"t5":[[[[[570988,160502,6201,118687,3694,27523,238292,328,1784,13977],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0]],[[1783,34,0,0,0,26,1718,0,0,5],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0]],[[569205,160468,6201,118687,3694,27497,236574,328,1784,13972],[8383,574,32,586,15,121,7017,4,12,22],[152979,52467,762,20699,2924,21782,51374,197,358,2416],[1252,304,5,183,4,30,715,1,0,10],[11926,3758,107,2506,51,320,4928,5,39,212],[44279,7179,1546,25125,40,273,9586,9,235,286],[49192,9555,1433,25873,101,847,10800,13,295,275],[14,3,0,2,0,0,9,0,0,0],[48,8,0,4,0,0,35,0,0,1],[133527,47503,956,19000,223,1612,59447,46,300,4440],[69613,15600,450,8443,160,980,43180,19,145,636],[30410,5498,76,1988,100,749,21581,14,51,353],[2315,245,24,280,2,34,1720,1,1,8],[4540,731,37,683,15,97,2944,5,4,24],[8918,1820,92,1652,18,202,5042,3,20,69],[35,2,0,0,0,0,33,0,0,0],[148,5,0,1,0,6,135,0,0,1],[1578,330,11,179,3,69,921,1,30,34],[19380,6806,583,9840,5,127,1615,1,81,322],[27573,7925,78,1433,29,228,12803,7,210,4860],[3095,155,9,210,4,20,2689,2,3,3]],[[1005,159,0,0,0,60,769,1,0,16],[55,8,0,0,0,0,46,0,0,1],[65,16,0,0,0,13,34,0,0,2],[18,1,0,0,0,2,14,1,0,0],[54,12,0,0,0,4,38,0,0,0],[1,0,0,0,0,0,1,0,0,0],[61,7,0,0,0,10,44,0,0,0],[1,0,0,0,0,0,1,0,0,0],[0,0,0,0,0,0,0,0,0,0],[54,6,0,0,0,4,44,0,0,0],[53,4,0,0,0,0,49,0,0,0],[13,0,0,0,0,1,12,0,0,0],[0,0,0,0,0,0,0,0,0,0],[3,0,0,0,0,0,3,0,0,0],[6,1,0,0,0,1,4,0,0,0],[0,0,0,0,0,0,0,0,0,0],[130,2,0,0,0,6,122,0,0,0],[222,28,0,0,0,17,177,0,0,0],[206,65,0,0,0,0,136,0,0,5],[61,9,0,0,0,2,42,0,0,8],[2,0,0,0,0,0,2,0,0,0]],[[561,132,0,1,0,69,322,0,0,37],[23,5,0,0,0,1,17,0,0,0],[140,46,0,0,0,34,57,0,0,3],[8,1,0,0,0,0,7,0,0,0],[27,6,0,0,0,7,14,0,0,0],[6,2,0,0,0,3,1,0,0,0],[55,15,0,1,0,10,29,0,0,0],[1,0,0,0,0,0,1,0,0,0],[0,0,0,0,0,0,0,0,0,0],[41,6,0,0,0,1,33,0,0,1],[53,6,0,0,0,1,46,0,0,0],[17,2,0,0,0,2,13,0,0,0],[1,0,0,0,0,0,1,0,0,0],[5,0,0,0,0,0,5,0,0,0],[1,0,0,0,0,0,1,0,0,0],[0,0,0,0,0,0,0,0,0,0],[8,1,0,0,0,0,7,0,0,0],[44,6,0,0,0,8,30,0,0,0],[10,4,0,0,0,0,5,0,0,1],[121,32,0,0,0,2,55,0,0,32],[0,0,0,0,0,0,0,0,0,0]],[[15865,5876,4,137,115,862,5549,26,156,3140],[191,29,0,4,0,4,150,0,1,3],[2902,673,1,58,104,766,1177,20,6,97],[71,7,0,0,1,1,60,0,0,2],[526,265,0,5,2,11,200,1,3,39],[319,167,0,2,0,1,93,0,5,51],[717,298,0,22,1,28,315,1,9,43],[1,0,0,0,0,0,1,0,0,0],[5,2,0,0,0,0,3,0,0,0],[2058,912,0,13,1,9,846,1,16,260],[584,228,0,4,0,3,304,0,0,45],[1429,412,0,9,4,21,899,1,5,78],[23,2,0,0,0,0,21,0,0,0],[80,7,0,0,0,0,70,0,1,2],[76,20,0,2,0,2,48,0,1,3],[34,2,0,0,0,0,32,0,0,0],[6,1,0,0,0,0,4,0,0,1],[266,70,1,4,0,10,163,1,3,14],[272,184,0,0,0,1,30,0,3,54],[6278,2595,2,14,2,5,1108,1,103,2448],[27,2,0,0,0,0,25,0,0,0]],[[68265,25214,58,2393,846,5875,29186,91,309,4293],[821,91,0,18,2,26,673,1,3,7],[24842,7672,23,1125,766,5281,9342,79,71,483],[195,40,0,6,0,4,141,0,0,4],[1784,747,2,59,8,50,840,0,8,70],[932,499,1,86,0,4,267,0,6,69],[2315,630,11,389,19,138,1058,1,33,36],[0,0,0,0,0,0,0,0,0,0],[5,1,0,0,0,0,4,0,0,0],[16047,7868,7,249,12,91,6243,5,56,1516],[5615,1925,3,142,11,69,3282,1,24,158],[6676,1802,0,121,22,151,4392,0,13,175],[200,19,0,2,0,2,176,1,0,0],[431,64,2,8,1,13,337,0,0,6],[522,114,2,27,3,21,345,1,0,9],[1,0,0,0,0,0,1,0,0,0],[3,1,0,0,0,0,2,0,0,0],[542,113,7,101,0,15,278,0,18,10],[539,443,0,3,0,0,26,0,2,65],[6602,3167,0,56,2,9,1608,2,75,1683],[193,18,0,1,0,1,171,0,0,2]],[[86009,28654,256,7325,864,6457,39956,53,229,2215],[1077,79,1,42,2,18,931,1,1,2],[34313,11951,66,2786,739,5568,12538,38,91,536],[191,33,0,11,1,6,139,0,0,1],[1848,512,4,182,5,52,1056,0,1,36],[1838,363,41,802,0,19,589,0,12,12],[4654,1005,69,1646,19,172,1673,2,40,28],[0,0,0,0,0,0,0,0,0,0],[7,1,0,0,0,0,6,0,0,0],[20618,9152,41,871,33,195,9278,5,36,1007],[10592,3074,16,498,37,197,6638,2,18,112],[5250,1074,8,213,17,139,3749,2,7,41],[299,34,0,17,0,7,241,0,0,0],[686,100,2,42,2,27,507,3,0,3],[994,172,4,78,2,19,707,0,1,11],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[237,44,2,42,0,5,133,0,7,4],[272,233,0,9,0,0,10,0,1,19],[2754,799,2,75,5,31,1426,0,13,403],[379,28,0,11,2,2,335,0,1,0]],[[170411,48285,1502,30880,1142,8802,77004,77,416,2303],[2624,160,12,179,4,35,2230,0,3,1],[53592,19329,264,7354,875,6939,17952,45,97,737],[328,71,2,36,1,6,212,0,0,0],[3311,868,27,620,19,115,1624,2,12,24],[11497,1698,371,6217,17,80,3001,1,79,33],[16242,3213,413,8119,30,296,4007,3,98,63],[4,1,0,0,0,0,3,0,0,0],[12,3,0,0,0,0,9,0,0,0],[39732,14094,203,4032,74,528,19751,15,56,979],[22974,5511,119,2169,69,385,14502,3,43,173],[8203,1206,28,598,27,220,6079,4,10,31],[721,69,4,70,0,11,564,0,0,3],[1460,243,7,174,4,32,993,1,1,5],[2541,478,12,313,7,67,1640,1,3,20],[0,0,0,0,0,0,0,0,0,0],[1,0,0,1,0,0,0,0,0,0],[179,44,1,20,3,9,98,0,2,2],[1383,584,26,601,1,9,141,0,4,17],[4650,677,12,323,9,62,3343,2,8,214],[957,36,1,54,2,8,855,0,0,1]],[[227089,52148,4381,77951,727,5372,83788,80,674,1968],[3592,202,19,343,7,37,2970,2,4,8],[37125,12780,408,9376,440,3181,10274,15,93,558],[441,151,3,130,1,11,142,0,0,3],[4376,1348,74,1640,17,81,1156,2,15,43],[29686,4450,1133,18018,23,166,5634,8,133,121],[25148,4387,940,15696,32,193,3674,6,115,105],[7,2,0,2,0,0,3,0,0,0],[19,1,0,4,0,0,13,0,0,1],[54977,15465,705,13835,103,784,23252,20,136,677],[29742,4852,312,5630,43,325,18359,13,60,148],[8822,1002,40,1047,30,215,6437,7,16,28],[1071,121,20,191,2,14,717,0,1,5],[1875,317,26,459,8,25,1029,1,2,8],[4778,1035,74,1232,6,92,2297,1,15,26],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[88,25,0,12,0,5,42,0,0,4],[16698,5293,557,9227,4,117,1267,1,71,161],[7107,646,62,965,11,117,5221,2,11,72],[1537,71,8,144,0,9,1301,2,2,0]]],[[[291364,89172,2177,46438,1840,13672,127300,161,989,9615],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0]],[[1008,21,0,0,0,13,971,0,0,3],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0]],[[290356,89151,2177,46438,1840,13659,126329,161,989,9612],[3930,267,17,233,10,58,3323,4,5,13],[82258,29065,368,10400,1452,10732,28819,97,199,1126],[576,134,2,70,0,13,350,0,0,7],[6321,2106,45,1088,22,193,2710,3,25,129],[17188,2805,466,8734,19,115,4814,3,95,137],[21448,4295,479,9742,56,472,6122,9,160,113],[5,2,0,1,0,0,2,0,0,0],[33,6,0,2,0,0,24,0,0,1],[73974,29207,368,7559,118,844,32322,28,165,3363],[35553,8619,181,3405,83,524,22307,6,85,343],[15782,3252,32,843,49,333,11000,5,27,241],[950,93,7,116,0,16,716,0,0,2],[1861,237,11,217,8,52,1324,1,3,8],[4417,880,41,702,5,105,2647,1,10,26],[0,0,0,0,0,0,0,0,0,0],[93,2,0,1,0,2,88,0,0,0],[845,178,4,91,2,38,490,0,16,26],[6082,2617,121,2517,4,39,596,0,19,169],[17368,5303,29,617,11,115,7205,3,179,3906],[1672,83,6,100,1,8,1470,1,1,2]],[[550,84,0,0,0,27,432,0,0,7],[31,3,0,0,0,0,28,0,0,0],[31,7,0,0,0,3,21,0,0,0],[10,0,0,0,0,1,9,0,0,0],[28,7,0,0,0,2,19,0,0,0],[0,0,0,0,0,0,0,0,0,0],[37,4,0,0,0,7,26,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[26,3,0,0,0,1,22,0,0,0],[30,2,0,0,0,0,28,0,0,0],[8,0,0,0,0,1,7,0,0,0],[0,0,0,0,0,0,0,0,0,0],[3,0,0,0,0,0,3,0,0,0],[3,1,0,0,0,0,2,0,0,0],[0,0,0,0,0,0,0,0,0,0],[84,1,0,0,0,2,81,0,0,0],[115,15,0,0,0,9,91,0,0,0],[111,36,0,0,0,0,72,0,0,3],[33,5,0,0,0,1,23,0,0,4],[0,0,0,0,0,0,0,0,0,0]],[[320,75,0,1,0,40,179,0,0,25],[12,3,0,0,0,1,8,0,0,0],[79,32,0,0,0,16,30,0,0,1],[4,1,0,0,0,0,3,0,0,0],[16,3,0,0,0,5,8,0,0,0],[3,0,0,0,0,2,1,0,0,0],[34,8,0,1,0,5,20,0,0,0],[1,0,0,0,0,0,1,0,0,0],[0,0,0,0,0,0,0,0,0,0],[25,4,0,0,0,1,19,0,0,1],[25,3,0,0,0,1,21,0,0,0],[13,1,0,0,0,2,10,0,0,0],[1,0,0,0,0,0,1,0,0,0],[4,0,0,0,0,0,4,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[4,0,0,0,0,0,4,0,0,0],[27,6,0,0,0,5,16,0,0,0],[7,4,0,0,0,0,2,0,0,1],[65,10,0,0,0,2,31,0,0,22],[0,0,0,0,0,0,0,0,0,0]],[[10146,3988,4,81,41,341,3048,10,122,2511],[109,23,0,2,0,2,80,0,0,2],[1278,350,1,28,37,295,513,7,0,47],[37,4,0,0,0,1,30,0,0,2],[307,179,0,3,0,4,97,0,3,21],[218,118,0,2,0,0,55,0,5,38],[445,195,0,14,0,16,183,1,6,30],[0,0,0,0,0,0,0,0,0,0],[5,2,0,0,0,0,3,0,0,0],[1375,650,0,10,1,2,491,0,13,208],[334,145,0,3,0,2,153,0,0,31],[884,280,0,4,2,8,536,1,3,50],[10,1,0,0,0,0,9,0,0,0],[28,5,0,0,0,0,21,0,1,1],[35,10,0,1,0,2,21,0,1,0],[0,0,0,0,0,0,0,0,0,0],[4,1,0,0,0,0,3,0,0,0],[152,46,1,2,0,4,85,0,2,12],[186,126,0,0,0,1,14,0,2,43],[4725,1852,2,12,1,4,741,1,86,2026],[14,1,0,0,0,0,13,0,0,0]],[[41451,16398,35,1395,414,2803,16744,40,223,3399],[457,55,0,10,0,11,373,1,2,5],[12840,4115,15,662,372,2485,4845,34,42,270],[118,25,0,4,0,3,83,0,0,3],[1097,477,1,37,4,30,491,0,6,51],[594,320,0,50,0,3,163,0,5,53],[1234,334,5,190,10,72,575,1,24,23],[0,0,0,0,0,0,0,0,0,0],[4,1,0,0,0,0,3,0,0,0],[11561,5874,6,170,7,59,4083,3,34,1325],[3231,1199,3,78,5,29,1796,0,19,102],[4150,1262,0,78,14,81,2570,0,10,135],[106,12,0,2,0,1,91,0,0,0],[208,32,1,4,0,6,163,0,0,2],[255,57,1,15,2,9,166,0,0,5],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[294,60,3,52,0,10,153,0,9,7],[391,321,0,1,0,0,17,0,1,51],[4803,2242,0,42,0,4,1077,1,71,1366],[108,12,0,0,0,0,95,0,0,1]],[[50077,17445,143,4075,451,3333,22943,33,148,1506],[579,41,1,25,1,9,498,1,1,2],[19051,6778,43,1566,370,2817,7143,24,53,257],[90,12,0,6,0,3,68,0,0,1],[1130,309,1,121,2,41,635,0,1,20],[992,178,23,420,0,11,348,0,6,6],[2479,508,34,834,12,101,953,1,26,10],[0,0,0,0,0,0,0,0,0,0],[5,0,0,0,0,0,5,0,0,0],[13660,6328,21,550,26,120,5781,4,26,804],[5752,1769,10,258,23,107,3506,1,12,66],[3038,675,6,130,11,72,2111,1,6,26],[167,23,0,10,0,4,130,0,0,0],[309,32,1,20,1,16,238,1,0,0],[532,94,3,41,0,10,377,0,1,6],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[134,20,0,28,0,3,76,0,3,4],[186,165,0,3,0,0,6,0,1,11],[1770,501,0,57,4,18,886,0,11,293],[203,12,0,6,1,1,182,0,1,0]],[[92013,27288,662,14647,584,4518,42688,45,249,1332],[1302,78,7,89,3,19,1104,0,1,1],[29503,10848,134,3779,445,3543,10351,25,58,320],[147,30,1,19,0,0,97,0,0,0],[1860,507,17,325,10,66,912,2,7,14],[5347,677,146,2788,9,36,1638,0,42,11],[8016,1507,153,3695,14,165,2401,1,59,21],[1,1,0,0,0,0,0,0,0,0],[8,2,0,0,0,0,6,0,0,0],[23198,8830,107,2005,41,279,11198,12,39,687],[12262,3074,59,1009,38,206,7765,2,26,83],[4147,636,10,274,11,106,3082,2,6,20],[317,27,1,35,0,5,248,0,0,1],[630,77,4,63,3,17,463,0,0,3],[1365,272,8,162,3,32,877,1,3,7],[0,0,0,0,0,0,0,0,0,0],[1,0,0,1,0,0,0,0,0,0],[90,23,0,8,2,4,50,0,2,1],[552,267,6,208,1,4,55,0,0,11],[2707,410,8,159,4,33,1936,0,6,151],[560,22,1,28,0,3,505,0,0,1]],[[95799,23873,1333,26239,350,2597,40295,33,247,832],[1440,64,9,107,6,16,1232,2,1,3],[19476,6935,175,4365,228,1573,5916,7,46,231],[170,62,1,41,0,5,60,0,0,1],[1883,624,26,602,6,45,548,1,8,23],[10034,1512,297,5474,10,63,2609,3,37,29],[9203,1739,287,5008,20,106,1964,5,45,29],[3,1,0,1,0,0,1,0,0,0],[11,1,0,2,0,0,7,0,0,1],[24129,7518,234,4824,43,382,10728,9,53,338],[13919,2427,109,2057,17,179,9038,3,28,61],[3542,398,16,357,11,63,2684,1,2,10],[349,30,6,69,0,6,237,0,0,1],[679,91,5,130,4,13,432,0,2,2],[2227,446,29,483,0,52,1204,0,5,8],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[33,8,0,1,0,3,19,0,0,2],[4649,1698,115,2305,3,34,430,0,15,49],[3265,283,19,347,2,53,2511,1,5,44],[787,36,5,66,0,4,675,1,0,0]]],[[[279624,71330,4024,72249,1854,13851,110992,167,795,4362],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0]],[[775,13,0,0,0,13,747,0,0,2],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0]],[[278849,71317,4024,72249,1854,13838,110245,167,795,4360],[4453,307,15,353,5,63,3694,0,7,9],[70721,23402,394,10299,1472,11050,22555,100,159,1290],[676,170,3,113,4,17,365,1,0,3],[5605,1652,62,1418,29,127,2218,2,14,83],[27091,4374,1080,16391,21,158,4772,6,140,149],[27744,5260,954,16131,45,375,4678,4,135,162],[9,1,0,1,0,0,7,0,0,0],[15,2,0,2,0,0,11,0,0,0],[59553,18296,588,11441,105,768,27125,18,135,1077],[34060,6981,269,5038,77,456,20873,13,60,293],[14628,2246,44,1145,51,416,10581,9,24,112],[1365,152,17,164,2,18,1004,1,1,6],[2679,494,26,466,7,45,1620,4,1,16],[4501,940,51,950,13,97,2395,2,10,43],[35,2,0,0,0,0,33,0,0,0],[55,3,0,0,0,4,47,0,0,1],[733,152,7,88,1,31,431,1,14,8],[13298,4189,462,7323,1,88,1019,1,62,153],[10205,2622,49,816,18,113,5598,4,31,954],[1423,72,3,110,3,12,1219,1,2,1]],[[455,75,0,0,0,33,337,1,0,9],[24,5,0,0,0,0,18,0,0,1],[34,9,0,0,0,10,13,0,0,2],[8,1,0,0,0,1,5,1,0,0],[26,5,0,0,0,2,19,0,0,0],[1,0,0,0,0,0,1,0,0,0],[24,3,0,0,0,3,18,0,0,0],[1,0,0,0,0,0,1,0,0,0],[0,0,0,0,0,0,0,0,0,0],[28,3,0,0,0,3,22,0,0,0],[23,2,0,0,0,0,21,0,0,0],[5,0,0,0,0,0,5,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[3,0,0,0,0,1,2,0,0,0],[0,0,0,0,0,0,0,0,0,0],[46,1,0,0,0,4,41,0,0,0],[107,13,0,0,0,8,86,0,0,0],[95,29,0,0,0,0,64,0,0,2],[28,4,0,0,0,1,19,0,0,4],[2,0,0,0,0,0,2,0,0,0]],[[241,57,0,0,0,29,143,0,0,12],[11,2,0,0,0,0,9,0,0,0],[61,14,0,0,0,18,27,0,0,2],[4,0,0,0,0,0,4,0,0,0],[11,3,0,0,0,2,6,0,0,0],[3,2,0,0,0,1,0,0,0,0],[21,7,0,0,0,5,9,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[16,2,0,0,0,0,14,0,0,0],[28,3,0,0,0,0,25,0,0,0],[4,1,0,0,0,0,3,0,0,0],[0,0,0,0,0,0,0,0,0,0],[1,0,0,0,0,0,1,0,0,0],[1,0,0,0,0,0,1,0,0,0],[0,0,0,0,0,0,0,0,0,0],[4,1,0,0,0,0,3,0,0,0],[17,0,0,0,0,3,14,0,0,0],[3,0,0,0,0,0,3,0,0,0],[56,22,0,0,0,0,24,0,0,10],[0,0,0,0,0,0,0,0,0,0]],[[5719,1888,0,56,74,521,2501,16,34,629],[82,6,0,2,0,2,70,0,1,1],[1624,323,0,30,67,471,664,13,6,50],[34,3,0,0,1,0,30,0,0,0],[219,86,0,2,2,7,103,1,0,18],[101,49,0,0,0,1,38,0,0,13],[272,103,0,8,1,12,132,0,3,13],[1,0,0,0,0,0,1,0,0,0],[0,0,0,0,0,0,0,0,0,0],[683,262,0,3,0,7,355,1,3,52],[250,83,0,1,0,1,151,0,0,14],[545,132,0,5,2,13,363,0,2,28],[13,1,0,0,0,0,12,0,0,0],[52,2,0,0,0,0,49,0,0,1],[41,10,0,1,0,0,27,0,0,3],[34,2,0,0,0,0,32,0,0,0],[2,0,0,0,0,0,1,0,0,1],[114,24,0,2,0,6,78,1,1,2],[86,58,0,0,0,0,16,0,1,11],[1553,743,0,2,1,1,367,0,17,422],[13,1,0,0,0,0,12,0,0,0]],[[26814,8816,23,998,432,3072,12442,51,86,894],[364,36,0,8,2,15,300,0,1,2],[12002,3557,8,463,394,2796,4497,45,29,213],[77,15,0,2,0,1,58,0,0,1],[687,270,1,22,4,20,349,0,2,19],[338,179,1,36,0,1,104,0,1,16],[1081,296,6,199,9,66,483,0,9,13],[0,0,0,0,0,0,0,0,0,0],[1,0,0,0,0,0,1,0,0,0],[4486,1994,1,79,5,32,2160,2,22,191],[2384,726,0,64,6,40,1486,1,5,56],[2526,540,0,43,8,70,1822,0,3,40],[94,7,0,0,0,1,85,1,0,0],[223,32,1,4,1,7,174,0,0,4],[267,57,1,12,1,12,179,1,0,4],[1,0,0,0,0,0,1,0,0,0],[3,1,0,0,0,0,2,0,0,0],[248,53,4,49,0,5,125,0,9,3],[148,122,0,2,0,0,9,0,1,14],[1799,925,0,14,2,5,531,1,4,317],[85,6,0,1,0,1,76,0,0,1]],[[35932,11209,113,3250,413,3124,17013,20,81,709],[498,38,0,17,1,9,433,0,0,0],[15262,5173,23,1220,369,2751,5395,14,38,279],[101,21,0,5,1,3,71,0,0,0],[718,203,3,61,3,11,421,0,0,16],[846,185,18,382,0,8,241,0,6,6],[2175,497,35,812,7,71,720,1,14,18],[0,0,0,0,0,0,0,0,0,0],[2,1,0,0,0,0,1,0,0,0],[6958,2824,20,321,7,75,3497,1,10,203],[4840,1305,6,240,14,90,3132,1,6,46],[2212,399,2,83,6,67,1638,1,1,15],[132,11,0,7,0,3,111,0,0,0],[377,68,1,22,1,11,269,2,0,3],[462,78,1,37,2,9,330,0,0,5],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[103,24,2,14,0,2,57,0,4,0],[86,68,0,6,0,0,4,0,0,8],[984,298,2,18,1,13,540,0,2,110],[176,16,0,5,1,1,153,0,0,0]],[[78398,20997,840,16233,558,4284,34316,32,167,971],[1322,82,5,90,1,16,1126,0,2,0],[24089,8481,130,3575,430,3396,7601,20,39,417],[181,41,1,17,1,6,115,0,0,0],[1451,361,10,295,9,49,712,0,5,10],[6150,1021,225,3429,8,44,1363,1,37,22],[8226,1706,260,4424,16,131,1606,2,39,42],[3,0,0,0,0,0,3,0,0,0],[4,1,0,0,0,0,3,0,0,0],[16534,5264,96,2027,33,249,8553,3,17,292],[10712,2437,60,1160,31,179,6737,1,17,90],[4056,570,18,324,16,114,2997,2,4,11],[404,42,3,35,0,6,316,0,0,2],[830,166,3,111,1,15,530,1,1,2],[1176,206,4,151,4,35,763,0,0,13],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[89,21,1,12,1,5,48,0,0,1],[831,317,20,393,0,5,86,0,4,6],[1943,267,4,164,5,29,1407,2,2,63],[397,14,0,26,2,5,350,0,0,0]],[[131290,28275,3048,51712,377,2775,43493,47,427,1136],[2152,138,10,236,1,21,1738,0,3,5],[17649,5845,233,5011,212,1608,4358,8,47,327],[271,89,2,89,1,6,82,0,0,2],[2493,724,48,1038,11,36,608,1,7,20],[19652,2938,836,12544,13,103,3025,5,96,92],[15945,2648,653,10688,12,87,1710,1,70,76],[4,1,0,1,0,0,2,0,0,0],[8,0,0,2,0,0,6,0,0,0],[30848,7947,471,9011,60,402,12524,11,83,339],[15823,2425,203,3573,26,146,9321,10,32,87],[5280,604,24,690,19,152,3753,6,14,18],[722,91,14,122,2,8,480,0,1,4],[1196,226,21,329,4,12,597,1,0,6],[2551,589,45,749,6,40,1093,1,10,18],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[55,17,0,11,0,2,23,0,0,2],[12049,3595,442,6922,1,83,837,1,56,112],[3842,363,43,618,9,64,2710,1,6,28],[750,35,3,78,0,5,626,1,2,0]]]]],"t5_years":[2025]};
+var DATA_QUALITY=[["wh","RWG","Requires improvement","Requires improvement","Good","Good","Requires improvement","Good","17 Jun 2020"],["enh","RWH","Requires improvement","Requires improvement","Good","Good","Requires improvement","Requires improvement","3 Nov 2023"],["rfl","RAL","Requires improvement","Requires improvement","Good","Good","Requires improvement","Good","10 May 2019"],["lnw","R1K","Requires improvement","Requires improvement","Requires improvement","Good","Requires improvement","Requires improvement","20 May 2022"],["buc","RXQ","Good","Requires improvement","Good","Outstanding","Good","Good","4 Jul 2022"]];
+var DATA_SHMI=[["RWG","WEST HERTFORDSHIRE TEACHING HOSPITALS NHS TRUST",0.9713,2,76420,1935,1995,0.8524,1.1732],["RWH","EAST AND NORTH HERTFORDSHIRE TEACHING NHS TRUST",0.9194,2,52370,1880,2045,0.8525,1.173],["RAL","ROYAL FREE LONDON NHS FOUNDATION TRUST",0.8616,2,149425,3800,4415,0.8552,1.1693],["R1K","LONDON NORTH WEST UNIVERSITY HEALTHCARE NHS TRUST",0.8081,3,106600,2545,3150,0.8543,1.1706],["RXQ","BUCKINGHAMSHIRE HEALTHCARE NHS TRUST",0.8993,2,73535,1450,1615,0.8512,1.1749]];
+var DATA_WAITS=[["lnw","General Surgery",12.4,3275,65.7,37.8],["lnw","Urology",9.0,4224,79.8,27.3],["lnw","Trauma and Orthopaedics",15.0,6566,59.5,40.3],["lnw","Ear, Nose and Throat",12.8,8076,61.9,43.3],["lnw","Ophthalmology",6.7,1246,87.4,21.2],["lnw","Oral Surgery",19.7,8202,46.3,39.4],["lnw","Neurosurgery",6.5,1,100.0,6.9],["lnw","Plastic Surgery",9.7,43,93.0,17.9],["lnw","General Internal Medicine",4.2,9,100.0,15.3],["lnw","Gastroenterology",11.1,6832,69.1,34.5],["lnw","Cardiology",13.1,4804,67.3,37.1],["lnw","Dermatology",12.4,3044,61.9,36.2],["lnw","Respiratory Medicine",14.8,3461,60.2,39.5],["lnw","Neurology",7.2,811,88.8,20.8],["lnw","Rheumatology",6.1,981,96.3,14.7],["lnw","Elderly Medicine",2.2,104,100.0,5.5],["lnw","Gynaecology",11.1,6279,70.4,33.6],["rfl","General Surgery",20.9,4391,44.5,47.5],["rfl","Urology",14.5,9684,58.0,40.8],["rfl","Trauma and Orthopaedics",16.3,9609,54.4,46.2],["rfl","Ear, Nose and Throat",16.7,9112,54.3,39.9],["rfl","Ophthalmology",12.2,7362,66.0,33.6],["rfl","Oral Surgery",15.6,5055,57.0,37.6],["rfl","Plastic Surgery",13.7,3274,62.1,37.9],["rfl","General Internal Medicine",5.4,219,89.0,18.8],["rfl","Gastroenterology",11.1,9393,70.6,33.0],["rfl","Cardiology",15.2,8245,58.5,33.9],["rfl","Dermatology",8.2,9039,81.2,25.6],["rfl","Respiratory Medicine",11.4,5655,71.4,33.9],["rfl","Neurology",13.1,6440,64.1,33.2],["rfl","Rheumatology",15.5,3450,57.0,35.5],["rfl","Elderly Medicine",3.6,202,95.0,12.3],["rfl","Gynaecology",12.9,7809,63.4,37.0],["wh","General Surgery",16.4,3380,54.3,44.4],["wh","Urology",11.1,2769,73.5,30.6],["wh","Trauma and Orthopaedics",16.9,5047,53.2,43.5],["wh","Ear, Nose and Throat",19.6,3095,47.0,47.5],["wh","Ophthalmology",14.4,3227,61.5,41.8],["wh","Oral Surgery",17.4,2842,52.2,45.0],["wh","General Internal Medicine",5.2,60,98.3,9.6],["wh","Gastroenterology",8.6,3428,91.7,18.3],["wh","Cardiology",10.8,4564,77.7,26.5],["wh","Dermatology",9.4,3602,82.1,23.0],["wh","Respiratory Medicine",8.2,1148,87.7,22.5],["wh","Neurology",11.6,1250,79.9,23.7],["wh","Rheumatology",10.3,937,74.8,27.5],["wh","Elderly Medicine",6.0,54,94.4,17.7],["wh","Gynaecology",11.0,2127,69.7,36.8],["enh","General Surgery",12.0,2228,66.3,35.0],["enh","Urology",14.0,4093,58.4,40.9],["enh","Trauma and Orthopaedics",19.3,4917,47.7,49.0],["enh","Ear, Nose and Throat",15.7,6061,55.1,40.1],["enh","Ophthalmology",8.3,2618,79.3,32.4],["enh","Oral Surgery",20.4,1162,46.4,49.4],["enh","Plastic Surgery",8.6,3327,72.7,39.5],["enh","Cardiothoracic Surgery",8.1,156,91.0,18.3],["enh","General Internal Medicine",7.2,32,100.0,12.7],["enh","Gastroenterology",11.8,2256,64.7,42.9],["enh","Cardiology",8.3,3785,94.5,16.1],["enh","Dermatology",13.4,1912,57.9,47.5],["enh","Respiratory Medicine",6.8,944,91.3,18.4],["enh","Neurology",7.0,795,94.8,14.9],["enh","Rheumatology",15.3,1375,57.7,33.6],["enh","Elderly Medicine",8.5,145,81.4,28.8],["enh","Gynaecology",12.2,4851,67.8,36.4],["buc","General Surgery",15.2,2470,57.5,40.0],["buc","Urology",13.0,2617,65.2,37.6],["buc","Trauma and Orthopaedics",16.0,4881,56.1,40.2],["buc","Ear, Nose and Throat",13.9,4588,62.3,32.2],["buc","Ophthalmology",14.2,5381,62.2,31.9],["buc","Oral Surgery",9.9,1170,73.3,33.4],["buc","Plastic Surgery",14.2,1513,59.9,36.0],["buc","Gastroenterology",12.2,3771,65.8,35.1],["buc","Cardiology",14.6,2766,62.9,32.2],["buc","Dermatology",11.7,3634,71.9,34.7],["buc","Respiratory Medicine",9.3,934,82.5,25.0],["buc","Neurology",16.8,2879,53.0,41.3],["buc","Rheumatology",8.5,465,90.8,18.6],["buc","Elderly Medicine",5.5,288,97.6,16.2],["buc","Gynaecology",18.5,3717,48.6,42.0]];
+var DATA_TREND=[["lnw","General Surgery","2025-09",12.0],["lnw","Urology","2025-09",13.5],["lnw","Trauma and Orthopaedics","2025-09",18.9],["lnw","Ear, Nose and Throat","2025-09",23.1],["lnw","Ophthalmology","2025-09",8.3],["lnw","Oral Surgery","2025-09",14.4],["lnw","Plastic Surgery","2025-09",12.0],["lnw","General Internal Medicine","2025-09",8.5],["lnw","Gastroenterology","2025-09",12.8],["lnw","Cardiology","2025-09",16.5],["lnw","Dermatology","2025-09",22.6],["lnw","Respiratory Medicine","2025-09",13.1],["lnw","Neurology","2025-09",13.2],["lnw","Rheumatology","2025-09",6.4],["lnw","Elderly Medicine","2025-09",3.7],["lnw","Gynaecology","2025-09",16.6],["lnw","All","2025-09",15.0],["rfl","General Surgery","2025-09",20.5],["rfl","Urology","2025-09",15.9],["rfl","Trauma and Orthopaedics","2025-09",17.6],["rfl","Ear, Nose and Throat","2025-09",15.6],["rfl","Ophthalmology","2025-09",12.3],["rfl","Oral Surgery","2025-09",5.5],["rfl","Neurosurgery","2025-09",16.5],["rfl","Plastic Surgery","2025-09",14.3],["rfl","General Internal Medicine","2025-09",6.1],["rfl","Gastroenterology","2025-09",11.8],["rfl","Cardiology","2025-09",14.4],["rfl","Dermatology","2025-09",13.2],["rfl","Respiratory Medicine","2025-09",13.3],["rfl","Neurology","2025-09",15.6],["rfl","Rheumatology","2025-09",16.9],["rfl","Elderly Medicine","2025-09",5.4],["rfl","Gynaecology","2025-09",15.1],["rfl","All","2025-09",14.2],["wh","General Surgery","2025-09",16.1],["wh","Urology","2025-09",11.5],["wh","Trauma and Orthopaedics","2025-09",14.5],["wh","Ear, Nose and Throat","2025-09",21.5],["wh","Ophthalmology","2025-09",13.4],["wh","Oral Surgery","2025-09",16.9],["wh","Neurosurgery","2025-09",2.5],["wh","General Internal Medicine","2025-09",9.0],["wh","Gastroenterology","2025-09",10.9],["wh","Cardiology","2025-09",11.5],["wh","Dermatology","2025-09",9.2],["wh","Respiratory Medicine","2025-09",14.3],["wh","Neurology","2025-09",22.2],["wh","Rheumatology","2025-09",10.3],["wh","Elderly Medicine","2025-09",7.2],["wh","Gynaecology","2025-09",14.5],["wh","All","2025-09",13.3],["enh","General Surgery","2025-09",11.1],["enh","Urology","2025-09",13.4],["enh","Trauma and Orthopaedics","2025-09",19.6],["enh","Ear, Nose and Throat","2025-09",16.4],["enh","Ophthalmology","2025-09",10.9],["enh","Oral Surgery","2025-09",33.6],["enh","Plastic Surgery","2025-09",9.0],["enh","Cardiothoracic Surgery","2025-09",6.4],["enh","General Internal Medicine","2025-09",0.9],["enh","Gastroenterology","2025-09",14.6],["enh","Cardiology","2025-09",7.2],["enh","Dermatology","2025-09",18.3],["enh","Respiratory Medicine","2025-09",8.4],["enh","Neurology","2025-09",5.7],["enh","Rheumatology","2025-09",14.4],["enh","Elderly Medicine","2025-09",6.2],["enh","Gynaecology","2025-09",12.6],["enh","All","2025-09",12.6],["buc","General Surgery","2025-09",13.3],["buc","Urology","2025-09",15.2],["buc","Trauma and Orthopaedics","2025-09",20.5],["buc","Ear, Nose and Throat","2025-09",14.4],["buc","Ophthalmology","2025-09",11.7],["buc","Oral Surgery","2025-09",12.8],["buc","Plastic Surgery","2025-09",13.7],["buc","Gastroenterology","2025-09",14.6],["buc","Cardiology","2025-09",15.9],["buc","Dermatology","2025-09",13.1],["buc","Respiratory Medicine","2025-09",12.9],["buc","Neurology","2025-09",22.9],["buc","Rheumatology","2025-09",15.0],["buc","Elderly Medicine","2025-09",2.5],["buc","Gynaecology","2025-09",19.4],["buc","All","2025-09",14.8],["lnw","General Surgery","2025-10",12.8],["lnw","Urology","2025-10",13.5],["lnw","Trauma and Orthopaedics","2025-10",17.7],["lnw","Ear, Nose and Throat","2025-10",24.1],["lnw","Ophthalmology","2025-10",6.8],["lnw","Oral Surgery","2025-10",14.8],["lnw","Plastic Surgery","2025-10",11.5],["lnw","General Internal Medicine","2025-10",12.3],["lnw","Gastroenterology","2025-10",11.7],["lnw","Cardiology","2025-10",17.0],["lnw","Dermatology","2025-10",23.9],["lnw","Respiratory Medicine","2025-10",13.9],["lnw","Neurology","2025-10",12.3],["lnw","Rheumatology","2025-10",5.0],["lnw","Elderly Medicine","2025-10",2.8],["lnw","Gynaecology","2025-10",16.7],["lnw","All","2025-10",15.0],["rfl","General Surgery","2025-10",20.9],["rfl","Urology","2025-10",16.8],["rfl","Trauma and Orthopaedics","2025-10",17.9],["rfl","Ear, Nose and Throat","2025-10",15.6],["rfl","Ophthalmology","2025-10",12.3],["rfl","Oral Surgery","2025-10",8.5],["rfl","Neurosurgery","2025-10",21.5],["rfl","Plastic Surgery","2025-10",14.8],["rfl","Cardiothoracic Surgery","2025-10",23.5],["rfl","General Internal Medicine","2025-10",7.1],["rfl","Gastroenterology","2025-10",12.3],["rfl","Cardiology","2025-10",15.2],["rfl","Dermatology","2025-10",13.4],["rfl","Respiratory Medicine","2025-10",13.1],["rfl","Neurology","2025-10",15.9],["rfl","Rheumatology","2025-10",16.9],["rfl","Elderly Medicine","2025-10",4.1],["rfl","Gynaecology","2025-10",15.1],["rfl","All","2025-10",14.5],["wh","General Surgery","2025-10",16.6],["wh","Urology","2025-10",10.8],["wh","Trauma and Orthopaedics","2025-10",14.8],["wh","Ear, Nose and Throat","2025-10",20.6],["wh","Ophthalmology","2025-10",13.0],["wh","Oral Surgery","2025-10",17.2],["wh","Neurosurgery","2025-10",6.5],["wh","General Internal Medicine","2025-10",5.4],["wh","Gastroenterology","2025-10",10.9],["wh","Cardiology","2025-10",11.2],["wh","Dermatology","2025-10",8.9],["wh","Respiratory Medicine","2025-10",14.2],["wh","Neurology","2025-10",21.5],["wh","Rheumatology","2025-10",10.5],["wh","Elderly Medicine","2025-10",6.8],["wh","Gynaecology","2025-10",13.7],["wh","All","2025-10",13.3],["enh","General Surgery","2025-10",9.9],["enh","Urology","2025-10",13.2],["enh","Trauma and Orthopaedics","2025-10",17.9],["enh","Ear, Nose and Throat","2025-10",15.8],["enh","Ophthalmology","2025-10",10.4],["enh","Oral Surgery","2025-10",36.1],["enh","Plastic Surgery","2025-10",8.5],["enh","Cardiothoracic Surgery","2025-10",5.7],["enh","General Internal Medicine","2025-10",1.7],["enh","Gastroenterology","2025-10",13.9],["enh","Cardiology","2025-10",7.4],["enh","Dermatology","2025-10",15.9],["enh","Respiratory Medicine","2025-10",7.7],["enh","Neurology","2025-10",5.8],["enh","Rheumatology","2025-10",13.7],["enh","Elderly Medicine","2025-10",6.9],["enh","Gynaecology","2025-10",11.7],["enh","All","2025-10",12.2],["buc","General Surgery","2025-10",13.3],["buc","Urology","2025-10",14.3],["buc","Trauma and Orthopaedics","2025-10",20.5],["buc","Ear, Nose and Throat","2025-10",14.2],["buc","Ophthalmology","2025-10",11.0],["buc","Oral Surgery","2025-10",10.0],["buc","Plastic Surgery","2025-10",14.6],["buc","Gastroenterology","2025-10",14.2],["buc","Cardiology","2025-10",16.9],["buc","Dermatology","2025-10",13.8],["buc","Respiratory Medicine","2025-10",11.8],["buc","Neurology","2025-10",23.1],["buc","Rheumatology","2025-10",12.4],["buc","Elderly Medicine","2025-10",2.1],["buc","Gynaecology","2025-10",18.5],["buc","All","2025-10",14.4],["lnw","General Surgery","2025-11",12.5],["lnw","Urology","2025-11",13.5],["lnw","Trauma and Orthopaedics","2025-11",17.7],["lnw","Ear, Nose and Throat","2025-11",24.4],["lnw","Ophthalmology","2025-11",7.0],["lnw","Oral Surgery","2025-11",12.5],["lnw","Plastic Surgery","2025-11",10.0],["lnw","General Internal Medicine","2025-11",16.4],["lnw","Gastroenterology","2025-11",10.4],["lnw","Cardiology","2025-11",17.6],["lnw","Dermatology","2025-11",23.1],["lnw","Respiratory Medicine","2025-11",14.3],["lnw","Neurology","2025-11",11.7],["lnw","Rheumatology","2025-11",5.7],["lnw","Elderly Medicine","2025-11",2.7],["lnw","Gynaecology","2025-11",17.5],["lnw","All","2025-11",14.6],["rfl","General Surgery","2025-11",20.9],["rfl","Urology","2025-11",16.5],["rfl","Trauma and Orthopaedics","2025-11",18.9],["rfl","Ear, Nose and Throat","2025-11",16.0],["rfl","Ophthalmology","2025-11",11.4],["rfl","Oral Surgery","2025-11",22.5],["rfl","Plastic Surgery","2025-11",14.8],["rfl","Cardiothoracic Surgery","2025-11",27.5],["rfl","General Internal Medicine","2025-11",5.4],["rfl","Gastroenterology","2025-11",12.8],["rfl","Cardiology","2025-11",15.4],["rfl","Dermatology","2025-11",13.7],["rfl","Respiratory Medicine","2025-11",11.9],["rfl","Neurology","2025-11",15.5],["rfl","Rheumatology","2025-11",17.5],["rfl","Elderly Medicine","2025-11",5.3],["rfl","Gynaecology","2025-11",15.1],["rfl","All","2025-11",14.4],["wh","General Surgery","2025-11",16.9],["wh","Urology","2025-11",10.5],["wh","Trauma and Orthopaedics","2025-11",14.9],["wh","Ear, Nose and Throat","2025-11",20.7],["wh","Ophthalmology","2025-11",12.6],["wh","Oral Surgery","2025-11",16.6],["wh","General Internal Medicine","2025-11",3.5],["wh","Gastroenterology","2025-11",11.6],["wh","Cardiology","2025-11",11.4],["wh","Dermatology","2025-11",9.2],["wh","Respiratory Medicine","2025-11",14.0],["wh","Neurology","2025-11",19.6],["wh","Rheumatology","2025-11",11.3],["wh","Elderly Medicine","2025-11",5.8],["wh","Gynaecology","2025-11",13.4],["wh","All","2025-11",12.9],["enh","General Surgery","2025-11",10.3],["enh","Urology","2025-11",12.6],["enh","Trauma and Orthopaedics","2025-11",16.8],["enh","Ear, Nose and Throat","2025-11",15.8],["enh","Ophthalmology","2025-11",9.9],["enh","Oral Surgery","2025-11",37.4],["enh","Neurosurgery","2025-11",0.5],["enh","Plastic Surgery","2025-11",8.8],["enh","Cardiothoracic Surgery","2025-11",7.6],["enh","General Internal Medicine","2025-11",1.8],["enh","Gastroenterology","2025-11",12.6],["enh","Cardiology","2025-11",7.0],["enh","Dermatology","2025-11",16.2],["enh","Respiratory Medicine","2025-11",8.0],["enh","Neurology","2025-11",6.3],["enh","Rheumatology","2025-11",14.5],["enh","Elderly Medicine","2025-11",7.0],["enh","Gynaecology","2025-11",11.2],["enh","All","2025-11",11.7],["buc","General Surgery","2025-11",12.5],["buc","Urology","2025-11",14.4],["buc","Trauma and Orthopaedics","2025-11",18.6],["buc","Ear, Nose and Throat","2025-11",13.7],["buc","Ophthalmology","2025-11",10.6],["buc","Oral Surgery","2025-11",9.5],["buc","Plastic Surgery","2025-11",10.7],["buc","Gastroenterology","2025-11",12.9],["buc","Cardiology","2025-11",16.5],["buc","Dermatology","2025-11",13.7],["buc","Respiratory Medicine","2025-11",9.8],["buc","Neurology","2025-11",23.9],["buc","Rheumatology","2025-11",10.2],["buc","Elderly Medicine","2025-11",1.7],["buc","Gynaecology","2025-11",19.1],["buc","All","2025-11",13.8],["lnw","General Surgery","2025-12",13.3],["lnw","Urology","2025-12",13.4],["lnw","Trauma and Orthopaedics","2025-12",17.1],["lnw","Ear, Nose and Throat","2025-12",24.2],["lnw","Ophthalmology","2025-12",8.4],["lnw","Oral Surgery","2025-12",12.4],["lnw","Plastic Surgery","2025-12",13.5],["lnw","General Internal Medicine","2025-12",21.1],["lnw","Gastroenterology","2025-12",10.7],["lnw","Cardiology","2025-12",16.8],["lnw","Dermatology","2025-12",23.7],["lnw","Respiratory Medicine","2025-12",14.3],["lnw","Neurology","2025-12",11.4],["lnw","Rheumatology","2025-12",5.7],["lnw","Elderly Medicine","2025-12",2.5],["lnw","Gynaecology","2025-12",17.3],["lnw","All","2025-12",14.3],["rfl","General Surgery","2025-12",20.1],["rfl","Urology","2025-12",16.0],["rfl","Trauma and Orthopaedics","2025-12",19.0],["rfl","Ear, Nose and Throat","2025-12",15.4],["rfl","Ophthalmology","2025-12",11.7],["rfl","Oral Surgery","2025-12",17.5],["rfl","Plastic Surgery","2025-12",15.6],["rfl","Cardiothoracic Surgery","2025-12",32.5],["rfl","General Internal Medicine","2025-12",9.4],["rfl","Gastroenterology","2025-12",13.5],["rfl","Cardiology","2025-12",15.4],["rfl","Dermatology","2025-12",15.1],["rfl","Respiratory Medicine","2025-12",12.2],["rfl","Neurology","2025-12",14.3],["rfl","Rheumatology","2025-12",17.1],["rfl","Elderly Medicine","2025-12",6.4],["rfl","Gynaecology","2025-12",15.3],["rfl","All","2025-12",14.4],["wh","General Surgery","2025-12",16.6],["wh","Urology","2025-12",11.2],["wh","Trauma and Orthopaedics","2025-12",15.2],["wh","Ear, Nose and Throat","2025-12",21.7],["wh","Ophthalmology","2025-12",13.7],["wh","Oral Surgery","2025-12",16.2],["wh","General Internal Medicine","2025-12",4.0],["wh","Gastroenterology","2025-12",11.6],["wh","Cardiology","2025-12",12.1],["wh","Dermatology","2025-12",11.3],["wh","Respiratory Medicine","2025-12",14.4],["wh","Neurology","2025-12",18.5],["wh","Rheumatology","2025-12",11.6],["wh","Elderly Medicine","2025-12",6.4],["wh","Gynaecology","2025-12",12.7],["wh","All","2025-12",13.6],["enh","General Surgery","2025-12",10.8],["enh","Urology","2025-12",12.6],["enh","Trauma and Orthopaedics","2025-12",17.2],["enh","Ear, Nose and Throat","2025-12",15.4],["enh","Ophthalmology","2025-12",10.2],["enh","Oral Surgery","2025-12",30.3],["enh","Plastic Surgery","2025-12",10.8],["enh","Cardiothoracic Surgery","2025-12",9.5],["enh","General Internal Medicine","2025-12",2.5],["enh","Gastroenterology","2025-12",11.7],["enh","Cardiology","2025-12",8.0],["enh","Dermatology","2025-12",14.5],["enh","Respiratory Medicine","2025-12",8.7],["enh","Neurology","2025-12",7.1],["enh","Rheumatology","2025-12",14.0],["enh","Elderly Medicine","2025-12",7.4],["enh","Gynaecology","2025-12",11.7],["enh","All","2025-12",11.9],["buc","General Surgery","2025-12",13.2],["buc","Urology","2025-12",13.9],["buc","Trauma and Orthopaedics","2025-12",17.0],["buc","Ear, Nose and Throat","2025-12",14.7],["buc","Ophthalmology","2025-12",12.3],["buc","Oral Surgery","2025-12",10.2],["buc","Plastic Surgery","2025-12",11.5],["buc","Gastroenterology","2025-12",13.1],["buc","Cardiology","2025-12",17.8],["buc","Dermatology","2025-12",15.6],["buc","Respiratory Medicine","2025-12",9.6],["buc","Neurology","2025-12",24.5],["buc","Rheumatology","2025-12",10.4],["buc","Elderly Medicine","2025-12",2.6],["buc","Gynaecology","2025-12",18.8],["buc","All","2025-12",14.6],["lnw","General Surgery","2026-01",14.5],["lnw","Urology","2026-01",13.2],["lnw","Trauma and Orthopaedics","2026-01",16.7],["lnw","Ear, Nose and Throat","2026-01",25.0],["lnw","Ophthalmology","2026-01",9.1],["lnw","Oral Surgery","2026-01",12.0],["lnw","Plastic Surgery","2026-01",13.8],["lnw","General Internal Medicine","2026-01",15.5],["lnw","Gastroenterology","2026-01",11.4],["lnw","Cardiology","2026-01",16.4],["lnw","Dermatology","2026-01",23.1],["lnw","Respiratory Medicine","2026-01",14.9],["lnw","Neurology","2026-01",11.4],["lnw","Rheumatology","2026-01",5.0],["lnw","Elderly Medicine","2026-01",2.1],["lnw","Gynaecology","2026-01",16.8],["lnw","All","2026-01",14.4],["rfl","General Surgery","2026-01",20.4],["rfl","Urology","2026-01",16.3],["rfl","Trauma and Orthopaedics","2026-01",20.0],["rfl","Ear, Nose and Throat","2026-01",15.4],["rfl","Ophthalmology","2026-01",12.5],["rfl","Oral Surgery","2026-01",21.0],["rfl","Plastic Surgery","2026-01",15.6],["rfl","Cardiothoracic Surgery","2026-01",36.5],["rfl","General Internal Medicine","2026-01",10.7],["rfl","Gastroenterology","2026-01",14.1],["rfl","Cardiology","2026-01",14.6],["rfl","Dermatology","2026-01",13.1],["rfl","Respiratory Medicine","2026-01",11.8],["rfl","Neurology","2026-01",14.7],["rfl","Rheumatology","2026-01",17.3],["rfl","Elderly Medicine","2026-01",4.3],["rfl","Gynaecology","2026-01",14.5],["rfl","All","2026-01",14.5],["wh","General Surgery","2026-01",16.5],["wh","Urology","2026-01",11.5],["wh","Trauma and Orthopaedics","2026-01",15.5],["wh","Ear, Nose and Throat","2026-01",21.0],["wh","Ophthalmology","2026-01",14.3],["wh","Oral Surgery","2026-01",16.4],["wh","General Internal Medicine","2026-01",4.1],["wh","Gastroenterology","2026-01",11.6],["wh","Cardiology","2026-01",11.3],["wh","Dermatology","2026-01",10.8],["wh","Respiratory Medicine","2026-01",12.5],["wh","Neurology","2026-01",17.6],["wh","Rheumatology","2026-01",12.4],["wh","Elderly Medicine","2026-01",6.3],["wh","Gynaecology","2026-01",12.9],["wh","All","2026-01",13.4],["enh","General Surgery","2026-01",11.7],["enh","Urology","2026-01",12.9],["enh","Trauma and Orthopaedics","2026-01",17.7],["enh","Ear, Nose and Throat","2026-01",15.5],["enh","Ophthalmology","2026-01",11.2],["enh","Oral Surgery","2026-01",30.4],["enh","Plastic Surgery","2026-01",11.1],["enh","Cardiothoracic Surgery","2026-01",8.4],["enh","General Internal Medicine","2026-01",1.7],["enh","Gastroenterology","2026-01",12.3],["enh","Cardiology","2026-01",8.9],["enh","Dermatology","2026-01",14.2],["enh","Respiratory Medicine","2026-01",9.1],["enh","Neurology","2026-01",7.4],["enh","Rheumatology","2026-01",14.7],["enh","Elderly Medicine","2026-01",7.5],["enh","Gynaecology","2026-01",12.0],["enh","All","2026-01",12.3],["buc","General Surgery","2026-01",13.8],["buc","Urology","2026-01",14.1],["buc","Trauma and Orthopaedics","2026-01",16.9],["buc","Ear, Nose and Throat","2026-01",15.4],["buc","Ophthalmology","2026-01",11.4],["buc","Oral Surgery","2026-01",10.4],["buc","Plastic Surgery","2026-01",12.3],["buc","Gastroenterology","2026-01",12.4],["buc","Cardiology","2026-01",17.1],["buc","Dermatology","2026-01",12.5],["buc","Respiratory Medicine","2026-01",9.4],["buc","Neurology","2026-01",22.8],["buc","Rheumatology","2026-01",9.3],["buc","Elderly Medicine","2026-01",2.4],["buc","Gynaecology","2026-01",18.4],["buc","All","2026-01",14.2],["lnw","General Surgery","2026-02",14.1],["lnw","Urology","2026-02",13.0],["lnw","Trauma and Orthopaedics","2026-02",17.0],["lnw","Ear, Nose and Throat","2026-02",22.5],["lnw","Ophthalmology","2026-02",7.4],["lnw","Oral Surgery","2026-02",13.2],["lnw","Neurosurgery","2026-02",13.5],["lnw","Plastic Surgery","2026-02",11.4],["lnw","General Internal Medicine","2026-02",15.2],["lnw","Gastroenterology","2026-02",11.2],["lnw","Cardiology","2026-02",15.8],["lnw","Dermatology","2026-02",21.2],["lnw","Respiratory Medicine","2026-02",14.7],["lnw","Neurology","2026-02",10.5],["lnw","Rheumatology","2026-02",4.5],["lnw","Elderly Medicine","2026-02",2.9],["lnw","Gynaecology","2026-02",13.5],["lnw","All","2026-02",13.8],["rfl","General Surgery","2026-02",20.9],["rfl","Urology","2026-02",16.5],["rfl","Trauma and Orthopaedics","2026-02",19.6],["rfl","Ear, Nose and Throat","2026-02",15.2],["rfl","Ophthalmology","2026-02",12.7],["rfl","Oral Surgery","2026-02",14.2],["rfl","Neurosurgery","2026-02",16.5],["rfl","Plastic Surgery","2026-02",15.3],["rfl","General Internal Medicine","2026-02",8.0],["rfl","Gastroenterology","2026-02",12.8],["rfl","Cardiology","2026-02",14.1],["rfl","Dermatology","2026-02",11.9],["rfl","Respiratory Medicine","2026-02",11.1],["rfl","Neurology","2026-02",14.6],["rfl","Rheumatology","2026-02",15.8],["rfl","Elderly Medicine","2026-02",4.5],["rfl","Gynaecology","2026-02",13.8],["rfl","All","2026-02",13.8],["wh","General Surgery","2026-02",15.9],["wh","Urology","2026-02",11.5],["wh","Trauma and Orthopaedics","2026-02",15.7],["wh","Ear, Nose and Throat","2026-02",21.4],["wh","Ophthalmology","2026-02",13.6],["wh","Oral Surgery","2026-02",17.1],["wh","General Internal Medicine","2026-02",2.5],["wh","Gastroenterology","2026-02",10.7],["wh","Cardiology","2026-02",10.9],["wh","Dermatology","2026-02",10.0],["wh","Respiratory Medicine","2026-02",11.4],["wh","Neurology","2026-02",15.4],["wh","Rheumatology","2026-02",12.0],["wh","Elderly Medicine","2026-02",5.8],["wh","Gynaecology","2026-02",13.5],["wh","All","2026-02",13.0],["enh","General Surgery","2026-02",10.8],["enh","Urology","2026-02",12.3],["enh","Trauma and Orthopaedics","2026-02",17.3],["enh","Ear, Nose and Throat","2026-02",15.0],["enh","Ophthalmology","2026-02",10.1],["enh","Oral Surgery","2026-02",28.1],["enh","Plastic Surgery","2026-02",7.7],["enh","Cardiothoracic Surgery","2026-02",5.9],["enh","General Internal Medicine","2026-02",2.2],["enh","Gastroenterology","2026-02",13.1],["enh","Cardiology","2026-02",7.8],["enh","Dermatology","2026-02",14.8],["enh","Respiratory Medicine","2026-02",7.6],["enh","Neurology","2026-02",6.5],["enh","Rheumatology","2026-02",14.7],["enh","Elderly Medicine","2026-02",4.7],["enh","Gynaecology","2026-02",12.2],["enh","All","2026-02",12.0],["buc","General Surgery","2026-02",13.5],["buc","Urology","2026-02",14.2],["buc","Trauma and Orthopaedics","2026-02",17.8],["buc","Ear, Nose and Throat","2026-02",14.9],["buc","Ophthalmology","2026-02",10.7],["buc","Oral Surgery","2026-02",9.8],["buc","Plastic Surgery","2026-02",12.0],["buc","Gastroenterology","2026-02",11.3],["buc","Cardiology","2026-02",16.6],["buc","Dermatology","2026-02",12.4],["buc","Respiratory Medicine","2026-02",9.0],["buc","Neurology","2026-02",19.2],["buc","Rheumatology","2026-02",7.7],["buc","Elderly Medicine","2026-02",4.7],["buc","Gynaecology","2026-02",17.9],["buc","All","2026-02",13.4],["lnw","General Surgery","2026-03",14.7],["lnw","Urology","2026-03",11.2],["lnw","Trauma and Orthopaedics","2026-03",16.8],["lnw","Ear, Nose and Throat","2026-03",20.8],["lnw","Ophthalmology","2026-03",7.2],["lnw","Oral Surgery","2026-03",15.1],["lnw","Neurosurgery","2026-03",17.5],["lnw","Plastic Surgery","2026-03",6.0],["lnw","General Internal Medicine","2026-03",3.0],["lnw","Gastroenterology","2026-03",10.2],["lnw","Cardiology","2026-03",14.9],["lnw","Dermatology","2026-03",20.2],["lnw","Respiratory Medicine","2026-03",13.5],["lnw","Neurology","2026-03",8.5],["lnw","Rheumatology","2026-03",3.7],["lnw","Elderly Medicine","2026-03",2.3],["lnw","Gynaecology","2026-03",12.6],["lnw","All","2026-03",12.9],["rfl","General Surgery","2026-03",19.8],["rfl","Urology","2026-03",15.2],["rfl","Trauma and Orthopaedics","2026-03",18.1],["rfl","Ear, Nose and Throat","2026-03",13.3],["rfl","Ophthalmology","2026-03",11.0],["rfl","Oral Surgery","2026-03",14.0],["rfl","Neurosurgery","2026-03",20.5],["rfl","Plastic Surgery","2026-03",14.0],["rfl","General Internal Medicine","2026-03",7.6],["rfl","Gastroenterology","2026-03",10.4],["rfl","Cardiology","2026-03",12.2],["rfl","Dermatology","2026-03",9.5],["rfl","Respiratory Medicine","2026-03",9.2],["rfl","Neurology","2026-03",14.3],["rfl","Rheumatology","2026-03",12.5],["rfl","Elderly Medicine","2026-03",6.2],["rfl","Gynaecology","2026-03",11.7],["rfl","All","2026-03",11.8],["wh","General Surgery","2026-03",14.5],["wh","Urology","2026-03",11.3],["wh","Trauma and Orthopaedics","2026-03",15.3],["wh","Ear, Nose and Throat","2026-03",21.8],["wh","Ophthalmology","2026-03",12.3],["wh","Oral Surgery","2026-03",15.9],["wh","General Internal Medicine","2026-03",4.3],["wh","Gastroenterology","2026-03",9.1],["wh","Cardiology","2026-03",9.8],["wh","Dermatology","2026-03",8.4],["wh","Respiratory Medicine","2026-03",9.8],["wh","Neurology","2026-03",13.2],["wh","Rheumatology","2026-03",10.9],["wh","Elderly Medicine","2026-03",7.3],["wh","Gynaecology","2026-03",10.9],["wh","All","2026-03",11.4],["enh","General Surgery","2026-03",9.9],["enh","Urology","2026-03",11.8],["enh","Trauma and Orthopaedics","2026-03",17.0],["enh","Ear, Nose and Throat","2026-03",14.0],["enh","Ophthalmology","2026-03",8.7],["enh","Oral Surgery","2026-03",21.4],["enh","Plastic Surgery","2026-03",7.4],["enh","Cardiothoracic Surgery","2026-03",6.7],["enh","General Internal Medicine","2026-03",1.0],["enh","Gastroenterology","2026-03",13.7],["enh","Cardiology","2026-03",8.8],["enh","Dermatology","2026-03",15.7],["enh","Respiratory Medicine","2026-03",6.8],["enh","Neurology","2026-03",6.8],["enh","Rheumatology","2026-03",14.0],["enh","Elderly Medicine","2026-03",4.9],["enh","Gynaecology","2026-03",10.9],["enh","All","2026-03",10.9],["buc","General Surgery","2026-03",12.0],["buc","Urology","2026-03",13.6],["buc","Trauma and Orthopaedics","2026-03",16.8],["buc","Ear, Nose and Throat","2026-03",14.1],["buc","Ophthalmology","2026-03",9.9],["buc","Oral Surgery","2026-03",8.0],["buc","Plastic Surgery","2026-03",9.8],["buc","Gastroenterology","2026-03",11.4],["buc","Cardiology","2026-03",16.3],["buc","Dermatology","2026-03",9.6],["buc","Respiratory Medicine","2026-03",9.3],["buc","Neurology","2026-03",16.6],["buc","Rheumatology","2026-03",6.7],["buc","Elderly Medicine","2026-03",6.8],["buc","Gynaecology","2026-03",16.4],["buc","All","2026-03",12.1],["lnw","General Surgery","2026-04",13.9],["lnw","Urology","2026-04",11.5],["lnw","Trauma and Orthopaedics","2026-04",15.8],["lnw","Ear, Nose and Throat","2026-04",20.9],["lnw","Ophthalmology","2026-04",7.5],["lnw","Oral Surgery","2026-04",15.4],["lnw","Neurosurgery","2026-04",3.0],["lnw","Plastic Surgery","2026-04",10.2],["lnw","General Internal Medicine","2026-04",1.0],["lnw","Gastroenterology","2026-04",11.9],["lnw","Cardiology","2026-04",15.1],["lnw","Dermatology","2026-04",19.9],["lnw","Respiratory Medicine","2026-04",12.9],["lnw","Neurology","2026-04",9.7],["lnw","Rheumatology","2026-04",4.3],["lnw","Elderly Medicine","2026-04",2.0],["lnw","Gynaecology","2026-04",12.3],["lnw","All","2026-04",13.2],["rfl","General Surgery","2026-04",20.6],["rfl","Urology","2026-04",15.6],["rfl","Trauma and Orthopaedics","2026-04",18.8],["rfl","Ear, Nose and Throat","2026-04",13.8],["rfl","Ophthalmology","2026-04",11.9],["rfl","Oral Surgery","2026-04",13.6],["rfl","Neurosurgery","2026-04",25.5],["rfl","Plastic Surgery","2026-04",12.8],["rfl","General Internal Medicine","2026-04",9.8],["rfl","Gastroenterology","2026-04",10.8],["rfl","Cardiology","2026-04",12.8],["rfl","Dermatology","2026-04",9.8],["rfl","Respiratory Medicine","2026-04",10.6],["rfl","Neurology","2026-04",13.9],["rfl","Rheumatology","2026-04",13.8],["rfl","Elderly Medicine","2026-04",4.6],["rfl","Gynaecology","2026-04",12.4],["rfl","All","2026-04",12.6],["wh","General Surgery","2026-04",14.4],["wh","Urology","2026-04",11.3],["wh","Trauma and Orthopaedics","2026-04",14.7],["wh","Ear, Nose and Throat","2026-04",21.8],["wh","Ophthalmology","2026-04",12.1],["wh","Oral Surgery","2026-04",14.9],["wh","General Internal Medicine","2026-04",4.8],["wh","Gastroenterology","2026-04",9.4],["wh","Cardiology","2026-04",11.2],["wh","Dermatology","2026-04",9.2],["wh","Respiratory Medicine","2026-04",9.3],["wh","Neurology","2026-04",12.3],["wh","Rheumatology","2026-04",10.8],["wh","Elderly Medicine","2026-04",6.9],["wh","Gynaecology","2026-04",11.2],["wh","All","2026-04",11.7],["enh","General Surgery","2026-04",10.6],["enh","Urology","2026-04",13.2],["enh","Trauma and Orthopaedics","2026-04",18.5],["enh","Ear, Nose and Throat","2026-04",13.9],["enh","Ophthalmology","2026-04",9.3],["enh","Oral Surgery","2026-04",22.2],["enh","Plastic Surgery","2026-04",8.3],["enh","Cardiothoracic Surgery","2026-04",8.6],["enh","General Internal Medicine","2026-04",1.8],["enh","Gastroenterology","2026-04",13.0],["enh","Cardiology","2026-04",8.6],["enh","Dermatology","2026-04",14.9],["enh","Respiratory Medicine","2026-04",5.8],["enh","Neurology","2026-04",7.2],["enh","Rheumatology","2026-04",14.3],["enh","Elderly Medicine","2026-04",7.7],["enh","Gynaecology","2026-04",11.2],["enh","All","2026-04",11.6],["buc","General Surgery","2026-04",13.8],["buc","Urology","2026-04",12.8],["buc","Trauma and Orthopaedics","2026-04",17.5],["buc","Ear, Nose and Throat","2026-04",13.9],["buc","Ophthalmology","2026-04",10.6],["buc","Oral Surgery","2026-04",9.3],["buc","Plastic Surgery","2026-04",10.7],["buc","General Internal Medicine","2026-04",10.5],["buc","Gastroenterology","2026-04",11.6],["buc","Cardiology","2026-04",17.6],["buc","Dermatology","2026-04",11.5],["buc","Respiratory Medicine","2026-04",10.1],["buc","Neurology","2026-04",18.9],["buc","Rheumatology","2026-04",8.8],["buc","Elderly Medicine","2026-04",3.7],["buc","Gynaecology","2026-04",17.3],["buc","All","2026-04",13.1],["lnw","General Surgery","2026-05",13.9],["lnw","Urology","2026-05",11.0],["lnw","Trauma and Orthopaedics","2026-05",15.4],["lnw","Ear, Nose and Throat","2026-05",18.7],["lnw","Ophthalmology","2026-05",6.7],["lnw","Oral Surgery","2026-05",18.4],["lnw","Neurosurgery","2026-05",7.5],["lnw","Plastic Surgery","2026-05",13.8],["lnw","General Internal Medicine","2026-05",0.5],["lnw","Gastroenterology","2026-05",13.4],["lnw","Cardiology","2026-05",14.6],["lnw","Dermatology","2026-05",17.9],["lnw","Respiratory Medicine","2026-05",13.7],["lnw","Neurology","2026-05",11.3],["lnw","Rheumatology","2026-05",4.5],["lnw","Elderly Medicine","2026-05",2.4],["lnw","Gynaecology","2026-05",12.0],["lnw","All","2026-05",13.4],["rfl","General Surgery","2026-05",21.8],["rfl","Urology","2026-05",16.2],["rfl","Trauma and Orthopaedics","2026-05",18.6],["rfl","Ear, Nose and Throat","2026-05",14.7],["rfl","Ophthalmology","2026-05",12.5],["rfl","Oral Surgery","2026-05",14.5],["rfl","Neurosurgery","2026-05",29.5],["rfl","Plastic Surgery","2026-05",13.2],["rfl","General Internal Medicine","2026-05",9.5],["rfl","Gastroenterology","2026-05",12.1],["rfl","Cardiology","2026-05",13.9],["rfl","Dermatology","2026-05",9.1],["rfl","Respiratory Medicine","2026-05",11.8],["rfl","Neurology","2026-05",14.3],["rfl","Rheumatology","2026-05",15.0],["rfl","Elderly Medicine","2026-05",5.8],["rfl","Gynaecology","2026-05",13.1],["rfl","All","2026-05",13.3],["wh","General Surgery","2026-05",15.6],["wh","Urology","2026-05",12.1],["wh","Trauma and Orthopaedics","2026-05",15.8],["wh","Ear, Nose and Throat","2026-05",19.9],["wh","Ophthalmology","2026-05",13.6],["wh","Oral Surgery","2026-05",15.7],["wh","General Internal Medicine","2026-05",4.6],["wh","Gastroenterology","2026-05",10.3],["wh","Cardiology","2026-05",12.1],["wh","Dermatology","2026-05",10.4],["wh","Respiratory Medicine","2026-05",9.4],["wh","Neurology","2026-05",12.9],["wh","Rheumatology","2026-05",11.3],["wh","Elderly Medicine","2026-05",6.0],["wh","Gynaecology","2026-05",11.8],["wh","All","2026-05",12.4],["enh","General Surgery","2026-05",11.9],["enh","Urology","2026-05",14.8],["enh","Trauma and Orthopaedics","2026-05",18.5],["enh","Ear, Nose and Throat","2026-05",14.5],["enh","Ophthalmology","2026-05",9.3],["enh","Oral Surgery","2026-05",24.0],["enh","Plastic Surgery","2026-05",8.6],["enh","Cardiothoracic Surgery","2026-05",7.4],["enh","General Internal Medicine","2026-05",1.2],["enh","Gastroenterology","2026-05",14.1],["enh","Cardiology","2026-05",7.4],["enh","Dermatology","2026-05",17.1],["enh","Respiratory Medicine","2026-05",6.5],["enh","Neurology","2026-05",7.2],["enh","Rheumatology","2026-05",15.8],["enh","Elderly Medicine","2026-05",6.8],["enh","Gynaecology","2026-05",11.5],["enh","All","2026-05",12.0],["buc","General Surgery","2026-05",14.5],["buc","Urology","2026-05",13.4],["buc","Trauma and Orthopaedics","2026-05",17.7],["buc","Ear, Nose and Throat","2026-05",14.9],["buc","Ophthalmology","2026-05",11.6],["buc","Oral Surgery","2026-05",10.4],["buc","Plastic Surgery","2026-05",12.0],["buc","Gastroenterology","2026-05",12.7],["buc","Cardiology","2026-05",17.2],["buc","Dermatology","2026-05",13.9],["buc","Respiratory Medicine","2026-05",10.0],["buc","Neurology","2026-05",19.9],["buc","Rheumatology","2026-05",7.0],["buc","Elderly Medicine","2026-05",4.6],["buc","Gynaecology","2026-05",18.0],["buc","All","2026-05",13.9],["lnw","General Surgery","2026-06",13.1],["lnw","Urology","2026-06",9.9],["lnw","Trauma and Orthopaedics","2026-06",14.6],["lnw","Ear, Nose and Throat","2026-06",15.5],["lnw","Ophthalmology","2026-06",6.9],["lnw","Oral Surgery","2026-06",19.7],["lnw","Plastic Surgery","2026-06",8.2],["lnw","Gastroenterology","2026-06",13.7],["lnw","Cardiology","2026-06",11.9],["lnw","Dermatology","2026-06",16.9],["lnw","Respiratory Medicine","2026-06",13.6],["lnw","Neurology","2026-06",11.4],["lnw","Rheumatology","2026-06",4.3],["lnw","Elderly Medicine","2026-06",3.0],["lnw","Gynaecology","2026-06",10.9],["lnw","All","2026-06",12.4],["rfl","General Surgery","2026-06",21.6],["rfl","Urology","2026-06",16.2],["rfl","Trauma and Orthopaedics","2026-06",17.8],["rfl","Ear, Nose and Throat","2026-06",14.9],["rfl","Ophthalmology","2026-06",11.7],["rfl","Oral Surgery","2026-06",14.8],["rfl","Plastic Surgery","2026-06",12.9],["rfl","General Internal Medicine","2026-06",8.2],["rfl","Gastroenterology","2026-06",11.3],["rfl","Cardiology","2026-06",14.1],["rfl","Dermatology","2026-06",8.0],["rfl","Respiratory Medicine","2026-06",11.0],["rfl","Neurology","2026-06",13.6],["rfl","Rheumatology","2026-06",15.1],["rfl","Elderly Medicine","2026-06",5.4],["rfl","Gynaecology","2026-06",12.6],["rfl","All","2026-06",13.2],["wh","General Surgery","2026-06",15.7],["wh","Urology","2026-06",11.1],["wh","Trauma and Orthopaedics","2026-06",16.0],["wh","Ear, Nose and Throat","2026-06",19.4],["wh","Ophthalmology","2026-06",13.3],["wh","Oral Surgery","2026-06",15.6],["wh","Neurosurgery","2026-06",0.5],["wh","General Internal Medicine","2026-06",4.5],["wh","Gastroenterology","2026-06",9.0],["wh","Cardiology","2026-06",10.5],["wh","Dermatology","2026-06",9.5],["wh","Respiratory Medicine","2026-06",9.0],["wh","Neurology","2026-06",11.3],["wh","Rheumatology","2026-06",10.8],["wh","Elderly Medicine","2026-06",8.2],["wh","Gynaecology","2026-06",9.7],["wh","All","2026-06",11.6],["enh","General Surgery","2026-06",11.2],["enh","Urology","2026-06",15.4],["enh","Trauma and Orthopaedics","2026-06",18.8],["enh","Ear, Nose and Throat","2026-06",14.9],["enh","Ophthalmology","2026-06",8.8],["enh","Oral Surgery","2026-06",25.3],["enh","Plastic Surgery","2026-06",7.9],["enh","Cardiothoracic Surgery","2026-06",6.0],["enh","General Internal Medicine","2026-06",2.7],["enh","Gastroenterology","2026-06",14.3],["enh","Cardiology","2026-06",7.0],["enh","Dermatology","2026-06",17.3],["enh","Respiratory Medicine","2026-06",6.5],["enh","Neurology","2026-06",5.9],["enh","Rheumatology","2026-06",16.3],["enh","Elderly Medicine","2026-06",8.1],["enh","Gynaecology","2026-06",10.8],["enh","All","2026-06",11.5],["buc","General Surgery","2026-06",14.8],["buc","Urology","2026-06",13.5],["buc","Trauma and Orthopaedics","2026-06",16.3],["buc","Ear, Nose and Throat","2026-06",13.9],["buc","Ophthalmology","2026-06",11.5],["buc","Oral Surgery","2026-06",10.0],["buc","Plastic Surgery","2026-06",11.3],["buc","Gastroenterology","2026-06",12.7],["buc","Cardiology","2026-06",17.3],["buc","Dermatology","2026-06",9.7],["buc","Respiratory Medicine","2026-06",9.7],["buc","Neurology","2026-06",17.8],["buc","Rheumatology","2026-06",7.5],["buc","Elderly Medicine","2026-06",4.8],["buc","Gynaecology","2026-06",18.8],["buc","All","2026-06",13.4],["lnw","General Surgery","2026-07",12.3],["lnw","Urology","2026-07",9.3],["lnw","Trauma and Orthopaedics","2026-07",14.4],["lnw","Ear, Nose and Throat","2026-07",14.0],["lnw","Ophthalmology","2026-07",6.5],["lnw","Oral Surgery","2026-07",20.6],["lnw","Plastic Surgery","2026-07",7.5],["lnw","General Internal Medicine","2026-07",0.5],["lnw","Gastroenterology","2026-07",12.0],["lnw","Cardiology","2026-07",12.6],["lnw","Dermatology","2026-07",14.8],["lnw","Respiratory Medicine","2026-07",13.9],["lnw","Neurology","2026-07",8.4],["lnw","Rheumatology","2026-07",5.0],["lnw","Elderly Medicine","2026-07",1.9],["lnw","Gynaecology","2026-07",11.0],["lnw","All","2026-07",12.0],["rfl","General Surgery","2026-07",21.4],["rfl","Urology","2026-07",14.8],["rfl","Trauma and Orthopaedics","2026-07",17.8],["rfl","Ear, Nose and Throat","2026-07",15.9],["rfl","Ophthalmology","2026-07",11.9],["rfl","Oral Surgery","2026-07",14.6],["rfl","Plastic Surgery","2026-07",13.0],["rfl","General Internal Medicine","2026-07",4.8],["rfl","Gastroenterology","2026-07",10.8],["rfl","Cardiology","2026-07",14.0],["rfl","Dermatology","2026-07",7.8],["rfl","Respiratory Medicine","2026-07",11.4],["rfl","Neurology","2026-07",13.0],["rfl","Rheumatology","2026-07",14.4],["rfl","Elderly Medicine","2026-07",2.8],["rfl","Gynaecology","2026-07",12.8],["rfl","All","2026-07",13.1],["wh","General Surgery","2026-07",15.5],["wh","Urology","2026-07",11.1],["wh","Trauma and Orthopaedics","2026-07",15.6],["wh","Ear, Nose and Throat","2026-07",18.8],["wh","Ophthalmology","2026-07",13.6],["wh","Oral Surgery","2026-07",16.1],["wh","General Internal Medicine","2026-07",4.8],["wh","Gastroenterology","2026-07",8.7],["wh","Cardiology","2026-07",10.4],["wh","Dermatology","2026-07",8.9],["wh","Respiratory Medicine","2026-07",8.6],["wh","Neurology","2026-07",10.9],["wh","Rheumatology","2026-07",10.7],["wh","Elderly Medicine","2026-07",7.0],["wh","Gynaecology","2026-07",10.1],["wh","All","2026-07",11.7],["enh","General Surgery","2026-07",11.5],["enh","Urology","2026-07",14.5],["enh","Trauma and Orthopaedics","2026-07",18.7],["enh","Ear, Nose and Throat","2026-07",14.4],["enh","Ophthalmology","2026-07",7.9],["enh","Oral Surgery","2026-07",22.1],["enh","Plastic Surgery","2026-07",8.7],["enh","Cardiothoracic Surgery","2026-07",6.8],["enh","General Internal Medicine","2026-07",2.8],["enh","Gastroenterology","2026-07",11.6],["enh","Cardiology","2026-07",7.6],["enh","Dermatology","2026-07",14.5],["enh","Respiratory Medicine","2026-07",6.2],["enh","Neurology","2026-07",6.4],["enh","Rheumatology","2026-07",14.6],["enh","Elderly Medicine","2026-07",8.6],["enh","Gynaecology","2026-07",11.6],["enh","All","2026-07",11.8],["buc","General Surgery","2026-07",14.9],["buc","Urology","2026-07",13.8],["buc","Trauma and Orthopaedics","2026-07",15.6],["buc","Ear, Nose and Throat","2026-07",14.0],["buc","Ophthalmology","2026-07",13.3],["buc","Oral Surgery","2026-07",9.6],["buc","Plastic Surgery","2026-07",12.6],["buc","General Internal Medicine","2026-07",0.5],["buc","Gastroenterology","2026-07",13.3],["buc","Cardiology","2026-07",14.1],["buc","Dermatology","2026-07",10.3],["buc","Respiratory Medicine","2026-07",11.5],["buc","Neurology","2026-07",17.0],["buc","Rheumatology","2026-07",7.9],["buc","Elderly Medicine","2026-07",3.5],["buc","Gynaecology","2026-07",17.7],["buc","All","2026-07",13.3],["lnw","General Surgery","2026-08",12.4],["lnw","Urology","2026-08",9.0],["lnw","Trauma and Orthopaedics","2026-08",15.0],["lnw","Ear, Nose and Throat","2026-08",12.8],["lnw","Ophthalmology","2026-08",6.7],["lnw","Oral Surgery","2026-08",19.7],["lnw","Neurosurgery","2026-08",6.5],["lnw","Plastic Surgery","2026-08",9.7],["lnw","General Internal Medicine","2026-08",4.2],["lnw","Gastroenterology","2026-08",11.1],["lnw","Cardiology","2026-08",13.1],["lnw","Dermatology","2026-08",12.4],["lnw","Respiratory Medicine","2026-08",14.8],["lnw","Neurology","2026-08",7.2],["lnw","Rheumatology","2026-08",6.1],["lnw","Elderly Medicine","2026-08",2.2],["lnw","Gynaecology","2026-08",11.1],["lnw","All","2026-08",11.9],["rfl","General Surgery","2026-08",20.9],["rfl","Urology","2026-08",14.5],["rfl","Trauma and Orthopaedics","2026-08",16.3],["rfl","Ear, Nose and Throat","2026-08",16.7],["rfl","Ophthalmology","2026-08",12.2],["rfl","Oral Surgery","2026-08",15.6],["rfl","Plastic Surgery","2026-08",13.7],["rfl","General Internal Medicine","2026-08",5.4],["rfl","Gastroenterology","2026-08",11.1],["rfl","Cardiology","2026-08",15.2],["rfl","Dermatology","2026-08",8.2],["rfl","Respiratory Medicine","2026-08",11.4],["rfl","Neurology","2026-08",13.1],["rfl","Rheumatology","2026-08",15.5],["rfl","Elderly Medicine","2026-08",3.6],["rfl","Gynaecology","2026-08",12.9],["rfl","All","2026-08",13.2],["wh","General Surgery","2026-08",16.4],["wh","Urology","2026-08",11.1],["wh","Trauma and Orthopaedics","2026-08",16.9],["wh","Ear, Nose and Throat","2026-08",19.6],["wh","Ophthalmology","2026-08",14.4],["wh","Oral Surgery","2026-08",17.4],["wh","General Internal Medicine","2026-08",5.2],["wh","Gastroenterology","2026-08",8.6],["wh","Cardiology","2026-08",10.8],["wh","Dermatology","2026-08",9.4],["wh","Respiratory Medicine","2026-08",8.2],["wh","Neurology","2026-08",11.6],["wh","Rheumatology","2026-08",10.3],["wh","Elderly Medicine","2026-08",6.0],["wh","Gynaecology","2026-08",11.0],["wh","All","2026-08",12.0],["enh","General Surgery","2026-08",12.0],["enh","Urology","2026-08",14.0],["enh","Trauma and Orthopaedics","2026-08",19.3],["enh","Ear, Nose and Throat","2026-08",15.7],["enh","Ophthalmology","2026-08",8.3],["enh","Oral Surgery","2026-08",20.4],["enh","Plastic Surgery","2026-08",8.6],["enh","Cardiothoracic Surgery","2026-08",8.1],["enh","General Internal Medicine","2026-08",7.2],["enh","Gastroenterology","2026-08",11.8],["enh","Cardiology","2026-08",8.3],["enh","Dermatology","2026-08",13.4],["enh","Respiratory Medicine","2026-08",6.8],["enh","Neurology","2026-08",7.0],["enh","Rheumatology","2026-08",15.3],["enh","Elderly Medicine","2026-08",8.5],["enh","Gynaecology","2026-08",12.2],["enh","All","2026-08",12.1],["buc","General Surgery","2026-08",15.2],["buc","Urology","2026-08",13.0],["buc","Trauma and Orthopaedics","2026-08",16.0],["buc","Ear, Nose and Throat","2026-08",13.9],["buc","Ophthalmology","2026-08",14.2],["buc","Oral Surgery","2026-08",9.9],["buc","Plastic Surgery","2026-08",14.2],["buc","Gastroenterology","2026-08",12.2],["buc","Cardiology","2026-08",14.6],["buc","Dermatology","2026-08",11.7],["buc","Respiratory Medicine","2026-08",9.3],["buc","Neurology","2026-08",16.8],["buc","Rheumatology","2026-08",8.5],["buc","Elderly Medicine","2026-08",5.5],["buc","Gynaecology","2026-08",18.5],["buc","All","2026-08",13.5]];
+</script>
 <script>
-var TRUSTS=[
- {id:'wh',name:'West Hertfordshire Teaching Hospitals',short:'West Herts',home:true,sites:'Watford General, Hemel Hempstead, St Albans City',total:37886,ae:{p:78.3,h12:23},met:'2 of 15'},
- {id:'enh',name:'East and North Hertfordshire',short:'East & North Herts',sites:'Lister (Stevenage), QEII (Welwyn), Mount Vernon (Northwood)',total:39478,ae:{p:51.8,h12:81},met:'4 of 17',dist:'Mount Vernon is a few miles from Rickmansworth'},
- {id:'rfl',name:'Royal Free London',short:'Royal Free',sites:'Royal Free (Hampstead), Barnet, Chase Farm',total:100538,ae:{p:70.1,h12:1946},met:'1 of 16'},
- {id:'lnw',name:'London North West University Healthcare',short:'London North West',sites:'Northwick Park (Harrow), Ealing, Central Middlesex',total:57849,ae:{p:52.0,h12:585},met:'3 of 15'},
- {id:'buc',name:'Buckinghamshire Healthcare',short:'Buckinghamshire',sites:'Wycombe, Stoke Mandeville, Amersham',total:40805,ae:{p:68.4,h12:134},met:'1 of 15'}
-];
-var CARE={'Ear, Nose and Throat':'Surgical','General Surgery':'Surgical','Trauma and Orthopaedics':'Surgical','Ophthalmology':'Surgical','Urology':'Surgical','Oral Surgery':'Surgical','Plastic Surgery':'Surgical','Cardiothoracic Surgery':'Surgical','Cardiology':'Medical','Gastroenterology':'Medical','Respiratory Medicine':'Medical','Neurology':'Medical','Rheumatology':'Medical','Dermatology':'Medical','Elderly Medicine':'Medical','General Internal Medicine':'Medical','Gynaecology':"Women's health"};
-var AREAS={
- 'Watford':'Watford General is the nearest acute hospital and the main site for clinics, operations and emergency care.',
- 'Croxley Green':'Watford General is the nearest acute hospital, roughly 2 to 3 miles away.',
- 'Rickmansworth':'Watford General is roughly 4 to 5 miles away. Mount Vernon Hospital in Northwood (East and North Herts) is also a few miles away.',
- 'Hemel Hempstead':'Hemel Hempstead Hospital is local for outpatient clinics. Watford General, about 8 miles away, is the nearest acute hospital.',
- 'Sarratt':'Watford General is roughly 5 to 6 miles away. Mount Vernon Hospital in Northwood (East and North Herts) is a similar distance.'
-};
-// [trust, specialty, median weeks, patients on list, % within 18 weeks]
-var RAW=[
-['wh','Trauma and Orthopaedics',15,5052,55],['wh','Cardiology',10,4653,77],['wh','Dermatology',8,3612,85],['wh','Ophthalmology',13,3386,63],['wh','General Surgery',15,3300,56],['wh','Gastroenterology',8,3289,92],['wh','Ear, Nose and Throat',18,3108,48],['wh','Oral Surgery',16,2837,55],['wh','Urology',11,2717,75],['wh','Gynaecology',10,2162,71],['wh','Respiratory Medicine',8,1431,89],['wh','Neurology',10,1317,80],['wh','Rheumatology',10,973,75],['wh','Elderly Medicine',6,46,96],['wh','General Internal Medicine',4,3,100],
-['enh','General Internal Medicine',2,50,98],['enh','Cardiothoracic Surgery',6,157,89],['enh','Neurology',6,748,93],['enh','Respiratory Medicine',6,969,93],['enh','Cardiology',7,3524,96],['enh','Ophthalmology',7,2615,78],['enh','Elderly Medicine',8,153,80],['enh','Plastic Surgery',8,3088,74],['enh','Gynaecology',11,4901,69],['enh','General Surgery',11,2137,68],['enh','Gastroenterology',11,2129,63],['enh','Dermatology',14,1733,56],['enh','Ear, Nose and Throat',14,5808,58],['enh','Rheumatology',14,1396,57],['enh','Urology',14,4209,57],['enh','Trauma and Orthopaedics',18,4771,49],['enh','Oral Surgery',22,1090,43],
-['rfl','Trauma and Orthopaedics',17,10647,51],['rfl','Dermatology',7,9741,81],['rfl','Ear, Nose and Throat',15,9617,56],['rfl','Urology',14,9450,56],['rfl','Gastroenterology',10,9029,70],['rfl','Cardiology',13,8523,61],['rfl','Gynaecology',12,8019,65],['rfl','Ophthalmology',11,7543,67],['rfl','Neurology',13,6355,61],['rfl','Respiratory Medicine',11,5311,72],['rfl','Oral Surgery',14,4923,59],['rfl','General Surgery',21,4256,43],['rfl','Rheumatology',14,3531,59],['rfl','Plastic Surgery',13,3223,63],['rfl','General Internal Medicine',4,212,88],['rfl','Elderly Medicine',2,158,96],
-['lnw','Oral Surgery',20,8260,46],['lnw','Ear, Nose and Throat',13,7941,59],['lnw','Gastroenterology',11,6876,67],['lnw','Trauma and Orthopaedics',14,6606,60],['lnw','Gynaecology',11,6054,70],['lnw','Cardiology',12,4837,65],['lnw','Urology',9,4175,79],['lnw','Respiratory Medicine',13,3412,61],['lnw','General Surgery',12,3301,64],['lnw','Dermatology',14,3196,56],['lnw','Ophthalmology',6,1292,89],['lnw','Rheumatology',5,970,96],['lnw','Neurology',8,825,84],['lnw','Elderly Medicine',1,66,99],['lnw','Plastic Surgery',7,37,100],['lnw','General Internal Medicine',0,1,100],
-['buc','Ophthalmology',13,5481,64],['buc','Trauma and Orthopaedics',15,4915,55],['buc','Ear, Nose and Throat',13,4711,62],['buc','Gynaecology',17,3910,51],['buc','Gastroenterology',13,3459,65],['buc','Dermatology',10,3386,76],['buc','Cardiology',14,2844,61],['buc','Neurology',17,2813,53],['buc','Urology',13,2653,64],['buc','General Surgery',14,2364,57],['buc','Plastic Surgery',12,1576,65],['buc','Oral Surgery',9,1162,73],['buc','Respiratory Medicine',11,825,77],['buc','Rheumatology',7,421,90],['buc','Elderly Medicine',3,284,99],['buc','General Internal Medicine',0,1,100]
-];
-var ROWS=RAW.map(function(r){return{t:r[0],s:r[1],w:r[2],n:r[3],p:r[4],c:CARE[r[1]]};});
-var TBY={};TRUSTS.forEach(function(t){TBY[t.id]=t;});
-var SPECS=Object.keys(CARE).sort();
+/* ---- shared: page text and the two views (Referral waits / Quality & outcomes) ---- */
+// The host stores pages without the <html> skeleton, so lang is set here (C6); cy.js switches it to cy and back.
+document.documentElement.lang='en-GB';
+var M=typeof DATA_META==='undefined'?{}:DATA_META;
+// Status as word + symbol, never colour alone (C7). Wording for Scotland/Wales to confirm with Sarah.
+var STATUS={good:['\u2713','Better'],mid:['\u25B2','Middle'],bad:['\u2715','Worse']};
+var BANDST={g:'good',m:'mid',r:'bad'};
+function status(level){var x=STATUS[level];return {cls:'st-'+level,sym:x[0],word:x[1],text:x[0]+' '+x[1]};}
+// value + symbol visible, the word for screen readers only (matrix cells, pills)
+function statusMark(level,value,cls){var s=status(level);return '<span class="'+(cls?cls+' ':'')+s.cls+'">'+value+' <span aria-hidden="true">'+s.sym+'</span><span class="vh"> '+s.word+'</span></span>';}
+function tip(el,html){el.setAttribute('data-tip',html);}
+var TT=document.createElement('div');TT.className='tt';TT.hidden=true;document.body.appendChild(TT);
+var TTBY=''; // 'mouse' or 'focus': the pointer only hides a tooltip it opened (focus scrolls the page under a resting pointer)
+document.addEventListener('mouseover',function(e){var t=e.target.closest('[data-tip]');if(!t){if(TTBY==='mouse')TT.hidden=true;return;}TT.innerHTML=t.getAttribute('data-tip');TT.hidden=false;TTBY='mouse';});
+document.addEventListener('mousemove',function(e){if(TT.hidden||TTBY!=='mouse')return;TT.style.left=Math.min(e.clientX+14,window.innerWidth-TT.offsetWidth-8)+'px';TT.style.top=(e.clientY+14)+'px';});
+document.addEventListener('mouseout',function(e){if(TTBY==='mouse'&&(!e.relatedTarget||!e.relatedTarget.closest||!e.relatedTarget.closest('[data-tip]')))TT.hidden=true;});
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');}
+// Table cells: first column is the row header. A head entry is a string or {html, sort:'ascending'|'descending'} (C4).
+function tbl(head,rows,caption){return '<div class="oscroll" tabindex="0"><table class="od"><caption class="vh">'+esc(caption)+'</caption><thead><tr>'+head.map(function(h){return typeof h==='string'?'<th scope="col">'+esc(h)+'</th>':'<th scope="col"'+(h.sort?' aria-sort="'+h.sort+'"':'')+'>'+h.html+'</th>';}).join('')+'</tr></thead><tbody>'+rows.map(function(r){return '<tr>'+r.map(function(c,i){return i?'<td>'+c+'</td>':'<th scope="row">'+esc(c)+'</th>';}).join('')+'</tr>';}).join('')+'</tbody></table></div>';}
+// A chart with its "Show as table" toggle (C2). The table is built from the same rows the chart draws.
+var TBLON={};
+function chartBox(el,chartHtml,head,rows,caption){
+  var id=el.id,on=!!TBLON[id];el._tbl=[head,rows,caption];
+  el.innerHTML='<div class="chart"'+(on?' hidden':'')+'>'+chartHtml+'</div><div id="'+id+'-t">'+(on?tbl(head,rows,caption):'')+'</div>'+
+    '<button type="button" class="btn tbtn" aria-controls="'+id+'-t" aria-expanded="'+on+'">'+(on?'Show as chart':'Show as table')+'</button>';
+  marks(el.querySelector('.chart'));
+}
+document.addEventListener('click',function(e){var b=e.target.closest('.tbtn');if(!b)return;var el=b.parentNode,on=!TBLON[el.id];TBLON[el.id]=on;
+  el.querySelector('.chart').hidden=on;document.getElementById(el.id+'-t').innerHTML=on?tbl.apply(null,el._tbl):'';b.setAttribute('aria-expanded',String(on));b.textContent=on?'Show as chart':'Show as table';});
+// Chart marks: one Tab stop per chart, arrows move, focus shows the tooltip, Escape hides it (C1).
+function plain(h){var d=document.createElement('div');d.innerHTML=h.replace(/<\/b>/g,': ').replace(/<br>/g,'; ');return d.textContent;}
+function marks(box){
+  var ms=box?[].slice.call(box.querySelectorAll('[data-tip]')):[];if(!ms.length)return;
+  var first=box.querySelector('[data-tip][data-start]')||ms[0];
+  ms.forEach(function(m){m.setAttribute('tabindex',m===first?'0':'-1');m.setAttribute('role','img');m.setAttribute('aria-label',plain(m.getAttribute('data-tip')));});
+  box.addEventListener('keydown',function(e){var i=ms.indexOf(e.target);if(i<0)return;
+    var j={ArrowRight:i+1,ArrowDown:i+1,ArrowLeft:i-1,ArrowUp:i-1,Home:0,End:ms.length-1}[e.key];if(j===undefined)return;
+    e.preventDefault();j=Math.max(0,Math.min(ms.length-1,j));ms[i].tabIndex=-1;ms[j].tabIndex=0;ms[j].focus();});
+}
+function tipAt(el){TT.innerHTML=el.getAttribute('data-tip');TT.hidden=false;TTBY='focus';var r=el.getBoundingClientRect();
+  // beside the mark, never over it (2.4.11)
+  var x=r.right+8;if(x+TT.offsetWidth>window.innerWidth-8)x=Math.max(8,r.left-TT.offsetWidth-8);
+  TT.style.left=x+'px';TT.style.top=Math.max(8,Math.min(r.top,window.innerHeight-TT.offsetHeight-8))+'px';}
+document.addEventListener('focusin',function(e){if(e.target.closest&&e.target.closest('.chart')&&e.target.hasAttribute('data-tip'))tipAt(e.target);else TT.hidden=true;});
+document.addEventListener('focusout',function(e){if(e.target.hasAttribute&&e.target.hasAttribute('data-tip'))TT.hidden=true;});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')TT.hidden=true;});
+// legend keys carrying data-st get the full word and symbol in front of their own text
+document.querySelectorAll('[data-st]').forEach(function(el){var s=status(el.getAttribute('data-st'));el.classList.add(s.cls);el.querySelector('i').insertAdjacentHTML('afterend','<span>'+s.text+': </span>');});
+function viewOf(k){return k==='waits'||k==='trend'?'waits':'quality';}
+function showSource(){
+  var btns=[].slice.call(document.querySelectorAll('.src')),keys=btns.map(function(b){return b.getAttribute('data-src');});
+  if(keys.indexOf(st.source)<0)st.source='waits';
+  var v=viewOf(st.source),shown=0;
+  document.querySelectorAll('.viewbtn').forEach(function(b){var k=b.getAttribute('data-view');b.setAttribute('aria-pressed',String(k===v));b.hidden=!keys.some(function(x){return viewOf(x)===k;});});
+  btns.forEach(function(b){var k=b.getAttribute('data-src');b.hidden=viewOf(k)!==v;if(!b.hidden)shown++;b.setAttribute('aria-selected',String(k===st.source));b.tabIndex=k===st.source?0:-1;});
+  document.getElementById('srcs').hidden=document.getElementById('l-src').hidden=shown<2;
+  document.querySelectorAll('.srcpanel').forEach(function(p){p.hidden=p.id!=='src-'+st.source;});
+  var s=SOURCES[st.source];
+  document.getElementById('srcinfo').innerHTML='<span>Institution: <a class="inst" href="'+s.url+'" rel="noopener" target="_blank">'+s.inst+'</a></span><span>Dataset: <a href="'+s.dsurl+'" rel="noopener" target="_blank">'+s.ds+'</a></span>';
+}
+function pickSource(b){st.source=b.getAttribute('data-src');if(viewOf(st.source)==='quality')st.q=st.source;save();showSource();}
+document.getElementById('srcs').addEventListener('click',function(e){var b=e.target.closest('.src');if(b)pickSource(b);});
+// tablist keys (WAI-ARIA tabs, automatic activation): Left/Right wrap, Home/End
+document.getElementById('srcs').addEventListener('keydown',function(e){
+  var tabs=[].filter.call(document.querySelectorAll('.src'),function(b){return !b.hidden;}),i=tabs.indexOf(e.target);
+  var j={ArrowRight:i+1,ArrowLeft:i-1,Home:0,End:tabs.length-1}[e.key];
+  if(i<0||j===undefined)return;e.preventDefault();var b=tabs[(j+tabs.length)%tabs.length];pickSource(b);b.focus();});
+document.querySelector('.views').addEventListener('click',function(e){var b=e.target.closest('.viewbtn');if(!b)return;
+  var keys=[].map.call(document.querySelectorAll('.src'),function(x){return x.getAttribute('data-src');});
+  st.source=b.getAttribute('data-view')==='waits'?'waits':(keys.indexOf(st.q)>=0?st.q:keys.filter(function(k){return viewOf(k)==='quality';})[0]);save();showSource();});
+/* ---- D4: header dates, all from DATA_META ---- */
+var MLONG=['January','February','March','April','May','June','July','August','September','October','November','December'];
+function ymL(s){return MLONG[+s.slice(5,7)-1]+' '+s.slice(0,4);}
+// A source's period as words: 'YYYY-MM', 'Jun25-May26' (SHMI), '2025Q2-2026Q1' (calendar quarters, HSMR); null for anything else (hashes, URLs).
+function periodL(s){var m;if(!s)return null;
+  if(/^\d{4}-\d\d$/.test(s))return ymL(s);
+  if(m=/^([A-Z][a-z]{2})(\d\d)-([A-Z][a-z]{2})(\d\d)$/.exec(s)){var i=function(x){return MLONG.map(function(n){return n.slice(0,3);}).indexOf(x);};
+    if(i(m[1])<0||i(m[3])<0)return null;return MLONG[i(m[1])]+' 20'+m[2]+' to '+MLONG[i(m[3])]+' 20'+m[4];}
+  if(m=/^(\d{4})Q([1-4])-(\d{4})Q([1-4])$/.exec(s))return MLONG[3*m[2]-3]+' '+m[1]+' to '+MLONG[3*m[4]-1]+' '+m[3];
+  return /^[A-Z][a-z]+ \d{4}( to [A-Z][a-z]+ \d{4})?$/.test(s)?s:null;}
+(function(){
+  document.getElementById('pageSub').textContent=M.intro||'';document.getElementById('pageSub').hidden=!M.intro;
+  var t=M.data_through?'Data through '+ymL(M.data_through):'Data date not available';
+  if(M.fetched_at)t+=' · Checked '+new Date(M.fetched_at).toLocaleDateString('en-GB',{timeZone:'Europe/London',day:'numeric',month:'long',year:'numeric'});
+  var el=document.getElementById('meta');el.textContent=t;
+  if(M.waits_calculated){var p92=typeof DATA_WAITS!=='undefined'&&Array.isArray(DATA_WAITS)&&DATA_WAITS.some(function(r){return r[5]!=null;});
+    el.insertAdjacentHTML('beforeend','<br><span>'+(p92?'Median and 92nd-percentile waits are calculated by this dashboard from NHS weekly figures.':'Median waits are calculated by this dashboard from NHS weekly figures.')+'</span>');}
+})();
+// SHMI names arrive in capitals from NHS England; shown in readable case, the data is unchanged.
+function nameCase(s){if(s!==s.toUpperCase())return s;
+  return s.toLowerCase().replace(/(^|[\s(\-\/])([a-z])/g,function(m,a,c){return a+c.toUpperCase();})
+    .replace(/ (And|Of|The|For|At|In|On)(?= )/g,function(m){return m.toLowerCase();}).replace(/\b(Nhs|Uhs|Uk|Ics|Icb)\b/g,function(m){return m.toUpperCase();});}
 
-var st={trusts:{wh:true,enh:true,rfl:true,lnw:true,buc:true},area:'Watford',care:'all',spec:'all',sort:'wait-desc',view:'list',small:false,band:'all'};
-try{var s0=JSON.parse(localStorage.getItem('wh-state')||'null');if(s0&&s0.trusts){st=Object.assign(st,s0);}}catch(e){}
-function save(){try{localStorage.setItem('wh-state',JSON.stringify(st));}catch(e){}}
+/* ---- D1-D3: dot-and-range chart for one specialty, one row per trust or board ---- */
+function busiest(rows){var m={};rows.forEach(function(r){m[r.s]=(m[r.s]||0)+r.n;});return Object.keys(m).sort(function(a,b){return m[b]-m[a];})[0];}
+function wkS(v){return String(Math.round(v*10)/10);}
+// 12-month sparkline, oldest first; under 3 points draws nothing (no fake line).
+function spark(tr){
+  if(!tr||tr.v.length<3)return '';
+  var v=tr.v,n=v.length,lo=Math.min.apply(null,v),hi=Math.max.apply(null,v),rg=hi-lo||1;
+  var X=function(i){return (2+76*i/(n-1)).toFixed(1);},Y=function(x){return (17-14*(x-lo)/rg).toFixed(1);};
+  var d=v[n-1]-v[0],dir=Math.abs(d)<0.5?'little change':(d<0?'falling':'rising');
+  var lbl='Median wait'+(tr.scope?', '+tr.scope:'')+', '+tr.from+' to '+tr.to+': '+wkS(v[0])+' to '+wkS(v[n-1])+' weeks, '+dir;
+  return '<svg class="spark" viewBox="0 0 80 20" width="80" height="20" role="img" aria-label="'+esc(lbl)+'"><polyline fill="none" stroke="currentColor" stroke-width="1.5" points="'+
+    v.map(function(x,i){return X(i)+','+Y(x);}).join(' ')+'"/><circle cx="'+X(n-1)+'" cy="'+Y(v[n-1])+'" r="2.5" fill="currentColor"/></svg>';
+}
+// o: {rows:[{t,name,home,nat,w,p92,p,n}], unit:'trust'|'board', std:{weeks,target_pct,max_weeks}|null, within:N weeks,
+//     band:p->'g'|'m'|'r', trend:t->{v,from,to,scope}|null, spec, when, notes:[...]}
+function rangeChart(el,o){
+  var rs=o.rows.slice().sort(function(a,b){return a.w-b.w||a.name.localeCompare(b.name);});
+  if(!rs.length){el.innerHTML='<div class="empty">No '+o.unit+'s have figures for this clinic with these filters.</div>';return;}
+  var U=o.unit==='board'?'Board':'Trust',std=o.std,refs=[];
+  if(std){refs.push([std.weeks,std.weeks+'-week standard']);if(std.max_weeks)refs.push([std.max_weeks,'Nobody over '+std.max_weeks+' weeks']);}
+  var anyP=rs.some(function(r){return r.p92!=null;}),allP=rs.every(function(r){return r.p92!=null;});
+  var top=Math.max.apply(null,rs.map(function(r){return Math.max(r.w,r.p92||0);}).concat(refs.map(function(x){return x[0];})));
+  var step=top>60?20:10,max=Math.ceil(top*1.05/step)*step,X=function(v){return (100*v/max).toFixed(2)+'%';};
+  var lines=refs.map(function(x){return '<i class="rref" style="left:'+X(x[0])+'"></i>';}).join('');
+  var tgt=std&&std.target_pct,tline=tgt?'<i class="rref" style="left:'+tgt+'%"></i>':'';
+  var labs=function(L,at){return '<div class="rlabs" style="height:'+(1.25*L.length)+'rem">'+L.map(function(x,i){var f=at(x[0]);return '<span class="rlab'+(f>65?' end':(f<20?' start':''))+'" style="left:'+f+'%;top:'+(1.25*i)+'rem'+(f<20?';transform:none':'')+'">'+x[1]+'</span>';}).join('')+'</div>';};
+  var h='<div class="range">'+
+    '<div class="rkey"><b style="color:var(--ink)">'+esc(o.spec)+'</b><span><i class="kd"></i>Median wait so far</span>'+(anyP?'<span><i class="kb"></i>Bar: 92 in 100 people waiting have waited this long or less</span>':'')+(refs.length?'<span><i class="kl"></i>Standard</span>':'')+'<span>Shortest median first</span></div>'+
+    '<div class="rg rhead"><div class="rwho">'+U+'</div><div class="rbarcell">'+labs(refs,function(v){return 100*v/max;})+'<div>Weeks waited</div></div><div class="rsp">Last 12 months</div><div class="rpct">'+(tgt?labs([[tgt,tgt+'% standard']],function(v){return v;}):'')+'<div>Within '+o.within+' weeks</div></div></div>';
+  h+=rs.map(function(r){
+    var s=status(BANDST[o.band(r.p)]),tr=o.trend?o.trend(r.t):null;
+    var tipH='<b>'+esc(r.name)+'</b>'+esc(o.spec)+'<br>Median wait so far: '+wkS(r.w)+' weeks'+(r.p92!=null?'<br>92 in 100 waited '+wkS(r.p92)+' weeks or less':'')+'<br>Within '+o.within+' weeks: '+r.p+'% ('+s.text+')<br>On list: '+r.n.toLocaleString('en-GB');
+    return '<div class="rg'+(r.home?' home':'')+(r.nat?' nat':'')+'" data-org="'+esc(r.t)+'"><div class="rwho"><b>'+esc(r.name)+'</b>'+(r.home?'<span>home '+o.unit+'</span>':'')+(r.nat?'<span>national figure</span>':'')+'</div>'+
+      '<div class="rbarcell"><div class="rtrack">'+lines+(r.p92!=null?'<b class="rbar" style="width:'+X(r.p92)+'"></b>':'')+'<span class="rdot" style="left:'+X(r.w)+'" data-tip="'+tipH.replace(/"/g,'&quot;')+'"></span></div>'+
+      '<div class="rnum">Median '+wkS(r.w)+' wk'+(r.p92!=null?' · 92 in 100 within '+wkS(r.p92)+' wk':'')+'</div></div>'+
+      '<div class="rsp">'+spark(tr)+'</div>'+
+      '<div class="rpct"><div class="ptrack">'+tline+'<b style="width:'+Math.min(100,r.p)+'%"></b></div><div class="rnum"><span class="'+s.cls+'">'+r.p+'% within '+o.within+' wk \u00b7 '+s.sym+' '+s.word+'</span></div></div></div>';
+  }).join('');
+  var tk='';for(var v=0;v<=max;v+=step)tk+='<span class="rtick'+(v===max?' last':'')+'" style="left:'+X(v)+'">'+v+'</span>';
+  h+='<div class="rg rfoot"><div class="rwho"></div><div class="rbarcell rtk">'+tk+'</div></div>';
+  var notes=(o.notes||[]).slice();
+  if(!allP)notes.unshift(anyP?'Rows with no bar: the long-wait figure (92 in 100) isn\'t published for them.':'The long-wait figure (92 in 100 people waiting) isn\'t published here, so only the median is shown.');
+  h+=notes.map(function(n){return '<p class="rnote">'+n+'</p>';}).join('')+'</div>';
+  chartBox(el,h,[U,'Median wait (weeks)','92 in 100 within (weeks)','Within '+o.within+' weeks','On list','Median, last 12 months (weeks)'],
+    rs.map(function(r){var tr=o.trend?o.trend(r.t):null;return [r.name,wkS(r.w),r.p92==null?'not published':wkS(r.p92),r.p+'% '+status(BANDST[o.band(r.p)]).word,r.n.toLocaleString('en-GB'),
+      tr&&tr.v.length>=3?esc(tr.from+' to '+tr.to+': '+tr.v.map(wkS).join(', ')):'not available'];}),
+    o.spec+': wait by '+o.unit+', shortest median first'+(o.when?', '+o.when:''));
+}
+</script>
+<script>
+
+function rate(r){var c=r==='Outstanding'?'o':r==='Good'?'g':r==='Requires improvement'?'ri':'i';return '<span class="rate '+c+'">'+r+'</span>';}
+var STD=M.standard||{weeks:18,target_pct:92};
+var RAW=DATA_WAITS||[];
+var CQC=typeof DATA_QUALITY==='undefined'?null:DATA_QUALITY;
+var SH=typeof DATA_SHMI==='undefined'?null:DATA_SHMI;
+var ONS=typeof DATA_ONS==='undefined'?null:DATA_ONS;
+var AE=typeof DATA_AE==='undefined'?[]:DATA_AE;
+var AREAS=M.areas||null;
+var MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+var MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+function ymLong(s){return MONTHS[+s.slice(5,7)-1]+' '+s.slice(0,4);}
+// Specialty -> care type. Template code, not data: NHS England treatment functions grouped by hand.
+var CARE={'Ear, Nose and Throat':'Surgical','General Surgery':'Surgical','Trauma and Orthopaedics':'Surgical','Ophthalmology':'Surgical','Urology':'Surgical','Oral Surgery':'Surgical','Plastic Surgery':'Surgical','Neurosurgery':'Surgical','Cardiothoracic Surgery':'Surgical','Cardiology':'Medical','Gastroenterology':'Medical','Respiratory Medicine':'Medical','Neurology':'Medical','Rheumatology':'Medical','Dermatology':'Medical','Elderly Medicine':'Medical','General Internal Medicine':'Medical','Gynaecology':"Women's health"};
+var TRUSTS=M.orgs.map(function(o){
+  var rs=RAW.filter(function(r){return r[0]===o.id;}),a=AE.filter(function(r){return r[0]===o.id;})[0];
+  return {id:o.id,code:o.code,name:o.name,short:o.short,home:!!o.home,sites:o.sites,dist:o.dist,note:o.note,
+    total:rs.length?rs.reduce(function(s,r){return s+r[3];},0):null,
+    met:rs.length?rs.filter(function(r){return r[4]>=STD.target_pct;}).length+' of '+rs.length:null,
+    ae:a?{p:a[1],h12:a[2],m:MON[+a[3].slice(5,7)-1]}:null,rtt:(M.periods||{})['rtt:'+o.id]};
+});
+var ROWS=RAW.map(function(r){return{t:r[0],s:r[1],w:r[2],n:r[3],p:r[4],p92:r[5],c:CARE[r[1]]||'Medical'};});
+var TREND=typeof DATA_TREND==='undefined'?[]:DATA_TREND;
+var TBY={};TRUSTS.forEach(function(t){TBY[t.id]=t;});
+var SPECS=Object.keys(ROWS.reduce(function(m,r){m[r.s]=1;return m;},{})).sort();
+var SHMIP=periodL((M.periods||{}).shmi||(M.periods||{}).shmiPeriod);
+var SOURCES={
+ waits:{inst:'NHS England',url:'https://www.england.nhs.uk/',ds:'RTT waiting times',dsurl:'https://www.england.nhs.uk/statistics/statistical-work-areas/rtt-waiting-times/'},
+ cqc:{inst:'Care Quality Commission',url:'https://www.cqc.org.uk/',ds:'CQC website',dsurl:'https://www.cqc.org.uk/'},
+ ons:{inst:'Office for National Statistics',url:'https://www.ons.gov.uk/',ds:'Deaths registered in England and Wales: reference tables',dsurl:'https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/datasets/deathsregisteredinenglandandwalesseriesdrreferencetables'},
+ shmi:{inst:'NHS England Digital',url:'https://digital.nhs.uk/',ds:'SHMI data at trust level'+(SHMIP?', '+SHMIP:''),dsurl:'https://digital.nhs.uk/data-and-information/publications/statistical/shmi'}
+};
+var KEY='nhs-'+M.region+'-state';
+var st={source:'waits',trusts:{},area:AREAS?Object.keys(AREAS)[0]:null,care:'all',spec:'all',sort:'wait-desc',view:'range',small:false,band:'all'};
+TRUSTS.forEach(function(t){st.trusts[t.id]=true;});
+try{var s0=JSON.parse(localStorage.getItem(KEY)||'null');if(s0&&s0.trusts){st=Object.assign(st,s0);}}catch(e){}
+st.source='waits';st.view='range'; // opens on Referral waits, trusts compared (agreed 31 Oct / D1)
+function save(){try{localStorage.setItem(KEY,JSON.stringify(st));}catch(e){}}
 
 var $=function(id){return document.getElementById(id)};
 function fmt(n){return n.toLocaleString('en-GB');}
 function band(p){return p>=65?'g':(p>=50?'m':'r');}
-function pill(p){return '<span class="pill '+band(p)+'">'+p+'%</span>';}
+function pill(p){return statusMark(BANDST[band(p)],p+'%','pill');}
 
 function fixSpec(){
   var sp=$('spec');
@@ -247,14 +579,15 @@ function buildControls(){
     var id=b.getAttribute('data-t');st.trusts[id]=!st.trusts[id];
     b.setAttribute('aria-pressed',String(!!st.trusts[id]));save();render();
   });
-  var ar=$('area');ar.innerHTML=Object.keys(AREAS).map(function(a){return '<option>'+a+'</option>';}).join('');if(!AREAS[st.area])st.area='Watford';ar.value=st.area;
-  ar.onchange=function(){st.area=this.value;save();render();};
+  if(AREAS){var ar=$('area');ar.innerHTML=Object.keys(AREAS).map(function(a){return '<option>'+esc(a)+'</option>';}).join('');if(!AREAS[st.area])st.area=Object.keys(AREAS)[0];ar.value=st.area;
+  ar.onchange=function(){st.area=this.value;save();render();};}
   $('care').value=st.care;$('sort').value=st.sort;$('small').checked=st.small;
   fixSpec();
   $('care').onchange=function(){st.care=this.value;fixSpec();save();render();};
   $('spec').onchange=function(){st.spec=this.value;save();render();};
   $('sort').onchange=function(){st.sort=this.value;save();render();};
   $('small').onchange=function(){st.small=this.checked;save();render();};
+  $('vRange').onclick=function(){st.view='range';save();render();};
   $('vList').onclick=function(){st.view='list';save();render();};
   $('vHeat').onclick=function(){st.view='heat';save();render();};
 }
@@ -290,7 +623,7 @@ function renderTiles(rows){
    '<div class="tile hit" role="button" tabindex="0" data-spec="'+shortest.s+'"><div class="k">Shortest median</div><div class="v">'+shortest.w+' wk</div><div class="n">'+shortest.s+', '+TBY[shortest.t].short+'</div></div>';
 }
 
-function th(l,k){var on=st.sort.indexOf(k+'-')===0;return '<button type="button" class="th" data-sort="'+k+'">'+l+(on?(st.sort.slice(-4)==='desc'?' ▼':' ▲'):'')+'</button>';}
+function th(l,k){var on=st.sort.indexOf(k+'-')===0;return '<button type="button" class="th" data-sort="'+k+'">'+l+(on?(st.sort.slice(-4)==='desc'?' \u25BC':' \u25B2'):'')+'</button>';}
 function renderList(rows){
   if(!rows.length)return '<div class="empty">No clinics match these filters. Select a trust or widen the care type.</div>';
   var maxW=30;
@@ -310,12 +643,12 @@ function renderHeat(rows){
   var specs=SPECS.filter(function(s){return rows.some(function(r){return r.s===s});});
   if(!ts.length||!specs.length)return '<div class="empty">No clinics match these filters. Select a trust or widen the care type.</div>';
   var idx={};rows.forEach(function(r){idx[r.t+'|'+r.s]=r;});
-  var h='<div class="scroll"><table class="heat"><thead><tr><th>Median wait, weeks</th>'+ts.map(function(t){return '<th class="hit" data-solo="'+t.id+'" title="Show only '+t.short+'">'+t.short+'</th>'}).join('')+'</tr></thead><tbody>';
+  var h='<div class="scroll" tabindex="0"><table class="heat"><caption class="vh">Median wait in weeks by specialty and trust, '+ymLong(M.data_through)+'</caption><thead><tr><th scope="col">Median wait, weeks</th>'+ts.map(function(t){return '<th scope="col" class="hit" data-solo="'+t.id+'" title="Show only '+t.short+'">'+t.short+'</th>'}).join('')+'</tr></thead><tbody>';
   specs.forEach(function(s){
-    h+='<tr'+(st.spec===s?' class="hl"':'')+'><td class="hit" data-spec="'+s+'">'+s+'</td>';
+    h+='<tr'+(st.spec===s?' class="hl"':'')+'><th scope="row" class="hit" data-spec="'+s+'">'+s+'</th>';
     ts.forEach(function(t){
       var r=idx[t.id+'|'+s];
-      h+= r?'<td class="c hit '+wband(r.w)+'" data-spec="'+s+'">'+r.w+'<span class="sm">'+fmt(r.n)+' waiting · '+r.p+'%</span></td>':'<td class="c na">n/a</td>';
+      h+= r?'<td class="c hit '+wband(r.w)+'" data-spec="'+s+'">'+r.w+'<span class="sm">'+fmt(r.n)+' waiting · '+statusMark(BANDST[band(r.p)],r.p+'%')+'</span></td>':'<td class="c na">n/a</td>';
     });
     h+='</tr>';
   });
@@ -325,22 +658,31 @@ function renderHeat(rows){
 
 function renderCards(){
   $('trustCards').innerHTML=TRUSTS.filter(function(t){return st.trusts[t.id]}).map(function(t){
-    return '<div class="tcard hit" role="button" tabindex="0" data-solo="'+t.id+'" title="Show only this trust"><h3>'+t.name+(t.home?' (home trust)':'')+'</h3><p>'+t.sites+(t.dist?' · '+t.dist:'')+'</p><dl>'+
-      '<dt>All specialties waiting</dt><dd>'+fmt(t.total)+'</dd>'+
-      '<dt>A&amp;E within 4 hrs (Aug)</dt><dd>'+t.ae.p.toFixed(1)+'%</dd>'+
-      '<dt>12+ hr waits for a bed</dt><dd>'+fmt(t.ae.h12)+'</dd>'+
-      '<dt>Specialties meeting 92%</dt><dd>'+t.met+'</dd></dl></div>';
+    return '<div class="tcard hit" role="button" tabindex="0" data-solo="'+t.id+'" title="Show only this trust"><h3>'+esc(t.name)+(t.home?' (home trust)':'')+'</h3><p>'+esc(t.sites)+(t.dist?' · '+esc(t.dist):'')+'</p><dl>'+
+      '<dt>All specialties waiting</dt><dd>'+(t.total==null?'Not published':fmt(t.total))+'</dd>'+
+      (t.ae?'<dt>A&amp;E within 4 hrs ('+t.ae.m+')</dt><dd>'+t.ae.p.toFixed(1)+'%</dd><dt>12+ hr waits for a bed</dt><dd>'+fmt(t.ae.h12)+'</dd>':'<dt>A&amp;E</dt><dd>none</dd>')+
+      '<dt>Specialties meeting '+STD.target_pct+'%</dt><dd>'+(t.met||'n/a')+'</dd></dl>'+(t.note?'<p style="margin:8px 0 0">'+esc(t.note)+'</p>':'')+(t.rtt?'<p style="margin:8px 0 0">Waiting list data through '+esc(t.rtt)+'.</p>':'')+'</div>';
   }).join('');
 }
 
+function trendOf(t){var v=TREND.filter(function(x){return x[0]===t&&x[1]===st.spec;}).sort(function(a,b){return a[2]<b[2]?-1:1;}).slice(-12);
+  return v.length?{v:v.map(function(x){return x[3];}),from:ymL(v[0][2]),to:ymL(v[v.length-1][2])}:null;}
 function render(){
+  if(st.view==='range'&&st.spec==='all'){var b=busiest(filtered());if(b){st.spec=b;fixSpec();}}
   var rows=filtered();
-  $('areaNote').textContent=st.area+': '+AREAS[st.area]+' Figures below are per trust, not per site or area.';
   renderTiles(rows);
+  $('vRange').setAttribute('aria-pressed',String(st.view==='range'));
   $('vList').setAttribute('aria-pressed',String(st.view==='list'));
   $('vHeat').setAttribute('aria-pressed',String(st.view==='heat'));
-  $('out').innerHTML=st.view==='list'?renderList(rows):renderHeat(rows);
+  if(st.view==='range')rangeChart($('out'),{unit:'trust',spec:st.spec,when:ymLong(M.data_through),std:STD,within:STD.weeks,band:band,trend:trendOf,
+    rows:rows.map(function(r){var t=TBY[r.t];return {t:r.t,name:t.short,home:t.home,w:r.w,p92:r.p92,p:r.p,n:r.n};}),notes:['Pick a specialty above to compare another clinic.']});
+  else if(st.view==='list'&&rows.length){var sk=st.sort.split('-'),SORTDIR={asc:'ascending',desc:'descending'};
+    var hd=function(l,k){return {html:th(l,k),sort:sk[0]===k?SORTDIR[sk[1]]:null};};
+    chartBox($('out'),renderList(rows),[hd('Clinic','name'),'Trust',hd('Median wait (weeks)','wait'),hd('Within 18 weeks','pct'),hd('On list','list')],
+      sorted(rows).map(function(r){return [r.s,esc(TBY[r.t].short),String(r.w),pill(r.p),fmt(r.n)];}),'Median wait by clinic and trust, '+ymLong(M.data_through));}
+  else $('out').innerHTML=st.view==='list'?renderList(rows):renderHeat(rows);
   renderCards();
+  if(AREAS)$('areaNote').textContent=st.area+': '+AREAS[st.area]+' Figures below are per trust, not per site or area.';
   document.querySelectorAll('.lg').forEach(function(b){b.setAttribute('aria-pressed',String(st.band===b.dataset.band));});
 }
 function syncChips(){document.querySelectorAll('#trustChips .chip').forEach(function(b){b.setAttribute('aria-pressed',String(!!st.trusts[b.dataset.t]));});}
@@ -355,8 +697,198 @@ function act(el){
 document.addEventListener('click',function(e){var el=e.target.closest('[data-sort],[data-spec],[data-solo],[data-band]');if(el)act(el);});
 document.addEventListener('keydown',function(e){if((e.key==='Enter'||e.key===' ')&&e.target.getAttribute('role')==='button'){e.preventDefault();act(e.target);}});
 $('reset').onclick=function(){TRUSTS.forEach(function(t){st.trusts[t.id]=true;});st.care='all';st.spec='all';st.sort='wait-desc';st.small=false;st.band='all';$('care').value='all';$('sort').value='wait-desc';$('small').checked=false;fixSpec();syncChips();save();render();};
+
+function buildSources(){
+  $('cqcCap')&&($('cqcCap').textContent='CQC ratings, '+M.title+' and comparator trusts');
+  if(CQC)$('cqcBody').innerHTML=CQC.map(function(r){var t=TBY[r[0]];var yr=parseInt(r[8].slice(-4),10);
+    return '<tr'+(t.home?' class="hl"':'')+'><th scope="row"><a href="https://www.cqc.org.uk/provider/'+r[1]+'" rel="noopener" target="_blank">'+esc(t.name)+'</a>'+(t.home?' <span class="homebadge" style="color:var(--home);font-weight:600">· home trust</span>':'')+'</th>'+
+      [2,3,4,5,6,7].map(function(i){return '<td>'+rate(r[i])+'</td>';}).join('')+'<td>'+r[8]+(yr<=2021?' <span class="old">older report</span>':'')+'</td></tr>';}).join('');
+}
+
+var OS0=function(){return {view:'area',year:ONS?ONS.years[ONS.years.length-1]:0,sex:0,area:M.ons_area,place:'NHS hospitals',cause:0,age:0};},OS=OS0();
+try{OS=Object.assign(OS,st.ons||{});}catch(e){}
+var PL=ONS?ONS.places:[], YI=function(y){return ONS.years.indexOf(y);};
+var SEXN=['All people','Male','Female'];
+function pct(n,t){return t?(100*n/t):0;}
+function f1(x){return x.toFixed(1)+'%';}
+function areaIdx(n){for(var i=0;i<ONS.areas.length;i++)if(ONS.areas[i].n===n)return i;return 0;}
+function ENG(){return areaIdx('England');}
+function key(a,b){return '<span><i style="background:var(--accent)"></i>'+esc(a)+'</span>'+(b?'<span><i style="background:var(--ink2);opacity:.7"></i>'+esc(b)+'</span>':'');}
+
+function groupedBars(rows,aName,eName,topN){
+  // rows: [{label,a:{n,p},e:{n,p}}] — assumed pre-sorted descending by r.a.p.
+  // Highlight only the top topN (default 2) rows; grey out the long tail so the
+  // eye lands on the categories that actually matter (10%-of-surface rule).
+  var n=topN==null?2:topN;
+  var max=Math.max.apply(null,rows.map(function(r){return Math.max(r.a.p,r.e?r.e.p:0);}))||1;
+  return rows.map(function(r,i){
+    var hi=i<n;
+    var t='<b>'+esc(r.label)+'</b>'+esc(aName)+': '+fmt(r.a.n)+' ('+f1(r.a.p)+')'+(r.e?'<br>'+esc(eName)+': '+fmt(r.e.n)+' ('+f1(r.e.p)+')':'');
+    var h='<div class="pl'+(hi?'':' muted')+'" data-tip="'+t.replace(/"/g,'&quot;')+'"><div>'+esc(r.label)+'</div><div class="bars"><div class="bar a'+(hi?'':' muted')+'"><b style="width:'+(r.a.p/max*88)+'%"></b><span style="left:calc('+(r.a.p/max*88)+'% + 6px)">'+f1(r.a.p)+'</span></div>';
+    if(r.e)h+='<div class="bar e"><b style="width:'+(r.e.p/max*88)+'%"></b><span style="left:calc('+(r.e.p/max*88)+'% + 6px)">'+f1(r.e.p)+'</span></div>';
+    return h+'</div></div>';
+  }).join('');
+}
+
+function lineChart(labels,series){
+  var W=640,H=260,L=46,R=16,T=12,B=28,n=labels.length;
+  var mx=0;series.forEach(function(s){s.v.forEach(function(v){if(v>mx)mx=v;});});
+  var step=mx>40?10:mx>20?5:mx>8?2:1;mx=Math.ceil(mx*1.08/step)*step||step;
+  var X=function(i){return L+(W-L-R)*i/(n-1);},Y=function(v){return T+(H-T-B)*(1-v/mx);};
+  var g='';
+  for(var v=0;v<=mx;v+=step){g+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+Y(v)+'" y2="'+Y(v)+'" stroke="var(--line)" stroke-width="1"/><text x="'+(L-6)+'" y="'+(Y(v)+4)+'" text-anchor="end">'+v+'%</text>';}
+  labels.forEach(function(l,i){if(n<=10||i%2===0)g+='<text x="'+X(i)+'" y="'+(H-8)+'" text-anchor="middle">'+l+'</text>';});
+  series.forEach(function(s){
+    g+='<polyline fill="none" stroke="'+s.c+'" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" points="'+s.v.map(function(v,i){return X(i)+','+Y(v);}).join(' ')+'"/>';
+    g+=s.v.map(function(v,i){return '<circle cx="'+X(i)+'" cy="'+Y(v)+'" r="4" fill="'+s.c+'" stroke="var(--surface)" stroke-width="2"/>';}).join('');
+  });
+  var hit='';
+  for(var i=0;i<n;i++){
+    var t='<b>'+labels[i]+'</b>'+series.map(function(s){return esc(s.name)+': '+f1(s.v[i])+' ('+fmt(s.n[i])+' deaths)';}).join('<br>');
+    var x0=i===0?L:(X(i)+X(i-1))/2,x1=i===n-1?W-R:(X(i)+X(i+1))/2;
+    hit+='<rect x="'+x0+'" y="'+T+'" width="'+(x1-x0)+'" height="'+(H-T-B)+'" fill="transparent" data-tip="'+t.replace(/"/g,'&quot;')+'"/>';
+  }
+  return '<svg class="line" viewBox="0 0 '+W+' '+H+'" role="group" aria-label="Line chart, share of deaths by year">'+g+hit+'</svg>';
+}
+
+function fillSel(id,opts,val){var el=$(id);el.innerHTML=opts.map(function(o){return '<option value="'+esc(o[0])+'">'+esc(o[1])+'</option>';}).join('');el.value=String(val);}
+function buildOns(){
+  fillSel('oYear',ONS.years.slice().reverse().map(function(y){return [y,y];}),OS.year);
+  var el=$('oAreaSel'),last='',h='';
+  ONS.areas.forEach(function(a){if(a.t!==last){if(last)h+='</optgroup>';h+='<optgroup label="'+esc(a.t)+'">';last=a.t;}h+='<option'+(a.n===OS.area?' selected':'')+'>'+esc(a.n)+'</option>';});
+  el.innerHTML=h+'</optgroup>';
+  fillSel('oPlace',PL.slice(1).map(function(p){return [p,p];}),OS.place);
+  fillSel('oCauseSel',ONS.chap.map(function(c,i){return [i,c];}),OS.cause);
+  fillSel('oAge',ONS.ages.map(function(a,i){return [i,a];}),OS.age);
+  $('oSex').value=String(OS.sex);
+  var on=function(id,fn){$(id).onchange=function(){fn(this);saveO();renderOns();};};
+  on('oYear',function(t){OS.year=+t.value;});on('oSex',function(t){OS.sex=+t.value;});on('oAreaSel',function(t){OS.area=t.value;});
+  on('oPlace',function(t){OS.place=t.value;});on('oCauseSel',function(t){OS.cause=+t.value;});on('oAge',function(t){OS.age=+t.value;});
+  $('oArea').onclick=function(){OS.view='area';saveO();renderOns();};
+  $('oCause').onclick=function(){OS.view='cause';saveO();renderOns();};
+  $('oReset').onclick=function(){OS=Object.assign(OS0(),{view:OS.view});buildOns();saveO();renderOns();};
+}
+function saveO(){st.ons=OS;save();}
+function renderOns(){
+  var av=OS.view==='area';
+  $('oArea').setAttribute('aria-pressed',String(av));$('oCause').setAttribute('aria-pressed',String(!av));
+  $('fArea').hidden=!av;$('fPlace').hidden=!av;$('fCause').hidden=av;$('fAge').hidden=av;$('oS2').hidden=!av;
+  var yi=YI(OS.year);
+  if(av){
+    var ai=areaIdx(OS.area),ei=ENG();
+    var Araw=ONS.t6[ai][yi];
+    if(!Araw){
+      $('oTiles').innerHTML='';
+      $('oT1').textContent='Where people died: '+OS.area+', '+OS.year;
+      $('oC1').textContent='';
+      $('oK1').innerHTML='';
+      $('oB1').innerHTML='<div class="empty">Not available for '+esc(OS.area)+' before 2016. NHS Integrated Care Boards (and current Welsh Local Health Boards) were introduced after this period, so earlier equivalent local-area data is not published at this level. Try Country or Region, or a later year.</div>';
+      $('oT2').textContent='';$('oC2').textContent='';$('oK2').innerHTML='';$('oB2').innerHTML='';
+      return;
+    }
+    var A=Araw[OS.sex],E=ONS.t6[ei][yi][OS.sex];
+    var rows=PL.slice(1).map(function(p,i){return {label:p,a:{n:A[i+1],p:pct(A[i+1],A[0])},e:{n:E[i+1],p:pct(E[i+1],E[0])}};}).sort(function(x,y){return y.a.p-x.a.p;});
+    var hosp=PL.indexOf('NHS hospitals'),home=PL.indexOf('Private homes');
+    $('oTiles').innerHTML=
+      '<div class="tile"><div class="k">Deaths registered</div><div class="v">'+fmt(A[0])+'</div><div class="n">'+esc(OS.area)+', '+OS.year+', '+SEXN[OS.sex].toLowerCase()+'</div></div>'+
+      '<div class="tile"><div class="k">In NHS hospitals</div><div class="v">'+f1(pct(A[hosp],A[0]))+'</div><div class="n">England '+f1(pct(E[hosp],E[0]))+'</div></div>'+
+      '<div class="tile"><div class="k">At home</div><div class="v">'+f1(pct(A[home],A[0]))+'</div><div class="n">England '+f1(pct(E[home],E[0]))+'</div></div>';
+    $('oT1').textContent='Where people died: '+OS.area+', '+OS.year;
+    $('oC1').textContent='Share of deaths by place of death, '+SEXN[OS.sex].toLowerCase()+', compared with England. Hover a row for numbers.';
+    $('oK1').innerHTML=key(OS.area,OS.area==='England'?'':'England');
+    var er=OS.area==='England';
+    chartBox($('oB1'),groupedBars(er?rows.map(function(r){return {label:r.label,a:r.a};}):rows,OS.area,'England'),['Place of death',OS.area+' deaths',OS.area+' %'].concat(er?[]:['England deaths','England %']),rows.map(function(r){return [r.label,fmt(r.a.n),f1(r.a.p)].concat(er?[]:[fmt(r.e.n),f1(r.e.p)]);}),$('oT1').textContent);
+    var pi=PL.indexOf(OS.place),ya=[],ye=[],na=[],ne=[],trendYears=[];
+    ONS.years.forEach(function(y,k){var araw=ONS.t6[ai][k];if(!araw)return;var a=araw[OS.sex],e=ONS.t6[ei][k][OS.sex];trendYears.push(y);ya.push(pct(a[pi],a[0]));na.push(a[pi]);ye.push(pct(e[pi],e[0]));ne.push(e[pi]);});
+    var skipped=ONS.years.length-trendYears.length;
+    $('oT2').textContent='Trend, '+trendYears[0]+' to '+trendYears[trendYears.length-1]+': deaths in '+OS.place;
+    $('oC2').textContent='Share of deaths ('+SEXN[OS.sex].toLowerCase()+') in '+OS.area+' that occurred in this place. The 2020 and 2021 shifts reflect the pandemic.'+(skipped?' Not available for this area before 2016 ('+skipped+' earlier year'+(skipped===1?'':'s')+' omitted).':'');
+    $('oK2').innerHTML=key(OS.area,er?'':'England');
+    var ser=[{name:OS.area,c:'var(--accent)',v:ya,n:na}];if(!er)ser.push({name:'England',c:'var(--ink2)',v:ye,n:ne});
+    chartBox($('oB2'),lineChart(trendYears,ser),['Year',OS.area+' deaths',OS.area+' %'].concat(er?[]:['England deaths','England %']),trendYears.map(function(y,k){return [String(y),fmt(na[k]),f1(ya[k])].concat(er?[]:[fmt(ne[k]),f1(ye[k])]);}),$('oT2').textContent);
+  }else{
+    var ti=ONS.t5_years.indexOf(OS.year);
+    if(ti<0){$('oTiles').innerHTML='';$('oT1').textContent='Where people died: by cause and age';$('oC1').textContent='';$('oK1').innerHTML='';$('oB1').innerHTML='<div class="empty">Cause and age are kept for '+ONS.t5_years.join(', ')+' only. Choose that year.</div>';return;}
+    var C=ONS.t5[ti][OS.sex][OS.age][OS.cause];
+    var rows2=PL.slice(1).map(function(p,i){return {label:p,a:{n:C[i+1],p:pct(C[i+1],C[0])}};}).sort(function(x,y){return y.a.p-x.a.p;});
+    var top=rows2[0];
+    $('oTiles').innerHTML=
+      '<div class="tile"><div class="k">Deaths registered</div><div class="v">'+fmt(C[0])+'</div><div class="n">England and Wales, '+OS.year+'</div></div>'+
+      '<div class="tile"><div class="k">Most common place</div><div class="v">'+f1(top.a.p)+'</div><div class="n">'+esc(top.label)+'</div></div>';
+    var nm=ONS.chap[OS.cause],ag=ONS.ages[OS.age];
+    $('oT1').textContent='Where people died: '+nm+', '+ag.toLowerCase()+', '+OS.year;
+    $('oC1').textContent='England and Wales, '+SEXN[OS.sex].toLowerCase()+'. Share of deaths in this group by place of death.';
+    $('oK1').innerHTML=key('England and Wales','');
+    if(C[0]===0)$('oB1').innerHTML='<div class="empty">No deaths recorded for this combination.</div>';else chartBox($('oB1'),groupedBars(rows2,'England and Wales'),['Place of death','Deaths','Share'],rows2.map(function(r){return [r.label,fmt(r.a.n),f1(r.a.p)];}),$('oT1').textContent);
+  }
+}
+
+buildSources();
+
+var HB={1:'Higher than expected',2:'As expected',3:'Lower than expected'};
+var H5={};TRUSTS.forEach(function(t){H5[t.code]=t.id;});
+var HS=Object.assign({rate:'all',band:'all',all:true},st.sh||{});
+function cqcOverall(id){for(var i=0;CQC&&i<CQC.length;i++)if(CQC[i][0]===id)return CQC[i][2];return 'n/a';}
+function saveH(){st.sh=HS;save();}
+function buildShmi(){
+  $('hRate').value=HS.rate;$('hBand').value=HS.band;$('hAll').checked=HS.all;
+  $('hRate').onchange=function(){HS.rate=this.value;saveH();renderShmi();};
+  $('hBand').onchange=function(){HS.band=this.value;saveH();renderShmi();};
+  $('hAll').onchange=function(){HS.all=this.checked;saveH();renderShmi();};
+  $('hReset').onclick=function(){HS={rate:'all',band:'all',all:true};buildShmi();saveH();renderShmi();};
+}
+function renderShmi(){
+  var sel=[];
+  SH.forEach(function(r){var id=H5[r[0]];if(!id)return;var cq=cqcOverall(id);
+    var ok=(HS.rate==='all'||cq===HS.rate)&&(HS.band==='all'||String(r[3])===HS.band);r.sel=ok;if(ok)sel.push(r);});
+  var nb={1:0,2:0,3:0};SH.forEach(function(r){nb[r[3]]++;});
+  $('hTiles').innerHTML=
+    '<div class="tile"><div class="k">Your trusts shown</div><div class="v">'+sel.length+' of '+SH.filter(function(r){return H5[r[0]];}).length+'</div><div class="n">matching the filters</div></div>'+
+    '<div class="tile"><div class="k">Higher than expected</div><div class="v">'+nb[1]+'</div><div class="n">of '+SH.length+' trusts in England</div></div>'+
+    '<div class="tile"><div class="k">As expected</div><div class="v">'+nb[2]+'</div><div class="n">of '+SH.length+' trusts</div></div>'+
+    '<div class="tile"><div class="k">Lower than expected</div><div class="v">'+nb[3]+'</div><div class="n">of '+SH.length+' trusts</div></div>';
+  // chart
+  var W=640,H=320,L=46,R=16,T=12,B=36,X0=0,X1=8000,Y0=0.5,Y1=1.4;
+  var X=function(v){return L+(W-L-R)*(v-X0)/(X1-X0);},Y=function(v){return T+(H-T-B)*(1-(v-Y0)/(Y1-Y0));};
+  var g='',v,i;
+  for(v=0.6;v<=1.4001;v+=0.2){g+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+Y(v)+'" y2="'+Y(v)+'" stroke="var(--line)"/><text x="'+(L-6)+'" y="'+(Y(v)+3)+'" text-anchor="end">'+v.toFixed(1)+'</text>';}
+  for(v=0;v<=8000;v+=2000){g+='<text x="'+X(v)+'" y="'+(H-20)+'" text-anchor="middle">'+fmt(v)+'</text>';}
+  g+='<text x="'+((L+W-R)/2)+'" y="'+(H-6)+'" text-anchor="middle">Deaths expected (larger trusts to the right)</text>';
+  g+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+Y(1)+'" y2="'+Y(1)+'" stroke="var(--ink2)" stroke-width="1.5"/>';
+  var srt=SH.slice().sort(function(a,b){return a[6]-b[6];});
+  ['7','8'].forEach(function(k){g+='<polyline fill="none" stroke="var(--ink2)" stroke-width="1" stroke-dasharray="4 3" points="'+srt.map(function(r){return X(r[6])+','+Y(r[k]);}).join(' ')+'"/>';});
+  var tipf=function(r){var id=H5[r[0]];var t='<b>'+esc(nameCase(r[1]))+'</b>SHMI '+r[2].toFixed(2)+' ('+HB[r[3]]+')<br>Observed '+fmt(r[5])+', expected '+fmt(r[6])+' deaths'+(id&&CQC?'<br>CQC overall: '+cqcOverall(id):'');return t.replace(/"/g,'&quot;');};
+  if(HS.all)SH.forEach(function(r){if(H5[r[0]]&&r.sel)return;g+='<circle cx="'+X(r[6])+'" cy="'+Y(r[2])+'" r="3" fill="var(--ink2)" opacity="'+(H5[r[0]]?.9:.45)+'" data-tip="'+tipf(r)+'"/>';});
+  sel.forEach(function(r){var id=H5[r[0]],x=X(r[6]),y=Y(r[2]);
+    g+='<circle data-start cx="'+x+'" cy="'+y+'" r="6" fill="var(--accent)" stroke="var(--surface)" stroke-width="2" data-tip="'+tipf(r)+'"/>';
+    var left=x>W-150;g+='<text x="'+(x+(left?-10:10))+'" y="'+(y+3)+'" text-anchor="'+(left?'end':'start')+'" style="fill:var(--ink);paint-order:stroke;stroke:var(--surface);stroke-width:3px">'+TBY[id].short+'</text>';});
+  var drawn=SH.filter(function(r){return HS.all||r.sel;}).slice().sort(function(a,b){return nameCase(a[1]).localeCompare(nameCase(b[1]));});
+  chartBox($('hChart'),'<svg class="line" viewBox="0 0 '+W+' '+H+'" role="group" aria-label="Scatter chart of SHMI against expected deaths for '+SH.length+' trusts">'+g+'</svg>',
+    ['Trust','SHMI','SHMI band','Deaths observed','Deaths expected'],drawn.map(function(r){return [nameCase(r[1]),r[2].toFixed(2),HB[r[3]],fmt(r[5]),fmt(r[6])];}),'Deaths compared with expected, '+drawn.length+' trusts');
+  // table
+  var tb=SH.filter(function(r){return H5[r[0]];}).sort(function(a,b){return b[2]-a[2];});
+  $('hBody').innerHTML=tb.map(function(r){var id=H5[r[0]],t=TBY[id],cq=cqcOverall(id),c=cq==='Good'||cq==='Outstanding'?(cq==='Good'?'g':'o'):cq==='Requires improvement'?'ri':'i';
+    var bc=r[3]===1?'i':r[3]===3?'g':'';
+    return '<tr'+(r.sel?'':' style="opacity:.4"')+'><th scope="row"><a href="https://www.cqc.org.uk/provider/'+r[0]+'" rel="noopener" target="_blank">'+esc(t.name)+'</a></th><td><span class="rate '+c+'">'+esc(cq)+'</span></td><td style="font-family:var(--mono)">'+r[2].toFixed(2)+'</td><td>'+(bc?'<span class="rate '+bc+'">':'<span>')+HB[r[3]]+'</span></td><td>'+fmt(r[5])+'</td><td>'+fmt(r[6])+'</td><td>'+fmt(r[4])+'</td></tr>';}).join('');
+}
+
+function pageText(){
+  var p=M.periods||{};
+  document.querySelectorAll('[class^="m-"]').forEach(function(el){var k=el.className.slice(2);el.textContent=k==='shmiN'?(SH?SH.length:''):(p[k]||'');});
+  if(SH&&SHMIP){$('shmiPeriod').textContent='SHMI covers '+SHMIP+'.';$('shmiPeriod').hidden=false;}
+  if(M.site_note)$('siteNote').innerHTML=M.site_note; // shortcut: site_note is HTML written in regions.json (repo-owned), never scraped text
+  var ae=AE.map(function(r){return r[3];}).sort().pop();
+  $('waitsSource').innerHTML='<b>Source.</b> NHS England Referral to Treatment (RTT) incomplete pathways, data through '+ymLong(M.data_through)+(ae?', and A&amp;E for '+ymLong(ae):'')+'. Cross-check against the <a href="https://www.england.nhs.uk/statistics/statistical-work-areas/rtt-waiting-times/" rel="noopener">NHS England RTT release</a> before relying on it.';
+  if(SH&&CQC){var yrs=CQC.map(function(r){return +r[8].slice(-4);}),n=SH.filter(function(r){return H5[r[0]];}).length,NW=['no','one','two','three','four','five','six','seven','eight','nine','ten'];
+    $('shmiCaveat').textContent=' With '+(NW[n]||n)+' trusts and CQC reports from '+Math.min.apply(null,yrs)+' to '+Math.max.apply(null,yrs)+', this view cannot show whether CQC ratings and SHMI move together.';}
+  if(!CQC&&$('fRate'))$('fRate').hidden=true;
+}
+pageText();
+if(SH){buildShmi();renderShmi();}
+if(ONS){buildOns();renderOns();}
 buildControls();
 render();
+showSource();
 </script>
 
 </body></html>
