@@ -1,0 +1,541 @@
+<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-Xv/b2oZF8E3TT249J1FQEGctEqzXvJeJNISMLiEvdAc=' 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
+var SCHEME=/^\s*([a-z][a-z0-9+.\-]*):/i,HREF={http:1,https:1,mailto:1,tel:1},SRC={http:1,https:1,blob:1};
+function okUrl(v,isSrc){var c=String(v).replace(/[\u0000- ]/g,""),m=SCHEME.exec(c);if(!m)return true;var s=m[1].toLowerCase();
+if(isSrc&&s==="data")return /^data:image\//i.test(c);return !!(isSrc?SRC:HREF)[s];}
+function fixOne(n){if(n.nodeType!==1)return;var a=n.attributes;
+for(var j=a.length-1;j>=0;j--){var k=a[j].name.toLowerCase(),v=a[j].value;
+if(k.slice(0,2)==="on"){if(!(k==="onerror"&&v==="this.remove()"))n.removeAttribute(a[j].name);}
+else if((k==="href"||k==="xlink:href"||k==="action"||k==="formaction")&&!okUrl(v,false))n.removeAttribute(a[j].name);
+else if((k==="src"||k==="srcset"||k==="poster")&&!okUrl(v,true))n.removeAttribute(a[j].name);}
+if(n.tagName==="A"&&n.getAttribute("target")==="_blank"&&n.getAttribute("rel")!=="noopener noreferrer")n.setAttribute("rel","noopener noreferrer");}
+function fixTree(n){if(n.nodeType!==1)return;fixOne(n);var all=n.getElementsByTagName("*");for(var i=0;i<all.length;i++)fixOne(all[i]);}
+new MutationObserver(function(ms){for(var i=0;i<ms.length;i++){var m=ms[i];if(m.type==="attributes")fixOne(m.target);
+else for(var j=0;j<m.addedNodes.length;j++)fixTree(m.addedNodes[j]);}}).observe(document.documentElement,{childList:true,subtree:true,attributes:true});
+})();</script><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<a class="skip" href="#main">Skip to the list</a>
+<noscript><p style="margin:16px;padding:14px;border:2px solid currentColor;border-radius:12px;font-size:1.05rem">This page needs JavaScript to show the current listings and deadlines. Please turn it on, or use the official websites linked from the "places to watch" section.</p></noscript>
+
+<title>Plymouth &amp; Ivybridge · Community Watch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:wght@600;800&display=swap">
+<style>
+:root{
+  --bg:#EEF3F5; --surface:#FFFFFF; --surface2:#E3ECEF; --ink:#12303F; --muted:#4A6572; --line:#C6D5DB;
+  --accent:#0B6F7A; --accent-ink:#FFFFFF; --focus:#0B4FD1;
+  --urgent:#B3261E; --urgent-bg:#FCE9E7; --soon:#8A5A00; --soon-bg:#FBF0D6; --ok:#2F6B3F; --ok-bg:#E2F1E5; --done:#5B6B73; --done-bg:#E6EBED; --evt:#0B5A8A; --evt-bg:#E0EEF8;
+  --f-body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-head:"Bricolage Grotesque","Atkinson Hyperlegible",system-ui,sans-serif;
+  --base:16px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0D1B22; --surface:#15272F; --surface2:#1C333D; --ink:#E7F0F3; --muted:#9FB6C0; --line:#2C4652;
+    --accent:#4FC3CF; --accent-ink:#06222A; --focus:#8DB6FF;
+    --urgent:#FF9A92; --urgent-bg:#3A1B19; --soon:#F2C56B; --soon-bg:#372A0B; --ok:#8FD09F; --ok-bg:#16301D; --done:#9FB0B8; --done-bg:#1F313A; --evt:#8CC8F2; --evt-bg:#142B3C;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0D1B22; --surface:#15272F; --surface2:#1C333D; --ink:#E7F0F3; --muted:#9FB6C0; --line:#2C4652;
+  --accent:#4FC3CF; --accent-ink:#06222A; --focus:#8DB6FF;
+  --urgent:#FF9A92; --urgent-bg:#3A1B19; --soon:#F2C56B; --soon-bg:#372A0B; --ok:#8FD09F; --ok-bg:#16301D; --done:#9FB0B8; --done-bg:#1F313A; --evt:#8CC8F2; --evt-bg:#142B3C;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:var(--base);line-height:1.5;padding-inline:16px;padding-block:0 48px}
+body.big{--base:22px;line-height:1.55}
+.wrap{max-width:1080px;margin-inline:auto}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}
+h1,h2,h3{font-family:var(--f-head);text-wrap:balance;margin:0;line-height:1.15}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+
+.top{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:flex-end;justify-content:space-between;padding-block:24px 16px}
+.brand h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:800;letter-spacing:-.01em}
+.brand p{margin:6px 0 0;color:var(--muted);max-width:62ch}
+.asof{font-size:.85rem;color:var(--muted);margin-top:4px}
+.mode{display:inline-flex;border:2px solid var(--ink);border-radius:999px;overflow:hidden;background:var(--surface)}
+.mode button{border:0;background:transparent;padding:10px 18px;font-weight:700;min-height:44px}
+.mode button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+
+/* hero photo. Files live beside the page as artifact supporting files, not
+   base64, so a refresh republishes ~109KB of index.html instead of ~350KB. */
+.hero{position:relative;margin-top:16px;border-radius:16px;overflow:hidden;background:#1b1a22 center 55%/cover no-repeat;color:#fff}
+.hero{background-image:url("hero.jpg")}
+.hero[data-place="plymouth"]{background-image:url("heroes/plymouth.jpg")}
+.hero[data-place="ivybridge"]{background-image:url("heroes/ivybridge.jpg")}
+.hero[data-place="villages"]{background-image:url("heroes/villages.jpg")}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,16,22,.15) 0%,rgba(8,16,22,.78) 100%)}
+.hero .top{position:relative;padding:clamp(24px,9vw,120px) clamp(16px,3vw,28px) 18px}
+.hero .brand p,.hero .asof{color:rgba(255,255,255,.92)}
+.hero .mode{position:relative}
+.hero .mode button{color:var(--ink)}
+.hero .mode button[aria-pressed="true"]{color:var(--bg)}
+.hero h1{text-shadow:0 1px 12px rgba(0,0,0,.45)}
+.hero-credit{margin:0}
+.hero-credit a{color:var(--accent)}
+
+.alert{display:flex;gap:16px;align-items:center;flex-wrap:wrap;border-radius:12px;padding:16px 20px;margin-block:8px 20px;border:2px solid}
+.alert.urgent{background:var(--urgent-bg);border-color:var(--urgent);color:var(--urgent)}
+.alert.soon{background:var(--soon-bg);border-color:var(--soon);color:var(--soon)}
+.alert.calm{background:var(--ok-bg);border-color:var(--ok);color:var(--ok)}
+.alert strong{font-family:var(--f-head);font-size:1.25em;display:block}
+.alert span{color:var(--ink)}
+.alert .sym{font-size:2em;line-height:1;font-weight:800}
+
+.runway{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-bottom:20px}
+.runway h2{font-size:1.1rem;margin-bottom:12px}
+.rw-row{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,2fr) auto;gap:8px 16px;align-items:center;padding-block:8px;border-top:1px solid var(--line)}
+.rw-row:first-of-type{border-top:0}
+a.rw-row{color:inherit;text-decoration:none;padding-inline:10px;margin-inline:-10px;border-radius:10px}
+a.rw-row:hover,a.rw-row:focus-visible{background:var(--surface2)}
+a.rw-row:hover .rw-title,a.rw-row:focus-visible .rw-title{text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:3px}
+.rw-go{display:block;font-weight:700;font-size:.8rem;color:var(--accent)}
+.rw-title{font-weight:700;overflow-wrap:anywhere}
+.rw-title small{display:block;font-weight:400;color:var(--muted);font-size:.8rem}
+.rw-bar{height:12px;border-radius:999px;background:var(--surface2);position:relative;overflow:hidden}
+.rw-bar i{position:absolute;inset:0 auto 0 0;border-radius:999px;background:var(--accent)}
+.rw-bar.urgent i{background:var(--urgent)} .rw-bar.soon i{background:var(--soon)} .rw-bar.event i{background:var(--evt)}
+.rw-days{font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap}
+.rw-note{font-size:.8rem;color:var(--muted);margin:10px 0 0}
+@media(max-width:620px){.rw-row{grid-template-columns:1fr auto}.rw-bar{grid-column:1/-1;order:3}}
+
+.viewtabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;border-bottom:2px solid var(--line);padding-bottom:12px}
+.viewtabs button{border:2px solid var(--line);background:var(--surface);border-radius:10px;padding:10px 18px;min-height:44px;font-weight:700}
+.viewtabs button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.controls{display:grid;gap:12px;margin-bottom:16px}
+.ctl-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ctl-label{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700;min-width:5.5rem}
+.ctl-row>span:last-child{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 14px;min-height:40px;font-weight:700}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.chip .n{opacity:.75;font-weight:400;margin-left:4px}
+.search{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.search input{flex:1 1 260px;min-height:44px;padding:8px 14px;border:2px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}
+
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}
+.grid>main{min-width:0}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+.list{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+.sect{font-size:1.25rem;margin-top:8px}
+.sect small{font-family:var(--f-body);font-weight:400;color:var(--muted);font-size:.8rem;margin-left:8px}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
+.card.done{opacity:.94}
+.card-top{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.tag{font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:6px;background:var(--surface2);color:var(--muted)}
+.tag.rec{background:var(--ok-bg);color:var(--ok)}
+.tag.chk{background:var(--soon-bg);color:var(--soon)}
+.card h3{font-size:1.3rem;font-weight:800}
+.body-org{color:var(--muted);font-size:.9rem;margin-top:-4px}
+.dl{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;padding:10px 14px;border-radius:10px;font-weight:700}
+.dl.urgent{background:var(--urgent-bg);color:var(--urgent)}
+.dl.soon{background:var(--soon-bg);color:var(--soon)}
+.dl.later{background:var(--ok-bg);color:var(--ok)}
+.dl.event{background:var(--evt-bg);color:var(--evt)}
+.dl.done,.dl.ongoing,.dl.decision{background:var(--done-bg);color:var(--done)}
+.dl .big{font-family:var(--f-head);font-size:1.4em;font-variant-numeric:tabular-nums}
+.plain{margin:0;font-size:1.05em;overflow-wrap:anywhere}
+.meta{margin:0;color:var(--muted);font-size:.92em;overflow-wrap:anywhere}
+.meta strong{color:var(--ink)}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:10px 18px;border-radius:10px;border:2px solid var(--accent);font-weight:700;text-decoration:none;background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn[aria-expanded="true"]{background:var(--surface2)}
+.more{display:grid;gap:14px;padding-top:4px}
+.more p{margin:0}
+.more ul{margin:0;padding-left:20px;display:grid;gap:4px}
+.more h4{margin:0 0 6px;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.lensrow{display:flex;flex-wrap:wrap;gap:6px}
+.lensrow .chip{padding:4px 10px;min-height:32px;font-size:.85rem}
+.src{font-size:.85rem;color:var(--muted);overflow-wrap:anywhere}
+
+.side{position:sticky;top:12px;display:grid;gap:12px}
+@media(max-width:900px){.side{position:static}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
+.panel h2{font-size:1.05rem;margin-bottom:4px}
+.panel p.hint{margin:0 0 10px;color:var(--muted);font-size:.85rem}
+.group{margin-top:12px}
+.group h3{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-family:var(--f-body);font-weight:700;margin-bottom:6px}
+.ent{display:flex;flex-wrap:wrap;gap:6px}
+.ent .chip{padding:5px 10px;min-height:34px;font-size:.85rem;font-weight:400;text-align:left}
+.ent .chip[aria-pressed="true"]{font-weight:700}
+.panel ul{margin:0;padding-left:18px;display:grid;gap:6px}
+.empty-msg{background:var(--surface);border:1px dashed var(--line);border-radius:12px;padding:20px;color:var(--muted)}
+.foot{margin-top:28px;color:var(--muted);font-size:.85rem;display:grid;gap:8px;max-width:78ch}
+
+.bigbar,.bigarea{display:none}
+body.big .bigbar{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:16px}
+body.big .bigarea{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-bottom:20px}
+.bigbar button{min-height:76px;border:3px solid var(--accent);border-radius:16px;background:var(--surface);font-weight:800;font-size:1.05em;padding:12px}
+.bigbar button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.bigarea button{min-height:60px;border:2px solid var(--ink);border-radius:14px;background:var(--surface);font-weight:700;padding:10px}
+.bigarea button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.bigarea .lbl{grid-column:1/-1;font-weight:700;color:var(--muted);font-size:.8em;text-transform:uppercase;letter-spacing:.08em}
+body.big .brand p,body.big .asof{font-size:.8em}
+body.big .grid{grid-template-columns:minmax(0,1fr)}
+body.big .side,body.big .runway,body.big .ctl-standard,body.big .viewtabs{display:none}
+body.big .card{padding:24px;gap:16px;border-width:2px}
+body.big .card h3{font-size:1.45rem}
+body.big .btn{min-height:64px;padding:14px 26px;font-size:1.05em;border-radius:14px;width:100%}
+body.big .actions{display:grid;grid-template-columns:minmax(0,1fr)}
+body.big .dl{font-size:1.05em;padding:14px 18px}
+body.big .mode button{min-height:56px;padding:12px 22px}
+body.big .lensrow .chip{min-height:44px}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+.back-to-top{position:fixed;right:20px;bottom:20px;z-index:40;width:48px;height:48px;border-radius:50%;border:2px solid var(--accent);background:var(--accent);color:var(--accent-ink);font-size:1.3rem;font-weight:800;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,.25);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .2s}
+.back-to-top.show{opacity:1;visibility:visible;transform:translateY(0)}
+body.big .back-to-top{width:60px;height:60px;font-size:1.6rem;right:16px;bottom:16px}
+@media(prefers-reduced-motion:reduce){.back-to-top{transition:none}}
+</style>
+
+<div class="wrap">
+  <div class="hero" data-place="all">
+  <header class="top">
+    <div class="brand">
+      <h1>Plymouth &amp; Ivybridge Community Watch</h1>
+      <p>Who is doing what across Plymouth, Ivybridge and the nearby South Hams villages: social enterprises, volunteering and community groups, plus the council and government plans that affect them, local people and wildlife. Deadlines are flagged as they get close.</p>
+      <div class="asof" id="asof">Information collected on 1 November 2026</div>
+    </div>
+    <div class="mode" role="group" aria-label="Choose display">
+      <button type="button" id="m-std" aria-pressed="true">Standard</button>
+      <button type="button" id="m-big" aria-pressed="false">Big buttons</button>
+    </div>
+  </header>
+  </div>
+
+  <div class="controls ctl-standard" id="ctl-where">
+    <div class="ctl-row" role="group" aria-label="Choose your town"><span class="ctl-label">Choose your town</span><span id="areas"></span></div>
+  </div>
+
+  <div id="alert" role="status" aria-live="polite"></div>
+
+  <div class="bigbar" id="bigbar" role="group" aria-label="What would you like to see?"></div>
+  <div class="bigarea" id="bigarea" role="group" aria-label="Which town?"></div>
+
+  <section class="runway" id="runway" aria-labelledby="rw-h"></section>
+
+  <div class="viewtabs" role="group" aria-label="Choose a section">
+    <button type="button" data-view="deadlines">Deadlines and decisions</button>
+    <button type="button" data-view="groups">Groups and volunteering</button>
+    <button type="button" data-view="nature">Nature and wildlife</button>
+  </div>
+
+  <div class="controls ctl-standard" id="ctl-items">
+    <div class="ctl-row" role="group" aria-label="Status"><span class="ctl-label">Show</span><span id="tabs"></span></div>
+    <div class="ctl-row" role="group" aria-label="Who is running it"><span class="ctl-label">Run by</span><span id="levels"></span></div>
+  </div>
+  <div class="controls ctl-standard" id="ctl-groups">
+    <div class="search"><label class="ctl-label" for="q">Search</label><input id="q" type="search" placeholder="Name, town or what they do" autocomplete="off"></div>
+    <div class="ctl-row" role="group" aria-label="Type of group"><span class="ctl-label">Type</span><span id="gcats"></span></div>
+    <div class="ctl-row"><span class="ctl-label">Volunteers</span><span id="recruit"></span></div>
+  </div>
+
+  <div class="grid">
+    <main id="main">
+      <div id="lensbar"></div>
+      <div class="list" id="list"></div>
+    </main>
+    <aside class="side">
+      <section class="panel" id="lens-panel" aria-labelledby="lens-h">
+        <h2 id="lens-h">Who and what is affected</h2>
+        <p class="hint">Pick a group, animal or place to see only the items that touch it.</p>
+        <div id="lenses"></div>
+      </section>
+      <section class="panel" aria-labelledby="soon-h">
+        <h2 id="soon-h">Expected soon, not yet dated</h2>
+        <p class="hint">My reading of what may appear next. None of these has an announced date.</p>
+        <ul id="soonlist"></ul>
+      </section>
+      <section class="panel" aria-labelledby="w-h">
+        <h2 id="w-h">Places to watch</h2>
+        <ul id="watch"></ul>
+      </section>
+    </aside>
+  </div>
+
+  <div class="foot">
+    <p class="hero-credit" id="hero-credit"></p>
+    <p><strong>How to read this.</strong> Days left are counted from today's date in London. "Closes" is the last day to reply, apply or sign up. "Happens" is the day of an event. Red means 7 days or fewer, amber 21 days or fewer. A group marked "Check before you go" was found in a search result or an older article, so confirm it is still running before you travel or hand over money.</p>
+    <p><strong>What is not here.</strong> South Hams District Council, Ivybridge Town Council, Dartmoor National Park Authority and the Your Dartmoor site all blocked automated reading, so South Hams and Ivybridge council items rest on search snippets or are missing, and the Dartmoor closing date is from a search result. I could not read the titles or closing dates of the five live Devon County Council consultations, only the counts. Parish councils for Cornwood, Ermington, Modbury, Yealmpton, Wembury, Sparkwell, Newton Ferrers, Ugborough and Lee Mill were not checked, so village items are thin. Plymouth Octopus&#x27;s funding page and Plymouth Community Homes&#x27; community fund page returned errors, so no POP or Community Homes funding round is listed. No National Lottery Community Fund round specific to Plymouth or Devon was found, and no open GOV.UK or Defra consultation that names Plymouth or the South Hams. Plymouth Herald, Plymouth Live and Ivybridge local news were not read; only one BBC Devon report was. Facebook, Instagram and Reddit were not read, so the Devon Mind volunteer call and the South Hams council tax scheme post are search-result snippets only. Blue Sparks year two closed on 28 September 2026 (more than 30 days ago), so it is left out as an item. I found no verified campaign or residents&#x27; groups (category &#x27;camp&#x27;), and the Plymouth Social Enterprise Network site showed no events. Planning applications and Plymouth licensing notices were not checked.</p>
+    <p><strong>Sources.</strong> <a href="https://www.plymouth.gov.uk/have-your-say" target="_blank" rel="noopener">Plymouth City Council: Have your say</a>, <a href="https://www.plymouth.gov.uk/news" target="_blank" rel="noopener">Plymouth City Council: news</a>, <a href="https://www.plymouth.gov.uk/volunteering" target="_blank" rel="noopener">Plymouth City Council: volunteering</a>, <a href="https://www.devon.gov.uk/haveyoursay/" target="_blank" rel="noopener">Devon County Council: Have your say</a>, <a href="https://www.southhams.gov.uk/news" target="_blank" rel="noopener">South Hams District Council: news</a>, <a href="https://www.ivybridge.gov.uk/" target="_blank" rel="noopener">Ivybridge Town Council</a>, <a href="https://www.plymouthoctopus.org/" target="_blank" rel="noopener">Plymouth Octopus (POP)</a>, <a href="https://devoncf.com/how-to-apply/" target="_blank" rel="noopener">Devon Community Foundation: how to apply</a>, <a href="https://www.devon.gov.uk/fundingnews/resources/schools-grants-2026_27/" target="_blank" rel="noopener">Devon Funding News (grants lists)</a>, <a href="https://plymouthsoundnationalmarinepark.com/events/" target="_blank" rel="noopener">Plymouth Sound National Marine Park events</a>, <a href="https://www.devonwildlifetrust.org/events" target="_blank" rel="noopener">Devon Wildlife Trust events</a>, <a href="https://www.southdevon-nl.org.uk/events/" target="_blank" rel="noopener">South Devon National Landscape events</a>, group websites and local news. Information collected on 1 November 2026. Always confirm dates and times on the linked page before you rely on them.</p>
+  </div>
+</div>
+
+<button type="button" id="backtotop" class="back-to-top" aria-label="Back to top">↑</button>
+
+<script>
+const LEVELS = {"local":"Plymouth, South Hams and town councils","county":"Devon County Council","central":"Central government","funder":"Funders and companies","community":"Community and charity"};
+const GCATS = {hub:"Volunteer hubs, funders and support", se:"Social enterprises and CICs", food:"Food and family support", care:"Older people, health and disability", nature:"Nature, gardens and coast", culture:"Arts, heritage, clubs and centres", camp:"Campaign and residents' groups"};
+const GCAT_EMOJI = {hub:"👥", se:"💼", food:"🍲", care:"❤️", nature:"🌿", culture:"🎨", camp:"📢"};
+const KIND_EMOJI = {Consultation:"📋", Funding:"💰", Event:"📅", Decision:"🏛️", Programme:"🔁"};
+const AREAS = {"plymouth":"Plymouth","ivybridge":"Ivybridge","villages":"South Hams villages"};
+const AREAL = Object.assign({area:"Across Plymouth and Ivybridge"}, AREAS);
+/* Hero photo credits, one per AREAS key plus "all". These strings are
+   writer-controlled and injected as HTML so the licence links work -- the only
+   markup on this page that does NOT go through safeUrl(). Never build one of
+   these from scraped text. */
+const HERO_CREDIT = {"all":"Photo: Plymouth Hoe and Smeaton's Tower across the water, by <a href=\"https://unsplash.com/@owenpr?utm_source=plymouth_ivybridge_community_watch&utm_medium=referral\" target=\"_blank\" rel=\"noopener\">Patrick Owen PR</a> on <a href=\"https://unsplash.com/?utm_source=plymouth_ivybridge_community_watch&utm_medium=referral\" target=\"_blank\" rel=\"noopener\">Unsplash</a>","plymouth":"Photo: boats in the harbour at Plymouth's Barbican, by <a href=\"https://unsplash.com/@inspiredimages?utm_source=plymouth_ivybridge_community_watch&utm_medium=referral\" target=\"_blank\" rel=\"noopener\">Anthony</a> on <a href=\"https://unsplash.com/?utm_source=plymouth_ivybridge_community_watch&utm_medium=referral\" target=\"_blank\" rel=\"noopener\">Unsplash</a>","ivybridge":"Photo: a clapper bridge over a moorland stream on Dartmoor, by <a href=\"https://unsplash.com/@jammin_photos?utm_source=plymouth_ivybridge_community_watch&utm_medium=referral\" target=\"_blank\" rel=\"noopener\">Ben Wrigley</a> on <a href=\"https://unsplash.com/?utm_source=plymouth_ivybridge_community_watch&utm_medium=referral\" target=\"_blank\" rel=\"noopener\">Unsplash</a>","villages":"Photo: a granite tor on Dartmoor at sunset, by <a href=\"https://unsplash.com/@jannerboy62?utm_source=plymouth_ivybridge_community_watch&utm_medium=referral\" target=\"_blank\" rel=\"noopener\">Nick Fewings</a> on <a href=\"https://unsplash.com/?utm_source=plymouth_ivybridge_community_watch&utm_medium=referral\" target=\"_blank\" rel=\"noopener\">Unsplash</a>"};
+const LENSES = [
+  {cat:"People", id:"old", label:"Older and disabled people"},
+  {cat:"People", id:"young", label:"Young people and families"},
+  {cat:"People", id:"home", label:"Renters, homeless and housing need"},
+  {cat:"People", id:"dog", label:"Dog owners and walkers"},
+  {cat:"People", id:"res", label:"Every resident"},
+  {cat:"People", id:"biz", label:"Local businesses"},
+  {cat:"Organisations", id:"vcse", label:"Charities and voluntary groups"},
+  {cat:"Organisations", id:"se", label:"Social enterprises"},
+  {cat:"Wildlife and places", id:"bird", label:"Coastal and wading birds"},
+  {cat:"Wildlife and places", id:"marine", label:"Sea, seals and shore life"},
+  {cat:"Wildlife and places", id:"marsh", label:"Marsh, farmland and woodland"},
+  {cat:"Wildlife and places", id:"coast", label:"Beaches and coast paths"},
+  {cat:"Wildlife and places", id:"water", label:"Bathing water and pollution"}
+];
+
+/* status: open (has a future date), decision (waiting on a decision, watch), ongoing (running, no closing date), closed.
+   kind: Consultation, Funding, Decision, Programme, Event. */
+const ITEMS = [{"id":"cityliving","at":["plymouth"],"title":"Plymouth City Living Framework and Masterplan (draft)","body":"Plymouth City Council, Homes England and the UK Government","level":"local","kind":"Consultation","status":"open","deadline":"2026-12-07","time":"11:59pm on Monday 7 December 2026 (opened 12 noon on Monday 26 October)","topics":["homes","services","money"],"lenses":["res","biz","vcse","se","young","home"],"plain":"The council wants your views on a draft plan for 10,000 new homes, public spaces and jobs in and around Plymouth city centre.","detail":"Read on the council's own page today. It is described as a long-term vision for the city centre and surrounding neighbourhoods. The page says you can respond online, at the city centre consultation hub, or at a travelling exhibition bus that visits communities. I did not read the draft itself, so I cannot say which streets or sites are named.","how":"Respond online, at the city centre consultation hub, or at the exhibition bus. Use the 'Sign up' link on the page for updates.","aff":["Residents and businesses in and around the city centre","Community groups and social enterprises that need premises","Anyone who uses the city centre"],"url":"https://www.plymouth.gov.uk/plymouth-city-living-framework","urlLabel":"Have your say","src":"https://www.plymouth.gov.uk/plymouth-city-living-framework"},{"id":"ccaconsult","title":"Should Plymouth join the Devon and Torbay Combined County Authority?","body":"Plymouth City Council with the Devon and Torbay Combined County Authority","level":"local","kind":"Consultation","status":"closed","deadline":"2026-10-28","time":"Closed on 28 October 2026 (time not stated)","topics":["services","money"],"lenses":["res","biz","vcse"],"plain":"A public consultation on Plymouth becoming a full member of the regional authority has now closed.","detail":"The council's Have your say page listed it with 'Comment by 28 October 2026'. The council news story of 28 October says the consultation has closed, every response is being analysed and the findings will be published before any decisions are taken.","how":"The window to respond has closed. Watch for the published findings (see the mayoral authority entry).","aff":["Everyone in Plymouth","Neighbouring parts of Devon"],"url":"https://www.plymouth.gov.uk/have-your-say","urlLabel":"See the page","src":"https://www.plymouth.gov.uk/have-your-say"},{"id":"mayoral","title":"Mayoral Strategic Authority for Devon, Plymouth and Torbay","body":"UK Government; Plymouth City Council, Devon County Council, Torbay Council and the Devon and Torbay Combined County Authority","level":"central","kind":"Decision","status":"decision","deadline":null,"time":"Government said on 28 October 2026 (Budget day) it is minded to proceed. Each council and the Combined County Authority take formal decisions between November and December 2026","topics":["services","money","homes"],"lenses":["res","biz","vcse","young"],"plain":"The Government says it is minded to create a regional authority with an elected mayor covering Devon, Plymouth and Torbay.","detail":"From the Plymouth City Council news story of 28 October 2026. The authority would cover 1.25 million people and lead on transport (including bus franchising), skills, investment and strategic housing. Bin collections, schools, social care and local planning decisions would stay with each council. If all agree, and subject to Parliament, it could start in autumn 2027, with the first mayoral election expected in May 2028.","how":"No open consultation. Watch the council and Combined County Authority meeting agendas for the November and December decisions.","aff":["Everyone in Plymouth, Devon and Torbay","Bus users","Young people and skills providers"],"url":"https://www.plymouth.gov.uk/news/government-backs-plans-mayoral-strategic-authority-devon-plymouth-and-torbay","urlLabel":"Read the news story","src":"https://www.plymouth.gov.uk/news/government-backs-plans-mayoral-strategic-authority-devon-plymouth-and-torbay"},{"id":"lgr","title":"Local government reorganisation in Devon: decision withdrawn for review","body":"Ministry of Housing, Communities and Local Government; Plymouth City Council","level":"central","kind":"Decision","status":"decision","deadline":null,"time":"The 16 July 2026 decision was withdrawn on 29 October 2026; the Government says it will make a fresh decision in 2027","topics":["services"],"lenses":["res","vcse","se"],"plain":"The Government has pulled back its July decision on new councils for Devon and will look again, with a fresh decision in 2027.","detail":"Plymouth City Council's statement of 29 October 2026 says the initial decisions for 15 areas, including the Plymouth, Devon and Torbay proposal, are withdrawn and the proposal goes through a further review. On 16 July 2026 the council had reported that the Government would take forward four councils for Devon, with Plymouth expanding to about 300,000 people. I did not read which towns or villages would move into a larger Plymouth, so check whether your parish is affected. The Government still aims for shadow elections in 2028 and new councils in 2029.","how":"No consultation open. The council says it is waiting for the Government to explain the review process and timetable.","aff":["Everyone in Plymouth, Ivybridge and the South Hams","Charities and social enterprises with council contracts or grants"],"url":"https://www.plymouth.gov.uk/news/lgr-statement-councillor-evans","urlLabel":"Read the statement","src":"https://www.plymouth.gov.uk/news/lgr-statement-councillor-evans"},{"id":"dasurveys","at":["plymouth"],"title":"Domestic abuse and violence against women and girls needs assessment: three surveys","body":"Plymouth City Council","level":"local","kind":"Consultation","status":"open","deadline":"2026-11-30","time":"'Comment by 30 November' (year and time not stated on the page, so confirm)","topics":["services"],"lenses":["res","vcse","young"],"plain":"Three short surveys for survivors, for people worried about harmful behaviour, and for staff and volunteers who work in this area.","detail":"The council's Have your say page lists a survivor survey, a survey for adults who are worried about, or have used, abusive behaviour, and a practitioner survey for paid staff, volunteers, commissioners and community representatives. All three show 'Comment by 30 November'. I did not open the surveys.","how":"Choose the survey that fits you on the Have your say page.","aff":["Survivors of domestic abuse, sexual violence and stalking","Charities and volunteers who support them"],"url":"https://www.plymouth.gov.uk/have-your-say","urlLabel":"Have your say","src":"https://www.plymouth.gov.uk/have-your-say"},{"id":"sendsurvey","at":["plymouth"],"title":"Annual SEND survey (parents and carers)","body":"Plymouth Parent Carer Voice with the Plymouth Local Area SEND Partnership","level":"community","kind":"Consultation","status":"closed","deadline":"2026-10-31","time":"Closed on 31 October 2026 (time not stated)","topics":["services"],"lenses":["young","res"],"plain":"A yearly survey of families of children and young people with special educational needs and disabilities.","detail":"Listed on the council's Have your say page with 'Comment by 31 October'. It is run by Plymouth Parent Carer Voice, not by the council itself.","how":"The window to respond has closed.","aff":["Families of children and young people aged 0 to 25 with SEND"],"url":"https://www.plymouth.gov.uk/have-your-say","urlLabel":"See the page","src":"https://www.plymouth.gov.uk/have-your-say"},{"id":"childcare","at":["plymouth"],"title":"Childcare surveys for parents and carers","body":"Plymouth City Council","level":"local","kind":"Consultation","status":"ongoing","deadline":null,"time":"No closing date shown on the page","topics":["services"],"lenses":["young","res"],"plain":"The council asks parents and carers about childcare opening hours and affordability.","detail":"Listed on the Have your say page without a closing date. I did not open the survey, so I cannot confirm it is still taking answers.","how":"Open the survey from the Have your say page.","aff":["Parents and carers"],"url":"https://www.plymouth.gov.uk/have-your-say","urlLabel":"Have your say","src":"https://www.plymouth.gov.uk/have-your-say"},{"id":"hoenp","at":["plymouth"],"title":"Hoe Neighbourhood Plan referendum","body":"Plymouth City Council","level":"local","kind":"Decision","status":"open","deadline":"2026-12-03","time":"Polls open 7am to 10pm on Thursday 3 December 2026. Register to vote by midnight Tuesday 17 November","topics":["homes","services"],"lenses":["res","old"],"plain":"Voters on the Hoe are asked whether the council should use a local plan to help decide planning applications in their area.","detail":"From the council news story of 21 October 2026. You can vote only if you are registered and live in the Hoe neighbourhood area. Postal vote applications close at 5pm on Wednesday 18 November and proxy applications at 5pm on Wednesday 25 November. Polling stations are the Burgess Hall, Notte Street (PL1 2HG) and Ballard House, West Hoe Road (PL1 3BJ). Help line: 01752 304866.","how":"Check you are registered at gov.uk/register-to-vote, then vote in person, by post or by proxy.","aff":["Voters living in the Hoe neighbourhood area"],"url":"https://www.plymouth.gov.uk/news/hoe-neighbourhood-plan-referendum-announced","urlLabel":"Read the details","src":"https://www.plymouth.gov.uk/news/hoe-neighbourhood-plan-referendum-announced"},{"id":"welcome","at":["plymouth"],"title":"Welcome Spaces grants (up to £10,000)","body":"Plymouth City Council, Crisis Resilience Fund","level":"local","kind":"Funding","status":"closed","deadline":"2026-10-11","time":"Applications ran from 28 September to 11 October 2026 (time not stated)","topics":["money","volunteer"],"lenses":["vcse","se","old"],"plain":"Grants for community groups to run warm, welcoming places over winter, and cool spaces in hot weather. This round has closed.","detail":"From the council news story of 22 September 2026. Open to groups with an annual turnover under £250,000, with priority for smaller groups. Places do not need funding to join the wider Welcome Spaces network.","how":"This round has closed. Venues, faith groups, cafes and libraries can still ask to join the network.","aff":["Voluntary, community, faith and social enterprise groups","Lonely or isolated residents"],"url":"https://www.plymouth.gov.uk/news/ps10000-grants-available-help-plymouth-communities-thrive","urlLabel":"Read the story","src":"https://www.plymouth.gov.uk/news/ps10000-grants-available-help-plymouth-communities-thrive"},{"id":"roughsleep","at":["plymouth"],"title":"Rough Sleeping Programme: £2.6 million for Plymouth","body":"Ministry of Housing, Communities and Local Government; Plymouth City Council","level":"central","kind":"Funding","status":"ongoing","deadline":null,"time":"Announced 29 October 2026. £598,207 this year and £2,621,589 allocated for 2026 to 2029","topics":["homes","money","services"],"lenses":["home","vcse"],"plain":"Plymouth will get government money so people sleeping rough are offered a route off the streets by Christmas.","detail":"From the council news story of 29 October 2026. The council says monthly sightings of people rough sleeping rose from 75 (October 2025) to 106 (September 2026). The money backs the Plymouth Alliance, which includes Shekinah, Harbour, PATH, Livewell Southwest and others. It is not a grant round you can apply to.","how":"No application. Charities in the Alliance deliver the work; contact them to volunteer or donate.","aff":["People sleeping rough","Homelessness charities in Plymouth"],"url":"https://www.plymouth.gov.uk/news/people-sleeping-rough-be-offered-route-streets","urlLabel":"Read the story","src":"https://www.plymouth.gov.uk/news/people-sleeping-rough-be-offered-route-streets"},{"id":"neet","at":["plymouth"],"title":"£3 million for young people into Plymouth's defence industry","body":"UK Government (Budget); Team Plymouth","level":"central","kind":"Funding","status":"decision","deadline":null,"time":"Announced 28 October 2026. Subject to a further business case; details to be worked out over the coming months","topics":["money","services"],"lenses":["young","biz"],"plain":"The Budget promised £3 million to help young people not in work, education or training into jobs linked to Plymouth's defence industry.","detail":"From the council news story of 28 October 2026. It will run through Team Plymouth. The council says Plymouth will need about 25,000 more workers by 2035. How the money is shared out has not been published.","how":"Nothing to apply for yet. Watch Team Plymouth and the council for pilot details.","aff":["Young people under 25 not in education, employment or training","Local employers and training providers"],"url":"https://www.plymouth.gov.uk/news/ps3-million-boost-help-young-people-plymouths-growing-defence-industry","urlLabel":"Read the story","src":"https://www.plymouth.gov.uk/news/ps3-million-boost-help-young-people-plymouths-growing-defence-industry"},{"id":"commforest","title":"Plymouth and South Devon Community Forest: almost £30 million","body":"Plymouth City Council (lead partner), with Defra funding","level":"central","kind":"Funding","status":"ongoing","deadline":null,"time":"Announced 7 October 2026. Planting over the next 20 years","topics":["nature","volunteer","money"],"lenses":["res","marsh","vcse"],"plain":"Up to one million trees could be planted across Plymouth and surrounding areas in the next 20 years.","detail":"From the council news story of 7 October 2026. Partners include South Hams District Council, Devon County Council, Dartmoor National Park Authority, the National Trust and the Woodland Trust. Over 500,000 trees have already been planted on more than 190 sites. The forest runs from the South Devon coast across Plymouth to Dartmoor. Community planting days and woodland care are part of it.","how":"Ask the council or a tree group such as Plymouth Tree People about planting days.","aff":["Residents who live near planting sites","Volunteers, landowners, farmers and schools"],"url":"https://www.plymouth.gov.uk/news/huge-funding-boost-trees-plymouth-and-beyond","urlLabel":"Read the story","src":"https://www.plymouth.gov.uk/news/huge-funding-boost-trees-plymouth-and-beyond"},{"id":"woolwell","at":["plymouth"],"title":"Woolwell to The George transport scheme: next phase","body":"Plymouth City Council","level":"local","kind":"Programme","status":"ongoing","deadline":null,"time":"Extra park and ride spaces start in November 2026 and finish by summer 2027. The no right turn at Woolwell Roundabout returns in January 2027 until the works end next autumn","topics":["services"],"lenses":["res","biz"],"plain":"Roadworks in north Plymouth continue, with 83 extra spaces at The George Park and Ride.","detail":"From the council news story of 22 October 2026. Some spaces will be off limits while work moves around the car park. From January the northbound no right turn from Tavistock Road into Woolwell Road returns for all vehicles except emergency services and buses, with a camera and a £70 penalty for entering the bus lane.","how":"No action needed. Plan journeys through north Plymouth with extra time.","aff":["Drivers and bus users in north Plymouth","Park and ride users","Local businesses"],"url":"https://www.plymouth.gov.uk/news/next-phase-woolwell-george-scheme-get-under-way-0","urlLabel":"Read the story","src":"https://www.plymouth.gov.uk/news/next-phase-woolwell-george-scheme-get-under-way-0"},{"id":"oldtown","at":["plymouth"],"title":"Old Town Street access control bollards","body":"Plymouth City Council","level":"local","kind":"Programme","status":"ongoing","deadline":null,"time":"Preparation from November to 18 December 2026. Main installation January to March 2027","topics":["services"],"lenses":["biz","res","old"],"plain":"A permanent automatic bollard system will control vehicle access to the pedestrian city centre.","detail":"From the council news story of 26 October 2026. Phase one is preparation around the entrance with little change to access. Phase two, from January 2027, needs temporary road closures at the entrance to Old Town Street. The council says works pause before Christmas.","how":"No consultation. Businesses will get delivery details before the main work starts.","aff":["City centre shops and delivery drivers","Blue Badge holders and visitors"],"url":"https://www.plymouth.gov.uk/news/new-security-and-access-system-planned-old-town-street","urlLabel":"Read the story","src":"https://www.plymouth.gov.uk/news/new-security-and-access-system-planned-old-town-street"},{"id":"dartmoorpp","at":["ivybridge","villages"],"title":"Dartmoor Partnership Plan 2027 to 2032 (draft)","body":"Dartmoor National Park Authority","level":"local","kind":"Consultation","status":"open","deadline":"2026-11-22","time":"Closing date 22 November 2026 (date from search result, not confirmed on the page; time not stated)","topics":["nature","services","homes"],"lenses":["res","marsh","coast","vcse","young"],"plain":"Have your say on the draft five-year plan for Dartmoor, which borders Ivybridge, Cornwood, Sparkwell and Ugborough.","detail":"The Dartmoor Moorlander of 6 October 2026 says the consultation opens on Monday 12 October with an online questionnaire, paper copies at the Authority's Parke office and the Haytor and Postbridge visitor centres, and that the plan covers nature, farming, heritage, access, climate and business. The closing date of 22 November comes from a search result for the Your Dartmoor site, which blocked me from reading it. A final plan is expected in 2027.","how":"Complete the online questionnaire (about 20 minutes) or ask for a paper copy at a visitor centre.","aff":["Residents and visitors near Dartmoor","Farmers, landowners and businesses","Volunteers and community groups"],"url":"https://www.yourdartmoor.org/partnership-plan-review/partnership-plan-consultation","urlLabel":"Have your say","src":"https://www.themoorlander.co.uk/news/dartmoor-residents-urged-to-have-their-say-on-national-parks-future-plans-9270078"},{"id":"seaquest","at":["villages"],"title":"Seaquest Sunday sea watch, Wembury Point","body":"Devon Wildlife Trust Marine Engagement team","level":"community","kind":"Event","status":"open","deadline":"2026-11-01","time":"8:30am to 10:30am today, Sunday 1 November 2026. Runs on the first Sunday of each month","topics":["nature","volunteer"],"lenses":["marine","bird","coast"],"plain":"A morning sea watch to learn about marine wildlife off the Devon coast, on the first Sunday of every month.","detail":"Listed today on the Devon Wildlife Trust events page. The South Devon National Landscape calendar lists it as free.","how":"Turn up at Wembury Point; check the events page for any booking details.","aff":["Seals, dolphins and seabirds off Wembury"],"url":"https://www.devonwildlifetrust.org/events","urlLabel":"See the events page","src":"https://www.devonwildlifetrust.org/events"},{"id":"coastclean","at":["plymouth"],"title":"Marine Park coastal clean-ups","body":"Plymouth Sound National Marine Park and local groups","level":"community","kind":"Event","status":"open","deadline":"2026-11-03","time":"Tinside Cove Tue 3 Nov; Kinterbury Creek Thu 5 Nov; Ernesettle Creek Fri 6 Nov; Mount Batten Breakwater Wed 11 Nov. Times not stated","topics":["nature","volunteer"],"lenses":["marine","coast","water"],"plain":"Volunteer litter clean-ups along the Plymouth Sound shore on four dates in early November.","detail":"All four are listed on the Marine Park events page today. Times and meeting points are on each event's page, which I did not open.","how":"Open the event on the Marine Park events page to see the time and how to join.","aff":["Plymouth Sound shoreline and creeks","Volunteers"],"url":"https://plymouthsoundnationalmarinepark.com/events/","urlLabel":"See the events","src":"https://plymouthsoundnationalmarinepark.com/events/"},{"id":"rockpoolday","at":["plymouth"],"title":"The Big Rock Pool Challenge, Firestone Bay","body":"The Rock Pool Project, listed by Plymouth Sound National Marine Park","level":"community","kind":"Event","status":"open","deadline":"2026-11-08","time":"Sunday 8 November 2026, time not stated","topics":["nature","volunteer"],"lenses":["marine","coast","young"],"plain":"A citizen science rock pool survey at Firestone Bay.","detail":"Listed as a Citizen Science event on the Marine Park events page. I did not open the event to see the time or booking.","how":"Open the event on the Marine Park events page.","aff":["Shore life at Firestone Bay"],"url":"https://plymouthsoundnationalmarinepark.com/events/","urlLabel":"See the events","src":"https://plymouthsoundnationalmarinepark.com/events/"},{"id":"shoresearch","at":["villages"],"title":"Shoresearch volunteer survey, Wembury","body":"Wembury Marine Centre (Devon Wildlife Trust)","level":"community","kind":"Event","status":"open","deadline":"2026-11-26","time":"Thursday 26 November 2026 (date from search result, not confirmed on the page; time not stated)","topics":["nature","volunteer"],"lenses":["marine","coast"],"plain":"Volunteers survey the shore for wildlife as part of a national citizen science project.","detail":"The date comes from a search result for the Wembury Marine Centre home page; the page text I read did not show it. The South Devon National Landscape calendar for November 2026 also lists Shoresearch surveys at Wembury (free) on a Tuesday, so there may be more than one date.","how":"Check the Wembury Marine Centre site for booking.","aff":["Wembury Bay marine conservation area"],"url":"https://www.wemburymarinecentre.org/","urlLabel":"See the centre's page","src":"https://www.wemburymarinecentre.org/"},{"id":"harbourhalf","at":["plymouth"],"title":"Volunteers wanted for Plymouth Harbour Half","body":"Devon Mind (listed in a social media post)","level":"community","kind":"Event","status":"open","deadline":"2026-11-15","time":"Sunday 15 November 2026 (date from search result, not confirmed on the page; time not stated)","topics":["volunteer"],"lenses":["res","vcse"],"plain":"A mental health charity is asking for volunteers to help on race day.","detail":"I saw only a search-result snippet of a post by Devon Mind saying volunteer places for the Plymouth Harbour Runs 2026 are open, with the Half on Sunday 15 November. Facebook blocks automated reading, so I could not check roles or times.","how":"Follow the link to the charity's post.","aff":["Runners and the charity it raises money for"],"url":"https://www.facebook.com/MindDevon/posts/were-looking-for-an-incredible-team-of-volunteers-to-join-teamdevonmind-to-help-/1539225418239477/","urlLabel":"See the post","src":"https://www.facebook.com/MindDevon/posts/were-looking-for-an-incredible-team-of-volunteers-to-join-teamdevonmind-to-help-/1539225418239477/"},{"id":"mccosh","title":"Alice McCosh Trust: school nature and environment grants","body":"Alice McCosh Trust, listed by Devon County Council's Devon Funding News","level":"funder","kind":"Funding","status":"open","deadline":"2026-11-30","time":"Apply by 30 November 2026 (time not stated)","topics":["money","nature"],"lenses":["young","vcse"],"plain":"Grants for schools for natural history or environment projects, such as field trips or new teaching materials.","detail":"Read on the Devon Funding News list of grants for schools 2026/27. It is a schools list, so check whether a community group can apply. I did not read the trust's own page.","how":"Follow the funder's link from the Devon Funding News list.","aff":["Schools"],"url":"https://www.devon.gov.uk/fundingnews/resources/schools-grants-2026_27/","urlLabel":"See the funds","src":"https://www.devon.gov.uk/fundingnews/resources/schools-grants-2026_27/"},{"id":"devoncf","title":"Devon Community Foundation grants","body":"Devon Community Foundation","level":"funder","kind":"Funding","status":"ongoing","deadline":null,"time":"Rolling. No single closing date found","topics":["money"],"lenses":["vcse","se"],"plain":"Grants for Devon charities and community groups. The Foundation invites groups from its database to apply when a suitable fund opens.","detail":"Read on the Foundation's how-to-apply page: most funds go to groups on its 'Getting to Know You' list, which the Foundation invites to apply on a rolling basis. A search result says that from 6 August 2026 it bases grants purely on Getting to Know You forms (not confirmed on the page I read). It also has four Community Benefit Funds with a slightly different process.","how":"Fill in a Getting to Know You form so the Foundation can consider you. Email grants@devoncf.com with questions.","aff":["Small charities, community groups and social enterprises in Devon"],"url":"https://devoncf.com/how-to-apply/","urlLabel":"See how to apply","src":"https://devoncf.com/how-to-apply/"},{"id":"popideas","at":["plymouth"],"title":"POP Ideas funding advice and Funding News","body":"Plymouth Octopus Project (POP) with Iridescent Ideas CIC","level":"community","kind":"Programme","status":"ongoing","deadline":null,"time":"No closing date. Funding News is updated monthly for members","topics":["money","volunteer"],"lenses":["vcse","se"],"plain":"Free-to-find help for Plymouth groups with bid writing, funder searches and training, plus a monthly list of funding for members.","detail":"Read on the POP home page. It also runs members' networking (POP Connections) and monthly drop-ins (POP-IN). The page says POP's own funds such as £250 a POP and POP Collectives are described as its past role as a funder, so I did not list them as open.","how":"Join POP as a member or book 1:1 support through POP Ideas.","aff":["Plymouth charities, community groups and social enterprises"],"url":"https://www.plymouthoctopus.org/","urlLabel":"Visit POP","src":"https://www.plymouthoctopus.org/"},{"id":"dcchub","title":"Devon County Council 'Have your say' hub","body":"Devon County Council","level":"county","kind":"Consultation","status":"ongoing","deadline":null,"time":"Page showed 5 live consultations on 1 November 2026: 3 education and schools, 2 public rights of way. Closing dates not read","topics":["services"],"lenses":["res","young"],"plain":"Devon County Council's list of live consultations, including three on schools and two on public footpaths and bridleways.","detail":"Counts read from the hub page today. I could not read the titles or closing dates, so I do not know whether any touches Ivybridge or the South Hams villages. All other categories (adult social care, environment, transport, planning and others) showed none live.","how":"Open the hub and choose a category.","aff":["Parents and schools","Walkers and riders"],"url":"https://www.devon.gov.uk/haveyoursay/","urlLabel":"Have your say","src":"https://www.devon.gov.uk/haveyoursay/"},{"id":"ctrs","at":["ivybridge","villages"],"title":"South Hams Council Tax Reduction Scheme to continue in 2027/28","body":"South Hams District Council","level":"local","kind":"Decision","status":"decision","deadline":null,"time":"Executive agreed the proposal; news item dated 29 October 2026 (from search results, not confirmed on the page)","topics":["money","services"],"lenses":["res","old","home"],"plain":"South Hams plans to carry on its scheme that cuts Council Tax for people on low incomes in 2027/28.","detail":"The council's website blocked automated reading, so this comes only from search-result snippets: a council post saying 'Executive agreed with our proposals to continue our Council Tax Reduction Scheme for 2027/28', and a news listing headed 29 October. I could not see whether any step remains such as a Full Council vote.","how":"Read the council news page; no action is needed if you already get the reduction.","aff":["Households on low incomes in the South Hams"],"url":"https://www.southhams.gov.uk/news","urlLabel":"See council news","src":"https://www.southhams.gov.uk/news"},{"id":"bathing","title":"Sewage releases and swim advice around Plymouth Sound","body":"Environment Agency; Plymouth Marine Laboratory research","level":"central","kind":"Programme","status":"ongoing","deadline":null,"time":"No-swim advice at Plymouth Hoe West and East was issued Friday 2 October and lifted Saturday 3 October 2026. Plymouth Marine Laboratory study published 22 September 2026","topics":["nature","services"],"lenses":["water","marine","coast","res","dog"],"plain":"Swim warnings follow storm overflow releases, and new research says rain alone does not predict dirty water.","detail":"BBC Devon (5 October 2026) reports the advice came after unpermitted sewage was discharged and operational issues at a plant on the River Plym, and was lifted after two full tides with no further pollution reports. The Plymouth Marine Laboratory study found Wembury beach had the highest E. coli counts on the Plymouth coast from 2012 to 2025 and that currents, not just rain, decide which beaches are hit. A second check on 1 November could confirm the 2 October advice (ITV report) but could not re-open the BBC report for the date it was lifted.","how":"Check Environment Agency bathing water alerts before you swim. Report pollution to the Environment Agency.","aff":["Swimmers and paddlers","Wembury and the Plymouth Hoe","Shellfish farms"],"url":"https://www.bbc.co.uk/news/articles/cj75p6yzgn90o","urlLabel":"Read the report","src":"https://www.bbc.co.uk/news/articles/cj75p6yzgn90o"},{"id":"marinecitizen","at":["plymouth"],"title":"Become a Marine Citizen with the National Marine Park","body":"Plymouth Sound National Marine Park","level":"local","kind":"Programme","status":"ongoing","deadline":null,"time":"Open all year; training provided","topics":["volunteer","nature"],"lenses":["marine","coast","res"],"plain":"The Marine Park recruits volunteers for habitat restoration, beach cleans and events.","detail":"Read on the Marine Park home page, which says it provides all the training and support needed. It also lists a monthly 'Marine Park Jobs' post for paid work.","how":"Use the 'Apply to be a volunteer' link on the Marine Park home page.","aff":["Plymouth Sound shoreline","Volunteers of any age"],"url":"https://plymouthsoundnationalmarinepark.com/","urlLabel":"Visit the Marine Park","src":"https://plymouthsoundnationalmarinepark.com/"},{"id":"pccvol","at":["plymouth"],"title":"Volunteering with Plymouth City Council","body":"Plymouth City Council","level":"local","kind":"Programme","status":"ongoing","deadline":null,"time":"Open all year","topics":["volunteer"],"lenses":["res","old","vcse"],"plain":"The council lists roles from Good Neighbour support to nature and parks, the National Marine Park and The Box.","detail":"Read on the council volunteering page. Roles named include bus user panel, food waste volunteer, Good Neighbour support, nature and parks (including Poole Farm), Ocean City events, Plymouth Information Advice and Support, and Youth Justice Service. It also points to the Time4Good and GoVolunteering sites.","how":"Pick a role on the page or email the volunteering team.","aff":["Volunteers","Older and isolated residents who get Good Neighbour support"],"url":"https://www.plymouth.gov.uk/volunteering","urlLabel":"See the roles","src":"https://www.plymouth.gov.uk/volunteering"},{"id":"ivyfood","at":["ivybridge"],"title":"Ivybridge Foodbank: Christmas items wanted","body":"Ivybridge Foodbank (Trussell network)","level":"community","kind":"Programme","status":"ongoing","deadline":null,"time":"Needs list dated 22 October 2026","topics":["volunteer","money"],"lenses":["home","old","vcse"],"plain":"The foodbank asks for tinned soup, toilet roll, jam and Christmas treats, and has volunteer roles.","detail":"Read on the foodbank's home page today: it also asks for advent calendars, chocolate, long-life juice, cooking sauces, sugar, salt and sponge puddings. It offers emergency food parcels.","how":"Donate food, money or time through the foodbank's website.","aff":["People in food crisis in Ivybridge and nearby"],"url":"https://ivybridge.foodbank.org.uk/","urlLabel":"Visit the foodbank","src":"https://ivybridge.foodbank.org.uk/"},{"id":"plymfoodbank","at":["plymouth"],"title":"Plymouth Foodbank volunteer roles","body":"Plymouth Foodbank (Trussell network)","level":"community","kind":"Programme","status":"ongoing","deadline":null,"time":"Open all year","topics":["volunteer"],"lenses":["home","vcse"],"plain":"The foodbank needs warehouse volunteers, helpers at foodbank sessions and experienced fundraisers.","detail":"Read on the foodbank's volunteer page. To offer help phone 01752 254981 or email info@plymouth.foodbank.org.uk.","how":"Phone or email the foodbank.","aff":["People in food crisis in Plymouth"],"url":"https://plymouth.foodbank.org.uk/give-help/volunteer/","urlLabel":"See volunteer roles","src":"https://plymouth.foodbank.org.uk/give-help/volunteer/"},{"id":"ageukvol","at":["plymouth"],"title":"Age UK Plymouth volunteer roles","body":"Age UK Plymouth","level":"community","kind":"Programme","status":"ongoing","deadline":null,"time":"Open all year","topics":["volunteer"],"lenses":["old","vcse"],"plain":"Age UK Plymouth is recruiting an Information and Advice community volunteer and a Dementia Day Centre volunteer.","detail":"Read on the Age UK Plymouth volunteer page. Apply online or return a form to volunteer@ageukplymouth.org.uk. Some people give an hour a week.","how":"Apply online or email the form.","aff":["Older people in Plymouth"],"url":"https://www.ageuk.org.uk/plymouth/get-involved/volunteer/","urlLabel":"See volunteer roles","src":"https://www.ageuk.org.uk/plymouth/get-involved/volunteer/"},{"id":"lote","title":"Life on the Edge: South Devon coast volunteer tasks and events","body":"South Devon National Landscape","level":"local","kind":"Programme","status":"ongoing","deadline":null,"time":"November 2026 calendar read today; some tasks are outside the Plymouth area (for example East Soar Farm near Salcombe)","topics":["nature","volunteer"],"lenses":["marsh","coast","marine","bird"],"plain":"Free conservation tasks, oil beetle surveys and guided walks along the South Devon coast.","detail":"The November 2026 calendar lists volunteer conservation tasks (Bee Castle at East Soar Farm, scrub and meadow work at Berry Head), Mediterranean oil beetle surveys, a guided walk through Charleton Marsh to Frogmore Creek, Wembury rock pool tours at £5.50 and Shoresearch surveys. Locations and times are on each event page, which I did not open.","how":"Browse the calendar and book the events that suit you.","aff":["South Devon coast habitats","Volunteers"],"url":"https://www.southdevon-nl.org.uk/events/","urlLabel":"See the calendar","src":"https://www.southdevon-nl.org.uk/events/"}];
+
+/* Groups. roles:1 = advertises volunteer roles. v:1 = a primary source for this group was read directly on a refresh run; v:0 = search result or older article only. */
+const GROUPS = [{"n":"Plymouth Octopus (POP)","cat":"hub","area":"plymouth","what":"Supports Plymouth's grassroots groups, charities and social enterprises with funding advice, training, networking and a monthly Funding News list.","get":"Join as a member or book support through POP Ideas.","url":"https://www.plymouthoctopus.org/","label":"Visit website","roles":0,"v":1},{"n":"Plymouth Social Enterprise Network","cat":"se","area":"plymouth","what":"Membership network for Plymouth social enterprises, co-operatives, CICs and charities.","get":"Contact the network about membership.","url":"https://plymsocent.org.uk/","label":"Visit website","roles":0,"v":1,"dates":"Home page carries an update on reduced staff capacity; I did not read it in full."},{"n":"Devon Community Foundation","cat":"hub","area":"area","what":"Grants for Devon voluntary groups, mostly to groups on its Getting to Know You list.","get":"Complete a Getting to Know You form.","url":"https://devoncf.com/how-to-apply/","label":"See how to apply","roles":0,"v":1},{"n":"Plymouth City Council volunteering","cat":"hub","area":"plymouth","what":"Council page listing volunteer roles and pointing to Time4Good and GoVolunteering.","get":"Choose a role or email the volunteering team.","url":"https://www.plymouth.gov.uk/volunteering","label":"See the roles","roles":1,"v":1},{"n":"Proud to Care Devon","cat":"hub","area":"area","what":"Page listing volunteering and work experience in care and health across Devon, such as drivers and befrienders.","get":"Browse the page.","url":"https://www.proudtocaredevon.org.uk/training-and-education/volunteering-and-work-experience/","label":"See volunteering","roles":1,"v":0,"dates":"Seen in a search result only."},{"n":"Plymouth Community Homes","cat":"hub","area":"plymouth","what":"Plymouth's largest housing association, with over 16,000 homes and community development work.","get":"Visit the website to get involved in your community.","url":"https://www.plymouthcommunityhomes.co.uk/","label":"Visit website","roles":0,"v":0,"dates":"Seen in a search result only. Its community fund page returned a 404."},{"n":"Plymouth Foodbank","cat":"food","area":"plymouth","what":"Trussell Trust foodbank needing warehouse, session and fundraising volunteers.","get":"Phone 01752 254981.","url":"https://plymouth.foodbank.org.uk/give-help/volunteer/","label":"See volunteer roles","roles":1,"v":1},{"n":"Ivybridge Foodbank","cat":"food","area":"ivybridge","what":"Emergency food from Ivybridge Methodist Church, Fore Street; accepts food and money donations and volunteers.","get":"Use the get involved links on the site.","url":"https://ivybridge.foodbank.org.uk/","label":"Visit website","roles":1,"v":1,"dates":"Needs list dated 22 October 2026."},{"n":"Ivybridge Community Food","cat":"food","area":"ivybridge","what":"Volunteer-led food project chosen as the Ivybridge Mayor's Charity of the Year in 2026.","get":"Contact the project through the town council news.","url":"https://www.themoorlander.co.uk/news/ivybridge-community-food-wins-mayors-backing-in-charity-of-the-year-choice-8842534","label":"Read the report","roles":0,"v":0,"dates":"Seen in search results: an Ivybridge Town Council news headline dated 5 August 2026 and a Moorlander report. I did not read either page."},{"n":"Oasis Project","cat":"care","area":"plymouth","what":"Plymouth charity that welcomes volunteers to support tutors, for example with healthy cooking classes, work clubs and computer groups.","get":"See the directory listing.","url":"https://plymouthonlinedirectory.co.uk/article/1887/Oasis-Project-Volunteering","label":"See the listing","roles":1,"v":0,"dates":"Seen in a search result only."},{"n":"Age UK Plymouth","cat":"care","area":"plymouth","what":"Support for older people, with volunteer roles in advice and at the dementia day centre.","get":"Apply online or email volunteer@ageukplymouth.org.uk.","url":"https://www.ageuk.org.uk/plymouth/get-involved/volunteer/","label":"See volunteer roles","roles":1,"v":1},{"n":"St Luke's Hospice Plymouth","cat":"care","area":"plymouth","what":"Hospice with over 650 volunteers.","get":"Email volunteer@stlukes-hospice.org.uk or use the online form.","url":"https://www.stlukes-hospice.org.uk/volunteering/","label":"See volunteering","roles":1,"v":1},{"n":"Livewell Southwest volunteers","cat":"care","area":"plymouth","what":"NHS community health and care provider with flexible volunteer roles in Plymouth and nearby, such as chatting with patients, admin and gardens.","get":"See the volunteer page.","url":"https://www.livewellsouthwest.co.uk/careers/volunteers","label":"See volunteering","roles":1,"v":1},{"n":"Ivybridge Caring","cat":"care","area":"ivybridge","what":"Voluntary organisation helping older and isolated people stay independent and well.","get":"See the directory listing.","url":"https://plymouthonlinedirectory.co.uk/article/2072/Ivybridge-Caring-Volunteers","label":"See the listing","roles":0,"v":0,"dates":"Seen in a search result only."},{"n":"Ivybridge Ring & Ride Community Transport","cat":"care","area":"ivybridge","what":"Community transport for people in Ivybridge and the western South Hams who find it hard to get around, with a call for volunteer drivers.","get":"Read the volunteer page.","url":"https://www.ringandride.net/community-car-volunteers/","label":"See volunteer roles","roles":1,"v":0,"dates":"Seen in a search result only."},{"n":"Dementia Friendly Parishes around the Yealm","cat":"care","area":"villages","what":"Charity supporting people with dementia and their families around the River Yealm villages.","get":"Read about the charity.","url":"https://www.dementiayealm.org/about-us/history/","label":"Visit website","roles":0,"v":0,"dates":"Seen in a search result only."},{"n":"Community Friendship Project (Yealmpton and Brixton)","cat":"care","area":"villages","what":"Befriending to help people feel part of their communities; listed on the Newton and Noss Parish Council site.","get":"Contact through the parish council page.","url":"https://www.newtonandnoss-pc.gov.uk/community/community-friendship-project/","label":"See the project","roles":0,"v":0,"dates":"Seen in a search result only."},{"n":"Devon Wildlife Trust","cat":"nature","area":"area","what":"Wildlife charity with events and volunteering, including Wembury Point sea watches and Wembury Marine Centre.","get":"See the volunteering page and events list.","url":"https://www.devonwildlifetrust.org/volunteering-wildlife","label":"See volunteering","roles":1,"v":1,"dates":"Seaquest Sunday at Wembury Point on the first Sunday of each month."},{"n":"Wembury Marine Centre","cat":"nature","area":"villages","what":"Visitor centre at Wembury Bay, a marine conservation area since 1981, with rock pooling, snorkelling and beach cleaning events.","get":"See upcoming events on its site.","url":"https://www.wemburymarinecentre.org/","label":"Visit website","roles":0,"v":1},{"n":"Plymouth Sound National Marine Park","cat":"nature","area":"plymouth","what":"The UK's first National Marine Park, with events, beach cleans and Marine Citizen volunteers.","get":"Apply to be a volunteer on the home page.","url":"https://plymouthsoundnationalmarinepark.com/","label":"Visit website","roles":1,"v":1,"dates":"Coastal clean-ups 3, 5, 6 and 11 November."},{"n":"South Devon National Landscape (Life on the Edge)","cat":"nature","area":"area","what":"Protected landscape body running conservation volunteering, walks and surveys along the South Devon coast.","get":"Browse the events calendar.","url":"https://www.southdevon-nl.org.uk/events/","label":"See events","roles":1,"v":1},{"n":"Plymouth Tree People","cat":"nature","area":"plymouth","what":"Charity planting and caring for trees for over 20 years, with volunteer tree planting and Tree Wardens.","get":"See its projects page.","url":"https://plymouthtrees.org/project/all","label":"See projects","roles":1,"v":1},{"n":"Plymouth and South Devon Community Forest","cat":"nature","area":"area","what":"Partnership planting woodland across Plymouth, South Hams and Dartmoor, led by Plymouth City Council.","get":"Read the council news story and ask about planting days.","url":"https://www.plymouth.gov.uk/news/huge-funding-boost-trees-plymouth-and-beyond","label":"Read the story","roles":0,"v":0,"dates":"I read the council's news story, not the Forest's own page."},{"n":"Plymouth Marine Laboratory","cat":"nature","area":"plymouth","what":"Marine research charity whose studies include sewage-linked bacteria in Plymouth Sound.","get":"Read its news.","url":"https://pml.ac.uk/news/sewage-linked-bacteria-traced-from-source-to-devon-beaches-and-shellfish-farms-expose-gaps-in-pollution-monitoring/","label":"Read the report","roles":0,"v":1},{"n":"Yealm Estuary to Moor","cat":"nature","area":"villages","what":"Habitat-corridor project for the River Yealm from moor to estuary, led by Southwest Rivers Trust with Dartmoor National Park Authority and the South Devon National Landscape.","get":"Read about the group.","url":"https://www.yealmestuarytomoor.org/aboutus","label":"Visit website","roles":0,"v":1,"dates":"Checked on its own website on 1 November 2026."},{"n":"River Yealm Water Quality Group (Yealm Dippers)","cat":"nature","area":"villages","what":"Community volunteers who test Yealm water, backed by the Wembury, Newton Ferrers, Noss Mayo and Yealmpton parish councils.","get":"See its activities page.","url":"https://www.rywqg.com/activities","label":"See activities","roles":0,"v":0,"dates":"Seen in a search result only."},{"n":"Dartmoor National Park Authority","cat":"nature","area":"area","what":"Runs the Dartmoor Partnership Plan consultation; Dartmoor borders Ivybridge, Cornwood, Sparkwell and Ugborough.","get":"See the Partnership Plan page.","url":"https://www.dartmoor.gov.uk/living-and-working/partnership-plan","label":"Visit website","roles":0,"v":0,"dates":"Its site blocked me, so I did not read it."},{"n":"Ivybridge Town Council: parks and volunteering","cat":"nature","area":"ivybridge","what":"Town council page on volunteering in parks and open spaces; phone 01752 891815.","get":"Call the number on the page.","url":"https://www.ivybridge.gov.uk/our-community/parks-and-open-spaces/volunteering/","label":"See the page","roles":1,"v":0,"dates":"Seen in a search result only; the council site blocked me."},{"n":"Green Communities Plymouth","cat":"nature","area":"plymouth","what":"Plymouth network that has run Growing with Nature events for community gardeners and rewilders.","get":"Read its news.","url":"https://greencommunitiesplymouth.com/news/growing-with-nature","label":"Read the news","roles":0,"v":0,"dates":"The page I read describes a 2022 event, so I do not know what is on now."},{"n":"The Rock Pool Project","cat":"nature","area":"plymouth","what":"Runs citizen science rock pool events, such as the Big Rock Pool Challenge at Firestone Bay.","get":"See the Marine Park events page.","url":"https://plymouthsoundnationalmarinepark.com/events/","label":"See the events","roles":0,"v":0,"dates":"Seen on the Marine Park events page only. Event on 8 November."},{"n":"BluGreens CIC","cat":"se","area":"plymouth","what":"Social enterprise trialling seaweed growing on dormant harbour structures (Kelp Regen project).","get":"Read about its Blue Sparks grant.","url":"https://plymouthsoundnationalmarinepark.com/blue-sparks/","label":"Read more","roles":0,"v":0,"dates":"Seen on the Marine Park Blue Sparks page, not its own site."},{"n":"Precious Plastic Plymouth and Tavistock CIC","cat":"se","area":"plymouth","what":"Turns shoreline plastic into new products using pedal-powered recycling kit.","get":"Read about its Blue Sparks grant.","url":"https://plymouthsoundnationalmarinepark.com/blue-sparks/","label":"Read more","roles":0,"v":0,"dates":"Seen on the Blue Sparks page, not its own site."},{"n":"Fotonow CIC","cat":"se","area":"plymouth","what":"Photography and media activities that show life around Plymouth Sound.","get":"Read about its Blue Sparks grant.","url":"https://plymouthsoundnationalmarinepark.com/blue-sparks/","label":"Read more","roles":0,"v":0,"dates":"Seen on the Blue Sparks page, not its own site."},{"n":"Big Sis CIC","cat":"se","area":"plymouth","what":"Builds confidence and wellbeing for girls and young women through coast and ocean experiences.","get":"Read about its Blue Sparks grant.","url":"https://plymouthsoundnationalmarinepark.com/blue-sparks/","label":"Read more","roles":0,"v":0,"dates":"Seen on the Blue Sparks page, not its own site."},{"n":"Open Kamera CIC","cat":"se","area":"plymouth","what":"Uses film and storytelling to explore people's relationship with Plymouth Sound.","get":"Read about its Blue Sparks grant.","url":"https://plymouthsoundnationalmarinepark.com/blue-sparks/","label":"Read more","roles":0,"v":0,"dates":"Seen on the Blue Sparks page, not its own site."},{"n":"Ethical Activities CIC","cat":"se","area":"plymouth","what":"Practical nature-based projects caring for local marine and coastal habitats.","get":"Read about its Blue Sparks grant.","url":"https://plymouthsoundnationalmarinepark.com/blue-sparks/","label":"Read more","roles":0,"v":0,"dates":"Seen on the Blue Sparks page, not its own site."},{"n":"East End Development Trust","cat":"culture","area":"plymouth","what":"Place-based community projects opening up waterfronts for local residents.","get":"Read about its Blue Sparks grant.","url":"https://plymouthsoundnationalmarinepark.com/blue-sparks/","label":"Read more","roles":0,"v":0,"dates":"Seen on the Blue Sparks page, not its own site."},{"n":"Barne Barton and St Budeaux Community Forum","cat":"culture","area":"plymouth","what":"Creative community activities and seasonal events at Kinterbury Creek.","get":"Read about its Blue Sparks grant.","url":"https://plymouthsoundnationalmarinepark.com/blue-sparks/","label":"Read more","roles":0,"v":0,"dates":"Seen on the Blue Sparks page, not its own site. A clean-up at Kinterbury Creek is listed for 5 November."},{"n":"Turnchapel History Group","cat":"culture","area":"plymouth","what":"Researches and shares the coastal history of Turnchapel.","get":"Read about its Blue Sparks grant.","url":"https://plymouthsoundnationalmarinepark.com/blue-sparks/","label":"Read more","roles":0,"v":0,"dates":"Seen on the Blue Sparks page, not its own site."},{"n":"Plympton Repair Cafe","cat":"culture","area":"plymouth","what":"Free repairs by volunteer fixers at Chaddlewood Farm Community Centre, 80 Glen Road. No booking needed.","get":"Bring a broken item along.","url":"https://www.recycledevon.org/community-groups/plympton-repair-cafe/","label":"See the listing","roles":1,"v":0,"dates":"Search results say third Saturday of each month, 1:30pm to 3:30pm, except December. I did not confirm November."},{"n":"Repair Cafe Plymouth","cat":"culture","area":"plymouth","what":"Free repairs, donations welcome.","get":"See the Restart Project listing.","url":"https://therestartproject.org/groups/repair-cafe-plymouth/","label":"See the listing","roles":0,"v":0,"dates":"Search result says last Wednesday of each month; I did not confirm."},{"n":"Yealm and Erme Mission Community","cat":"culture","area":"villages","what":"Two groups of six Church of England churches in the South Hams, including the Yealm and Erme villages.","get":"Visit the website.","url":"https://yemc.org/","label":"Visit website","roles":0,"v":0,"dates":"Seen in a search result only."}];
+
+const SOON = ["Plymouth City Council, Devon County Council, Torbay Council and the Combined County Authority each take a formal decision on the mayoral authority between November and December 2026, and the council says it will publish the consultation findings first.","The Government has yet to explain the review process and timetable for the Devon council reorganisation proposal now that the July decision has been withdrawn.","Details of how the £3 million Plymouth pilot for young people not in work or training will be shared out are still to be worked out.","Confirmed dates for the main Old Town Street bollard installation between January and March 2027 will be shared with businesses.","Dartmoor National Park Authority's Local Plan has a later consultation on proposed content in its timetable (a search result gives 2027; I could not read the page).","No date has been seen for the next Welcome Spaces or Blue Sparks community grant rounds, which both closed in September and October."];
+const WATCH = [["Plymouth City Council: Have your say","https://www.plymouth.gov.uk/have-your-say"],["Plymouth City Council: news","https://www.plymouth.gov.uk/news"],["Plymouth City Council: volunteering","https://www.plymouth.gov.uk/volunteering"],["Devon County Council: Have your say","https://www.devon.gov.uk/haveyoursay/"],["South Hams District Council: news","https://www.southhams.gov.uk/news"],["Ivybridge Town Council","https://www.ivybridge.gov.uk/"],["Plymouth Octopus (POP)","https://www.plymouthoctopus.org/"],["Devon Community Foundation: how to apply","https://devoncf.com/how-to-apply/"],["Devon Funding News (grants lists)","https://www.devon.gov.uk/fundingnews/resources/schools-grants-2026_27/"],["Plymouth Sound National Marine Park events","https://plymouthsoundnationalmarinepark.com/events/"],["Devon Wildlife Trust events","https://www.devonwildlifetrust.org/events"],["South Devon National Landscape events","https://www.southdevon-nl.org.uk/events/"]];
+const BIG = [
+  {k:"deadlines", label:"📅 Dates coming up"},
+  {k:"volunteer", label:"👥 Volunteer near me"},
+  {k:"help", label:"🍲 Food and support"},
+  {k:"nature", label:"🌿 Nature and wildlife"},
+  {k:"money", label:"💰 Money for groups"},
+  {k:"all", label:"🔎 Everything"}
+];
+
+const st = {mode:"std", view:"deadlines", tab:"open", level:"all", lens:null, gcat:"all", area:"all", recruit:false, q:"", big:"deadlines", open:{}};
+try { if (localStorage.getItem("tcwatch-mode") === "big") st.mode = "big"; } catch (e) {}
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const safeUrl = u => { u = String(u ?? "").trim(); return /^https?:\/\//i.test(u) ? esc(u) : "#"; };  /* data-supplied urls: block non-http(s) schemes AND escape, so a quote cannot break out of the attribute */
+
+let todayStr = new Intl.DateTimeFormat("en-CA", {timeZone:"Europe/London"}).format(new Date());
+const utc = s => { const [y,m,d] = s.split("-").map(Number); return Date.UTC(y, m-1, d); };
+const fmt = s => new Intl.DateTimeFormat("en-GB", {weekday:"short", day:"numeric", month:"short", year:"numeric", timeZone:"UTC"}).format(utc(s));
+const fmtShort = s => new Intl.DateTimeFormat("en-GB", {weekday:"short", day:"numeric", month:"short", timeZone:"UTC"}).format(utc(s));
+const daysTo = s => Math.round((utc(s) - utc(todayStr)) / 86400000);
+
+function info(it) {
+  if (it.status === "closed") return {phase:"closed", d: it.deadline ? daysTo(it.deadline) : null, level:"done"};
+  if (it.status === "open") {
+    const d = daysTo(it.deadline);
+    if (d < 0) return {phase:"closed", d, level:"done"};
+    const ev = it.kind === "Event";
+    return {phase:"open", d, level: ev ? "event" : d <= 7 ? "urgent" : d <= 21 ? "soon" : "later"};
+  }
+  return {phase:it.status, d:null, level:it.status};
+}
+function daysText(it) {
+  const d = it.i.d;
+  if (it.kind === "Event") return d === 0 ? "Today" : d === 1 ? "Tomorrow" : "In " + d + " days";
+  return d === 0 ? "Closes today" : d === 1 ? "1 day left" : d + " days left";
+}
+const withInfo = ITEMS.map(it => Object.assign({}, it, {i: info(it)}));
+const RANK = {open:0, decision:1, ongoing:2, closed:3};
+function orderItems(arr) {
+  return arr.slice().sort((a, b) => RANK[a.i.phase] - RANK[b.i.phase] ||
+    (a.i.phase === "closed" ? utc(b.deadline) - utc(a.deadline) : a.i.phase === "open" ? utc(a.deadline) - utc(b.deadline) : 0));
+}
+function matchLens(it) { return !st.lens || it.lenses.includes(st.lens); }
+function itemAreaOk(it) { return st.area === "all" || !it.at || it.at.includes(st.area); }
+function areaOk(g) { return st.area === "all" || g.area === st.area || g.area === "area"; }
+
+function itemsView() {
+  let arr = withInfo.filter(itemAreaOk);
+  if (st.tab !== "all") arr = arr.filter(x => x.i.phase === st.tab);
+  if (st.level !== "all") arr = arr.filter(x => x.level === st.level);
+  return orderItems(arr.filter(matchLens));
+}
+function groupsView() {
+  const q = st.q.trim().toLowerCase();
+  return GROUPS.filter(g => (st.gcat === "all" || g.cat === st.gcat) && areaOk(g) && (!st.recruit || g.roles) &&
+    (!q || (g.n + " " + g.what + " " + AREAL[g.area] + " " + GCATS[g.cat]).toLowerCase().includes(q)));
+}
+function bigView() {
+  const live = withInfo.filter(x => x.i.phase !== "closed" && itemAreaOk(x));
+  const k = st.big;
+  let items = [], groups = [];
+  if (k === "deadlines") items = live.filter(x => x.i.phase === "open");
+  else if (k === "volunteer") groups = GROUPS.filter(g => g.roles && areaOk(g));
+  else if (k === "help") groups = GROUPS.filter(g => (g.cat === "food" || g.cat === "care") && areaOk(g));
+  else if (k === "nature") { items = live.filter(x => x.topics.includes("nature")); groups = GROUPS.filter(g => g.cat === "nature" && areaOk(g)); }
+  else if (k === "money") { items = live.filter(x => x.kind === "Funding"); groups = GROUPS.filter(g => g.cat === "hub" && areaOk(g)); }
+  else { items = live; groups = GROUPS.filter(areaOk); }
+  return {items: orderItems(items), groups};
+}
+
+function renderAlert() {
+  const open = withInfo.filter(x => x.i.phase === "open" && x.kind !== "Event" && itemAreaOk(x)).sort((a, b) => a.i.d - b.i.d);
+  const urgent = open.filter(x => x.i.d <= 7), soon = open.filter(x => x.i.d <= 21);
+  let cls, sym, head, sub, linkSub = [];
+  if (urgent.length) {
+    cls = "urgent"; sym = "!";
+    head = urgent.length + (urgent.length === 1 ? " deadline falls" : " deadlines fall") + " within 7 days";
+    sub = urgent.map(x => x.title + " (" + fmtShort(x.deadline) + ")").join("; ") + ".";
+    linkSub = urgent;
+  } else if (soon.length) {
+    cls = "soon"; sym = "!";
+    head = soon.length + (soon.length === 1 ? " deadline falls" : " deadlines fall") + " within 3 weeks";
+    sub = "Next: " + soon[0].title + ", " + fmtShort(soon[0].deadline) + " (" + soon[0].i.d + " days).";
+    linkSub = [soon[0]];
+  } else if (open.length) {
+    cls = "calm"; sym = "✓"; head = "Nothing closes in the next 3 weeks"; sub = "Next: " + open[0].title + ", " + fmtShort(open[0].deadline) + ".";
+  } else { cls = "calm"; sym = "✓"; head = "No open deadlines recorded"; sub = "Check the places to watch."; }
+  const more = soon.length > urgent.length && urgent.length ? " " + (soon.length - urgent.length) + " more within 3 weeks." : "";
+  const links = linkSub.length ? '<span style="display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:6px">' + linkSub.map(x => '<a href="' + safeUrl(x.url) + '" target="_blank" rel="noopener" style="color:var(--ink);font-weight:700">' + esc(x.urlLabel + ": " + x.title) + ' ↗</a>').join("") + '</span>' : "";
+  $("alert").innerHTML = '<div class="alert ' + cls + '"><div class="sym" aria-hidden="true">' + sym + '</div><div><strong>' + esc(head) + '</strong><span>' + esc(sub + more) + '</span>' + links + '</div></div>';
+}
+function renderRunway() {
+  const open = withInfo.filter(x => x.i.phase === "open" && itemAreaOk(x)).sort((a, b) => a.i.d - b.i.d);
+  let h = '<h2 id="rw-h">Dates coming up' + (st.area === "all" ? "" : ' <small style="font-family:var(--f-body);font-weight:400;color:var(--muted)">for ' + esc(AREAS[st.area]) + ' and the whole area</small>') + '</h2>';
+  if (!open.length) h += '<p class="rw-note">Nothing dated is recorded.</p>';
+  open.forEach(x => {
+    const w = Math.max(4, Math.round(100 - Math.min(x.i.d, 70) / 70 * 100));
+    h += '<a class="rw-row" href="' + safeUrl(x.url) + '" target="_blank" rel="noopener" aria-label="' + esc(x.title + ", " + daysText(x) + ". " + x.urlLabel + " (opens in a new tab)") + '"><div class="rw-title">' + esc(x.title) + '<small>' + esc(x.kind) + ' · ' + esc(x.body) + '</small></div><div class="rw-bar ' + x.i.level + '" aria-hidden="true"><i style="width:' + w + '%"></i></div><div class="rw-days">' + esc(daysText(x)) + ' <span style="font-weight:400;color:var(--muted)">' + esc(fmtShort(x.deadline)) + '</span><span class="rw-go">' + esc(x.urlLabel) + ' ↗</span></div></a>';
+  });
+  h += '<p class="rw-note">Select any row to open the consultation, grant, event or report itself. Bars fill as the date gets closer: red is 7 days or fewer, amber 21 days or fewer, blue an event.</p>';
+  $("runway").innerHTML = h;
+}
+function chips(obj, key, cur, extra) {
+  return Object.keys(obj).map(k => '<button type="button" class="chip" data-' + key + '="' + k + '" aria-pressed="' + (cur === k) + '">' + esc(obj[k]) + (extra ? '<span class="n">' + extra(k) + '</span>' : '') + '</button>').join(" ");
+}
+function renderControls() {
+  document.querySelectorAll(".viewtabs button").forEach(b => b.setAttribute("aria-pressed", st.view === b.dataset.view));
+  const std = st.mode === "std";
+  $("ctl-items").hidden = !(std && st.view === "deadlines");
+  $("ctl-groups").hidden = !(std && st.view === "groups");
+  $("lens-panel").hidden = st.view === "groups";
+  const cnt = f => withInfo.filter(f).length;
+  const tabs = {open:"Dates coming up", decision:"Decisions and watch", ongoing:"Ongoing", closed:"Recently closed", all:"All"};
+  $("tabs").innerHTML = chips(tabs, "tab", st.tab, k => k === "all" ? ITEMS.length : cnt(x => x.i.phase === k));
+  $("levels").innerHTML = chips(Object.assign({all:"Everyone"}, LEVELS), "level", st.level, k => k === "all" ? ITEMS.length : cnt(x => x.level === k));
+  $("gcats").innerHTML = chips(Object.assign({all:"All types"}, GCATS), "gcat", st.gcat, k => k === "all" ? GROUPS.length : GROUPS.filter(g => g.cat === k).length);
+  $("areas").innerHTML = chips(Object.assign({all:"Everywhere"}, AREAS), "area", st.area);
+  $("ctl-where").hidden = st.mode !== "std";
+  $("recruit").innerHTML = '<button type="button" class="chip" data-recruit="1" aria-pressed="' + st.recruit + '">Looking for volunteers</button>';
+  let lh = "";
+  ["People", "Organisations", "Wildlife and places"].forEach(c => {
+    lh += '<div class="group"><h3>' + c + '</h3><div class="ent">';
+    LENSES.filter(l => l.cat === c).forEach(l => {
+      const n = withInfo.filter(it => it.lenses.includes(l.id)).length;
+      if (n) lh += '<button type="button" class="chip" data-lens="' + l.id + '" aria-pressed="' + (st.lens === l.id) + '">' + esc(l.label) + '<span class="n">' + n + '</span></button>';
+    });
+    lh += '</div></div>';
+  });
+  $("lenses").innerHTML = lh;
+  $("soonlist").innerHTML = SOON.map(s => "<li>" + esc(s) + "</li>").join("");
+  $("watch").innerHTML = WATCH.map(w => '<li><a href="' + safeUrl(w[1]) + '" target="_blank" rel="noopener">' + esc(w[0]) + '</a></li>').join("");
+  $("bigbar").innerHTML = BIG.map(b => '<button type="button" data-big="' + b.k + '" aria-pressed="' + (st.big === b.k) + '">' + b.label + '</button>').join("");
+  const showArea = st.mode === "big";
+  $("bigarea").hidden = !showArea;
+  $("bigarea").innerHTML = showArea ? '<div class="lbl">Which town?</div>' + ['all'].concat(Object.keys(AREAS)).map(k => '<button type="button" data-area="' + k + '" aria-pressed="' + (st.area === k) + '">' + (k === "all" ? "Everywhere" : AREAS[k]) + '</button>').join("") : "";
+  const lens = LENSES.find(l => l.id === st.lens);
+  $("lensbar").innerHTML = lens && st.mode !== "big" && st.view !== "groups" ? '<p style="margin:0 0 12px">Showing only items touching <strong>' + esc(lens.label) + '</strong>. <button type="button" class="chip" data-lens="' + lens.id + '">Clear</button></p>' : "";
+}
+function cardHtml(it) {
+  const p = it.i, open = !!st.open[it.id], ev = it.kind === "Event";
+  const statusTxt = {open: ev ? "Coming up" : "Open", decision:"Decision pending", ongoing:"Ongoing", closed:"Closed"}[p.phase];
+  let dl;
+  if (p.phase === "open") dl = '<div class="dl ' + p.level + '"><span class="big">' + esc(daysText(it)) + '</span><span>' + (ev ? "Happens " : "Closes ") + esc(fmt(it.deadline)) + ', ' + esc(it.time) + '</span></div>';
+  else if (p.phase === "closed") dl = '<div class="dl done"><span>' + (it.deadline ? esc(fmt(it.deadline)) + '. ' : "") + esc(it.time) + '</span></div>';
+  else dl = '<div class="dl ' + p.phase + '"><span>' + esc(it.time) + '</span></div>';
+  const lensBtns = it.lenses.map(id => { const l = LENSES.find(x => x.id === id); return l ? '<button type="button" class="chip" data-lens="' + id + '" aria-pressed="' + (st.lens === id) + '">' + esc(l.label) + '</button>' : ""; }).join("");
+  return '<article class="card ' + (p.phase === "closed" ? "done" : "") + '" id="c-' + it.id + '">' +
+    '<div class="card-top"><span class="tag">' + esc(statusTxt) + '</span><span class="tag">' + (KIND_EMOJI[it.kind] || "") + ' ' + esc(it.kind) + '</span><span class="tag">' + esc(LEVELS[it.level]) + '</span><span class="tag">' + esc(it.at ? it.at.map(a => AREAS[a]).join(", ") : "Plymouth and Ivybridge area") + '</span></div>' +
+    '<h3>' + (KIND_EMOJI[it.kind] || "") + ' ' + esc(it.title) + '</h3><div class="body-org">' + esc(it.body) + '</div>' + dl +
+    '<p class="plain">' + esc(it.plain) + '</p>' +
+    '<div class="actions"><a class="btn" href="' + safeUrl(it.url) + '" target="_blank" rel="noopener">' + esc(it.urlLabel) + '</a>' +
+    '<button type="button" class="btn ghost" data-more="' + it.id + '" aria-expanded="' + open + '" aria-controls="m-' + it.id + '">' + (open ? "Hide details" : "Who and what is affected") + '</button></div>' +
+    '<div class="more" id="m-' + it.id + '"' + (open ? "" : " hidden") + '>' +
+    '<div><h4>Who and what it touches</h4><ul>' + it.aff.map(a => "<li>" + esc(a) + "</li>").join("") + '</ul></div>' +
+    (st.mode === "std" ? '<div><h4>Filter by</h4><div class="lensrow">' + lensBtns + '</div></div>' : "") +
+    '<p>' + esc(it.detail) + '</p><p><strong>How to respond:</strong> ' + esc(it.how) + '</p>' +
+    '<p class="src">Source: <a href="' + safeUrl(it.src) + '" target="_blank" rel="noopener">' + esc(it.src.replace(/^https?:\/\//, "").slice(0, 70)) + '</a></p></div></article>';
+}
+function groupHtml(g) {
+  return '<article class="card"><div class="card-top"><span class="tag">' + (GCAT_EMOJI[g.cat] || "") + ' ' + esc(GCATS[g.cat]) + '</span><span class="tag">' + esc(AREAL[g.area]) + '</span>' +
+    (g.roles ? '<span class="tag rec">👋 Volunteers wanted</span>' : "") +
+    '<span class="tag ' + (g.v ? "" : "chk") + '">' + (g.v ? "Source recently confirmed" : "Check before you go") + '</span></div>' +
+    '<h3>' + (GCAT_EMOJI[g.cat] || "") + ' ' + esc(g.n) + '</h3><p class="plain">' + esc(g.what) + '</p>' +
+    '<p class="meta"><strong>How to get involved:</strong> ' + esc(g.get) + '</p>' +
+    (g.dates ? '<p class="meta"><strong>Dates and notes:</strong> ' + esc(g.dates) + '</p>' : "") +
+    '<div class="actions"><a class="btn" href="' + safeUrl(g.url) + '" target="_blank" rel="noopener">' + esc(g.label) + '</a></div></article>';
+}
+function sect(title, n, html) { return '<h2 class="sect">' + esc(title) + '<small>' + n + ' shown</small></h2>' + html; }
+function empty(msg) { return '<div class="empty-msg"><strong>Nothing to show here.</strong><br>' + esc(msg) + '</div>'; }
+function renderList() {
+  let h = "";
+  if (st.mode === "big") {
+    const v = bigView();
+    if (v.items.length) h += sect("Dates and plans", v.items.length, v.items.map(cardHtml).join(""));
+    if (v.groups.length) h += sect("Groups", v.groups.length, v.groups.map(groupHtml).join(""));
+    if (!h) h = empty("Try another button or town.");
+  } else if (st.view === "deadlines") {
+    const arr = itemsView();
+    h = arr.length ? arr.map(cardHtml).join("") : empty("Try a different filter.");
+  } else if (st.view === "groups") {
+    const arr = groupsView();
+    h = arr.length ? '<p class="meta" style="margin:0">' + arr.length + ' of ' + GROUPS.length + ' groups. Groups that cover the whole area appear under every place.</p>' + arr.map(groupHtml).join("") : empty("No group matches. Clear the search or a filter.");
+  } else {
+    const items = orderItems(withInfo.filter(x => x.i.phase !== "closed" && itemAreaOk(x) && x.topics.includes("nature") && matchLens(x)));
+    const gs = GROUPS.filter(g => g.cat === "nature");
+    h = sect("Plans, decisions and events", items.length, items.length ? items.map(cardHtml).join("") : empty("Nothing matches that filter.")) + (st.lens ? "" : sect("Groups you can join", gs.length, gs.map(groupHtml).join("")));
+  }
+  $("list").innerHTML = h;
+}
+function render() {
+  document.body.classList.toggle("big", st.mode === "big");
+  $("m-std").setAttribute("aria-pressed", st.mode === "std");
+  $("m-big").setAttribute("aria-pressed", st.mode === "big");
+  $("asof").textContent = "Today: " + fmt(todayStr) + ". Information collected 1 November 2026.";
+  document.querySelector(".hero").dataset.place = st.area;
+  $("hero-credit").innerHTML = HERO_CREDIT[st.area] || HERO_CREDIT.all;
+  renderAlert(); renderRunway(); renderControls(); renderList();
+}
+document.addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  const d = b.dataset;
+  if (b.id === "m-std" || b.id === "m-big") {
+    st.mode = b.id === "m-big" ? "big" : "std";
+    try { localStorage.setItem("tcwatch-mode", st.mode); } catch (x) {}
+  } else if (d.view) st.view = d.view;
+  else if (d.tab) st.tab = d.tab;
+  else if (d.level) st.level = d.level;
+  else if (d.lens) { st.lens = st.lens === d.lens ? null : d.lens; if (st.view === "deadlines" && st.lens) st.tab = "all"; }
+  else if (d.gcat) st.gcat = d.gcat;
+  else if (d.area) st.area = d.area;
+  else if (d.recruit) st.recruit = !st.recruit;
+  else if (d.big) st.big = d.big;
+  else if (d.more) st.open[d.more] = !st.open[d.more];
+  else return;
+  render();
+  if (d.more) { const t = document.querySelector('[data-more="' + d.more + '"]'); if (t) t.focus(); }
+});
+$("q").addEventListener("input", e => { st.q = e.target.value; renderList(); });
+render();
+
+/* The London date is printed in words and drives every countdown, so a page left
+   open past midnight must not keep yesterday's. Re-check each minute and whenever
+   the tab is shown again; re-render only when the day actually changed. */
+const londonDay = () => new Intl.DateTimeFormat("en-CA", {timeZone:"Europe/London"}).format(new Date());
+function checkDay() { const d = londonDay(); if (d !== todayStr) { todayStr = d; render(); } }
+setInterval(checkDay, 60000);
+document.addEventListener("visibilitychange", () => { if (!document.hidden) checkDay(); });
+
+const btt = $("backtotop");
+window.addEventListener("scroll", () => { btt.classList.toggle("show", window.scrollY > 400); }, {passive:true});
+btt.addEventListener("click", () => window.scrollTo({top:0, behavior:"smooth"}));
+</script>
+
+
+</body></html>

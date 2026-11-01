@@ -1,0 +1,676 @@
+<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'sha256-qvgqdkJ14OHi0pckpLenHleN1Vo59yZsWkA7gn4hDlo=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
+var SCHEME=/^\s*([a-z][a-z0-9+.\-]*):/i,HREF={http:1,https:1,mailto:1,tel:1},SRC={http:1,https:1,blob:1};
+function okUrl(v,isSrc){var c=String(v).replace(/[\u0000- ]/g,""),m=SCHEME.exec(c);if(!m)return true;var s=m[1].toLowerCase();
+if(isSrc&&s==="data")return /^data:image\//i.test(c);return !!(isSrc?SRC:HREF)[s];}
+function fixOne(n){if(n.nodeType!==1)return;var a=n.attributes;
+for(var j=a.length-1;j>=0;j--){var k=a[j].name.toLowerCase(),v=a[j].value;
+if(k.slice(0,2)==="on"){if(!(k==="onerror"&&v==="this.remove()"))n.removeAttribute(a[j].name);}
+else if((k==="href"||k==="xlink:href"||k==="action"||k==="formaction")&&!okUrl(v,false))n.removeAttribute(a[j].name);
+else if((k==="src"||k==="srcset"||k==="poster")&&!okUrl(v,true))n.removeAttribute(a[j].name);}
+if(n.tagName==="A"&&n.getAttribute("target")==="_blank"&&n.getAttribute("rel")!=="noopener noreferrer")n.setAttribute("rel","noopener noreferrer");}
+function fixTree(n){if(n.nodeType!==1)return;fixOne(n);var all=n.getElementsByTagName("*");for(var i=0;i<all.length;i++)fixOne(all[i]);}
+new MutationObserver(function(ms){for(var i=0;i<ms.length;i++){var m=ms[i];if(m.type==="attributes")fixOne(m.target);
+else for(var j=0;j<m.addedNodes.length;j++)fixTree(m.addedNodes[j]);}}).observe(document.documentElement,{childList:true,subtree:true,attributes:true});
+})();</script><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<meta charset="utf-8">
+<title>Plymouth &amp; Ivybridge · Consultation Watch</title>
+<style>/* Atkinson Hyperlegible and Bricolage Grotesque, SIL Open Font License, via Fontsource */
+@font-face{font-family:"Atkinson Hyperlegible";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/atkinson-hyperlegible-400.woff2) format("woff2")}
+@font-face{font-family:"Atkinson Hyperlegible";font-style:normal;font-weight:700;font-display:swap;src:url(fonts/atkinson-hyperlegible-700.woff2) format("woff2")}
+@font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:600;font-display:swap;src:url(fonts/bricolage-grotesque-600.woff2) format("woff2")}
+@font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:800;font-display:swap;src:url(fonts/bricolage-grotesque-800.woff2) format("woff2")}
+</style>
+<style>
+:root{
+  --bg:#EEF3F5; --surface:#FFFFFF; --surface2:#E3ECEF; --ink:#12303F; --muted:#4A6572; --line:#C6D5DB;
+  --accent:#0B6F7A; --accent-ink:#FFFFFF; --focus:#0B4FD1;
+  --urgent:#B3261E; --urgent-bg:#FCE9E7; --soon:#8A5A00; --soon-bg:#FBF0D6; --ok:#2F6B3F; --ok-bg:#E2F1E5; --done:#5B6B73; --done-bg:#E6EBED;
+  --f-body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-head:"Bricolage Grotesque","Atkinson Hyperlegible",system-ui,sans-serif;
+  --base:18px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0D1B22; --surface:#15272F; --surface2:#1C333D; --ink:#E7F0F3; --muted:#9FB6C0; --line:#2C4652;
+    --accent:#4FC3CF; --accent-ink:#06222A; --focus:#8DB6FF;
+    --urgent:#FF9A92; --urgent-bg:#3A1B19; --soon:#F2C56B; --soon-bg:#372A0B; --ok:#8FD09F; --ok-bg:#16301D; --done:#9FB0B8; --done-bg:#1F313A;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0D1B22; --surface:#15272F; --surface2:#1C333D; --ink:#E7F0F3; --muted:#9FB6C0; --line:#2C4652;
+  --accent:#4FC3CF; --accent-ink:#06222A; --focus:#8DB6FF;
+  --urgent:#FF9A92; --urgent-bg:#3A1B19; --soon:#F2C56B; --soon-bg:#372A0B; --ok:#8FD09F; --ok-bg:#16301D; --done:#9FB0B8; --done-bg:#1F313A;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:var(--base);line-height:1.5;padding-inline:16px;padding-block:0 48px}
+body.big{--base:20px;line-height:1.55}
+.wrap{max-width:1080px;margin-inline:auto}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}
+h1,h2,h3{font-family:var(--f-head);text-wrap:balance;margin:0;line-height:1.15}
+button{font:inherit;color:inherit;cursor:pointer}
+
+/* header */
+.top{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:flex-end;justify-content:space-between;padding-block:24px 16px}
+.brand h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:800;letter-spacing:-.01em}
+.brand p{margin:6px 0 0;color:var(--muted);max-width:60ch}
+.asof{font-size:.85rem;color:var(--muted)}
+.mode{display:inline-flex;border:2px solid var(--ink);border-radius:999px;overflow:hidden;background:var(--surface)}
+.mode button{border:0;background:transparent;padding:10px 18px;font-weight:700;min-height:48px}
+.mode button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+
+/* hero photo */
+.hero{position:relative;margin-top:16px;border-radius:16px;overflow:hidden;background:#1b1a22 center 55%/cover no-repeat;color:#fff}
+.hero{background-image:url("hero.jpg")}
+.hero[data-place="plymouth"]{background-image:url("heroes/plymouth.jpg")}
+.hero[data-place="ivybridge"]{background-image:url("heroes/ivybridge.jpg")}
+.hero[data-place="villages"]{background-image:url("heroes/villages.jpg")}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,16,22,.15) 0%,rgba(8,16,22,.78) 100%)}
+.hero .top{position:relative;padding:clamp(24px,9vw,120px) clamp(16px,3vw,28px) 18px}
+.hero .brand p,.hero .asof{color:rgba(255,255,255,.92)}
+.hero .mode{position:relative}
+.hero .mode button{color:var(--ink)}
+.hero .mode button[aria-pressed="true"]{color:var(--bg)}
+.hero h1{text-shadow:0 1px 12px rgba(0,0,0,.45)}
+.hero-credit{margin:0;font-size:1rem;color:var(--muted)}
+.hero-credit a{color:var(--accent)}
+.places{display:flex;flex-wrap:wrap;gap:10px;margin-top:0;padding-block:12px;position:sticky;top:0;z-index:20;background:var(--bg)}
+.places[hidden]{display:none}
+@media(max-width:700px){.places{position:static}}
+.places button{flex:1 1 0;min-width:min(9.5rem,100%);text-align:center;display:flex;align-items:center;justify-content:center;gap:8px;border:2px solid var(--line);background:var(--surface);color:var(--ink);border-radius:14px;padding:12px 14px;min-height:60px;font-weight:800;font-size:1.2rem}
+.places button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.places .ic{width:1.2em;height:1.2em}
+body.big .places button{min-height:64px;font-size:1.3rem}
+
+/* icons */
+.ic{width:1.15em;height:1.15em;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.2em}
+.tag{display:inline-flex;align-items:center;gap:5px}
+.tag .ic{width:1em;height:1em}
+.card-head{display:flex;gap:14px;align-items:flex-start}
+.card-head h3{margin:0}
+.tile{flex:none;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--surface2);color:var(--accent)}
+.tile .ic{width:24px;height:24px}
+.card.done .tile{color:var(--muted)}
+.dl .ic{width:1.3em;height:1.3em}
+.btn .ic{width:1.1em;height:1.1em}
+.imp h4{display:flex;align-items:center;gap:7px}
+.imp h4 .ic{color:var(--accent);width:1.25em;height:1.25em}
+.group h3{display:flex;align-items:center;gap:6px}
+.group h3 .ic{color:var(--accent)}
+.panel h2,.runway h2{display:flex;align-items:center;gap:8px}
+.panel h2 .ic,.runway h2 .ic{color:var(--accent);width:1.2em;height:1.2em}
+.alert .sym{display:grid;place-items:center}
+.alert .sym .ic{width:1em;height:1em;stroke-width:2.2}
+.rw-title{display:flex;gap:10px;align-items:center}
+.rw-title .ic{color:var(--accent);width:1.3em;height:1.3em}
+.rw-days{display:inline-flex;align-items:center;gap:6px}
+.rw-days .ic{width:1em;height:1em}
+.watch li{list-style:none}
+.watch ul{padding-left:0}
+.watch li a{display:inline-flex;gap:8px;align-items:flex-start}
+.watch li .ic{margin-top:.25em;color:var(--accent)}
+.foot p{display:flex;gap:10px;align-items:flex-start;margin:0}
+.foot p>.ic{margin-top:.15em;width:1.3em;height:1.3em;color:var(--accent)}
+.foot p>span{min-width:0}
+.bigbar button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
+.bigbar button .ic{width:1.8em;height:1.8em}
+.hero .mode .ic{display:none}
+
+/* alert */
+.alert{display:flex;gap:16px;align-items:center;flex-wrap:wrap;border-radius:12px;padding:16px 20px;margin-block:8px 20px;border:2px solid}
+.alert.urgent{background:var(--urgent-bg);border-color:var(--urgent);color:var(--urgent)}
+.alert.soon{background:var(--soon-bg);border-color:var(--soon);color:var(--soon)}
+.alert.calm{background:var(--ok-bg);border-color:var(--ok);color:var(--ok)}
+.alert strong{font-family:var(--f-head);font-size:1.25em;display:block}
+.alert span{color:var(--ink)}
+.alert .sym{font-size:2em;line-height:1;font-weight:800}
+
+/* countdown runway */
+.runway{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-bottom:20px}
+.runway h2{font-size:1.1rem;margin-bottom:12px}
+.rw-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 16px;align-items:center;padding-block:8px;border-top:1px solid var(--line)}
+.rw-row:first-of-type{border-top:0}
+.rw-title{font-weight:700;overflow-wrap:anywhere}
+.rw-bar{height:12px;border-radius:999px;background:var(--surface2);position:relative;overflow:hidden}
+.rw-bar i{position:absolute;inset:0 auto 0 0;border-radius:999px;background:var(--accent)}
+.rw-bar.urgent i{background:var(--urgent)} .rw-bar.soon i{background:var(--soon)}
+.rw-days{font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap}
+.rw-note{font-size:.8rem;color:var(--muted);margin:10px 0 0}
+@media(max-width:620px){.rw-row{grid-template-columns:1fr auto}.rw-bar{grid-column:1/-1;order:3}}
+
+/* controls */
+.controls{display:grid;gap:12px;margin-bottom:16px}
+.ctl-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.ctl-label{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700;min-width:5.5rem}
+.chip{border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:10px 16px;min-height:48px;font-weight:700}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.chip .n{opacity:.75;font-weight:400;margin-left:4px}
+.chip.empty{opacity:.7}
+
+/* layout */
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+.list{display:grid;gap:16px}
+
+/* card */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;display:grid;gap:12px}
+.card.done{background:var(--surface);opacity:.94}
+.card-top{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.tag{font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:6px;background:var(--surface2);color:var(--muted)}
+.card h3{font-size:1.3rem;font-weight:800}
+.body-org{color:var(--muted);font-size:.9rem;margin-top:-4px}
+.dl{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;padding:10px 14px;border-radius:10px;font-weight:700}
+.dl.urgent{background:var(--urgent-bg);color:var(--urgent)}
+.dl.soon{background:var(--soon-bg);color:var(--soon)}
+.dl.later{background:var(--ok-bg);color:var(--ok)}
+.dl.done{background:var(--done-bg);color:var(--done)}
+.dl .big{font-family:var(--f-head);font-size:1.4em;font-variant-numeric:tabular-nums}
+.dl small{font-weight:400;color:var(--ink);opacity:.85}
+.plain{margin:0;font-size:1.05em}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:10px 18px;border-radius:10px;border:2px solid var(--accent);font-weight:700;text-decoration:none;background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn[aria-expanded="true"]{background:var(--surface2)}
+.more{display:grid;gap:16px;padding-top:4px}
+.more[hidden]{display:none}
+.more p{margin:0}
+.impact{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media(max-width:620px){.impact{grid-template-columns:1fr}}
+.imp{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--bg)}
+.imp h4{margin:0 0 6px;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.imp ul{margin:0;padding:0;list-style:none;display:grid;gap:6px}
+.imp li{display:flex;gap:8px;align-items:flex-start}
+.imp li button{all:unset;cursor:pointer;padding-block:6px;color:var(--ink);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
+.imp li button:hover,.imp li button:focus-visible{text-decoration-color:var(--accent)}
+.pip{flex:none;width:.7em;height:.7em;border-radius:50%;margin-top:.5em;border:2px solid var(--accent);background:var(--accent)}
+.pip.likely{background:transparent}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.85rem;color:var(--muted)}
+.legend span{display:inline-flex;gap:6px;align-items:center}
+.legend .pip{margin-top:0}
+.src{font-size:.85rem;color:var(--muted)}
+
+/* side panel */
+.side{position:sticky;top:12px;display:grid;gap:12px}
+@media(max-width:900px){.side{position:static}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
+.panel h2{font-size:1.05rem;margin-bottom:4px}
+.panel p.hint{margin:0 0 10px;color:var(--muted);font-size:.85rem}
+.group{margin-top:12px}
+.group h3{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-family:var(--f-body);font-weight:700;margin-bottom:6px}
+.ent{display:flex;flex-wrap:wrap;gap:6px}
+.ent .chip{padding:8px 12px;min-height:44px;font-size:1rem;font-weight:400;text-align:left}
+.ent .chip[aria-pressed="true"]{font-weight:700}
+.empty-msg{background:var(--surface);border:1px dashed var(--line);border-radius:12px;padding:20px;color:var(--muted)}
+.watch ul{margin:0;padding-left:18px;display:grid;gap:6px}
+.foot{margin-top:28px;color:var(--muted);font-size:.85rem;display:grid;gap:8px;max-width:75ch}
+
+/* links to live consultations */
+.go{color:inherit;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
+.go:hover{text-decoration-color:var(--accent)}
+.go-i{font-weight:400}
+.rw-title .go{display:inline-block;padding-block:4px}
+.sr{position:absolute;left:-9999px}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:16px;top:calc(env(safe-area-inset-top,0px) + 12px);z-index:20;background:var(--surface);color:var(--accent);padding:12px 18px;border-radius:8px;font-weight:700}
+/* petitions */
+.petitions{margin-top:32px;display:grid;gap:12px}
+.petitions h2{font-size:1.4rem;display:flex;align-items:center;gap:8px}
+.petitions h2 .ic{color:var(--accent)}
+.petitions .hint{margin:0;color:var(--muted);max-width:75ch}
+.petitions .ctl-row>span:last-child{display:flex;flex-wrap:wrap;gap:8px}
+.pet-list{list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:12px}
+.pet{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:grid;gap:8px;align-content:start}
+.pet h3{font-size:1.05rem;font-weight:800}
+.pet p{margin:0}
+.pet-top{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.pet-date{margin-left:auto;font-size:.85rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.pet-sig{font-weight:700;color:var(--accent)}
+body.big .pet-list{grid-template-columns:1fr}
+body.big .petitions .chip{min-height:56px;padding:12px 18px}
+
+/* readable minimums, kind to older eyes */
+.asof,.rw-note,.legend,.src,.body-org,.panel p.hint,.foot,.pet-date,.hero .asof{font-size:1rem}
+.tag,.ctl-label,.imp h4,.group h3{font-size:.9375rem}
+.hero .brand p,.hero .asof{color:#fff}
+.lens-panel summary{cursor:pointer;font-weight:800;font-family:var(--f-head);font-size:1.1rem;min-height:48px;display:flex;align-items:center;gap:8px}
+.lens-panel summary .ic{color:var(--accent)}
+.opens{margin:0;font-size:1rem;color:var(--muted)}
+.dl .tnote{flex-basis:100%;font-weight:400;color:var(--ink);font-size:1rem}
+.totop{position:fixed;right:16px;bottom:16px;z-index:30;min-height:52px;padding:10px 18px;border-radius:999px;border:2px solid var(--accent);background:var(--surface);color:var(--accent);font-weight:800;box-shadow:0 2px 10px rgba(0,0,0,.25)}
+.totop[hidden]{display:none}
+/* big-button mode */
+body.big .brand p,body.big .asof{font-size:.8em}
+body.big .grid{grid-template-columns:1fr}
+body.big .side,body.big .runway,body.big .ctl-standard,body.big .watch-panel{display:none}
+body.big .card{padding:24px;gap:16px;border-width:2px}
+body.big .card h3{font-size:1.45rem}
+body.big .btn{min-height:64px;padding:14px 26px;font-size:1.05em;border-radius:14px;width:100%}
+body.big .actions{display:grid;grid-template-columns:1fr}
+body.big .dl{font-size:1.05em;padding:14px 18px}
+body.big .impact{grid-template-columns:1fr}
+body.big .imp li button{text-decoration:none}
+.bigbar{display:none}
+body.big .bigbar{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:20px}
+.bigbar button{min-height:76px;border:3px solid var(--accent);border-radius:16px;background:var(--surface);font-weight:800;font-size:1.05em;padding:12px}
+.bigbar button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+body.big .mode button{min-height:56px;padding:12px 22px}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+.watch li.watch-note{color:var(--muted);font-size:1rem;margin-top:4px}
+@media(max-width:700px){.places button{font-size:1.05rem;padding:10px;gap:6px}}
+</style>
+<a class="skip" href="#list">Skip to the consultations</a>
+<noscript><p style="padding:16px">This page needs JavaScript to list consultations. You can find Plymouth City Council's own consultations on <a href="https://www.plymouth.gov.uk/consultations" target="_blank" rel="noopener">its consultations page</a>.</p></noscript>
+<div class="wrap">
+  <div class="hero" data-place="all">
+  <header class="top">
+    <div class="brand">
+      <h1>Plymouth &amp; Ivybridge Consultation Watch</h1>
+      <p>What councils, government, companies and charities are asking about, what it could change for people and wildlife here, and when you must reply by.</p>
+      <div class="asof" id="asof"></div>
+    </div>
+    <div class="mode" role="group" aria-label="Choose how much to show">
+      <button type="button" id="m-std" aria-pressed="false">All filters</button>
+      <button type="button" id="m-big" aria-pressed="true">Simple view</button>
+    </div>
+  </header>
+  </div>
+  <div class="places" id="places" role="group" aria-label="Choose a place">
+    <button type="button" data-place="all" aria-pressed="true"><span data-ic="pin"></span>Everywhere</button>
+    <button type="button" data-place="plymouth" aria-pressed="false"><span data-ic="pin"></span>Plymouth</button>
+    <button type="button" data-place="ivybridge" aria-pressed="false"><span data-ic="pin"></span>Ivybridge</button>
+    <button type="button" data-place="villages" aria-pressed="false"><span data-ic="pin"></span>South Hams villages</button>
+  </div>
+  <button type="button" class="totop" id="totop" hidden>↑ Back to top</button>
+  <div id="alert" role="status" aria-live="polite"></div>
+  <div class="bigbar" id="bigbar" role="group" aria-label="What would you like to see?"></div>
+  <section class="runway" id="runway" aria-labelledby="rw-h"></section>
+  <div class="controls ctl-standard">
+    <div class="ctl-row" role="group" aria-label="Status"><span class="ctl-label">Show me</span><span id="tabs"></span></div>
+    <div class="ctl-row" role="group" aria-label="Who is asking"><span class="ctl-label">Who is asking</span><span id="sectors"></span></div>
+  </div>
+  <div class="grid">
+    <main>
+      <div id="lensbar"></div>
+      <div class="list" id="list"></div>
+    </main>
+    <aside class="side">
+      <details class="panel lens-panel">
+        <summary data-ic="people">Who and what is affected</summary>
+        <p class="hint">Pick a group, animal or habitat to see only the consultations that touch it.</p>
+        <div id="lenses"></div>
+      </details>
+      <section class="panel watch watch-panel" aria-labelledby="w-h">
+        <h2 id="w-h" data-ic="eye">Places to watch for new ones</h2>
+        <ul id="watch"></ul>
+      </section>
+    </aside>
+  </div>
+  <section class="petitions" aria-labelledby="p-h">
+    <h2 id="p-h" data-ic="note">Closed petitions since 2020</h2>
+    <p class="hint">Petitions about Plymouth, Ivybridge and the South Hams sent to Plymouth City Council, Devon County Council, South Hams District Council or Parliament, newest first. UK Parliament petitions site read on 1 November 2026 (JSON API and HTML search pages for Plymouth, Ivybridge, Plympton, Plymstock, South Hams, Dartmoor, Devon, Tamar): no closed, published petition about the area. Council and news petitions came from The Herald, BBC and The Moorlander; the Plymouth Full Council minutes and e-petition list could not be opened. Change.org pages are not accepted as council petitions by Plymouth City Council; the Barbican cobbles petition (2019) is before 2020. Nothing checked after 1 November 2026.</p>
+    <div class="ctl-row" role="group" aria-label="Year"><span class="ctl-label">Year</span><span id="p-years"></span></div>
+    <div class="ctl-row" role="group" aria-label="Sent to"><span class="ctl-label">Sent to</span><span id="p-to"></span></div>
+    <ul class="pet-list" id="p-list"></ul>
+  </section>
+  <div class="foot">
+    <p class="hero-credit foot-credit" id="hero-credit"></p>
+    <p data-ic="clock"><span><strong>Closing times.</strong> Where a card gives a date but no exact time, the organiser has not published one on its page. Check the consultation page for the exact time.</span></p>
+    <p data-ic="info"><span><strong>How to read this.</strong> A filled dot beside a group or habitat means a source names it. A hollow dot is my reading of a likely effect, so treat it as a prompt to check, not a finding.</span></p>
+    <p data-ic="search"><span><strong>Sources we check.</strong> <a href="https://www.plymouth.gov.uk/have-your-say" target="_blank" rel="noopener">Plymouth City Council: Have your say</a>, <a href="https://plymouthcityliving.commonplace.is/" target="_blank" rel="noopener">Plymouth City Living: Commonplace</a>, <a href="https://democracy.plymouth.gov.uk/" target="_blank" rel="noopener">Plymouth City Council meetings and petitions (modern.gov)</a>, <a href="https://shwdlocalplan.commonplace.is/en-GB/" target="_blank" rel="noopener">South Hams and West Devon Joint Local Plan (Commonplace)</a>, <a href="https://www.southhams.gov.uk/" target="_blank" rel="noopener">South Hams District Council</a>, <a href="https://www.devon.gov.uk/haveyoursay/" target="_blank" rel="noopener">Devon County Council: Have your say</a>, <a href="https://www.devonandtorbay-cca.gov.uk/" target="_blank" rel="noopener">Devon and Torbay Combined County Authority</a>, <a href="https://www.ivybridge.gov.uk/the-council/local-government-reorganisation/" target="_blank" rel="noopener">Ivybridge Town Council: reorganisation page</a>, <a href="https://www.dartmoor.gov.uk/living-and-working/business/planning-policy/emerging-local-plan" target="_blank" rel="noopener">Dartmoor National Park: emerging Local Plan</a>, <a href="https://www.dartmoor.gov.uk/living-and-working/partnership-plan" target="_blank" rel="noopener">Dartmoor National Park: Partnership Plan</a>, <a href="https://plymouthsoundnationalmarinepark.com/" target="_blank" rel="noopener">Plymouth Sound National Marine Park</a>, <a href="https://petition.parliament.uk/" target="_blank" rel="noopener">UK Parliament petitions</a>, <a href="https://oneplymouth.co.uk/" target="_blank" rel="noopener">One Plymouth</a>, <a href="https://www.plymouthherald.co.uk/news/plymouth-news/" target="_blank" rel="noopener">The Herald: Plymouth news</a>, <a href="https://consult.environment-agency.gov.uk/" target="_blank" rel="noopener">Environment Agency: Citizen Space and new Engage site</a>, <a href="https://www.southdevon-nl.org.uk/management-plan-2025-2030/" target="_blank" rel="noopener">South Devon National Landscape: Management Plan</a>, and local news. One non-profit consultation was found and it has closed: the Annual SEND survey run by Plymouth Parent Carer Voice (a community interest company per a Companies House search result) with the council, closed 31 October 2026. No charity or non-profit consultation was found open on 1 November 2026 after searching for Devon Wildlife Trust, RSPB South West, Plymouth Tree People, CPRE Devon and the Dartmoor Preservation Association; the only items from those bodies were campaigns or news posts, and I could not read their own sites. The Environment Agency says it will consult in November on a permit change at Hemerdon Tungsten Mine; that is a public body, and it is not yet open.</span></p>
+    <p data-ic="list"><span><strong>What we could not check.</strong> Pages blocked to automated access and not read: southhams.gov.uk (including the local plan timetable), westdevon.gov.uk, dartmoor.gov.uk, ivybridge.gov.uk. Dates for those came from parish council notices and social posts. democracy.plymouth.gov.uk (e-petitions list and Full Council minutes) and democracy.devon.gov.uk could not be fetched, so council petition coverage is thin: only petitions found through news or search snippets are listed. Devon County Council&#x27;s Have your say page showed 3 live education and 2 public rights of way consultations; I could not open them to see if any affect Plymouth or South Hams. The South Hams &#x27;Greater Plymouth&#x27; parish list (13 parishes) was read only from search snippets, not full pages. Ivybridge station platform study (Network Rail) is a feasibility study, not a consultation, so it is not listed. Second pass, found nothing current for Plymouth or South Hams (from search results, not from the bodies&#x27; own pages): South West Water (only a news item about being fined and a bathing-water map), Natural England, Marine Management Organisation (a national marine protected areas fishing consultation was mentioned in a social post with no deadline seen; not Plymouth-specific), GWR, Network Rail, Peninsula Transport, Plymouth Citybus (service changes from 2 November are not a consultation), Stagecoach South West, NHS Devon (the neighbourhood health survey, already listed, was the only one). Environment Agency: a Hemerdon Tungsten Mine permit-change consultation is due to open in November 2026 (EA page read); not yet open, so not listed as an item. Check the EA consultation sites after 1 November. South Devon National Landscape management plan: its page (undated) says the public consultation was delayed and will run for 8 weeks; I found no opening date, so it is not listed. Devon County Council Have your say showed 3 live education and 2 public rights of way consultations; the libraries consultation closed 22 February 2026, over four months ago. I could not open the live ones. Charity consultations (Devon Wildlife Trust, RSPB, Plymouth Tree People, CPRE Devon): searched but their own sites were not read. A claim that a Plymouth petition against a &#x27;land grab&#x27; (boundary extension) reached 37,000 signatures came from a Facebook group snippet only, so it is not listed. A petition of about 1,800 signatures tabled by the MP was also seen only on social media with no usable date. The Parliament petitions HTML pages show only counts in the text I could read (Plymouth 10, Devon 13, Dartmoor 12); the JSON lists match, and none is a closed Plymouth-area petition.</span></p>
+    <p data-ic="cal"><span>Dates and times come from the council, government or news pages linked on each card, collected on 1 November 2026. Days left are worked out from today's date in London. Always confirm the closing time on the consultation page before you rely on it.</span></p>
+  </div>
+</div>
+<script>
+document.documentElement.lang = "en-GB";
+/* Affects entries: [text, named] where named=1 means a source names it, 0 means my reading of likely effect. */
+let ITEMS = [];
+const SECTORS = {local:"Local government", central:"Central government", private:"Private sector", charity:"Charity and non-profit"};
+const CATS = {people:"People and communities", groups:"Community groups and organisations", wildlife:"Wildlife", systems:"Habitats and environmental systems"};
+const LENSES = [
+  {cat:"people", id:"p-old", label:"Older and disabled people", re:/older|disabled|social care|vulnerable/i},
+  {cat:"people", id:"p-fam", label:"Families and young people", re:/young|famil|children|first-time/i},
+  {cat:"people", id:"p-rent", label:"Renters and tenants", re:/renter|tenant|housing register/i},
+  {cat:"people", id:"p-dog", label:"Dog owners and walkers", re:/dog owner/i},
+  {cat:"people", id:"p-coast", label:"Neighbours of coast and works", re:/Plymouth Sound|Hoe|Barbican|Wembury|waterfront|coast|beaches/i},
+  {cat:"people", id:"p-farm", label:"Farmers and landowners", re:/farm|landowner|land manager/i},
+  {cat:"people", id:"p-biz", label:"Businesses", re:/business|employer/i},
+  {cat:"people", id:"p-all", label:"Every resident or customer", re:/every |all southern|households nationally/i},
+  {cat:"groups", id:"g-nat", label:"Wildlife charities and nature groups", re:/Wildlife Trust|RSPB|Bird Wise|nature groups|conservation/i},
+  {cat:"groups", id:"g-par", label:"Town and parish councils", re:/parish|town council/i},
+  {cat:"groups", id:"g-vol", label:"Friends, litter and volunteer groups", re:/friends|litter|beach-clean|volunteer|residents' assoc/i},
+  {cat:"groups", id:"g-care", label:"Care and voluntary organisations", re:/social care|voluntary|charities/i},
+  {cat:"wildlife", id:"w-bird", label:"Coastal and wading birds", re:/bird|geese|waders|SPA/i},
+  {cat:"wildlife", id:"w-marsh", label:"Marsh and wetland wildlife", re:/marsh|wetland/i},
+  {cat:"wildlife", id:"w-dune", label:"Dune and shore species", re:/dune|shore|coastal wildlife/i},
+  {cat:"wildlife", id:"w-farm", label:"Farmland, grassland and verges", re:/farmland|grassland|verge|local wildlife site/i},
+  {cat:"systems", id:"s-prot", label:"Protected coastal sites", re:/SPA|Ramsar|SAC|SSSI|protected/i},
+  {cat:"systems", id:"s-beach", label:"Beaches, mudflats and sea", re:/intertidal|beach|mudflat|bathing/i},
+  {cat:"systems", id:"s-water", label:"Water supply, sewers and pollution", re:/water|sewer|pollution|drainage|watercourse|underground/i},
+  {cat:"systems", id:"s-road", label:"Roads, noise and air quality", re:/road|traffic|noise|air quality|highways/i},
+  {cat:"systems", id:"s-green", label:"Green networks and trees", re:/green infra|corridor|trees|parks|network|fields, cliffs/i},
+  {cat:"systems", id:"s-grid", label:"Electricity grid", re:/electricity|grid/i}
+];
+let WATCH = [];
+const BIG = [
+  {k:"open", label:"Open now"},
+  {k:"soon", label:"Closing soonest"},
+  {k:"nature", label:"Nature and wildlife"},
+  {k:"homes", label:"Homes and planning"},
+  {k:"services", label:"Council changes"},
+  {k:"all", label:"Everything"}
+];
+const TOPIC_IC = {"homes": "home", "nature": "leaf", "coast": "wave", "energy": "bolt", "services": "gov", "travel": "bus"};
+const SECTOR_IC = {"local": "gov", "central": "flag", "private": "org", "charity": "heart"};
+const BIG_IC = {"open": "bell", "soon": "fire", "nature": "leaf", "homes": "home", "services": "gov", "travel": "bus", "all": "list"};
+const CAT_IC = {"people": "people", "groups": "org", "wildlife": "leaf", "systems": "wave"};
+let STATUS = {};
+
+
+const DECISION_LABEL = "Decision pending";
+const TABS = [["open", "Open now"], ["decision", "Decisions and watch"], ["closed", "Recently closed"], ["all", "All"]];
+const MORE_LABEL = "Who and what is affected";
+let WATCH_NOTE = "";
+let EMPTY_CHARITY = "";
+let COLLECTED = "";
+const MODE_KEY = "pcw-mode2";
+const PLACE = {"city-living": "plymouth", "allotment-planning": "plymouth", "needs-assessment": "plymouth", "childcare-survey": "plymouth", "send-survey": "plymouth"};
+const PLACES = [{"k": "all", "short": "Plymouth and Ivybridge", "credit": "Photo: Plymouth Hoe and Smeaton's Tower across the water, by <a href=\"https://unsplash.com/@owenpr?utm_source=plymouth_ivybridge_consultation_watch&utm_medium=referral\" target=\"_blank\" rel=\"noopener\">Patrick Owen PR</a> on <a href=\"https://unsplash.com/?utm_source=plymouth_ivybridge_consultation_watch&utm_medium=referral\" target=\"_blank\" rel=\"noopener\">Unsplash</a>"}, {"k": "plymouth", "short": "Plymouth", "credit": "Photo: boats in the harbour at Plymouth's Barbican, by <a href=\"https://unsplash.com/@inspiredimages?utm_source=plymouth_ivybridge_consultation_watch&utm_medium=referral\" target=\"_blank\" rel=\"noopener\">Anthony</a> on <a href=\"https://unsplash.com/?utm_source=plymouth_ivybridge_consultation_watch&utm_medium=referral\" target=\"_blank\" rel=\"noopener\">Unsplash</a>"}, {"k": "ivybridge", "short": "Ivybridge", "credit": "Photo: a clapper bridge over a moorland stream on Dartmoor, by <a href=\"https://unsplash.com/@jammin_photos?utm_source=plymouth_ivybridge_consultation_watch&utm_medium=referral\" target=\"_blank\" rel=\"noopener\">Ben Wrigley</a> on <a href=\"https://unsplash.com/?utm_source=plymouth_ivybridge_consultation_watch&utm_medium=referral\" target=\"_blank\" rel=\"noopener\">Unsplash</a>"}, {"k": "villages", "short": "South Hams villages", "credit": "Photo: a granite tor on Dartmoor at sunset, by <a href=\"https://unsplash.com/@jannerboy62?utm_source=plymouth_ivybridge_consultation_watch&utm_medium=referral\" target=\"_blank\" rel=\"noopener\">Nick Fewings</a> on <a href=\"https://unsplash.com/?utm_source=plymouth_ivybridge_consultation_watch&utm_medium=referral\" target=\"_blank\" rel=\"noopener\">Unsplash</a>"}];
+const st = {place:"all", mode:"big", tab:"open", sector:"all", lens:null, big:"open", open:{}};
+try { if (localStorage.getItem(MODE_KEY) === "std") st.mode = "std"; } catch (e) {}
+const IC = {
+  clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  cal:'<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',
+  warn:'<path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/>',
+  ok:'<circle cx="12" cy="12" r="9"/><path d="m9 12 2 2 4-4"/>',
+  home:'<path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
+  bus:'<rect x="4" y="3" width="16" height="14" rx="2"/><path d="M4 11h16M8 21v-4M16 21v-4M8 7h.01M16 7h.01"/>',
+  heart:'<path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/>',
+  school:'<path d="M22 10 12 5 2 10l10 5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/>',
+  pin:'<path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/>',
+  brief:'<rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>',
+  gov:'<path d="M3 21h18M5 21V10M19 21V10M9 21V10M15 21V10M12 3 3 9h18z"/>',
+  flag:'<path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22v-7"/>',
+  people:'<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/>',
+  org:'<path d="M3 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16M15 9h4a2 2 0 0 1 2 2v10M3 21h18M7 7h4M7 11h4M7 15h4"/>',
+  leaf:'<path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.8 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10z"/><path d="M2 21c0-3 1.9-5.4 5.1-6C9.5 14.5 12 13 13 12"/>',
+  out:'<path d="M7 17 17 7M7 7h10v10"/>',
+  link:'<path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/>',
+  info:'<circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/>',
+  search:'<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>',
+  eye:'<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+  list:'<path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>',
+  fire:'<path d="M12 2s5 4 5 9a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3 1-5 1-8z"/>',
+  bell:'<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.9 1.9 0 0 0 3.4 0"/>',
+  wave:'<path d="M2 7c2-2 4-2 6 0s4 2 6 0 4-2 6 0M2 12c2-2 4-2 6 0s4 2 6 0 4-2 6 0M2 17c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/>',
+  bolt:'<path d="M13 2 3 14h9l-1 8 10-12h-9z"/>',
+  note:'<path d="M15 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M8 13h8M8 17h5"/>'
+};
+const ic = n => '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false">' + IC[n] + '</svg>';
+const itemIc = it => TOPIC_IC[(it.topics || [])[0]] || SECTOR_IC[it.sector] || "note";
+
+const $ = id => document.getElementById(id);
+const safeUrl = u => /^https:\/\//i.test(u) ? esc(u) : "#";
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+/* dates: work in whole days using today's London calendar date */
+const londonDay = () => new Intl.DateTimeFormat("en-CA", {timeZone:"Europe/London"}).format(new Date());
+let todayStr = londonDay();
+const utc = s => { const [y,m,d] = s.split("-").map(Number); return Date.UTC(y, m-1, d); };
+const fmt = s => new Intl.DateTimeFormat("en-GB", {weekday:"short", day:"numeric", month:"short", year:"numeric", timeZone:"UTC"}).format(utc(s));
+const fmtShort = s => new Intl.DateTimeFormat("en-GB", {weekday:"short", day:"numeric", month:"short", timeZone:"UTC"}).format(utc(s));
+const londonHM = () => new Intl.DateTimeFormat("en-GB", {timeZone:"Europe/London", hour:"2-digit", minute:"2-digit", hourCycle:"h23"}).format(new Date());
+let nowHM = londonHM();
+const daysTo = s => Math.round((utc(s) - utc(todayStr)) / 86400000);
+
+function info(it) {
+  const d = daysTo(it.deadline);
+  if (it.status === "open" && (d < 0 || (d === 0 && it.closes && nowHM >= it.closes))) return {phase:"closed", d, level:"done"};
+  if (it.status === "open") return {phase:"open", d, level: d <= 7 ? "urgent" : d <= 21 ? "soon" : "later"};
+  if (it.status === "decision") return {phase:"decision", d, level:"later"};
+  return {phase:"closed", d, level:"done"};
+}
+function daysText(d, c) { return d === 0 ? "Closes today" + (c ? " at " + c : "") : d === 1 ? "1 day left" : d + " days left"; }
+const withStatus = () => ITEMS.map(it => Object.assign({}, it, {i: info(it)}));
+let allInfo = [];
+const statusKey = () => allInfo.map(x => x.i.phase + x.i.d).join();
+let withInfo = [];
+/* Filled by boot() from data.json. dataOk gates render, so a failed fetch shows a
+   plain message rather than an empty list that reads like "nothing is open". */
+let dataOk = false, dataErr = "";
+function scope() { withInfo = allInfo.filter(x => st.place === "all" || !PLACE[x.id] || PLACE[x.id] === st.place); }
+
+function lensesOf(it) {
+  return LENSES.filter(l => (it.a[l.cat] || []).some(e => l.re.test(e[0])));
+}
+function matchLens(it) { return !st.lens || lensesOf(it).some(l => l.id === st.lens); }
+function orderItems(arr) {
+  const rank = {open:0, decision:1, closed:2};
+  return arr.slice().sort((a, b) => rank[a.i.phase] - rank[b.i.phase] ||
+    (a.i.phase === "closed" ? utc(b.deadline) - utc(a.deadline) : utc(a.deadline) - utc(b.deadline)));
+}
+function visible() {
+  let arr = withInfo;
+  if (st.mode === "big") {
+    const k = st.big;
+    if (k === "open") arr = arr.filter(x => x.i.phase === "open");
+    else if (k === "soon") arr = arr.filter(x => x.i.phase === "open" && x.i.d <= 21);
+    else if (k === "all") arr = arr.slice();
+    else arr = arr.filter(x => x.topics.includes(k) && x.i.phase !== "closed");
+    return orderItems(arr);
+  }
+  if (st.tab !== "all") arr = arr.filter(x => x.i.phase === st.tab);
+  if (st.sector !== "all") arr = arr.filter(x => x.sector === st.sector);
+  arr = arr.filter(matchLens);
+  return orderItems(arr);
+}
+
+/* renderers */
+const goLink = x => '<a class="go" href="' + safeUrl(x.url) + '" target="_blank" rel="noopener">' + esc(x.title) + '<span class="go-i" aria-hidden="true"> ↗</span><span class="sr"> (opens the consultation in a new tab)</span></a>';
+function renderAlert() {
+  const open = withInfo.filter(x => x.i.phase === "open").sort((a, b) => a.i.d - b.i.d);
+  const urgent = open.filter(x => x.i.d <= 7), soon = open.filter(x => x.i.d <= 21);
+  let cls, sym, head, sub;
+  if (urgent.length) {
+    cls = "urgent"; sym = ic("warn");
+    head = urgent.length + (urgent.length === 1 ? " consultation closes" : " consultations close") + " within 7 days";
+    sub = urgent.map(goLink).join("; ") + ". First deadline: " + esc(fmtShort(urgent[0].deadline)) + ".";
+  } else if (soon.length) {
+    cls = "soon"; sym = ic("clock");
+    head = soon.length + (soon.length === 1 ? " consultation closes" : " consultations close") + " within 3 weeks";
+    sub = "Next: " + goLink(soon[0]) + ", " + esc(fmtShort(soon[0].deadline)) + " (" + soon[0].i.d + " days).";
+  } else if (open.length) {
+    cls = "calm"; sym = ic("ok");
+    head = "Nothing closes in the next 3 weeks";
+    sub = "Next: " + goLink(open[0]) + ", " + esc(fmtShort(open[0].deadline)) + ".";
+  } else {
+    cls = "calm"; sym = ic("ok"); head = "No open consultations recorded"; sub = "Check the places to watch for new ones.";
+  }
+  $("alert").innerHTML = '<div class="alert ' + cls + '"><div class="sym" aria-hidden="true">' + sym + '</div><div><strong>' + esc(head) + '</strong><span>' + sub + '</span></div></div>';
+}
+function renderRunway() {
+  const open = withInfo.filter(x => x.i.phase === "open").sort((a, b) => a.i.d - b.i.d);
+  let h = '<h2 id="rw-h">' + ic("clock") + 'Deadline countdown</h2>';
+  if (!open.length) h += '<p class="rw-note">No open consultations recorded.</p>';
+  open.forEach(x => {
+    const w = Math.max(4, Math.round(100 - Math.min(x.i.d, 60) / 60 * 100));
+    h += '<div class="rw-row"><div class="rw-title">' + ic(itemIc(x)) + '<span>' + goLink(x) + '</span></div><div class="rw-days">' + ic(x.i.level === "urgent" ? "warn" : "clock") + '<span>' + esc(daysText(x.i.d, x.closes)) + ' <span style="font-weight:400;color:var(--muted)">' + esc(fmtShort(x.deadline)) + '</span></span></div></div>';
+  });
+  h += '<p class="rw-note">Select a consultation to open its page and give your views. Red means 7 days or less. Amber means 21 days or less.</p>';
+  $("runway").innerHTML = h;
+}
+function renderControls() {
+  const cnt = f => withInfo.filter(f).length;
+  const tabs = TABS;
+  $("tabs").innerHTML = tabs.map(t => '<button type="button" class="chip" data-tab="' + t[0] + '" aria-pressed="' + (st.tab === t[0]) + '">' + t[1] + '<span class="n">' + (t[0] === "all" ? withInfo.length : cnt(x => x.i.phase === t[0])) + '</span></button>').join(" ");
+  $("sectors").innerHTML = ['all'].concat(Object.keys(SECTORS)).map(k => {
+    const n = k === "all" ? withInfo.length : cnt(x => x.sector === k);
+    return '<button type="button" class="chip' + (n ? "" : " empty") + '" data-sector="' + k + '" aria-pressed="' + (st.sector === k) + '">' + (k === "all" ? "All" : SECTORS[k]) + '<span class="n">' + n + '</span></button>';
+  }).join(" ");
+  let lh = "";
+  Object.keys(CATS).forEach(c => {
+    lh += '<div class="group"><h3>' + ic(CAT_IC[c]) + CATS[c] + '</h3><div class="ent">';
+    LENSES.filter(l => l.cat === c).forEach(l => {
+      const n = withInfo.filter(it => lensesOf(it).some(x => x.id === l.id)).length;
+      if (!n) return;
+      lh += '<button type="button" class="chip" data-lens="' + l.id + '" aria-pressed="' + (st.lens === l.id) + '">' + esc(l.label) + '<span class="n">' + n + '</span></button>';
+    });
+    lh += '</div></div>';
+  });
+  $("lenses").innerHTML = lh;
+  $("watch").innerHTML = WATCH.map(w => '<li><a href="' + safeUrl(w[1]) + '" target="_blank" rel="noopener">' + ic("link") + '<span>' + esc(w[0]) + '</span></a></li>').join("") + (WATCH_NOTE ? '<li class="watch-note">' + esc(WATCH_NOTE) + '</li>' : '');
+  $("bigbar").innerHTML = BIG.map(b => '<button type="button" data-big="' + b.k + '" aria-pressed="' + (st.big === b.k) + '">' + ic(BIG_IC[b.k]) + '<span>' + b.label + '</span></button>').join("");
+  const lens = LENSES.find(l => l.id === st.lens);
+  $("lensbar").innerHTML = lens && st.mode !== "big" ? '<p style="margin:0 0 12px">Showing only items affecting <strong>' + esc(lens.label) + '</strong>. <button type="button" class="chip" data-lens="' + lens.id + '">Clear</button></p>' : "";
+}
+function impactHtml(it) {
+  let h = '<div class="impact">';
+  Object.keys(CATS).forEach(c => {
+    const arr = it.a[c] || [];
+    if (!arr.length) return;
+    h += '<div class="imp"><h4>' + ic(CAT_IC[c]) + CATS[c] + '</h4><ul>';
+    arr.forEach(e => {
+      const l = LENSES.find(x => x.cat === c && x.re.test(e[0]));
+      const t = l && st.mode !== "big" ? '<button type="button" data-lens="' + l.id + '">' + esc(e[0]) + '</button>' : '<span>' + esc(e[0]) + '</span>';
+      h += '<li><span class="pip' + (e[1] ? "" : " likely") + '" aria-hidden="true"></span>' + t + '<span class="sr" style="position:absolute;left:-9999px">' + (e[1] ? " (named in a source)" : " (likely, my assessment)") + '</span></li>';
+    });
+    h += '</ul></div>';
+  });
+  return h + '</div><div class="legend"><span><i class="pip" aria-hidden="true"></i> Named in a source</span><span><i class="pip likely" aria-hidden="true"></i> Likely, my assessment</span></div>';
+}
+const calLink = it => {
+  const day = t => new Date(t).toISOString().slice(0, 10).replace(/-/g, "");
+  const eve = utc(it.deadline) - 86400000;
+  return "https://calendar.google.com/calendar/render?action=TEMPLATE&text=" + encodeURIComponent("Respond by tomorrow: " + it.title) +
+    "&dates=" + day(eve) + "/" + day(eve + 86400000) + "&details=" + encodeURIComponent("Closes " + it.time + ". " + it.url);
+};
+function cardHtml(it) {
+  const p = it.i, open = !!st.open[it.id];
+  const statusTxt = p.phase === "open" ? "Open" : p.phase === "decision" ? (STATUS[it.id] || DECISION_LABEL) : "Closed";
+  const statusIc = p.phase === "open" ? "bell" : p.phase === "decision" ? "eye" : "ok";
+  let dl;
+  const long = d => new Date(utc(d)).toLocaleDateString("en-GB", {weekday:"long", day:"numeric", month:"long", timeZone:"UTC"});
+  const tn = /^closing time not/.test(it.time) ? "" : '<span class="tnote">' + esc(it.time) + '</span>';
+  if (p.phase === "open") dl = '<div class="dl ' + p.level + '">' + ic(p.level === "urgent" ? "warn" : "clock") + '<span class="big">' + esc(daysText(p.d, it.closes)) + '</span><span>Closes ' + esc(long(it.deadline)) + '</span>' + tn + '</div>';
+  else if (p.phase === "decision" && it.nodate) dl = '<div class="dl soon">' + ic("cal") + '<span class="big">No date set</span>' + '<span class="tnote">' + esc(it.time) + '</span></div>';
+  else if (p.phase === "decision" && p.d < 0) dl = '<div class="dl soon">' + ic("warn") + '<span class="big">Date passed</span><span>Last date recorded: ' + esc(long(it.deadline)) + '. No update found yet.</span>' + '<span class="tnote">' + esc(it.time) + '</span></div>';
+  else dl = '<div class="dl ' + p.level + '">' + ic("cal") + '<span>' + esc(it.time) + '</span></div>';
+  const btnLabel = p.phase === "open" ? "Give your views" : it.urlLabel;
+  return '<article class="card ' + (p.phase === "closed" ? "done" : "") + '" id="c-' + it.id + '">' +
+    '<div class="card-top"><span class="tag">' + ic(statusIc) + esc(statusTxt) + '</span><span class="tag">' + ic(SECTOR_IC[it.sector]) + esc(SECTORS[it.sector]) + '</span></div>' +
+    '<div class="card-head"><span class="tile" aria-hidden="true">' + ic(itemIc(it)) + '</span><div><h3>' + esc(it.title) + '</h3><div class="body-org">' + esc(it.body) + '</div></div></div>' + dl +
+    '<p class="plain">' + esc(it.plain) + '</p>' +
+    '<div class="actions"><a class="btn" href="' + safeUrl(it.url) + '" target="_blank" rel="noopener">' + esc(btnLabel) + ic("out") + '</a>' +
+    '<button type="button" class="btn ghost" data-more="' + it.id + '" aria-expanded="' + open + '" aria-controls="m-' + it.id + '">' + ic("people") + (open ? "Hide" : MORE_LABEL) + '</button></div>' +
+    (p.phase === "open" ? '<p class="opens">Opens the official website in a new tab. <a href="' + safeUrl(calLink(it)) + '" target="_blank" rel="noopener">' + ic("cal") + 'Add a reminder to Google Calendar</a></p>' : '') +
+    '<div class="more" id="m-' + it.id + '"' + (open ? "" : " hidden") + '>' + impactHtml(it) +
+    '<p>' + esc(it.detail) + '</p><p><strong>How to respond:</strong> ' + esc(it.how) + '</p>' +
+    '<p class="src">Source: <a href="' + safeUrl(it.src) + '" target="_blank" rel="noopener">' + esc(it.src.replace(/^https?:\/\//, "").slice(0, 60)) + '</a></p></div></article>';
+}
+function renderList() {
+  const arr = visible();
+  $("list").innerHTML = arr.length ? arr.map(cardHtml).join("") :
+    '<div class="empty-msg"><strong>Nothing to show here.</strong><br>' + (st.sector === "charity" && EMPTY_CHARITY ? esc(EMPTY_CHARITY) : "Try a different filter.") + '</div>';
+}
+function render() {
+  scope();
+  document.body.classList.toggle("big", st.mode === "big");
+  document.querySelector(".hero").dataset.place = st.place;
+  $("hero-credit").innerHTML = (PLACES.find(p => p.k === st.place) || PLACES[0]).credit;
+  document.querySelectorAll("[data-place]").forEach(b => { if (b.tagName === "BUTTON") b.setAttribute("aria-pressed", b.dataset.place === st.place); });
+  $("m-std").setAttribute("aria-pressed", st.mode === "std");
+  $("m-big").setAttribute("aria-pressed", st.mode === "big");
+  $("asof").textContent = "Today in " + (PLACES.find(p => p.k === st.place) || PLACES[0]).short + ": " + fmt(todayStr) + (COLLECTED ? ". Information collected " + COLLECTED + "." : ".");
+  if (!dataOk) { showFailure(); return; }
+  renderAlert(); renderRunway(); renderControls(); renderList(); if (typeof renderPetitions === "function") renderPetitions();
+}
+document.addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  const d = b.dataset;
+  if (b.id === "m-std" || b.id === "m-big") {
+    st.mode = b.id === "m-big" ? "big" : "std";
+    try { localStorage.setItem(MODE_KEY, st.mode); } catch (x) {}
+  } else if (d.tab) st.tab = d.tab;
+  else if (d.place) st.place = d.place;
+  else if (d.sector) st.sector = d.sector;
+  else if (d.lens) st.lens = st.lens === d.lens ? null : d.lens;
+  else if (d.big) st.big = d.big;
+  else if (d.more) st.open[d.more] = !st.open[d.more];
+  else if (d.pyear) st.pyear = d.pyear;
+  else if (d.pto) st.pto = d.pto;
+  else return;
+  if (d.lens && st.tab !== "all" && st.lens) st.tab = "all";
+  render();
+  const fk = ["more", "tab", "place", "sector", "lens", "big", "pyear", "pto"].find(n => d[n] !== undefined);
+  if (fk) { const t = document.querySelector('button[data-' + fk + '="' + d[fk] + '"]'); if (t) t.focus(); }
+});
+/* Closed petitions since 2020. to: pcc | dcc | shdc | parl. sig: number or null (unknown). */
+let PETITIONS = [];
+const PTO = {pcc:"Plymouth City Council", dcc:"Devon County Council", shdc:"South Hams council", parl:"UK Parliament"};
+st.pyear = "all"; st.pto = "all";
+
+function renderPetitions() {
+  const years = [...new Set(PETITIONS.map(p => p.date.slice(0, 4)))];
+  const chip = (k, v, label, n) => '<button type="button" class="chip" data-' + k + '="' + v + '" aria-pressed="' + (st[k] === v) + '">' + esc(label) + '<span class="n">' + n + '</span></button>';
+  $("p-years").innerHTML = chip("pyear", "all", "All years", PETITIONS.length) +
+    years.map(y => chip("pyear", y, y, PETITIONS.filter(p => p.date.startsWith(y)).length)).join("");
+  $("p-to").innerHTML = chip("pto", "all", "Everyone", PETITIONS.length) +
+    Object.keys(PTO).map(k => chip("pto", k, PTO[k], PETITIONS.filter(p => p.to === k).length)).join("");
+  const arr = PETITIONS.filter(p => (st.pyear === "all" || p.date.startsWith(st.pyear)) && (st.pto === "all" || p.to === st.pto));
+  $("p-list").innerHTML = arr.length ? arr.map(p =>
+    '<li class="pet"><div class="pet-top"><span class="tag">' + esc(PTO[p.to]) + '</span>' + (p.nature ? '<span class="tag">Nature or coast</span>' : '') +
+    '<span class="pet-date">' + esc(fmt(p.date)) + '</span></div>' +
+    '<h3>' + esc(p.title) + '</h3>' +
+    '<p class="pet-sig">' + (p.sig === null ? 'Signatures not published' : p.sig.toLocaleString("en-GB") + (p.sig === 1 ? ' signature' : ' signatures')) + '</p>' +
+    '<p>' + esc(p.outcome) + '</p>' +
+    '<a href="' + safeUrl(p.url) + '" target="_blank" rel="noopener">Read more</a></li>').join("") :
+    '<li class="empty-msg">No petitions found for this filter.</li>';
+}
+(function () { const t = $("totop"); const f = () => { t.hidden = window.scrollY < 700; };
+  window.addEventListener("scroll", f, {passive: true}); t.addEventListener("click", () => window.scrollTo({top: 0, behavior: "smooth"})); f(); })();
+document.querySelectorAll('[data-ic]').forEach(e => e.insertAdjacentHTML('afterbegin', ic(e.dataset.ic)));
+function showFailure() {
+  $("alert").innerHTML = '<div class="alert urgent"><div class="sym" aria-hidden="true">' + ic("warn") +
+    '</div><div><strong>The consultation list could not be loaded</strong><span>This page reads its consultations from data.json, which did not load (' +
+    esc(dataErr) + '). Nothing shown here is out of date \u2014 there is simply nothing to show. Reload the page, and if it keeps failing use the official pages below.</span></div></div>';
+  $("runway").innerHTML = "";
+  $("list").innerHTML = '<div class="empty-msg"><strong>No consultations could be loaded.</strong><br>Check the official sources directly: <a href="https://www.plymouth.gov.uk/consultations" target="_blank" rel="noopener">Plymouth City Council</a>, <a href="https://www.devon.gov.uk/haveyoursay/" target="_blank" rel="noopener">Devon County Council</a>.</div>';
+  ["bigbar","tabs","sectors","lenses","watch","lensbar","p-list","p-years","p-to"].forEach(id => { const e = $(id); if (e) e.innerHTML = ""; });
+}
+async function boot() {
+  try {
+    const r = await fetch("data.json", {cache: "no-cache"});
+    if (!r.ok) throw new Error("data.json returned HTTP " + r.status);
+    const d = await r.json();
+    if (!Array.isArray(d.items)) throw new Error("data.json has no items array");
+    if (!d.items.length) throw new Error("data.json contains no consultations");
+    ITEMS = Array.isArray(d.items) ? d.items : [];
+    PETITIONS = Array.isArray(d.petitions) ? d.petitions : [];
+    WATCH = Array.isArray(d.watch) ? d.watch : [];
+    STATUS = (d.status && typeof d.status === "object") ? d.status : {};
+    COLLECTED = typeof d.collected === "string" ? d.collected : "";
+    WATCH_NOTE = typeof d.watch_note === "string" ? d.watch_note : "";
+    EMPTY_CHARITY = typeof d.empty_charity === "string" ? d.empty_charity : "";
+    PETITIONS.sort((a, b) => b.date.localeCompare(a.date));
+    allInfo = withStatus();
+    dataOk = true;
+    render();
+    setInterval(() => {
+      const before = statusKey();
+      todayStr = londonDay(); nowHM = londonHM(); allInfo = withStatus();
+      if (statusKey() !== before) render();
+    }, 60000);
+  } catch (e) {
+    dataOk = false;
+    dataErr = (e && e.message) ? e.message : String(e);
+    render();
+  }
+}
+boot();
+</script>
+
+
+
+</body></html>
