@@ -354,6 +354,17 @@
     "trig_01575SzYtwaVj7PWhwE2t5bM"
    ],
    "show_in": "tayside"
+  },
+  {
+   "id": "local:sky-plymouth",
+   "area": "sky",
+   "slug": "plymouth",
+   "name": "Plymouth & Ivybridge night sky",
+   "refresh_tasks": [
+    "trig_01WU8ya3eJ2qbznz9X5qChUp",
+    "trig_01575SzYtwaVj7PWhwE2t5bM"
+   ],
+   "show_in": "plymouth"
   }
  ]
 }
