@@ -52,6 +52,50 @@ than `sync-dashboards.sh` also commits to it (commits titled `Hourly sync
 <timestamp>`, whereas the script writes `sync: <timestamp>`) — most likely a
 GitHub Action. Unverified.
 
+## Why sky pages sometimes lose their hardening
+
+Every published page must carry the `Content-Security-Policy` meta and the
+`dash-guard` inline script that `tools/harden.py` injects. The builder in
+`dashboards-source` does **not** emit them: `sky/work/<town>/dashboard.html` is
+unhardened, and `tools/sync.py --harden-only`, run in the publishing repo after
+the copy, is what adds them. Copy a built page in and skip that step and the
+page is published without its CSP or its DOM sanitiser.
+
+The two scheduled tasks do this correctly. `Sky dashboards morning refresh
+(Mac)` (`trig_01NTcr39czUs5KcrChm42w6V`, 07:52) and `Sky dashboards evening
+refresh (Mac)` (`trig_01575SzYtwaVj7PWhwE2t5bM`, 16:52) both run
+`--harden-only` after the six `cp` commands, both require it to exit 0, both
+require `git diff --quiet` afterwards so hardening touched only the staged
+pages, and both make a missing `dash-guard` or CSP a per-town FAILED in their
+step 4 verification. Their prompts say why: "without it CI on main goes red
+(this happened 21 October 2026)." Do not "fix" these two tasks; they are the
+pattern to copy.
+
+The 2026-11-01 drift came from outside the schedule. `d524b4c` (22:26) stripped
+the hardening from four pages, and the evidence says no scheduled run made it:
+
+- the morning task's `last_fired_at` was 07:52:29Z, the evening task's
+  16:53:03Z; neither fired near 22:26
+- it touched four pages (ammanford, carnoustie, dundee, ramsgate), not the six
+  both tasks publish — exactly the four that existed before plymouth and
+  rickmansworth were added that morning at 11:24 and 11:28
+- it was a net deletion (49 insertions, 101 deletions), i.e. it replaced
+  hardened pages with unhardened builds rather than failing to add anything
+- both task prompts were edited at 22:45, nineteen minutes *after* it
+
+So it was an ad-hoc publish that ran part of the task's step 3 by hand, copying
+four stale `work/<town>/dashboard.html` files left over from the morning build
+and omitting the `--harden-only` line.
+
+The structural gap: the harden step exists only inside those two task prompts.
+Nothing in this repository enforces it, so any manual or ad-hoc publish bypasses
+it silently, and `sync-rules` only catches it once it is already on `main` —
+where a red run on a push nobody reads is invisible. Before publishing a sky
+page by hand, run `python3 tools/sync.py --harden-only` and confirm
+`grep -c 'id="dash-guard"' sky/<town>/index.html` prints 1. A pre-commit hook
+rejecting a commit that stages an unhardened `sky/*/index.html` would move the
+guard from two prompts into the repo; not implemented yet.
+
 ## Known weak spot in `~/bin/sync-dashboards.sh`
 
 `✓ sync complete` is appended to `.last-sync-status.txt` *before* the
