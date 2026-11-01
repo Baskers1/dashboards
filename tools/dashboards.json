@@ -319,7 +319,8 @@
    "refresh_tasks": [
     "trig_01WU8ya3eJ2qbznz9X5qChUp",
     "trig_01575SzYtwaVj7PWhwE2t5bM"
-   ]
+   ],
+   "show_in": "east-kent"
   },
   {
    "id": "local:sky-ammanford",
@@ -329,7 +330,8 @@
    "refresh_tasks": [
     "trig_01WU8ya3eJ2qbznz9X5qChUp",
     "trig_01575SzYtwaVj7PWhwE2t5bM"
-   ]
+   ],
+   "show_in": "ammanford"
   },
   {
    "id": "local:sky-dundee",
@@ -339,7 +341,8 @@
    "refresh_tasks": [
     "trig_01WU8ya3eJ2qbznz9X5qChUp",
     "trig_01575SzYtwaVj7PWhwE2t5bM"
-   ]
+   ],
+   "show_in": "tayside"
   },
   {
    "id": "local:sky-carnoustie",
@@ -349,7 +352,8 @@
    "refresh_tasks": [
     "trig_01WU8ya3eJ2qbznz9X5qChUp",
     "trig_01575SzYtwaVj7PWhwE2t5bM"
-   ]
+   ],
+   "show_in": "tayside"
   }
  ]
 }

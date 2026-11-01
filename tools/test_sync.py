@@ -171,3 +171,14 @@ finally:
     s.ROOT = real_root; shutil.rmtree(root); shutil.rmtree(src)
 
 print("ok")
+
+# hub + area pages (build_hub writes into the repo, so check the result in place)
+s.build_hub()
+hub = open(os.path.join(s.ROOT, "index.html"), encoding="utf-8").read()
+assert '<h2><a href="east-kent/">' in hub, "area headings must link to the area page"
+ek = open(os.path.join(s.ROOT, "east-kent", "index.html"), encoding="utf-8").read()
+assert 'href="../sky/ramsgate/"' in ek, "Ramsgate night sky must show on the East Kent page"
+assert 'href="../tayside/' not in ek, "area page must list only its own area"
+sky = hub.split('<a href="sky/">')[1]
+assert "night sky" not in sky, "night-sky pages move to their own areas"
+print("hub ok")

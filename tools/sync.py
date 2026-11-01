@@ -153,20 +153,9 @@ def fix_pages(dst):
     return removed
 
 
-def build_hub():
-    rows = []
-    for key, label in M["areas"].items():
-        listed = [d for d in M["dashboards"] if d["area"] == key]
-        items = [d for d in listed if os.path.exists(os.path.join(folder(d), "index.html"))]
-        for d in listed:
-            if d not in items:
-                print(f"WARNING not on the hub (no page published yet): {key}/{d['slug']}")
-        if not items:
-            continue
-        links = "".join(f'<li><a href="{key}/{d["slug"]}/">{html.escape(d["name"])}</a></li>' for d in items)
-        rows.append(f'<section><h2>{html.escape(label)}</h2><ul>{links}</ul></section>')
-    page = f"""<!doctype html><html lang="en-GB"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1"><title>Baskers Dashboards</title>
+def render(title, lede, sections, back=""):
+    return f"""<!doctype html><html lang="en-GB"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(title)}</title>
 <style>
 :root{{--bg:#fffdf7;--fg:#1a1a1a;--muted:#555;--card:#fff;--line:#ddd6c8;--accent:#0b5394}}
 @media (prefers-color-scheme:dark){{:root{{--bg:#16181c;--fg:#f1f1f1;--muted:#b5b5b5;--card:#20242a;--line:#343a42;--accent:#8ab8ff}}}}
@@ -174,12 +163,38 @@ body{{margin:0;background:var(--bg);color:var(--fg);font:19px/1.5 -apple-system,
 main{{max-width:46rem;margin:0 auto;padding:32px 16px 64px}}h1{{font-size:30px;margin:0 0 4px}}
 p.lede{{color:var(--muted);margin:0 0 24px}}h2{{font-size:21px;margin:28px 0 10px}}
 ul{{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(14rem,1fr));gap:10px}}
-a{{display:block;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--card);
-color:var(--accent);font-weight:600;text-decoration:none}}a:hover,a:focus{{border-color:var(--accent)}}
-</style></head><body><main><h1>Baskers Dashboards</h1>
-<p class="lede">Weather, what's on, menus, local consultations and NHS waits for the places we care about. Each page updates itself on a schedule.</p>
-{''.join(rows)}</main></body></html>
+li a{{display:block;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--card);
+color:var(--accent);font-weight:600;text-decoration:none}}li a:hover,li a:focus{{border-color:var(--accent)}}
+h2 a,p.back a{{color:inherit;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:4px}}
+h2 a:hover,h2 a:focus,p.back a:hover,p.back a:focus{{color:var(--accent);text-decoration-color:var(--accent)}}
+p.back{{margin:0 0 16px}}p.back a{{color:var(--accent)}}
+</style></head><body><main>{back}<h1>{html.escape(title)}</h1>
+<p class="lede">{lede}</p>
+{sections}</main></body></html>
 """
+
+
+def build_hub():
+    """Hub page plus one page per area (<area>/index.html) listing just that area's dashboards."""
+    rows = []
+    for key, label in M["areas"].items():
+        # show_in lists a dashboard under another area's heading without moving its folder
+        listed = [d for d in M["dashboards"] if d.get("show_in", d["area"]) == key]
+        items = [d for d in listed if os.path.exists(os.path.join(folder(d), "index.html"))]
+        for d in listed:
+            if d not in items:
+                print(f"WARNING not on the hub (no page published yet): {d['area']}/{d['slug']}")
+        if not items:
+            continue
+        def links(prefix):
+            return "".join(f'<li><a href="{prefix}{d["area"]}/{d["slug"]}/">{html.escape(d["name"])}</a></li>' for d in items)
+        rows.append(f'<section><h2><a href="{key}/">{html.escape(label)}</a></h2><ul>{links("")}</ul></section>')
+        area_page = render(label, f"Every dashboard for {html.escape(label)}. Each page updates itself on a schedule.",
+                           f"<ul>{links('../')}</ul>", '<p class="back"><a href="../">&larr; All areas</a></p>')
+        open(os.path.join(ROOT, key, "index.html"), "w", encoding="utf-8").write(harden(area_page))
+    page = render("Baskers Dashboards",
+                  "Weather, what's on, menus, local consultations and NHS waits for the places we care about. "
+                  "Each page updates itself on a schedule. Tap an area name to see just that area.", "".join(rows))
     open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8").write(harden(page))
 
 
