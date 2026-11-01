@@ -365,6 +365,17 @@
     "trig_01575SzYtwaVj7PWhwE2t5bM"
    ],
    "show_in": "plymouth"
+  },
+  {
+   "id": "local:sky-rickmansworth",
+   "area": "sky",
+   "slug": "rickmansworth",
+   "name": "Rickmansworth night sky",
+   "refresh_tasks": [
+    "trig_01NTcr39czUs5KcrChm42w6V",
+    "trig_01575SzYtwaVj7PWhwE2t5bM"
+   ],
+   "show_in": "west-herts"
   }
  ]
 }
