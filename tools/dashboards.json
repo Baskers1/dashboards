@@ -317,7 +317,7 @@
    "slug": "ramsgate",
    "name": "Ramsgate night sky",
    "refresh_tasks": [
-    "trig_01WU8ya3eJ2qbznz9X5qChUp",
+    "trig_01NTcr39czUs5KcrChm42w6V",
     "trig_01575SzYtwaVj7PWhwE2t5bM"
    ],
    "show_in": "east-kent"
@@ -328,7 +328,7 @@
    "slug": "ammanford",
    "name": "Ammanford night sky",
    "refresh_tasks": [
-    "trig_01WU8ya3eJ2qbznz9X5qChUp",
+    "trig_01NTcr39czUs5KcrChm42w6V",
     "trig_01575SzYtwaVj7PWhwE2t5bM"
    ],
    "show_in": "ammanford"
@@ -339,7 +339,7 @@
    "slug": "dundee",
    "name": "Dundee night sky",
    "refresh_tasks": [
-    "trig_01WU8ya3eJ2qbznz9X5qChUp",
+    "trig_01NTcr39czUs5KcrChm42w6V",
     "trig_01575SzYtwaVj7PWhwE2t5bM"
    ],
    "show_in": "tayside"
@@ -350,7 +350,7 @@
    "slug": "carnoustie",
    "name": "Carnoustie night sky",
    "refresh_tasks": [
-    "trig_01WU8ya3eJ2qbznz9X5qChUp",
+    "trig_01NTcr39czUs5KcrChm42w6V",
     "trig_01575SzYtwaVj7PWhwE2t5bM"
    ],
    "show_in": "tayside"
@@ -361,7 +361,7 @@
    "slug": "plymouth",
    "name": "Plymouth & Ivybridge night sky",
    "refresh_tasks": [
-    "trig_01WU8ya3eJ2qbznz9X5qChUp",
+    "trig_01NTcr39czUs5KcrChm42w6V",
     "trig_01575SzYtwaVj7PWhwE2t5bM"
    ],
    "show_in": "plymouth"
