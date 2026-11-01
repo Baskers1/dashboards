@@ -14,6 +14,8 @@ jobs:
         run: python3 tools/test_fetch_donki.py
       - name: Self-tests for tools/sync.py
         run: python3 tools/test_sync.py
+      - name: Self-tests for tools/check_hardened.py
+        run: python3 tools/test_check_hardened.py
       - name: No personal contact details in any tracked file
         run: |
           python3 tools/test_check_contacts.py

@@ -1,0 +1,30 @@
+#!/bin/sh
+# Refuse a commit that stages a published page tools/sync.py would still change.
+#
+# Install once per clone:  git config core.hooksPath tools/githooks
+#
+# Python is only looked for when HTML is actually staged, so the launchd jobs that
+# commit data files alone (data/iss.json, data/donki.json) never touch this path and
+# cannot be broken by it.
+# Fail closed: if git itself cannot be run, an empty list must not read as "nothing staged".
+staged=$(git diff --cached --name-only --diff-filter=ACMR -- '*.html' '*.htm') || {
+    echo "pre-commit: 'git diff --cached' failed, so staged pages cannot be checked." >&2
+    echo "Bypass this once with: git commit --no-verify" >&2
+    exit 1
+}
+[ -n "$staged" ] || exit 0
+
+py=""
+for cand in "$SKY_PYTHON" "$(command -v python3 2>/dev/null)" \
+            /Users/baskersimac/.pyenv/versions/3.13.15/bin/python3; do
+    if [ -n "$cand" ] && [ -x "$cand" ]; then py="$cand"; break; fi
+done
+if [ -z "$py" ]; then
+    echo "pre-commit: no python3 found, so staged pages cannot be checked:" >&2
+    echo "$staged" | sed 's/^/  /' >&2
+    echo "Set SKY_PYTHON, or bypass this once with: git commit --no-verify" >&2
+    exit 1
+fi
+
+git diff --cached --name-only -z --diff-filter=ACMR -- '*.html' '*.htm' \
+    | "$py" tools/check_hardened.py
