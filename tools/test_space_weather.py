@@ -86,6 +86,18 @@ def main():
             pg.close()
             assert after and after != before and pressed == 1, (before, after, pressed)
             print("ok shield day picker")
+            # tapping a forecast lane shows that forecast's story
+            pg = b.new_page()
+            pg.goto(url + "#forecasts")
+            pg.wait_for_timeout(800)
+            before = pg.inner_text("#race .fclist")
+            pg.evaluate("() => document.querySelector('#race [data-fc][aria-pressed=\"false\"]').dispatchEvent(new MouseEvent('click',{bubbles:true}))")
+            pg.wait_for_timeout(200)
+            after = pg.inner_text("#race .fclist")
+            pressed = pg.locator('#race [data-fc][aria-pressed="true"]').count()
+            pg.close()
+            assert after and after != before and pressed == 1, (before, after, pressed)
+            print("ok forecast lane picker")
             b.close()
     finally:
         srv.shutdown()
