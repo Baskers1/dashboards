@@ -1,4 +1,4 @@
-<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'sha256-mKl8hBhFtEA2mWBLWRCn4baNRNCsyKDiw5MHEbqZAu4=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
+<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-WJ7slQsH3E1cTnjP6N8GDLZgQhxvHIBuP3wCEYs4zr0=' 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
 var SCHEME=/^\s*([a-z][a-z0-9+.\-]*):/i,HREF={http:1,https:1,mailto:1,tel:1},SRC={http:1,https:1,blob:1};
 function okUrl(v,isSrc){var c=String(v).replace(/[\u0000- ]/g,""),m=SCHEME.exec(c);if(!m)return true;var s=m[1].toLowerCase();
 if(isSrc&&s==="data")return /^data:image\//i.test(c);return !!(isSrc?SRC:HREF)[s];}
@@ -451,6 +451,29 @@ function forecastArt(rows){
    +skyTxt(cx-20,30,'← arrived early','end','#9aa6c8')+skyTxt(cx+20,30,'arrived late →','start','#9aa6c8')
    +dots+skyTxt(cx,H-8,'Green: within 12 hours of the forecast','middle','#7dffbf')+'</svg>';
 }
+/* Sun tab: the month on one time axis in three rows: flashes at the Sun, clouds in space, storms at Earth.
+   Lines follow NASA's links from a storm back to its cloud and the flare that came with it. */
+const stormOf=c=>{const i=loggedIps(c);return i&&D.gst.find(g=>g.lk.includes(i.id))};
+const flareOf=c=>D.flr.find(f=>f.lk.includes(c.id));
+function sunMonthArt(){
+  const W=340,H=262,L=12,R=12,id='sm',x=d=>L+(W-L-R)*(d+.5)/WDAYS,yF=62,yC=112,yE=212;
+  const ok=d=>d>=0&&d<WDAYS,stack={};let o='',lastLab=-99,lift=0;
+  for(let d=0;d<WDAYS;d+=7)o+='<path d="M'+x(d)+' 30V'+(H-24)+'" stroke="#2a3558"/>'+skyTxt(x(d),H-8,dlab(d),'middle','#9aa6c8');
+  o+=skyTxt(L,20,'Flashes at the Sun (flares)','start','#ffe08a')+skyTxt(L,yC-16,'Clouds leaving the Sun','start','#ffcf8a')+skyTxt(L,yE-22,'Storms at Earth','start','#7dffbf');
+  // links first, so the marks sit on top
+  const links=D.cme.filter(c=>c.earth&&stormOf(c));
+  links.forEach(c=>{const g=stormOf(c),f=flareOf(c),cd=dayIdx(c.t),gd=dayIdx(g.t);if(!ok(cd)||!ok(gd))return;
+    if(f&&ok(dayIdx(f.p)))o+='<path d="M'+x(dayIdx(f.p))+' '+yF+'L'+x(cd)+' '+yC+'" stroke="#ff8f80" stroke-width="1.5"/>';
+    o+='<path d="M'+x(cd)+' '+yC+'C'+x(cd)+' '+(yE-30)+' '+x(gd)+' '+(yC+30)+' '+x(gd)+' '+yE+'" stroke="#ff8f80" stroke-width="1.5" fill="none" stroke-dasharray="4 3"/>'});
+  D.flr.forEach(f=>{const d=dayIdx(f.p);if(!ok(d))return;const fx=flux(f.c),r=fx>=1e-4?9:fx>=5e-5?7:fx>=1e-5?5:2.5,cx=x(d);
+    o+=(fx>=1e-5?'<circle cx="'+cx+'" cy="'+yF+'" r="'+(r+5)+'" fill="#ffe08a" opacity=".35" filter="url(#'+id+'b)"/>':'')+'<circle cx="'+cx+'" cy="'+yF+'" r="'+r+'" fill="#ffe08a" opacity="'+(fx>=1e-5?1:.6)+'"/>'
+     +(fx>=5e-5?(lift=cx-lastLab<30?lift+11:0,lastLab=cx,skyTxt(cx,yF-r-6-lift,f.c,'middle','#ffe08a')):'')});
+  D.cme.forEach(c=>{const d=dayIdx(c.t);if(!ok(d))return;const k=stack[d]=(stack[d]||0)+1,y=yC+(k-1)*7;if(y>yE-28)return;
+    const hit=links.includes(c),aim=!!c.earth;o+='<circle cx="'+x(d)+'" cy="'+y+'" r="'+(hit?4.5:aim?3.5:2.5)+'" fill="'+(hit?'#ff6b5a':aim?'#ffcf8a':'#ffb86b')+'" opacity="'+(hit||aim?1:.45)+'"/>'});
+  D.gst.forEach(g=>{const d=dayIdx(g.t);if(!ok(d))return;const n=gLevel(g.kp);o+=skyEarth(id,x(d),yE,6,1)+skyTxt(x(d),yE+20,'G'+n,'middle','#7dffbf')});
+  return '<svg class="journey" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="The Sun\'s month, '+winLabel+': '+plural(D.flr.length,'flare')+', '+plural(D.cme.length,'cloud')+' and '+plural(D.gst.length,'storm')+' at Earth on one time line. Red lines join each storm-causing cloud to its flare and to its storm.">'
+   +skyDefs(id)+'<rect width="'+W+'" height="'+H+'" fill="#070b1a"/>'+skyStars(W,H,7)+o+'</svg>';
+}
 function journeySvg(e,n){
   const W=340,H=170,g=gLevel(e.g.kp),id='j'+n,ex=292,ey=92;
   let st='';for(let i=0;i<46;i++){const x=(i*73+n*31)%W,y=(i*41+n*17)%H,r=i%7?0.6:1.1;st+='<circle cx="'+x+'" cy="'+y+'" r="'+r+'" fill="#fff" opacity="'+(0.25+(i%5)/8)+'"/>'}
@@ -506,14 +529,20 @@ sun(){
   const steps=[[D.cme.length,'clouds of gas left the Sun'],[fc.length,'were forecast to reach Earth'],[ar.length,'of those reached Earth'],[sm.length,'were linked to a geomagnetic storm']];
   const funnel='<div class="card"><h3>From the Sun to a storm at Earth</h3><p class="eli">Most clouds leave the Sun in other directions and never come near us. Only the ones aimed at Earth can affect us.</p>'
    +sunArt(D.cme,fc,ar,sm)+'<ol class="funnel">'+steps.map(([n,t])=>'<li><b>'+n+'</b> '+t+'</li>').join('')+'</ol></div>';
+  let bw=0,bn=-1;for(let d=0;d+7<=WDAYS;d++){const n=D.flr.filter(f=>dayIdx(f.p)>=d&&dayIdx(f.p)<d+7).length+D.cme.filter(c=>dayIdx(c.t)>=d&&dayIdx(c.t)<d+7).length;if(n>bn){bn=n;bw=d}}
+  const big=sm.map(c=>({c,g:stormOf(c),f:flareOf(c)})).sort((a,b)=>b.g.kp-a.g.kp||!!b.f-!!a.f)[0];
+  const monthTxt='The Sun\'s busiest week was '+dlab(bw)+' to '+dlab(bw+6)+', with '+plural(bn,'flare and cloud').replace('flare and clouds','flares and clouds')+'.'
+   +(big?(big.f?' One eruption on '+day(big.f.p)+' gave '+(/^[MX]/.test(big.f.c)?'an ':'a ')+big.f.c+' flare'+(flux(big.f.c)>=1e-5?', enough to disrupt radio,':'')+' and the cloud behind the '+gScale(big.g.kp).replace(/^(G\d) (\w+)/,'$2 $1')+' storm on '+day(big.g.t)+'.':' A cloud that left the Sun on '+day(big.c.t)+' caused the '+gScale(big.g.kp).replace(/^(G\d) (\w+)/,'$2 $1')+' storm on '+day(big.g.t)+'.'):' None of its clouds caused a storm at Earth.');
   const radio=mf.length?mf.length+' of '+plural(D.flr.length,'flare')+' were strong enough to disrupt shortwave radio on the daytime side of Earth'+(r2.length?'; '+r2.length+' could have blacked it out for tens of minutes (NOAA level R2) or longer.':', briefly and weakly (NOAA level R1).'):'None of the '+plural(D.flr.length,'flare')+' were strong enough to disrupt radio on Earth (none reached M-class).';
   return '<h2>Sun</h2>'+fin('The Sun threw out '+plural(D.cme.length,'cloud')+' of gas. '+fc.length+' '+(fc.length===1?'was':'were')+' forecast to reach Earth, '+ar.length+' did, and '+sm.length+' '+(sm.length===1?'was':'were')+' linked to a storm.')
   +funnel
-  +'<h3>Flares and radio</h3><p class="finding">'+radio+'</p>'
-  +figure('Flares, '+winLabel,'Peak X-ray class on a log scale. Diamonds are M-class or stronger.',chartFlares(),[{h:'Class'},{h:'Peak ('+tzName()+')'},{h:'Source'}],D.flr.map(f=>[f.c,fmt(f.p),f.loc]),legendFl)
-  +'<div style="height:14px"></div>'
-  +figure('CMEs per day, '+cmeLabel,'Counts of CMEs by start day (UTC).',cd.svg,[{h:'Day (UTC)'},{h:'CMEs',n:1}],cd.counts.map((c,i)=>[dlab(i+CO),c]))
+  +'<div style="height:14px"></div><h3>The Sun\'s month</h3>'+fin(monthTxt)
+  +sunMonthArt()
+  +'<p class="sub">Bigger flash = stronger flare. Brighter dot = a cloud aimed at Earth. The red line follows one eruption from its flare, to its cloud, to the storm at Earth. Storms with no line came from fast solar wind, not a cloud.</p>'
+  +'<p class="finding">'+radio+'</p>'
   +'<h3>The detail</h3>'
+  +more('Flares chart',figure('Flares, '+winLabel,'Peak X-ray class on a log scale. Diamonds are M-class or stronger.',chartFlares(),[{h:'Class'},{h:'Peak ('+tzName()+')'},{h:'Source'}],D.flr.map(f=>[f.c,fmt(f.p),f.loc]),legendFl))
+  +more('Clouds per day',figure('CMEs per day, '+cmeLabel,'Counts of CMEs by start day (UTC).',cd.svg,[{h:'Day (UTC)'},{h:'CMEs',n:1}],cd.counts.map((c,i)=>[dlab(i+CO),c])))
   +more('Every cloud\'s speed and width',figure('CME speed and width','Each mark is one CME. Height is speed, size is half-angle, shape is class.',chartCmeSpeed(),[{h:'Start ('+tzName()+')'},{h:'Source'},{h:'Speed km/s',n:1},{h:'Half-angle',n:1},{h:'Class'}],rows,legendSCO))
   +more('All flares ('+D.flr.length+')',table([{h:'Class'},{h:'Begin'},{h:'Peak'},{h:'End'},{h:'Source'},{h:'Region',n:1}],D.flr.slice().sort((a,b)=>T(b.p)-T(a.p)).map(f=>['<span class="pill'+(f.c[0]==='M'||f.c[0]==='X'?' m':'')+'">'+f.c+'</span>',fmt(f.b),fmt(f.p),fmt(f.e),f.loc,f.ar||'none']),{cap:'Solar flares'}))
   +more('Solar particle events ('+D.sep.length+')',D.sep.length?table([{h:'Time ('+tzName()+')'},{h:'Instrument'}],D.sep.map(s=>[fmt(s.t),s.ins[0]||'n/a']),{cap:'Solar energetic particle events'}):empty('No particle events logged','The SEP feed returned no events for '+winLabel+'.'))
