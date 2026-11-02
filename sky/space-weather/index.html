@@ -1,4 +1,4 @@
-<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-HqZAxUxhwY/X/zBmM2KflOLBTZ/CBolms4BAKE9IovU=' 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
+<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'sha256-mKl8hBhFtEA2mWBLWRCn4baNRNCsyKDiw5MHEbqZAu4=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
 var SCHEME=/^\s*([a-z][a-z0-9+.\-]*):/i,HREF={http:1,https:1,mailto:1,tel:1},SRC={http:1,https:1,blob:1};
 function okUrl(v,isSrc){var c=String(v).replace(/[\u0000- ]/g,""),m=SCHEME.exec(c);if(!m)return true;var s=m[1].toLowerCase();
 if(isSrc&&s==="data")return /^data:image\//i.test(c);return !!(isSrc?SRC:HREF)[s];}
@@ -114,7 +114,7 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
 .impact li{margin-bottom:4px}
 .impact .src{font-size:.8125rem;margin-top:6px}
 .impact a{color:var(--accent)}
-.funnel{list-style:none;padding:0;margin:10px 0 0;display:grid;gap:10px}
+.funnel{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:2px}
 .funnel .bar{display:block;height:20px;background:var(--accent);border-radius:4px}
 .funnel .lbl{display:block;margin-top:3px}
 details.more{margin-block:8px}
@@ -132,13 +132,19 @@ details.more[open]{padding-bottom:12px}
 .cal .d{position:relative;aspect-ratio:1;max-width:100%;border-radius:6px;padding:3px 4px;font-size:.8125rem;display:flex;flex-direction:column;justify-content:space-between;font-variant-numeric:tabular-nums}
 .cal .d b{font-weight:500}
 .cal .d i{font-style:normal;font-weight:700;font-size:.75rem;align-self:flex-end}
-.d.calm{background:var(--surface);border:1px solid var(--line);color:var(--muted)}
-.d.stream{background:color-mix(in srgb,var(--warn) 18%,var(--surface));color:var(--ink)}
-.d.shock{background:color-mix(in srgb,var(--warn) 60%,var(--surface));color:var(--ink)}
-.d.storm{background:var(--crit);color:var(--bg)}
 .calkey{list-style:none;padding:0;margin:10px 0 0;display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.875rem}
 .calkey li{display:flex;align-items:center;gap:6px}
 .calkey .d{display:inline-block;width:14px;height:14px;border-radius:3px}
+.cal.sky{background:#070b1a;border-radius:10px;padding:10px 8px 16px;gap:14px 4px}
+.cal.sky .h{color:#9aa6c8}
+.cal.sky .d{border:0;border-radius:50%;width:78%;justify-self:center;justify-content:center;align-items:center;padding:0;color:#fff;background:radial-gradient(circle at 35% 35%,#7cc4ff,#1d4fa8)}
+.cal.sky .d b{font-weight:600;text-shadow:0 1px 2px #000a}
+.cal.sky .d i{position:absolute;bottom:-12px;left:50%;transform:translateX(-50%);color:#7dffbf;font-size:.6875rem}
+.d.calm{opacity:.55}
+.d.stream{box-shadow:0 0 0 2px #7fd4ff}
+.d.shock{box-shadow:0 0 0 3px #ffb86b}
+.d.storm{box-shadow:0 0 6px 4px #4dffa6,0 0 0 2px #4dffa6}
+.calkey .d{border-radius:50%;background:radial-gradient(circle at 35% 35%,#7cc4ff,#1d4fa8)}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .impact.plain{border-top:0;padding-left:1.1em;margin-top:4px}
 .journey{display:block;width:100%;height:auto;border-radius:10px;margin:6px 0 4px;font:500 11px var(--sans,system-ui)}
@@ -203,7 +209,7 @@ const M=D.meta;
 
 /* ---------- plain-English hover text ---------- */
 const TIPS=[
- [/forecast was/i,"Each bar is one solar cloud NASA forecast to reach Earth. Bars to the right arrived later than forecast, bars to the left earlier. The shorter the bar, the better the forecast."],
+ [/forecast was/i,"Each dot is one solar cloud NASA forecast to reach Earth. Dots right of Earth arrived later than forecast, dots to the left earlier. The closer to Earth, the better the forecast."],
  [/^status$/,"The one-line summary of right now. A green tick means calm, an amber triangle means keep an eye out, and a red square means a storm is under way."],
  [/next cme arrival/i,"A CME is a huge cloud of gas the Sun burps into space. NASA's computer forecasts when the next one could reach Earth. It is a forecast, so it can be hours out."],
  [/strongest flare/i,"A solar flare is a flash of light from the Sun, like a camera flash. The letter says how strong: C is small, M is medium, X is huge. This is the biggest one in the period."],
@@ -361,18 +367,6 @@ function chartCmeSpeed(){
   return svg(W,H,s,D.cme.length+' CMEs plotted by speed, '+cmeLabel+'; '+fast+' at 1000 km/s or faster. A table view is available.');
 }
 function arrivalRows(){return earthIps.map(i=>{const c=i.lk.map(k=>cmeById[k]).find(c=>c&&c.earth);return c?{ips:i.t,pred:c.earth.t,cme:c.t}:null}).filter(Boolean)}
-function chartArrivals(rows){
-  // Diverging bars about "on time": fits a phone, unlike a date axis (no min-width scroll).
-  const W=340,L=92,R=46,rowH=30,H=34+rows.length*rowH+30,err=rows.map(r=>hrs(r.pred,r.ips));
-  const mx=Math.max(12,Math.ceil(Math.max(...err.map(Math.abs))/12)*12),x0=L+(W-L-R)/2,x=v=>x0+(W-L-R)/2*v/mx;
-  let g='<text x="'+x(-mx)+'" y="14" text-anchor="start">← earlier</text><text x="'+x(mx)+'" y="14" text-anchor="end">later →</text>';
-  [-mx,0,mx].forEach(v=>{g+='<line class="grid" x1="'+x(v)+'" x2="'+x(v)+'" y1="22" y2="'+(H-26)+'"/><text x="'+x(v)+'" y="'+(H-10)+'" text-anchor="middle">'+(v===0?'on time':(v>0?'+':'')+v+' h')+'</text>'});
-  rows.forEach((r,i)=>{const y=34+i*rowH,e=err[i],xa=Math.min(x0,x(e)),w=Math.abs(x(e)-x0);
-    g+='<text x="'+(L-8)+'" y="'+(y+4)+'" text-anchor="end">'+fmt(r.cme).slice(0,6)+'</text>'
-     +'<rect x="'+xa+'" y="'+(y-7)+'" width="'+Math.max(w,1.5)+'" height="14" rx="2" fill="var(--accent)"><title>CME '+fmt(r.cme)+': forecast '+fmt(r.pred)+', logged '+fmt(r.ips)+'</title></rect>'
-     +'<text x="'+(e>=0?x(e)+5:x0+5)+'" y="'+(y+4)+'" text-anchor="start" style="fill:var(--ink)">'+(e>0?'+':'')+e.toFixed(1)+' h</text>'});
-  return svg(W,H,g,rows.length+' forecast Earth arrivals, by how many hours each landed from the forecast; positive means later than forecast. A table view is available.').replace('<svg ','<svg class="fit" ');
-}
 const legendSCO='<div class="legend"><span><svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="var(--c-s)"/></svg>Slow (S)</span><span><svg viewBox="0 0 12 12" aria-hidden="true"><rect x="1" y="1" width="10" height="10" fill="var(--c-c)"/></svg>Common (C)</span><span><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,0 12,11 0,11" fill="var(--c-o)"/></svg>Fast, 1000 km/s or more (O)</span></div>';
 const legendFl='<div class="legend"><span><svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4" fill="var(--c-s)"/></svg>C-class</span><span><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,0 12,6 6,12 0,6" fill="var(--accent)"/></svg>M-class or stronger</span><span>Shaded band: '+cmeLabel+'</span></div>';
 
@@ -423,6 +417,40 @@ function impactHtml(e){
 }
 /* The story as a picture: Sun on the left, Earth on the right, what crossed the gap between,
    and an aurora at Earth that grows with the storm's G level. Always drawn on a night-sky panel. */
+const skyStars=(W,H,k)=>{let o='';for(let i=0;i<Math.round(W*H/1200);i++)o+='<circle cx="'+((i*73+k*31)%W)+'" cy="'+((i*41+k*17)%H)+'" r="'+(i%7?0.6:1.1)+'" fill="#fff" opacity="'+(0.25+(i%5)/8)+'"/>';return o};
+const skyDefs=id=>'<defs><radialGradient id="'+id+'s"><stop offset="0" stop-color="#fff6c8"/><stop offset=".6" stop-color="#ffc24a"/><stop offset="1" stop-color="#ff7a1a"/></radialGradient>'
+ +'<radialGradient id="'+id+'g"><stop offset=".55" stop-color="#ff9a3c" stop-opacity=".55"/><stop offset="1" stop-color="#ff9a3c" stop-opacity="0"/></radialGradient>'
+ +'<radialGradient id="'+id+'e" cx=".35" cy=".35"><stop offset="0" stop-color="#7cc4ff"/><stop offset="1" stop-color="#1d4fa8"/></radialGradient>'
+ +'<filter id="'+id+'b" x="-1" y="-1" width="3" height="3"><feGaussianBlur stdDeviation="2.5"/></filter></defs>';
+const skyTxt=(x,y,t,a,c)=>'<text x="'+x+'" y="'+y+'" text-anchor="'+a+'" style="fill:'+(c||'#dfe6ff')+'">'+t+'</text>';
+const skyEarth=(id,x,y,r,glow)=>(glow?'<circle cx="'+x+'" cy="'+y+'" r="'+(r+6)+'" fill="#4dffa6" opacity=".35" filter="url(#'+id+'b)"/>':'')+'<circle cx="'+x+'" cy="'+y+'" r="'+r+'" fill="url(#'+id+'e)"/>';
+/* Sun tab: every cloud the Sun threw out. Most fly off in other directions; the few aimed at Earth are brighter,
+   and how far each got along the path shows whether it was forecast, arrived, or set off a storm. */
+function sunArt(all,fc,ar,sm){
+  const W=340,H=210,sx=44,sy=105,ex=306,id='sa',fs=new Set(fc),as=new Set(ar),ss=new Set(sm);let o='',k=0,f=0;
+  all.forEach(c=>{if(fs.has(c))return;k++;let a=(k*137.5)%360;if(a<25||a>335)a+=40;const d=46+(k*29)%60,r=a*Math.PI/180;
+    o+='<circle cx="'+(sx+Math.cos(r)*d).toFixed(1)+'" cy="'+(sy+Math.sin(r)*d*.8).toFixed(1)+'" r="2.4" fill="#ffb86b" opacity=".45"/>'});
+  fc.forEach(c=>{f++;const t=ss.has(c)?.93:as.has(c)?.84:.3+(f%5)*.08,x=sx+(ex-sx)*t,y=sy+((f*37)%26-13)*(1-t);
+    o+='<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+(ss.has(c)?5:3.6)+'" fill="'+(ss.has(c)?'#ff6b5a':'#ffcf8a')+'" opacity=".9"/>'});
+  return '<svg class="journey" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+all.length+' clouds left the Sun in all directions; '+fc.length+' headed for Earth, '+ar.length+' arrived and '+sm.length+' set off a storm.">'+skyDefs(id)
+   +'<rect width="'+W+'" height="'+H+'" fill="#070b1a"/>'+skyStars(W,H,3)
+   +'<path d="M'+(sx+30)+' '+sy+'H'+(ex-20)+'" stroke="#ffcf8a" stroke-dasharray="2 6" opacity=".4"/>'
+   +'<circle cx="'+sx+'" cy="'+sy+'" r="50" fill="url(#'+id+'g)"/><circle cx="'+sx+'" cy="'+sy+'" r="24" fill="url(#'+id+'s)"/>'+o+skyEarth(id,ex,sy,13,sm.length)
+   +skyTxt(10,20,all.length+' clouds left the Sun','start')+skyTxt(W-8,20,fc.length+' headed for Earth','end','#ffcf8a')
+   +skyTxt(W-8,H-28,ar.length+' arrived','end','#ffcf8a')+skyTxt(W-8,H-12,plural(sm.length,'storm')+' at Earth','end','#ff8f80')+'</svg>';
+}
+/* Forecasts tab: Earth is the target; each forecast lands left (arrived early) or right (arrived late) of it. */
+function forecastArt(rows){
+  const W=340,cx=170,rh=24,top=62,H=top+rows.length*rh+30,id='fa',mx=Math.max(24,...rows.map(r=>Math.abs(hrs(r.pred,r.ips)))),sc=(cx-92)/mx;
+  const dots=rows.map((r,i)=>{const e=hrs(r.pred,r.ips),x=cx+e*sc,y=top+i*rh+12,col=Math.abs(e)<=12?'#7dffbf':'#ffb86b';
+    return '<path d="M'+cx+' '+y+'H'+x.toFixed(1)+'" stroke="'+col+'" stroke-width="2" opacity=".5"/><circle cx="'+x.toFixed(1)+'" cy="'+y+'" r="5" fill="'+col+'"/>'
+     +skyTxt(e<0?x-9:x+9,y+4,(e>0?'+':'')+Math.round(e)+' h',e<0?'end':'start',col)+skyTxt(6,y+4,day(r.cme),'start','#9aa6c8')}).join('');
+  return '<svg class="journey fit" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="How far off each arrival forecast was, in hours; Earth is on time.">'+skyDefs(id)
+   +'<rect width="'+W+'" height="'+H+'" fill="#070b1a"/>'+skyStars(W,H,5)
+   +'<path d="M'+cx+' 42V'+(H-22)+'" stroke="#9fb4ff" stroke-dasharray="3 4" opacity=".6"/>'+skyEarth(id,cx,26,12,0)
+   +skyTxt(cx-20,30,'← arrived early','end','#9aa6c8')+skyTxt(cx+20,30,'arrived late →','start','#9aa6c8')
+   +dots+skyTxt(cx,H-8,'Green: within 12 hours of the forecast','middle','#7dffbf')+'</svg>';
+}
 function journeySvg(e,n){
   const W=340,H=170,g=gLevel(e.g.kp),id='j'+n,ex=292,ey=92;
   let st='';for(let i=0;i<46;i++){const x=(i*73+n*31)%W,y=(i*41+n*17)%H,r=i%7?0.6:1.1;st+='<circle cx="'+x+'" cy="'+y+'" r="'+r+'" fill="#fff" opacity="'+(0.25+(i%5)/8)+'"/>'}
@@ -477,7 +505,7 @@ sun(){
   const mf=D.flr.filter(f=>flux(f.c)>=1e-5),r2=D.flr.filter(f=>flux(f.c)>=5e-5);
   const steps=[[D.cme.length,'clouds of gas left the Sun'],[fc.length,'were forecast to reach Earth'],[ar.length,'of those reached Earth'],[sm.length,'were linked to a geomagnetic storm']];
   const funnel='<div class="card"><h3>From the Sun to a storm at Earth</h3><p class="eli">Most clouds leave the Sun in other directions and never come near us. Only the ones aimed at Earth can affect us.</p>'
-   +'<ol class="funnel">'+steps.map(([n,t])=>'<li><span class="bar" style="width:'+Math.max(1.5,D.cme.length?n/D.cme.length*100:0).toFixed(1)+'%"></span><span class="lbl"><b>'+n+'</b> '+t+'</span></li>').join('')+'</ol></div>';
+   +sunArt(D.cme,fc,ar,sm)+'<ol class="funnel">'+steps.map(([n,t])=>'<li><b>'+n+'</b> '+t+'</li>').join('')+'</ol></div>';
   const radio=mf.length?mf.length+' of '+plural(D.flr.length,'flare')+' were strong enough to disrupt shortwave radio on the daytime side of Earth'+(r2.length?'; '+r2.length+' could have blacked it out for tens of minutes (NOAA level R2) or longer.':', briefly and weakly (NOAA level R1).'):'None of the '+plural(D.flr.length,'flare')+' were strong enough to disrupt radio on Earth (none reached M-class).';
   return '<h2>Sun</h2>'+fin('The Sun threw out '+plural(D.cme.length,'cloud')+' of gas. '+fc.length+' '+(fc.length===1?'was':'were')+' forecast to reach Earth, '+ar.length+' did, and '+sm.length+' '+(sm.length===1?'was':'were')+' linked to a storm.')
   +funnel
@@ -504,9 +532,9 @@ earth(){
   const head='Over '+WDAYS+' days, '+(n('storm')?'a geomagnetic storm started on '+plural(n('storm'),'day'):'no geomagnetic storm started')+', a shock wave or fast solar wind arrived on '+(n('storm')?'another ':'')+plural(busy,'day')+', and NASA logged nothing on '+plural(n('calm'),'day')+'.';
   const rbeTxt=D.rbe.length?'The outer radiation belt filled with extra fast electrons (above 2 MeV) '+plural(D.rbe.length,'time'):'The radiation belts had no logged boosts';
   return '<h2>Earth</h2>'+fin(head)
-  +'<div class="card"><h3>The month at Earth</h3><p class="sub">Each square is one day ('+winLabel+', UTC). The colour shows the strongest thing logged that day.</p>'
-  +'<div class="cal" role="list" aria-label="Days at Earth">'+cells+'</div>'
-  +'<ul class="calkey"><li><span class="d storm"></span>Storm started (G level shown)</li><li><span class="d shock"></span>Shock wave arrived</li><li><span class="d stream"></span>Fast solar wind arrived</li><li><span class="d calm"></span>Nothing logged</li></ul>'
+  +'<div class="card"><h3>The month at Earth</h3><p class="sub">Each little Earth is one day ('+winLabel+', UTC). The ring round each Earth shows the strongest thing logged that day.</p>'
+  +'<div class="cal sky" role="list" aria-label="Days at Earth">'+cells+'</div>'
+  +'<ul class="calkey"><li><span class="d storm"></span>Storm started: aurora (G level shown)</li><li><span class="d shock"></span>Shock wave arrived</li><li><span class="d stream"></span>Fast solar wind arrived</li><li><span class="d calm"></span>Nothing logged</li></ul>'
   +'<p class="eli">"Nothing logged" means NASA recorded no event that day. It is not a measurement of Earth\'s magnetic field, so a small disturbance can still have happened.</p></div>'
   +'<div style="height:14px"></div><h3>Around Earth</h3>'
   +'<p class="finding">'+rbeTxt+(D.mpc.length?', and the magnetic shield was pushed in past the geostationary satellites '+plural(D.mpc.length,'time')+'.':'; the magnetic shield was never pushed in past the geostationary satellites.')+'</p>'
@@ -544,7 +572,7 @@ forecasts(){
   +'<h3>Each forecast, and what happened</h3><p class="sub">Newest first. NASA\'s model (WSA-Enlil) forecasts when a cloud reaches Earth and how strong a storm it could cause; Kp 5 or more is a storm. Times in '+tzName()+'.</p>'
   +(out.length?'<ol class="fclist">'+out.map(row).join('')+'</ol>':empty('No forecasts','No cloud in '+cmeLabel+' was forecast to reach Earth.'))
   +'<div style="height:18px"></div>'
-  +(ar.length?figure('How far off each forecast was','Hours between the model\'s arrival time and the shock logged at Earth, most accurate first.',chartArrivals(ar),[{h:'CME start'},{h:'Model arrival'},{h:'Shock logged'},{h:'Difference',n:1}],ar.map(r=>[fmt(r.cme),fmt(r.pred),fmt(r.ips),(hrs(r.pred,r.ips)>0?'+':'')+hrs(r.pred,r.ips).toFixed(1)+' h'])):'')
+  +(ar.length?figure('How far off each forecast was','Hours between the model\'s arrival time and the shock logged at Earth, most accurate first.',forecastArt(ar),[{h:'CME start'},{h:'Model arrival'},{h:'Shock logged'},{h:'Difference',n:1}],ar.map(r=>[fmt(r.cme),fmt(r.pred),fmt(r.ips),(hrs(r.pred,r.ips)>0?'+':'')+hrs(r.pred,r.ips).toFixed(1)+' h'])):'')
   +'<h3>The detail</h3>'
   +more('All modelled arrivals ('+ce.length+')',ce.length?table([{h:'CME start'},{h:'Model arrival'},{h:'Kp range',n:1},{h:'Type'},{h:'Status'}],ce.map(c=>[fmt(c.t),fmt(c.earth.t),kpOf(c)?kpOf(c)[0]+' to '+kpOf(c)[1]:'n/a',c.earth.gb?'<span class="pill">glancing</span>':'<span class="pill crit">direct</span>',state(c)]),{cap:'Modelled Earth arrivals'}):'<p class="sub">None.</p>');
 }
