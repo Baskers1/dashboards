@@ -65,6 +65,15 @@ def main():
             check(b, url, "snapshot")
             check(b, url, "hostile snapshot", dict(SNAP, payload=hostile(SNAP["payload"])))
             check(b, url, "missing snapshot", {}, expect_tabs=False)
+            # links from before the Nov 2026 tab rename still open the matching tab
+            for old, new in (("overview", "Now"), ("solar", "Sun"), ("geo", "Earth"), ("mag", "Earth"), ("models", "Forecasts")):
+                pg = b.new_page()
+                pg.goto(url + "#" + old)
+                pg.wait_for_timeout(800)
+                got = pg.locator('#tabs button[aria-selected="true"]').inner_text()
+                pg.close()
+                assert got == new, f"#{old} opened {got!r}, expected {new!r}"
+            print("ok old tab links")
             b.close()
     finally:
         srv.shutdown()
