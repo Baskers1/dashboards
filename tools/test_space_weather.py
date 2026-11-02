@@ -74,6 +74,18 @@ def main():
                 pg.close()
                 assert got == new, f"#{old} opened {got!r}, expected {new!r}"
             print("ok old tab links")
+            # tapping a calendar day redraws Earth's shield for that day
+            pg = b.new_page()
+            pg.goto(url + "#earth")
+            pg.wait_for_timeout(800)
+            before = pg.inner_text("#shield")
+            day = pg.locator('#shield').evaluate("() => document.querySelector('.cal button[data-d]:not([aria-pressed=\"true\"])').click()")
+            pg.wait_for_timeout(200)
+            after = pg.inner_text("#shield")
+            pressed = pg.locator('.cal button[aria-pressed="true"]').count()
+            pg.close()
+            assert after and after != before and pressed == 1, (before, after, pressed)
+            print("ok shield day picker")
             b.close()
     finally:
         srv.shutdown()
