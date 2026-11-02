@@ -1,4 +1,4 @@
-<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'sha256-dpp01xCHKITWlwnhX5q9yx9St9UDCQD5WN/nBBMMjA4=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
+<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'sha256-tWjP3GejGg9Aupi+DpEifLtvkDwFqncKur61P7g9F8w=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
 var SCHEME=/^\s*([a-z][a-z0-9+.\-]*):/i,HREF={http:1,https:1,mailto:1,tel:1},SRC={http:1,https:1,blob:1};
 function okUrl(v,isSrc){var c=String(v).replace(/[\u0000- ]/g,""),m=SCHEME.exec(c);if(!m)return true;var s=m[1].toLowerCase();
 if(isSrc&&s==="data")return /^data:image\//i.test(c);return !!(isSrc?SRC:HREF)[s];}
@@ -13,7 +13,7 @@ new MutationObserver(function(ms){for(var i=0;i<ms.length;i++){var m=ms[i];if(m.
 else for(var j=0;j<m.addedNodes.length;j++)fixTree(m.addedNodes[j]);}}).observe(document.documentElement,{childList:true,subtree:true,attributes:true});
 })();</script><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>DONKI Space Weather</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
 /* v2. Order on every tab: status first, then ranked headline figures, then charts (each with a table view), then tables. */
 :root{
@@ -23,7 +23,7 @@ else for(var j=0;j<m.addedNodes.length;j++)fixTree(m.addedNodes[j]);}}).observe(
   --c-s:#3f64a3; --c-c:#9a5f00; --c-o:#b3261e;
   --font-display:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;
   --font-body:'IBM Plex Sans','Segoe UI',system-ui,sans-serif;
-  --font-data:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;
+  --font-data:'IBM Plex Sans','Segoe UI',system-ui,sans-serif;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#0a1020; --surface:#111a30; --ink:#e6ecf8; --muted:#a3b1cf; --line:#2c3d63; --edge:#6a7ba2; --band:#0e172b;
@@ -35,85 +35,81 @@ else for(var j=0;j<m.addedNodes.length;j++)fixTree(m.addedNodes[j]);}}).observe(
   --accent:#f0a04b; --accent-soft:#2a2216;
   --good:#58c78f; --warn:#e8b13c; --crit:#ff7b72;
   --c-s:#7fa3dc; --c-c:#f0a04b; --c-o:#ff7b72; color-scheme:dark}
-body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.5;padding-inline:16px;padding-block:0 48px}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:1rem;line-height:1.5;font-variant-numeric:tabular-nums;padding-inline:16px;padding-block:0 48px}
 .wrap{max-width:1080px;margin-inline:auto}
 header{padding-block:24px 12px;display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:flex-start}
 .hd{min-width:0;flex:1 1 360px}
-.eyebrow{font-family:var(--font-data);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
-h1{font-family:var(--font-display);font-weight:700;font-size:clamp(28px,5vw,42px);line-height:1.05;margin:6px 0 6px;text-wrap:balance}
-.lede{color:var(--muted);max-width:64ch;margin:0;font-size:15px}
+.eyebrow{font-family:var(--font-data);font-size:0.75rem;color:var(--accent)}
+h1{font-family:var(--font-display);font-weight:700;font-size:clamp(1.75rem,5vw,2.625rem);line-height:1.05;margin:6px 0 6px;text-wrap:balance}
+.lede{color:var(--muted);max-width:64ch;margin:0;font-size:0.9375rem}
 .ctl{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.btn{font:500 14px var(--font-body);color:var(--ink);background:var(--surface);border:1px solid var(--edge);border-radius:8px;padding:0 14px;min-height:44px;cursor:pointer}
+.btn{font:500 0.875rem var(--font-body);color:var(--ink);background:var(--surface);border:1px solid var(--edge);border-radius:8px;padding:0 14px;min-height:44px;cursor:pointer}
 .btn:hover{border-color:var(--ink)}
-.btn.sm{min-height:36px;font-size:13px;padding:0 12px}
-.fresh{font:500 13px var(--font-data);color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:6px 12px;background:var(--surface)}
+.btn.sm{min-height:36px;font-size:0.8125rem;padding:0 12px}
+.fresh{font:500 0.8125rem var(--font-data);color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:6px 12px;background:var(--surface)}
 .fresh.stale{color:var(--warn);border-color:var(--warn)}
 nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);display:flex;gap:4px;overflow-x:auto;padding-block:6px}
-nav button{font:500 15px var(--font-body);color:var(--muted);background:none;border:1px solid transparent;border-radius:8px;padding:0 14px;min-height:44px;white-space:nowrap;cursor:pointer}
+nav button{font:500 0.9375rem var(--font-body);color:var(--muted);background:none;border:1px solid transparent;border-radius:8px;padding:0 14px;min-height:44px;white-space:nowrap;cursor:pointer}
 nav button:hover{color:var(--ink);border-color:var(--line)}
 nav button[aria-selected="true"]{color:var(--ink);background:var(--surface);border-color:var(--line);box-shadow:inset 0 -3px 0 var(--accent)}
 :focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 section.panel{padding-block:20px}
-h2{font-family:var(--font-display);font-size:22px;margin:0 0 4px}
-h3{font-family:var(--font-display);font-size:17px;margin:0 0 2px}
-.sub{color:var(--muted);margin:0 0 12px;font-size:14px;max-width:72ch}
+h2{font-family:var(--font-display);font-size:1.375rem;margin:0 0 4px}
+h3{font-family:var(--font-display);font-size:1.0625rem;margin:0 0 2px}
+.sub{color:var(--muted);margin:0 0 12px;font-size:0.875rem;max-width:72ch}
 .status{display:flex;gap:14px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--muted);border-radius:8px;padding:14px 16px;margin-block:8px 10px}
-.status .g{font:700 22px var(--font-data);line-height:1.2}
-.status h2{margin:0;font-size:20px}
-.status p{margin:2px 0 0;color:var(--muted);font-size:15px}
+.status .g{font:700 1.375rem var(--font-data);line-height:1.2}
+.status h2{margin:0;font-size:1.25rem}
+.status p{margin:2px 0 0;color:var(--muted);font-size:0.9375rem}
 .status[data-lv="good"]{border-left-color:var(--good)} .status[data-lv="good"] .g{color:var(--good)}
 .status[data-lv="warn"]{border-left-color:var(--warn)} .status[data-lv="warn"] .g{color:var(--warn)}
 .status[data-lv="crit"]{border-left-color:var(--crit)} .status[data-lv="crit"] .g{color:var(--crit)}
-.cover{font-size:13.5px;color:var(--muted);margin:0 0 6px}
+.cover{font-size:0.8438rem;color:var(--muted);margin:0 0 6px}
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-block:16px 12px}
 .kpi{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;min-width:0}
 .kpi.hero{grid-column:1/-1;border-color:var(--edge)}
-.kpi .l{font:500 12px var(--font-data);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.kpi .n{font-family:var(--font-display);font-size:34px;font-weight:700;line-height:1.1;margin-top:4px;font-variant-numeric:tabular-nums}
-.kpi.hero .n{font-size:clamp(28px,5vw,40px)}
-.kpi .d{font-size:14px;color:var(--muted);margin-top:4px}
+.kpi .l{font:500 0.75rem var(--font-data);color:var(--muted)}
+.kpi .n{font-family:var(--font-display);font-size:2.125rem;font-weight:700;line-height:1.1;margin-top:4px;font-variant-numeric:tabular-nums}
+.kpi.hero .n{font-size:clamp(1.75rem,5vw,2.5rem)}
+.kpi .d{font-size:0.875rem;color:var(--muted);margin-top:4px}
 .kpi svg{display:block;margin-top:8px}
-.stats{display:flex;flex-wrap:wrap;gap:8px 20px;margin-bottom:20px;font-size:14px;color:var(--muted)}
+.stats{display:flex;flex-wrap:wrap;gap:8px 20px;margin-bottom:20px;font-size:0.875rem;color:var(--muted)}
 .stats b{color:var(--ink);font-variant-numeric:tabular-nums;font-weight:600}
 .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,520px),1fr));gap:14px;margin-bottom:22px}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px;min-width:0;margin-bottom:0}
 .card .top{display:flex;gap:12px;justify-content:space-between;align-items:flex-start;flex-wrap:wrap}
 .chart{overflow-x:auto}
 .chart svg{display:block;min-width:520px;width:100%;height:auto}
-svg text{fill:var(--muted);font-family:var(--font-data);font-size:11px}
+svg text{fill:var(--muted);font-family:var(--font-data);font-size:0.6875rem}
 svg .grid{stroke:var(--line);stroke-width:1}
 svg .axis{stroke:var(--muted);stroke-width:1}
 .tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface);margin-bottom:8px}
-table{border-collapse:collapse;width:100%;font-size:14px}
+table{border-collapse:collapse;width:100%;font-size:0.875rem}
 caption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
-th{font:500 12px var(--font-data);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--bg)}
+th{font:500 0.75rem var(--font-data);color:var(--muted);background:var(--bg)}
 tr:last-child td{border-bottom:0}
 td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
 .more{margin-bottom:22px}
 .tblwrap .tbl{margin-top:8px}
-.pill{display:inline-block;font:500 12px var(--font-data);padding:2px 8px;border-radius:99px;border:1px solid var(--edge);color:var(--ink)}
+.pill{display:inline-block;font:500 0.75rem var(--font-data);padding:2px 8px;border-radius:99px;border:1px solid var(--edge);color:var(--ink)}
 .pill.m{color:var(--warn);border-color:var(--warn)}
 .pill.good{color:var(--good);border-color:var(--good)}
 .pill.crit{color:var(--crit);border-color:var(--crit)}
 .emptybox{border:1px dashed var(--edge);border-radius:10px;padding:16px;color:var(--muted);background:var(--surface);margin-bottom:20px}
 .emptybox strong{color:var(--ink);display:block;margin-bottom:2px}
-.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin-top:8px}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:0.8125rem;color:var(--muted);margin-top:8px}
 .legend span{display:inline-flex;align-items:center;gap:6px}
 .legend svg{width:12px;height:12px;min-width:0;display:inline-block}
-footer{border-top:1px solid var(--line);margin-top:16px;padding-top:16px;color:var(--muted);font-size:14px;max-width:84ch}
+.eli{font-size:.875rem;color:var(--muted);margin:6px 0 0;max-width:68ch}
+.finding{font-size:1.125rem;font-weight:500;color:var(--ink);margin:4px 0 6px;max-width:64ch;text-wrap:pretty}
+footer{border-top:1px solid var(--line);margin-top:16px;padding-top:16px;color:var(--muted);font-size:0.875rem;max-width:84ch}
 footer p{margin:0 0 8px}
 details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:4px 14px;margin-block:10px}
 summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:600;color:var(--ink)}
 dl{margin:0 0 10px;display:grid;grid-template-columns:max-content 1fr;gap:6px 14px}
 dt{font-weight:600;color:var(--ink)} dd{margin:0}
 @media (max-width:520px){dl{grid-template-columns:1fr} dd{margin-bottom:6px}}
-.kpi[data-tip],.card[data-tip],.tbl[data-tip],.emptybox[data-tip],.status[data-tip]{cursor:help}
-.kpi[data-tip]:hover,.card[data-tip]:hover,.tbl[data-tip]:hover,.emptybox[data-tip]:hover,.status[data-tip]:hover{border-color:var(--accent)}
-.stats span[data-tip]{cursor:help;text-decoration:underline dotted var(--edge);text-underline-offset:4px}
-#tip{position:fixed;z-index:50;max-width:min(300px,calc(100vw - 24px));background:var(--ink);color:var(--bg);font:400 14px/1.45 var(--font-body);padding:9px 12px;border-radius:8px;box-shadow:0 4px 18px rgba(0,0,0,.28);pointer-events:none;opacity:0;transition:opacity .12s}
-#tip.on{opacity:1}
-#tip b{display:block;font:500 11px var(--font-data);letter-spacing:.08em;text-transform:uppercase;opacity:.75;margin-bottom:3px}
 </style>
 
 <div class="wrap">
@@ -154,18 +150,6 @@ document.addEventListener('click',e=>{
   const m=e.target.closest('button[data-more]');
   if(m){m.previousElementSibling.querySelectorAll('tr[data-x]').forEach(r=>r.hidden=false);m.remove()}
 });
-const tipEl=document.createElement('div');tipEl.id='tip';tipEl.setAttribute('role','tooltip');document.body.append(tipEl);
-const hideTip=()=>tipEl.classList.remove('on');
-function showTip(el){const hd=document.createElement('b');hd.textContent='In plain English';tipEl.replaceChildren(hd,document.createTextNode(el.dataset.tip||''));tipEl.classList.add('on');
-  const r=el.getBoundingClientRect(),w=tipEl.offsetWidth,h=tipEl.offsetHeight;
-  const x=Math.min(Math.max(12,r.left+r.width/2-w/2),innerWidth-w-12);let y=r.top-h-10;
-  if(y<8)y=Math.min(r.bottom+10,innerHeight-h-8);
-  tipEl.style.left=x+'px';tipEl.style.top=y+'px'}
-document.addEventListener('mouseover',e=>{const t=e.target.closest('[data-tip]');t?showTip(t):hideTip()});
-document.addEventListener('focusin',e=>{const t=e.target.closest('[data-tip]');if(t)showTip(t)});
-document.addEventListener('focusout',hideTip);
-document.addEventListener('click',hideTip);
-document.addEventListener('scroll',hideTip,{passive:true});
 /* ---------- everything that renders data; re-run on each fresh delivery ---------- */
 function start(D){
 D.gst=D.gst||[]; D.mpc=D.mpc||[]; D.note=D.note||[];
@@ -186,7 +170,7 @@ const TIPS=[
  [/particle event|energetic particle/i,"Sometimes a big eruption flings out tiny super-fast particles, like a spray of invisible bullets. Each row is one detector noticing them. Rows close together are usually one burst."],
  [/^No modelled|^No comparison/,"Nothing to show yet. The forecast either has no Earth arrivals, or none of them has been checked against what really happened."],
  [/CMEs per day/i,"Each bar is one day. The taller the bar, the more solar clouds the Sun threw out that day."],
- [/CME speed/i,"Each mark is one solar cloud. Higher means faster, bigger means wider, and the shape tells you the speed class. Hover a mark for details."],
+ [/CME speed/i,"Each mark is one solar cloud. Higher means faster, bigger means wider, and the shape tells you the speed class. Use View as table for every value."],
  [/predicted against/i,"Shows how good the forecast was. The hollow ring is when the computer said a cloud would arrive, the solid dot is when it really did. The label shows how many hours early or late."],
  [/impacts on|probe or planet/i,"The same forecast checks which other spacecraft and planets are in the way. This counts how many clouds were predicted to hit each one."],
  [/modelled to reach|modelled earth/i,"The forecast table. Kp is a 0 to 9 storm scale, and 5 or more is a proper storm. Glancing means only a sideswipe, direct means a head-on hit."],
@@ -197,7 +181,7 @@ const TIPS=[
  [/CME|coronal/i,"A CME (coronal mass ejection) is the Sun burping a huge cloud of gas and magnetism into space. Most miss Earth. Speed is in km/s, and S, C and O are slow, common and fast."]
 ];
 const tipFor=t=>{t=String(t||'');const h=TIPS.find(p=>p[0].test(t));return h?h[1]:''};
-const tp=t=>{const x=tipFor(t);return x?' data-tip="'+esc(x)+'" tabindex="0"':''};
+const eli=t=>{const x=tipFor(t);return x?'<p class="eli">'+esc(x)+'</p>':''};
 /* free-text fields from the feed are escaped once, here, before any markup is built */
 const sx=v=>v==null?v:esc(v);
 D.flr.forEach(f=>{f.loc=sx(f.loc);f.c=sx(f.c);f.ar=sx(f.ar)});
@@ -264,24 +248,24 @@ function statusInfo(){
   if(big)return {lv:'warn',g:'▲',h:'Active sun',d:big.c+' flare peaked '+fmt(big.p)+' ('+tzName()+'). No Earth-directed CME arrivals are pending.'};
   return {lv:'good',g:'✓',h:'Quiet conditions',d:'No storms in the last 3 days, no M-class flares, and no CME arrivals pending.'};
 }
-function statusHtml(){const s=statusInfo();return '<div class="status" data-lv="'+s.lv+'"'+tp('status')+'><span class="g" aria-hidden="true">'+s.g+'</span><div><h2>'+s.h+'</h2><p>'+s.d+'</p></div></div>'}
+function statusHtml(){const s=statusInfo();return '<div class="status" data-lv="'+s.lv+'"><span class="g" aria-hidden="true">'+s.g+'</span><div><h2>'+s.h+'</h2><p>'+s.d+'</p></div></div>'}
 
 /* ---------- building blocks ---------- */
 function svg(w,h,inner,label){return '<svg viewBox="0 0 '+w+' '+h+'" role="img" aria-label="'+esc(label)+'">'+inner+'</svg>'}
-function kpi(label,big,detail,extra,hero){return '<div class="kpi'+(hero?' hero':'')+'"'+tp(label)+'><div class="l">'+label+'</div><div class="n">'+big+'</div><div class="d">'+detail+'</div>'+(extra||'')+'</div>'}
-function stat(n,l){return '<span'+tp(l)+'><b>'+n+'</b> '+l+'</span>'}
-function empty(t,b){return '<div class="emptybox"'+tp(t)+'><strong>'+t+'</strong>'+b+'</div>'}
+function kpi(label,big,detail,extra,hero){return '<div class="kpi'+(hero?' hero':'')+'"><div class="l">'+label+'</div><div class="n">'+big+'</div><div class="d">'+detail+'</div>'+(extra||'')+eli(label)+'</div>'}
+function stat(n,l){return '<span><b>'+n+'</b> '+l+'</span>'}
+function empty(t,b){return '<div class="emptybox"><strong>'+t+'</strong>'+b+'</div>'}
 function table(cols,rows,o){
-  o=o||{};const lim=o.limit||0;
+  o=o||{};const lim=o.limit===undefined?5:o.limit;
   const head='<tr>'+cols.map(c=>'<th scope="col" class="'+(c.n?'num':'')+'">'+c.h+'</th>').join('')+'</tr>';
   const body=rows.map((r,i)=>'<tr'+(lim&&i>=lim?' hidden data-x':'')+'>'+r.map((v,j)=>'<td class="'+(cols[j].n?'num':'')+'">'+v+'</td>').join('')+'</tr>').join('');
-  const more=lim&&rows.length>lim?'<button type="button" class="btn sm more" data-more>Show all '+rows.length+' rows</button>':'';
-  return '<div class="tbl"'+tp(o.cap)+'><table><caption>'+esc(o.cap||'')+'</caption><thead>'+head+'</thead><tbody>'+body+'</tbody></table></div>'+more;
+  const more=lim&&rows.length>lim?'<button type="button" class="btn sm more" data-more>View all ('+rows.length+')</button>':'';
+  return (o.cap&&!o.inFig?eli(o.cap):'')+'<div class="tbl"><table><caption>'+esc(o.cap||'')+'</caption><thead>'+head+'</thead><tbody>'+body+'</tbody></table></div>'+more;
 }
 function figure(title,sub,svgHtml,cols,rows,extra){
-  return '<div class="card"'+tp(title)+'><div class="top"><div><h3>'+title+'</h3><p class="sub">'+sub+'</p></div><button type="button" class="btn sm" data-tbl aria-pressed="false">View as table</button></div>'
+  return '<div class="card"><div class="top"><div><h3>'+title+'</h3>'+(eli(title)||'<p class="sub">'+sub+'</p>')+'</div><button type="button" class="btn sm" data-tbl aria-pressed="false">View as table</button></div>'
    +'<div class="chartwrap"><div class="chart">'+svgHtml+'</div>'+(extra||'')+'</div>'
-   +'<div class="tblwrap" hidden>'+table(cols,rows,{cap:title})+'</div></div>';
+   +'<div class="tblwrap" hidden>'+table(cols,rows,{cap:title,inFig:1})+'</div></div>';
 }
 function spark(vals){
   const W=120,H=26,mx=Math.max(1,...vals),bw=W/vals.length;
@@ -362,6 +346,10 @@ function heroKpi(){
   if(up)return kpi('Next CME arrival at Earth (model)',fmt(up.earth.t)+' <span style="font-size:.5em;font-weight:500">'+tzName()+'</span>',kpTxt(up)+' · '+(up.earth.gb?'glancing blow':'direct hit')+' · in '+hoursTxt(hrs(new Date(NOW).toISOString(),up.earth.t)),'',true);
   return kpi('Next CME arrival at Earth (model)','None expected','No modelled CME arrivals are pending as of this update.','',true);
 }
+const plural=(n,w)=>n+' '+w+(n===1?'':'s');
+const fin=t=>'<p class="finding">'+t+'</p>';
+const topFlare=()=>D.flr.slice().sort((a,b)=>flux(b.c)-flux(a.c))[0];
+const topStorm=()=>D.gst.slice().sort((a,b)=>b.kp-a.kp)[0];
 function strongest(){return recentFlares.slice().sort((a,b)=>flux(b.c)-flux(a.c))[0]}
 function geoKpi(){
   if(!D.gst.length)return kpi('Geomagnetic storms','None','No storms logged in '+winLabel+'.');
@@ -372,7 +360,8 @@ const panels={
 overview(){
   const s=strongest(),cd=chartCmeDaily();
   const fl=Array(CDAYS).fill(0);recentFlares.forEach(f=>fl[dayIdx(f.p)-CO]++);
-  return '<h2>Overview</h2><p class="sub">Headline figures cover '+cmeLabel+'. Charts and storm counts say when they cover the longer window.</p>'
+  const f=topFlare(),g=topStorm();
+  return '<h2>Overview</h2>'+fin('Over '+winLabel+': '+plural(D.flr.length,'flare')+(f?' (strongest '+f.c+')':'')+', '+plural(D.cme.length,'CME')+' and '+plural(D.gst.length,'geomagnetic storm')+(g?' (peak Kp '+g.kp+')':'')+'.')+'<p class="sub">Headline figures cover '+cmeLabel+'. Charts and storm counts say when they cover the longer window.</p>'
   +'<div class="kpis">'+heroKpi()
   +kpi('Strongest flare, '+cmeLabel,s?s.c:'None',s?'Peak '+fmt(s.p)+' '+tzName()+', from '+s.loc:'No flares logged in this period.',spark(fl))
   +geoKpi()
@@ -386,28 +375,30 @@ overview(){
 },
 solar(){
   const rows=D.cme.map(c=>[fmt(c.t),c.loc||'none',c.sp==null?'n/a':c.sp,c.ha!=null?c.ha+'°':'n/a',c.ty||'n/a']);
-  return '<h2>Solar activity</h2><p class="sub">Coronal mass ejections, flares and solar energetic particle events.</p>'
+  const f=topFlare(),fast=D.cme.filter(c=>c.sp>=1000).length;
+  return '<h2>Solar activity</h2>'+fin(plural(D.flr.length,'flare')+(f?', strongest '+f.c+' on '+fmt(f.p)+' '+tzName():'')+'. '+fast+' of '+plural(D.cme.length,'CME')+(fast===1?' was':' were')+' fast (1000 km/s or more).')+'<p class="sub">Coronal mass ejections, flares and solar energetic particle events.</p>'
   +'<div class="stats">'+stat(D.cme.length,'CMEs, '+cmeLabel)+stat(D.cme.filter(c=>c.sp>=1000).length,'at 1000 km/s or faster')+stat(D.flr.length,'flares, '+winLabel)+stat(D.sep.length,'particle event records')+'</div>'
   +figure('CME speed and width','Each mark is one CME. Height is speed, size is half-angle, shape is class. Hover or focus a mark for detail, or use the table view.',chartCmeSpeed(),[{h:'Start ('+tzName()+')'},{h:'Source'},{h:'Speed km/s',n:1},{h:'Half-angle',n:1},{h:'Class'}],rows,legendSCO)
   +'<h3 style="margin-top:22px">Flares</h3><p class="sub">'+D.flr.length+' flares recorded for '+winLabel+', newest first.</p>'
-  +table([{h:'Class'},{h:'Begin'},{h:'Peak'},{h:'End'},{h:'Source'},{h:'Region',n:1}],D.flr.slice().sort((a,b)=>T(b.p)-T(a.p)).map(f=>['<span class="pill'+(f.c[0]==='M'||f.c[0]==='X'?' m':'')+'">'+f.c+'</span>',fmt(f.b),fmt(f.p),fmt(f.e),f.loc,f.ar||'none']),{limit:10,cap:'Solar flares'})
+  +table([{h:'Class'},{h:'Begin'},{h:'Peak'},{h:'End'},{h:'Source'},{h:'Region',n:1}],D.flr.slice().sort((a,b)=>T(b.p)-T(a.p)).map(f=>['<span class="pill'+(f.c[0]==='M'||f.c[0]==='X'?' m':'')+'">'+f.c+'</span>',fmt(f.b),fmt(f.p),fmt(f.e),f.loc,f.ar||'none']),{cap:'Solar flares'})
   +'<h3>Solar energetic particle events</h3><p class="sub">Each row is one instrument record. Records close together in time usually belong to one event.</p>'
-  +(D.sep.length?table([{h:'Time ('+tzName()+')'},{h:'Instrument'}],D.sep.map(s=>[fmt(s.t),s.ins[0]||'n/a']),{limit:8,cap:'Solar energetic particle events'}):empty('No particle events logged','The SEP feed returned no events for '+winLabel+'.'))
+  +(D.sep.length?table([{h:'Time ('+tzName()+')'},{h:'Instrument'}],D.sep.map(s=>[fmt(s.t),s.ins[0]||'n/a']),{cap:'Solar energetic particle events'}):empty('No particle events logged','The SEP feed returned no events for '+winLabel+'.'))
   +'<h3>CMEs</h3><p class="sub">Most accurate analysis for each of the '+D.cme.length+' CMEs.</p>'
-  +table([{h:'Start'},{h:'Source'},{h:'Speed km/s',n:1},{h:'Half-angle',n:1},{h:'Class'}],rows,{limit:10,cap:'Coronal mass ejections'});
+  +table([{h:'Start'},{h:'Source'},{h:'Speed km/s',n:1},{h:'Half-angle',n:1},{h:'Class'}],rows,{cap:'Coronal mass ejections'});
 },
 geo(){
-  return '<h2>Geomagnetic</h2><p class="sub">Storms at Earth, interplanetary shocks and fast solar wind streams.</p>'
+  const g=topStorm();
+  return '<h2>Geomagnetic</h2>'+fin(g?plural(D.gst.length,'geomagnetic storm')+'; the worst reached Kp '+g.kp+' ('+gScale(g.kp)+') on '+fmt(g.t)+' '+tzName()+'.':'No geomagnetic storms in '+winLabel+'. Earth\'s magnetic field stayed calm.')+'<p class="sub">Storms at Earth, interplanetary shocks and fast solar wind streams.</p>'
   +'<div class="stats">'+stat(D.gst.length,'geomagnetic storms, '+winLabel)+stat(D.ips.length,'interplanetary shocks')+stat(earthIps.length,'of those reached Earth')+stat(D.hss.length,'high speed streams')+'</div>'
   +'<h3>Geomagnetic storms</h3>'
   +(D.gst.length?'<p class="sub">Highest Kp index during each storm.</p>'+table([{h:'Start ('+tzName()+')'},{h:'Peak Kp',n:1},{h:'Level'}],D.gst.slice().sort((a,b)=>T(b.t)-T(a.t)).map(g=>[fmt(g.t),g.kp,gScale(g.kp)]),{cap:'Geomagnetic storms'}):empty('No geomagnetic storms logged','The storm feed returned no events for '+winLabel+'. That is normal in quiet periods.'))
   +'<h3>Interplanetary shocks</h3><p class="sub">Transit is the time from the linked CME start to the shock.</p>'
-  +table([{h:'Shock'},{h:'Where'},{h:'Linked CME'},{h:'Transit',n:1}],D.ips.map(i=>{const c=i.lk.map(k=>cmeById[k]).find(Boolean);return [fmt(i.t),i.loc==='Earth'?'<span class="pill good">Earth</span>':i.loc,i.lk.length?i.lk.map(k=>fmt(k)).join(', '):'none linked',c?hrs(c.t,i.t).toFixed(0)+' h':'n/a']}),{limit:8,cap:'Interplanetary shocks'})
+  +table([{h:'Shock'},{h:'Where'},{h:'Linked CME'},{h:'Transit',n:1}],D.ips.map(i=>{const c=i.lk.map(k=>cmeById[k]).find(Boolean);return [fmt(i.t),i.loc==='Earth'?'<span class="pill good">Earth</span>':i.loc,i.lk.length?i.lk.map(k=>fmt(k)).join(', '):'none linked',c?hrs(c.t,i.t).toFixed(0)+' h':'n/a']}),{cap:'Interplanetary shocks'})
   +'<h3>High speed streams</h3><p class="sub">Seen at Earth-side spacecraft and at STEREO A.</p>'
-  +table([{h:'Time'},{h:'Seen by'}],D.hss.map(h=>[fmt(h.t),h.ins.length>2?'<span class="pill good">Earth side</span> ACE, SOLAR-1, IMAP':'STEREO A']),{limit:8,cap:'High speed streams'});
+  +table([{h:'Time'},{h:'Seen by'}],D.hss.map(h=>[fmt(h.t),h.ins.length>2?'<span class="pill good">Earth side</span> ACE, SOLAR-1, IMAP':'STEREO A']),{cap:'High speed streams'});
 },
 mag(){
-  return '<h2>Magnetosphere</h2><p class="sub">Radiation belt enhancements and magnetopause crossings.</p>'
+  return '<h2>Magnetosphere</h2>'+fin(plural(D.rbe.length,'radiation belt boost')+' and '+plural(D.mpc.length,'magnetopause crossing')+' in '+winLabel+'.')+'<p class="sub">Radiation belt enhancements and magnetopause crossings.</p>'
   +'<div class="stats">'+stat(D.rbe.length,'radiation belt enhancements')+stat(D.mpc.length,'magnetopause crossings')+'</div>'
   +'<h3>Radiation belt enhancements</h3><p class="sub">Electron enhancements measured by GOES SEISS above 2 MeV, with the solar events DONKI links to each.</p>'
   +(D.rbe.length?table([{h:'Time ('+tzName()+')'},{h:'Instrument'},{h:'Linked events'}],D.rbe.map(r=>[fmt(r.t),r.ins[0]||'n/a',r.lk.map(l=>fmt(l.slice(0,16))+' '+(l.includes('HSS')?'stream':'CME')).join(', ')||'none']),{cap:'Radiation belt enhancements'}):empty('No radiation belt enhancements logged','The feed returned no events for '+winLabel+'.'))
@@ -418,7 +409,8 @@ models(){
   const ce=D.cme.filter(c=>c.earth).sort((a,b)=>T(a.earth.t)-T(b.earth.t));
   const ar=arrivalRows(),imp=impactCounts();
   const state=c=>{const i=loggedIps(c);return i?'<span class="pill good">Logged '+fmt(i.t)+'</span>':T(c.earth.t)>NOW?'<span class="pill m">Due in '+hoursTxt(hrs(new Date(NOW).toISOString(),c.earth.t))+'</span>':'<span class="pill">Not logged yet</span>'};
-  return '<h2>Models</h2><p class="sub">WSA-Enlil runs on CME analyses. These are forecasts, compared with the shock actually logged at Earth.</p>'
+  const er=arrivalRows().map(r=>Math.abs(hrs(r.pred,r.ips))).sort((a,b)=>a-b),med=er.length?(er.length%2?er[(er.length-1)/2]:(er[er.length/2-1]+er[er.length/2])/2):null;
+  return '<h2>Models</h2>'+fin(med==null?'No logged arrival at Earth can be checked against a forecast yet.':'Past arrivals landed a median '+med.toFixed(1)+' hours from the forecast ('+plural(er.length,'case')+').')+'<p class="sub">WSA-Enlil runs on CME analyses. These are forecasts, compared with the shock actually logged at Earth.</p>'
   +'<div class="stats">'+stat(ce.length,'CMEs modelled to reach Earth')+stat(D.cme.filter(c=>c.imp.length).length,'CMEs with probe or planet impacts')+'</div>'
   +'<h3>Modelled Earth arrivals</h3><p class="sub">Kp ranges come from the model at several cone widths. A glancing blow is a weaker, off-centre hit.</p>'
   +(ce.length?table([{h:'CME start'},{h:'Model arrival'},{h:'Kp range',n:1},{h:'Type'},{h:'Status'}],ce.map(c=>[fmt(c.t),fmt(c.earth.t),kpOf(c)?kpOf(c)[0]+' to '+kpOf(c)[1]:'n/a',c.earth.gb?'<span class="pill">glancing</span>':'<span class="pill crit">direct</span>',state(c)]),{cap:'Modelled Earth arrivals'}):empty('No modelled Earth arrivals','No CME in '+cmeLabel+' has an Earth arrival in the model output.'))
