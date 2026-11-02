@@ -418,6 +418,26 @@
     "trig_01575SzYtwaVj7PWhwE2t5bM"
    ],
    "show_in": "west-herts"
+  },
+  {
+   "id": "local:sky-neath",
+   "area": "sky",
+   "slug": "neath",
+   "name": "Neath night sky",
+   "refresh_tasks": [
+    "trig_01NTcr39czUs5KcrChm42w6V",
+    "trig_01575SzYtwaVj7PWhwE2t5bM"
+   ]
+  },
+  {
+   "id": "local:sky-port-talbot",
+   "area": "sky",
+   "slug": "port-talbot",
+   "name": "Port Talbot night sky",
+   "refresh_tasks": [
+    "trig_01NTcr39czUs5KcrChm42w6V",
+    "trig_01575SzYtwaVj7PWhwE2t5bM"
+   ]
   }
  ]
 }
