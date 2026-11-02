@@ -71,6 +71,12 @@ def main():
             b = p.chromium.launch()
             check(b, url, "snapshot", expect_text="Could I see the aurora from Thanet tonight?")
             check(b, url, "no kp.json", kp=None, refuse_text="Could I see the aurora")
+            # one master page: ?place= changes the answer, not just the name (AuroraWatch names Scotland separately)
+            yellow = dict(json.load(open(os.path.join(ROOT, "data", "kp.json"))), aurorawatch={"status": "yellow"})
+            check(b, url + "?place=dundee", "Dundee on a yellow night", kp=yellow, expect_text="from Dundee & Tayside tonight? Maybe")
+            check(b, url + "?place=thanet", "Thanet on a yellow night", kp=yellow, expect_text="from Thanet tonight? Not from here")
+            check(b, url + "?place=neath", "Neath opens South Wales", expect_text="from Ammanford, Swansea & Neath Port Talbot tonight?")
+            check(b, url + "?place=<script>", "unknown place falls back", expect_text="Could I see the aurora from")
             evil = "<img src=x onerror=alert(1)>"
             check(b, url, "hostile kp.json", kp={"fetchedAt": evil, "aurorawatch": {"status": evil}, "aurorawatchAt": evil,
                   "daily": [{"date": evil, "kp": [99]}, {"date": SNAP["window"]["end"], "kp": [evil, 99, -5, 3]}],
