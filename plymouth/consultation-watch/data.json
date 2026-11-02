@@ -203,19 +203,19 @@
    "body": "Plymouth City Council, Devon County Council, Torbay Council and the Devon and Torbay Combined County Authority",
    "sector": "local",
    "status": "decision",
-   "deadline": "2026-10-28",
-   "time": "closed 28 October 2026",
+   "deadline": "2099-12-31",
+   "time": "Consultation closed 28 October 2026. Plymouth, Devon, Torbay and the Combined County Authority are due to decide between November and December 2026 (no meeting dates published on the pages read).",
    "topics": [
     "travel",
     "homes",
     "services"
    ],
    "plain": "Closed on 28 October. It asked whether Plymouth should become a full member of the regional authority, which would seek a directly elected mayor. The Government has said it is minded to proceed, and the councils will publish findings before decisions.",
-   "detail": "Plymouth City Council's news item (16 September 2026) says a six-week consultation ran to 28 October 2026 on Plymouth becoming a full member, and that the Authority would seek mayoral status; a mayor would not run local councils, and bin collections, schools, social care, housing and planning would stay with councils. Torbay Council's joint press release of 28 October 2026 says the Budget confirmed the Government is minded to proceed with a Mayoral Strategic Authority for Devon, Plymouth and Torbay (population 1.25 million), that the consultation has closed and every response is being analysed, and that findings will be published before decisions. I did not read the full text beyond the extract returned.",
+   "detail": "Plymouth City Council's news item (16 September 2026) says a six-week consultation ran to 28 October 2026 on Plymouth becoming a full member, and that the Authority would seek mayoral status; a mayor would not run local councils, and bin collections, schools, social care, housing and planning would stay with councils. The Combined County Authority's news page (28 October 2026, read 2 November) says the Budget confirmed the Government is minded to proceed with a Mayoral Strategic Authority for Devon, Plymouth and Torbay; responses are being analysed and findings will be published before decisions; each council and the Authority will take formal decisions between November and December 2026; if all agree and Parliament approves, the authority could start in autumn 2027 with the first mayoral election expected in May 2028.",
    "how": "The consultation has closed. Watch Plymouth City Council and Devon and Torbay Combined County Authority meeting papers for the findings and decisions.",
    "url": "https://www.plymouth.gov.uk/news/should-plymouth-join-top-table",
    "urlLabel": "Council news item",
-   "src": "https://www.torbay.gov.uk/news/pr9609/",
+   "src": "https://www.devonandtorbay-cca.gov.uk/news/government-backs-plans-for-a-mayoral-strategic-authority-for-devon-plymouth-and-torbay/",
    "a": {
     "people": [
      [
@@ -257,7 +257,8 @@
       1
      ]
     ]
-   }
+   },
+   "nodate": 1
   },
   {
    "id": "lgr-greater-plymouth",
@@ -265,18 +266,18 @@
    "body": "UK Government (Ministry of Housing, Communities and Local Government)",
    "sector": "central",
    "status": "decision",
-   "deadline": "2026-03-26",
-   "time": "Government consultation closed at 11.59pm on 26 March 2026 (gov.uk page). Plans then approved in July 2026 and paused in September 2026.",
+   "deadline": "2099-12-31",
+   "time": "Government consultation closed 26 March 2026. Proposal withdrawn for a further review on 29 October 2026; the Government says it will make a fresh decision in 2027 (no date given).",
    "topics": [
     "services",
     "homes"
    ],
    "plain": "The Government's plan to enlarge Plymouth by 13 South Hams parishes, including Ivybridge, was approved in July and then paused for review in September. A newspaper-style report that it has been formally withdrawn could not be confirmed. Elections in May 2027 are said to go ahead on the existing boundaries.",
-   "detail": "The Government consultation on the Devon, Plymouth and Torbay proposals closed at 11.59pm on 26 March 2026 (gov.uk consultation page, published 5 February 2026, read 1 November 2026). The Plymouth Herald (16 July 2026, search snippet) reported approval of Plymouth's expansion into 13 South Hams parishes; a Slapton Parish Council notice (20 July 2026, search snippet) lists them as including Bickleigh, Shaugh Prior, Cornwood, Sparkwell, Harford, Ugborough, Ivybridge and Ermington; a BBC snippet names Wembury and Yealmpton (I read snippets only for the parish list). BBC Devon (2 September 2026) reports the Prime Minister saying he would look again. A post by South West Devon MP Rebecca Smith (read in full; an MP's own account, undated in the extract, after a petition 'last week') says the Government announced the plans for Plymouth, Devon and Torbay would be paused and reviewed after updated legal advice, and that the May 2027 local elections will go ahead on existing council boundaries. BBC Devon headlines of 7 and 13 September 2026 (search snippets) describe the plans as paused. A Yahoo/BBC-style headline 'Controversial plans for Devon councils withdrawn' and a further MP post say ministers have now formally withdrawn the plans; I only saw these as search snippets, so treat withdrawal as reported, not confirmed.",
+   "detail": "The Herald (29 October 2026, read in full) reports the Government has withdrawn its favoured proposal for Devon, which included a Greater Plymouth Council taking in 13 South Hams parishes, and will put it through a further review with a fresh decision in 2027. Plymouth City Council's leader said the council was disappointed and will make its case again when the review begins; the Government still aims for shadow authority elections in 2028 and new councils in 2029. A local MP's social post (search snippet only) also says ministers have formally withdrawn the plan. Earlier history: the Government consultation closed at 11.59pm on 26 March 2026 (gov.uk); the plan was approved in July 2026 and paused in September 2026. No review timetable has been published yet.",
    "how": "No open consultation. Watch for the Government's review and the councils' statements; contact your MP or parish councillor.",
    "url": "https://www.ivybridge.gov.uk/the-council/local-government-reorganisation/",
    "urlLabel": "Ivybridge Town Council: reorganisation",
-   "src": "https://www.gov.uk/government/consultations/local-government-reorganisation-in-devon-plymouth-and-torbay",
+   "src": "https://www.plymouthherald.co.uk/news/plymouth-news/greater-plymouth-expansion-withdrawn-huge-11219194",
    "a": {
     "people": [
      [
@@ -318,7 +319,8 @@
       1
      ]
     ]
-   }
+   },
+   "nodate": 1
   },
   {
    "id": "swwd-scoping",
@@ -605,6 +607,135 @@
      ]
     ]
    }
+  },
+  {
+   "id": "stroud-park-tro",
+   "title": "Stroud Park Road parking changes (Traffic Regulation Order)",
+   "body": "Plymouth City Council",
+   "sector": "local",
+   "status": "open",
+   "deadline": "2026-11-06",
+   "time": "Representations must reach the council by 6 November 2026 (closing time not stated)",
+   "topics": [
+    "travel"
+   ],
+   "plain": "The council plans to remove a stretch of double yellow lines on Stroud Park Road (near PL2 3NL) to give residents more on-street parking.",
+   "detail": "From The Herald (31 October 2026), reporting a Plymouth City Council public notice dated 16 October 2026: the draft order (reference Amd.2026.2137368 Stroud Park Road) would add or amend parking restrictions on lengths of Stroud Park Road, removing a section of double yellow lines. Comments must give grounds for support or objection. I did not open the council's own notice.",
+   "how": "Use the council's traffic regulation order comments facility (Have your say, Traffic and road safety schemes), or write to Service Director for Street Services (Plymouth Highways), Ballard House, West Hoe Road, Plymouth PL1 3BJ quoting Amd.2026.2137368. Hard copies on 01752 668000.",
+   "url": "https://www.plymouth.gov.uk/have-your-say",
+   "urlLabel": "Plymouth Have your say",
+   "src": "https://www.plymouthherald.co.uk/news/plymouth-news/more-parking-fewer-double-yellows-11203238",
+   "a": {
+    "people": [
+     [
+      "Residents of Stroud Park Road needing on-street parking",
+      1
+     ],
+     [
+      "Families on school runs",
+      1
+     ],
+     [
+      "Local businesses and deliveries",
+      1
+     ]
+    ],
+    "groups": [],
+    "wildlife": [],
+    "systems": [
+     [
+      "Road safety, traffic flow and kerbside space",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "whin-bank-land",
+   "title": "Disposal of public open space off Whin Bank Road, Eggbuckland, for social housing",
+   "body": "Plymouth City Council",
+   "sector": "local",
+   "status": "open",
+   "deadline": "2026-11-11",
+   "time": "Written objections must reach the Head of Land and Property by 11 November 2026 (closing time not stated)",
+   "topics": [
+    "homes",
+    "nature"
+   ],
+   "plain": "The council intends to dispose of 0.445 hectares of amenity land off Whin Bank Road, Eggbuckland (near PL6 5SZ), held as public open space, for social housing.",
+   "detail": "From The Herald (31 October 2026), reporting a council notice dated 21 October 2026 under Section 123(2A) of the Local Government Act 1972. The disposal does not grant planning permission; any development would need a separate planning application with its own consultation. Objections should focus on the loss of open space. I did not open the council's legal notices page.",
+   "how": "Write to the Head of Land and Property, Plymouth City Council, or email landandproperty@plymouth.gov.uk, giving your name, address and reasons, and saying it concerns the amenity land off Whin Bank Road, Eggbuckland.",
+   "url": "https://www.plymouth.gov.uk/have-your-say",
+   "urlLabel": "Plymouth Have your say",
+   "src": "https://www.plymouthherald.co.uk/news/plymouth-news/land-set-disposal-under-social-11209225",
+   "a": {
+    "people": [
+     [
+      "Eggbuckland residents who use the open space",
+      0
+     ],
+     [
+      "People on the housing register needing social homes",
+      1
+     ]
+    ],
+    "groups": [
+     [
+      "Friends and residents' associations in Eggbuckland",
+      0
+     ]
+    ],
+    "wildlife": [
+     [
+      "Grassland and verge wildlife on the amenity land",
+      0
+     ]
+    ],
+    "systems": [
+     [
+      "Green space, parks and trees in Eggbuckland",
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "id": "shdc-ctr",
+   "title": "South Hams Council Tax Reduction Scheme 2027/28",
+   "body": "South Hams District Council",
+   "sector": "local",
+   "status": "closed",
+   "deadline": "2026-10-25",
+   "time": "closed 25 October 2026 (date from a search result of the council's social post)",
+   "topics": [
+    "services"
+   ],
+   "plain": "South Hams asked about its scheme that helps people on low incomes pay Council Tax. It now proposes to keep the scheme for 2027/28.",
+   "detail": "South Hams news page (read through the Mac scrape, 2 November 2026) has the item 'Council Tax support continues for low-income households', dated 29 October 2026: 'We are proposing to continue our Council Tax Reduction Scheme for 2027/28'. The council's Facebook post (fetched, undated) says the Executive agreed the proposals and the decision now moves to Full Council for final agreement. The 25 October closing date comes only from a search-result snippet of an earlier council post. I have not seen the Full Council date.",
+   "how": "The consultation has closed. Ask your district councillor or watch the Full Council meeting.",
+   "url": "https://www.southhams.gov.uk/news/2026/council-tax-support-continues-low-income-households",
+   "urlLabel": "Read the council's news item",
+   "src": "https://www.southhams.gov.uk/news/2026/council-tax-support-continues-low-income-households",
+   "a": {
+    "people": [
+     [
+      "Low-income households in Ivybridge and the South Hams villages",
+      1
+     ],
+     [
+      "Older and disabled people on low incomes",
+      0
+     ]
+    ],
+    "groups": [
+     [
+      "Citizens Advice and voluntary money-advice charities",
+      0
+     ]
+    ],
+    "wildlife": [],
+    "systems": []
+   }
   }
  ],
  "petitions": [
@@ -736,10 +867,10 @@
  ],
  "status": {
   "plymouth-dtcca": "Government minded to proceed",
-  "lgr-greater-plymouth": "Paused for review"
+  "lgr-greater-plymouth": "Withdrawn for review"
  },
- "collected": "1 November 2026",
- "watch_note": "One non-profit consultation was found and it has closed: the Annual SEND survey run by Plymouth Parent Carer Voice (a community interest company per a Companies House search result) with the council, closed 31 October 2026. No charity or non-profit consultation was found open on 1 November 2026 after searching for Devon Wildlife Trust, RSPB South West, Plymouth Tree People, CPRE Devon and the Dartmoor Preservation Association; the only items from those bodies were campaigns or news posts, and I could not read their own sites. The Environment Agency says it will consult in November on a permit change at Hemerdon Tungsten Mine; that is a public body, and it is not yet open.",
- "empty_charity": "No charity or non-profit consultation was found open on 1 November 2026; see the places to watch.",
- "generated_at": "2026-11-01T10:08:19Z"
+ "collected": "2 November 2026",
+ "watch_note": "Still to come: the Environment Agency's consultation on a permit change at Hemerdon Tungsten Mine (Drakelands Restoration Ltd) - its page (21 October 2026, read 2 November) says it expects to open in November for at least four weeks; not open yet. Plymouth e-petitions open now (not listed until they close): 'Devils Point Slab' (signing ends 4 November 2026) and 'Reverse the decision to introduce parking charges at the George Junction Park and Ride' (ends 24 November 2026). No charity or non-profit consultation was found open on 2 November 2026 after searching for Devon Wildlife Trust, RSPB, Plymouth Tree People and CPRE Devon; the only non-profit item, the Plymouth Parent Carer Voice SEND survey, closed 31 October 2026.",
+ "empty_charity": "No charity or non-profit consultation was found open on 2 November 2026; see the places to watch.",
+ "generated_at": "2026-11-02T08:49:39Z"
 }
