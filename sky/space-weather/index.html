@@ -1,4 +1,4 @@
-<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-RqyLV7Od3MW85VE02+qfXbbtyAMEkB83O/ZICaKDcbU=' 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
+<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'sha256-qhYcvEOvYMN4sAeMuvBBY212ZbfKJOAyReZNX5znaOE=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
 var SCHEME=/^\s*([a-z][a-z0-9+.\-]*):/i,HREF={http:1,https:1,mailto:1,tel:1},SRC={http:1,https:1,blob:1};
 function okUrl(v,isSrc){var c=String(v).replace(/[\u0000- ]/g,""),m=SCHEME.exec(c);if(!m)return true;var s=m[1].toLowerCase();
 if(isSrc&&s==="data")return /^data:image\//i.test(c);return !!(isSrc?SRC:HREF)[s];}
@@ -135,11 +135,11 @@ details.more[open]{padding-bottom:12px}
 .calkey{list-style:none;padding:0;margin:10px 0 0;display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.875rem}
 .calkey li{display:flex;align-items:center;gap:6px}
 .calkey .d{display:inline-block;width:14px;height:14px;border-radius:3px}
-.cal.sky{background:#070b1a;border-radius:10px;padding:10px 8px 16px;gap:14px 4px}
+.cal.sky{background:#070b1a;border-radius:10px;padding:10px 8px 18px;gap:20px 4px}
 .cal.sky .h{color:#9aa6c8}
 .cal.sky .d{border:0;border-radius:50%;width:78%;justify-self:center;justify-content:center;align-items:center;padding:0;color:#fff;background:radial-gradient(circle at 35% 35%,#7cc4ff,#1d4fa8)}
 .cal.sky .d b{font-weight:600;text-shadow:0 1px 2px #000a}
-.cal.sky .d i{position:absolute;bottom:-12px;left:50%;transform:translateX(-50%);color:#7dffbf;font-size:.6875rem}
+.cal.sky .d i{position:absolute;bottom:-16px;left:50%;transform:translateX(-50%);color:#7dffbf;font-size:.6875rem}
 .d.calm{opacity:.55}
 .d.stream{box-shadow:0 0 0 2px #7fd4ff}
 .d.shock{box-shadow:0 0 0 3px #ffb86b}
@@ -156,6 +156,13 @@ details.more[open]{padding-bottom:12px}
 .k.real{background:radial-gradient(circle at 35% 35%,#7cc4ff,#1d4fa8)}
 .k.real.storm{box-shadow:0 0 5px 3px #4dffa6}
 #race .fclist{margin-top:10px}
+.cal.sky .d i.kp{color:#9aa6c8;font-weight:500;white-space:nowrap}
+.tonight h3{text-wrap:balance}
+.tonight .impact.plain{margin-top:8px}
+.tonight a{color:var(--accent)}
+.journey .curtain{animation:shimmer 5s ease-in-out infinite alternate}
+@keyframes shimmer{from{opacity:.55}to{opacity:.95}}
+@media (prefers-reduced-motion:reduce){.journey .curtain{animation:none}}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .impact.plain{border-top:0;padding-left:1.1em;margin-top:4px}
 .journey{display:block;width:100%;height:auto;border-radius:10px;margin:6px 0 4px;font:500 11px var(--sans,system-ui)}
@@ -568,6 +575,51 @@ function raceHtml(sel){
    +'<ol class="fclist" aria-live="polite">'+fcRow(out[sel])+'</ol>';
 }
 window.raceHtml=raceHtml;
+/* NOAA's measured Kp for day index d (highest of its eight 3-hour values), or null. */
+function kpMax(d){
+  if(!KP)return null;const iso=new Date(day0.getTime()+d*864e5).toISOString().slice(0,10),r=KP.daily.find(x=>x.date===iso);
+  const v=r?r.kp.filter(k=>k!=null):[];return v.length?Math.max(...v):null;
+}
+/* Tonight from Thanet: AuroraWatch UK's live status plus NOAA's Kp forecast for the dark hours (18:00 to 06:00 UTC). */
+const AWTXT={green:'No significant activity. Aurora is unlikely to be visible by eye or camera from anywhere in the UK.',
+ yellow:'Minor activity. Aurora may be visible by eye from Scotland, and by camera from Scotland, northern England and Northern Ireland.',
+ amber:'Amber alert: possible aurora. Likely visible by eye from Scotland, northern England and Northern Ireland; possibly visible from elsewhere in the UK. Photographs are likely from anywhere in the UK.',
+ red:'Red alert: aurora likely. It is likely to be visible by eye and camera from anywhere in the UK.'};
+function tonight(){
+  const n=new Date(NOW),h=n.getUTCHours(),d0=Date.UTC(n.getUTCFullYear(),n.getUTCMonth(),n.getUTCDate());
+  const a=h<6?NOW:Math.max(NOW,d0+18*36e5),b=h<6?d0+6*36e5:d0+30*36e5;
+  const blocks=KP?KP.fc.filter(r=>r.kind!=='observed'&&+T(r.t)<b&&+T(r.t)+3*36e5>a):[];
+  return {a,b,k:blocks.length?Math.max(...blocks.map(r=>r.kp)):null};
+}
+function tonightArt(aw){
+  const W=340,H=150,hz=112,lv={red:3,amber:2,yellow:1}[aw]||0,id='tn';let o='<rect width="'+W+'" height="'+H+'" fill="#070b1a"/>'+skyStars(W,hz,13);
+  if(lv){for(let i=0;i<14;i++){const x=10+i*24+(i%3)*5,ht=[0,18,48,88][lv]*(0.6+((i*37)%10)/20);
+    o+='<rect class="curtain" x="'+x+'" y="'+(hz-ht)+'" width="16" height="'+ht+'" fill="url(#'+id+'a)" opacity="'+(lv===1?.45:.8)+'" filter="url(#'+id+'b)"/>'}}
+  o+='<rect y="'+hz+'" width="'+W+'" height="'+(H-hz)+'" fill="#0d1a33"/>';
+  if(lv)o+='<rect y="'+hz+'" width="'+W+'" height="10" fill="#4dffa6" opacity="'+(0.08*lv)+'"/>';
+  // North Foreland lighthouse on the shore, bottom right
+  o+='<path d="M286 '+(H)+'L292 '+(hz-14)+'h8L306 '+H+'z" fill="#1c2a4a"/><rect x="290" y="'+(hz-22)+'" width="12" height="8" fill="#1c2a4a"/><circle cx="296" cy="'+(hz-18)+'" r="2.5" fill="#ffe08a"/>'
+   +'<path d="M0 '+H+'V'+(H-10)+'Q60 '+(H-16)+' 120 '+(H-11)+'T260 '+(H-12)+'L340 '+(H-9)+'V'+H+'z" fill="#141f38"/>';
+  return '<svg class="journey" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="The northern sky over the sea from Thanet tonight: '+(lv?'aurora on the horizon, as AuroraWatch\'s '+aw+' status suggests':'no aurora expected')+'.">'
+   +'<defs><linearGradient id="'+id+'a" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#4dffa6"/><stop offset=".7" stop-color="#4dffa6" stop-opacity=".5"/><stop offset="1" stop-color="#ff6bd0" stop-opacity="'+(lv===3?.6:0)+'"/></linearGradient>'
+   +'<filter id="'+id+'b" x="-1" y="-1" width="3" height="3"><feGaussianBlur stdDeviation="4"/></filter></defs>'
+   +o+skyTxt(10,20,'Looking north over the sea from Thanet','start','#dfe6ff')+skyTxt(W/2,hz-4,'N','middle','#9aa6c8')+'</svg>';
+}
+function tonightHtml(){
+  if(!KP||(!KP.aw&&!KP.fc.length))return '';
+  const aw=KP.aw,t=tonight(),k=t.k,g=k!=null?gLevel(k):0,age=KP.awAt?(NOW-KP.awAt)/36e5:null;
+  const ans=aw==='red'?['Yes, quite possibly.','AuroraWatch has a red alert. Find somewhere dark with a clear view north, such as the cliffs at Margate or Broadstairs, away from street lights.']
+   :aw==='amber'?['Maybe, with a camera.','AuroraWatch has an amber alert. A phone camera pointed north often picks up aurora the eye misses. Find somewhere dark facing the sea.']
+   :aw==='yellow'?['Not from Thanet.','AuroraWatch shows minor activity, which reaches Scotland at most.']
+   :g?['Not yet.','NOAA forecasts a G'+g+' storm tonight (Kp '+kpR(k)+'), but AuroraWatch has not raised an alert. If it turns amber or red, it is worth a look.']
+   :['No, not tonight.',(aw?'AuroraWatch reports no significant activity':'There is no AuroraWatch reading')+(k!=null?', and NOAA forecasts Kp '+kpR(k)+' tonight, below storm level (Kp 5).':'.')];
+  return '<div class="ep next tonight"><h3>Could I see the aurora from Thanet tonight? '+ans[0]+'</h3>'+tonightArt(aw)
+   +'<p>'+ans[1]+'</p><ul class="impact plain">'
+   +(aw?'<li><b>AuroraWatch UK</b> ('+aw+(age!=null?', checked '+(age<1?'within the hour':Math.round(age)+' hours ago, so it may have changed'):'')+'): '+AWTXT[aw]+'</li>':'')
+   +(k!=null?'<li><b>NOAA forecast</b> for tonight: Kp up to '+kpR(k)+(g?' (G'+g+' storm)':' (storms start at Kp 5)')+'.</li>':'')
+   +'<li><b>Clouds:</b> an alert is no use under cloud. The <a href="../ramsgate/">Ramsgate night sky</a> page has tonight\'s cloud forecast.</li></ul>'
+   +'<p class="src">Alerts from <a href="https://aurorawatch.lancs.ac.uk/">AuroraWatch UK</a>, Lancaster University. Kp from <a href="https://www.swpc.noaa.gov/">NOAA SWPC</a>.</p></div>';
+}
 function journeySvg(e,n){
   const W=340,H=170,g=gLevel(e.g.kp),id='j'+n,ex=292,ey=92;
   let st='';for(let i=0;i<46;i++){const x=(i*73+n*31)%W,y=(i*41+n*17)%H,r=i%7?0.6:1.1;st+='<circle cx="'+x+'" cy="'+y+'" r="'+r+'" fill="#fff" opacity="'+(0.25+(i%5)/8)+'"/>'}
@@ -611,7 +663,7 @@ const panels={
 now(){
   const ep=episodes(),n=ep.length,er=ep.filter(e=>e.cause==='eruption').length,st=ep.filter(e=>e.cause==='stream').length,un=n-er-st;
   const parts=[er?er+' from '+(er===1?'a solar eruption':'solar eruptions'):'',st?st+' from '+(st===1?'a fast solar wind stream':'fast solar wind streams'):'',un?un+' with no cause recorded':''].filter(Boolean);
-  return '<h2>Now</h2>'+fin(n?'From '+winLabel+', Earth had '+plural(n,'geomagnetic storm')+': '+parts.join(', ')+'.':'No geomagnetic storms in '+winLabel+'. Earth\'s magnetic field stayed calm.')
+  return '<h2>Now</h2>'+tonightHtml()+fin(n?'From '+winLabel+', Earth had '+plural(n,'geomagnetic storm')+': '+parts.join(', ')+'.':'No geomagnetic storms in '+winLabel+'. Earth\'s magnetic field stayed calm.')
   +comingHtml()
   +(n?'<h3>The storms, newest first</h3><p class="sub">Each story follows NASA\'s own links, from the Sun to the storm at Earth. Times in '+tzName()+'. NOAA lists no health effects from storms like these for people on the ground; the radiation that matters to astronauts and polar flights comes from solar particle events, and NASA logged '+(D.sep.length?plural(D.sep.length,'solar particle event'):'none')+' this period.</p>'+ep.map(epHtml).join(''):'')
   +'<p class="sub">The Sun, Earth and Forecasts tabs hold the detail behind these stories.</p>';
@@ -650,15 +702,15 @@ earth(){
   const n=k=>cal.filter(c=>c.k===k).length,KW={calm:'nothing logged',stream:'fast solar wind arrived',shock:'a shock wave arrived',storm:'a storm started'};
   const pad=(day0.getUTCDay()+6)%7,sd0=shieldDefault();
   const cells='<span class="h">M</span><span class="h">T</span><span class="h">W</span><span class="h">T</span><span class="h">F</span><span class="h">S</span><span class="h">S</span>'+'<span></span>'.repeat(pad)
-   +cal.map((c,d)=>'<button type="button" class="d '+c.k+'" data-d="'+d+'" aria-pressed="'+(d===sd0)+'" title="'+dlab(d)+': '+KW[c.k]+(c.g?' (Kp '+kpR(c.g)+')':'')+'"><b>'+dlab(d).split(' ')[0]+'</b>'+(c.g?'<i>G'+gLevel(c.g)+'</i>':'')+'<span class="vh">'+dlab(d)+': '+KW[c.k]+(c.g?', Kp '+kpR(c.g):'')+'</span></button>').join('');
+   +cal.map((c,d)=>'<button type="button" class="d '+c.k+'" data-d="'+d+'" aria-pressed="'+(d===sd0)+'" title="'+dlab(d)+': '+KW[c.k]+(c.g?' (Kp '+kpR(c.g)+')':'')+'"><b>'+dlab(d).split(' ')[0]+'</b>'+(c.g?'<i>G'+gLevel(c.g)+'</i>':kpMax(d)!=null?'<i class="kp">'+kpR(kpMax(d))+'</i>':'')+'<span class="vh">'+dlab(d)+': '+KW[c.k]+(c.g?', Kp '+kpR(c.g):'')+'</span></button>').join('');
   const busy=n('stream')+n('shock');
-  const head='Over '+WDAYS+' days, '+(n('storm')?'a geomagnetic storm started on '+plural(n('storm'),'day'):'no geomagnetic storm started')+', a shock wave or fast solar wind arrived on '+(n('storm')?'another ':'')+plural(busy,'day')+', and NASA logged nothing on '+plural(n('calm'),'day')+'.';
+  const head='Over '+WDAYS+' days, '+(n('storm')?'a geomagnetic storm started on '+plural(n('storm'),'day'):'no geomagnetic storm started')+', a shock wave or fast solar wind arrived on '+(n('storm')?'another ':'')+plural(busy,'day')+', and NASA logged nothing on '+plural(n('calm'),'day')+'.'+(KP&&KP.daily.length?' NOAA\'s measurements show Kp stayed under 4 on '+cal.filter((c,d)=>c.k==='calm'&&kpMax(d)!=null&&kpMax(d)<4).length+' of those quiet days.':'');
   const rbeTxt=D.rbe.length?'The outer radiation belt filled with extra fast electrons (above 2 MeV) '+plural(D.rbe.length,'time'):'The radiation belts had no logged boosts';
   return '<h2>Earth</h2>'+fin(head)
   +'<div class="card"><h3>The month at Earth</h3><p class="sub">Each little Earth is one day ('+winLabel+', UTC). The ring round each Earth shows the strongest thing logged that day.</p>'
   +'<div class="cal sky" role="group" aria-label="Days at Earth: pick one to see Earth\'s shield that day">'+cells+'</div>'
   +'<ul class="calkey"><li><span class="d storm"></span>Storm started: aurora (G level shown)</li><li><span class="d shock"></span>Shock wave arrived</li><li><span class="d stream"></span>Fast solar wind arrived</li><li><span class="d calm"></span>Nothing logged</li></ul>'
-  +'<p class="eli">"Nothing logged" means NASA recorded no event that day. It is not a measurement of Earth\'s magnetic field, so a small disturbance can still have happened.</p></div>'
+  +'<p class="eli">'+(KP&&KP.daily.length?'The number under each day is NOAA\'s measured Kp, the highest that day: 0 to 3 is calm, 4 is unsettled, and 5 or more is a storm.':'"Nothing logged" means NASA recorded no event that day. It is not a measurement of Earth\'s magnetic field, so a small disturbance can still have happened.')+'</p></div>'
   +'<div style="height:14px"></div><h3>Around Earth</h3>'
   +'<p class="sub">'+rbeTxt+(D.mpc.length?', and the magnetic shield was pushed in past the geostationary satellites '+plural(D.mpc.length,'time')+'.':'; the magnetic shield was never pushed in past the geostationary satellites.')+' Tap a day on the calendar to see Earth\'s shield that day.</p>'
   +'<div id="shield">'+shieldHtml(sd0)+'</div>'
@@ -710,7 +762,7 @@ const GLOSS=[['CME','Coronal mass ejection: a cloud of solar plasma thrown into 
  ['WSA-Enlil','The model NASA uses to forecast when a CME will arrive. Arrival times can be off by several hours.']];
 function footHtml(){
   return '<details><summary>Glossary</summary><dl>'+GLOSS.map(g=>'<dt>'+g[0]+'</dt><dd>'+g[1]+'</dd>').join('')+'</dl></details>'
-   +'<p>Source: NASA CCMC DONKI API. Data pulled '+esc(M.pulled)+'. Fetched from NASA every 3 hours by a scheduled job on an iMac; this page shows the latest saved copy.</p>'
+   +'<p>Source: NASA CCMC DONKI API. Data pulled '+esc(M.pulled)+'. Fetched from NASA every 3 hours by a scheduled job on an iMac; this page shows the latest saved copy.'+(KP?' Kp from NOAA SWPC and aurora alerts from AuroraWatch UK (Lancaster University), checked every half hour.':'')+'</p>'
    +'<p>'+(partial?'<strong>Coverage.</strong> The CME list covers '+cmeLabel+' only; flares, shocks and other feeds cover '+winLabel+'.':'<strong>Coverage.</strong> All feeds cover '+winLabel+'.')+' An empty list means no events were logged.</p>';
 }
 
@@ -867,15 +919,28 @@ function deliver(res,w,urls){
   start(out.D);
   if(out.problems.length){const c=$('#cover');c.textContent=(c.textContent?c.textContent+' ':'')+'Some feeds had problems: '+out.problems.join('; ')+'.'}
 }
-const SNAPSHOT='../../data/donki.json';
+const SNAPSHOT='../../data/donki.json',KPFILE='../../data/kp.json';
+let KP=null;
+/* kp.json is optional: anything missing or malformed is dropped here, and the page renders without it.
+   Only numbers, ISO times and whitelisted words get through, so nothing from the file reaches the page as markup. */
+function cleanKp(s){
+  if(!s||typeof s!=='object')return null;
+  const num=v=>typeof v==='number'&&v>=0&&v<=9?v:null,iso=/^\d{4}-\d\d-\d\dT\d\d:\d\d(:\d\d)?Z$/,at=k=>{const t=typeof s[k]==='string'?Date.parse(s[k]):NaN;return isNaN(t)?null:t};
+  const daily=Array.isArray(s.daily)?s.daily.filter(d=>d&&/^\d{4}-\d\d-\d\d$/.test(d.date)&&Array.isArray(d.kp)).map(d=>({date:d.date,kp:d.kp.slice(0,8).map(num)})):[];
+  const fc=Array.isArray(s.forecast)?s.forecast.filter(r=>r&&iso.test(r.t)&&num(r.kp)!=null&&['observed','estimated','predicted'].includes(r.kind)).map(r=>({t:r.t,kp:r.kp,kind:r.kind})):[];
+  const aw=s.aurorawatch&&['green','yellow','amber','red'].includes(s.aurorawatch.status)?s.aurorawatch.status:null;
+  return {daily,fc,aw,awAt:aw?at('aurorawatchAt'):null,fcAt:at('forecastAt')};
+}
+async function loadKp(){try{const r=await fetch(KPFILE,{cache:'no-cache'});KP=r.ok?cleanKp(await r.json()):null}catch(e){KP=null}}
 async function bootSnapshot(){
   pageMessage('good','Loading the latest snapshot','Reading the NASA DONKI snapshot saved by the iMac job.');
-  let s;
+  let s;const kpLoad=loadKp();
   try{const r=await fetch(SNAPSHOT,{cache:'no-cache'});if(!r.ok)throw new Error('HTTP '+r.status);s=await r.json()}
   catch(e){return pageMessage('crit','Snapshot unavailable','The saved NASA data could not be read ('+e.message+').')}
   const w=s&&s.window;
   if(!w||!/^\d{4}-\d{2}-\d{2}$/.test(w.end||'')||!s.payload) return pageMessage('crit','Snapshot unreadable','The saved NASA data is not in the expected shape.');
   const fetched=Date.parse(s.fetchedAt);
+  await kpLoad;
   deliver({payload:s.payload,cache:isNaN(fetched)?undefined:{storedAt:fetched}},w,feedUrls(w));
 }
 bootSnapshot();

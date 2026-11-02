@@ -40,7 +40,7 @@ supplies a bare `PATH`. A pyenv upgrade silently breaks them all.
 
 | Job | Script | Interval | Repo | Logs |
 |---|---|---|---|---|
-| `com.dashboards.iss` | `tools/iss-update.sh` (in this repo) | 600s | `~/dashboards`, SSH remote | `/tmp/dashboards-iss.{log,err}` |
+| `com.dashboards.iss` | `tools/iss-update.sh` (in this repo; also runs `tools/fetch_kp.py`, which goes to the network at most every 30 min) | 600s | `~/dashboards`, SSH remote | `/tmp/dashboards-iss.{log,err}` |
 | `com.dashboards.donki` | `tools/donki-update.sh` (in this repo) | 10800s | `~/dashboards`, SSH remote | `/tmp/dashboards-donki.{log,err}` |
 | hourly sync | `~/bin/sync-dashboards.sh` (not in this repo) | hourly at :10 | `~/dashboards-source`, HTTPS + keychain | `~/dashboards-source/.last-sync-status.txt` |
 
@@ -157,6 +157,11 @@ prove the push landed. To check whether commits are stranded locally:
 Empty output means everything is pushed.
 
 ## Generated data files
+
+`data/kp.json` holds NOAA planetary Kp (last 30 days, plus the 3-day forecast) and the AuroraWatch UK
+status, written by `tools/fetch_kp.py` from the ISS job. Each source fails soft, keeping its previous
+part of the file. The page treats the file as optional: missing or malformed, it renders without
+"tonight" and the Kp labels.
 
 `data/iss.json` is written at runtime by `tools/fetch_iss.py` and is not
 committed on every branch. Its absence in a fresh clone is normal, not
