@@ -1,4 +1,4 @@
-<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'sha256-nWXuDmPPQcphGYcOE7pKSCgXis1K3QY6YWyDSBNnrpM=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
+<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-HGGCzNGDXA0aent0CYvp3meYCVoIw3U7du+q7L1rEMI=' 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
 var SCHEME=/^\s*([a-z][a-z0-9+.\-]*):/i,HREF={http:1,https:1,mailto:1,tel:1},SRC={http:1,https:1,blob:1};
 function okUrl(v,isSrc){var c=String(v).replace(/[\u0000- ]/g,""),m=SCHEME.exec(c);if(!m)return true;var s=m[1].toLowerCase();
 if(isSrc&&s==="data")return /^data:image\//i.test(c);return !!(isSrc?SRC:HREF)[s];}
@@ -65,14 +65,6 @@ h3{font-family:var(--font-display);font-size:1.0625rem;margin:0 0 2px}
 .status[data-lv="warn"]{border-left-color:var(--warn)} .status[data-lv="warn"] .g{color:var(--warn)}
 .status[data-lv="crit"]{border-left-color:var(--crit)} .status[data-lv="crit"] .g{color:var(--crit)}
 .cover{font-size:0.8438rem;color:var(--muted);margin:0 0 6px}
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-block:16px 12px}
-.kpi{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;min-width:0}
-.kpi.hero{grid-column:1/-1;border-color:var(--edge)}
-.kpi .l{font:500 0.75rem var(--font-data);color:var(--muted)}
-.kpi .n{font-family:var(--font-display);font-size:2.125rem;font-weight:700;line-height:1.1;margin-top:4px;font-variant-numeric:tabular-nums}
-.kpi.hero .n{font-size:clamp(1.75rem,5vw,2.5rem)}
-.kpi .d{font-size:0.875rem;color:var(--muted);margin-top:4px}
-.kpi svg{display:block;margin-top:8px}
 .stats{display:flex;flex-wrap:wrap;gap:8px 20px;margin-bottom:20px;font-size:0.875rem;color:var(--muted)}
 .stats b{color:var(--ink);font-variant-numeric:tabular-nums;font-weight:600}
 .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,520px),1fr));gap:14px;margin-bottom:22px}
@@ -102,6 +94,19 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
 .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:0.8125rem;color:var(--muted);margin-top:8px}
 .legend span{display:inline-flex;align-items:center;gap:6px}
 .legend svg{width:12px;height:12px;min-width:0;display:inline-block}
+.ep{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-block:12px}
+.ep.next{border-left:6px solid var(--accent)}
+.ep h3{margin:0 0 6px;text-wrap:balance}
+.ep p{margin:0;color:var(--muted)}
+.steps{list-style:none;margin:10px 0 0;padding:0}
+.steps li{position:relative;padding:0 0 14px 24px}
+.steps li::before{content:'';position:absolute;left:3px;top:.45em;width:11px;height:11px;border-radius:50%;background:var(--surface);border:2px solid var(--accent)}
+.steps li.storm::before{background:var(--crit);border-color:var(--crit)}
+.steps li::after{content:'';position:absolute;left:8px;top:calc(.45em + 13px);bottom:2px;width:2px;background:var(--line)}
+.steps li:last-child{padding-bottom:0}
+.steps li:last-child::after{display:none}
+.steps .t{font-weight:600}
+.steps .gap{display:block;font-size:.8125rem;color:var(--muted)}
 .eli{font-size:.875rem;color:var(--muted);margin:6px 0 0;max-width:68ch}
 .finding{font-size:1.125rem;font-weight:500;color:var(--ink);margin:4px 0 6px;max-width:64ch;text-wrap:pretty}
 footer{border-top:1px solid var(--line);margin-top:16px;padding-top:16px;color:var(--muted);font-size:0.875rem;max-width:84ch}
@@ -224,8 +229,6 @@ const CDAYS=Math.max(1,dayIdx(M.cmeEnd+'T00:00Z')+1-CO);
 const winLabel=dlab(0)+' to '+dlab(WDAYS-1);
 const cmeLabel=dlab(CO)+' to '+dlab(CO+CDAYS-1);
 const partial=(CO>0||CO+CDAYS<WDAYS);
-const inRecent=f=>{const i=dayIdx(f.p);return i>=CO&&i<CO+CDAYS};
-const recentFlares=D.flr.filter(inRecent);
 const xDay=(s,x0,x1,days,off=0)=>x0+(x1-x0)*((T(s)-day0)/864e5-off)/days;
 
 /* ---------- freshness and status ---------- */
@@ -252,7 +255,6 @@ function statusHtml(){const s=statusInfo();return '<div class="status" data-lv="
 
 /* ---------- building blocks ---------- */
 function svg(w,h,inner,label){return '<svg viewBox="0 0 '+w+' '+h+'" role="img" aria-label="'+esc(label)+'">'+inner+'</svg>'}
-function kpi(label,big,detail,extra,hero){return '<div class="kpi'+(hero?' hero':'')+'"><div class="l">'+label+'</div><div class="n">'+big+'</div><div class="d">'+detail+'</div>'+(extra||'')+eli(label)+'</div>'}
 function stat(n,l){return '<span><b>'+n+'</b> '+l+'</span>'}
 function empty(t,b){return '<div class="emptybox"><strong>'+t+'</strong>'+b+'</div>'}
 function table(cols,rows,o){
@@ -266,10 +268,6 @@ function figure(title,sub,svgHtml,cols,rows,extra){
   return '<div class="card"><div class="top"><div><h3>'+title+'</h3>'+(eli(title)||'<p class="sub">'+sub+'</p>')+'</div><button type="button" class="btn sm" data-tbl aria-pressed="false">View as table</button></div>'
    +'<div class="chartwrap"><div class="chart">'+svgHtml+'</div>'+(extra||'')+'</div>'
    +'<div class="tblwrap" hidden>'+table(cols,rows,{cap:title,inFig:1})+'</div></div>';
-}
-function spark(vals){
-  const W=120,H=26,mx=Math.max(1,...vals),bw=W/vals.length;
-  return '<svg width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'" aria-hidden="true" style="min-width:0">'+vals.map((v,i)=>'<rect x="'+(i*bw+1)+'" y="'+(H-v/mx*(H-2)-1)+'" width="'+(bw-2)+'" height="'+(v/mx*(H-2)+1)+'" rx="1" fill="var(--accent)"/>').join('')+'</svg>';
 }
 const shapeAt=(t,x,y,r,col,title,fillOp)=>{
   const f=' fill="'+col+'" fill-opacity="'+(fillOp||1)+'" stroke="'+col+'"';
@@ -336,43 +334,64 @@ const legendSCO='<div class="legend"><span><svg viewBox="0 0 12 12" aria-hidden=
 const legendFl='<div class="legend"><span><svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4" fill="var(--c-s)"/></svg>C-class</span><span><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,0 12,6 6,12 0,6" fill="var(--accent)"/></svg>M-class or stronger</span><span>Shaded band: '+cmeLabel+'</span></div>';
 
 /* ---------- panels ---------- */
-function heroKpi(){
-  const up=upcoming(1)[0];
-  if(up)return kpi('Next CME arrival at Earth (model)',fmt(up.earth.t)+' <span style="font-size:.5em;font-weight:500">'+tzName()+'</span>',kpTxt(up)+' · '+(up.earth.gb?'glancing blow':'direct hit')+' · in '+hoursTxt(hrs(new Date(NOW).toISOString(),up.earth.t)),'',true);
-  return kpi('Next CME arrival at Earth (model)','None expected','No modelled CME arrivals are pending as of this update.','',true);
-}
 const plural=(n,w)=>n+' '+w+(n===1?'':'s');
 const fin=t=>'<p class="finding">'+t+'</p>';
 const topFlare=()=>D.flr.slice().sort((a,b)=>flux(b.c)-flux(a.c))[0];
 const topStorm=()=>D.gst.slice().sort((a,b)=>b.kp-a.kp)[0];
-function strongest(){return recentFlares.slice().sort((a,b)=>flux(b.c)-flux(a.c))[0]}
-function geoKpi(){
-  if(!D.gst.length)return kpi('Geomagnetic storms','None','No storms logged in '+winLabel+'.');
-  const g=D.gst.slice().sort((a,b)=>b.kp-a.kp)[0];
-  return kpi('Geomagnetic storms',D.gst.length,'Peak Kp '+g.kp+' ('+gScale(g.kp)+'), '+winLabel+'.');
+function medErr(){const er=arrivalRows().map(r=>Math.abs(hrs(r.pred,r.ips))).sort((a,b)=>a-b);return er.length?{n:er.length,med:er.length%2?er[(er.length-1)/2]:(er[er.length/2-1]+er[er.length/2])/2}:null}
+const kpR=k=>Math.round(k*10)/10;
+const day=s=>fmt(s).split(' ').slice(0,2).join(' ');
+const clsWord=c=>({X:'huge',M:'medium',C:'small'})[c[0]]||'tiny';
+function later(a,b){const h=hrs(a,b);return h<1?Math.max(1,Math.round(h*60))+' min later':h<48?(Math.round(h)===1?'1 hour later':Math.round(h)+' hours later'):Math.round(h/24)+' days later'}
+/* One episode per storm, built only from NASA's links: storm -> shock or fast stream -> CME -> flare. */
+function episodes(){
+  return D.gst.slice().sort((a,b)=>T(b.t)-T(a.t)).map(g=>{
+    const ips=D.ips.filter(i=>g.lk.includes(i.id)),hss=D.hss.filter(h=>g.lk.includes(h.id)),mpc=D.mpc.filter(m=>g.lk.includes(m.id));
+    const cme=ips.flatMap(i=>i.lk.map(k=>cmeById[k]).filter(Boolean)).sort((a,b)=>(b.sp||0)-(a.sp||0))[0];
+    const fl=cme&&D.flr.find(f=>f.lk.includes(cme.id));
+    const st=[];
+    if(fl)st.push({t:fl.p,k:'sun',x:'The Sun flares: '+(/^[MX]/.test(fl.c)?'an ':'a ')+fl.c+' flare ('+clsWord(fl.c)+').'});
+    if(cme)st.push({t:cme.t,k:'sun',x:'A cloud of gas leaves the Sun'+(cme.sp?' at '+cme.sp+' km/s':'')+'.'});
+    if(cme||!hss.length)ips.forEach(i=>st.push({t:i.t,k:'hit',x:cme?'The cloud reaches Earth.':'A shock wave reaches Earth.'}));
+    hss.forEach(h=>st.push({t:h.t,k:'hit',x:'A fast stream of solar wind reaches Earth.'}));
+    st.push({t:g.t,k:'storm',x:'A geomagnetic storm starts, reaching Kp '+kpR(g.kp)+' ('+gScale(g.kp)+').'});
+    mpc.forEach(m=>st.push({t:m.t,k:'hit',x:'Earth\'s magnetic shield is pushed in past the satellites.'}));
+    st.sort((a,b)=>T(a.t)-T(b.t));
+    return {g,st,cause:cme?'eruption':hss.length?'stream':null};
+  });
+}
+function epHtml(e){
+  const word=gScale(e.g.kp).replace(/^G\d /,'');
+  const why={eruption:'A solar eruption caused a ',stream:'A fast solar wind stream caused a '}[e.cause]||'A ';
+  let prev=null;
+  const li=e.st.map(s=>{const gap=prev?'<span class="gap">'+later(prev,s.t)+'</span>':'';prev=s.t;return '<li class="'+s.k+'">'+gap+'<span class="t">'+fmt(s.t)+'</span> '+s.x+'</li>'}).join('');
+  return '<article class="ep"><h3>'+day(e.g.t)+': '+why+word+' storm (Kp '+kpR(e.g.kp)+')</h3><ol class="steps">'+li+'</ol></article>';
+}
+function comingHtml(){
+  const up=upcoming(1)[0],m=medErr();
+  if(!up)return '<div class="ep next"><h3>Coming up</h3><p>No solar clouds are forecast to reach Earth at the moment.</p></div>';
+  return '<div class="ep next"><h3>Coming up: a cloud is forecast to reach Earth on '+fmt(up.earth.t)+' '+tzName()+'</h3>'
+   +'<p>It left the Sun on '+fmt(up.t)+(up.sp?' at '+up.sp+' km/s':'')+'. The forecast is '+kpTxt(up)+(up.earth.gb?', as a glancing blow':', as a direct hit')+'; a storm starts at Kp 5.'
+   +(m?' Past forecasts were a median '+Math.round(m.med)+' hours early or late, so treat the time as rough.':'')+'</p></div>';
 }
 const panels={
 now(){
-  const s=strongest(),cd=chartCmeDaily();
-  const fl=Array(CDAYS).fill(0);recentFlares.forEach(f=>fl[dayIdx(f.p)-CO]++);
-  const f=topFlare(),g=topStorm();
-  return '<h2>Now</h2>'+fin('Over '+winLabel+': '+plural(D.flr.length,'flare')+(f?' (strongest '+f.c+')':'')+', '+plural(D.cme.length,'CME')+' and '+plural(D.gst.length,'geomagnetic storm')+(g?' (peak Kp '+g.kp+')':'')+'.')+'<p class="sub">Headline figures cover '+cmeLabel+'. Charts and storm counts say when they cover the longer window.</p>'
-  +'<div class="kpis">'+heroKpi()
-  +kpi('Strongest flare, '+cmeLabel,s?s.c:'None',s?'Peak '+fmt(s.p)+' '+tzName()+', from '+s.loc:'No flares logged in this period.',spark(fl))
-  +geoKpi()
-  +kpi('CMEs, '+cmeLabel,D.cme.length,D.cme.filter(c=>c.sp>=1000).length+' at 1000 km/s or faster.',spark(cd.counts))
-  +'</div>'
-  +'<div class="stats">'+stat(recentFlares.length,'flares ('+mFlares.filter(inRecent).length+' M-class or stronger) in '+cmeLabel)+stat(earthIps.length,'shocks reached Earth')+stat(D.hss.length,'high speed streams')+stat(D.rbe.length,'radiation belt enhancements')+stat(D.sep.length,'particle event records')+'</div>'
-  +'<div class="grid2">'
-  +figure('Flares, '+winLabel,'Peak X-ray class on a log scale. Diamonds are M-class or stronger.',chartFlares(),[{h:'Class'},{h:'Peak ('+tzName()+')'},{h:'Source'}],D.flr.map(f=>[f.c,fmt(f.p),f.loc]),legendFl)
-  +figure('CMEs per day, '+cmeLabel,'Counts of CMEs by start day (UTC).',cd.svg,[{h:'Day (UTC)'},{h:'CMEs',n:1}],cd.counts.map((c,i)=>[dlab(i+CO),c]))
-  +'</div>';
+  const ep=episodes(),n=ep.length,er=ep.filter(e=>e.cause==='eruption').length,st=ep.filter(e=>e.cause==='stream').length,un=n-er-st;
+  const parts=[er?er+' from '+(er===1?'a solar eruption':'solar eruptions'):'',st?st+' from '+(st===1?'a fast solar wind stream':'fast solar wind streams'):'',un?un+' with no cause recorded':''].filter(Boolean);
+  return '<h2>Now</h2>'+fin(n?'From '+winLabel+', Earth had '+plural(n,'geomagnetic storm')+': '+parts.join(', ')+'.':'No geomagnetic storms in '+winLabel+'. Earth\'s magnetic field stayed calm.')
+  +comingHtml()
+  +(n?'<h3>The storms, newest first</h3><p class="sub">Each story follows NASA\'s own links, from the Sun to the storm at Earth. Times in '+tzName()+'.</p>'+ep.map(epHtml).join(''):'')
+  +'<p class="sub">The Sun, Earth and Forecasts tabs hold the detail behind these stories.</p>';
 },
 sun(){
   const rows=D.cme.map(c=>[fmt(c.t),c.loc||'none',c.sp==null?'n/a':c.sp,c.ha!=null?c.ha+'°':'n/a',c.ty||'n/a']);
-  const f=topFlare(),fast=D.cme.filter(c=>c.sp>=1000).length;
+  const f=topFlare(),fast=D.cme.filter(c=>c.sp>=1000).length,cd=chartCmeDaily();
   return '<h2>Sun</h2>'+fin(plural(D.flr.length,'flare')+(f?', strongest '+f.c+' on '+fmt(f.p)+' '+tzName():'')+'. '+fast+' of '+plural(D.cme.length,'CME')+(fast===1?' was':' were')+' fast (1000 km/s or more).')+'<p class="sub">Coronal mass ejections, flares and solar energetic particle events.</p>'
   +'<div class="stats">'+stat(D.cme.length,'CMEs, '+cmeLabel)+stat(D.cme.filter(c=>c.sp>=1000).length,'at 1000 km/s or faster')+stat(D.flr.length,'flares, '+winLabel)+stat(D.sep.length,'particle event records')+'</div>'
+  +'<div class="grid2">'
+  +figure('Flares, '+winLabel,'Peak X-ray class on a log scale. Diamonds are M-class or stronger.',chartFlares(),[{h:'Class'},{h:'Peak ('+tzName()+')'},{h:'Source'}],D.flr.map(f=>[f.c,fmt(f.p),f.loc]),legendFl)
+  +figure('CMEs per day, '+cmeLabel,'Counts of CMEs by start day (UTC).',cd.svg,[{h:'Day (UTC)'},{h:'CMEs',n:1}],cd.counts.map((c,i)=>[dlab(i+CO),c]))
+  +'</div>'
   +figure('CME speed and width','Each mark is one CME. Height is speed, size is half-angle, shape is class. Hover or focus a mark for detail, or use the table view.',chartCmeSpeed(),[{h:'Start ('+tzName()+')'},{h:'Source'},{h:'Speed km/s',n:1},{h:'Half-angle',n:1},{h:'Class'}],rows,legendSCO)
   +'<h3 style="margin-top:22px">Flares</h3><p class="sub">'+D.flr.length+' flares recorded for '+winLabel+', newest first.</p>'
   +table([{h:'Class'},{h:'Begin'},{h:'Peak'},{h:'End'},{h:'Source'},{h:'Region',n:1}],D.flr.slice().sort((a,b)=>T(b.p)-T(a.p)).map(f=>['<span class="pill'+(f.c[0]==='M'||f.c[0]==='X'?' m':'')+'">'+f.c+'</span>',fmt(f.b),fmt(f.p),fmt(f.e),f.loc,f.ar||'none']),{cap:'Solar flares'})
@@ -400,8 +419,8 @@ forecasts(){
   const ce=D.cme.filter(c=>c.earth).sort((a,b)=>T(a.earth.t)-T(b.earth.t));
   const ar=arrivalRows().sort((a,b)=>Math.abs(hrs(a.pred,a.ips))-Math.abs(hrs(b.pred,b.ips)));
   const state=c=>{const i=loggedIps(c);return i?'<span class="pill good">Logged '+fmt(i.t)+'</span>':T(c.earth.t)>NOW?'<span class="pill m">Due in '+hoursTxt(hrs(new Date(NOW).toISOString(),c.earth.t))+'</span>':'<span class="pill">Not logged yet</span>'};
-  const er=arrivalRows().map(r=>Math.abs(hrs(r.pred,r.ips))).sort((a,b)=>a-b),med=er.length?(er.length%2?er[(er.length-1)/2]:(er[er.length/2-1]+er[er.length/2])/2):null;
-  return '<h2>Forecasts</h2>'+fin(med==null?'No logged arrival at Earth can be checked against a forecast yet.':'Past arrivals landed a median '+med.toFixed(1)+' hours from the forecast ('+plural(er.length,'case')+').')+'<p class="sub">WSA-Enlil runs on CME analyses. These are forecasts, compared with the shock actually logged at Earth.</p>'
+  const m=medErr();
+  return '<h2>Forecasts</h2>'+fin(m==null?'No logged arrival at Earth can be checked against a forecast yet.':'Past arrivals landed a median '+m.med.toFixed(1)+' hours from the forecast ('+plural(m.n,'case')+').')+'<p class="sub">WSA-Enlil runs on CME analyses. These are forecasts, compared with the shock actually logged at Earth.</p>'
   +'<div class="stats">'+stat(ce.length,'CMEs modelled to reach Earth')+'</div>'
   +'<h3>Modelled Earth arrivals</h3><p class="sub">Kp ranges come from the model at several cone widths. A glancing blow is a weaker, off-centre hit.</p>'
   +(ce.length?table([{h:'CME start'},{h:'Model arrival'},{h:'Kp range',n:1},{h:'Type'},{h:'Status'}],ce.map(c=>[fmt(c.t),fmt(c.earth.t),kpOf(c)?kpOf(c)[0]+' to '+kpOf(c)[1]:'n/a',c.earth.gb?'<span class="pill">glancing</span>':'<span class="pill crit">direct</span>',state(c)]),{cap:'Modelled Earth arrivals'}):empty('No modelled Earth arrivals','No CME in '+cmeLabel+' has an Earth arrival in the model output.'))
@@ -528,14 +547,14 @@ function slim(F,w,pulledMs){
   const p=new Date(pulledMs);
   return {
     cme,
-    flr:F.FLR.map(f=>({id:id16(f.flrID),b:f.beginTime,p:f.peakTime,e:f.endTime||f.peakTime,c:f.classType,loc:f.sourceLocation,ar:f.activeRegionNum})),
+    flr:F.FLR.map(f=>({id:id16(f.flrID),lk:(f.linkedEvents||[]).map(l=>l&&l.activityID).filter(a=>typeof a==='string'&&a.includes('CME')).map(id16),b:f.beginTime,p:f.peakTime,e:f.endTime||f.peakTime,c:f.classType,loc:f.sourceLocation,ar:f.activeRegionNum})),
     sep:F.SEP.map(s=>({t:s.eventTime,ins:ins(s),n:(s.sentNotifications||[]).length})),
-    ips:F.IPS.map(s=>({t:s.eventTime,loc:s.location,ins:s.instruments.length,lk:(s.linkedEvents||[]).map(l=>l&&l.activityID).filter(a=>typeof a==='string'&&a.includes('CME')).map(id16)})),
-    hss:F.HSS.map(s=>({t:s.eventTime,ins:ins(s)})),
+    ips:F.IPS.map(s=>({id:s.activityID,t:s.eventTime,loc:s.location,ins:s.instruments.length,lk:(s.linkedEvents||[]).map(l=>l&&l.activityID).filter(a=>typeof a==='string'&&a.includes('CME')).map(id16)})),
+    hss:F.HSS.map(s=>({id:s.hssID,t:s.eventTime,ins:ins(s)})),
     rbe:F.RBE.map(s=>({t:s.eventTime,ins:ins(s),lk:(s.linkedEvents||[]).map(l=>l&&l.activityID).filter(a=>typeof a==='string').map(a=>a.slice(0,16)+a.slice(19))})),
     note:F.notifications.map(n=>({t:n.messageIssueTime,ty:n.messageType,id:n.messageID})),
-    gst:F.GST.map(x=>({t:x.startTime,kp:Math.max(0,...(x.allKpIndex||[]).map(k=>k.kpIndex).filter(v=>v!=null))})),
-    mpc:F.MPC.map(x=>({t:x.eventTime})),
+    gst:F.GST.map(x=>({lk:(x.linkedEvents||[]).map(l=>l&&l.activityID).filter(a=>typeof a==='string'),t:x.startTime,kp:Math.max(0,...(x.allKpIndex||[]).map(k=>k.kpIndex).filter(v=>v!=null))})),
+    mpc:F.MPC.map(x=>({id:x.mpcID,t:x.eventTime})),
     meta:{start:w.start,end:w.end,cmeStart:days[0]||w.start,cmeEnd:days[days.length-1]||w.end,
       pulled:p.getUTCDate()+' '+MONS[p.getUTCMonth()]+' '+p.getUTCFullYear()+' '+p.toISOString().slice(11,16)+' UTC',
       pulledIso:p.toISOString().slice(0,16)+'Z'}
