@@ -27,7 +27,7 @@ assert all(-52 < p[1] < 52 for p in s["track"]), "the ISS never goes past 51.6 d
 # passes: none visible in the next week from Thanet (all midnight, in shadow), then the 12 Nov evening one
 th = s["passes"]["thanet"]
 assert th and th[0]["start"].startswith("2026-11-12T18:2") and th[0]["from"] == "S", th[:1]
-assert all(10 <= p["peakEl"] <= 90 and p["mag"] < 3 for v in s["passes"].values() for p in v)
+assert all(10 <= p["peakEl"] <= 90 and p["mag"] < 3 and len(p["path"]) == 3 and p["path"][1][1] == p["peakEl"] for v in s["passes"].values() for p in v)
 # crew: only those on the ISS, plain text only, bad flag codes dropped
 c = s["people"]
 assert [p["name"] for p in c["crew"]] == ["Ann scriptLee/script", "Cy Ito"] and c["crew"][1]["flag"] == "" and c["elsewhere"] == 1 and c["expedition"] == 75

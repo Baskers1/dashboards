@@ -28,7 +28,7 @@ def hostile(payload):
     return p
 
 
-def check(browser, url, label, data=None, expect_tabs=True, kp="real", expect_text=None, refuse_text=None):
+def check(browser, url, label, data=None, expect_tabs=True, kp="real", expect_text=None, refuse_text=None, orbit="real"):
     ctx = browser.new_context(viewport={"width": 390, "height": 900})
     pg = ctx.new_page()
     errs, dialogs, csp = [], [], []
@@ -41,6 +41,10 @@ def check(browser, url, label, data=None, expect_tabs=True, kp="real", expect_te
         pg.route("**/data/kp.json", lambda r: r.fulfill(status=404, body="not found"))
     elif kp != "real":
         pg.route("**/data/kp.json", lambda r: r.fulfill(status=200, content_type="application/json", body=json.dumps(kp)))
+    if orbit is None:
+        pg.route("**/data/orbit.json", lambda r: r.fulfill(status=404, body="not found"))
+    elif orbit != "real":
+        pg.route("**/data/orbit.json", lambda r: r.fulfill(status=200, content_type="application/json", body=json.dumps(orbit)))
     pg.goto(url)
     pg.wait_for_timeout(1500)
     tabs = pg.locator("#tabs button").count()
@@ -71,6 +75,15 @@ def main():
             b = p.chromium.launch()
             check(b, url, "snapshot", expect_text="Could I see the aurora from Thanet tonight?")
             check(b, url, "no kp.json", kp=None, refuse_text="Could I see the aurora")
+            # the ISS tab: tonight's answer for the place, and safe with missing or tampered orbit data
+            check(b, url + "#iss", "ISS tab", expect_text="Could I see the ISS from Thanet tonight?")
+            check(b, url + "#iss", "no orbit.json", orbit=None, expect_text="No ISS data yet")
+            evil = "<img src=x onerror=alert(1)>"
+            check(b, url + "?place=plymouth#iss", "hostile orbit.json", orbit={"fetchedAt": evil, "periodMin": evil,
+                  "track": [["2026-11-02T23:00:00Z", 10, 20, 1], ["2026-11-02T23:01:00Z", 12, 23, 1], [evil, 999, 0, 1]],
+                  "passes": {"plymouth": [{"start": evil, "end": evil, "peak": evil, "peakEl": 99, "mag": evil, "from": evil, "to": "S", "path": []}], evil: []},
+                  "people": {"crew": [{"name": evil, "agency": evil, "position": evil, "flag": evil}], "expedition": evil, "elsewhere": evil}},
+                  expect_text="Could I see the ISS from Plymouth & Ivybridge tonight? Not in the next 10 days.")
             # one master page: ?place= changes the answer, not just the name (AuroraWatch names Scotland separately)
             yellow = dict(json.load(open(os.path.join(ROOT, "data", "kp.json"))), aurorawatch={"status": "yellow"})
             check(b, url + "?place=dundee", "Dundee on a yellow night", kp=yellow, expect_text="from Dundee & Tayside tonight? Maybe")

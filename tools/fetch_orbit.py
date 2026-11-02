@@ -124,10 +124,10 @@ def passes(sts, lat, lon, keep=6):
         seen = el >= 10 and lit and dot(sun, up) < math.sin(math.radians(-6))
         if seen:
             if cur is None:
-                cur = {"start": t, "azStart": az, "peakEl": el, "peakT": t, "minRange": rng}
-            cur.update(end=t, azEnd=az)
+                cur = {"start": t, "azStart": az, "elStart": el, "peakEl": el, "peakT": t, "peakAz": az, "minRange": rng}
+            cur.update(end=t, azEnd=az, elEnd=el)
             if el > cur["peakEl"]:
-                cur.update(peakEl=el, peakT=t)
+                cur.update(peakEl=el, peakT=t, peakAz=az)
             cur["minRange"] = min(cur["minRange"], rng)
         elif cur is not None:
             found.append(cur)
@@ -138,7 +138,9 @@ def passes(sts, lat, lon, keep=6):
     return [{"start": p["start"].strftime(ISO), "end": p["end"].strftime(ISO), "peak": p["peakT"].strftime(ISO),
              "peakEl": round(p["peakEl"]), "from": c(p["azStart"]), "to": c(p["azEnd"]),
              # rough brightness: -1.8 at 1000 km, fainter with distance (ignores how much of it is lit)
-             "mag": round(-1.8 + 5 * math.log10(p["minRange"] / 1000), 1)}
+             "mag": round(-1.8 + 5 * math.log10(p["minRange"] / 1000), 1),
+             # where it appears, peaks and disappears: [azimuth, elevation] in degrees, for drawing its path across the sky
+             "path": [[round(p["azStart"]), round(p["elStart"])], [round(p["peakAz"]), round(p["peakEl"])], [round(p["azEnd"]), round(p["elEnd"])]]}
             for p in found if p["end"] > p["start"]][:keep]
 
 

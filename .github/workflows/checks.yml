@@ -14,6 +14,10 @@ jobs:
         run: python3 tools/test_fetch_donki.py
       - name: Self-tests for tools/fetch_kp.py
         run: python3 tools/test_fetch_kp.py
+      - name: Self-tests for tools/fetch_orbit.py
+        run: |
+          python3 -m pip install --quiet sgp4==2.27
+          python3 tools/test_fetch_orbit.py
       - name: Self-tests for tools/sync.py
         run: python3 tools/test_sync.py
       - name: Self-tests for tools/check_hardened.py
