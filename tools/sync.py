@@ -189,7 +189,8 @@ def build_hub():
     rows = []
     for key, label in M["areas"].items():
         # show_in lists a dashboard under another area's heading without moving its folder
-        listed = [d for d in M["dashboards"] if d.get("show_in", d["area"]) == key]
+        # links lists one page under several headings, each opening it for that area's place (?place=...)
+        listed = [d for d in M["dashboards"] if d.get("show_in", d["area"]) == key or key in d.get("links", {})]
         items = [d for d in listed if os.path.exists(os.path.join(folder(d), "index.html"))]
         for d in listed:
             if d not in items:
@@ -197,7 +198,8 @@ def build_hub():
         if not items:
             continue
         def links(prefix):
-            return "".join(f'<li><a href="{prefix}{d["area"]}/{d["slug"]}/">{html.escape(d["name"])}</a></li>' for d in items)
+            q = lambda d: f'?place={d["links"][key]}' if key in d.get("links", {}) else ""
+            return "".join(f'<li><a href="{prefix}{d["area"]}/{d["slug"]}/{q(d)}">{html.escape(d["name"])}</a></li>' for d in items)
         rows.append(f'<section><h2><a href="{key}/">{html.escape(label)}</a></h2><ul>{links("")}</ul></section>')
         area_page = render(label, f"Every dashboard for {html.escape(label)}. Each page updates itself on a schedule.",
                            f"<ul>{links('../')}</ul>", '<p class="back"><a href="../">&larr; All areas</a></p>')

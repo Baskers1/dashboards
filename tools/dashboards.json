@@ -335,7 +335,15 @@
    ],
    "area": "sky",
    "slug": "space-weather",
-   "name": "Space Weather (NASA DONKI)",
+   "name": "Space weather & aurora",
+   "links": {
+    "east-kent": "thanet",
+    "tayside": "tayside",
+    "west-herts": "west-herts",
+    "ammanford": "south-wales",
+    "neath-port-talbot": "south-wales",
+    "plymouth": "plymouth"
+   },
    "refresh_tasks": []
   },
   {

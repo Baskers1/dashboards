@@ -1,4 +1,4 @@
-<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'sha256-jXUcqjzFHMbi8tUHXrNvLq4etd/FUCfPyFWAzJev/rI=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
+<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-DyJszOxw8kaZpFtu4Fdewd6+2roqjdXjaPa8dXBwyrc=' 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
 var SCHEME=/^\s*([a-z][a-z0-9+.\-]*):/i,HREF={http:1,https:1,mailto:1,tel:1},SRC={http:1,https:1,blob:1};
 function okUrl(v,isSrc){var c=String(v).replace(/[\u0000- ]/g,""),m=SCHEME.exec(c);if(!m)return true;var s=m[1].toLowerCase();
 if(isSrc&&s==="data")return /^data:image\//i.test(c);return !!(isSrc?SRC:HREF)[s];}
@@ -165,6 +165,8 @@ details.more[open]{padding-bottom:12px}
 @keyframes sway{from{transform:translateX(-10px) skewX(-3deg)}to{transform:translateX(10px) skewX(3deg)}}
 @keyframes ray{from{opacity:.15}to{opacity:1}}
 @media (prefers-reduced-motion:reduce){.journey .sway,.journey .ray{animation:none}}
+label.place{display:inline-flex;align-items:center;gap:6px}
+label.place select{font:inherit;color:inherit;background:transparent;border:0;max-width:11rem}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .impact.plain{border-top:0;padding-left:1.1em;margin-top:4px}
 .journey{display:block;width:100%;height:auto;border-radius:10px;margin:6px 0 4px;font:500 11px var(--sans,system-ui)}
@@ -193,6 +195,7 @@ dt{font-weight:600;color:var(--ink)} dd{margin:0}
   </div>
   <div class="ctl">
     <span class="fresh" id="fresh" role="status"></span>
+    <label class="btn place">Place <select id="place" aria-label="Choose your place"></select></label>
     <button class="btn" id="tzbtn" type="button"></button>
     <button class="btn" id="thbtn" type="button"></button>
   </div>
@@ -207,6 +210,18 @@ dt{font-weight:600;color:var(--ink)} dd{margin:0}
 <script>
 const $=(s,r=document)=>r.querySelector(s);
 const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+/* Every place this page serves. Add a place = add a line. scot: AuroraWatch's wording names Scotland separately.
+   sky: the folder of that place's night-sky page (for cloud). Towns close together share a place: same aurora, same ISS. */
+const PLACES={
+ thanet:{name:'Thanet',full:'Thanet: Ramsgate, Broadstairs, Margate',lat:51.36,lon:1.40,scot:false,view:'Looking north over the sea from Thanet',sea:true,sky:'ramsgate',spot:'such as the cliffs at Margate or Broadstairs'},
+ tayside:{name:'Dundee & Tayside',full:'Dundee & Tayside: Dundee, Carnoustie',lat:56.46,lon:-2.97,scot:true,view:'Looking north from Dundee',sky:'dundee'},
+ 'west-herts':{name:'West Hertfordshire',full:'West Hertfordshire: Rickmansworth, Watford',lat:51.64,lon:-0.43,scot:false,view:'Looking north from Rickmansworth',sky:'rickmansworth'},
+ 'south-wales':{name:'Ammanford, Swansea & Neath Port Talbot',full:'Ammanford, Swansea & Neath Port Talbot',lat:51.72,lon:-3.90,scot:false,view:'Looking north from Ammanford',sky:'ammanford'},
+ plymouth:{name:'Plymouth & Ivybridge',full:'Plymouth & Ivybridge',lat:50.38,lon:-4.05,scot:false,view:'Looking north towards Dartmoor',sky:'plymouth'}};
+const PALIAS={ramsgate:'thanet',broadstairs:'thanet',margate:'thanet',dundee:'tayside',carnoustie:'tayside',rickmansworth:'west-herts',watford:'west-herts',
+ ammanford:'south-wales',swansea:'south-wales',neath:'south-wales','port-talbot':'south-wales','neath-port-talbot':'south-wales',ivybridge:'plymouth'};
+const placeKey=k=>(k=String(k||'').toLowerCase(),PLACES[k]?k:PALIAS[k]||null);
+let PLACE=placeKey(new URLSearchParams(location.search).get('place'))||placeKey(store.get('space-place'))||'thanet';
 const T=s=>new Date(s.endsWith('Z')?s:s+'Z');
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 /* ---------- page chrome that does not depend on data (set up once) ---------- */
@@ -596,7 +611,7 @@ function tonight(){
 /* The aurora is drawn only on an AuroraWatch alert. Each curtain is a wavy ribbon whose shape is animated (SVG
    animate, skipped under reduced motion), with fine rays flickering inside it and a squashed reflection in the sea. */
 function tonightArt(aw){
-  const W=340,H=170,hz=128,lv={red:3,amber:2,yellow:1}[aw]||0,id='tn',still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const P=PLACES[PLACE],W=340,H=170,hz=128,lv={red:3,amber:2,yellow:1}[aw]||0,id='tn',still=matchMedia('(prefers-reduced-motion: reduce)').matches;
   const ribbon=(seed,ht,ph)=>{let top='',bot='';for(let x=-20;x<=W+20;x+=10){
       const yt=hz-10-ht*(.55+.45*Math.sin(x/47+seed+ph))*(.82+.18*Math.sin(x/13+seed*2+ph*1.7)),yb=hz-4-5*Math.sin(x/60+seed+ph);
       top+=(top?'L':'M')+x+' '+yt.toFixed(1);bot='L'+x+' '+yb.toFixed(1)+bot}
@@ -623,27 +638,36 @@ function tonightArt(aw){
       +(rays?'<g clip-path="url(#'+id+'p'+n+')" opacity="'+(op*.55)+'">'+rays+'</g>':'')+'</g>'});
   let o='<rect width="'+W+'" height="'+H+'" fill="url(#'+id+'k)"/>'+skyStars(W,hz,13)+sky
    +'<rect y="'+hz+'" width="'+W+'" height="'+(H-hz)+'" fill="#081227"/>';
-  if(lv)o+='<g clip-path="url(#'+id+'w)" opacity=".35"><g transform="translate(0 '+hz+') scale(1 -.45) translate(0 -'+hz+')">'+sky+'</g></g>';
-  for(let y=hz+6;y<H;y+=7)o+='<path d="M0 '+y+'H'+W+'" stroke="#ffffff" stroke-opacity=".04"/>';
-  // North Foreland lighthouse on the shore, bottom right
-  o+='<path d="M286 '+H+'L292 '+(hz-14)+'h8L306 '+H+'z" fill="#1c2a4a"/><rect x="290" y="'+(hz-22)+'" width="12" height="8" fill="#1c2a4a"/><circle cx="296" cy="'+(hz-18)+'" r="2.5" fill="#ffe08a"/>'
-   +'<path d="M0 '+H+'V'+(H-10)+'Q60 '+(H-16)+' 120 '+(H-11)+'T260 '+(H-12)+'L340 '+(H-9)+'V'+H+'z" fill="#141f38"/>';
-  return '<svg class="journey" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="The northern sky over the sea from Thanet tonight: '+(lv?'aurora over the sea, as AuroraWatch\'s '+aw+' alert suggests':'no aurora expected')+'.">'
-   +'<defs>'+defs+'</defs>'+o+skyTxt(10,20,'Looking north over the sea from Thanet','start','#dfe6ff')+skyTxt(W/2,hz-4,'N','middle','#9aa6c8')+'</svg>';
+  if(P.sea){
+    if(lv)o+='<g clip-path="url(#'+id+'w)" opacity=".35"><g transform="translate(0 '+hz+') scale(1 -.45) translate(0 -'+hz+')">'+sky+'</g></g>';
+    for(let y=hz+6;y<H;y+=7)o+='<path d="M0 '+y+'H'+W+'" stroke="#ffffff" stroke-opacity=".04"/>';
+    // North Foreland lighthouse on the shore, bottom right
+    o+='<path d="M286 '+H+'L292 '+(hz-14)+'h8L306 '+H+'z" fill="#1c2a4a"/><rect x="290" y="'+(hz-22)+'" width="12" height="8" fill="#1c2a4a"/><circle cx="296" cy="'+(hz-18)+'" r="2.5" fill="#ffe08a"/>'
+     +'<path d="M0 '+H+'V'+(H-10)+'Q60 '+(H-16)+' 120 '+(H-11)+'T260 '+(H-12)+'L340 '+(H-9)+'V'+H+'z" fill="#141f38"/>';
+  }else{
+    // inland: rolling hills on the skyline, with a few lit windows
+    o+='<path d="M0 '+(hz-2)+'Q40 '+(hz-22)+' 90 '+(hz-10)+'T190 '+(hz-14)+'T290 '+(hz-6)+'T360 '+(hz-18)+'V'+H+'H0z" fill="#0d1a33"/>'
+     +'<path d="M0 '+(H-18)+'Q80 '+(H-30)+' 170 '+(H-20)+'T340 '+(H-24)+'V'+H+'H0z" fill="#141f38"/>'
+     +[30,44,120,212,226,300].map((x,i)=>'<rect x="'+x+'" y="'+(H-22-(i%3)*3)+'" width="3" height="3" fill="#ffe08a" opacity=".8"/>').join('');
+  }
+  return '<svg class="journey" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+P.view+' tonight: '+(lv?'aurora, as AuroraWatch\'s '+aw+' alert suggests':'no aurora expected')+'.">'
+   +'<defs>'+defs+'</defs>'+o+skyTxt(10,20,P.view,'start','#dfe6ff')+skyTxt(W/2,hz-4,'N','middle','#9aa6c8')+'</svg>';
 }
 function tonightHtml(){
   if(!KP||(!KP.aw&&!KP.fc.length))return '';
   const aw=KP.aw,t=tonight(),k=t.k,g=k!=null?gLevel(k):0,age=KP.awAt?(NOW-KP.awAt)/36e5:null;
-  const ans=aw==='red'?['Yes, quite possibly.','AuroraWatch has a red alert. Find somewhere dark with a clear view north, such as the cliffs at Margate or Broadstairs, away from street lights.']
-   :aw==='amber'?['Maybe, with a camera.','AuroraWatch has an amber alert. A phone camera pointed north often picks up aurora the eye misses. Find somewhere dark facing the sea.']
-   :aw==='yellow'?['Not from Thanet.','AuroraWatch shows minor activity, which reaches Scotland at most.']
-   :g?['Not yet.','NOAA forecasts a G'+g+' storm tonight (Kp '+kpR(k)+'), but AuroraWatch has not raised an alert. If it turns amber or red, it is worth a look.']
+  const P=PLACES[PLACE],look='Find somewhere dark with a clear view north'+(P.spot?', '+P.spot:'')+', away from street lights.';
+  // AuroraWatch's wording names Scotland separately, so the same status means more in Dundee than in Thanet
+  const ans=aw==='red'?['Yes, quite possibly.','AuroraWatch has a red alert. '+look]
+   :aw==='amber'?(P.scot?['Yes, likely.','AuroraWatch has an amber alert, and says aurora is likely visible by eye from Scotland. '+look]:['Maybe, with a camera.','AuroraWatch has an amber alert. A phone camera pointed north often picks up aurora the eye misses. '+look])
+   :aw==='yellow'?(P.scot?['Maybe, low in the north.','AuroraWatch shows minor activity, which can be visible by eye from Scotland. '+look]:['Not from here.','AuroraWatch shows minor activity, which reaches Scotland at most.'])
+   :g?['Not yet.','NOAA forecasts a G'+g+' storm tonight (Kp '+kpR(k)+'), but AuroraWatch has not raised an alert. If it turns '+(P.scot?'yellow':'amber')+' or above, it is worth a look.']
    :['No, not tonight.',(aw?'AuroraWatch reports no significant activity':'There is no AuroraWatch reading')+(k!=null?', and NOAA forecasts Kp '+kpR(k)+' tonight, below storm level (Kp 5).':'.')];
-  return '<div class="ep next tonight"><h3>Could I see the aurora from Thanet tonight? '+ans[0]+'</h3>'+tonightArt(aw)
+  return '<div class="ep next tonight"><h3>Could I see the aurora from '+P.name+' tonight? '+ans[0]+'</h3>'+tonightArt(aw)
    +'<p>'+ans[1]+'</p><ul class="impact plain">'
    +(aw?'<li><b>AuroraWatch UK</b> ('+aw+(age!=null?', checked '+(age<1?'within the hour':Math.round(age)+' hours ago, so it may have changed'):'')+'): '+AWTXT[aw]+'</li>':'')
    +(k!=null?'<li><b>NOAA forecast</b> for tonight: Kp up to '+kpR(k)+(g?' (G'+g+' storm)':' (storms start at Kp 5)')+'.</li>':'')
-   +'<li><b>Clouds:</b> an alert is no use under cloud. The <a href="../ramsgate/">Ramsgate night sky</a> page has tonight\'s cloud forecast.</li></ul>'
+   +'<li><b>Clouds:</b> an alert is no use under cloud. The <a href="../'+P.sky+'/">'+P.sky[0].toUpperCase()+P.sky.slice(1)+' night sky</a> page has tonight\'s cloud forecast.</li></ul>'
    +'<p class="src">Alerts from <a href="https://aurorawatch.lancs.ac.uk/">AuroraWatch UK</a>, Lancaster University. Kp from <a href="https://www.swpc.noaa.gov/">NOAA SWPC</a>.</p></div>';
 }
 function journeySvg(e,n){
@@ -821,6 +845,9 @@ function render(){
   $('#tzbtn').setAttribute('aria-label','Showing times in '+tzName()+'. Switch to '+(TZ==='UTC'?'UK time':'UTC')+'.');
   show(cur,true);
 }
+$('#place').innerHTML=Object.entries(PLACES).map(([k,v])=>'<option value="'+k+'"'+(k===PLACE?' selected':'')+'>'+v.name+'</option>').join('');
+$('#place').onchange=e=>{PLACE=placeKey(e.target.value)||'thanet';store.set('space-place',PLACE);
+  history.replaceState(null,'','?place='+PLACE+location.hash);render()};
 $('#tzbtn').onclick=()=>{TZ=TZ==='UTC'?'Europe/London':'UTC';store.set('donki-tz',TZ==='UTC'?'utc':'uk');render()};
 render();
 let h0=(location.hash||'').slice(1);h0=OLD[h0]||h0;show(labels[h0]?h0:'now');

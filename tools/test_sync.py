@@ -179,6 +179,8 @@ assert '<h2><a href="east-kent/">' in hub, "area headings must link to the area 
 ek = open(os.path.join(s.ROOT, "east-kent", "index.html"), encoding="utf-8").read()
 assert 'href="../sky/ramsgate/"' in ek, "Ramsgate night sky must show on the East Kent page"
 assert 'href="../tayside/' not in ek, "area page must list only its own area"
+assert 'href="../sky/space-weather/?place=thanet"' in ek, "links: Space Weather opens for Thanet from the East Kent page"
+assert 'sky/space-weather/?place=tayside"' in hub, "links: and for Tayside under Tayside on the hub"
 sky = hub.split('<a href="sky/">')[1]
 assert "night sky" not in sky, "night-sky pages move to their own areas"
 print("hub ok")
