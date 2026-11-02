@@ -17,13 +17,14 @@ else for(var j=0;j<m.addedNodes.length;j++)fixTree(m.addedNodes[j]);}}).observe(
 })();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ISS Position</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
 :root{--bg:#f6f7f9;--fg:#14202e;--muted:#4a5a6b;--card:#fff;--line:#c9d2dc;--grid:#dde3ea;--accent:#0b5cad;--ok:#1d6b3a;--warn:#8a4b00;--warn-bg:#fff1dc}
 @media (prefers-color-scheme:dark){:root{--bg:#0e1621;--fg:#e6edf5;--muted:#a3b2c2;--card:#16212f;--line:#2c3b4d;--grid:#233143;--accent:#7bb8f5;--ok:#7fd69a;--warn:#ffc77a;--warn-bg:#3a2a10}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+body{margin:0;background:var(--bg);color:var(--fg);font:1rem/1.5 'IBM Plex Sans','Segoe UI',system-ui,sans-serif}
 main{max-width:46rem;margin:0 auto;padding:1.5rem 1rem 3rem;display:grid;gap:1rem}
-h1{margin:0;font-size:1.5rem}
+h1{margin:0;font-size:1.5rem;font-family:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif}
 .card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:1rem}
 #status{font-weight:600;padding:.75rem 1rem;border-radius:8px;border:1px solid var(--line);background:var(--card)}
 #status.stale{background:var(--warn-bg);color:var(--warn);border-color:var(--warn)}
