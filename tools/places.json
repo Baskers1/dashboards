@@ -1,0 +1,8 @@
+{
+ "_note": "Places the Space Weather page serves. Keys and coordinates must match PLACES in sky/space-weather/index.html (tools/test_fetch_orbit.py checks).",
+ "thanet": [51.36, 1.40],
+ "tayside": [56.46, -2.97],
+ "west-herts": [51.64, -0.43],
+ "south-wales": [51.72, -3.90],
+ "plymouth": [50.38, -4.05]
+}
