@@ -28,7 +28,7 @@ def hostile(payload):
     return p
 
 
-def check(browser, url, label, data=None, expect_tabs=True):
+def check(browser, url, label, data=None, expect_tabs=True, kp="real", expect_text=None, refuse_text=None):
     ctx = browser.new_context(viewport={"width": 390, "height": 900})
     pg = ctx.new_page()
     errs, dialogs, csp = [], [], []
@@ -37,18 +37,25 @@ def check(browser, url, label, data=None, expect_tabs=True):
     pg.on("console", lambda m: "Content Security Policy" in m.text and csp.append(m.text))
     if data is not None:  # serve a substitute snapshot in place of data/donki.json
         pg.route("**/data/donki.json", lambda r: r.fulfill(status=200, content_type="application/json", body=json.dumps(data)))
+    if kp is None:  # no kp.json at all: the page must still work, just without tonight's answer
+        pg.route("**/data/kp.json", lambda r: r.fulfill(status=404, body="not found"))
+    elif kp != "real":
+        pg.route("**/data/kp.json", lambda r: r.fulfill(status=200, content_type="application/json", body=json.dumps(kp)))
     pg.goto(url)
     pg.wait_for_timeout(1500)
     tabs = pg.locator("#tabs button").count()
     wide = pg.evaluate("document.documentElement.scrollWidth > innerWidth")
     status = pg.inner_text("#status")[:120].replace("\n", " ")
     imgs = pg.locator("img").count()
+    body = pg.inner_text("body")
     ctx.close()
     assert not errs, f"{label}: page errors {errs}"
     assert not dialogs and not imgs, f"{label}: injected markup ran"
     assert not csp, f"{label}: CSP violations {csp}"
     assert not wide, f"{label}: horizontal scroll at 390px"
     assert (tabs > 0) == expect_tabs, f"{label}: tabs={tabs}, status={status!r}"
+    assert expect_text is None or expect_text in body, f"{label}: missing {expect_text!r}"
+    assert refuse_text is None or refuse_text not in body, f"{label}: should not show {refuse_text!r}"
     print("ok", label, "|", status)
 
 
@@ -62,7 +69,13 @@ def main():
     try:
         with sync_playwright() as p:
             b = p.chromium.launch()
-            check(b, url, "snapshot")
+            check(b, url, "snapshot", expect_text="Could I see the aurora from Thanet tonight?")
+            check(b, url, "no kp.json", kp=None, refuse_text="Could I see the aurora")
+            evil = "<img src=x onerror=alert(1)>"
+            check(b, url, "hostile kp.json", kp={"fetchedAt": evil, "aurorawatch": {"status": evil}, "aurorawatchAt": evil,
+                  "daily": [{"date": evil, "kp": [99]}, {"date": SNAP["window"]["end"], "kp": [evil, 99, -5, 3]}],
+                  "forecast": [{"t": evil, "kp": 9, "kind": "predicted"}, {"t": "2099-01-01T00:00Z", "kp": evil, "kind": evil}]},
+                  refuse_text="Kp 99")
             check(b, url, "hostile snapshot", dict(SNAP, payload=hostile(SNAP["payload"])))
             check(b, url, "missing snapshot", {}, expect_tabs=False)
             # links from before the Nov 2026 tab rename still open the matching tab
