@@ -1,4 +1,4 @@
-<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-VrHCb/SIamI/7ghoS4BLFwFx2hi+nkSpfJxoGnc1QRg=' 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
+<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-NgogHhBNdVqYQURAKmxJqu7t80z2ruW91IGgvytKW+E=' 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
 var SCHEME=/^\s*([a-z][a-z0-9+.\-]*):/i,HREF={http:1,https:1,mailto:1,tel:1},SRC={http:1,https:1,blob:1};
 function okUrl(v,isSrc){var c=String(v).replace(/[\u0000- ]/g,""),m=SCHEME.exec(c);if(!m)return true;var s=m[1].toLowerCase();
 if(isSrc&&s==="data")return /^data:image\//i.test(c);return !!(isSrc?SRC:HREF)[s];}
@@ -114,6 +114,11 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
 .impact li{margin-bottom:4px}
 .impact .src{font-size:.8125rem;margin-top:6px}
 .impact a{color:var(--accent)}
+.funnel{list-style:none;padding:0;margin:10px 0 0;display:grid;gap:10px}
+.funnel .bar{display:block;height:20px;background:var(--accent);border-radius:4px}
+.funnel .lbl{display:block;margin-top:3px}
+details.more{margin-block:8px}
+details.more[open]{padding-bottom:12px}
 .eli{font-size:.875rem;color:var(--muted);margin:6px 0 0;max-width:68ch}
 .finding{font-size:1.125rem;font-weight:500;color:var(--ink);margin:4px 0 6px;max-width:64ch;text-wrap:pretty}
 footer{border-top:1px solid var(--line);margin-top:16px;padding-top:16px;color:var(--muted);font-size:0.875rem;max-width:84ch}
@@ -287,30 +292,33 @@ const shapeAt=(t,x,y,r,col,title,fillOp)=>{
 
 /* ---------- charts ---------- */
 function chartFlares(){
-  const W=720,H=300,L=46,R=16,Tp=14,B=34,days=WDAYS;
+  const W=360,H=240,L=30,R=6,Tp=14,B=28,days=WDAYS,lab3=D.flr.filter(f=>flux(f.c)>=5e-5).sort((a,b)=>flux(b.c)-flux(a.c)).slice(0,3).sort((a,b)=>T(a.p)-T(b.p));
   const fx=D.flr.map(f=>flux(f.c)),lo=Math.log10(Math.min(1e-6,...fx)),hi=Math.log10(Math.max(4e-5,...fx.map(v=>v*1.6)));
   const y=v=>Tp+(H-Tp-B)*(1-(Math.log10(v)-lo)/(hi-lo));
   const X=d=>L+(W-L-R)*d/days;
   let s='<rect x="'+X(CO)+'" y="'+Tp+'" width="'+(X(CO+CDAYS)-X(CO))+'" height="'+(H-Tp-B)+'" fill="var(--band)"/>';
   [[1e-7,'B1'],[1e-6,'C1'],[3e-6,'C3'],[1e-5,'M1'],[3e-5,'M3'],[1e-4,'X1'],[3e-4,'X3'],[1e-3,'X10']].filter(a=>Math.log10(a[0])>=lo-1e-9&&Math.log10(a[0])<=hi).forEach(a=>{s+='<line class="grid" x1="'+L+'" x2="'+(W-R)+'" y1="'+y(a[0])+'" y2="'+y(a[0])+'"/><text x="'+(L-6)+'" y="'+(y(a[0])+3)+'" text-anchor="end">'+a[1]+'</text>'});
-  for(let d=0;d<days-2;d+=5){s+='<line class="grid" x1="'+X(d)+'" x2="'+X(d)+'" y1="'+Tp+'" y2="'+(H-B)+'"/><text x="'+X(d)+'" y="'+(H-B+16)+'" text-anchor="middle">'+dlab(d)+'</text>'}
+  [[1e-5,'R1 radio'],[5e-5,'R2'],[1e-4,'R3']].filter(a=>Math.log10(a[0])>=lo&&Math.log10(a[0])<=hi).forEach(a=>{s+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+y(a[0])+'" y2="'+y(a[0])+'" stroke="var(--muted)" stroke-dasharray="3 3"/><text x="'+(W-R-2)+'" y="'+(y(a[0])-3)+'" text-anchor="end">'+a[1]+'</text>'});
+  for(let d=0;d<days-2;d+=7){s+='<line class="grid" x1="'+X(d)+'" x2="'+X(d)+'" y1="'+Tp+'" y2="'+(H-B)+'"/><text x="'+X(d)+'" y="'+(H-B+16)+'" text-anchor="middle">'+dlab(d)+'</text>'}
   s+='<line class="axis" x1="'+L+'" x2="'+(W-R)+'" y1="'+(H-B)+'" y2="'+(H-B)+'"/>';
-  D.flr.forEach(f=>{const m=f.c[0]==='M'||f.c[0]==='X';const x=xDay(f.p,L,W-R,days),yy=y(flux(f.c));
+  const lx=f=>xDay(f.p,L,W-R,days);
+  D.flr.slice().sort((a,b)=>T(a.p)-T(b.p)).forEach(f=>{const m=f.c[0]==='M'||f.c[0]==='X';const x=xDay(f.p,L,W-R,days),yy=y(flux(f.c));
     s+='<line x1="'+x+'" x2="'+x+'" y1="'+(H-B)+'" y2="'+yy+'" stroke="'+(m?'var(--accent)':'var(--c-s)')+'" stroke-width="1.5"/>'+shapeAt(m?'D':'S',x,yy,m?5:3.5,m?'var(--accent)':'var(--c-s)',f.c+' flare, peak '+fmt(f.p)+' '+tzName()+', '+f.loc);
-    if(m)s+='<text x="'+x+'" y="'+(yy-11)+'" text-anchor="middle" style="fill:var(--ink)">'+f.c+'</text>'});
-  const lab=D.flr.length+' flares in '+winLabel+', '+mFlares.length+' of them M-class or stronger'+(mFlares.length?', strongest '+mFlares.slice().sort((a,b)=>flux(b.c)-flux(a.c))[0].c:'')+'. The shaded band is '+cmeLabel+'. A table view is available.';
-  return svg(W,H,s,lab);
+    const k=lab3.indexOf(f);if(k>=0){const nx=lab3[k+1]&&lx(lab3[k+1])-x<34,pv=k>0&&x-lx(lab3[k-1])<34,a=nx?'end':pv?'start':'middle';
+      s+='<text x="'+(a==='end'?x+3:a==='start'?x-3:x)+'" y="'+(yy-11)+'" text-anchor="'+a+'" style="fill:var(--ink)">'+f.c+'</text>'}});
+  const lab=D.flr.length+' flares in '+winLabel+', '+mFlares.length+' of them M-class or stronger'+(mFlares.length?', strongest '+mFlares.slice().sort((a,b)=>flux(b.c)-flux(a.c))[0].c:'')+'. The shaded band is '+cmeLabel+'. Dashed lines mark NOAA radio-blackout levels. A table view is available.';
+  return svg(W,H,s,lab).replace('<svg ','<svg class="fit" ');
 }
 function chartCmeDaily(){
-  const W=720,H=240,L=34,R=12,Tp=14,B=30,n=CDAYS;
+  const W=360,H=200,L=24,R=4,Tp=14,B=26,n=CDAYS;
   const counts=Array(n).fill(0);D.cme.forEach(c=>{const i=dayIdx(c.t)-CO;if(i>=0&&i<n)counts[i]++});
   const top=Math.max(5,Math.ceil(Math.max(...counts)/5)*5),y=v=>Tp+(H-Tp-B)*(1-v/top),bw=(W-L-R)/n;
   let s='';
   for(let v=0;v<=top;v+=5)s+='<line class="grid" x1="'+L+'" x2="'+(W-R)+'" y1="'+y(v)+'" y2="'+y(v)+'"/><text x="'+(L-6)+'" y="'+(y(v)+3)+'" text-anchor="end">'+v+'</text>';
-  counts.forEach((c,i)=>{const x=L+i*bw+4;
-    s+='<rect x="'+x+'" y="'+y(c)+'" width="'+(bw-8)+'" height="'+(H-B-y(c))+'" fill="var(--accent)" rx="2"><title>'+dlab(i+CO)+': '+c+' CMEs</title></rect><text x="'+(x+(bw-8)/2)+'" y="'+(y(c)-4)+'" text-anchor="middle" style="fill:var(--ink)">'+c+'</text><text x="'+(x+(bw-8)/2)+'" y="'+(H-B+16)+'" text-anchor="middle">'+(n>16&&i%2?'':dlab(i+CO).split(' ')[0])+'</text>'});
+  counts.forEach((c,i)=>{const x=L+i*bw+1;
+    s+='<rect x="'+x+'" y="'+y(c)+'" width="'+Math.max(1,bw-2)+'" height="'+(H-B-y(c))+'" fill="var(--accent)" rx="1"><title>'+dlab(i+CO)+': '+c+' CMEs</title></rect>'+(i%7?'':'<text x="'+(x+(bw-2)/2)+'" y="'+(H-B+16)+'" text-anchor="middle">'+dlab(i+CO)+'</text>')});
   s+='<line class="axis" x1="'+L+'" x2="'+(W-R)+'" y1="'+(H-B)+'" y2="'+(H-B)+'"/>';
-  return {svg:svg(W,H,s,'CMEs per day, '+cmeLabel+': '+counts.join(', ')+'. A table view is available.'),counts};
+  return {svg:svg(W,H,s,'CMEs per day, '+cmeLabel+': '+counts.join(', ')+'. A table view is available.').replace('<svg ','<svg class="fit" '),counts};
 }
 function chartCmeSpeed(){
   const W=720,H=300,L=50,R=16,Tp=14,B=34,days=CDAYS;
@@ -409,20 +417,24 @@ now(){
 },
 sun(){
   const rows=D.cme.map(c=>[fmt(c.t),c.loc||'none',c.sp==null?'n/a':c.sp,c.ha!=null?c.ha+'°':'n/a',c.ty||'n/a']);
-  const f=topFlare(),fast=D.cme.filter(c=>c.sp>=1000).length,cd=chartCmeDaily();
-  return '<h2>Sun</h2>'+fin(plural(D.flr.length,'flare')+(f?', strongest '+f.c+' on '+fmt(f.p)+' '+tzName():'')+'. '+fast+' of '+plural(D.cme.length,'CME')+(fast===1?' was':' were')+' fast (1000 km/s or more).')+'<p class="sub">Coronal mass ejections, flares and solar energetic particle events.</p>'
-  +'<div class="stats">'+stat(D.cme.length,'CMEs, '+cmeLabel)+stat(D.cme.filter(c=>c.sp>=1000).length,'at 1000 km/s or faster')+stat(D.flr.length,'flares, '+winLabel)+stat(D.sep.length,'particle event records')+'</div>'
-  +'<div class="grid2">'
+  const cd=chartCmeDaily(),fc=D.cme.filter(c=>c.earth),ar=fc.filter(c=>loggedIps(c)),sm=ar.filter(c=>{const i=loggedIps(c);return D.gst.some(g=>g.lk.includes(i.id))});
+  const mf=D.flr.filter(f=>flux(f.c)>=1e-5),r2=D.flr.filter(f=>flux(f.c)>=5e-5);
+  const steps=[[D.cme.length,'clouds of gas left the Sun'],[fc.length,'were forecast to reach Earth'],[ar.length,'of those reached Earth'],[sm.length,'were linked to a geomagnetic storm']];
+  const funnel='<div class="card"><h3>From the Sun to a storm at Earth</h3><p class="eli">Most clouds leave the Sun in other directions and never come near us. Only the ones aimed at Earth can affect us.</p>'
+   +'<ol class="funnel">'+steps.map(([n,t])=>'<li><span class="bar" style="width:'+Math.max(1.5,D.cme.length?n/D.cme.length*100:0).toFixed(1)+'%"></span><span class="lbl"><b>'+n+'</b> '+t+'</span></li>').join('')+'</ol></div>';
+  const radio=mf.length?mf.length+' of '+plural(D.flr.length,'flare')+' were strong enough to disrupt shortwave radio on the daytime side of Earth'+(r2.length?'; '+r2.length+' could have blacked it out for tens of minutes (NOAA level R2) or longer.':', briefly and weakly (NOAA level R1).'):'None of the '+plural(D.flr.length,'flare')+' were strong enough to disrupt radio on Earth (none reached M-class).';
+  const more=(t,h)=>'<details class="more"><summary>'+t+'</summary>'+h+'</details>';
+  return '<h2>Sun</h2>'+fin('The Sun threw out '+plural(D.cme.length,'cloud')+' of gas. '+fc.length+' '+(fc.length===1?'was':'were')+' forecast to reach Earth, '+ar.length+' did, and '+sm.length+' '+(sm.length===1?'was':'were')+' linked to a storm.')
+  +funnel
+  +'<h3>Flares and radio</h3><p class="finding">'+radio+'</p>'
   +figure('Flares, '+winLabel,'Peak X-ray class on a log scale. Diamonds are M-class or stronger.',chartFlares(),[{h:'Class'},{h:'Peak ('+tzName()+')'},{h:'Source'}],D.flr.map(f=>[f.c,fmt(f.p),f.loc]),legendFl)
+  +'<div style="height:14px"></div>'
   +figure('CMEs per day, '+cmeLabel,'Counts of CMEs by start day (UTC).',cd.svg,[{h:'Day (UTC)'},{h:'CMEs',n:1}],cd.counts.map((c,i)=>[dlab(i+CO),c]))
-  +'</div>'
-  +figure('CME speed and width','Each mark is one CME. Height is speed, size is half-angle, shape is class. Hover or focus a mark for detail, or use the table view.',chartCmeSpeed(),[{h:'Start ('+tzName()+')'},{h:'Source'},{h:'Speed km/s',n:1},{h:'Half-angle',n:1},{h:'Class'}],rows,legendSCO)
-  +'<h3 style="margin-top:22px">Flares</h3><p class="sub">'+D.flr.length+' flares recorded for '+winLabel+', newest first.</p>'
-  +table([{h:'Class'},{h:'Begin'},{h:'Peak'},{h:'End'},{h:'Source'},{h:'Region',n:1}],D.flr.slice().sort((a,b)=>T(b.p)-T(a.p)).map(f=>['<span class="pill'+(f.c[0]==='M'||f.c[0]==='X'?' m':'')+'">'+f.c+'</span>',fmt(f.b),fmt(f.p),fmt(f.e),f.loc,f.ar||'none']),{cap:'Solar flares'})
-  +'<h3>Solar energetic particle events</h3><p class="sub">Each row is one instrument record. Records close together in time usually belong to one event.</p>'
-  +(D.sep.length?table([{h:'Time ('+tzName()+')'},{h:'Instrument'}],D.sep.map(s=>[fmt(s.t),s.ins[0]||'n/a']),{cap:'Solar energetic particle events'}):empty('No particle events logged','The SEP feed returned no events for '+winLabel+'.'))
-  +'<h3>CMEs</h3><p class="sub">Most accurate analysis for each of the '+D.cme.length+' CMEs.</p>'
-  +table([{h:'Start'},{h:'Source'},{h:'Speed km/s',n:1},{h:'Half-angle',n:1},{h:'Class'}],rows,{cap:'Coronal mass ejections'});
+  +'<h3>The detail</h3>'
+  +more('Every cloud\'s speed and width',figure('CME speed and width','Each mark is one CME. Height is speed, size is half-angle, shape is class.',chartCmeSpeed(),[{h:'Start ('+tzName()+')'},{h:'Source'},{h:'Speed km/s',n:1},{h:'Half-angle',n:1},{h:'Class'}],rows,legendSCO))
+  +more('All flares ('+D.flr.length+')',table([{h:'Class'},{h:'Begin'},{h:'Peak'},{h:'End'},{h:'Source'},{h:'Region',n:1}],D.flr.slice().sort((a,b)=>T(b.p)-T(a.p)).map(f=>['<span class="pill'+(f.c[0]==='M'||f.c[0]==='X'?' m':'')+'">'+f.c+'</span>',fmt(f.b),fmt(f.p),fmt(f.e),f.loc,f.ar||'none']),{cap:'Solar flares'}))
+  +more('Solar particle events ('+D.sep.length+')',D.sep.length?table([{h:'Time ('+tzName()+')'},{h:'Instrument'}],D.sep.map(s=>[fmt(s.t),s.ins[0]||'n/a']),{cap:'Solar energetic particle events'}):empty('No particle events logged','The SEP feed returned no events for '+winLabel+'.'))
+  +more('All clouds (CMEs) ('+D.cme.length+')',table([{h:'Start'},{h:'Source'},{h:'Speed km/s',n:1},{h:'Half-angle',n:1},{h:'Class'}],rows,{cap:'Coronal mass ejections'}));
 },
 earth(){
   const g=topStorm();
