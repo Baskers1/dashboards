@@ -1,4 +1,4 @@
-<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-NgogHhBNdVqYQURAKmxJqu7t80z2ruW91IGgvytKW+E=' 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
+<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'sha256-cvHsePEer6gEcEMWLHJX68odwY3Ow9KI/ygL1caMfbA=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
 var SCHEME=/^\s*([a-z][a-z0-9+.\-]*):/i,HREF={http:1,https:1,mailto:1,tel:1},SRC={http:1,https:1,blob:1};
 function okUrl(v,isSrc){var c=String(v).replace(/[\u0000- ]/g,""),m=SCHEME.exec(c);if(!m)return true;var s=m[1].toLowerCase();
 if(isSrc&&s==="data")return /^data:image\//i.test(c);return !!(isSrc?SRC:HREF)[s];}
@@ -119,6 +119,14 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
 .funnel .lbl{display:block;margin-top:3px}
 details.more{margin-block:8px}
 details.more[open]{padding-bottom:12px}
+.fclist{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:10px}
+.fc{background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--muted);border-radius:8px;padding:10px 12px}
+.fc.hit,.fc.quiet{border-left-color:var(--good)}
+.fc.false,.fc.missed{border-left-color:var(--warn)}
+.fc.open{border-left-style:dashed}
+.fc .t{display:block;font-weight:600}
+.fc .fx{display:block;color:var(--muted);font-size:.9375rem}
+.fc .verdict{display:block;margin-top:4px}
 .eli{font-size:.875rem;color:var(--muted);margin:6px 0 0;max-width:68ch}
 .finding{font-size:1.125rem;font-weight:500;color:var(--ink);margin:4px 0 6px;max-width:64ch;text-wrap:pretty}
 footer{border-top:1px solid var(--line);margin-top:16px;padding-top:16px;color:var(--muted);font-size:0.875rem;max-width:84ch}
@@ -351,6 +359,7 @@ const legendFl='<div class="legend"><span><svg viewBox="0 0 12 12" aria-hidden="
 /* ---------- panels ---------- */
 const plural=(n,w)=>n+' '+w+(n===1?'':'s');
 const fin=t=>'<p class="finding">'+t+'</p>';
+const more=(t,h)=>'<details class="more"><summary>'+t+'</summary>'+h+'</details>';
 const topFlare=()=>D.flr.slice().sort((a,b)=>flux(b.c)-flux(a.c))[0];
 const topStorm=()=>D.gst.slice().sort((a,b)=>b.kp-a.kp)[0];
 function medErr(){const er=arrivalRows().map(r=>Math.abs(hrs(r.pred,r.ips))).sort((a,b)=>a-b);return er.length?{n:er.length,med:er.length%2?er[(er.length-1)/2]:(er[er.length/2-1]+er[er.length/2])/2}:null}
@@ -423,7 +432,6 @@ sun(){
   const funnel='<div class="card"><h3>From the Sun to a storm at Earth</h3><p class="eli">Most clouds leave the Sun in other directions and never come near us. Only the ones aimed at Earth can affect us.</p>'
    +'<ol class="funnel">'+steps.map(([n,t])=>'<li><span class="bar" style="width:'+Math.max(1.5,D.cme.length?n/D.cme.length*100:0).toFixed(1)+'%"></span><span class="lbl"><b>'+n+'</b> '+t+'</span></li>').join('')+'</ol></div>';
   const radio=mf.length?mf.length+' of '+plural(D.flr.length,'flare')+' were strong enough to disrupt shortwave radio on the daytime side of Earth'+(r2.length?'; '+r2.length+' could have blacked it out for tens of minutes (NOAA level R2) or longer.':', briefly and weakly (NOAA level R1).'):'None of the '+plural(D.flr.length,'flare')+' were strong enough to disrupt radio on Earth (none reached M-class).';
-  const more=(t,h)=>'<details class="more"><summary>'+t+'</summary>'+h+'</details>';
   return '<h2>Sun</h2>'+fin('The Sun threw out '+plural(D.cme.length,'cloud')+' of gas. '+fc.length+' '+(fc.length===1?'was':'were')+' forecast to reach Earth, '+ar.length+' did, and '+sm.length+' '+(sm.length===1?'was':'were')+' linked to a storm.')
   +funnel
   +'<h3>Flares and radio</h3><p class="finding">'+radio+'</p>'
@@ -452,16 +460,30 @@ earth(){
   +(D.mpc.length?table([{h:'Time ('+tzName()+')'}],D.mpc.map(m=>[fmt(m.t)]),{cap:'Magnetopause crossings'}):empty('No magnetopause crossings logged','The feed returned no events for '+winLabel+'. That is normal in quiet periods.'));
 },
 forecasts(){
-  const ce=D.cme.filter(c=>c.earth).sort((a,b)=>T(a.earth.t)-T(b.earth.t));
+  const ce=D.cme.filter(c=>c.earth).sort((a,b)=>T(b.earth.t)-T(a.earth.t));
   const ar=arrivalRows().sort((a,b)=>Math.abs(hrs(a.pred,a.ips))-Math.abs(hrs(b.pred,b.ips)));
   const state=c=>{const i=loggedIps(c);return i?'<span class="pill good">Logged '+fmt(i.t)+'</span>':T(c.earth.t)>NOW?'<span class="pill m">Due in '+hoursTxt(hrs(new Date(NOW).toISOString(),c.earth.t))+'</span>':'<span class="pill">Not logged yet</span>'};
   const m=medErr();
-  return '<h2>Forecasts</h2>'+fin(m==null?'No logged arrival at Earth can be checked against a forecast yet.':'Past arrivals landed a median '+m.med.toFixed(1)+' hours from the forecast ('+plural(m.n,'case')+').')+'<p class="sub">WSA-Enlil runs on CME analyses. These are forecasts, compared with the shock actually logged at Earth.</p>'
-  +'<div class="stats">'+stat(ce.length,'CMEs modelled to reach Earth')+'</div>'
-  +'<h3>Modelled Earth arrivals</h3><p class="sub">Kp ranges come from the model at several cone widths. A glancing blow is a weaker, off-centre hit.</p>'
-  +(ce.length?table([{h:'CME start'},{h:'Model arrival'},{h:'Kp range',n:1},{h:'Type'},{h:'Status'}],ce.map(c=>[fmt(c.t),fmt(c.earth.t),kpOf(c)?kpOf(c)[0]+' to '+kpOf(c)[1]:'n/a',c.earth.gb?'<span class="pill">glancing</span>':'<span class="pill crit">direct</span>',state(c)]),{cap:'Modelled Earth arrivals'}):empty('No modelled Earth arrivals','No CME in '+cmeLabel+' has an Earth arrival in the model output.'))
-  +'<div style="height:22px"></div>'
-  +(ar.length?figure('How far off each forecast was','Hours between the model\'s arrival time and the shock logged at Earth, most accurate first.',chartArrivals(ar),[{h:'CME start'},{h:'Model arrival'},{h:'Shock logged'},{h:'Difference',n:1}],ar.map(r=>[fmt(r.cme),fmt(r.pred),fmt(r.ips),(hrs(r.pred,r.ips)>0?'+':'')+hrs(r.pred,r.ips).toFixed(1)+' h'])):empty('No comparison yet','No logged Earth shock in this window is linked to a CME with a modelled arrival, so there is nothing to compare. This is common when the CME list covers only '+cmeLabel+'.'));
+  // Each forecast against what happened: did the cloud arrive, and did NASA link a storm to its arrival?
+  const out=ce.map(c=>{const i=loggedIps(c),g=i&&D.gst.find(g=>g.lk.includes(i.id)),k=kpOf(c),fs=!!(k&&k[1]>=5);
+    return {c,i,g,k,fs,due:!i&&T(c.earth.t)>NOW,v:!i?null:fs&&g?'hit':fs?'false':g?'missed':'quiet'}});
+  const done=out.filter(o=>o.v),fsN=done.filter(o=>o.fs).length,fsHit=done.filter(o=>o.v==='hit').length,missed=done.filter(o=>o.v==='missed').length;
+  const VTXT={hit:'✓ Storm forecast, and a storm came.',false:'✗ Storm forecast, but none came.',missed:'✗ No storm forecast, but one came.',quiet:'✓ No storm forecast, and none came.'};
+  const row=o=>{const c=o.c,k=o.k,e=o.i?hrs(c.earth.t,o.i.t):0;
+    return '<li class="fc '+(o.v||'open')+'"><span class="t">Cloud that left the Sun '+fmt(c.t)+'</span>'
+     +'<span class="fx">Forecast: reaches Earth '+fmt(c.earth.t)+', '+(k?'Kp '+(k[0]===k[1]?k[0]:k[0]+' to '+k[1]):'Kp not given')+(o.fs?' (a storm).':' (below storm level).')+'</span>'
+     +'<span class="fx">What happened: '+(o.i?'arrived '+fmt(o.i.t)+' ('+(e>0?'+':'')+e.toFixed(1)+' h)'+(o.g?', and a storm reached Kp '+kpR(o.g.kp)+' ('+gScale(o.g.kp)+').':', and no storm followed.'):o.due?'not due yet ('+hoursTxt(hrs(new Date(NOW).toISOString(),c.earth.t))+' to go).':'no arrival logged.')+'</span>'
+     +(o.v?'<b class="verdict">'+VTXT[o.v]+'</b>':'')+'</li>'};
+  const head=!done.length?'No forecast arrival can be checked against what happened yet.':
+    plural(fsN,'forecast')+' said a storm would come'+(fsN?'; '+fsHit+' did':'')+'.'+(missed?' '+plural(missed,'cloud')+' with no storm forecast '+(missed===1?'was':'were')+' linked to one that came.':'')+(m?' Arrival times were a median '+Math.round(m.med)+' hours early or late.':'');
+  return '<h2>Forecasts</h2>'+fin(head)
+  +(fsN&&fsHit/fsN<0.5?'<p class="eli">So this month, a forecast storm was a possibility, not a promise, and the forecast time was rough.</p>':'')
+  +'<h3>Each forecast, and what happened</h3><p class="sub">Newest first. NASA\'s model (WSA-Enlil) forecasts when a cloud reaches Earth and how strong a storm it could cause; Kp 5 or more is a storm. Times in '+tzName()+'.</p>'
+  +(out.length?'<ol class="fclist">'+out.map(row).join('')+'</ol>':empty('No forecasts','No cloud in '+cmeLabel+' was forecast to reach Earth.'))
+  +'<div style="height:18px"></div>'
+  +(ar.length?figure('How far off each forecast was','Hours between the model\'s arrival time and the shock logged at Earth, most accurate first.',chartArrivals(ar),[{h:'CME start'},{h:'Model arrival'},{h:'Shock logged'},{h:'Difference',n:1}],ar.map(r=>[fmt(r.cme),fmt(r.pred),fmt(r.ips),(hrs(r.pred,r.ips)>0?'+':'')+hrs(r.pred,r.ips).toFixed(1)+' h'])):'')
+  +'<h3>The detail</h3>'
+  +more('All modelled arrivals ('+ce.length+')',ce.length?table([{h:'CME start'},{h:'Model arrival'},{h:'Kp range',n:1},{h:'Type'},{h:'Status'}],ce.map(c=>[fmt(c.t),fmt(c.earth.t),kpOf(c)?kpOf(c)[0]+' to '+kpOf(c)[1]:'n/a',c.earth.gb?'<span class="pill">glancing</span>':'<span class="pill crit">direct</span>',state(c)]),{cap:'Modelled Earth arrivals'}):'<p class="sub">None.</p>');
 }
 };
 const labels={now:'Now',sun:'Sun',earth:'Earth',forecasts:'Forecasts'};
