@@ -1,4 +1,4 @@
-<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-HGGCzNGDXA0aent0CYvp3meYCVoIw3U7du+q7L1rEMI=' 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
+<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-VrHCb/SIamI/7ghoS4BLFwFx2hi+nkSpfJxoGnc1QRg=' 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
 var SCHEME=/^\s*([a-z][a-z0-9+.\-]*):/i,HREF={http:1,https:1,mailto:1,tel:1},SRC={http:1,https:1,blob:1};
 function okUrl(v,isSrc){var c=String(v).replace(/[\u0000- ]/g,""),m=SCHEME.exec(c);if(!m)return true;var s=m[1].toLowerCase();
 if(isSrc&&s==="data")return /^data:image\//i.test(c);return !!(isSrc?SRC:HREF)[s];}
@@ -107,6 +107,13 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
 .steps li:last-child::after{display:none}
 .steps .t{font-weight:600}
 .steps .gap{display:block;font-size:.8125rem;color:var(--muted)}
+.steps .fx{display:block;font-size:.875rem;color:var(--muted)}
+.impact{margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
+.impact h4{margin:0 0 6px;font-size:1rem}
+.impact ul{margin:0;padding-left:1.1em}
+.impact li{margin-bottom:4px}
+.impact .src{font-size:.8125rem;margin-top:6px}
+.impact a{color:var(--accent)}
 .eli{font-size:.875rem;color:var(--muted);margin:6px 0 0;max-width:68ch}
 .finding{font-size:1.125rem;font-weight:500;color:var(--ink);margin:4px 0 6px;max-width:64ch;text-wrap:pretty}
 footer{border-top:1px solid var(--line);margin-top:16px;padding-top:16px;color:var(--muted);font-size:0.875rem;max-width:84ch}
@@ -350,28 +357,45 @@ function episodes(){
     const cme=ips.flatMap(i=>i.lk.map(k=>cmeById[k]).filter(Boolean)).sort((a,b)=>(b.sp||0)-(a.sp||0))[0];
     const fl=cme&&D.flr.find(f=>f.lk.includes(cme.id));
     const st=[];
-    if(fl)st.push({t:fl.p,k:'sun',x:'The Sun flares: '+(/^[MX]/.test(fl.c)?'an ':'a ')+fl.c+' flare ('+clsWord(fl.c)+').'});
+    if(fl)st.push({t:fl.p,k:'sun',x:'The Sun flares: '+(/^[MX]/.test(fl.c)?'an ':'a ')+fl.c+' flare ('+clsWord(fl.c)+').',fx:radioFx(fl.c)});
     if(cme)st.push({t:cme.t,k:'sun',x:'A cloud of gas leaves the Sun'+(cme.sp?' at '+cme.sp+' km/s':'')+'.'});
     if(cme||!hss.length)ips.forEach(i=>st.push({t:i.t,k:'hit',x:cme?'The cloud reaches Earth.':'A shock wave reaches Earth.'}));
     hss.forEach(h=>st.push({t:h.t,k:'hit',x:'A fast stream of solar wind reaches Earth.'}));
     st.push({t:g.t,k:'storm',x:'A geomagnetic storm starts, reaching Kp '+kpR(g.kp)+' ('+gScale(g.kp)+').'});
-    mpc.forEach(m=>st.push({t:m.t,k:'hit',x:'Earth\'s magnetic shield is pushed in past the satellites.'}));
+    mpc.forEach(m=>st.push({t:m.t,k:'hit',x:'Earth\'s magnetic shield is pushed in past the satellites.',fx:'Satellites in geostationary orbit, such as TV and weather satellites, are briefly outside the shield and exposed to the solar wind.'}));
     st.sort((a,b)=>T(a.t)-T(b.t));
     return {g,st,cause:cme?'eruption':hss.length?'stream':null};
   });
+}
+/* Effects paraphrase the NOAA Space Weather Scales (spaceweather.gov/noaa-scales-explanation).
+   They say what a storm of that level CAN do, not what this one did. */
+const GFX={
+ 1:{power:'Small fluctuations in the power grid are possible.',sats:'Minor effects on satellites are possible.',other:'Animals that navigate by magnetism, such as migrating birds, can be affected.'},
+ 2:{power:'Power networks far north may raise voltage alarms; long storms can damage transformers.',sats:'Satellites may need their orientation corrected, and their orbits drift slightly.',other:'Shortwave (HF) radio can fade far north.'},
+ 3:{power:'Grid operators may need to correct voltages, and some protective devices can trip by mistake.',sats:'Satellite parts can build up static charge, and low satellites such as the ISS feel more drag.',other:'Satellite navigation (GPS) and shortwave radio can drop out on and off.'},
+ 4:{power:'Voltage problems can be widespread, and some protective systems may wrongly switch parts of the grid off.',sats:'Satellites can build up charge and be harder to track.',other:'GPS can be degraded for hours and shortwave radio becomes patchy; currents flow in pipelines.'},
+ 5:{power:'Parts of the grid can collapse or black out, and transformers can be damaged.',sats:'Satellites can be hard to control and to talk to.',other:'Shortwave radio may be impossible for one to two days, and GPS degraded for days.'}};
+const gLevel=k=>k>=9?5:k>=8?4:k>=7?3:k>=6?2:k>=5?1:0;
+function radioFx(c){const f=flux(c);return f>=1e-4?'Radio: a wide blackout of shortwave radio on the daytime side of Earth, for about an hour or more (NOAA level R3 or higher).':f>=5e-5?'Radio: shortwave radio on the daytime side of Earth could black out for tens of minutes (NOAA level R2).':f>=1e-5?'Radio: brief, weak disruption to shortwave radio on the daytime side of Earth (NOAA level R1).':''}
+function impactHtml(e){
+  const n=gLevel(e.g.kp),fx=GFX[n];if(!fx)return '';
+  return '<div class="impact"><h4>What a storm this strong can do on Earth</h4><ul>'
+   +'<li><b>Power:</b> '+fx.power+'</li><li><b>Satellites:</b> '+fx.sats+'</li><li><b>Radio, GPS and wildlife:</b> '+fx.other+'</li>'
+   +'<li><b>People:</b> no direct health effects are listed.</li>'
+   +'</ul><p class="src">G'+n+' on the <a href="https://www.spaceweather.gov/noaa-scales-explanation">NOAA space weather scales</a>. This is what that level can do, not a report of what happened.</p></div>';
 }
 function epHtml(e){
   const word=gScale(e.g.kp).replace(/^G\d /,'');
   const why={eruption:'A solar eruption caused a ',stream:'A fast solar wind stream caused a '}[e.cause]||'A ';
   let prev=null;
-  const li=e.st.map(s=>{const gap=prev?'<span class="gap">'+later(prev,s.t)+'</span>':'';prev=s.t;return '<li class="'+s.k+'">'+gap+'<span class="t">'+fmt(s.t)+'</span> '+s.x+'</li>'}).join('');
-  return '<article class="ep"><h3>'+day(e.g.t)+': '+why+word+' storm (Kp '+kpR(e.g.kp)+')</h3><ol class="steps">'+li+'</ol></article>';
+  const li=e.st.map(s=>{const gap=prev?'<span class="gap">'+later(prev,s.t)+'</span>':'';prev=s.t;return '<li class="'+s.k+'">'+gap+'<span class="t">'+fmt(s.t)+'</span> '+s.x+(s.fx?'<span class="fx">'+s.fx+'</span>':'')+'</li>'}).join('');
+  return '<article class="ep"><h3>'+day(e.g.t)+': '+why+word+' storm (Kp '+kpR(e.g.kp)+')</h3><ol class="steps">'+li+'</ol>'+impactHtml(e)+'</article>';
 }
 function comingHtml(){
   const up=upcoming(1)[0],m=medErr();
   if(!up)return '<div class="ep next"><h3>Coming up</h3><p>No solar clouds are forecast to reach Earth at the moment.</p></div>';
   return '<div class="ep next"><h3>Coming up: a cloud is forecast to reach Earth on '+fmt(up.earth.t)+' '+tzName()+'</h3>'
-   +'<p>It left the Sun on '+fmt(up.t)+(up.sp?' at '+up.sp+' km/s':'')+'. The forecast is '+kpTxt(up)+(up.earth.gb?', as a glancing blow':', as a direct hit')+'; a storm starts at Kp 5.'
+   +'<p>It left the Sun on '+fmt(up.t)+(up.sp?' at '+up.sp+' km/s':'')+'. The forecast is '+kpTxt(up)+(up.earth.gb?', as a glancing blow':', as a direct hit')+(!kpOf(up)?'.':kpOf(up)[1]<5?'. That is below storm level (Kp 5), so NOAA lists no effects on Earth.':'. A storm starts at Kp 5; at Kp '+kpOf(up)[1]+' NOAA lists effects on power grids, satellites and radio.')
    +(m?' Past forecasts were a median '+Math.round(m.med)+' hours early or late, so treat the time as rough.':'')+'</p></div>';
 }
 const panels={
@@ -380,7 +404,7 @@ now(){
   const parts=[er?er+' from '+(er===1?'a solar eruption':'solar eruptions'):'',st?st+' from '+(st===1?'a fast solar wind stream':'fast solar wind streams'):'',un?un+' with no cause recorded':''].filter(Boolean);
   return '<h2>Now</h2>'+fin(n?'From '+winLabel+', Earth had '+plural(n,'geomagnetic storm')+': '+parts.join(', ')+'.':'No geomagnetic storms in '+winLabel+'. Earth\'s magnetic field stayed calm.')
   +comingHtml()
-  +(n?'<h3>The storms, newest first</h3><p class="sub">Each story follows NASA\'s own links, from the Sun to the storm at Earth. Times in '+tzName()+'.</p>'+ep.map(epHtml).join(''):'')
+  +(n?'<h3>The storms, newest first</h3><p class="sub">Each story follows NASA\'s own links, from the Sun to the storm at Earth. Times in '+tzName()+'. NOAA lists no health effects from storms like these for people on the ground; the radiation that matters to astronauts and polar flights comes from solar particle events, and NASA logged '+(D.sep.length?plural(D.sep.length,'solar particle event'):'none')+' this period.</p>'+ep.map(epHtml).join(''):'')
   +'<p class="sub">The Sun, Earth and Forecasts tabs hold the detail behind these stories.</p>';
 },
 sun(){
