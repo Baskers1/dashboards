@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-10-26T15:31:27Z",
- "collected": "26 October 2026",
+ "generated_at": "2026-11-02T09:25:56Z",
+ "collected": "2 November 2026",
  "items": [
   {
    "id": "angus-sds-rates",
@@ -10,16 +10,16 @@
    "status": "decision",
    "nodate": true,
    "deadline": "2026-10-23",
-   "time": "the personal assistant survey's reported closing date (23 October 2026, from a partnership social media post seen only in search results) has passed; on 26 October 2026 the four Engage Angus rates pages still showed survey links but no closing date, so check before you rely on any of them being open",
+   "time": "the personal assistant survey's reported closing date (23 October 2026, from a partnership social media post seen only in search results) has passed; on 2 November 2026 the Engage Angus page for direct payment recipients was still published with a survey but no closing date, so check before you rely on it being open",
    "topics": [
     "health"
    ],
    "plain": "Angus is considering paying set Fair Cost of Care rates when people arrange their own care with a direct payment. It wants views from care at home providers, personal assistants, their employers who get direct payments, and staff.",
-   "detail": "The Engage Angus page for care at home providers says the council is considering the Fair Cost of Care rates for Option 1 (direct payments), which are already used in Options 2 and 3 in Angus, and that feedback will help it understand the impact of set rates and inform any future decisions. Engage Angus lists separate surveys for personal assistants, staff, care at home providers and direct payment recipients; I could open only the care at home providers page. The surveys are anonymous. The partnership's social media post says the personal assistant survey closes on 23 October 2026 and will help inform future discussions about PA rates; I could not open the post itself, and I did not confirm whether the other surveys close on the same day. What the rates are, and whether they would change direct payment amounts, is not stated on the page I read. On 26 October 2026 the Engage Angus pages for personal assistants, staff, care at home providers and direct payment recipients were all still listed as published with survey links, but none showed a closing date; it is listed as Watch, not Open, for that reason.",
+   "detail": "The Engage Angus page for care at home providers says the council is considering the Fair Cost of Care rates for Option 1 (direct payments), which are already used in Options 2 and 3 in Angus, and that feedback will help it understand the impact of set rates and inform any future decisions. Engage Angus lists separate surveys for personal assistants, staff, care at home providers and direct payment recipients; I could open only the care at home providers page. The surveys are anonymous. The partnership's social media post says the personal assistant survey closes on 23 October 2026 and will help inform future discussions about PA rates; I could not open the post itself, and I did not confirm whether the other surveys close on the same day. What the rates are, and whether they would change direct payment amounts, is not stated on the page I read. On 2 November 2026 the care at home providers page would not open without signing in, while the direct payment recipients page was still published with an anonymous survey and no closing date; it is listed as Watch, not Open, for that reason.",
    "how": "Choose the survey for your role on Engage Angus (search the projects list for 'Rates'). If you are unsure which applies to you, ask the Angus Health and Social Care Partnership.",
-   "url": "https://engage.angus.gov.uk/rates-care-at-home-providers",
+   "url": "https://engage.angus.gov.uk/personal-assistant-rates-direct-payments",
    "urlLabel": "Have your say",
-   "src": "https://engage.angus.gov.uk/rates-care-at-home-providers",
+   "src": "https://engage.angus.gov.uk/personal-assistant-rates-direct-payments",
    "a": {
     "people": [
      [
@@ -417,18 +417,18 @@
    "title": "Wheelchair accessible taxis and private hire vehicles in Angus",
    "body": "Angus Council (Licensing)",
    "sector": "local",
-   "status": "open",
+   "status": "closed",
    "deadline": "2026-10-30",
    "closes": "17:00",
-   "time": "5pm on Friday 30 October 2026",
+   "time": "closed 5pm on 30 October 2026; no outcome published on 2 November 2026",
    "topics": [
     "travel"
    ],
    "plain": "Angus Council wants more wheelchair accessible taxis and private hire cars across Angus, including Carnoustie and Monifieth, and is asking licensed drivers and operators how to get there.",
-   "detail": "Opened 1 October 2026. The options are a revised fee structure with discounts for wheelchair accessible vehicles, removing the Angus zones limitation for these vehicles only, not requiring the knowledge test for a driver's licence where zones are removed for them, and licence conditions so an existing wheelchair accessible vehicle can only be replaced by a similar type. Background is in Committee Report 209/26 and a licensing cost comparison appendix. Officers will report the responses to the Civic Licensing Committee, which makes the final decision. The survey is aimed at licensed drivers and operators; the effect on wheelchair users is my reading of the purpose.",
+   "detail": "Opened 1 October 2026. The options are a revised fee structure with discounts for wheelchair accessible vehicles, removing the Angus zones limitation for these vehicles only, not requiring the knowledge test for a driver's licence where zones are removed for them, and licence conditions so an existing wheelchair accessible vehicle can only be replaced by a similar type. Background is in Committee Report 209/26 and a licensing cost comparison appendix. Officers will report the responses to the Civic Licensing Committee, which makes the final decision. The survey is aimed at licensed drivers and operators; the effect on wheelchair users is my reading of the purpose. On 2 November 2026 the Engage Angus page said the consultation has concluded. A report on the responses goes to the Civic Licensing Committee; no meeting date was given.",
    "how": "Licensed drivers and operators can complete the online survey on Engage Angus. For a Word or PDF copy, email LAWLicensing@angus.gov.uk.",
    "url": "https://engage.angus.gov.uk/expansion-of-wheelchair-accessible-taxi-and-private-hire-vehicle-provision-in-angus",
-   "urlLabel": "Have your say",
+   "urlLabel": "See the consultation page",
    "src": "https://engage.angus.gov.uk/expansion-of-wheelchair-accessible-taxi-and-private-hire-vehicle-provision-in-angus",
    "a": {
     "people": [
@@ -464,17 +464,17 @@
    "title": "Additional support needs (ASN) options for children and young people in Angus",
    "body": "Angus Council",
    "sector": "local",
-   "status": "open",
+   "status": "closed",
    "deadline": "2026-10-30",
-   "time": "closing time not stated on the page (closing date Friday 30 October 2026 confirmed on 19 October 2026)",
+   "time": "closed 30 October 2026; findings go to committee in January 2027",
    "topics": [
     "schools"
    ],
    "plain": "Six options for supporting children and young people with additional support needs across Angus, including Carnoustie. The council says it is not proposing a new special school.",
-   "detail": "Opened 2 September 2026. Options: expand resourced primary schools, add School and Pupil Support Assistants, more Principal Teacher (Inclusion) management time, more ASN teaching staff by locality, look at school building capacity that could be repurposed, and identify vacant buildings that could be used. The Engage Angus page now says there are eight drop-in sessions, one in each town, and you can go to whichever suits you. The council's 2 September news release listed four: Monifieth Learning Campus (14 September), Forfar Academy, Brechin High School and Abbeyview Campus, Arbroath (22 October, 6.30pm to 7.30pm). A council social media post seen only in search results mentions a Carnoustie High School session, 2pm to 3pm, and an Arbroath session on 26 October; I could not open it to confirm the dates, so check with the council. Focus groups are offered for children and young people. Feedback goes to the Family, Education and Justice Committee in January 2027.",
+   "detail": "Opened 2 September 2026. Options: expand resourced primary schools, add School and Pupil Support Assistants, more Principal Teacher (Inclusion) management time, more ASN teaching staff by locality, look at school building capacity that could be repurposed, and identify vacant buildings that could be used. The Engage Angus page now says there are eight drop-in sessions, one in each town, and you can go to whichever suits you. The council's 2 September news release listed four: Monifieth Learning Campus (14 September), Forfar Academy, Brechin High School and Abbeyview Campus, Arbroath (22 October, 6.30pm to 7.30pm). A council social media post seen only in search results mentions a Carnoustie High School session, 2pm to 3pm, and an Arbroath session on 26 October; I could not open it to confirm the dates, so check with the council. Focus groups are offered for children and young people. Feedback goes to the Family, Education and Justice Committee in January 2027. On 2 November 2026 the Engage Angus page said the consultation has concluded. Survey findings, children and young people's views and drop-in feedback go to the Family, Education and Justice Committee in January 2027.",
    "how": "Complete the online survey, attend a drop-in, or ask for paper copies on 03452 777 778.",
    "url": "https://engage.angus.gov.uk/asn-options-engagement",
-   "urlLabel": "Have your say",
+   "urlLabel": "See the consultation page",
    "src": "https://www.angus.gov.uk/news/have_your_say_on_additional_support_needs_asn_provision_in_angus",
    "a": {
     "people": [
@@ -518,17 +518,17 @@
    "title": "Mental Health Act Code of Practice: restraint and seclusion",
    "body": "Scottish Government",
    "sector": "central",
-   "status": "open",
+   "status": "closed",
    "deadline": "2026-10-29",
-   "time": "closing time not checked; confirm on the consultation page",
+   "time": "closed 29 October 2026; no outcome published on 2 November 2026",
    "topics": [
     "health"
    ],
    "plain": "Updated guidance on when restraint and seclusion can be used on people being treated for mental illness, with specific guidance for children and young people.",
-   "detail": "Opened 6 August 2026. Covers definitions and legal limits of restraint and seclusion, protections for autistic people and people with learning disabilities, nasogastric tube feeding, monitoring and staff training, plus two technical updates from the Mental Health (Scotland) Act 2015. It is aimed at practitioners, people with lived experience, families, carers and human-rights organisations.",
+   "detail": "Opened 6 August 2026. Covers definitions and legal limits of restraint and seclusion, protections for autistic people and people with learning disabilities, nasogastric tube feeding, monitoring and staff training, plus two technical updates from the Mental Health (Scotland) Act 2015. It is aimed at practitioners, people with lived experience, families, carers and human-rights organisations. On 2 November 2026 the consultation hub listed it as closed on 29 October 2026; the Scottish Government says responses are published, where permission was given, a few months after closing, followed by an analysis report.",
    "how": "Open the consultation portal and choose Begin consultation. Questions to mentalhealthlaw@gov.scot.",
    "url": "https://consult.gov.scot/mental-health/updates-code-of-practice-mental-health/",
-   "urlLabel": "Have your say",
+   "urlLabel": "See the consultation page",
    "src": "https://consult.gov.scot/mental-health/updates-code-of-practice-mental-health/",
    "a": {
     "people": [
@@ -572,18 +572,18 @@
    "title": "NHS Tayside Mental Health and Learning Disabilities Strategy (draft)",
    "body": "NHS Tayside",
    "sector": "health",
-   "status": "open",
+   "status": "closed",
    "deadline": "2026-10-31",
    "closes": "12:00",
-   "time": "12 noon",
+   "time": "closed 12 noon on 31 October 2026; no final strategy published on 2 November 2026",
    "topics": [
     "health"
    ],
    "plain": "The draft five-year plan for mental health and learning disability services across Tayside, which covers Dundee, Angus and Perth and Kinross.",
-   "detail": "Welcomes third sector groups, community groups, partner organisations, people with lived experience, carers, families, advocates, staff and members of the public. An online drop-in on Microsoft Teams was held on Thursday 15 October 2026, 10am to 12 noon. The PKAVS notice still gave the closing date as 12 noon on 31 October 2026 when checked on 19 October. The notice was published by PKAVS (the Perth and Kinross third sector body), so check NHS Tayside's own page for any later change.",
+   "detail": "Welcomes third sector groups, community groups, partner organisations, people with lived experience, carers, families, advocates, staff and members of the public. An online drop-in on Microsoft Teams was held on Thursday 15 October 2026, 10am to 12 noon. The PKAVS notice still gave the closing date as 12 noon on 31 October 2026 when checked on 19 October. The notice was published by PKAVS (the Perth and Kinross third sector body), so check NHS Tayside's own page for any later change. The closing date passed on 31 October 2026; I found no published final strategy or response summary on 2 November 2026.",
    "how": "Complete the Microsoft feedback form, or ask PKAVS for a Word version: 01738 567076, admin@pkavs.org.uk.",
    "url": "https://www.pkavs.org.uk/2026/09/14/15300/",
-   "urlLabel": "Read and respond",
+   "urlLabel": "See the consultation page",
    "src": "https://www.pkavs.org.uk/2026/09/14/15300/",
    "a": {
     "people": [
@@ -669,17 +669,17 @@
    "title": "Engage Dundee 2026 city survey",
    "body": "Dundee Partnership / Dundee City Council",
    "sector": "local",
-   "status": "open",
+   "status": "closed",
    "deadline": "2026-10-30",
-   "time": "closing time not stated on the page",
+   "time": "closed 30 October 2026; no results published on 2 November 2026",
    "topics": [
     "services"
    ],
    "plain": "A city-wide survey on what matters to residents. It informs the next ten-year City Plan and the council's 2027/28 budget decisions.",
-   "detail": "Started Monday 21 September 2026 and runs for six weeks. Topics: cost of living, health and wellbeing, communities, neighbourhoods, local environment, belonging and housing. Paper copies are in community centres and libraries. The council's consultations page now gives the dates as 21 September to 30 October 2026. Developed with Dundee Health and Social Care Partnership, NHS Tayside and local people; answers are confidential. Council social media posts, seen only in search results, list drop-in help sessions including Broughty Ferry Library (2pm to 4pm on Monday 19 October and 5pm to 7pm on Monday 26 October), Ardler Complex (12 noon to 2pm on Wednesday 21 October) and Charleston Community Centre (12 noon to 2pm on Tuesday 27 October); I could not open the posts, so check with the council before you go.",
+   "detail": "Started Monday 21 September 2026 and runs for six weeks. Topics: cost of living, health and wellbeing, communities, neighbourhoods, local environment, belonging and housing. Paper copies are in community centres and libraries. The council's consultations page now gives the dates as 21 September to 30 October 2026. Developed with Dundee Health and Social Care Partnership, NHS Tayside and local people; answers are confidential. Council social media posts, seen only in search results, list drop-in help sessions including Broughty Ferry Library (2pm to 4pm on Monday 19 October and 5pm to 7pm on Monday 26 October), Ardler Complex (12 noon to 2pm on Wednesday 21 October) and Charleston Community Centre (12 noon to 2pm on Tuesday 27 October); I could not open the posts, so check with the council before you go. A council social media post seen only in search results says over 6,000 people took part; I could not open it to confirm. Results will feed into the City Plan and the 2027/28 budget.",
    "how": "Complete the survey online at Engage Dundee, or use a paper copy from a community centre or library.",
    "url": "https://www.dundeecity.gov.uk/consultations-and-surveys/engage-dundee-survey",
-   "urlLabel": "Have your say",
+   "urlLabel": "See the consultation page",
    "src": "https://www.dundeecity.gov.uk/consultations-and-surveys/engage-dundee-survey",
    "a": {
     "people": [
@@ -1091,17 +1091,17 @@
    "title": "Pride in Place: Camperdown Park play designs",
    "body": "Dundee City Council",
    "sector": "local",
-   "status": "open",
+   "status": "closed",
    "deadline": "2026-10-31",
-   "time": "closing time not stated on the page",
+   "time": "closed 31 October 2026; no outcome published on 2 November 2026",
    "topics": [
     "services"
    ],
    "plain": "Draft designs for new play facilities in Camperdown Park, shaped by a year of ideas from local groups, schools and park users. The council also wants views on the wider park experience.",
-   "detail": "Runs from 25 September to 31 October 2026. The council says the designs include suggestions on inclusive play, accessibility and unique features. The survey link on the council page is a shortened bit.ly address.",
+   "detail": "Runs from 25 September to 31 October 2026. The council says the designs include suggestions on inclusive play, accessibility and unique features. The survey link on the council page is a shortened bit.ly address. The council page still showed the dates 25 September to 31 October 2026 on 2 November 2026; no results or final designs were published.",
    "how": "Follow the survey link on the council's consultation page.",
    "url": "https://www.dundeecity.gov.uk/consultations-and-surveys/pride-in-place-camperdown-park",
-   "urlLabel": "Have your say",
+   "urlLabel": "See the consultation page",
    "src": "https://www.dundeecity.gov.uk/consultations-and-surveys/pride-in-place-camperdown-park",
    "a": {
     "people": [
@@ -1550,6 +1550,99 @@
     "systems": [
      [
       "Planning decisions on biodiversity",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "angus-ldp-participation",
+   "title": "Angus Local Development Plan: draft Participation Statement 2026",
+   "body": "Angus Council",
+   "sector": "local",
+   "status": "open",
+   "deadline": "2026-11-09",
+   "closes": "12:00",
+   "time": "12 noon on Monday 9 November 2026",
+   "topics": [
+    "homes"
+   ],
+   "plain": "Tell Angus Council how and when you want to be consulted while it prepares the next Local Development Plan, which guides where homes and other development go across Angus, including Carnoustie and Monifieth.",
+   "detail": "The council must consult on its draft Participation Statement every year. It sets out how the council plans to inform, engage, involve and consult people, and the methods it may use, as the next plan is prepared. The council says that if you answered last year's survey you need not repeat your answers, because the survey and document cover the same content. Paper copies of the survey are in libraries across Angus.",
+   "how": "Read the draft Participation Statement and complete the survey on Engage Angus, or use a paper copy from an Angus library. Questions to ldp@angus.gov.uk.",
+   "url": "https://engage.angus.gov.uk/draft-ldp-participation-statement-2026",
+   "urlLabel": "Have your say",
+   "src": "https://engage.angus.gov.uk/draft-ldp-participation-statement-2026",
+   "a": {
+    "people": [
+     [
+      "Angus residents, including Carnoustie and Monifieth",
+      0
+     ]
+    ],
+    "groups": [
+     [
+      "Community councils and community groups",
+      0
+     ],
+     [
+      "Landowners and developers",
+      0
+     ]
+    ],
+    "systems": [
+     [
+      "How the Local Development Plan for land use and housing is prepared",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "sg-recycling",
+   "title": "A new Household Recycling Code of Practice",
+   "body": "Scottish Government",
+   "sector": "central",
+   "status": "open",
+   "deadline": "2027-01-21",
+   "time": "closing time not stated on the consultation page (checked 2 November 2026)",
+   "topics": [
+    "services"
+   ],
+   "plain": "National standards for how councils, including Dundee and Angus, collect household recycling and waste: which materials, how many bins, food waste and bin colours.",
+   "detail": "Opened 29 October 2026. Key proposals: a common set of recyclable materials collected everywhere in Scotland, a minimum twin-stream dry recycling system (paper and card kept separate from plastics, metals and cartons), approaches for glass, reduced residual waste capacity, stronger food waste collections, better recycling communications, and guidance on bin colours, accessibility and contamination. The Code was co-designed with councils, industry and third sector organisations. Whether it would change bins or collection frequency in Dundee or Angus is not stated; that is my reading of a likely effect.",
+   "how": "Read the consultation paper and respond online with Begin consultation, or email circulareconomy@gov.scot.",
+   "url": "https://consult.gov.scot/environment-forestry/a-new-household-recycling-code-of-practice/",
+   "urlLabel": "Have your say",
+   "src": "https://consult.gov.scot/environment-forestry/a-new-household-recycling-code-of-practice/",
+   "a": {
+    "people": [
+     [
+      "All Dundee and Angus households",
+      0
+     ],
+     [
+      "Older and disabled people who need accessible bins",
+      0
+     ]
+    ],
+    "groups": [
+     [
+      "Local authorities that run collections",
+      1
+     ],
+     [
+      "Waste industry and third sector organisations",
+      1
+     ]
+    ],
+    "systems": [
+     [
+      "Household recycling and food waste collections",
+      1
+     ],
+     [
+      "Residual waste capacity and bin colours",
       1
      ]
     ]
