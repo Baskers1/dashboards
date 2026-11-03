@@ -150,15 +150,26 @@ What the data actually supports, for the three NPT artifacts:
 
 ## Files
 
-All under `npt-social/` in this repository:
+In this repository, under `npt-social/`:
 
 - `trend-brief-2026-11-03.md` — this brief
-- `pull.py` — the keyword pull (120 calls across 6 platforms)
+- `thumbs/` — 12 thumbnails, 176×176 JPEG
+
+In the **private** `dashboards-source` repository, under
+`neath-port-talbot/social-signals/`:
+
+- `pull.py` — the keyword pull (120 calls across the platforms that exist)
 - `flatten.py` — normalises and relevance-filters into `posts.json`
 - `comments.py` — pulls comment threads for named posts
 - `posts.json` — 942 filtered posts
 - `comments.json` — 172 comments across 15 threads
 - `notable.json` — the posts in section 4, with local thumbnail paths
-- `thumbs/` — 12 thumbnails, 176×176 JPEG
 
-The API key was read from `$SCRAPECREATORS_API_KEY` in the environment and is not printed, logged or stored in any of these files.
+The split is deliberate. This repository is public and served by GitHub Pages,
+so anything here is republished on the open web. Quoting posts selectively with
+a link back to each source — which is what this brief does — is a different act
+from rehosting the whole corpus with usernames and comment text attached. The
+raw corpus stays on the private side.
+
+The API key was read from `$SCRAPECREATORS_API_KEY` in the environment and is
+not printed, logged or stored in any of these files.
