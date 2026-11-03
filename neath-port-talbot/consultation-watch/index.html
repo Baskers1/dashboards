@@ -1,4 +1,4 @@
-<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-HwADI8naMHTXm9AEwSmhSi3KTdJbTa/s/nusZBvi7Vw=' 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
+<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-3tqQ8LTROwOqrwvnv/XuSmtpyMIxOJoWK79JlfwTnZo=' 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
 var SCHEME=/^\s*([a-z][a-z0-9+.\-]*):/i,HREF={http:1,https:1,mailto:1,tel:1},SRC={http:1,https:1,blob:1};
 function okUrl(v,isSrc){var c=String(v).replace(/[\u0000- ]/g,""),m=SCHEME.exec(c);if(!m)return true;var s=m[1].toLowerCase();
 if(isSrc&&s==="data")return /^data:image\//i.test(c);return !!(isSrc?SRC:HREF)[s];}
@@ -436,6 +436,7 @@ const daysTo = s => Math.round((utc(s) - utc(todayStr)) / 86400000);
 function info(it) {
   const d = daysTo(it.deadline);
   if (it.status === "open" && (d < 0 || (d === 0 && it.closes && nowHM >= it.closes))) return {phase:"closed", d, level:"done"};
+  if (it.status === "open" && it.nodate) return {phase:"open", d:Infinity, level:"later", nodate:1};
   if (it.status === "open") return {phase:"open", d, level: d <= 7 ? "urgent" : d <= 21 ? "soon" : "later"};
   if (it.status === "decision") return {phase:"decision", d, level:"later"};
   return {phase:"closed", d, level:"done"};
@@ -478,7 +479,7 @@ function visible() {
 /* renderers */
 const goLink = x => '<a class="go" href="' + safeUrl(x.url) + '" target="_blank" rel="noopener">' + esc(x.title) + '<span class="go-i" aria-hidden="true"> ↗</span><span class="sr"> (opens the consultation in a new tab)</span></a>';
 function renderAlert() {
-  const open = withInfo.filter(x => x.i.phase === "open").sort((a, b) => a.i.d - b.i.d);
+  const open = withInfo.filter(x => x.i.phase === "open" && !x.i.nodate).sort((a, b) => a.i.d - b.i.d);
   const urgent = open.filter(x => x.i.d <= 7), soon = open.filter(x => x.i.d <= 21);
   let cls, sym, head, sub;
   if (urgent.length) {
@@ -494,14 +495,14 @@ function renderAlert() {
     head = "Nothing closes in the next 3 weeks";
     sub = "Next: " + goLink(open[0]) + ", " + esc(fmtShort(open[0].deadline)) + ".";
   } else {
-    cls = "calm"; sym = ic("ok"); head = "No open consultations recorded"; sub = "Check the places to watch for new ones.";
+    cls = "calm"; sym = ic("ok"); head = withInfo.some(x => x.i.nodate) ? "No open consultation has a closing date" : "No open consultations recorded"; sub = "Check the places to watch for new ones.";
   }
   $("alert").innerHTML = '<div class="alert ' + cls + '"><div class="sym" aria-hidden="true">' + sym + '</div><div><strong>' + esc(head) + '</strong><span>' + sub + '</span></div></div>';
 }
 function renderRunway() {
-  const open = withInfo.filter(x => x.i.phase === "open").sort((a, b) => a.i.d - b.i.d);
+  const open = withInfo.filter(x => x.i.phase === "open" && !x.i.nodate).sort((a, b) => a.i.d - b.i.d);
   let h = '<h2 id="rw-h">' + ic("clock") + 'Deadline countdown</h2>';
-  if (!open.length) h += '<p class="rw-note">No open consultations recorded.</p>';
+  if (!open.length) h += '<p class="rw-note">No open consultations with a closing date recorded.</p>';
   open.forEach(x => {
     const w = Math.max(4, Math.round(100 - Math.min(x.i.d, 60) / 60 * 100));
     h += '<div class="rw-row"><div class="rw-title">' + ic(itemIc(x)) + '<span>' + goLink(x) + '</span></div><div class="rw-days">' + ic(x.i.level === "urgent" ? "warn" : "clock") + '<span>' + esc(daysText(x.i.d, x.closes)) + ' <span style="font-weight:400;color:var(--muted)">' + esc(fmtShort(x.deadline)) + '</span></span></div></div>';
@@ -561,7 +562,8 @@ function cardHtml(it) {
   let dl;
   const long = d => new Date(utc(d)).toLocaleDateString("en-GB", {weekday:"long", day:"numeric", month:"long", timeZone:"UTC"});
   const tn = /^closing time not/.test(it.time) ? "" : '<span class="tnote">' + esc(it.time) + '</span>';
-  if (p.phase === "open") dl = '<div class="dl ' + p.level + '">' + ic(p.level === "urgent" ? "warn" : "clock") + '<span class="big">' + esc(daysText(p.d, it.closes)) + '</span><span>Closes ' + esc(long(it.deadline)) + '</span>' + tn + '</div>';
+  if (p.phase === "open" && it.nodate) dl = '<div class="dl soon">' + ic("cal") + '<span class="big">No closing date published — check the page</span></div>';
+  else if (p.phase === "open") dl = '<div class="dl ' + p.level + '">' + ic(p.level === "urgent" ? "warn" : "clock") + '<span class="big">' + esc(daysText(p.d, it.closes)) + '</span><span>Closes ' + esc(long(it.deadline)) + '</span>' + tn + '</div>';
   else if (p.phase === "decision" && it.nodate) dl = '<div class="dl soon">' + ic("cal") + '<span class="big">No date set</span>' + '<span class="tnote">' + esc(it.time) + '</span></div>';
   else if (p.phase === "decision" && p.d < 0) dl = '<div class="dl soon">' + ic("warn") + '<span class="big">Date passed</span><span>Last date recorded: ' + esc(long(it.deadline)) + '. No update found yet.</span>' + '<span class="tnote">' + esc(it.time) + '</span></div>';
   else dl = '<div class="dl ' + p.level + '">' + ic("cal") + '<span>' + esc(it.time) + '</span></div>';
@@ -572,7 +574,7 @@ function cardHtml(it) {
     '<p class="plain">' + esc(it.plain) + '</p>' +
     '<div class="actions"><a class="btn" href="' + safeUrl(it.url) + '" target="_blank" rel="noopener">' + esc(btnLabel) + ic("out") + '</a>' +
     '<button type="button" class="btn ghost" data-more="' + it.id + '" aria-expanded="' + open + '" aria-controls="m-' + it.id + '">' + ic("people") + (open ? "Hide" : MORE_LABEL) + '</button></div>' +
-    (p.phase === "open" ? '<p class="opens">Opens the official website in a new tab. <a href="' + safeUrl(calLink(it)) + '" target="_blank" rel="noopener">' + ic("cal") + 'Add a reminder to Google Calendar</a></p>' : '') +
+    (p.phase === "open" && !it.nodate ? '<p class="opens">Opens the official website in a new tab. <a href="' + safeUrl(calLink(it)) + '" target="_blank" rel="noopener">' + ic("cal") + 'Add a reminder to Google Calendar</a></p>' : '') +
     '<div class="more" id="m-' + it.id + '"' + (open ? "" : " hidden") + '>' + impactHtml(it) +
     '<p>' + esc(it.detail) + '</p><p><strong>How to respond:</strong> ' + esc(it.how) + '</p>' +
     '<p class="src">Source: <a href="' + safeUrl(it.src) + '" target="_blank" rel="noopener">' + esc(it.src.replace(/^https?:\/\//, "").slice(0, 60)) + '</a></p></div></article>';
