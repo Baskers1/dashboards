@@ -40,7 +40,7 @@ supplies a bare `PATH`. A pyenv upgrade silently breaks them all.
 
 | Job | Script | Interval | Repo | Logs |
 |---|---|---|---|---|
-| `com.dashboards.iss` | `tools/iss-update.sh` (in this repo; also runs `tools/fetch_kp.py`, which goes to the network at most every 30 min) | 600s | `~/dashboards`, SSH remote | `/tmp/dashboards-iss.{log,err}` |
+| `com.dashboards.iss` | `tools/iss-update.sh` (in this repo; runs `tools/fetch_orbit.py`, which needs `sgp4==2.27` in that python, and `tools/fetch_kp.py`, which goes to the network at most every 30 min) | 600s | `~/dashboards`, SSH remote | `/tmp/dashboards-iss.{log,err}` |
 | `com.dashboards.donki` | `tools/donki-update.sh` (in this repo) | 10800s | `~/dashboards`, SSH remote | `/tmp/dashboards-donki.{log,err}` |
 | `com.dashboards.nptsocial` | `tools/npt-social-update.sh` (in this repo; runs `tools/fetch_npt_social.py`) | daily 06:23 | `~/dashboards`, SSH remote | `/tmp/dashboards-nptsocial.{log,err}` |
 | hourly sync | `~/bin/sync-dashboards.sh` (not in this repo) | hourly at :10 | `~/dashboards-source`, HTTPS + keychain | `~/dashboards-source/.last-sync-status.txt` |
@@ -116,7 +116,7 @@ but still carries an unrewritten link or an unredacted contact detail.
 Two properties worth preserving if it is ever edited:
 
 - It looks for python only once HTML is actually staged, so the launchd jobs that
-  commit data files alone (`data/iss.json`, `data/donki.json`) never reach that
+  commit data files alone (`data/orbit.json`, `data/kp.json`, `data/donki.json`) never reach that
   code and cannot be broken by it.
 - It fails closed. No python, or a `git diff` that errors, refuses the commit
   rather than passing; `git commit --no-verify` is the deliberate bypass.
@@ -167,6 +167,17 @@ status, written by `tools/fetch_kp.py` from the ISS job. Each source fails soft,
 part of the file. The page treats the file as optional: missing or malformed, it renders without
 "tonight" and the Kp labels.
 
+`data/orbit.json` feeds the ISS tab: the ISS orbit data (TLE, from CelesTrak, refetched every 6 hours), the
+ground track from 45 minutes ago to 100 minutes ahead, visible passes for each place in `tools/places.json`
+over the next 10 days, and the crew (corquaid's community-kept list, every 12 hours). `tools/fetch_orbit.py`
+works these out on the iMac with SGP4; each source keeps its previous copy if a fetch fails, and it refuses
+to write only when there is no orbit data at all. `tools/places.json` must match `PLACES` in
+`sky/space-weather/index.html` (`tools/test_fetch_orbit.py` checks).
+
+Open Notify (the old ISS source, `tools/fetch_iss.py`, retired 3 Nov 2026) was serving a crew list from
+2024 and a position about 3,000 km out: checked against wheretheiss.at, which agreed with SGP4 to 0.1°.
+`sky/iss/` now only forwards to `sky/space-weather/#iss`.
+
 `data/npt-food-social.json` holds the Neath Port Talbot food-and-drink social pull — forward-dated
 venue-night listings, recurring weekly fixtures, venues ranked by independent mentions, permanently
 closed venues, and the Facebook feeds worth polling — written by `tools/fetch_npt_social.py` from the
@@ -203,9 +214,3 @@ Three things about it are load-bearing:
 
 The prose brief under `npt-social/` is a write-up over this data, not a scheduled artefact, so the
 fetcher does not produce it.
-
-`data/iss.json` is written at runtime by `tools/fetch_iss.py` and is not
-committed on every branch. Its absence in a fresh clone is normal, not
-breakage. `tools/fetch_iss.py` fails soft, keeping the previous file, so in a
-sandbox with no DNS route it prints a warning and writes nothing — which then
-makes the `git add data/iss.json` in `tools/iss-update.sh` fail under `set -e`.

@@ -411,7 +411,7 @@
    "id": "local:sky-iss",
    "area": "sky",
    "slug": "iss",
-   "name": "ISS live position",
+   "name": "ISS (now a tab in Space weather)",
    "refresh_tasks": []
   },
   {
