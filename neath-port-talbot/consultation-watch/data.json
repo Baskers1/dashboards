@@ -1,0 +1,321 @@
+{
+ "items": [
+  {
+   "id": "npt-taxi-policy",
+   "title": "Draft Taxi Licensing Policy",
+   "body": "Neath Port Talbot Council",
+   "sector": "local",
+   "status": "open",
+   "deadline": "2026-11-26",
+   "closes": "12:00",
+   "time": "Closes at 12 noon on Thursday 26 November 2026, as stated on the council's consultations page.",
+   "topics": [
+    "travel",
+    "services"
+   ],
+   "plain": "The council is updating the rules for taxi and private hire drivers, vehicles and operators. Changes are marked in red in the draft policy.",
+   "detail": "Neath Port Talbot Council licenses hackney carriage and private hire drivers, vehicles and operators across the county borough. The revised policy (August 2026) sets the standards and procedures the council uses when deciding licence applications. The council asks residents, the licensed trade and partner organisations for comments.",
+   "how": "Read the revised policy (PDF) and comment through the 'Have your say' link on the council's consultations page before 12 noon on 26 November 2026.",
+   "url": "https://www.npt.gov.uk/consultations",
+   "urlLabel": "Read the consultation",
+   "src": "https://www.npt.gov.uk/consultations",
+   "a": {
+    "people": [
+     [
+      "Residents who use taxis",
+      1
+     ],
+     [
+      "Taxi and private hire drivers and operators (businesses)",
+      1
+     ],
+     [
+      "Older and disabled passengers who rely on taxis",
+      0
+     ]
+    ],
+    "groups": [
+     [
+      "Partner organisations",
+      1
+     ]
+    ],
+    "wildlife": [],
+    "systems": [
+     [
+      "Road traffic and vehicle standards",
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "id": "nrw-pt-steelworks-v019",
+   "title": "Port Talbot Steelworks: draft permit decision (PAN-029148.1)",
+   "body": "Natural Resources Wales",
+   "sector": "central",
+   "status": "open",
+   "deadline": "2026-11-13",
+   "time": "closing time not published; the consultation page says it closes 13 November 2026.",
+   "topics": [
+    "energy",
+    "nature"
+   ],
+   "plain": "Tata Steel is changing the steelworks permit as it moves from blast furnaces to an electric arc furnace. NRW is minded to approve this first stage and wants comments on the draft permit.",
+   "detail": "Names Port Talbot directly: the site is Port Talbot Steelworks, SA13 2NG, and NRW lists Aberavon, Baglan, Bryn and Cwmavon, Margam, Port Talbot, Sandfields East and West and Tai-bach among the areas covered. This variation (V019 of permit EPR/BL7108IM) removes blast furnace and basic oxygen steelmaking activities, mothballs others during the transformation and adds new steam boilers (medium combustion plant). NRW says it can only consider comments within its legal permitting remit. Later stages, including the electric arc furnace itself, will be consulted on separately.",
+   "how": "Comment online through NRW Citizen Space, or email permittingconsultations@naturalresourceswales.gov.uk, by 13 November 2026.",
+   "url": "https://ymgynghori.cyfoethnaturiol.cymru/permitting-caniatau/port-talbot-steelworks-draft-decision-pan-029148-1/",
+   "urlLabel": "Read the consultation",
+   "src": "https://ymgynghori.cyfoethnaturiol.cymru/permitting-caniatau/port-talbot-steelworks-draft-decision-pan-029148-1/",
+   "a": {
+    "people": [
+     [
+      "Residents of Aberavon, Baglan, Margam, Sandfields and Tai-bach near the site",
+      1
+     ],
+     [
+      "Steelworks employer and workforce (businesses)",
+      0
+     ]
+    ],
+    "groups": [
+     [
+      "Environmental and conservation groups",
+      0
+     ]
+    ],
+    "wildlife": [
+     [
+      "Coastal wildlife near the works",
+      0
+     ]
+    ],
+    "systems": [
+     [
+      "Air quality and emissions from the works",
+      1
+     ],
+     [
+      "Water and pollution controls",
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "id": "nrw-afan-frp",
+   "title": "Afan Forest draft Forest Resource Plan",
+   "body": "Natural Resources Wales",
+   "sector": "central",
+   "status": "open",
+   "deadline": "2026-11-30",
+   "time": "closing time not published; NRW says the consultation runs from 1 to 30 November. Drop-in session 11 November 2026, 1pm to 7pm, Afan Visitor Centre, Cynonville.",
+   "topics": [
+    "nature"
+   ],
+   "plain": "NRW sets out how it plans to manage Afan Forest for the next 10 years: timber, nature recovery, climate resilience and recreation, including the mountain bike trails.",
+   "detail": "Names Neath Port Talbot places: the plan covers the Afan, Pelenna, Corrwg and Drysiog catchments, with a drop-in at Afan Visitor Centre, Cynonville, Port Talbot. Proposals include more diverse woodland, better ecological connectivity, restoring peatland and ancient woodland, managing invasive species, improving river habitats and protecting water and soil. The year of the 30 November close is taken from the 2026 drop-in date in the same NRW news release.",
+   "how": "View the documents and respond online (link in the NRW news release), go to the drop-in on 11 November, or email frp@cyfoethnaturiolcymru.gov.uk.",
+   "url": "https://naturalresources.wales/about-us/news-and-blogs/news/public-invited-to-have-their-say-on-future-plans-for-afan-forest/?lang=en",
+   "urlLabel": "Read the news release",
+   "src": "https://naturalresources.wales/about-us/news-and-blogs/news/public-invited-to-have-their-say-on-future-plans-for-afan-forest/?lang=en",
+   "a": {
+    "people": [
+     [
+      "Local communities and visitors",
+      1
+     ],
+     [
+      "Forest businesses and mountain bike tourism",
+      1
+     ]
+    ],
+    "groups": [
+     [
+      "Nature groups and trail volunteers",
+      0
+     ]
+    ],
+    "wildlife": [
+     [
+      "Woodland, peatland and river wildlife",
+      1
+     ]
+    ],
+    "systems": [
+     [
+      "Ancient woodland and trees",
+      1
+     ],
+     [
+      "Peatland restoration",
+      1
+     ],
+     [
+      "River habitats, water and soil",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "wg-ndf-revision",
+   "title": "Revising the National Development Framework",
+   "body": "Welsh Government",
+   "sector": "central",
+   "status": "open",
+   "deadline": "2026-11-20",
+   "time": "closing time not published; the consultation page says it ends 20 November 2026.",
+   "topics": [
+    "homes",
+    "energy"
+   ],
+   "plain": "The Welsh Government is starting to revise Wales's national planning framework, and asks how people want to take part and what the new framework should do.",
+   "detail": "Applies to all of Wales; it does not name a Neath Port Talbot place. Kept because the National Development Framework guides large developments, energy and growth areas across Wales, including this county borough. It covers the draft Statement of Public Participation, the draft National Conversation Engagement Plan and the role of the revised framework.",
+   "how": "Respond online, or email the response form to planconsultations-h@gov.wales, or post it to the Planning Directorate, Welsh Government, Cathays Park, Cardiff CF10 3NQ, by 20 November 2026.",
+   "url": "https://www.gov.wales/national-development-framework",
+   "urlLabel": "Read the consultation",
+   "src": "https://www.gov.wales/national-development-framework",
+   "a": {
+    "people": [
+     [
+      "Every resident in Wales",
+      0
+     ],
+     [
+      "Landowners and businesses near future development",
+      0
+     ]
+    ],
+    "groups": [
+     [
+      "Town and community councils",
+      0
+     ]
+    ],
+    "wildlife": [],
+    "systems": [
+     [
+      "Green networks and land use",
+      0
+     ],
+     [
+      "Electricity grid and energy development",
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "id": "mawwfrs-survey",
+   "title": "Shaping Mid and West Wales Fire and Rescue Service Together",
+   "body": "Mid and West Wales Fire and Rescue Service",
+   "sector": "local",
+   "status": "open",
+   "deadline": "2099-12-31",
+   "nodate": 1,
+   "time": "No closing date is published on the survey page, so the days count is a placeholder. Check the page.",
+   "topics": [
+    "services"
+   ],
+   "plain": "A short anonymous survey about what you expect from your fire and rescue service and what it should prioritise.",
+   "detail": "Covers the whole Mid and West Wales fire service area, which includes Neath Port Talbot; the page does not name Neath Port Talbot specifically. No closing date is published, so check the page before relying on it being open. The survey includes an optional prize draw.",
+   "how": "Fill in the online survey from the service's page, or ring 0370 6060699 for another language or format.",
+   "url": "https://www.mawwfire.gov.uk/eng/campaigns-and-consultations/shaping-mid-and-west-wales-fire-and-rescue-service-together/",
+   "urlLabel": "Take the survey",
+   "src": "https://www.mawwfire.gov.uk/eng/campaigns-and-consultations/shaping-mid-and-west-wales-fire-and-rescue-service-together/",
+   "a": {
+    "people": [
+     [
+      "Every resident in the fire service area",
+      1
+     ],
+     [
+      "Older and vulnerable people who rely on fire safety visits",
+      0
+     ]
+    ],
+    "groups": [],
+    "wildlife": [],
+    "systems": []
+   }
+  },
+  {
+   "id": "npt-lets-talk-2026",
+   "title": "Let's Talk: Living in NPT survey",
+   "body": "Neath Port Talbot Council (run by the Welsh Local Government Association)",
+   "sector": "local",
+   "status": "closed",
+   "deadline": "2026-10-27",
+   "time": "Closed 27 October 2026.",
+   "topics": [
+    "services"
+   ],
+   "plain": "The council's yearly residents' survey on services, local priorities and life in your area.",
+   "detail": "Open to Neath Port Talbot residents aged 16 or over; closed on 27 October 2026. No results or outcome had been published by 3 November 2026. The council publishes what it did with last year's results on its 'Have your say' pages.",
+   "how": "The survey has closed. Watch the council's consultations page for the results.",
+   "url": "https://www.npt.gov.uk/consultations",
+   "urlLabel": "See the council's consultations",
+   "src": "https://www.npt.gov.uk/consultations",
+   "a": {
+    "people": [
+     [
+      "Every resident aged 16 or over",
+      1
+     ],
+     [
+      "Young people through school activities",
+      1
+     ]
+    ],
+    "groups": [],
+    "wildlife": [],
+    "systems": []
+   }
+  }
+ ],
+ "petitions": [],
+ "watch": [
+  [
+   "Neath Port Talbot Council consultations",
+   "https://www.npt.gov.uk/consultations"
+  ],
+  [
+   "Neath Port Talbot Council newsroom",
+   "https://www.npt.gov.uk/council/newsroom/"
+  ],
+  [
+   "Council meetings and decisions",
+   "https://democracy.npt.gov.uk/mgCalendarMonthView.aspx"
+  ],
+  [
+   "Neath Port Talbot environment and planning consultations",
+   "https://neath-porttalbot-consult.objective.co.uk/portal/"
+  ],
+  [
+   "Swansea Bay University Health Board engagement",
+   "https://sbuhb.nhs.wales/about-us/our-health-board/engaging-with-us/engagement-consultation/"
+  ],
+  [
+   "Mid and West Wales Fire and Rescue Service consultations",
+   "https://www.mawwfire.gov.uk/eng/campaigns-and-consultations/"
+  ],
+  [
+   "Natural Resources Wales consultations",
+   "https://ymgynghori.cyfoethnaturiol.cymru/english/"
+  ],
+  [
+   "Welsh Government consultations",
+   "https://www.gov.wales/consultations"
+  ],
+  [
+   "Neath Port Talbot CVS (charities and voluntary groups)",
+   "https://www.nptcvs.wales/"
+  ]
+ ],
+ "status": {},
+ "collected": "3 November 2026",
+ "watch_note": "Checked on 3 November 2026. The council's environment consultations portal could not be read automatically this week.",
+ "empty_charity": "No charity or non-profit consultation was found open on 3 November 2026. Try the places to watch.",
+ "generated_at": "2026-11-03T00:59:59Z"
+}

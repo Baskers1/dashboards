@@ -1,0 +1,546 @@
+<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-OwPzYg2dF+wgknLPhoTW2qEVE25EFrQ0Nljg/slfGoY=' 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'sha256-v3K7JLFgoo6ZR4RrR2UIBQUE5fO83+lXa/SZEvX4+Ak=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
+var SCHEME=/^\s*([a-z][a-z0-9+.\-]*):/i,HREF={http:1,https:1,mailto:1,tel:1},SRC={http:1,https:1,blob:1};
+function okUrl(v,isSrc){var c=String(v).replace(/[\u0000- ]/g,""),m=SCHEME.exec(c);if(!m)return true;var s=m[1].toLowerCase();
+if(isSrc&&s==="data")return /^data:image\//i.test(c);return !!(isSrc?SRC:HREF)[s];}
+function fixOne(n){if(n.nodeType!==1)return;var a=n.attributes;
+for(var j=a.length-1;j>=0;j--){var k=a[j].name.toLowerCase(),v=a[j].value;
+if(k.slice(0,2)==="on"){if(!(k==="onerror"&&v==="this.remove()"))n.removeAttribute(a[j].name);}
+else if((k==="href"||k==="xlink:href"||k==="action"||k==="formaction")&&!okUrl(v,false))n.removeAttribute(a[j].name);
+else if((k==="src"||k==="srcset"||k==="poster")&&!okUrl(v,true))n.removeAttribute(a[j].name);}
+if(n.tagName==="A"&&n.getAttribute("target")==="_blank"&&n.getAttribute("rel")!=="noopener noreferrer")n.setAttribute("rel","noopener noreferrer");}
+function fixTree(n){if(n.nodeType!==1)return;fixOne(n);var all=n.getElementsByTagName("*");for(var i=0;i<all.length;i++)fixOne(all[i]);}
+new MutationObserver(function(ms){for(var i=0;i<ms.length;i++){var m=ms[i];if(m.type==="attributes")fixOne(m.target);
+else for(var j=0;j<m.addedNodes.length;j++)fixTree(m.addedNodes[j]);}}).observe(document.documentElement,{childList:true,subtree:true,attributes:true});
+})();</script><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>NHS Neath Port Talbot Referrals and Waiting Times</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600&display=swap">
+<style>
+[hidden]{display:none!important}
+html{font-size:100%}
+:root{
+  --bg:#f3f6f7; --surface:#ffffff; --surface2:#e9eff1; --line:#d3dde1; --grid:#e3eaed;
+  --ink:#13232b; --ink2:#4a5d66; --accent:#0a5c6e; --accent-ink:#ffffff; --other:#7d8f97; --track:#d6e4e8;
+  --good:#2b7a4b; --mid:#9a5f0e; --bad:#b03a3a;
+  --font:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+  --display:'Fraunces',Georgia,serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e1a20; --surface:#152730; --surface2:#1c333d; --line:#2a444f; --grid:#223b45;
+    --ink:#e6eff2; --ink2:#9db3bc; --accent:#57b9cc; --accent-ink:#06222a; --other:#7f969f; --track:#2a4650;
+    --good:#5dc083; --mid:#e0a44f; --bad:#e2736f; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e1a20; --surface:#152730; --surface2:#1c333d; --line:#2a444f; --grid:#223b45;
+  --ink:#e6eff2; --ink2:#9db3bc; --accent:#57b9cc; --accent-ink:#06222a; --other:#7f969f; --track:#2a4650;
+  --good:#5dc083; --mid:#e0a44f; --bad:#e2736f; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:0.875rem;line-height:1.45;margin:0;padding-inline:16px;padding-block:20px 40px}
+.wrap{max-width:1000px;margin:0 auto}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(1.4rem,3.5vw,1.75rem);margin:0 0 4px;letter-spacing:-.01em}
+h2{font-size:1.0625rem;margin:0 0 4px;font-weight:600}
+.sub{color:var(--ink2);margin:0 0 14px;max-width:70ch}
+a{color:var(--accent)}
+.filters{margin-top:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:16px}
+.lbl{display:block;font-size:0.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin-bottom:6px;font-weight:600}
+select{width:100%;font:inherit;font-size:1rem;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:10px 12px}
+button{font:inherit;color:var(--accent);background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:7px 12px;cursor:pointer}
+button:focus-visible,select:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:16px}
+.cardhead{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.hint{color:var(--ink2);margin:0;font-size:0.8125rem;max-width:60ch}
+
+/* 1. the question and its answer */
+.hero .q{font-size:1.0625rem;color:var(--ink2);margin:0}
+.hero .big{font-size:clamp(2.4rem,8vw,3.5rem);font-weight:700;line-height:1.05;margin:4px 0 8px;letter-spacing:-.02em}
+.hero .say{font-size:1.125rem;margin:0 0 4px;max-width:60ch}
+.hero .say b{color:var(--accent)}
+.hero .fine{color:var(--ink2);margin:8px 0 0;max-width:62ch}
+
+/* 2. the race track: one row per provider on one shared week scale */
+.track{position:relative;padding:28px 0 4px}
+.trow{display:grid;grid-template-columns:minmax(100px,170px) 1fr;align-items:center;gap:10px;min-height:44px}
+.tname{font-weight:500;line-height:1.2}
+.tname .tag{display:block;font-size:0.75rem;font-weight:600;color:var(--accent)}
+.tname .tag.best{color:var(--ink2)}
+.lane{position:relative;height:44px}
+.lane::before{content:'';position:absolute;left:0;right:0;top:50%;border-top:1px solid var(--grid)}
+.dot{position:absolute;top:50%;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;background:var(--other);box-shadow:0 0 0 2px var(--surface)}
+.dot.home{background:var(--accent);width:22px;height:22px;margin:-11px 0 0 -11px}
+.dot .dv{position:absolute;left:50%;bottom:calc(100% + 3px);transform:translateX(-50%);font-size:0.75rem;font-family:var(--mono);color:var(--ink);white-space:nowrap}
+.trow.nat .tname{color:var(--ink2);font-weight:400}
+.trow.nat .dot{background:var(--surface);box-shadow:inset 0 0 0 2px var(--other)}
+.overlay{position:absolute;inset:0;display:grid;grid-template-columns:minmax(100px,170px) 1fr;gap:10px;pointer-events:none}
+.overlay>div{position:relative}
+.std{position:absolute;top:0;bottom:0;border-left:2px dashed var(--ink2)}
+.std span{position:absolute;top:0;left:6px;font-size:0.75rem;color:var(--ink2);white-space:nowrap}
+.std.r span{left:auto;right:6px}
+/* the annotation: a bracket from the shortest wait to the home wait */
+.gaprow{display:grid;grid-template-columns:minmax(100px,170px) 1fr;gap:10px}
+.gap{position:relative;height:36px}
+.gap{margin-top:4px}.gap i{position:absolute;top:0;height:10px;border:2px solid var(--accent);border-bottom:0}
+.gap span{position:absolute;top:18px;font-size:0.8125rem;font-weight:600;color:var(--accent);white-space:nowrap;transform:translateX(-50%)}
+.ticks{position:relative;height:18px;font-size:0.75rem;color:var(--ink2);font-family:var(--mono)}
+.ticks>span{position:absolute;transform:translateX(-50%);white-space:nowrap}
+.ticks>span:first-child{transform:none}.ticks>span:last-child{transform:translateX(-100%)}.ticks span span{position:static;transform:none}
+.tip{position:fixed;z-index:5;background:var(--ink);color:var(--surface);font-size:0.8125rem;padding:6px 9px;border-radius:6px;pointer-events:none;max-width:260px}
+
+/* 3. one card per provider */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.pc{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px}
+.pc.home{border:2px solid var(--accent)}
+.pc h3{font-size:1rem;margin:0;font-weight:600}
+.pc .hm{display:inline-block;font-size:0.75rem;font-weight:600;color:var(--accent-ink);background:var(--accent);border-radius:999px;padding:1px 8px;margin-left:6px;vertical-align:2px}
+.pc .where{color:var(--ink2);font-size:0.8125rem;margin:2px 0 10px}
+.pc .wait{font-size:1.75rem;font-weight:700;margin:0;line-height:1.1}
+.pc .wait small{display:block;font-size:0.8125rem;font-weight:400;color:var(--ink2)}
+.ppl{display:flex;gap:3px;margin:12px 0 4px}
+.ppl svg{width:20px;height:24px}
+.ppl .on{fill:var(--accent)}.ppl .off{fill:var(--track)}
+.ppl-t{font-size:0.8125rem;margin:0 0 10px}
+.badges{list-style:none;margin:0;padding:10px 0 0;border-top:1px solid var(--line);display:grid;gap:6px;font-size:0.8125rem}
+.badges li{display:flex;gap:8px;align-items:flex-start}
+.badges .ic{flex:none;width:18px;height:18px;border-radius:50%;display:inline-grid;place-items:center;font-size:0.75rem;font-weight:700;color:var(--surface);margin-top:1px}
+.badges .good .ic{background:var(--good)}.badges .mid .ic{background:var(--mid)}.badges .bad .ic{background:var(--bad)}.badges .dist .ic{background:var(--ink2)}
+
+/* card extras: the year's trend and the CQC report card */
+.sec{border-top:1px solid var(--line);padding-top:10px;margin-top:10px}
+.sec h4{font-size:0.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin:0 0 6px;font-weight:600}
+.tr{display:flex;align-items:center;gap:10px;font-size:0.875rem}
+.tr .ar{flex:none;width:26px;height:26px;border-radius:50%;display:inline-grid;place-items:center;font-weight:700;color:var(--surface);font-size:0.875rem}
+.tr.good .ar{background:var(--good)}.tr.bad .ar{background:var(--bad)}.tr.same .ar{background:var(--ink2)}
+.tr small{display:block;color:var(--ink2);font-size:0.75rem}
+.spark{display:block;width:100%;height:34px;margin-top:6px}
+.spark polyline{fill:none;stroke:var(--accent);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.spark circle{fill:var(--accent);stroke:var(--surface);stroke-width:2}
+.cqc .yr{font-size:0.8125rem;margin:0 0 6px}.cqc .yr b{font-size:1.125rem}
+.cqc .old{color:var(--mid);font-weight:600}
+.chips{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.chip{display:flex;gap:6px;align-items:center;font-size:0.75rem;padding:4px 6px;border-radius:6px;background:var(--surface2)}
+.chip.ov{grid-column:1/-1;font-size:0.8125rem;font-weight:600}
+.chip .ic{flex:none;width:18px;height:18px;border-radius:50%;display:inline-grid;place-items:center;font-size:0.75rem;font-weight:700;color:var(--surface)}
+.chip.good .ic{background:var(--good)}.chip.mid .ic{background:var(--mid)}.chip.bad .ic{background:var(--bad)}
+.chip{align-items:flex-start}.chip .q{display:block;color:var(--ink2);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+
+/* A&E: one row per provider, most seen within 4 hours first */
+.aegrid{display:grid;gap:4px;margin-top:10px}
+.aer{display:grid;grid-template-columns:minmax(110px,190px) auto 1fr;gap:6px 14px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+.aer:last-child{border-bottom:0}
+.aer .nm{font-weight:500}.aer .nm .tag{display:block;font-size:0.75rem;font-weight:600;color:var(--accent)}
+.aer .ppl{margin:0}
+.aer .t{font-size:0.8125rem}
+.aer .t b{font-size:1rem}
+.aer .lw{display:block;color:var(--ink2)}
+@media (max-width:560px){.aer{grid-template-columns:1fr}}
+
+.h3{font-size:0.9375rem;margin:16px 0 2px;font-weight:600}
+.card>h3,.cardhead h3{font-size:1.0625rem;margin:0 0 4px;font-weight:600}
+/* the guided journey: numbered steps, a step bar, a "next" link at the end of each step */
+.steps{position:sticky;top:0;z-index:4;background:var(--bg);padding:8px 0;margin:0 0 8px;border-bottom:1px solid var(--line)}
+.steps ol{list-style:none;margin:0;padding:0;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.steps a{display:flex;align-items:center;gap:6px;white-space:nowrap;text-decoration:none;color:var(--ink);font-size:0.8125rem;font-weight:500;padding:6px 10px 6px 6px;border-radius:999px;background:var(--surface);border:1px solid var(--line)}
+.steps a[aria-current="step"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.steps .n{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--surface2);color:var(--ink);font-size:0.75rem;font-weight:700}
+.steps a[aria-current="step"] .n{background:var(--accent-ink);color:var(--accent)}
+.step{padding-top:20px;scroll-margin-top:56px}
+.sh{display:flex;align-items:center;gap:10px;font-size:1.375rem;margin:0 0 4px;font-weight:700}
+.sh .num{display:inline-grid;place-items:center;flex:none;width:34px;height:34px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-size:1rem}
+.lead{color:var(--ink2);margin:0 0 14px;max-width:65ch;font-size:0.9375rem}
+.next{display:flex;justify-content:flex-end;margin:4px 0 0}
+.next a{font-weight:600;text-decoration:none;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface)}
+.qd>summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:8px;font:inherit;font-weight:600;color:var(--accent-ink);background:var(--accent);border-radius:999px;padding:9px 16px;margin-bottom:14px}
+.qd>summary::-webkit-details-marker{display:none}
+.qd>summary::before{content:'+';font-size:1.125rem;line-height:1}
+.qd[open]>summary::before{content:'\2212'}
+.qd .sm-close,.qd[open] .sm-open{display:none}.qd[open] .sm-close{display:inline}
+.qd>summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+/* 3. deaths gauge: one bar per provider, three zones from that provider's own limits, a needle at its value */
+.drow{display:grid;grid-template-columns:minmax(110px,190px) 1fr;gap:6px 14px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+.drow:last-child{border-bottom:0}
+.drow .w{font-size:0.8125rem}.drow .w b{display:block;font-size:0.875rem}
+.gauge{position:relative;height:16px;border-radius:8px;overflow:visible;display:flex}
+.gauge i{display:block;height:100%}
+.gauge .zl{background:color-mix(in srgb,var(--good) 28%,var(--surface));border-radius:8px 0 0 8px}
+.gauge .zm{background:var(--surface2)}
+.gauge .zh{background:color-mix(in srgb,var(--bad) 28%,var(--surface));border-radius:0 8px 8px 0}
+.gauge .nd{position:absolute;top:-5px;width:4px;height:26px;margin-left:-2px;border-radius:2px;background:var(--ink);box-shadow:0 0 0 2px var(--surface)}
+.gauge .one{position:absolute;top:-3px;bottom:-3px;border-left:1px dashed var(--ink2)}
+.zkey{display:flex;flex-wrap:wrap;gap:14px;font-size:0.75rem;color:var(--ink2);margin-top:10px}
+.zkey i{display:inline-block;width:14px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.zkey .zl{background:color-mix(in srgb,var(--good) 28%,var(--surface))}.zkey .zm{background:var(--surface2);box-shadow:inset 0 0 0 1px var(--line)}.zkey .zh{background:color-mix(in srgb,var(--bad) 28%,var(--surface))}
+/* 4. A&E calendar strip: one square per month, one hue light to dark */
+.cal{display:grid;grid-template-columns:minmax(110px,190px) 1fr;gap:6px 14px;align-items:center;padding:6px 0}
+.sq{display:grid;grid-template-columns:repeat(12,1fr);gap:3px;max-width:420px}
+.sq span{aspect-ratio:1;border-radius:3px;min-width:14px}
+.cal .mo{display:grid;grid-template-columns:repeat(12,1fr);gap:3px;max-width:420px;font-size:0.75rem;color:var(--ink2);text-align:center}
+.cal small{grid-column:2;font-size:0.75rem;color:var(--ink2)}
+/* 5. escalation ladder */
+.ladder{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:6px}
+.rung{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:start;border-radius:8px;padding:10px;background:var(--surface2)}
+.rung .lv{font-size:1.5rem;font-weight:700;text-align:center;line-height:1}
+.rung .lv small{display:block;font-size:0.75rem;font-weight:500;color:var(--ink2)}
+.rung h3{font-size:0.875rem;margin:0 0 4px}
+.rung.empty{opacity:.6}
+.rung ul{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.rung li{font-size:0.8125rem}.rung li b{font-weight:600}
+.rung.l4,.rung.l5{box-shadow:inset 4px 0 0 var(--bad)}.rung.l3,.rung.l2{box-shadow:inset 4px 0 0 var(--mid)}.rung.l1{box-shadow:inset 4px 0 0 var(--good)}
+/* 6. inspection timeline */
+.irow{display:grid;grid-template-columns:minmax(110px,190px) 1fr;gap:6px 14px;align-items:center;padding:6px 0;border-bottom:1px solid var(--line)}
+.irow .nm{font-size:0.8125rem;font-weight:500}.irow .nm small{display:block;color:var(--ink2);font-weight:400;font-size:0.75rem}
+.tl{position:relative;height:46px}
+.tl::before{content:'';position:absolute;left:0;right:0;top:20px;border-top:1px solid var(--grid)}
+.ev{position:absolute;top:20px;transform:translate(-50%,-50%);border-radius:50%;background:var(--accent);box-shadow:0 0 0 2px var(--surface);display:grid;place-items:center;color:var(--accent-ink);font-size:0.75rem;font-weight:700}
+.ev.mat{background:var(--other)}
+.tlax{position:relative;height:16px;font-size:0.75rem;color:var(--ink2);font-family:var(--mono)}
+.tlax span{position:absolute;transform:translateX(-50%)}
+@media (max-width:560px){.drow,.cal,.irow{grid-template-columns:1fr}.cal small{grid-column:1}}
+
+/* table view: the same numbers as text */
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:560px}
+th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--line)}
+thead th{font-size:0.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);background:var(--surface2);font-weight:600}
+tbody th{font-weight:500}
+td.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+.notes{color:var(--ink2);margin-bottom:16px}
+.notes p{margin:0 0 10px;max-width:75ch}
+.notes dl{margin:8px 0 10px;max-width:75ch}.notes dt{font-weight:600;color:var(--ink)}.notes dd{margin:0 0 8px}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:560px){.trow,.overlay,.gaprow{grid-template-columns:92px 1fr}.card{padding:14px}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="person" viewBox="0 0 20 24"><circle cx="10" cy="5" r="4.5"/><path d="M2 23v-6a8 8 0 0 1 16 0v6z"/></symbol></svg>
+<div class="wrap" data-kind="finder">
+  <h1>NHS Neath Port Talbot Referrals and Waiting Times</h1>
+  <p class="sub" id="meta"></p>
+
+  <nav class="steps" aria-label="Steps through this page"><ol id="stepNav"></ol></nav>
+
+  <section class="step" id="s-wait" aria-labelledby="s-wait-h">
+    <h2 class="sh" id="s-wait-h"><span class="num" aria-hidden="true"></span><span>Where's the shortest wait?</span></h2>
+    <p class="lead">Choose a specialty. We'll show which nearby hospitals have the shortest waits.</p>
+    <div class="filters">
+      <div><label class="lbl" for="spec">Specialty</label><select id="spec"></select></div>
+      <div id="stageBox"><label class="lbl" for="stage">Waiting for</label><select id="stage"></select></div>
+    </div>
+    <div class="card hero" aria-live="polite" id="hero"></div>
+    <div class="card">
+      <div class="cardhead">
+        <div><h3 id="trackH">How long people have waited</h3><p class="hint" id="trackHint"></p></div>
+        <button type="button" id="tbtn" aria-pressed="false">Show as table</button>
+      </div>
+      <div id="trackBox"></div>
+      <div id="tableBox" hidden></div>
+    </div>
+  </section>
+
+  <section class="step" id="s-compare" aria-labelledby="s-compare-h">
+    <h2 class="sh" id="s-compare-h"><span class="num" aria-hidden="true"></span><span>Compare each one</span></h2>
+    <p class="lead">One card per hospital: its wait, whether that is getting better or worse, and anything worth knowing before a referral.</p>
+    <div class="grid" id="cards"></div>
+  </section>
+
+  <section class="step" id="s-urgent" aria-labelledby="s-urgent-h" hidden>
+    <h2 class="sh" id="s-urgent-h"><span class="num" aria-hidden="true"></span><span>If it's urgent: A&amp;E</span></h2>
+    <p class="lead" id="aeHint"></p>
+    <div class="card ae" id="aeBox" hidden>
+      <div class="aegrid" id="aeRows"></div>
+      <div id="aeCal" hidden><h3 class="h3">Month by month</h3><p class="hint">Each square is one month: darker means more people were dealt with within 4 hours.</p><div id="aeCalRows"></div></div>
+      <p class="hint" style="margin-top:10px">A&amp;E is not a referral waiting list, so it is measured differently: how many people were seen and then admitted, transferred or sent home within 4 hours of arriving.</p>
+    </div>
+  </section>
+
+  <section class="step" id="s-quality" aria-labelledby="s-quality-h" hidden>
+    <h2 class="sh" id="s-quality-h"><span class="num" aria-hidden="true"></span><span>Quality and safety</span></h2>
+    <p class="lead" id="qLead"></p>
+    <details class="qd" id="qDetails">
+      <summary><span class="sm-open">Show quality and safety</span><span class="sm-close">Hide quality and safety</span></summary>
+      <div class="card" id="dBox" hidden>
+        <h3 id="dH">Hospital deaths: more or fewer than expected?</h3>
+        <p class="hint" id="dHint"></p>
+        <div id="dRows"></div>
+        <div class="zkey" aria-hidden="true"><span><i class="zl"></i>Fewer than expected</span><span><i class="zm"></i>As expected</span><span><i class="zh"></i>More than expected</span></div>
+      </div>
+      <div class="card" id="eBox" hidden>
+        <h3 id="eH">How closely is each board being watched?</h3>
+        <p class="hint">The Welsh Government's escalation ladder. Level 1 is routine; level 5 is special measures. A board can be on more than one rung for different parts of its work.</p>
+        <ol class="ladder" id="eRows"></ol>
+      </div>
+      <div class="card" id="iBox" hidden>
+        <h3 id="iH">Inspections over time</h3>
+        <p class="hint" id="iHint"></p>
+        <div id="iRows"></div>
+      </div>
+    </details>
+  </section>
+
+  <section class="step" id="s-read" aria-labelledby="s-read-h">
+    <h2 class="sh" id="s-read-h"><span class="num" aria-hidden="true"></span><span>How to read this</span></h2>
+    <div class="notes card">
+      <dl>
+        <dt>"Half have waited longer than…"</dt>
+        <dd>Line up everyone on the waiting list by how long they have waited so far: this is the wait of the person in the middle (the median). It is not a promise of how long a new referral will take.</dd>
+        <dt id="tenT"></dt>
+        <dd>Out of every 10 people on the list, how many have waited no longer than the standard so far.</dd>
+        <dt>The ticks and warnings</dt>
+        <dd id="ckNote"></dd>
+      </dl>
+      <p>A shorter wait elsewhere is a reason to talk about choice with the patient, not a guarantee.</p>
+      <div id="siteNote"></div>
+      <p id="mainLink"></p>
+    </div>
+  </section>
+</div>
+<div class="tip" id="tip" hidden></div>
+<script>
+// source a840c046bfdd
+var DATA_META={"region":"neath-port-talbot","title":"Neath Port Talbot","nation":"wales","orgs":[{"id":"sb","name":"Swansea Bay University Health Board","short":"Swansea Bay","sites":"Morriston (Swansea), Singleton (Swansea), Neath Port Talbot Hospital (Port Talbot)","home":true,"code":"7A3"},{"id":"hd","name":"Hywel Dda University Health Board","short":"Hywel Dda","sites":"Glangwili (Carmarthen), Prince Philip (Llanelli), Withybush (Haverfordwest), Bronglais (Aberystwyth)","code":"7A2"},{"id":"ctm","name":"Cwm Taf Morgannwg University Health Board","short":"Cwm Taf Morgannwg","sites":"Princess of Wales (Bridgend), Royal Glamorgan (Llantrisant), Prince Charles (Merthyr Tydfil)","code":"7A5"},{"id":"cv","name":"Cardiff and Vale University Health Board","short":"Cardiff & Vale","sites":"University Hospital of Wales (Cardiff), Llandough","code":"7A4"}],"benchmark":{"id":"wa","code":"W92000004","name":"NHS Wales"},"ons_area":"Swansea Bay University","comparator_ons_areas":["Hywel Dda University","Cwm Taf Morgannwg University","Cardiff and Vale University","Wales"],"langs":["en"],"standard":{"weeks":26,"target_pct":95,"max_weeks":36},"intro":"Hospital waiting lists for referrals from Neath Port Talbot, comparing Swansea Bay with the neighbouring South Wales health boards. Filter by board, stage, care type and specialty.","data_through":"2026-08","fetched_at":"2026-11-03T14:11:46Z","sources_failed":[],"periods":{"wales_rtt":"2026-08","wales_ae":"2026-09","hiw":"ab9a1c8fea9da319","wales_esc":"215d0e7477c668ab","ons":"2025"},"waits_calculated":true,"main_url":"https://baskers1.github.io/dashboards/neath-port-talbot/referral-waits/"};
+var DATA_FIND={"stages":[["op","First outpatient appointment"],["ip","Inpatient or day case treatment"],["all","All stages of the pathway"]],"std_weeks":26,"rows":{"op":[["Cardiology","cv",13.0,null,3539,82],["Cardiothoracic Surgery","cv",12.8,null,211,69],["Chemical Pathology","cv",59.0,null,1,0],["Clinical Immunology and Allergy","cv",16.9,null,698,71],["Clinical Pharmacology","cv",22.9,null,424,57],["Dental Medicine","cv",19.4,null,836,58],["Dermatology","cv",28.5,null,7162,47],["Diagnostic Services","cv",8.5,null,21,71],["Ear, Nose and Throat","cv",12.7,null,4005,89],["Endocrinology","cv",10.2,null,606,96],["Gastroenterology","cv",16.6,null,2668,70],["General Medicine","cv",11.9,null,999,81],["General Surgery","cv",10.5,null,3954,87],["Geriatric Medicine","cv",21.0,null,987,59],["Gynaecology","cv",13.5,null,4441,81],["Haematology (clinical)","cv",11.2,null,736,87],["Infectious Diseases","cv",3.0,null,24,96],["Nephrology","cv",4.8,null,229,97],["Neurology","cv",24.9,null,2780,52],["Neurosurgery","cv",9.1,null,439,98],["Ophthalmology","cv",28.7,null,5302,46],["Oral Surgery","cv",22.3,null,2864,59],["Orthodontics","cv",13.1,null,375,83],["Paediatric Dentistry","cv",17.0,null,701,65],["Paediatric Neurology","cv",9.3,null,44,95],["Paediatric Surgery","cv",4.3,null,131,96],["Paediatrics","cv",11.7,null,1501,86],["Pain Management","cv",16.4,null,779,66],["Plastic Surgery","cv",43.0,null,1,0],["Rehabilitation","cv",13.5,null,1249,86],["Respiratory Medicine","cv",11.6,null,1144,79],["Restorative Dentistry","cv",22.3,null,1184,57],["Rheumatology","cv",30.9,null,2459,42],["Trauma and Orthopaedics","cv",16.9,null,5228,64],["Urology","cv",16.5,null,1941,73],["Vascular Surgery","cv",17.1,null,813,66],["Cardiology","ctm",16.3,null,3835,73],["Dermatology","ctm",9.3,null,4282,86],["Diagnostic Services","ctm",12.1,null,111,89],["Ear, Nose and Throat","ctm",16.3,null,5708,70],["Endocrinology","ctm",10.2,null,1528,86],["Gastroenterology","ctm",11.6,null,2210,89],["General Medicine","ctm",5.6,null,384,93],["General Surgery","ctm",9.3,null,3319,94],["Geriatric Medicine","ctm",7.5,null,300,99],["Gynaecology","ctm",9.3,null,2575,95],["Haematology (clinical)","ctm",11.8,null,281,79],["Nephrology","ctm",6.8,null,169,99],["Neurology","ctm",24.2,null,1821,53],["Neurosurgery","ctm",3.5,null,1,100],["Ophthalmology","ctm",13.1,null,5963,80],["Oral Surgery","ctm",13.7,null,1680,86],["Orthodontics","ctm",18.7,null,405,67],["Paediatrics","ctm",9.1,null,1930,84],["Pain Management","ctm",22.8,null,1075,58],["Respiratory Medicine","ctm",9.7,null,1036,89],["Restorative Dentistry","ctm",12.0,null,60,78],["Rheumatology","ctm",14.0,null,1218,75],["Trauma and Orthopaedics","ctm",14.6,null,5153,76],["Urology","ctm",13.0,null,2924,76],["Vascular Surgery","ctm",11.7,null,428,90],["Allied Health Profession Services","hd",9.7,null,1857,92],["Audiological Medicine","hd",10.5,null,3,100],["Cardiology","hd",11.4,null,2224,91],["Chemical Pathology","hd",6.2,null,69,96],["Clinical Neurophysiology","hd",3.8,null,46,100],["Dermatology","hd",14.4,null,3703,72],["Diagnostic Services","hd",7.3,null,9131,96],["Ear, Nose and Throat","hd",9.8,null,1943,95],["Endocrinology","hd",10.7,null,881,92],["Gastroenterology","hd",5.7,null,821,100],["General Medicine","hd",23.8,null,1818,53],["General Surgery","hd",3.5,null,1432,99],["Geriatric Medicine","hd",21.5,null,599,57],["Gynaecology","hd",10.6,null,2643,95],["Haematology (clinical)","hd",6.9,null,335,94],["Nephrology","hd",10.2,null,199,87],["Neurology","hd",23.0,null,2561,57],["Ophthalmology","hd",12.9,null,3535,81],["Paediatrics","hd",11.0,null,991,82],["Pain Management","hd",24.2,null,557,53],["Respiratory Medicine","hd",6.4,null,800,96],["Rheumatology","hd",24.5,null,1761,53],["Trauma and Orthopaedics","hd",7.1,null,1456,100],["Urology","hd",9.8,null,1513,97],["Vascular Surgery","hd",7.3,null,377,100],["Cardiology","sb",10.0,null,1959,94],["Cardiothoracic Surgery","sb",3.8,null,105,100],["Dermatology","sb",8.6,null,3965,87],["Ear, Nose and Throat","sb",10.5,null,2199,100],["Endocrinology","sb",5.6,null,708,100],["Gastroenterology","sb",15.9,null,3023,80],["General Medicine","sb",6.3,null,404,97],["General Surgery","sb",6.9,null,2187,98],["Geriatric Medicine","sb",8.8,null,597,90],["Gynaecology","sb",11.2,null,3513,90],["Haematology (clinical)","sb",7.4,null,596,100],["Nephrology","sb",4.3,null,225,100],["Neurology","sb",9.4,null,2128,100],["Ophthalmology","sb",8.2,null,2124,89],["Oral Surgery","sb",23.3,null,3838,58],["Orthodontics","sb",24.4,null,1044,53],["Paediatric Neurology","sb",11.3,null,166,90],["Paediatrics","sb",6.4,null,977,99],["Pain Management","sb",1.3,null,20,100],["Plastic Surgery","sb",9.8,null,1882,93],["Rehabilitation","sb",5.8,null,73,100],["Respiratory Medicine","sb",6.7,null,1531,100],["Restorative Dentistry","sb",11.8,null,459,90],["Rheumatology","sb",8.8,null,473,100],["Trauma and Orthopaedics","sb",10.5,null,3639,89],["Urology","sb",5.4,null,788,98],["Vascular Surgery","sb",14.0,null,958,87],["Allied Health Profession Services","wa",9.7,null,1858,92],["Audiological Medicine","wa",10.5,null,3,100],["Cardiology","wa",12.6,null,20330,80],["Cardiothoracic Surgery","wa",7.7,null,316,79],["Chemical Pathology","wa",5.9,null,308,99],["Clinical Immunology and Allergy","wa",16.9,null,698,71],["Clinical Neurophysiology","wa",1.7,null,133,100],["Clinical Pharmacology","wa",23.2,null,582,57],["Dental Medicine","wa",19.4,null,836,58],["Dermatology","wa",13.0,null,34092,73],["Diagnostic Services","wa",7.3,null,9263,96],["Ear, Nose and Throat","wa",13.6,null,25543,80],["Endocrinology","wa",14.1,null,9441,71],["Gastroenterology","wa",12.1,null,16134,81],["General Medicine","wa",14.7,null,3632,70],["General Surgery","wa",9.0,null,22836,88],["Geriatric Medicine","wa",10.5,null,4506,83],["Gynaecology","wa",12.0,null,24701,85],["Haematology (clinical)","wa",7.6,null,2964,92],["Infectious Diseases","wa",2.4,null,33,97],["Nephrology","wa",9.8,null,2535,82],["Neurology","wa",16.8,null,12087,68],["Neurosurgery","wa",9.1,null,440,98],["Ophthalmology","wa",18.5,null,40794,67],["Oral Surgery","wa",18.2,null,14136,68],["Orthodontics","wa",22.0,null,2865,57],["Paediatric Dentistry","wa",17.0,null,701,65],["Paediatric Neurology","wa",10.7,null,231,91],["Paediatric Surgery","wa",4.2,null,161,97],["Paediatrics","wa",10.0,null,9494,89],["Pain Management","wa",20.8,null,5886,58],["Plastic Surgery","wa",10.9,null,2331,89],["Rehabilitation","wa",12.8,null,1323,87],["Respiratory Medicine","wa",9.2,null,9108,88],["Restorative Dentistry","wa",18.8,null,1765,65],["Rheumatology","wa",19.7,null,8323,60],["Trauma and Orthopaedics","wa",14.6,null,33486,74],["Urology","wa",11.5,null,13674,83],["Vascular Surgery","wa",11.6,null,4531,83]],"ip":[["Allied Health Profession Services","cv",55.0,null,9,44],["Cardiology","cv",23.5,null,584,55],["Cardiothoracic Surgery","cv",20.3,null,164,65],["Clinical Immunology and Allergy","cv",22.0,null,2,50],["Clinical Neurophysiology","cv",28.5,null,3,33],["Dental Medicine","cv",22.5,null,3,67],["Dermatology","cv",10.7,null,518,81],["Diagnostic Services","cv",64.8,null,41,24],["Ear, Nose and Throat","cv",44.4,null,3463,25],["Endocrinology","cv",2.7,null,44,98],["Gastroenterology","cv",19.0,null,2540,65],["General Medicine","cv",17.0,null,1024,68],["General Surgery","cv",41.3,null,5648,33],["Gynaecology","cv",40.2,null,2109,33],["Haematology (clinical)","cv",15.4,null,69,64],["Nephrology","cv",9.5,null,13,85],["Neurology","cv",15.1,null,126,81],["Neurosurgery","cv",17.8,null,355,65],["Ophthalmology","cv",35.4,null,2851,39],["Oral Surgery","cv",22.7,null,885,60],["Orthodontics","cv",27.5,null,9,44],["Paediatric Dentistry","cv",19.7,null,184,57],["Paediatric Neurology","cv",11.0,null,8,63],["Paediatric Surgery","cv",19.0,null,457,63],["Paediatrics","cv",19.6,null,465,64],["Pain Management","cv",17.3,null,560,70],["Respiratory Medicine","cv",3.0,null,14,100],["Restorative Dentistry","cv",30.5,null,23,43],["Rheumatology","cv",3.0,null,2,50],["Trauma and Orthopaedics","cv",39.6,null,7195,35],["Urology","cv",23.6,null,1309,52],["Vascular Surgery","cv",28.6,null,189,48],["Allied Health Profession Services","ctm",0.5,null,1,100],["Cardiology","ctm",11.0,null,234,83],["Cardiothoracic Surgery","ctm",0.5,null,3,100],["Dermatology","ctm",10.2,null,53,91],["Diagnostic Services","ctm",2.1,null,417,99],["Ear, Nose and Throat","ctm",45.3,null,1309,33],["Endocrinology","ctm",15.5,null,7,71],["Gastroenterology","ctm",3.9,null,108,92],["General Medicine","ctm",2.5,null,65,78],["General Surgery","ctm",36.9,null,2422,37],["Geriatric Medicine","ctm",31.0,null,12,33],["Gynaecology","ctm",36.3,null,2308,37],["Ophthalmology","ctm",39.8,null,3518,30],["Oral Surgery","ctm",15.1,null,465,66],["Paediatrics","ctm",7.6,null,51,86],["Pain Management","ctm",38.8,null,716,37],["Respiratory Medicine","ctm",24.5,null,13,54],["Rheumatology","ctm",23.8,null,15,53],["Trauma and Orthopaedics","ctm",55.4,null,4752,20],["Urology","ctm",22.3,null,1145,56],["Vascular Surgery","ctm",51.7,null,48,35],["Cardiology","hd",12.3,null,231,88],["Dermatology","hd",18.6,null,1649,58],["Ear, Nose and Throat","hd",42.0,null,1174,31],["Endocrinology","hd",16.0,null,4,100],["Gastroenterology","hd",3.7,null,655,96],["General Medicine","hd",18.0,null,120,61],["General Surgery","hd",23.4,null,2136,54],["Geriatric Medicine","hd",24.0,null,58,53],["Gynaecology","hd",44.3,null,2063,29],["Haematology (clinical)","hd",27.8,null,100,47],["Neurology","hd",11.5,null,1,100],["Ophthalmology","hd",43.2,null,8869,32],["Paediatrics","hd",9.5,null,3,100],["Pain Management","hd",66.5,null,998,17],["Respiratory Medicine","hd",3.0,null,44,93],["Rheumatology","hd",27.2,null,294,49],["Trauma and Orthopaedics","hd",51.1,null,6133,22],["Urology","hd",25.6,null,2662,50],["Vascular Surgery","hd",16.2,null,41,63],["Cardiology","sb",20.6,null,544,59],["Cardiothoracic Surgery","sb",15.0,null,106,73],["Dermatology","sb",1.0,null,2,100],["Ear, Nose and Throat","sb",44.8,null,2292,28],["Endocrinology","sb",0.5,null,2,100],["Gastroenterology","sb",8.8,null,1306,84],["General Medicine","sb",11.0,null,84,69],["General Surgery","sb",34.5,null,3369,41],["Geriatric Medicine","sb",1.9,null,31,87],["Gynaecology","sb",42.3,null,1732,30],["Haematology (clinical)","sb",2.2,null,17,100],["Neurology","sb",9.7,null,1114,94],["Ophthalmology","sb",44.6,null,1848,32],["Oral Surgery","sb",50.3,null,1154,30],["Paediatrics","sb",7.0,null,24,75],["Pain Management","sb",0.7,null,16,100],["Plastic Surgery","sb",34.6,null,3141,36],["Respiratory Medicine","sb",2.3,null,42,98],["Trauma and Orthopaedics","sb",46.4,null,9329,27],["Urology","sb",17.6,null,1032,62],["Vascular Surgery","sb",28.8,null,192,46],["Allied Health Profession Services","wa",24.0,null,10,50],["Cardiology","wa",17.1,null,1819,67],["Cardiothoracic Surgery","wa",19.1,null,273,68],["Clinical Immunology and Allergy","wa",22.0,null,2,50],["Clinical Neurophysiology","wa",28.5,null,3,33],["Dental Medicine","wa",22.5,null,3,67],["Dermatology","wa",12.7,null,2602,68],["Diagnostic Services","wa",2.4,null,458,93],["Ear, Nose and Throat","wa",44.7,null,12991,29],["Endocrinology","wa",6.6,null,81,91],["Gastroenterology","wa",9.3,null,9005,75],["General Medicine","wa",15.5,null,1337,69],["General Surgery","wa",39.7,null,24917,34],["Geriatric Medicine","wa",20.7,null,114,58],["Gynaecology","wa",40.3,null,12560,32],["Haematology (clinical)","wa",12.3,null,278,66],["Nephrology","wa",10.0,null,20,75],["Neurology","wa",10.2,null,1241,93],["Neurosurgery","wa",17.8,null,355,65],["Ophthalmology","wa",34.9,null,29621,39],["Oral Surgery","wa",39.3,null,5213,35],["Orthodontics","wa",27.5,null,9,44],["Paediatric Dentistry","wa",19.7,null,184,57],["Paediatric Neurology","wa",11.0,null,8,63],["Paediatric Surgery","wa",19.7,null,483,61],["Paediatrics","wa",18.5,null,562,67],["Pain Management","wa",36.1,null,2593,40],["Plastic Surgery","wa",34.5,null,3212,36],["Respiratory Medicine","wa",5.0,null,148,90],["Restorative Dentistry","wa",30.5,null,23,43],["Rheumatology","wa",27.1,null,311,49],["Trauma and Orthopaedics","wa",47.8,null,47121,27],["Urology","wa",27.4,null,10591,48],["Vascular Surgery","wa",25.7,null,774,51]],"all":[["Allied Health Profession Services","cv",5.4,null,8216,96],["Cardiology","cv",23.8,null,7457,54],["Cardiothoracic Surgery","cv",15.2,null,535,70],["Chemical Pathology","cv",8.0,null,2,50],["Clinical Immunology and Allergy","cv",19.3,null,1109,63],["Clinical Neurophysiology","cv",24.5,null,8,63],["Clinical Pharmacology","cv",22.9,null,424,57],["Dental Medicine","cv",22.2,null,1029,56],["Dermatology","cv",24.4,null,8515,52],["Diagnostic Services","cv",6.4,null,7238,96],["Ear, Nose and Throat","cv",19.9,null,7963,61],["Endocrinology","cv",9.6,null,650,96],["Gastroenterology","cv",23.3,null,9167,56],["General Medicine","cv",18.8,null,3563,65],["General Surgery","cv",22.4,null,13229,57],["Geriatric Medicine","cv",20.9,null,991,59],["Gynaecology","cv",18.6,null,8406,66],["Haematology (clinical)","cv",14.6,null,1280,73],["Infectious Diseases","cv",3.0,null,24,96],["Nephrology","cv",8.7,null,366,72],["Neurology","cv",24.6,null,3138,52],["Neurosurgery","cv",13.3,null,999,81],["Ophthalmology","cv",32.1,null,9794,41],["Oral Surgery","cv",23.2,null,5090,57],["Orthodontics","cv",13.6,null,403,81],["Paediatric Dentistry","cv",22.0,null,1121,57],["Paediatric Neurology","cv",14.3,null,92,72],["Paediatric Surgery","cv",15.3,null,679,70],["Paediatrics","cv",15.4,null,3247,75],["Pain Management","cv",16.9,null,1340,68],["Plastic Surgery","cv",43.0,null,1,0],["Rehabilitation","cv",13.5,null,1250,86],["Respiratory Medicine","cv",9.6,null,1788,82],["Restorative Dentistry","cv",22.3,null,1339,58],["Rheumatology","cv",30.6,null,2568,43],["Trauma and Orthopaedics","cv",29.4,null,14210,45],["Urology","cv",18.2,null,3704,64],["Vascular Surgery","cv",19.3,null,1187,61],["Allied Health Profession Services","ctm",4.2,null,1466,100],["Cardiology","ctm",18.0,null,4916,67],["Cardiothoracic Surgery","ctm",0.5,null,7,100],["Dermatology","ctm",9.5,null,5083,86],["Diagnostic Services","ctm",5.7,null,5356,99],["Ear, Nose and Throat","ctm",21.9,null,8473,57],["Endocrinology","ctm",10.4,null,1565,85],["Gastroenterology","ctm",12.5,null,3756,81],["General Medicine","ctm",6.2,null,522,88],["General Surgery","ctm",18.0,null,7811,63],["Geriatric Medicine","ctm",8.4,null,328,94],["Gynaecology","ctm",18.0,null,6267,63],["Haematology (clinical)","ctm",11.8,null,281,79],["Nephrology","ctm",7.1,null,175,96],["Neurology","ctm",25.5,null,2007,51],["Neurosurgery","ctm",3.5,null,1,100],["Ophthalmology","ctm",19.8,null,9675,60],["Oral Surgery","ctm",15.0,null,2589,75],["Orthodontics","ctm",18.7,null,405,67],["Paediatrics","ctm",8.8,null,2107,85],["Pain Management","ctm",26.1,null,1803,50],["Respiratory Medicine","ctm",12.6,null,1368,77],["Restorative Dentistry","ctm",12.0,null,60,78],["Rheumatology","ctm",15.5,null,1410,70],["Trauma and Orthopaedics","ctm",30.0,null,12124,45],["Urology","ctm",20.2,null,6091,59],["Vascular Surgery","ctm",14.8,null,569,76],["Allied Health Profession Services","hd",9.7,null,1857,92],["Audiological Medicine","hd",10.5,null,3,100],["Cardiology","hd",8.5,null,7839,88],["Chemical Pathology","hd",8.8,null,105,75],["Clinical Neurophysiology","hd",10.2,null,398,92],["Dermatology","hd",18.3,null,6821,62],["Diagnostic Services","hd",7.3,null,9131,96],["Ear, Nose and Throat","hd",18.1,null,4107,64],["Endocrinology","hd",11.0,null,931,90],["Gastroenterology","hd",12.8,null,3574,73],["General Medicine","hd",25.2,null,2747,51],["General Surgery","hd",15.4,null,5873,66],["Geriatric Medicine","hd",25.1,null,880,52],["Gynaecology","hd",19.8,null,6071,61],["Haematology (clinical)","hd",10.2,null,569,80],["Nephrology","hd",10.9,null,218,87],["Neurology","hd",23.1,null,2716,57],["Neurosurgery","hd",47.0,null,1,0],["Ophthalmology","hd",29.1,null,13622,45],["Oral Surgery","hd",8.5,null,1,100],["Paediatrics","hd",14.3,null,1289,74],["Pain Management","hd",39.5,null,1650,30],["Rehabilitation","hd",28.2,null,226,45],["Respiratory Medicine","hd",9.9,null,1485,82],["Rheumatology","hd",23.4,null,2394,55],["Trauma and Orthopaedics","hd",39.1,null,9059,38],["Urology","hd",16.6,null,4954,64],["Vascular Surgery","hd",14.5,null,716,72],["Allied Health Profession Services","sb",4.3,null,3942,100],["Cardiology","sb",14.8,null,3337,73],["Cardiothoracic Surgery","sb",12.0,null,326,80],["Dermatology","sb",11.7,null,4931,82],["Diagnostic Services","sb",4.8,null,5612,100],["Ear, Nose and Throat","sb",21.0,null,5787,57],["Endocrinology","sb",5.4,null,750,100],["Gastroenterology","sb",16.1,null,5167,75],["General Medicine","sb",13.8,null,1719,91],["General Surgery","sb",18.1,null,6447,63],["Geriatric Medicine","sb",16.7,null,1206,66],["Gynaecology","sb",18.9,null,7024,63],["Haematology (clinical)","sb",7.6,null,668,100],["Nephrology","sb",4.3,null,225,100],["Neurology","sb",10.1,null,3472,95],["Ophthalmology","sb",22.8,null,8562,56],["Oral Surgery","sb",29.1,null,7113,45],["Orthodontics","sb",24.4,null,1044,53],["Paediatric Neurology","sb",11.3,null,166,90],["Paediatrics","sb",7.1,null,1099,97],["Pain Management","sb",0.9,null,36,100],["Plastic Surgery","sb",21.0,null,5765,57],["Rehabilitation","sb",6.0,null,76,100],["Respiratory Medicine","sb",7.3,null,1991,99],["Restorative Dentistry","sb",11.8,null,459,90],["Rheumatology","sb",10.2,null,567,92],["Trauma and Orthopaedics","sb",31.9,null,14271,43],["Urology","sb",10.7,null,2287,77],["Vascular Surgery","sb",17.7,null,1436,70],["Allied Health Profession Services","wa",4.8,null,36986,97],["Audiological Medicine","wa",10.5,null,3,100],["Cardiology","wa",15.4,null,35618,69],["Cardiothoracic Surgery","wa",13.8,null,868,74],["Chemical Pathology","wa",6.7,null,351,92],["Clinical Immunology and Allergy","wa",19.3,null,1109,63],["Clinical Neurophysiology","wa",7.5,null,495,93],["Clinical Pharmacology","wa",23.4,null,585,57],["Dental Medicine","wa",22.2,null,1029,56],["Dermatology","wa",14.2,null,43413,72],["Diagnostic Services","wa",5.4,null,43215,98],["Ear, Nose and Throat","wa",21.1,null,47216,58],["Endocrinology","wa",14.2,null,9935,71],["Gastroenterology","wa",18.0,null,41078,64],["General Medicine","wa",18.0,null,8670,67],["General Surgery","wa",21.1,null,67705,58],["Geriatric Medicine","wa",12.6,null,5867,76],["Gynaecology","wa",18.5,null,46441,64],["Haematology (clinical)","wa",9.0,null,4096,85],["Infectious Diseases","wa",2.4,null,33,97],["Nephrology","wa",10.8,null,2806,78],["Neurology","wa",16.4,null,14207,68],["Neurosurgery","wa",13.3,null,1001,81],["Ophthalmology","wa",24.1,null,80586,54],["Oral Surgery","wa",24.7,null,27771,53],["Orthodontics","wa",22.2,null,2915,57],["Paediatric Dentistry","wa",22.0,null,1121,57],["Paediatric Neurology","wa",11.8,null,279,84],["Paediatric Surgery","wa",15.2,null,736,69],["Paediatrics","wa",11.3,null,11972,84],["Pain Management","wa",24.8,null,8894,52],["Plastic Surgery","wa",20.8,null,6355,58],["Rehabilitation","wa",14.1,null,1553,81],["Respiratory Medicine","wa",11.2,null,14241,80],["Restorative Dentistry","wa",19.2,null,1928,65],["Rheumatology","wa",20.1,null,9688,60],["Trauma and Orthopaedics","wa",30.7,null,93146,44],["Urology","wa",18.4,null,32992,62],["Vascular Surgery","wa",17.3,null,7314,66]]},"checks":{"hd":[["Escalation level 4 of 5: Finance, strategy and planning; urgent and emergency care; fragile services, including ophthalmology; healthcare associated infections","bad"]],"sb":[["Escalation level 4 of 5: Maternity and neonatal services; finance, strategy and planning; cancer; healthcare associated infections; urgent and emergency care","bad"]],"ctm":[["Escalation level 4 of 5: Urgent and emergency care","bad"]],"cv":[["Escalation level 4 of 5: The organisation as a whole (no specific areas listed)","bad"]]},"ae":{"month":"2026-09","long":"spent 12 hours or more in A&E","rows":[["sb",71.3,1157,164],["hd",66.8,1649,153],["ctm",58.7,2295,202],["cv",59.3,1100,182],["wa",63.9,11616,177]]},"trend":{"sb":{"All":[["2025-09",16.8],["2025-10",16.4],["2025-11",16.4],["2025-12",16.5],["2026-01",16.1],["2026-02",15.2],["2026-03",13.2],["2026-04",12.7],["2026-05",13.3],["2026-06",14.0],["2026-07",14.6],["2026-08",15.6]]},"hd":{"All":[["2025-09",17.1],["2025-10",16.9],["2025-11",16.5],["2025-12",16.8],["2026-01",15.9],["2026-02",14.9],["2026-03",13.0],["2026-04",13.3],["2026-05",14.3],["2026-06",14.8],["2026-07",15.6],["2026-08",17.0]]},"ctm":{"All":[["2025-09",22.2],["2025-10",20.7],["2025-11",20.0],["2025-12",19.8],["2026-01",18.0],["2026-02",17.1],["2026-03",15.9],["2026-04",15.4],["2026-05",16.2],["2026-06",16.1],["2026-07",15.6],["2026-08",16.1]]},"cv":{"All":[["2025-09",23.2],["2025-10",22.9],["2025-11",22.5],["2025-12",23.1],["2026-01",22.1],["2026-02",20.8],["2026-03",18.9],["2026-04",18.8],["2026-05",18.3],["2026-06",17.9],["2026-07",18.4],["2026-08",19.0]]},"wa":{"All":[["2025-09",20.5],["2025-10",19.9],["2025-11",19.2],["2025-12",19.0],["2026-01",17.8],["2026-02",16.7],["2026-03",15.5],["2026-04",14.8],["2026-05",15.7],["2026-06",15.9],["2026-07",16.3],["2026-08",17.2]]}},"trend_scope":"whole waiting list","ae_trend":{"months":["Oct 25","Nov 25","Dec 25","Jan 26","Feb 26","Mar 26","Apr 26","May 26","Jun 26","Jul 26","Aug 26","Sep 26"],"rows":{"sb":[73.8,72.3,71.9,70.8,67.7,68.4,68.9,67.7,66.1,66.7,69.1,71.3],"hd":[71.6,71.2,72.4,72.0,73.5,75.1,71.8,66.5,67.6,68.1,67.1,66.8],"ctm":[58.7,59.7,57.2,57.2,60.2,56.4,57.9,57.6,54.1,57.6,58.7,58.7],"cv":[60.2,58.3,57.5,60.2,59.3,60.9,61.6,61.6,58.7,60.5,57.5,59.3],"wa":[66.0,65.0,64.3,64.5,64.9,65.3,65.9,64.4,63.0,64.1,63.8,63.9]}},"esc":{"hd":[[3,"Planned care"],[4,"Finance, strategy and planning; urgent and emergency care; fragile services, including ophthalmology; healthcare associated infections"]],"sb":[[3,"Planned care"],[4,"Maternity and neonatal services; finance, strategy and planning; cancer; healthcare associated infections; urgent and emergency care"]],"ctm":[[3,"Planned care"],[4,"Urgent and emergency care"]],"cv":[[4,"The organisation as a whole (no specific areas listed)"]]},"insp":[["Prince Philip Hospital, Llanelli","hd","prince-philip-hospital","Mynydd Mawr Ward (August 2025)","20 Nov 2025","Bryngolau Ward (September 2024)","5 Dec 2024","2025-08"],["Glangwili General Hospital, Carmarthen","hd","glangwili-general-hospital","Derwen Ward (September 2025)","4 Dec 2025","Maternity services (May 2025)","14 Aug 2025","2025-09"],["Amman Valley Hospital, Glanamman","hd","amman-valley-hospital","Cysgod y Cwm Ward, follow-up (May 2019)","22 Aug 2019","Cysgod y Cwm Ward (April 2018)","19 Jul 2018","2019-05"],["Withybush General Hospital, Haverfordwest","hd","withybush-general-hospital","Radiation safety, IR(ME)R (June 2025)","18 Sep 2025","Radiation safety, IR(ME)R (January 2024)","2 May 2024","2025-06"],["Bronglais General Hospital, Aberystwyth","hd","bronglais-general-hospital","Enlli Ward (June 2026)","17 Sep 2026","Radiation safety, IR(ME)R (May 2026)","20 Aug 2026","2026-06"],["Morriston Hospital, Swansea","sb","morriston-hospital","Ward D (March 2026)","18 Jun 2026","Emergency department (November 2024)","5 Mar 2025","2026-03"],["Singleton Hospital, Swansea","sb","singleton-hospital","Ward 3 (May 2026)","13 Aug 2026","Maternity services (February 2026)","21 May 2026","2026-05"],["Neath Port Talbot Hospital","sb","neath-port-talbot-hospital","Minor injury unit (May 2025)","28 Aug 2025","Maternity services (February 2025)","9 May 2025","2025-05"],["Princess of Wales Hospital, Bridgend","ctm","princess-wales-hospital","Maternity services (August 2025)","4 Dec 2025","Coity Clinic, mental health (November 2024)","6 Mar 2025","2025-08"],["Royal Glamorgan Hospital, Llantrisant","ctm","royal-glamorgan-hospital","Mental health services (April 2026)","16 Jul 2026","Emergency department (August 2025)","6 Nov 2025","2026-04"],["Prince Charles Hospital, Merthyr Tydfil","ctm","prince-charles-hospital","Radiation safety, IR(ME)R (May 2025)","21 Aug 2025","Maternity services (January 2024)","26 Apr 2024","2025-05"],["University Hospital of Wales, Cardiff","cv","university-hospital-wales","Gynaecology ward (February 2026)","21 May 2026","Hospital inspection (January 2026)","16 Apr 2026","2026-02"],["University Hospital Llandough","cv","university-hospital-llandough","Llanfair Unit (June 2026)","17 Sep 2026","Older persons mental health wards (March 2026)","25 Jun 2026","2026-06"]]};
+</script>
+<script>
+// The host stores pages without the <html> skeleton, so lang is set here (C6); cy.js switches it to cy and back.
+document.documentElement.lang='en-GB';
+var M=DATA_META,F=DATA_FIND;
+var MLONG=['January','February','March','April','May','June','July','August','September','October','November','December'];
+function $(id){return document.getElementById(id);}
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function fmt(n){return n.toLocaleString('en-GB');}
+function ymL(s){return MLONG[+s.slice(5,7)-1]+' '+s.slice(0,4);}
+function wk(x){return x==null?'n/a':x.toFixed(1);}
+var NAT=M.nation==='england'?null:M.benchmark.id;
+var ORG={};M.orgs.forEach(function(o){ORG[o.id]=o;});ORG[M.benchmark.id]={id:M.benchmark.id,name:M.benchmark.name,short:M.benchmark.name,national:true};
+var WORD=M.nation==='england'?'trust':'board',STD=F.std_weeks;
+var ICON={good:'✓',mid:'!',bad:'!',dist:'→'};
+
+$('meta').textContent=M.data_through?'Data through '+ymL(M.data_through):'Data date not available';
+$('tenT').textContent='"How many in 10 within '+STD+' weeks"';
+$('ckNote').textContent=M.nation==='england'?'Each trust\'s ticks and warnings come from its CQC inspection rating and from its hospital death rate compared with what is expected for its patients (SHMI). A warning does not rule a trust out, but it is worth knowing before a referral.'
+  :M.nation==='scotland'?'Each board\'s tick or warning comes from its hospital death rate compared with what is predicted for its patients (HSMR), using approximate limits. It is a screening tool, not a measure of avoidable deaths.'
+  :'Each board\'s tick or warning comes from its highest Welsh Government escalation level. Level 1 is routine and 5 is special measures.';
+$('siteNote').innerHTML=M.site_note||'';
+if(M.main_url)$('mainLink').innerHTML='<span>Every specialty, trend and quality measure is on the</span> <a href="'+esc(M.main_url)+'" rel="noopener" target="_blank">full referral waits page</a>.';
+
+var st={stage:F.stages[0][0],spec:null,table:false};
+$('stage').innerHTML=F.stages.map(function(s){return '<option value="'+s[0]+'">'+esc(s[1])+'</option>';}).join('');
+$('stageBox').hidden=F.stages.length<2;
+
+function rows(){return F.rows[st.stage]||[];}
+// Care groups for the specialty list (names as each nation publishes them); anything not listed is Medical.
+var GROUPS=['Surgical','Medical',"Women's health","Children's",'Dental and oral','Therapies and diagnostics'];
+var GROUP_OF={'Gynaecology':"Women's health",'Paediatrics':"Children's",'Paediatric Neurology':"Children's",'Paediatric Surgery':"Children's",'Community Child Health':"Children's",
+  'Oral Surgery':'Dental and oral','Orthodontics':'Dental and oral','Restorative Dentistry':'Dental and oral','Paediatric Dentistry':'Dental and oral','Dental Medicine':'Dental and oral','Oral Medicine':'Dental and oral','Community Dental Practice':'Dental and oral',
+  'Allied Health Profession Services':'Therapies and diagnostics','Diagnostic Services':'Therapies and diagnostics','Audiological Medicine':'Therapies and diagnostics','Clinical Neurophysiology':'Therapies and diagnostics','Chemical Pathology':'Therapies and diagnostics','Clinical Radiology':'Therapies and diagnostics',
+  'Trauma and Orthopaedics':'Surgical','Ear, Nose and Throat':'Surgical','Ophthalmology':'Surgical','Urology':'Surgical','Anaesthetics':'Surgical'};
+function groupOf(s){return GROUP_OF[s]||(/Surgery/.test(s)?'Surgical':'Medical');}
+function fillSpec(){
+  var c={};rows().forEach(function(r){if(r[1]!==NAT&&r[2]!=null)c[r[0]]=(c[r[0]]||0)+1;});
+  var specs=Object.keys(c).sort();
+  if(!st.spec||!c[st.spec])st.spec=c['Trauma and Orthopaedics']?'Trauma and Orthopaedics':specs[0];
+  $('spec').innerHTML=GROUPS.map(function(g){
+    var in_g=specs.filter(function(s){return groupOf(s)===g;});
+    return in_g.length?'<optgroup label="'+esc(g)+'">'+in_g.map(function(s){return '<option value="'+esc(s)+'">'+esc(s)+'</option>';}).join('')+'</optgroup>':'';
+  }).join('');
+  $('spec').value=st.spec;
+}
+function people(pct){
+  var on=Math.round(pct/10),h='';
+  for(var i=0;i<10;i++)h+='<svg viewBox="0 0 20 24" class="'+(i<on?'on':'off')+'"><use href="#person"/></svg>';
+  return '<div class="ppl" aria-hidden="true">'+h+'</div><p class="ppl-t"><b>'+on+' in 10</b> <span>within '+STD+' weeks</span></p>';
+}
+function badges(o){
+  var li=(F.checks[o.id]||[]).map(function(x){return '<li class="'+x[1]+'"><span class="ic" aria-hidden="true">'+ICON[x[1]]+'</span><span>'+esc(x[0])+'</span></li>';});
+  if(o.dist)li.push('<li class="dist"><span class="ic" aria-hidden="true">'+ICON.dist+'</span><span>'+esc(o.dist)+'</span></li>');
+  return li.length?'<ul class="badges">'+li.join('')+'</ul>':'';
+}
+// 2a. over the last year: arrow + words + a small line (lower is better for a wait)
+function trendHTML(id){
+  var T=(F.trend||{})[id]||{},whole=!T[st.spec],pts=T[st.spec]||T.All;
+  if(!pts||pts.length<3)return '';
+  var a=pts[0],b=pts[pts.length-1],d=b[1]-a[1],cls=Math.abs(d)<0.5?'same':d<0?'good':'bad';
+  var words=cls==='same'?'<span>About the same as in</span> '+ymL(a[0])
+    :'<b>'+Math.abs(d).toFixed(1)+' weeks</b> '+(d<0?'<span>shorter than in</span>':'<span>longer than in</span>')+' '+ymL(a[0]);
+  var ys=pts.map(function(p){return p[1];}),lo=Math.min.apply(null,ys),hi=Math.max.apply(null,ys),W=200,H=34;
+  var xy=pts.map(function(p,i){return [(6+i*(W-12)/(pts.length-1)).toFixed(1),(H-6-(hi===lo?0.5:(p[1]-lo)/(hi-lo))*(H-12)).toFixed(1)];});
+  return '<div class="sec"><h4>Over the last year</h4><div class="tr '+cls+'"><span class="ar" aria-hidden="true">'+(cls==='same'?'\u2192':d<0?'\u2193':'\u2191')+'</span><span>'+words
+    +(whole?'<small>'+esc(F.trend_scope||'all specialties')+'</small>':'')+'</span></div>'
+    +'<svg class="spark" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="none" aria-hidden="true"><polyline points="'+xy.map(function(p){return p.join(',');}).join(' ')+'"/><circle r="4" cx="'+xy[xy.length-1][0]+'" cy="'+xy[xy.length-1][1]+'"/></svg></div>';
+}
+// 2b. CQC report card (England): overall plus the five questions, with the inspection year up front
+var CQ_LEVEL={'Outstanding':'good','Good':'good','Requires improvement':'mid','Inadequate':'bad'};
+var CQ_Q=['Safe','Effective','Caring','Responsive','Well-led'];
+function cqcHTML(id){
+  var c=(F.cqc||{})[id];if(!c)return '';
+  var yr=(c[6]||'').slice(-4),age=yr?new Date().getFullYear()-(+yr):0;
+  function chip(q,r,ov){var l=CQ_LEVEL[r]||'mid';return r?'<div class="chip '+l+(ov?' ov':'')+'"><span class="ic" aria-hidden="true">'+(l==='good'?'\u2713':'!')+'</span><span>'+(ov?'<span>Overall</span>: ':'<span class="q">'+q+'</span>')+'<span>'+esc(r)+'</span></span></div>':'';}
+  return '<div class="sec cqc"><h4>CQC report card</h4>'
+    +(yr?'<p class="yr"><span>Inspected</span> <b>'+yr+'</b>'+(age>=3?' <span class="old">· '+age+' <span>years ago</span></span>':'')+'</p>':'')
+    +'<div class="chips">'+chip('',c[0],true)+CQ_Q.map(function(q,i){return chip(q,c[i+1]);}).join('')+'</div></div>';
+}
+function render(){
+  var all=rows().filter(function(r){return r[0]===st.spec&&r[2]!=null;});
+  var list=all.filter(function(r){return r[1]!==NAT;}).sort(function(a,b){return a[2]-b[2];});
+  var nat=all.filter(function(r){return r[1]===NAT;})[0];
+  var best=list[0],home=list.filter(function(r){return ORG[r[1]].home;})[0];
+  var stage=F.stages.filter(function(s){return s[0]===st.stage;})[0][1];
+  var gap=best&&home&&home!==best?Math.round(home[2]-best[2]):0;
+
+  // 1. the question and its answer
+  var h='<p class="q">Where is the shortest wait for <span>'+esc(st.spec)+'</span>?</p>';
+  if(!best)h+='<p class="say">No '+WORD+' publishes a wait for this specialty.</p>';
+  else{
+    h+='<div class="big">'+esc(ORG[best[1]].short)+'</div>';
+    if(gap>=1)h+='<p class="say"><b>'+gap+' weeks sooner</b> <span>than</span> '+esc(ORG[home[1]].short)+'</p>';
+    else if(home&&home!==best)h+='<p class="say"><span>About the same as</span> '+esc(ORG[home[1]].short)+'</p>';
+    else if(home)h+='<p class="say"><span>Your home '+WORD+' already has the shortest wait.</span></p>';
+    h+='<p class="fine"><span>Half of patients at</span> '+esc(ORG[best[1]].short)+' <span>have waited under</span> '+wk(best[2])+' <span>weeks</span>'
+      +(home&&home!==best?'; <span>at</span> '+esc(ORG[home[1]].short)+', <span>half have waited over</span> '+wk(home[2])+' <span>weeks</span>':'')+'.</p>';
+  }
+  $('hero').innerHTML=h;
+
+  // 2. the race track
+  var show=list.concat(nat?[nat]:[]);
+  var max=Math.max(STD+2,Math.ceil(Math.max.apply(null,show.map(function(r){return r[2];}).concat([1]))/5)*5);
+  function x(v){return (100*v/max).toFixed(2)+'%';}
+  $('trackHint').innerHTML='<span>'+esc(stage)+'</span>. <span>Each dot marks the point by which half of that '+WORD+'\'s patients have waited. Further left is a shorter wait.</span>';
+  var t='<div class="track"><div class="overlay" aria-hidden="true"><div></div><div><div class="std'+(STD/max>0.5?' r':'')+'" style="left:'+x(STD)+'"><span>'+STD+'-week standard</span></div></div></div>';
+  t+=show.map(function(r){
+    var o=ORG[r[1]],lab=o.short+': half have waited over '+wk(r[2])+' weeks';
+    return '<div class="trow'+(o.national?' nat':'')+'"><div class="tname">'+esc(o.short)+(o.home?'<span class="tag">your home '+WORD+'</span>':'')+(r===best&&list.length>1?'<span class="tag best">shortest</span>':'')+'</div>'
+      +'<div class="lane"><span class="dot'+(o.home?' home':'')+'" style="left:'+x(r[2])+'" tabindex="0" role="img" aria-label="'+esc(lab)+'" data-tip="'+esc(lab)+'"><span class="dv" aria-hidden="true">'+wk(r[2])+'</span></span></div></div>';
+  }).join('');
+  t+='</div>';
+  var ticks=[];for(var v=0;v<=max;v+=5)ticks.push('<span style="left:'+x(v)+'">'+v+'</span>');
+  t+='<div class="gaprow" aria-hidden="true"><div></div><div class="ticks">'+ticks.join('')+'</div></div><p class="hint" style="text-align:right;max-width:none;margin-top:2px">weeks</p>';
+  if(gap>=1)t+='<div class="gaprow" aria-hidden="true"><div></div><div class="gap"><i style="left:'+x(best[2])+';width:calc('+x(home[2]-best[2])+')"></i><span style="left:'+x((best[2]+home[2])/2)+'">'+gap+' weeks sooner</span></div></div>';
+  $('trackBox').innerHTML=t;
+
+  $('tableBox').innerHTML='<div class="tw" tabindex="0" role="region" aria-label="Table view"><table><caption class="vh"><span>'+esc(st.spec)+'</span> · <span>'+esc(stage)+'</span></caption><thead><tr><th scope="col">'+(WORD==='trust'?'Trust':'Board')+'</th><th scope="col">Half have waited over (weeks)</th><th scope="col">Within '+STD+' weeks</th><th scope="col">Waiting</th></tr></thead><tbody>'
+    +show.map(function(r){var o=ORG[r[1]];return '<tr><th scope="row">'+esc(o.short)+'</th><td class="n">'+wk(r[2])+'</td><td class="n">'+r[5]+'%</td><td class="n">'+fmt(r[4])+'</td></tr>';}).join('')+'</tbody></table></div>';
+
+  // 3. a card per provider, shortest first
+  $('cards').innerHTML=list.map(function(r){
+    var o=ORG[r[1]];
+    return '<article class="pc'+(o.home?' home':'')+'"><h3>'+esc(o.short)+(o.home?'<span class="hm">home</span>':'')+'</h3><p class="where">'+esc(o.sites||'')+'</p>'
+      +'<p class="wait">'+wk(r[2])+' <span>weeks</span><small>half have waited longer than this</small></p>'+people(r[5])+trendHTML(o.id)+cqcHTML(o.id)+badges(o)+'</article>';
+  }).join('');
+}
+$('spec').addEventListener('change',function(){st.spec=this.value;render();});
+$('stage').addEventListener('change',function(){st.stage=this.value;fillSpec();render();});
+$('tbtn').addEventListener('click',function(){st.table=!st.table;this.setAttribute('aria-pressed',st.table);this.textContent=st.table?'Show as chart':'Show as table';$('trackBox').hidden=st.table;$('tableBox').hidden=!st.table;});
+// hover and keyboard-focus tooltip on the dots
+function tipOn(e){var d=e.target.closest&&e.target.closest('[data-tip]');if(!d)return;var tp=$('tip'),r=d.getBoundingClientRect();tp.textContent=d.getAttribute('aria-label')||d.getAttribute('data-tip');tp.hidden=false;
+  tp.style.left=Math.max(8,Math.min(window.innerWidth-tp.offsetWidth-8,r.left+r.width/2-tp.offsetWidth/2))+'px';tp.style.top=Math.max(8,r.top-tp.offsetHeight-26)+'px';}
+function tipOff(){$('tip').hidden=true;}
+document.addEventListener('mouseover',tipOn);document.addEventListener('focusin',tipOn);
+document.addEventListener('mouseout',tipOff);document.addEventListener('focusout',tipOff);
+function renderAE(){
+  var A=F.ae;if(!A||!A.rows.length)return;
+  $('aeBox').hidden=false;$('s-urgent').hidden=false;
+  $('aeHint').innerHTML=(A.month?'<span>'+esc(ymL(A.month))+'</span>. ':'')+'<span>Out of every 10 people arriving at A&E, how many were dealt with within 4 hours. Most first.</span>';
+  // the national figure is a comparison line, so it goes last rather than being ranked among the providers
+  var nat=function(r){return ORG[r[0]]&&ORG[r[0]].national?1:0;};
+  $('aeRows').innerHTML=A.rows.slice().sort(function(a,b){return nat(a)-nat(b)||b[1]-a[1];}).map(function(r){
+    var o=ORG[r[0]]||{short:r[0]},on=Math.round(r[1]/10),h='';
+    for(var i=0;i<10;i++)h+='<svg viewBox="0 0 20 24" class="'+(i<on?'on':'off')+'"><use href="#person"/></svg>';
+    return '<div class="aer"><div class="nm">'+esc(o.short)+(o.home?'<span class="tag">your home '+WORD+'</span>':'')+'</div>'
+      +'<div class="ppl" aria-hidden="true">'+h+'</div>'
+      +'<div class="t"><b>'+on+' in 10</b> <span>within 4 hours</span> ('+r[1].toFixed(0)+'%)'
+      +(r[2]!=null?'<span class="lw">'+fmt(r[2])+' <span>'+esc(A.long)+'</span></span>':'')
+      +(r[3]!=null?'<span class="lw"><span>Half had left A&E within</span> '+Math.floor(r[3]/60)+' <span>hr</span> '+(r[3]%60)+' <span>min</span></span>':'')+'</div></div>';
+  }).join('');
+}
+// 3. deaths gauge
+function renderDeaths(){
+  var D=F.deaths;if(!D||!D.rows.length)return;$('dBox').hidden=false;
+  $('dHint').textContent='Deaths in or soon after hospital compared with the number '+D.word+' for each '+WORD+'\'s patients ('+D.name+(D.period?', '+D.period:'')+'). The needle shows where each '+WORD+' sits; the dashed line is exactly as '+D.word+'. A higher figure is a prompt to look closer, not proof of poor care.';
+  var lo=Math.min.apply(null,D.rows.map(function(r){return Math.min(r[1],r[2]);}).concat([0.8])),hi=Math.max.apply(null,D.rows.map(function(r){return Math.max(r[1],r[3]);}).concat([1.2]));
+  lo=Math.floor(lo*20)/20;hi=Math.ceil(hi*20)/20;
+  function x(v){return 100*(v-lo)/(hi-lo);}
+  $('dRows').innerHTML=D.rows.slice().sort(function(a,b){return b[1]-a[1];}).map(function(r){
+    var o=ORG[r[0]]||{short:r[0]},z=r[1]>r[3]?['bad','More than '+D.word]:r[1]<r[2]?['good','Fewer than '+D.word]:['same','As '+D.word];
+    var lab=o.short+': '+z[1]+' ('+D.name+' '+r[1].toFixed(2)+')';
+    return '<div class="drow"><div class="w"><b>'+esc(o.short)+'</b><span>'+esc(z[1])+'</span> ('+r[1].toFixed(2)+')</div>'
+      +'<div class="gauge" role="img" aria-label="'+esc(lab)+'" tabindex="0" data-tip="'+esc(lab)+'"><i class="zl" style="width:'+x(r[2]).toFixed(1)+'%"></i><i class="zm" style="width:'+(x(r[3])-x(r[2])).toFixed(1)+'%"></i><i class="zh" style="flex:1"></i>'
+      +'<span class="one" style="left:'+x(1).toFixed(1)+'%"></span><span class="nd" style="left:'+x(r[1]).toFixed(1)+'%"></span></div></div>';
+  }).join('');
+}
+// 4. A&E month by month (Scotland)
+function renderAECal(){
+  var T=F.ae_trend;if(!T||!$('aeBox')||$('aeBox').hidden)return;$('aeCal').hidden=false;
+  var rows=Object.keys(T.rows).filter(function(k){return ORG[k];}),all=[];rows.forEach(function(k){all=all.concat(T.rows[k].filter(function(v){return v!=null;}));});
+  var lo=Math.min.apply(null,all),hi=Math.max.apply(null,all);
+  function shade(v){return 'color-mix(in srgb,var(--accent) '+Math.round(15+85*(v-lo)/((hi-lo)||1))+'%,var(--surface))';}
+  $('aeCalRows').innerHTML=rows.map(function(k){
+    var v=T.rows[k],o=ORG[k],ok=v.map(function(x,i){return [x,T.months[i]];}).filter(function(p){return p[0]!=null;});
+    var mn=ok.reduce(function(a,b){return b[0]<a[0]?b:a;}),mx=ok.reduce(function(a,b){return b[0]>a[0]?b:a;});
+    var sum=o.short+': lowest '+mn[0].toFixed(0)+'% ('+mn[1]+'), highest '+mx[0].toFixed(0)+'% ('+mx[1]+')';
+    return '<div class="cal"><div class="nm">'+esc(o.short)+(o.home?'<span class="tag" style="display:block;font-size:0.75rem;font-weight:600;color:var(--accent)">your home '+WORD+'</span>':'')+'</div>'
+      +'<div class="sq" role="img" aria-label="'+esc(sum)+'">'+v.map(function(x,i){return x==null?'<span></span>':'<span style="background:'+shade(x)+'" data-tip="'+esc(T.months[i]+': '+x.toFixed(0)+'% within 4 hours')+'"></span>';}).join('')+'</div>'
+      +'<small><span>Lowest</span> '+mn[0].toFixed(0)+'% ('+mn[1]+'), <span>highest</span> '+mx[0].toFixed(0)+'% ('+mx[1]+')</small></div>';
+  }).join('')+'<div class="cal" aria-hidden="true"><div></div><div class="mo">'+T.months.map(function(m){return '<span>'+m.slice(0,1)+'</span>';}).join('')+'</div></div>';
+}
+// 5. escalation ladder (Wales)
+function renderLadder(){
+  var E=F.esc;if(!E)return;$('eBox').hidden=false;
+  var NAMES={1:'Routine',2:'Area of concern',3:'Enhanced monitoring',4:'Targeted intervention',5:'Special measures'};
+  var on={};Object.keys(E).forEach(function(b){E[b].forEach(function(x){(on[x[0]]=on[x[0]]||[]).push([b,x[1]]);});});
+  $('eRows').innerHTML=[5,4,3,2,1].map(function(l){
+    var b=on[l]||[];
+    return '<li class="rung l'+l+(b.length?'':' empty')+'"><div class="lv">'+l+'<small>level</small></div><div><h3>'+NAMES[l]+'</h3>'
+      +(b.length?'<ul>'+b.map(function(x){var o=ORG[x[0]]||{short:x[0]};return '<li><b>'+esc(o.short)+(o.home?' (your home board)':'')+'</b>: '+esc(x[1])+'</li>';}).join('')+'</ul>':'<span class="hint">No boards</span>')+'</div></li>';
+  }).join('');
+}
+// 6. inspection timeline (Scotland HIS, Wales HIW)
+var MON={jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11};
+function when(s){var m=/([A-Za-z]{3})[A-Za-z]* (\d{4})/.exec(s||'');return m&&MON[m[1].toLowerCase()]!=null?+m[2]+MON[m[1].toLowerCase()]/12:null;}
+function renderInsp(){
+  var I=F.insp;if(!I||!I.length)return;$('iBox').hidden=false;
+  var scot=M.nation==='scotland',by={},order=[];
+  I.forEach(function(r){var k=r[0];if(!by[k]){by[k]={org:r[1],ev:[]};order.push(k);}
+    if(scot)by[k].ev.push({t:when(r[3]),n:r[7],label:r[2]+', '+r[3]+(r[7]!=null?': '+r[7]+' requirements':''),mat:/Maternity/.test(r[2])});
+    else{by[k].ev.push({t:when(r[4]),label:r[3]+', published '+r[4]});if(r[5])by[k].ev.push({t:when(r[6]),label:r[5]+', published '+r[6]});}});
+  var ts=[];order.forEach(function(k){by[k].ev.forEach(function(e){if(e.t!=null)ts.push(e.t);});});
+  var y0=Math.floor(Math.min.apply(null,ts)),y1=Math.ceil(Math.max.apply(null,ts.concat([new Date().getFullYear()+0.9])));
+  function x(t){return (100*(t-y0)/(y1-y0)).toFixed(1)+'%';}
+  $('iHint').textContent=scot?'Each dot is a Healthcare Improvement Scotland report. The number is how many things the hospital was told it must put right; bigger dots mean more. Teal dots are acute care, grey dots maternity.'
+    :'Each dot is a Healthcare Inspectorate Wales report (the two most recent for each hospital). Hover or tab to a dot for what was inspected.';
+  order.sort(function(a,b){var ha=ORG[by[a].org]&&ORG[by[a].org].home?0:1,hb=ORG[by[b].org]&&ORG[by[b].org].home?0:1;return ha-hb||a.localeCompare(b);});
+  var ax=[];for(var y=y0;y<=y1;y++)ax.push('<span style="left:'+x(y)+'">'+y+'</span>');
+  $('iRows').innerHTML=order.map(function(k){
+    var o=ORG[by[k].org]||{short:by[k].org};
+    var seen=[];by[k].ev.sort(function(a,b){return a.t-b.t;}).forEach(function(e){  // nudge reports from the same month apart
+      while(e.t!=null&&seen.some(function(t){return Math.abs(t-e.t)<0.18;}))e.t+=0.18;if(e.t!=null)seen.push(e.t);});
+    return '<div class="irow"><div class="nm">'+esc(k)+'<small>'+esc(o.short)+(o.home?' · your home '+WORD:'')+'</small></div><div class="tl">'
+      +by[k].ev.filter(function(e){return e.t!=null;}).map(function(e){var d=e.n!=null?Math.round(20+Math.min(e.n,30)*0.5):14;
+        return '<span class="ev'+(e.mat?' mat':'')+'" style="left:'+x(e.t)+';width:'+d+'px;height:'+d+'px" tabindex="0" role="img" aria-label="'+esc(e.label)+'" data-tip="'+esc(e.label)+'">'+(e.n!=null?e.n:'')+'</span>';}).join('')
+      +'</div></div>';
+  }).join('')+'<div class="irow" aria-hidden="true"><div></div><div class="tlax">'+ax.join('')+'</div></div>';
+}
+function journey(){
+  var q=[['dBox','hospital deaths compared with expected'],['eBox','how closely each board is being watched'],['iBox','inspections over time']].filter(function(x){return !$(x[0]).hidden;});
+  if(q.length){$('s-quality').hidden=false;$('qLead').innerHTML='<span>Extra context, if you want it:</span> '+q.map(function(x){return '<span>'+x[1]+'</span>';}).join(', ')+'.';}
+  var steps=[].slice.call(document.querySelectorAll('section.step')).filter(function(x){return !x.hidden;});
+  $('stepNav').innerHTML=steps.map(function(x,i){var t=x.querySelector('.sh span:last-child').textContent;
+    x.querySelector('.num').textContent=i+1;
+    return '<li><a href="#'+x.id+'"><span class="n" aria-hidden="true">'+(i+1)+'</span><span>'+esc(t)+'</span></a></li>';}).join('');
+  steps.forEach(function(x,i){var nx=steps[i+1];if(!nx)return;
+    var d=document.createElement('p');d.className='next';
+    d.innerHTML='<a href="#'+nx.id+'"><span>Next:</span> <span>'+esc(nx.querySelector('.sh span:last-child').textContent)+'</span> <span aria-hidden="true">\u2193</span></a>';x.appendChild(d);});
+  // the quality step's "next" opens it when that is where you are going
+  document.querySelectorAll('a[href="#s-quality"]').forEach(function(a){a.addEventListener('click',function(){$('qDetails').open=true;});});
+  // mark the step in view in the step bar
+  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;
+    document.querySelectorAll('#stepNav a').forEach(function(a){if(a.getAttribute('href')==='#'+e.target.id)a.setAttribute('aria-current','step');else a.removeAttribute('aria-current');});});},{rootMargin:'-40% 0px -55% 0px'});
+    steps.forEach(function(x){io.observe(x);});}
+}
+fillSpec();render();renderAE();renderDeaths();renderAECal();renderLadder();renderInsp();journey();
+</script>
+
+</body></html>

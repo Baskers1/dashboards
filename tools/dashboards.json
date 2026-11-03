@@ -5,8 +5,8 @@
   "tayside": "Tayside (Dundee & Carnoustie)",
   "ammanford": "Ammanford",
   "plymouth": "Plymouth & Ivybridge (Plympton, Plymstock & villages)",
-  "staffordshire": "Staffordshire",
   "neath-port-talbot": "Neath Port Talbot",
+  "staffordshire": "Staffordshire",
   "sky": "Sky & space"
  },
  "dashboards": [
@@ -322,6 +322,66 @@
    "area": "plymouth",
    "slug": "waiting-charts",
    "name": "Waiting & Outcome Charts"
+  },
+  {
+   "id": "RLBsVPiLZh1JLFnNvkkEnv",
+   "area": "neath-port-talbot",
+   "slug": "weather",
+   "name": "Weather"
+  },
+  {
+   "id": "14atwam4QkakV92PPku91y",
+   "area": "neath-port-talbot",
+   "slug": "menu-watch",
+   "name": "Menu Watch"
+  },
+  {
+   "id": "24HUYytZzF3xB6UXUucUVg",
+   "area": "neath-port-talbot",
+   "slug": "whats-on",
+   "name": "What's On"
+  },
+  {
+   "id": "MXyqZCnB7MrG6AFueccw8S",
+   "area": "neath-port-talbot",
+   "slug": "whats-on-big",
+   "name": "What's On (big buttons)"
+  },
+  {
+   "id": "PCRCKL7sSx92nhA5ptr2oJ",
+   "area": "neath-port-talbot",
+   "slug": "season-ahead",
+   "name": "Season Ahead"
+  },
+  {
+   "id": "LF95U5XCjDaZ1noVjqneeH",
+   "area": "neath-port-talbot",
+   "slug": "community-watch",
+   "name": "Community Watch"
+  },
+  {
+   "id": "QANJUhze8AtUUmzSMUKh1i",
+   "area": "neath-port-talbot",
+   "slug": "consultation-watch",
+   "name": "Consultation Watch"
+  },
+  {
+   "id": "JZPxyZiLMEKogzNgrokD19",
+   "area": "neath-port-talbot",
+   "slug": "referral-waits",
+   "name": "Referral Waits",
+   "aliases": [
+    "8e314f83-74b9-4e81-8a25-839e06791630"
+   ]
+  },
+  {
+   "id": "SVC9HE8EWYV6yVj5GykLxq",
+   "area": "neath-port-talbot",
+   "slug": "waiting-charts",
+   "name": "Waiting & Outcome Charts",
+   "aliases": [
+    "ce6428b5-f0ed-49cd-a8ee-eda362b84cea"
+   ]
   },
   {
    "id": "FtnSqUFf4fa9q8kCZKJAVT",

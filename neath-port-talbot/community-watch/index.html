@@ -1,0 +1,526 @@
+<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'sha256-jZUaezR8a1gygGRafLn1T1UljeIYKvMp4vFPisUK42o=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
+var SCHEME=/^\s*([a-z][a-z0-9+.\-]*):/i,HREF={http:1,https:1,mailto:1,tel:1},SRC={http:1,https:1,blob:1};
+function okUrl(v,isSrc){var c=String(v).replace(/[\u0000- ]/g,""),m=SCHEME.exec(c);if(!m)return true;var s=m[1].toLowerCase();
+if(isSrc&&s==="data")return /^data:image\//i.test(c);return !!(isSrc?SRC:HREF)[s];}
+function fixOne(n){if(n.nodeType!==1)return;var a=n.attributes;
+for(var j=a.length-1;j>=0;j--){var k=a[j].name.toLowerCase(),v=a[j].value;
+if(k.slice(0,2)==="on"){if(!(k==="onerror"&&v==="this.remove()"))n.removeAttribute(a[j].name);}
+else if((k==="href"||k==="xlink:href"||k==="action"||k==="formaction")&&!okUrl(v,false))n.removeAttribute(a[j].name);
+else if((k==="src"||k==="srcset"||k==="poster")&&!okUrl(v,true))n.removeAttribute(a[j].name);}
+if(n.tagName==="A"&&n.getAttribute("target")==="_blank"&&n.getAttribute("rel")!=="noopener noreferrer")n.setAttribute("rel","noopener noreferrer");}
+function fixTree(n){if(n.nodeType!==1)return;fixOne(n);var all=n.getElementsByTagName("*");for(var i=0;i<all.length;i++)fixOne(all[i]);}
+new MutationObserver(function(ms){for(var i=0;i<ms.length;i++){var m=ms[i];if(m.type==="attributes")fixOne(m.target);
+else for(var j=0;j<m.addedNodes.length;j++)fixTree(m.addedNodes[j]);}}).observe(document.documentElement,{childList:true,subtree:true,attributes:true});
+})();</script><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<a class="skip" href="#main">Skip to the list</a>
+<noscript><p style="margin:16px;padding:14px;border:2px solid currentColor;border-radius:12px;font-size:1.05rem">This page needs JavaScript to show the current listings and deadlines. Please turn it on, or use the official websites linked from the "places to watch" section.</p></noscript>
+
+<title>Neath Port Talbot · Community Watch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:wght@600;800&display=swap">
+<style>
+:root{
+  --bg:#EEF3F5; --surface:#FFFFFF; --surface2:#E3ECEF; --ink:#12303F; --muted:#4A6572; --line:#C6D5DB;
+  --accent:#0B6F7A; --accent-ink:#FFFFFF; --focus:#0B4FD1;
+  --urgent:#B3261E; --urgent-bg:#FCE9E7; --soon:#8A5A00; --soon-bg:#FBF0D6; --ok:#2F6B3F; --ok-bg:#E2F1E5; --done:#5B6B73; --done-bg:#E6EBED; --evt:#0B5A8A; --evt-bg:#E0EEF8;
+  --f-body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-head:"Bricolage Grotesque","Atkinson Hyperlegible",system-ui,sans-serif;
+  --base:16px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0D1B22; --surface:#15272F; --surface2:#1C333D; --ink:#E7F0F3; --muted:#9FB6C0; --line:#2C4652;
+    --accent:#4FC3CF; --accent-ink:#06222A; --focus:#8DB6FF;
+    --urgent:#FF9A92; --urgent-bg:#3A1B19; --soon:#F2C56B; --soon-bg:#372A0B; --ok:#8FD09F; --ok-bg:#16301D; --done:#9FB0B8; --done-bg:#1F313A; --evt:#8CC8F2; --evt-bg:#142B3C;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0D1B22; --surface:#15272F; --surface2:#1C333D; --ink:#E7F0F3; --muted:#9FB6C0; --line:#2C4652;
+  --accent:#4FC3CF; --accent-ink:#06222A; --focus:#8DB6FF;
+  --urgent:#FF9A92; --urgent-bg:#3A1B19; --soon:#F2C56B; --soon-bg:#372A0B; --ok:#8FD09F; --ok-bg:#16301D; --done:#9FB0B8; --done-bg:#1F313A; --evt:#8CC8F2; --evt-bg:#142B3C;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:var(--base);line-height:1.5;padding-inline:16px;padding-block:0 48px}
+body.big{--base:22px;line-height:1.55}
+.wrap{max-width:1080px;margin-inline:auto}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}
+h1,h2,h3{font-family:var(--f-head);text-wrap:balance;margin:0;line-height:1.15}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+
+.top{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:flex-end;justify-content:space-between;padding-block:24px 16px}
+.brand h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:800;letter-spacing:-.01em}
+.brand p{margin:6px 0 0;color:var(--muted);max-width:62ch}
+.asof{font-size:.85rem;color:var(--muted);margin-top:4px}
+.mode{display:inline-flex;border:2px solid var(--ink);border-radius:999px;overflow:hidden;background:var(--surface)}
+.mode button{border:0;background:transparent;padding:10px 18px;font-weight:700;min-height:44px}
+.mode button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+
+/* hero banner: no photo for this area yet, so it shows the plain dark background. */
+.hero{position:relative;margin-top:16px;border-radius:16px;overflow:hidden;background:#1b1a22 center 55%/cover no-repeat;color:#fff}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,16,22,.15) 0%,rgba(8,16,22,.78) 100%)}
+.hero .top{position:relative;padding:clamp(24px,9vw,120px) clamp(16px,3vw,28px) 18px}
+.hero .brand p,.hero .asof{color:rgba(255,255,255,.92)}
+.hero .mode{position:relative}
+.hero .mode button{color:var(--ink)}
+.hero .mode button[aria-pressed="true"]{color:var(--bg)}
+.hero h1{text-shadow:0 1px 12px rgba(0,0,0,.45)}
+.hero-credit{margin:0}
+.hero-credit a{color:var(--accent)}
+
+.alert{display:flex;gap:16px;align-items:center;flex-wrap:wrap;border-radius:12px;padding:16px 20px;margin-block:8px 20px;border:2px solid}
+.alert.urgent{background:var(--urgent-bg);border-color:var(--urgent);color:var(--urgent)}
+.alert.soon{background:var(--soon-bg);border-color:var(--soon);color:var(--soon)}
+.alert.calm{background:var(--ok-bg);border-color:var(--ok);color:var(--ok)}
+.alert strong{font-family:var(--f-head);font-size:1.25em;display:block}
+.alert span{color:var(--ink)}
+.alert .sym{font-size:2em;line-height:1;font-weight:800}
+
+.runway{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-bottom:20px}
+.runway h2{font-size:1.1rem;margin-bottom:12px}
+.rw-row{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,2fr) auto;gap:8px 16px;align-items:center;padding-block:8px;border-top:1px solid var(--line)}
+.rw-row:first-of-type{border-top:0}
+a.rw-row{color:inherit;text-decoration:none;padding-inline:10px;margin-inline:-10px;border-radius:10px}
+a.rw-row:hover,a.rw-row:focus-visible{background:var(--surface2)}
+a.rw-row:hover .rw-title,a.rw-row:focus-visible .rw-title{text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:3px}
+.rw-go{display:block;font-weight:700;font-size:.8rem;color:var(--accent)}
+.rw-title{font-weight:700;overflow-wrap:anywhere}
+.rw-title small{display:block;font-weight:400;color:var(--muted);font-size:.8rem}
+.rw-bar{height:12px;border-radius:999px;background:var(--surface2);position:relative;overflow:hidden}
+.rw-bar i{position:absolute;inset:0 auto 0 0;border-radius:999px;background:var(--accent)}
+.rw-bar.urgent i{background:var(--urgent)} .rw-bar.soon i{background:var(--soon)} .rw-bar.event i{background:var(--evt)}
+.rw-days{font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap}
+.rw-note{font-size:.8rem;color:var(--muted);margin:10px 0 0}
+@media(max-width:620px){.rw-row{grid-template-columns:1fr auto}.rw-bar{grid-column:1/-1;order:3}}
+
+.viewtabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;border-bottom:2px solid var(--line);padding-bottom:12px}
+.viewtabs button{border:2px solid var(--line);background:var(--surface);border-radius:10px;padding:10px 18px;min-height:44px;font-weight:700}
+.viewtabs button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.controls{display:grid;gap:12px;margin-bottom:16px}
+.ctl-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ctl-label{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700;min-width:5.5rem}
+.ctl-row>span:last-child{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 14px;min-height:40px;font-weight:700}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.chip .n{opacity:.75;font-weight:400;margin-left:4px}
+.search{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.search input{flex:1 1 260px;min-height:44px;padding:8px 14px;border:2px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}
+
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}
+.grid>main{min-width:0}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+.list{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+.sect{font-size:1.25rem;margin-top:8px}
+.sect small{font-family:var(--f-body);font-weight:400;color:var(--muted);font-size:.8rem;margin-left:8px}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
+.card.done{opacity:.94}
+.card-top{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.tag{font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:6px;background:var(--surface2);color:var(--muted)}
+.tag.rec{background:var(--ok-bg);color:var(--ok)}
+.tag.chk{background:var(--soon-bg);color:var(--soon)}
+.card h3{font-size:1.3rem;font-weight:800}
+.body-org{color:var(--muted);font-size:.9rem;margin-top:-4px}
+.dl{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;padding:10px 14px;border-radius:10px;font-weight:700}
+.dl.urgent{background:var(--urgent-bg);color:var(--urgent)}
+.dl.soon{background:var(--soon-bg);color:var(--soon)}
+.dl.later{background:var(--ok-bg);color:var(--ok)}
+.dl.event{background:var(--evt-bg);color:var(--evt)}
+.dl.done,.dl.ongoing,.dl.decision{background:var(--done-bg);color:var(--done)}
+.dl .big{font-family:var(--f-head);font-size:1.4em;font-variant-numeric:tabular-nums}
+.plain{margin:0;font-size:1.05em;overflow-wrap:anywhere}
+.meta{margin:0;color:var(--muted);font-size:.92em;overflow-wrap:anywhere}
+.meta strong{color:var(--ink)}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:10px 18px;border-radius:10px;border:2px solid var(--accent);font-weight:700;text-decoration:none;background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn[aria-expanded="true"]{background:var(--surface2)}
+.more{display:grid;gap:14px;padding-top:4px}
+.more p{margin:0}
+.more ul{margin:0;padding-left:20px;display:grid;gap:4px}
+.more h4{margin:0 0 6px;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.lensrow{display:flex;flex-wrap:wrap;gap:6px}
+.lensrow .chip{padding:4px 10px;min-height:32px;font-size:.85rem}
+.src{font-size:.85rem;color:var(--muted);overflow-wrap:anywhere}
+
+.side{position:sticky;top:12px;display:grid;gap:12px}
+@media(max-width:900px){.side{position:static}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
+.panel h2{font-size:1.05rem;margin-bottom:4px}
+.panel p.hint{margin:0 0 10px;color:var(--muted);font-size:.85rem}
+.group{margin-top:12px}
+.group h3{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-family:var(--f-body);font-weight:700;margin-bottom:6px}
+.ent{display:flex;flex-wrap:wrap;gap:6px}
+.ent .chip{padding:5px 10px;min-height:34px;font-size:.85rem;font-weight:400;text-align:left}
+.ent .chip[aria-pressed="true"]{font-weight:700}
+.panel ul{margin:0;padding-left:18px;display:grid;gap:6px}
+.empty-msg{background:var(--surface);border:1px dashed var(--line);border-radius:12px;padding:20px;color:var(--muted)}
+.foot{margin-top:28px;color:var(--muted);font-size:.85rem;display:grid;gap:8px;max-width:78ch}
+
+.bigbar,.bigarea{display:none}
+body.big .bigbar{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:16px}
+body.big .bigarea{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-bottom:20px}
+.bigbar button{min-height:76px;border:3px solid var(--accent);border-radius:16px;background:var(--surface);font-weight:800;font-size:1.05em;padding:12px}
+.bigbar button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.bigarea button{min-height:60px;border:2px solid var(--ink);border-radius:14px;background:var(--surface);font-weight:700;padding:10px}
+.bigarea button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.bigarea .lbl{grid-column:1/-1;font-weight:700;color:var(--muted);font-size:.8em;text-transform:uppercase;letter-spacing:.08em}
+body.big .brand p,body.big .asof{font-size:.8em}
+body.big .grid{grid-template-columns:minmax(0,1fr)}
+body.big .side,body.big .runway,body.big .ctl-standard,body.big .viewtabs{display:none}
+body.big .card{padding:24px;gap:16px;border-width:2px}
+body.big .card h3{font-size:1.45rem}
+body.big .btn{min-height:64px;padding:14px 26px;font-size:1.05em;border-radius:14px;width:100%}
+body.big .actions{display:grid;grid-template-columns:minmax(0,1fr)}
+body.big .dl{font-size:1.05em;padding:14px 18px}
+body.big .mode button{min-height:56px;padding:12px 22px}
+body.big .lensrow .chip{min-height:44px}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+.back-to-top{position:fixed;right:20px;bottom:20px;z-index:40;width:48px;height:48px;border-radius:50%;border:2px solid var(--accent);background:var(--accent);color:var(--accent-ink);font-size:1.3rem;font-weight:800;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,.25);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .2s}
+.back-to-top.show{opacity:1;visibility:visible;transform:translateY(0)}
+body.big .back-to-top{width:60px;height:60px;font-size:1.6rem;right:16px;bottom:16px}
+@media(prefers-reduced-motion:reduce){.back-to-top{transition:none}}
+</style>
+
+<div class="wrap">
+  <div class="hero" data-place="all">
+  <header class="top">
+    <div class="brand">
+      <h1>Neath Port Talbot Community Watch</h1>
+      <p>Who is doing what across Neath Port Talbot: community groups, volunteering and support services, plus the council and government plans that affect local people. Deadlines are flagged as they get close.</p>
+      <div class="asof" id="asof">Information not yet collected</div>
+    </div>
+    <div class="mode" role="group" aria-label="Choose display">
+      <button type="button" id="m-std" aria-pressed="true">Standard</button>
+      <button type="button" id="m-big" aria-pressed="false">Big buttons</button>
+    </div>
+  </header>
+  </div>
+
+  <div class="controls ctl-standard" id="ctl-where">
+    <div class="ctl-row" role="group" aria-label="Choose your town"><span class="ctl-label">Choose your town</span><span id="areas"></span></div>
+  </div>
+
+  <div id="alert" role="status" aria-live="polite"></div>
+
+  <div class="bigbar" id="bigbar" role="group" aria-label="What would you like to see?"></div>
+  <div class="bigarea" id="bigarea" role="group" aria-label="Which town?"></div>
+
+  <section class="runway" id="runway" aria-labelledby="rw-h"></section>
+
+  <div class="viewtabs" role="group" aria-label="Choose a section">
+    <button type="button" data-view="deadlines">Deadlines and decisions</button>
+    <button type="button" data-view="groups">Groups and volunteering</button>
+    <button type="button" data-view="nature">Nature and wildlife</button>
+  </div>
+
+  <div class="controls ctl-standard" id="ctl-items">
+    <div class="ctl-row" role="group" aria-label="Status"><span class="ctl-label">Show</span><span id="tabs"></span></div>
+    <div class="ctl-row" role="group" aria-label="Who is running it"><span class="ctl-label">Run by</span><span id="levels"></span></div>
+  </div>
+  <div class="controls ctl-standard" id="ctl-groups">
+    <div class="search"><label class="ctl-label" for="q">Search</label><input id="q" type="search" placeholder="Name, town or what they do" autocomplete="off"></div>
+    <div class="ctl-row" role="group" aria-label="Type of group"><span class="ctl-label">Type</span><span id="gcats"></span></div>
+    <div class="ctl-row"><span class="ctl-label">Volunteers</span><span id="recruit"></span></div>
+  </div>
+
+  <div class="grid">
+    <main id="main">
+      <div id="lensbar"></div>
+      <div class="list" id="list"></div>
+    </main>
+    <aside class="side">
+      <section class="panel" id="lens-panel" aria-labelledby="lens-h">
+        <h2 id="lens-h">Who and what is affected</h2>
+        <p class="hint">Pick a group, animal or place to see only the items that touch it.</p>
+        <div id="lenses"></div>
+      </section>
+      <section class="panel" aria-labelledby="soon-h">
+        <h2 id="soon-h">Expected soon, not yet dated</h2>
+        <p class="hint">My reading of what may appear next. None of these has an announced date.</p>
+        <ul id="soonlist"></ul>
+      </section>
+      <section class="panel" aria-labelledby="w-h">
+        <h2 id="w-h">Places to watch</h2>
+        <ul id="watch"></ul>
+      </section>
+    </aside>
+  </div>
+
+  <div class="foot">
+    <p class="hero-credit" id="hero-credit"></p>
+    <p><strong>How to read this.</strong> Days left are counted from today's date in London. "Closes" is the last day to reply, apply or sign up. "Happens" is the day of an event. Red means 7 days or fewer, amber 21 days or fewer. A group marked "Check before you go" was found in a search result or an older article, so confirm it is still running before you travel or hand over money.</p>
+    <p><strong>What is not here.</strong> Small groups that only use Facebook or word of mouth will be missing, and some group sites block automated reading.</p>
+    <p><strong>Sources.</strong> <a href="https://www.npt.gov.uk/consultations" target="_blank" rel="noopener">Neath Port Talbot Council</a>, <a href="https://sbuhb.nhs.wales/about-us/our-health-board/engaging-with-us/engagement-consultation/" target="_blank" rel="noopener">Swansea Bay University Health Board</a>, <a href="https://ymgynghori.cyfoethnaturiol.cymru/english/" target="_blank" rel="noopener">Natural Resources Wales</a>, <a href="https://www.gov.wales/consultations" target="_blank" rel="noopener">Welsh Government</a>, <a href="https://www.nptcvs.wales/" target="_blank" rel="noopener">NPT Council for Voluntary Service</a> and group websites. Always confirm dates and times on the linked page before you rely on them.</p>
+  </div>
+</div>
+
+<button type="button" id="backtotop" class="back-to-top" aria-label="Back to top">↑</button>
+
+<script>
+const LEVELS = {local:"Neath Port Talbot Council", county:"Welsh Government and public bodies", central:"UK Government", funder:"Funders and companies", community:"Community and charity"};
+const GCATS = {hub:"Volunteer hubs, funders and support", se:"Social enterprises and CICs", food:"Food and family support", care:"Older people, health and disability", nature:"Nature, gardens and coast", culture:"Arts, heritage, clubs and centres", camp:"Campaign and residents' groups"};
+const GCAT_EMOJI = {hub:"👥", se:"💼", food:"🍲", care:"❤️", nature:"🌿", culture:"🎨", camp:"📢"};
+const KIND_EMOJI = {Consultation:"📋", Funding:"💰", Event:"📅", Decision:"🏛️", Programme:"🔁"};
+const AREAS = {"neath": "Neath", "port-talbot": "Port Talbot", "aberavon": "Aberavon", "margam": "Margam", "baglan": "Baglan", "briton-ferry": "Briton Ferry", "skewen": "Skewen", "pontardawe": "Pontardawe", "ystalyfera": "Ystalyfera", "glynneath": "Glynneath", "resolven": "Resolven", "cwmafan": "Cwmafan", "seven-sisters": "Seven Sisters", "gwaun-cae-gurwen": "Gwaun-Cae-Gurwen"};
+const AREAL = Object.assign({borough:"Whole borough"}, AREAS);
+/* Hero photo credits: none for this area yet. */
+const HERO_CREDIT = {all: ""};
+const LENSES = [
+  {cat:"People", id:"old", label:"Older and disabled people"},
+  {cat:"People", id:"young", label:"Young people and families"},
+  {cat:"People", id:"home", label:"Renters, homeless and housing need"},
+  {cat:"People", id:"dog", label:"Dog owners and walkers"},
+  {cat:"People", id:"res", label:"Every resident"},
+  {cat:"People", id:"biz", label:"Local businesses"},
+  {cat:"Organisations", id:"vcse", label:"Charities and voluntary groups"},
+  {cat:"Organisations", id:"se", label:"Social enterprises"},
+  {cat:"Wildlife and places", id:"bird", label:"Coastal and wading birds"},
+  {cat:"Wildlife and places", id:"marine", label:"Sea, seals and shore life"},
+  {cat:"Wildlife and places", id:"marsh", label:"Marsh, farmland and woodland"},
+  {cat:"Wildlife and places", id:"coast", label:"Beaches and coast paths"},
+  {cat:"Wildlife and places", id:"water", label:"Bathing water and pollution"}
+];
+
+/* status: open (has a future date), decision (waiting on a decision, watch), ongoing (running, no closing date), closed.
+   kind: Consultation, Funding, Decision, Programme, Event. */
+const ITEMS = [{"id":"npt-taxi-policy-2026","title":"Draft Taxi Licensing Policy","kind":"Consultation","level":"local","status":"open","deadline":"2026-11-26","time":"12 noon","body":"Neath Port Talbot Council","plain":"The council is reviewing the rules for licensing taxi and private hire drivers, vehicles and operators, and wants comments on the revised policy.","url":"https://www.npt.gov.uk/consultations","urlLabel":"Read the consultation","aff":["Taxi and private hire drivers and operators","Passengers and residents"],"lenses":["res","biz"],"topics":[],"detail":"A copy of the revised policy (August 2026) shows the proposed changes in red. The council says it wants views from residents, the licensed trade and partner organisations.","how":"Use the 'Have your say' link on the council's consultations page before 12 noon on Thursday 26 November 2026.","src":"https://www.npt.gov.uk/consultations"},{"id":"nrw-pt-steelworks-pan029148-1","title":"Port Talbot Steelworks permit change: draft decision","kind":"Consultation","level":"county","status":"open","deadline":"2026-11-13","time":"closing time not stated on the page","body":"Natural Resources Wales","plain":"Natural Resources Wales is minded to approve the first stage of changes to Tata Steel's environmental permit as the steelworks moves away from blast furnaces.","url":"https://ymgynghori.cyfoethnaturiol.cymru/permitting-caniatau/port-talbot-steelworks-draft-decision-pan-029148-1/","urlLabel":"Comment on the draft decision","aff":["People living near Port Talbot steelworks","Aberavon, Baglan, Margam, Tai-bach and Sandfields residents"],"lenses":["res","biz","water"],"topics":["nature"],"detail":"This stage (reference PAN-029148.1) removes blast furnace and basic oxygen steelmaking activities, mothballs some others and adds new steam boilers. NRW says later stages, including the Electric Arc Furnace, will be consulted on separately.","how":"Comment online through the NRW page, or email permittingconsultations@naturalresourceswales.gov.uk.","src":"https://ymgynghori.cyfoethnaturiol.cymru/permitting-caniatau/port-talbot-steelworks-draft-decision-pan-029148-1/","at":["port-talbot","aberavon","baglan","margam","cwmafan"]},{"id":"remembrance-sunday-2026","title":"Remembrance Sunday services and parades","kind":"Event","level":"local","status":"open","deadline":"2026-11-08","time":"Port Talbot service 10.45am, Neath Act of Remembrance 11am","body":"Neath Port Talbot Council","plain":"Remembrance Sunday parades and services in Port Talbot and Neath, with road closures from 9am.","url":"https://www.npt.gov.uk/council/newsroom/press-releases/article/?id=8203","urlLabel":"Full timings","aff":["Every resident","Veterans, cadets and families"],"lenses":["res"],"topics":[],"detail":"Port Talbot: gather 9.30am at the Transport Hub, parade 10.25am to Talbot Memorial Park, service 10.45am, roads reopen 1pm. Neath: church service 9.30am at St David's Church, parade 10.40am to the Gnoll Memorial Gates, Act of Remembrance 11am, roads reopen at 12 noon. Briton Ferry, Ystalyfera and Pontardawe hold their own events run by town and community councils.","how":"Just turn up. Allow for road closures in both town centres.","src":"https://www.npt.gov.uk/council/newsroom/press-releases/article/?id=8203","at":["neath","port-talbot"]},{"id":"npt-cabinet-2026-11-11","title":"Cabinet meeting","kind":"Event","level":"local","status":"open","deadline":"2026-11-11","time":"2pm","body":"Neath Port Talbot Council","plain":"The council's Cabinet meets to take key decisions. Papers are published on the meetings website.","url":"https://democracy.npt.gov.uk/ieListDocuments.aspx?CId=158&MId=12917","urlLabel":"Meeting papers","aff":["Every resident"],"lenses":["res"],"topics":[],"detail":"Listed on the council's meetings calendar for Wednesday 11 November 2026 at 2pm. Meeting dates can change, so check the page.","how":"Read the agenda when published. Contact the democratic services officer named on the page to ask about attending.","src":"https://democracy.npt.gov.uk/mgCalendarMonthView.aspx"},{"id":"npt-council-2026-11-25","title":"Full Council meeting","kind":"Event","level":"local","status":"open","deadline":"2026-11-25","time":"1pm","body":"Neath Port Talbot Council","plain":"All councillors meet at full Council.","url":"https://democracy.npt.gov.uk/ieListDocuments.aspx?CId=159&MId=12905","urlLabel":"Meeting papers","aff":["Every resident"],"lenses":["res"],"topics":[],"detail":"Listed on the council's meetings calendar for Wednesday 25 November 2026 at 1pm. Meeting dates can change, so check the page.","how":"Read the agenda when published on the meetings page.","src":"https://democracy.npt.gov.uk/mgCalendarMonthView.aspx"},{"id":"npt-bulky-waste-callin","title":"Bulky waste collection charges: call-in of Cabinet decision","kind":"Decision","level":"local","status":"decision","deadline":null,"time":"outcome not stated in the meetings feed","body":"Neath Port Talbot Council","plain":"A Cabinet decision on bulky waste collection charges, made on 21 October 2026, has been called in for further scrutiny.","url":"https://npt.moderngov.co.uk/ieListDocuments.aspx?MId=12916&EVT=101&DT=D","urlLabel":"Decision papers","aff":["Households that use bulky waste collections"],"lenses":["res","home"],"topics":[],"detail":"The council's meetings feed shows a decision sheet supplement titled 'Call-in of Decision: Bulky Waste Collection Charges' for the Cabinet meeting of 21 October 2026. The new charges and the outcome of the call-in are in the papers, not the feed.","how":"Read the decision papers. Contact your local councillor if you have views.","src":"https://democracy.npt.gov.uk/mgRss.aspx"},{"id":"npt-lets-talk-2026","title":"Let's Talk: Living in NPT residents' survey","kind":"Consultation","level":"local","status":"closed","deadline":"2026-10-27","time":"Survey closed","body":"Neath Port Talbot Council","plain":"The council's yearly survey on services, local priorities and life in your area has closed.","url":"https://www.npt.gov.uk/consultations","urlLabel":"Consultations page","aff":["Residents aged 16 and over"],"lenses":["res"],"topics":[],"detail":"Run by the Welsh Local Government Association for the council. The council publishes what it did with the previous year's answers.","how":"No action needed. Watch the consultations page for the results.","src":"https://www.npt.gov.uk/consultations"},{"id":"npt-neighbourhood-improvement-roads","title":"Extra £500,000 for roads and road safety","kind":"Programme","level":"local","status":"ongoing","deadline":null,"time":"Works across the borough, no end date given","body":"Neath Port Talbot Council","plain":"An extra £500,000 takes the highways part of the council's Neighbourhood Improvement Programme to £3.4 million.","url":"https://www.npt.gov.uk/council/newsroom/press-releases/article/?id=8204","urlLabel":"Read the announcement","aff":["Drivers, cyclists and pedestrians","Local businesses"],"lenses":["res","biz"],"topics":[],"detail":"The money, from Welsh Government capital funding, covers permanent pothole repairs, resurfacing, traffic management and road safety schemes picked with local councillors and communities.","how":"Report road problems or suggest safety schemes to your local councillor.","src":"https://www.npt.gov.uk/council/newsroom/press-releases/article/?id=8204"},{"id":"npt-lost-peatlands-connections","title":"Lost Peatlands Connections nature project","kind":"Programme","level":"local","status":"ongoing","deadline":null,"time":"Three-year project, delivery from October 2026","body":"Neath Port Talbot Council","plain":"Almost £2 million from the National Lottery Heritage Fund to restore peatland, heath, grassland and woodland in the uplands, with volunteering and events.","url":"https://www.npt.gov.uk/council/newsroom/press-releases/article/?id=8194","urlLabel":"Read the announcement","aff":["Walkers and nature lovers","Volunteers","Upland wildlife"],"lenses":["marsh","vcse","res"],"topics":["nature"],"detail":"Led by the council's Countryside and Wildlife Team with NRW, the Woodland Trust, Coed Lleol, the Wildlife Trust of South and West Wales, Rhondda Cynon Taf Council and Vattenfall. Work covers 16 sites, almost 870 hectares, across the Afan, Neath, Upper Cynon and Rhondda valleys, plus five new walking routes.","how":"Email lostpeatlands@npt.gov.uk to get involved, or follow @LostPeatlands.","src":"https://www.npt.gov.uk/council/newsroom/press-releases/article/?id=8194"},{"id":"tsuk-mental-health-fund","title":"Tata Steel UK Mental Health and Well-being Community Fund","kind":"Funding","level":"funder","status":"ongoing","deadline":null,"time":"No closing date given on the page","body":"Tata Steel Transition programme","plain":"Grants of up to £50,000 for community-led projects in Neath Port Talbot that improve mental health, wellbeing and community resilience.","url":"https://www.nptcvs.wales/funding-tata-steel-uk-mental-health-well-being-community-fund/","urlLabel":"Read about the fund","aff":["Community and voluntary groups based in the borough"],"lenses":["vcse","res"],"topics":[],"detail":"A £1.2 million fund. Projects can get up to 100% funding for revenue and capital costs. Examples include community gardens, friendship groups, physical activity, youth projects and improvements to community buildings and green spaces.","how":"Request an Expression of Interest form from tatacommunityfund@npt.gov.uk.","src":"https://www.nptcvs.wales/funding-tata-steel-uk-mental-health-well-being-community-fund/"},{"id":"mawwfrs-shaping-survey","title":"Shaping Mid and West Wales Fire and Rescue Service Together","kind":"Consultation","level":"county","status":"ongoing","deadline":null,"time":"No closing date given on the page","body":"Mid and West Wales Fire and Rescue Service","plain":"An anonymous survey asking what you expect from the fire service and what it should prioritise.","url":"https://www.mawwfire.gov.uk/eng/campaigns-and-consultations/shaping-mid-and-west-wales-fire-and-rescue-service-together/","urlLabel":"Take the survey","aff":["Every resident"],"lenses":["res"],"topics":[],"detail":"The service covers Neath Port Talbot as part of mid and west Wales. Other formats are available on 0370 6060699.","how":"Fill in the survey on the fire service's page.","src":"https://www.mawwfire.gov.uk/eng/campaigns-and-consultations/shaping-mid-and-west-wales-fire-and-rescue-service-together/"},{"id":"wg-nature-finance-strategy","title":"Draft Nature Finance Strategy for Wales","kind":"Consultation","level":"county","status":"open","deadline":"2027-01-29","time":"closing time not stated","body":"Welsh Government","plain":"Views on Wales's first strategy for bringing more money into nature recovery.","url":"https://www.gov.wales/draft-nature-finance-strategy-wales","urlLabel":"Read the consultation","aff":["Environmental charities","Landowners and businesses"],"lenses":["vcse","biz","marsh"],"topics":["nature"],"detail":"Applies to all of Wales, including Neath Port Talbot. Online drop-in sessions run on 6 and 26 November and 17 December 2026, and 5 and 25 January 2027 (email Nature.Finance@gov.wales for the link).","how":"Respond online, by email to Nature.Finance@gov.wales, or by post.","src":"https://www.gov.wales/draft-nature-finance-strategy-wales"},{"id":"wg-school-milk-scheme","title":"Future of the school milk subsidy scheme","kind":"Consultation","level":"county","status":"open","deadline":"2027-01-04","time":"closing time not stated","body":"Welsh Government","plain":"Should the school milk scheme continue, and if so how? The Welsh Government wants views.","url":"https://www.gov.wales/future-options-school-milk-subsidy-scheme-smss-wales","urlLabel":"Read the consultation","aff":["Parents and pupils","Schools"],"lenses":["young"],"topics":[],"detail":"Applies to all of Wales, including Neath Port Talbot schools. It asks about the effects of ending the scheme.","how":"Respond online, by email to FoodinSchools@gov.wales, or by post.","src":"https://www.gov.wales/future-options-school-milk-subsidy-scheme-smss-wales"},{"id":"wg-underground-first-lines","title":"Underground-first policy for 11 to 132 kV power lines","kind":"Consultation","level":"county","status":"open","deadline":"2027-01-15","time":"closing time not stated","body":"Welsh Government","plain":"A proposal to put new local power lines underground and end the use of large steel pylons for them.","url":"https://www.gov.wales/new-underground-first-policy-11-132-kv-electricity-lines-wales","urlLabel":"Read the consultation","aff":["Rural and valley communities","Landscape and wildlife"],"lenses":["res","marsh"],"topics":["nature"],"detail":"Applies to all of Wales, including the Neath Port Talbot valleys.","how":"Respond online, by email to ymatebionynni-energyresponses@gov.wales, or by post.","src":"https://www.gov.wales/new-underground-first-policy-11-132-kv-electricity-lines-wales"},{"id":"fund-wcit-charity","title":"WCIT Charity technology grants","kind":"Funding","level":"funder","status":"open","deadline":"2026-11-03","time":"closing time not stated on the round-up page","body":"The WCIT Charity","plain":"Grants for registered charities running innovative technology projects.","url":"https://wcitcharity.org.uk/apply-for-a-grant/","urlLabel":"Funder's page","aff":["Charities and community groups in Neath Port Talbot"],"lenses":["vcse"],"topics":[],"detail":"Up to £15,000. Listed in NPT Council for Voluntary Service's November 2026 funding round-up. UK-wide or Wales-wide fund open to groups here.","how":"Check eligibility on the funder's page. NPT CVS can help with funding bids: info@nptcvs.org.uk or 01639 631246.","src":"https://www.nptcvs.wales/funding-opportunities-november-2026/"},{"id":"fund-lgbt-get-active","title":"LGBT+ Get Active Fund","kind":"Funding","level":"funder","status":"open","deadline":"2026-11-04","time":"closing time not stated on the round-up page","body":"The LGBT+ Fund","plain":"For LGBT+ groups running sport and physical activity.","url":"https://lgbtfund.org.uk/live-funds/get-active-fund/#apply","urlLabel":"Funder's page","aff":["Charities and community groups in Neath Port Talbot"],"lenses":["vcse"],"topics":[],"detail":"Up to £50,000. Listed in NPT Council for Voluntary Service's November 2026 funding round-up. UK-wide or Wales-wide fund open to groups here.","how":"Check eligibility on the funder's page. NPT CVS can help with funding bids: info@nptcvs.org.uk or 01639 631246.","src":"https://www.nptcvs.wales/funding-opportunities-november-2026/"},{"id":"fund-bcbn","title":"Better Community Business Network grants","kind":"Funding","level":"funder","status":"open","deadline":"2026-11-09","time":"closing time not stated on the round-up page","body":"Better Community Business Network","plain":"One-off grants for charities and small community projects that can show their impact.","url":"https://bcbn.org.uk/grant-initiative/","urlLabel":"Funder's page","aff":["Charities and community groups in Neath Port Talbot"],"lenses":["vcse"],"topics":[],"detail":"Up to £3,000. Listed in NPT Council for Voluntary Service's November 2026 funding round-up. UK-wide or Wales-wide fund open to groups here.","how":"Check eligibility on the funder's page. NPT CVS can help with funding bids: info@nptcvs.org.uk or 01639 631246.","src":"https://www.nptcvs.wales/funding-opportunities-november-2026/"},{"id":"fund-bq-foundation","title":"B&Q Foundation grants","kind":"Funding","level":"funder","status":"open","deadline":"2026-11-13","time":"closing time not stated on the round-up page","body":"B&Q Foundation","plain":"For charities making homes safe and comfortable for people facing homelessness, abuse, illness or hardship.","url":"https://bqfoundation.org.uk/apply-for-a-grant/","urlLabel":"Funder's page","aff":["Charities and community groups in Neath Port Talbot"],"lenses":["home","vcse"],"topics":[],"detail":"Up to £10,000. Listed in NPT Council for Voluntary Service's November 2026 funding round-up. UK-wide or Wales-wide fund open to groups here.","how":"Check eligibility on the funder's page. NPT CVS can help with funding bids: info@nptcvs.org.uk or 01639 631246.","src":"https://www.nptcvs.wales/funding-opportunities-november-2026/"},{"id":"fund-acw-creative-steps","title":"Arts Council of Wales Creative Steps","kind":"Funding","level":"county","status":"open","deadline":"2026-11-25","time":"closing time not stated on the round-up page","body":"Arts Council of Wales","plain":"For artists and arts organisations who have faced barriers to getting funding.","url":"https://arts.wales/funding/funding-for-organisations","urlLabel":"Funder's page","aff":["Charities and community groups in Neath Port Talbot"],"lenses":["vcse"],"topics":[],"detail":"Up to £7,500. Listed in NPT Council for Voluntary Service's November 2026 funding round-up. UK-wide or Wales-wide fund open to groups here.","how":"Check eligibility on the funder's page. NPT CVS can help with funding bids: info@nptcvs.org.uk or 01639 631246.","src":"https://www.nptcvs.wales/funding-opportunities-november-2026/"},{"id":"fund-rosa-voices","title":"Rosa Voices from the Frontline","kind":"Funding","level":"funder","status":"open","deadline":"2026-11-26","time":"closing time not stated on the round-up page","body":"Rosa","plain":"For women's and girls' organisations doing campaigning and influencing work.","url":"https://rosa.beaconforms.com/form/2ee19046","urlLabel":"Funder's page","aff":["Charities and community groups in Neath Port Talbot"],"lenses":["vcse"],"topics":[],"detail":"Up to £10,000 over 18 months. Listed in NPT Council for Voluntary Service's November 2026 funding round-up. UK-wide or Wales-wide fund open to groups here.","how":"Check eligibility on the funder's page. NPT CVS can help with funding bids: info@nptcvs.org.uk or 01639 631246.","src":"https://www.nptcvs.wales/funding-opportunities-november-2026/"},{"id":"fund-hedley","title":"The Hedley Foundation","kind":"Funding","level":"funder","status":"open","deadline":"2026-12-02","time":"closing time not stated on the round-up page","body":"The Hedley Foundation","plain":"Grants for smaller charities that can show clear results for the people they help.","url":"https://www.hedleyfoundation.org.uk/apply-now","urlLabel":"Funder's page","aff":["Charities and community groups in Neath Port Talbot"],"lenses":["vcse"],"topics":[],"detail":"Usually up to £5,000. Listed in NPT Council for Voluntary Service's November 2026 funding round-up. UK-wide or Wales-wide fund open to groups here.","how":"Check eligibility on the funder's page. NPT CVS can help with funding bids: info@nptcvs.org.uk or 01639 631246.","src":"https://www.nptcvs.wales/funding-opportunities-november-2026/"},{"id":"fund-comic-relief-cwtch","title":"Comic Relief Cwtch Communities","kind":"Funding","level":"funder","status":"closed","deadline":"2026-11-02","time":"Closed Monday 2 November","body":"Comic Relief","plain":"For Welsh voluntary groups with income under £250,000 meeting basic needs, early childhood health and safety.","url":"https://www.nptcvs.wales/funding-opportunities-november-2026/","urlLabel":"NPT CVS round-up","aff":["Charities and community groups in Neath Port Talbot"],"lenses":["vcse"],"topics":[],"detail":"£15,000 to £35,000. Listed in NPT Council for Voluntary Service's November 2026 funding round-up. UK-wide or Wales-wide fund open to groups here.","how":"Check eligibility on the funder's page. NPT CVS can help with funding bids: info@nptcvs.org.uk or 01639 631246.","src":"https://www.nptcvs.wales/funding-opportunities-november-2026/"}];
+
+/* Groups. roles:1 = advertises volunteer roles. v:1 = a primary source for this group was read directly on a refresh run; v:0 = search result or older article only. */
+const GROUPS = [{"n":"NPT Council for Voluntary Service","what":"The support body for charities, community groups and volunteers in the borough. Publishes monthly volunteering and funding round-ups.","get":"Email info@nptcvs.org.uk or call 01639 631246.","dates":"New volunteering and funding round-ups each month","area":"borough","cat":"hub","url":"https://www.nptcvs.wales/","label":"NPT CVS website","roles":1,"v":1},{"n":"Age Connects NPT outreach hub, Neath","what":"Weekly drop-in for older people: advice, activities, digital help and foot care at some hubs.","get":"Just drop in, or contact Age Connects NPT.","dates":"Mondays, 10am to 12.30pm, Neath Community Centre, Orchard Street","area":"neath","cat":"care","url":"https://www.ageconnectsnpt.org.uk/community-outreach-hubs","label":"Age Connects hubs","roles":0,"v":1},{"n":"Age Connects NPT outreach hub, Margam","what":"Weekly drop-in for older people: advice, activities and wellbeing.","get":"Just drop in, or contact Age Connects NPT.","dates":"Tuesdays, 10.30am to 12.30pm, Bertha Road Community Centre","area":"margam","cat":"care","url":"https://www.ageconnectsnpt.org.uk/community-outreach-hubs","label":"Age Connects hubs","roles":0,"v":1},{"n":"Age Connects NPT outreach hub, Pontardawe","what":"Weekly drop-in for older people: advice, activities and wellbeing.","get":"Just drop in, or contact Age Connects NPT.","dates":"Thursdays, 1pm to 3pm, Pontardawe Library","area":"pontardawe","cat":"care","url":"https://www.ageconnectsnpt.org.uk/community-outreach-hubs","label":"Age Connects hubs","roles":0,"v":1},{"n":"Me Myself and I friendship groups, Briton Ferry","what":"Friendly social groups with crafts, bowls, pool, quizzes, bingo, cooking, singing and dancing.","get":"Contact Me Myself and I through their website.","dates":"Tuesdays to Thursdays, 10.30am to 12.30pm or 2pm to 4pm. £6 with drinks and light snacks","area":"briton-ferry","cat":"care","url":"https://mminpt.co.uk/community-friendship-club/","label":"Friendship groups","roles":0,"v":1},{"n":"Me Myself and I friendship group, Cimla","what":"Outreach friendship session.","get":"Contact Me Myself and I through their website.","dates":"Tuesdays, 10am to 12 noon at Cimla Community Centre. £4 a session","area":"neath","cat":"care","url":"https://mminpt.co.uk/community-friendship-club/","label":"Friendship groups","roles":0,"v":1},{"n":"Me Myself and I friendship group, Seven Sisters","what":"Outreach friendship session.","get":"Contact Me Myself and I through their website.","dates":"Wednesdays, 2pm to 4pm at Seven Sisters Community Hall. £3 a session","area":"seven-sisters","cat":"care","url":"https://mminpt.co.uk/community-friendship-club/","label":"Friendship groups","roles":0,"v":1},{"n":"Parkinson's UK Neath Port Talbot support group","what":"Friendship and support for people with Parkinson's, their families and carers. There is also a Port Talbot Cafe at St Theodore's Church Hall.","get":"Contact Ceri Machlab on (number on group website). Parkinson's UK helpline: 0808 800 0303.","dates":"Monthly on the third Wednesday, 10.30am to 12 noon, Longford Memorial Hall, SA10 7HD. Port Talbot Cafe: times not published on the page","area":"borough","cat":"care","url":"https://localsupport.parkinsons.org.uk/provider/neath-port-talbot-support-group","label":"Group details","roles":0,"v":1},{"n":"Neath Port Talbot Mind support groups","what":"Free mental health groups in person at 21 London Road, Neath, around the borough and online, run by practitioners and counsellors.","get":"Book an initial assessment using the referral form, or call 01639 643510.","dates":"Bereaved Parents group Mondays 3.45pm to 4.45pm in Neath; online hoarding group Wednesdays 1pm; in-person hoarding group Fridays 1pm; Walk and Connect last Wednesday of the month 3pm to 4.30pm. More on the What's on calendar","area":"borough","cat":"care","url":"https://nptmind.org.uk/support-groups/","label":"Support groups","roles":0,"v":1},{"n":"Community Lives groups","what":"Inclusive groups for adults with a learning disability: the Better Together Choir and Clwb Croeso creative social group.","get":"Email info@communitylives.org.","dates":"Better Together Choir: Wednesdays, 5pm to 7pm. Clwb Croeso: Mondays, 11am to 1pm. Venues not published on the page","area":"borough","cat":"care","url":"https://communitylives.org/community-projects/","label":"Community projects","roles":0,"v":1},{"n":"Neath Port Talbot Stroke Group","what":"Social group and trips for people affected by stroke. Many events are for regular attendees only.","get":"Call 03333 580344.","dates":"Regular session times not published on the events page. Christmas lunch Thursday 17 December, 12.30pm, Glyn Clydach Hotel, Neath","area":"borough","cat":"care","url":"https://www.nptsg.org.uk/events/","label":"Events","roles":0,"v":1},{"n":"Neath Port Talbot Carers sitting service","what":"Volunteers sit with a person for a couple of hours so their unpaid carer can take a break.","get":"Age 18+ and DBS check. See NPT CVS volunteering list.","dates":"Volunteer times arranged with the service","area":"borough","cat":"care","url":"https://www.nptcvs.wales/volunteering-opportunities-november-2026/","label":"Volunteering list","roles":1,"v":1},{"n":"Taibach Community Library","what":"Community-run library for Taibach and nearby areas. Looking for volunteer library assistants.","get":"See NPT CVS volunteering list.","dates":"Opening times not published on the page","area":"port-talbot","cat":"culture","url":"https://www.nptcvs.wales/volunteering-opportunities-november-2026/","label":"Volunteering list","roles":1,"v":1},{"n":"B.E.E. Hive Cafe","what":"Community cafe at Taibach Community Centre, run with Community Ventures Port Talbot.","get":"Just drop in, or call 01639 882 104.","dates":"Monday to Friday, 9am to 3pm","area":"port-talbot","cat":"food","url":"https://www.ptcommunityventures.co.uk/bee-hive-cafe","label":"Cafe page","roles":0,"v":1},{"n":"Taibach Youth Club","what":"Youth club at Taibach Community Education Centre.","get":"Call Community Ventures on 01639 882 104.","dates":"Tuesdays and Thursdays, 7pm to 9pm","area":"port-talbot","cat":"culture","url":"https://www.ptcommunityventures.co.uk/taibach-youth-club","label":"Youth club page","roles":0,"v":1},{"n":"Taibach Art Group","what":"Art group at Taibach Community Centre.","get":"Call Community Ventures on 01639 882 104.","dates":"Wednesdays, 12 noon to 3pm","area":"port-talbot","cat":"culture","url":"https://www.ptcommunityventures.co.uk/taibach-art","label":"Art group page","roles":0,"v":1},{"n":"Quilter's Group, Taibach","what":"Quilting group at Taibach Community Centre.","get":"Call Community Ventures on 01639 882 104.","dates":"Mondays, 10am to 12 noon","area":"port-talbot","cat":"culture","url":"https://www.ptcommunityventures.co.uk/quilters","label":"Quilters page","roles":0,"v":1},{"n":"Pottery Group, Taibach","what":"Pottery at Taibach Community Education Centre.","get":"Call (number on group website).","dates":"Mondays, 10am to 1pm","area":"port-talbot","cat":"culture","url":"https://www.ptcommunityventures.co.uk/pottery-group","label":"Pottery page","roles":0,"v":1},{"n":"Gardening Club, Taibach","what":"Gardening club at Taibach Community Education Centre.","get":"Call (number on group website).","dates":"Fridays, 11am to 1pm","area":"port-talbot","cat":"nature","url":"https://www.ptcommunityventures.co.uk/gardening-club","label":"Gardening club page","roles":0,"v":1},{"n":"Port Talbot Wheelers","what":"Cycling club meeting at Taibach Community Centre.","get":"Call Community Ventures on 01639 882 104.","dates":"Mondays, 6.30pm to 8.30pm","area":"port-talbot","cat":"culture","url":"https://www.ptcommunityventures.co.uk/port-talbot-wheelers-cycling-club","label":"Club page","roles":0,"v":1},{"n":"Welsh Bushi-Kai Karate","what":"Karate club at Baglan Community Centre.","get":"Call (number on group website).","dates":"Mondays and Fridays, 5.30pm to 7.30pm","area":"baglan","cat":"culture","url":"https://www.ptcommunityventures.co.uk/bushi-kai-karate","label":"Club page","roles":0,"v":1},{"n":"Taibach Karate","what":"Karate club at Taibach Community Centre.","get":"Call Community Ventures on 01639 882 104.","dates":"Mondays and Thursdays, 6pm to 8pm","area":"port-talbot","cat":"culture","url":"https://www.ptcommunityventures.co.uk/taibach-karate","label":"Club page","roles":0,"v":1},{"n":"Port Talbot Historical Society","what":"Local history society.","get":"See the society's website.","dates":"Times not published on the council's list","area":"port-talbot","cat":"culture","url":"http://www.historicalporttalbot.com","label":"Society website","roles":0,"v":0},{"n":"Skewen & District Historical Society","what":"Local history society.","get":"See the society's website.","dates":"Times not published on the council's list","area":"skewen","cat":"culture","url":"http://www.skewenhistoricalsociety.org.uk","label":"Society website","roles":0,"v":0},{"n":"The Neath Antiquarian Society","what":"Local history and archaeology society for Neath.","get":"See the society's website.","dates":"Times not published on the council's list","area":"neath","cat":"culture","url":"http://www.neathantiquariansociety.co.uk/","label":"Society website","roles":0,"v":0},{"n":"Glynneath and Cwmgwrach Historical Society","what":"Local history society.","get":"See the society's website.","dates":"Times not published on the council's list","area":"glynneath","cat":"culture","url":"https://glynneathhistory.uk/","label":"Society website","roles":0,"v":0},{"n":"Resolven History Society","what":"Local history society.","get":"See the society's website.","dates":"Times not published on the council's list","area":"resolven","cat":"culture","url":"http://eclecs.blogspot.com/","label":"Society website","roles":0,"v":0},{"n":"Pontardawe Heritage Centre","what":"Local heritage centre.","get":"See the centre's Facebook page.","dates":"Times not published on the council's list","area":"pontardawe","cat":"culture","url":"http://www.facebook.com/pontardaweheritagecentre","label":"Facebook page","roles":0,"v":0},{"n":"Gwaun Cae Gurwen Local History","what":"Local history group.","get":"See the group's Facebook page.","dates":"Times not published on the council's list","area":"gwaun-cae-gurwen","cat":"culture","url":"https://www.facebook.com/groups/gwauncaegurwenmemories","label":"Facebook group","roles":0,"v":0},{"n":"Friends of Margam Park","what":"Supporters' group for Margam Country Park.","get":"See the group's website.","dates":"Times not published on the council's list","area":"margam","cat":"nature","url":"http://www.friendsofmargampark.co.uk/","label":"Group website","roles":0,"v":0},{"n":"Neath and Tennant Canal Trust","what":"Volunteer trust caring for the Neath and Tennant canals.","get":"See the trust's website.","dates":"Times not published on the council's list","area":"neath","cat":"nature","url":"http://www.neath-tennant-canals.org.uk","label":"Trust website","roles":0,"v":0}];
+
+const SOON = ["Natural Resources Wales says it will consult separately on later stages of the Port Talbot steelworks permit change, including the Electric Arc Furnace.","Lost Peatlands Connections plans volunteering, public events and five new walking routes over its three years (Neath Port Talbot Council)."];
+const WATCH = [["NPT Council consultations","https://www.npt.gov.uk/consultations"],["NPT Council newsroom","https://www.npt.gov.uk/council/newsroom/"],["NPT Council meetings calendar","https://democracy.npt.gov.uk/mgCalendarMonthView.aspx"],["Swansea Bay UHB engagement","https://sbuhb.nhs.wales/about-us/our-health-board/engaging-with-us/engagement-consultation/"],["Swansea Bay UHB news","https://sbuhb.nhs.wales/news/"],["Mid and West Wales Fire campaigns and consultations","https://www.mawwfire.gov.uk/eng/campaigns-and-consultations/"],["Natural Resources Wales consultations","https://ymgynghori.cyfoethnaturiol.cymru/english/"],["Welsh Government consultations","https://www.gov.wales/consultations"],["NPT CVS","https://www.nptcvs.wales/"],["NPT local history groups","https://www.npt.gov.uk/culture-and-tourism/attractions/heritage-and-history/local-history-groups/"],["Community Ventures Port Talbot groups","https://www.ptcommunityventures.co.uk/groups"],["Me Myself and I friendship groups","https://mminpt.co.uk/community-friendship-club/"],["Age Connects NPT outreach hubs","https://www.ageconnectsnpt.org.uk/community-outreach-hubs"],["Community Lives projects","https://communitylives.org/community-projects/"],["NPT Mind support groups","https://nptmind.org.uk/support-groups/"],["Parkinson's UK NPT group","https://localsupport.parkinsons.org.uk/provider/neath-port-talbot-support-group"],["NPT Stroke Group events","https://www.nptsg.org.uk/events/"]];
+const COLLECTED = "3 November 2026";  /* set to e.g. "3 November 2026" by each refresh */
+const BIG = [{"k":"deadlines","label":"📅 Dates coming up"},{"k":"volunteer","label":"👥 Volunteer near me"},{"k":"help","label":"🍲 Food and support"},{"k":"nature","label":"🌿 Nature and wildlife"},{"k":"money","label":"💰 Money for groups"},{"k":"all","label":"🔎 Everything"}];
+
+const st = {mode:"std", view:"deadlines", tab:"open", level:"all", lens:null, gcat:"all", area:"all", recruit:false, q:"", big:"deadlines", open:{}};
+try { if (localStorage.getItem("tcwatch-mode") === "big") st.mode = "big"; } catch (e) {}
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const safeUrl = u => { u = String(u ?? "").trim(); return /^https?:\/\//i.test(u) ? esc(u) : "#"; };  /* data-supplied urls: block non-http(s) schemes AND escape, so a quote cannot break out of the attribute */
+
+let todayStr = new Intl.DateTimeFormat("en-CA", {timeZone:"Europe/London"}).format(new Date());
+const utc = s => { const [y,m,d] = s.split("-").map(Number); return Date.UTC(y, m-1, d); };
+const fmt = s => new Intl.DateTimeFormat("en-GB", {weekday:"short", day:"numeric", month:"short", year:"numeric", timeZone:"UTC"}).format(utc(s));
+const fmtShort = s => new Intl.DateTimeFormat("en-GB", {weekday:"short", day:"numeric", month:"short", timeZone:"UTC"}).format(utc(s));
+const daysTo = s => Math.round((utc(s) - utc(todayStr)) / 86400000);
+
+function info(it) {
+  if (it.status === "closed") return {phase:"closed", d: it.deadline ? daysTo(it.deadline) : null, level:"done"};
+  if (it.status === "open") {
+    const d = daysTo(it.deadline);
+    if (d < 0) return {phase:"closed", d, level:"done"};
+    const ev = it.kind === "Event";
+    return {phase:"open", d, level: ev ? "event" : d <= 7 ? "urgent" : d <= 21 ? "soon" : "later"};
+  }
+  return {phase:it.status, d:null, level:it.status};
+}
+function daysText(it) {
+  const d = it.i.d;
+  if (it.kind === "Event") return d === 0 ? "Today" : d === 1 ? "Tomorrow" : "In " + d + " days";
+  return d === 0 ? "Closes today" : d === 1 ? "1 day left" : d + " days left";
+}
+const withInfo = ITEMS.map(it => Object.assign({}, it, {i: info(it)}));
+const RANK = {open:0, decision:1, ongoing:2, closed:3};
+function orderItems(arr) {
+  return arr.slice().sort((a, b) => RANK[a.i.phase] - RANK[b.i.phase] ||
+    (a.i.phase === "closed" ? utc(b.deadline) - utc(a.deadline) : a.i.phase === "open" ? utc(a.deadline) - utc(b.deadline) : 0));
+}
+function matchLens(it) { return !st.lens || it.lenses.includes(st.lens); }
+function itemAreaOk(it) { return st.area === "all" || !it.at || it.at.includes(st.area); }
+function areaOk(g) { return st.area === "all" || g.area === st.area || g.area === "borough"; }
+
+function itemsView() {
+  let arr = withInfo.filter(itemAreaOk);
+  if (st.tab !== "all") arr = arr.filter(x => x.i.phase === st.tab);
+  if (st.level !== "all") arr = arr.filter(x => x.level === st.level);
+  return orderItems(arr.filter(matchLens));
+}
+function groupsView() {
+  const q = st.q.trim().toLowerCase();
+  return GROUPS.filter(g => (st.gcat === "all" || g.cat === st.gcat) && areaOk(g) && (!st.recruit || g.roles) &&
+    (!q || (g.n + " " + g.what + " " + AREAL[g.area] + " " + GCATS[g.cat]).toLowerCase().includes(q)));
+}
+function bigView() {
+  const live = withInfo.filter(x => x.i.phase !== "closed" && itemAreaOk(x));
+  const k = st.big;
+  let items = [], groups = [];
+  if (k === "deadlines") items = live.filter(x => x.i.phase === "open");
+  else if (k === "volunteer") groups = GROUPS.filter(g => g.roles && areaOk(g));
+  else if (k === "help") groups = GROUPS.filter(g => (g.cat === "food" || g.cat === "care") && areaOk(g));
+  else if (k === "nature") { items = live.filter(x => x.topics.includes("nature")); groups = GROUPS.filter(g => g.cat === "nature" && areaOk(g)); }
+  else if (k === "money") { items = live.filter(x => x.kind === "Funding"); groups = GROUPS.filter(g => g.cat === "hub" && areaOk(g)); }
+  else { items = live; groups = GROUPS.filter(areaOk); }
+  return {items: orderItems(items), groups};
+}
+
+function renderAlert() {
+  const open = withInfo.filter(x => x.i.phase === "open" && x.kind !== "Event" && itemAreaOk(x)).sort((a, b) => a.i.d - b.i.d);
+  const urgent = open.filter(x => x.i.d <= 7), soon = open.filter(x => x.i.d <= 21);
+  let cls, sym, head, sub, linkSub = [];
+  if (urgent.length) {
+    cls = "urgent"; sym = "!";
+    head = urgent.length + (urgent.length === 1 ? " deadline falls" : " deadlines fall") + " within 7 days";
+    sub = urgent.map(x => x.title + " (" + fmtShort(x.deadline) + ")").join("; ") + ".";
+    linkSub = urgent;
+  } else if (soon.length) {
+    cls = "soon"; sym = "!";
+    head = soon.length + (soon.length === 1 ? " deadline falls" : " deadlines fall") + " within 3 weeks";
+    sub = "Next: " + soon[0].title + ", " + fmtShort(soon[0].deadline) + " (" + soon[0].i.d + " days).";
+    linkSub = [soon[0]];
+  } else if (open.length) {
+    cls = "calm"; sym = "✓"; head = "Nothing closes in the next 3 weeks"; sub = "Next: " + open[0].title + ", " + fmtShort(open[0].deadline) + ".";
+  } else { cls = "calm"; sym = "✓"; head = "No open deadlines recorded"; sub = ITEMS.length ? "Check the places to watch." : "Nothing has been collected yet. The first weekly refresh fills this page."; }
+  const more = soon.length > urgent.length && urgent.length ? " " + (soon.length - urgent.length) + " more within 3 weeks." : "";
+  const links = linkSub.length ? '<span style="display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:6px">' + linkSub.map(x => '<a href="' + safeUrl(x.url) + '" target="_blank" rel="noopener" style="color:var(--ink);font-weight:700">' + esc(x.urlLabel + ": " + x.title) + ' ↗</a>').join("") + '</span>' : "";
+  $("alert").innerHTML = '<div class="alert ' + cls + '"><div class="sym" aria-hidden="true">' + sym + '</div><div><strong>' + esc(head) + '</strong><span>' + esc(sub + more) + '</span>' + links + '</div></div>';
+}
+function renderRunway() {
+  const open = withInfo.filter(x => x.i.phase === "open" && itemAreaOk(x)).sort((a, b) => a.i.d - b.i.d);
+  let h = '<h2 id="rw-h">Dates coming up' + (st.area === "all" ? "" : ' <small style="font-family:var(--f-body);font-weight:400;color:var(--muted)">for ' + esc(AREAS[st.area]) + ' and the whole borough</small>') + '</h2>';
+  if (!open.length) h += '<p class="rw-note">Nothing dated is recorded.</p>';
+  open.forEach(x => {
+    const w = Math.max(4, Math.round(100 - Math.min(x.i.d, 70) / 70 * 100));
+    h += '<a class="rw-row" href="' + safeUrl(x.url) + '" target="_blank" rel="noopener" aria-label="' + esc(x.title + ", " + daysText(x) + ". " + x.urlLabel + " (opens in a new tab)") + '"><div class="rw-title">' + esc(x.title) + '<small>' + esc(x.kind) + ' · ' + esc(x.body) + '</small></div><div class="rw-bar ' + x.i.level + '" aria-hidden="true"><i style="width:' + w + '%"></i></div><div class="rw-days">' + esc(daysText(x)) + ' <span style="font-weight:400;color:var(--muted)">' + esc(fmtShort(x.deadline)) + '</span><span class="rw-go">' + esc(x.urlLabel) + ' ↗</span></div></a>';
+  });
+  h += '<p class="rw-note">Select any row to open the consultation, grant, event or report itself. Bars fill as the date gets closer: red is 7 days or fewer, amber 21 days or fewer, blue an event.</p>';
+  $("runway").innerHTML = h;
+}
+function chips(obj, key, cur, extra) {
+  return Object.keys(obj).map(k => '<button type="button" class="chip" data-' + key + '="' + k + '" aria-pressed="' + (cur === k) + '">' + esc(obj[k]) + (extra ? '<span class="n">' + extra(k) + '</span>' : '') + '</button>').join(" ");
+}
+function renderControls() {
+  document.querySelectorAll(".viewtabs button").forEach(b => b.setAttribute("aria-pressed", st.view === b.dataset.view));
+  const std = st.mode === "std";
+  $("ctl-items").hidden = !(std && st.view === "deadlines");
+  $("ctl-groups").hidden = !(std && st.view === "groups");
+  $("lens-panel").hidden = st.view === "groups";
+  const cnt = f => withInfo.filter(f).length;
+  const tabs = {open:"Dates coming up", decision:"Decisions and watch", ongoing:"Ongoing", closed:"Recently closed", all:"All"};
+  $("tabs").innerHTML = chips(tabs, "tab", st.tab, k => k === "all" ? ITEMS.length : cnt(x => x.i.phase === k));
+  $("levels").innerHTML = chips(Object.assign({all:"Everyone"}, LEVELS), "level", st.level, k => k === "all" ? ITEMS.length : cnt(x => x.level === k));
+  $("gcats").innerHTML = chips(Object.assign({all:"All types"}, GCATS), "gcat", st.gcat, k => k === "all" ? GROUPS.length : GROUPS.filter(g => g.cat === k).length);
+  $("areas").innerHTML = chips(Object.assign({all:"Whole borough"}, AREAS), "area", st.area);
+  $("ctl-where").hidden = st.mode !== "std";
+  $("recruit").innerHTML = '<button type="button" class="chip" data-recruit="1" aria-pressed="' + st.recruit + '">Looking for volunteers</button>';
+  let lh = "";
+  ["People", "Organisations", "Wildlife and places"].forEach(c => {
+    lh += '<div class="group"><h3>' + c + '</h3><div class="ent">';
+    LENSES.filter(l => l.cat === c).forEach(l => {
+      const n = withInfo.filter(it => it.lenses.includes(l.id)).length;
+      if (n) lh += '<button type="button" class="chip" data-lens="' + l.id + '" aria-pressed="' + (st.lens === l.id) + '">' + esc(l.label) + '<span class="n">' + n + '</span></button>';
+    });
+    lh += '</div></div>';
+  });
+  $("lenses").innerHTML = lh;
+  $("soonlist").innerHTML = SOON.map(s => "<li>" + esc(s) + "</li>").join("");
+  $("watch").innerHTML = WATCH.map(w => '<li><a href="' + safeUrl(w[1]) + '" target="_blank" rel="noopener">' + esc(w[0]) + '</a></li>').join("");
+  $("bigbar").innerHTML = BIG.map(b => '<button type="button" data-big="' + b.k + '" aria-pressed="' + (st.big === b.k) + '">' + b.label + '</button>').join("");
+  const showArea = st.mode === "big";
+  $("bigarea").hidden = !showArea;
+  $("bigarea").innerHTML = showArea ? '<div class="lbl">Which town?</div>' + ['all'].concat(Object.keys(AREAS)).map(k => '<button type="button" data-area="' + k + '" aria-pressed="' + (st.area === k) + '">' + (k === "all" ? "Whole borough" : AREAS[k]) + '</button>').join("") : "";
+  const lens = LENSES.find(l => l.id === st.lens);
+  $("lensbar").innerHTML = lens && st.mode !== "big" && st.view !== "groups" ? '<p style="margin:0 0 12px">Showing only items touching <strong>' + esc(lens.label) + '</strong>. <button type="button" class="chip" data-lens="' + lens.id + '">Clear</button></p>' : "";
+}
+function cardHtml(it) {
+  const p = it.i, open = !!st.open[it.id], ev = it.kind === "Event";
+  const statusTxt = {open: ev ? "Coming up" : "Open", decision:"Decision pending", ongoing:"Ongoing", closed:"Closed"}[p.phase];
+  let dl;
+  if (p.phase === "open") dl = '<div class="dl ' + p.level + '"><span class="big">' + esc(daysText(it)) + '</span><span>' + (ev ? "Happens " : "Closes ") + esc(fmt(it.deadline)) + ', ' + esc(it.time) + '</span></div>';
+  else if (p.phase === "closed") dl = '<div class="dl done"><span>' + (it.deadline ? esc(fmt(it.deadline)) + '. ' : "") + esc(it.time) + '</span></div>';
+  else dl = '<div class="dl ' + p.phase + '"><span>' + esc(it.time) + '</span></div>';
+  const lensBtns = it.lenses.map(id => { const l = LENSES.find(x => x.id === id); return l ? '<button type="button" class="chip" data-lens="' + id + '" aria-pressed="' + (st.lens === id) + '">' + esc(l.label) + '</button>' : ""; }).join("");
+  return '<article class="card ' + (p.phase === "closed" ? "done" : "") + '" id="c-' + it.id + '">' +
+    '<div class="card-top"><span class="tag">' + esc(statusTxt) + '</span><span class="tag">' + (KIND_EMOJI[it.kind] || "") + ' ' + esc(it.kind) + '</span><span class="tag">' + esc(LEVELS[it.level]) + '</span><span class="tag">' + esc(it.at ? it.at.map(a => AREAS[a]).join(", ") : "Whole borough") + '</span></div>' +
+    '<h3>' + (KIND_EMOJI[it.kind] || "") + ' ' + esc(it.title) + '</h3><div class="body-org">' + esc(it.body) + '</div>' + dl +
+    '<p class="plain">' + esc(it.plain) + '</p>' +
+    '<div class="actions"><a class="btn" href="' + safeUrl(it.url) + '" target="_blank" rel="noopener">' + esc(it.urlLabel) + '</a>' +
+    '<button type="button" class="btn ghost" data-more="' + it.id + '" aria-expanded="' + open + '" aria-controls="m-' + it.id + '">' + (open ? "Hide details" : "Who and what is affected") + '</button></div>' +
+    '<div class="more" id="m-' + it.id + '"' + (open ? "" : " hidden") + '>' +
+    '<div><h4>Who and what it touches</h4><ul>' + it.aff.map(a => "<li>" + esc(a) + "</li>").join("") + '</ul></div>' +
+    (st.mode === "std" ? '<div><h4>Filter by</h4><div class="lensrow">' + lensBtns + '</div></div>' : "") +
+    '<p>' + esc(it.detail) + '</p><p><strong>How to respond:</strong> ' + esc(it.how) + '</p>' +
+    '<p class="src">Source: <a href="' + safeUrl(it.src) + '" target="_blank" rel="noopener">' + esc(it.src.replace(/^https?:\/\//, "").slice(0, 70)) + '</a></p></div></article>';
+}
+function groupHtml(g) {
+  return '<article class="card"><div class="card-top"><span class="tag">' + (GCAT_EMOJI[g.cat] || "") + ' ' + esc(GCATS[g.cat]) + '</span><span class="tag">' + esc(AREAL[g.area]) + '</span>' +
+    (g.roles ? '<span class="tag rec">👋 Volunteers wanted</span>' : "") +
+    '<span class="tag ' + (g.v ? "" : "chk") + '">' + (g.v ? "Source recently confirmed" : "Check before you go") + '</span></div>' +
+    '<h3>' + (GCAT_EMOJI[g.cat] || "") + ' ' + esc(g.n) + '</h3><p class="plain">' + esc(g.what) + '</p>' +
+    '<p class="meta"><strong>How to get involved:</strong> ' + esc(g.get) + '</p>' +
+    (g.dates ? '<p class="meta"><strong>Dates and notes:</strong> ' + esc(g.dates) + '</p>' : "") +
+    '<div class="actions"><a class="btn" href="' + safeUrl(g.url) + '" target="_blank" rel="noopener">' + esc(g.label) + '</a></div></article>';
+}
+function sect(title, n, html) { return '<h2 class="sect">' + esc(title) + '<small>' + n + ' shown</small></h2>' + html; }
+function empty(msg) { if (!ITEMS.length && !GROUPS.length) msg = "Nothing has been recorded yet. This page fills in at its first weekly refresh."; return '<div class="empty-msg"><strong>Nothing to show here.</strong><br>' + esc(msg) + '</div>'; }
+function renderList() {
+  let h = "";
+  if (st.mode === "big") {
+    const v = bigView();
+    if (v.items.length) h += sect("Dates and plans", v.items.length, v.items.map(cardHtml).join(""));
+    if (v.groups.length) h += sect("Groups", v.groups.length, v.groups.map(groupHtml).join(""));
+    if (!h) h = empty("Try another button or town.");
+  } else if (st.view === "deadlines") {
+    const arr = itemsView();
+    h = arr.length ? arr.map(cardHtml).join("") : empty("Try a different filter.");
+  } else if (st.view === "groups") {
+    const arr = groupsView();
+    h = arr.length ? '<p class="meta" style="margin:0">' + arr.length + ' of ' + GROUPS.length + ' groups. Groups that cover the whole borough appear under every town.</p>' + arr.map(groupHtml).join("") : empty("No group matches. Clear the search or a filter.");
+  } else {
+    const items = orderItems(withInfo.filter(x => x.i.phase !== "closed" && itemAreaOk(x) && x.topics.includes("nature") && matchLens(x)));
+    const gs = GROUPS.filter(g => g.cat === "nature");
+    h = sect("Plans, decisions and events", items.length, items.length ? items.map(cardHtml).join("") : empty("Nothing matches that filter.")) + (st.lens ? "" : sect("Groups you can join", gs.length, gs.map(groupHtml).join("")));
+  }
+  $("list").innerHTML = h;
+}
+function render() {
+  document.body.classList.toggle("big", st.mode === "big");
+  $("m-std").setAttribute("aria-pressed", st.mode === "std");
+  $("m-big").setAttribute("aria-pressed", st.mode === "big");
+  $("asof").textContent = "Today in Neath Port Talbot: " + fmt(todayStr) + (COLLECTED ? ". Information collected " + COLLECTED + "." : ". " + "Information not yet collected" + ".");
+  document.querySelector(".hero").dataset.place = st.area;
+  $("hero-credit").innerHTML = HERO_CREDIT[st.area] || HERO_CREDIT.all;
+  renderAlert(); renderRunway(); renderControls(); renderList();
+}
+document.addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  const d = b.dataset;
+  if (b.id === "m-std" || b.id === "m-big") {
+    st.mode = b.id === "m-big" ? "big" : "std";
+    try { localStorage.setItem("tcwatch-mode", st.mode); } catch (x) {}
+  } else if (d.view) st.view = d.view;
+  else if (d.tab) st.tab = d.tab;
+  else if (d.level) st.level = d.level;
+  else if (d.lens) { st.lens = st.lens === d.lens ? null : d.lens; if (st.view === "deadlines" && st.lens) st.tab = "all"; }
+  else if (d.gcat) st.gcat = d.gcat;
+  else if (d.area) st.area = d.area;
+  else if (d.recruit) st.recruit = !st.recruit;
+  else if (d.big) st.big = d.big;
+  else if (d.more) st.open[d.more] = !st.open[d.more];
+  else return;
+  render();
+  if (d.more) { const t = document.querySelector('[data-more="' + d.more + '"]'); if (t) t.focus(); }
+});
+$("q").addEventListener("input", e => { st.q = e.target.value; renderList(); });
+render();
+
+/* The London date is printed in words and drives every countdown, so a page left
+   open past midnight must not keep yesterday's. Re-check each minute and whenever
+   the tab is shown again; re-render only when the day actually changed. */
+const londonDay = () => new Intl.DateTimeFormat("en-CA", {timeZone:"Europe/London"}).format(new Date());
+function checkDay() { const d = londonDay(); if (d !== todayStr) { todayStr = d; render(); } }
+setInterval(checkDay, 60000);
+document.addEventListener("visibilitychange", () => { if (!document.hidden) checkDay(); });
+
+const btt = $("backtotop");
+window.addEventListener("scroll", () => { btt.classList.toggle("show", window.scrollY > 400); }, {passive:true});
+btt.addEventListener("click", () => window.scrollTo({top:0, behavior:"smooth"}));
+</script>
+
+</body></html>
