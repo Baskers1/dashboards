@@ -42,9 +42,13 @@ supplies a bare `PATH`. A pyenv upgrade silently breaks them all.
 |---|---|---|---|---|
 | `com.dashboards.iss` | `tools/iss-update.sh` (in this repo; runs `tools/fetch_orbit.py`, which needs `sgp4==2.27` in that python, and `tools/fetch_kp.py`, which goes to the network at most every 30 min) | 600s | `~/dashboards`, SSH remote | `/tmp/dashboards-iss.{log,err}` |
 | `com.dashboards.donki` | `tools/donki-update.sh` (in this repo) | 10800s | `~/dashboards`, SSH remote | `/tmp/dashboards-donki.{log,err}` |
+| `com.dashboards.nptsocial` | `tools/npt-social-update.sh` (in this repo; runs `tools/fetch_npt_social.py`) | daily 06:23 | `~/dashboards`, SSH remote | `/tmp/dashboards-nptsocial.{log,err}` |
 | hourly sync | `~/bin/sync-dashboards.sh` (not in this repo) | hourly at :10 | `~/dashboards-source`, HTTPS + keychain | `~/dashboards-source/.last-sync-status.txt` |
 
-Credentials: the keychain works fine under launchd — do not "fix" it. This
+Credentials: the keychain works fine under launchd — do not "fix" it. `com.dashboards.nptsocial` is
+the one job that needs more than the keychain, because ScrapeCreators is a paid API: it reads
+`SCRAPECREATORS_API_KEY` from `~/.config/npt-social/env`, which is outside the repo and outside the
+plist so it cannot be committed by accident. If that file is missing the job exits 1 and logs why. This
 repo's remote was switched to SSH on 2026-11-01, which is one less moving part
 but was not a repair.
 
@@ -173,3 +177,40 @@ to write only when there is no orbit data at all. `tools/places.json` must match
 Open Notify (the old ISS source, `tools/fetch_iss.py`, retired 3 Nov 2026) was serving a crew list from
 2024 and a position about 3,000 km out: checked against wheretheiss.at, which agreed with SGP4 to 0.1°.
 `sky/iss/` now only forwards to `sky/space-weather/#iss`.
+
+`data/npt-food-social.json` holds the Neath Port Talbot food-and-drink social pull — forward-dated
+venue-night listings, recurring weekly fixtures, venues ranked by independent mentions, permanently
+closed venues, and the Facebook feeds worth polling — written by `tools/fetch_npt_social.py` from the
+ScrapeCreators API (`SCRAPECREATORS_API_KEY`, never printed). `com.dashboards.nptsocial` runs it
+daily; by hand it is:
+
+    python3 tools/fetch_npt_social.py          # throttled: skips if the file is under 20 hours old
+    python3 tools/fetch_npt_social.py --force  # ignore the throttle
+
+The agent is a one-off install per machine, since this repo cannot enable a launchd job for you:
+
+    cp tools/launchd/com.dashboards.nptsocial.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.dashboards.nptsocial.plist
+
+Three things about it are load-bearing:
+
+- **A cold run costs about 700 API credits**, so every response is cached and the fetcher is
+  throttled. A re-run against a warm cache is free, which is what makes changing the parsers cheap —
+  iterate against the cache, not the API.
+- **The cache holds the raw corpus** (posts, usernames, comment text) and defaults to
+  `~/.cache/npt-social`, deliberately outside this repo, since anything here is republished on the
+  open web. Only the aggregated output is committed: business listings and mention counts, no
+  commenter text, and it is passed through `sync.redact()` on the way out. Keep that split.
+- **Redaction is not allowed to fail quietly.** The fetcher imports `redact` from `tools/sync.py`
+  and exits non-zero if it cannot, rather than writing a file that was never scrubbed. It runs
+  unattended, so a silent fallback would publish contact details with nothing going red.
+- **The exclusion lists in it are findings, not boilerplate.** "Neath" collides with *beneath* and
+  with Fallen London's underground Neath; "Seven Sisters" pulls the Sussex cliffs; "Margam" returns a
+  Dubai neighbourhood; "Neath the Wreath" is a gift market in Plano, Texas; and venue names that are
+  ordinary phrases ("The Place", "Base", "Miners") inflate the ranking from text like *"this is the
+  place to go"*. Each one reached a real pull before it was excluded. Rewriting the filters from
+  scratch brings all of them back silently, because nothing downstream fails — the output just gets
+  quietly wrong. `python3 tools/test_fetch_npt_social.py` covers them and runs in CI.
+
+The prose brief under `npt-social/` is a write-up over this data, not a scheduled artefact, so the
+fetcher does not produce it.

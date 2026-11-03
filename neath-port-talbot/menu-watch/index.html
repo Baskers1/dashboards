@@ -1,0 +1,884 @@
+<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-4Nto6LAyUvJsfAnUoSMGkdNmRcAYQb78/mELeGsnCBg=' 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'sha256-mMcoVpxcrDSh7Uol4oi5M50bWdYs6xCk6NJqF+KR3is=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
+var SCHEME=/^\s*([a-z][a-z0-9+.\-]*):/i,HREF={http:1,https:1,mailto:1,tel:1},SRC={http:1,https:1,blob:1};
+function okUrl(v,isSrc){var c=String(v).replace(/[\u0000- ]/g,""),m=SCHEME.exec(c);if(!m)return true;var s=m[1].toLowerCase();
+if(isSrc&&s==="data")return /^data:image\//i.test(c);return !!(isSrc?SRC:HREF)[s];}
+function fixOne(n){if(n.nodeType!==1)return;var a=n.attributes;
+for(var j=a.length-1;j>=0;j--){var k=a[j].name.toLowerCase(),v=a[j].value;
+if(k.slice(0,2)==="on"){if(!(k==="onerror"&&v==="this.remove()"))n.removeAttribute(a[j].name);}
+else if((k==="href"||k==="xlink:href"||k==="action"||k==="formaction")&&!okUrl(v,false))n.removeAttribute(a[j].name);
+else if((k==="src"||k==="srcset"||k==="poster")&&!okUrl(v,true))n.removeAttribute(a[j].name);}
+if(n.tagName==="A"&&n.getAttribute("target")==="_blank"&&n.getAttribute("rel")!=="noopener noreferrer")n.setAttribute("rel","noopener noreferrer");}
+function fixTree(n){if(n.nodeType!==1)return;fixOne(n);var all=n.getElementsByTagName("*");for(var i=0;i<all.length;i++)fixOne(all[i]);}
+new MutationObserver(function(ms){for(var i=0;i<ms.length;i++){var m=ms[i];if(m.type==="attributes")fixOne(m.target);
+else for(var j=0;j<m.addedNodes.length;j++)fixTree(m.addedNodes[j]);}}).observe(document.documentElement,{childList:true,subtree:true,attributes:true});
+})();</script><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Neath Port Talbot · Menu Watch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap">
+<script>try{if(location.hash==="#big"||(location.hash!=="#std"&&localStorage.getItem("lt-bigtext")==="1"))document.documentElement.classList.add("big")}catch(e){}</script>
+<style>
+/* Layout: one calm reading column (max 1040px). Headline number first, one sticky town switch, then
+New menus > Places > What people say > Complaints > Most-shared posts. Large type for readers over 60. */
+:root{
+--bg:#EEF3F4; --surface:#FFFFFF; --sunk:#E3EBED; --line:#C9D6DA;
+--ink:#132A33; --ink-2:#425A63; --accent:#0B6672; --accent-ink:#FFFFFF; --accent-soft:#D3EBEE;
+--new:#8A4300; --new-soft:#FFE7C4; --good:#1E6B3A; --good-soft:#DCF0E2;
+--warn:#7A4E00; --warn-soft:#FBEBC6; --bad:#9B2C22; --bad-soft:#F8E0DC;
+--display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+--body:"Atkinson Hyperlegible Next","Atkinson Hyperlegible","Segoe UI",system-ui,-apple-system,sans-serif;
+--r:14px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+--bg:#0D1B20; --surface:#14262C; --sunk:#1B3138; --line:#2B454D;
+--ink:#E8F1F2; --ink-2:#AFC4C9; --accent:#5CC6D2; --accent-ink:#062A30; --accent-soft:#18414A;
+--new:#FFC071; --new-soft:#4A3214; --good:#86D9A0; --good-soft:#173A25;
+--warn:#F1C66B; --warn-soft:#3F3212; --bad:#FF9C90; --bad-soft:#47201C; color-scheme:dark}}
+:root[data-theme="dark"]{
+--bg:#0D1B20; --surface:#14262C; --sunk:#1B3138; --line:#2B454D;
+--ink:#E8F1F2; --ink-2:#AFC4C9; --accent:#5CC6D2; --accent-ink:#062A30; --accent-soft:#18414A;
+--new:#FFC071; --new-soft:#4A3214; --good:#86D9A0; --good-soft:#173A25;
+--warn:#F1C66B; --warn-soft:#3F3212; --bad:#FF9C90; --bad-soft:#47201C; color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:150px}
+body{margin:0;background:var(--bg);color:var(--ink);font:1.125rem/1.6 var(--body);padding-inline:16px}
+:root.big body{font-size:1.375rem}
+.wrap{max-width:1040px;margin-inline:auto;padding-block:20px 64px;display:flex;flex-direction:column;gap:40px}
+.wrap>*{min-width:0}
+a{color:var(--accent);text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--display);line-height:1.15;margin:0;text-wrap:balance}
+h1{font-size:clamp(2rem,6vw,2.9rem);font-weight:800;letter-spacing:-.02em}
+h2{font-size:clamp(1.5rem,3.6vw,1.9rem);font-weight:800;letter-spacing:-.01em}
+h3{font-size:1.2rem;font-weight:600}
+p{margin:0}
+.sub{color:var(--ink-2);max-width:62ch}
+button,select,input{font:inherit;color:inherit}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:10px 20px;border-radius:999px;
+border:2px solid var(--accent);background:var(--surface);color:var(--accent);font-weight:700;cursor:pointer;text-decoration:none}
+.btn:hover{background:var(--accent-soft)}
+.btn.solid{background:var(--accent);color:var(--accent-ink)}
+.btn.solid:hover{filter:brightness(1.08)}
+.ic{width:1.15em;height:1.15em;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+.top{display:flex;flex-wrap:wrap;gap:16px 24px;justify-content:space-between;align-items:flex-start}
+.top>div{min-width:0}
+.eyebrow{font-weight:700;font-size:.95rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.stamp{margin-top:8px;color:var(--ink-2)}
+.stamp b{color:var(--ink)}
+.late{display:inline-block;margin-top:6px;padding:4px 12px;border-radius:999px;background:var(--warn-soft);color:var(--warn);font-weight:700}
+.hero{height:72px;margin:0;border-radius:var(--r);background:var(--accent);display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.hero .htown{font-family:var(--display);font-weight:800;font-size:1.7rem;line-height:1.1;color:var(--accent-ink);padding:10px 16px}
+.hero span{color:#fff;font-size:.9rem;padding:10px 14px;text-shadow:0 1px 3px rgba(0,0,0,.6)}
+.hero a{color:#fff}
+@media (max-width:640px){.hero{height:110px;flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:0}.hero .htown{font-size:1.35rem;padding:0 14px}.hero #hcred{font-size:.8rem;padding:2px 14px 8px}}
+
+.headline{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:16px}
+@media (max-width:760px){.headline{grid-template-columns:minmax(0,1fr)}.minis{grid-template-rows:none;grid-template-columns:1fr 1fr}.mini{flex-direction:column;align-items:flex-start;gap:6px}}
+.bignew{background:var(--surface);border:2px solid var(--new);border-radius:var(--r);padding:22px 24px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 20px;align-items:end}
+.bignew .n{font-family:var(--display);font-weight:800;font-size:clamp(4rem,12vw,5.6rem);line-height:.9;color:var(--new);font-variant-numeric:tabular-nums}
+.bignew .l{font-size:1.35rem;font-weight:700;margin-top:6px}
+.bignew .d{color:var(--ink-2)}
+.bignew .btn{grid-column:1/-1;justify-self:start;margin-top:8px;border-color:var(--new);color:var(--new)}
+.bignew .btn:hover{background:var(--new-soft)}
+.weeks{display:block;width:170px;height:auto;max-width:100%}
+@media (max-width:480px){.bignew{grid-template-columns:minmax(0,1fr)}.weeks{width:100%;max-width:260px}}
+.minis{display:grid;gap:16px;grid-template-rows:1fr 1fr}
+.mini{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px 20px;display:flex;align-items:center;gap:16px}
+.mini .n{font-family:var(--display);font-weight:800;font-size:2.4rem;line-height:1;font-variant-numeric:tabular-nums;min-width:3ch}
+.mini .l{font-weight:700}
+.mini .d{color:var(--ink-2);font-size:.95rem}
+
+.filters{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bg);padding-block:12px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:12px}
+.towns{display:flex;flex-wrap:wrap;gap:8px;padding:2px}
+.tbtn{flex:none;min-height:52px;padding:8px 16px;border-radius:999px;border:2px solid var(--line);background:var(--surface);font-weight:700;cursor:pointer;white-space:nowrap}
+.tbtn:hover{border-color:var(--accent)}
+.tbtn[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.more{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.more label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.more select,.more input{min-height:52px;padding:8px 14px;border-radius:12px;border:2px solid var(--line);background:var(--surface);min-width:0}
+.more input{flex:1 1 220px}
+.more select{flex:0 1 auto}
+.reset{background:none;border:0;color:var(--accent);font-weight:700;text-decoration:underline;text-underline-offset:3px;min-height:48px;padding:0 6px;cursor:pointer}
+.showing{color:var(--ink-2);font-size:1rem}
+.whenpick{display:flex;flex-wrap:wrap;gap:10px}
+.whenpick[hidden]{display:none}
+.more .whenpick input{flex:0 1 auto}
+.hrs{margin:0;padding:0;list-style:none;font-size:.95rem}
+.hrs li[aria-current]{font-weight:700}
+@media (max-width:640px){.filters{position:static}.more select{flex:1 1 45%}}
+
+section{display:flex;flex-direction:column;gap:16px;scroll-margin-top:150px}
+.shead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 16px}
+.shead .count{color:var(--ink-2)}
+.empty{padding:20px;border-radius:var(--r);background:var(--sunk);color:var(--ink-2)}
+.moreBtn{align-self:flex-start}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:14px}
+.mcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.mcard .venue{font-family:var(--display);font-weight:600;font-size:1.25rem;line-height:1.2}
+.mcard .title{overflow-wrap:anywhere}
+.mcard .where{color:var(--ink-2);font-size:1rem}
+.mcard .when{color:var(--ink-2);font-size:1rem}
+.mcard .btn{margin-top:auto;align-self:flex-start}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:999px;background:var(--sunk);color:var(--ink-2);font-size:.95rem;font-weight:600;white-space:nowrap}
+.tag.new{background:var(--new-soft);color:var(--new)}
+.tag.fest{background:var(--accent-soft);color:var(--accent)}
+
+.rates{display:flex;flex-wrap:wrap;gap:6px}
+.rate{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:8px;font-size:.95rem;font-weight:700;text-decoration:none;border:1px solid var(--line);color:var(--ink);background:var(--surface)}
+.rate.good{background:var(--good-soft);border-color:transparent;color:var(--good)}
+.rate.bad{background:var(--bad-soft);border-color:transparent;color:var(--bad)}
+.rate.mid{background:var(--warn-soft);border-color:transparent;color:var(--warn)}
+.rate small{font-weight:400;font-size:.85rem}
+
+.sortrow{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sortrow select{min-height:48px;padding:6px 12px;border-radius:12px;border:2px solid var(--line);background:var(--surface)}
+.plist{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
+details.place{border-bottom:1px solid var(--line)}
+details.place:last-child{border-bottom:0}
+details.place>summary{list-style:none;cursor:pointer;padding:16px 18px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 16px;align-items:center;min-height:56px}
+details.place>summary::-webkit-details-marker{display:none}
+details.place>summary:hover{background:var(--sunk)}
+.pname{font-family:var(--display);font-weight:600;font-size:1.2rem}
+.pmeta{color:var(--ink-2);font-size:1rem}
+.chev{width:28px;height:28px;color:var(--accent);transition:transform .2s}
+details[open] .chev{transform:rotate(180deg)}
+.summ-r{grid-column:1/-1}
+.pbody{padding:4px 18px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px}
+.pbox{background:var(--sunk);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.pbox h4{margin:0;font-size:1rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2)}
+.pbox ul{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:6px}
+.pbox li{overflow-wrap:anywhere}
+.say{font-style:italic}
+.dl{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin:0}
+.dl dt{font-weight:700}
+.dl dd{margin:0;color:var(--ink-2)}
+.links{display:flex;flex-wrap:wrap;gap:8px 18px}
+
+.summary{font-size:1.2rem;max-width:62ch}
+.themes{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:14px}
+.theme{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.theme .meaning{font-size:1.05rem}
+.theme .ev{color:var(--ink-2);font-size:1rem;overflow-wrap:anywhere}
+.loved{display:flex;flex-wrap:wrap;gap:8px}
+.lchip{display:inline-flex;align-items:center;gap:6px;min-height:48px;padding:6px 14px;border-radius:999px;background:var(--good-soft);color:var(--good);font-weight:700;border:0;cursor:pointer;text-align:left}
+span.lchip{cursor:default;background:var(--sunk);color:var(--ink)}
+.lchip:hover{filter:brightness(.97)}
+.complaints{display:flex;flex-direction:column;gap:10px}
+.comp{background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--bad);border-radius:var(--r);padding:14px 18px;display:flex;flex-direction:column;gap:4px}
+.comp b{font-family:var(--display);font-size:1.15rem;font-weight:600}
+.comp .town{color:var(--ink-2);font-size:.95rem}
+.posts{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:14px}
+.post{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px;display:grid;grid-template-columns:88px minmax(0,1fr);gap:14px;text-decoration:none;color:var(--ink)}
+.post:hover{border-color:var(--accent)}
+.thumb{width:88px;height:110px;border-radius:10px;background:var(--sunk);overflow:hidden;display:grid;place-items:center;color:var(--accent)}
+.thumb>*{grid-area:1/1}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block;position:relative}
+.post .num{font-family:var(--display);font-weight:800;font-size:1.6rem;line-height:1;font-variant-numeric:tabular-nums}
+.post .num small{font-family:var(--body);font-weight:600;font-size:.95rem;color:var(--ink-2);margin-left:4px}
+.post .pt{font-weight:700;color:var(--accent);text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+.post .why{color:var(--ink-2);font-size:1rem}
+.post .plat{font-size:.9rem;color:var(--ink-2);font-weight:600}
+.notes{color:var(--ink-2);font-size:1rem;display:flex;flex-direction:column;gap:10px;max-width:75ch;border-top:1px solid var(--line);padding-top:20px}
+.notes h2{font-size:1.3rem;color:var(--ink)}
+.badge{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;flex:none;background:var(--accent-soft);color:var(--accent)}
+.badge .ic{width:26px;height:26px}
+.badge.sm{width:40px;height:40px;border-radius:12px}.badge.sm .ic{width:22px;height:22px}
+.badge.bad{background:var(--bad-soft);color:var(--bad)}
+.badge.good{background:var(--good-soft);color:var(--good)}
+.vhead{display:flex;align-items:center;gap:12px;min-width:0}
+.vhead>div{min-width:0}
+.pwho{display:flex;align-items:center;gap:14px;min-width:0}
+.pbox h4{display:flex;align-items:center;gap:8px}
+.comp{flex-direction:row!important;gap:14px!important;align-items:flex-start}
+.comp .icol{display:flex;flex-direction:column;gap:8px;flex:none}
+.comp>div{display:flex;flex-direction:column;gap:4px;min-width:0}
+.totop{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:30;display:inline-flex;align-items:center;gap:8px;min-height:56px;padding:0 20px 0 16px;border-radius:999px;border:0;background:var(--accent);color:var(--accent-ink);font:inherit;font-weight:700;box-shadow:0 6px 18px rgba(0,0,0,.25);cursor:pointer;transition:opacity .2s,transform .2s}
+body{padding-bottom:88px}
+.totop .ic{width:24px;height:24px}
+.totop[hidden]{display:inline-flex;opacity:0;transform:translateY(12px);pointer-events:none;visibility:hidden}
+.totop:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+<symbol id="i-ext" viewBox="0 0 24 24"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+<symbol id="i-play" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m10 9 5 3-5 3z"/></symbol>
+<symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/></symbol>
+<symbol id="c-cafe" viewBox="0 0 24 24"><path d="M17 8h1a4 4 0 1 1 0 8h-1M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/><path d="M6 2v2M10 2v2M14 2v2"/></symbol>
+<symbol id="c-pub" viewBox="0 0 24 24"><path d="M7 3h10l-1.2 17a1 1 0 0 1-1 1H9.2a1 1 0 0 1-1-1z"/><path d="M7.4 8h9.2"/></symbol>
+<symbol id="c-flame" viewBox="0 0 24 24"><path d="M12 21c-3.9 0-6.5-2.6-6.5-6.2 0-3.6 3-5.6 3.5-9.3 2.4 1.3 3.6 3.4 3.8 5.4 1-.7 1.6-1.9 1.7-3.1 2.3 1.8 4 4.3 4 7 0 3.6-2.6 6.2-6.5 6.2z"/></symbol>
+<symbol id="c-pizza" viewBox="0 0 24 24"><path d="M12 3 3 19c5.5 3 12.5 3 18 0z"/><path d="M6 14c3.8 1.6 8.2 1.6 12 0M10 11h.01M14 13h.01M12 8h.01"/></symbol>
+<symbol id="c-bowl" viewBox="0 0 24 24"><path d="M3 11h18a9 9 0 0 1-18 0zM8 21h8"/><path d="m9 8 3-6M13 8l3-6"/></symbol>
+<symbol id="c-chilli" viewBox="0 0 24 24"><path d="M16 6c-1.5 0-2.5 1-2.5 2.5C13.5 14 9 19 3 19c5 3.5 15 2 15-8 0-2.5-.8-4-2-5z"/><path d="M16 6c0-2 1.2-3.5 3.5-3.5"/></symbol>
+<symbol id="c-leaf" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10Z"/><path d="M2 21c0-3 1.9-5.4 5.1-6"/></symbol>
+<symbol id="c-plate" viewBox="0 0 24 24"><circle cx="12" cy="13" r="6.5"/><circle cx="12" cy="13" r="3"/><path d="M3 4v6M3 7h1.5M21 4v16"/></symbol>
+<symbol id="c-fish" viewBox="0 0 24 24"><path d="M6.5 12c.9-4.5 6.4-7 11.5-5 1.5.6 2.9 2.2 4 5-1.1 2.8-2.5 4.4-4 5-5.1 2-10.6-.5-11.5-5z"/><path d="M18 12h.01M2 10v4l4.5-2z"/></symbol>
+<symbol id="c-tapas" viewBox="0 0 24 24"><path d="M3 21 21 3"/><path d="m7.5 12.5 4 4 2.5-2.5-4-4zM12.5 7.5l4 4 2.5-2.5-4-4z"/></symbol>
+<symbol id="c-taco" viewBox="0 0 24 24"><path d="M3 14a9 9 0 0 1 18 0"/><path d="M3 14h18"/><path d="M7 14c0 2 .8 3.5 1.8 4.6M12 14c0 2.4.9 4 2 5M17 14c0 1.7-.6 3-1.4 4"/></symbol>
+<symbol id="c-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z"/></symbol>
+<symbol id="c-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></symbol>
+<symbol id="t-spark" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/></symbol>
+<symbol id="t-trophy" viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4a3 3 0 0 0 3 4M17 6h3a3 3 0 0 1-3 4"/></symbol>
+<symbol id="t-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+<symbol id="t-wave" viewBox="0 0 24 24"><path d="M2 12c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2 2-2 4-2M2 18c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2 2-2 4-2M12 3v4M9 6l3-3 3 3"/></symbol>
+<symbol id="t-train" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 11h14M9 21l-2-4M15 21l2-4M9 14h.01M15 14h.01"/></symbol>
+<symbol id="t-ice" viewBox="0 0 24 24"><path d="M8 11a4 4 0 1 1 8 0z"/><path d="m8 11 4 10 4-10"/></symbol>
+<symbol id="t-alert" viewBox="0 0 24 24"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></symbol>
+<symbol id="t-star" viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
+<symbol id="t-menu" viewBox="0 0 24 24"><path d="M6 2h12v20H6z"/><path d="M9 7h6M9 11h6M9 15h4"/></symbol>
+<symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
+<symbol id="t-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+</defs></svg>
+
+<div class="wrap">
+
+<header class="top">
+<div>
+<div class="eyebrow">Neath · Port Talbot · Pontardawe · Valleys &amp; villages</div>
+<h1>Neath Port Talbot Menu Watch</h1>
+<p class="sub">New menus from pubs, restaurants and cafés across Neath, Port Talbot, Pontardawe and the valleys and villages between, with hygiene ratings, review scores and what people are saying online.</p>
+<div class="stamp" id="stamp"></div>
+</div>
+<button type="button" class="btn" id="aa" aria-pressed="false"><span aria-hidden="true" style="font-family:var(--display);font-weight:800">Aa</span><span id="aa-l">Larger text</span></button>
+</header>
+
+<figure class="hero" id="hero" aria-labelledby="htown"><span class="htown" id="htown">All of Neath Port Talbot</span><span id="hcred"></span></figure>
+
+<div class="headline" aria-label="This week in numbers">
+<div class="bignew">
+<div><div class="n" id="k-new">0</div><div class="l" id="k-new-l">new menus this week</div><div class="d" id="k-new-d"></div></div>
+<svg class="weeks" id="weeks" role="img" aria-label="New menus each week"></svg>
+<a class="btn" href="#new">See the new menus</a>
+</div>
+<div class="minis">
+<div class="mini"><div class="n" id="k-places">0</div><div><div class="l">places serving food</div><div class="d" id="k-places-d"></div></div></div>
+<div class="mini"><div class="n" id="k-menus">0</div><div><div class="l">menus you can open</div><div class="d">links to each venue's own menu</div></div></div>
+</div>
+</div>
+
+<div class="filters" role="region" aria-label="Choose what to show">
+<div class="towns" role="group" aria-label="Town" id="towns"></div>
+<div class="more">
+<label for="f-type">Type of place</label>
+<select id="f-type"><option value="all">All places</option><option value="pub">Pubs</option><option value="restaurant">Restaurants</option><option value="cafe">Cafés</option></select>
+<label for="f-cuisine">Cuisine</label>
+<select id="f-cuisine"></select>
+<label for="f-when">When</label>
+<select id="f-when"><option value="any">Any time</option><option value="now">Open now</option><option value="pick">Open on a day and time…</option></select>
+<span class="whenpick" id="whenpick" hidden><label for="f-day">Day</label><select id="f-day"><option value="0">Monday</option><option value="1">Tuesday</option><option value="2">Wednesday</option><option value="3">Thursday</option><option value="4">Friday</option><option value="5">Saturday</option><option value="6">Sunday</option></select><label for="f-time">Time</label><input type="time" id="f-time" value="19:00" step="900"></span>
+<label for="q">Find a place</label>
+<input type="search" id="q" placeholder="Find a place by name" autocomplete="off">
+<button type="button" class="reset" id="reset" hidden>Show everything</button>
+</div>
+<div class="showing" id="showing" aria-live="polite"></div>
+</div>
+
+<section id="new" aria-labelledby="h-new">
+<div class="shead"><h2 id="h-new">New menus this week</h2><span class="count" id="c-new"></span></div>
+<div class="cards" id="newcards"></div>
+<button type="button" class="btn moreBtn" id="more-new" hidden></button>
+</section>
+
+<section id="places" aria-labelledby="h-places">
+<div class="shead"><h2 id="h-places">Places and their ratings</h2><span class="count" id="c-places"></span></div>
+<div class="sortrow"><label for="sort">Order by</label>
+<select id="sort"><option value="ta">Best reviewed first</option><option value="name">Name, A to Z</option><option value="menus">Most menus first</option></select></div>
+<p class="sub">Tap a place to see its food hygiene rating, review scores, what people say about it, and its menus.</p>
+<div class="plist" id="plist"></div>
+<button type="button" class="btn moreBtn" id="more-places" hidden></button>
+</section>
+
+<section id="buzz" aria-labelledby="h-buzz">
+<div class="shead"><h2 id="h-buzz">What people are saying</h2><span class="count" id="c-buzz"></span></div>
+<p class="summary" id="summary"></p>
+<div class="themes" id="themes"></div>
+<h3>Best-liked places</h3>
+<div class="loved" id="loved"></div>
+</section>
+
+<section id="complaints" aria-labelledby="h-comp">
+<div class="shead"><h2 id="h-comp">Main complaints</h2></div>
+<div class="complaints" id="comps"></div>
+</section>
+
+<section id="posts" aria-labelledby="h-posts">
+<div class="shead"><h2 id="h-posts">Most-shared posts</h2><span class="count">Most viewed first</span></div>
+<div class="posts" id="postlist"></div>
+<button type="button" class="btn moreBtn" id="more-posts" hidden></button>
+</section>
+
+<footer class="notes">
+<h2>How this is put together</h2>
+<p>Every Monday each venue's own website is checked for menus. A menu counts as new when its link was not there at the previous check. Menus shown as pictures or PDFs are linked but not read, so check dates and dishes with the venue.</p>
+<p><b>Hygiene</b> is the Food Standards Agency rating from 0 to 5, where 5 is best. It reflects the last inspection, which may be some time ago. <b>TripAdvisor</b> scores are out of 5, with the number of reviews in brackets; a score from only a few reviews means less. <b>OpenTable</b> shows the place takes online bookings there.</p>
+<p id="buzznote"></p>
+</footer>
+</div>
+
+<button type="button" class="totop" id="totop" hidden><svg class="ic" aria-hidden="true"><use href="#i-up"/></svg>Back to top</button>
+<script>
+const DATA = {"generated":"2026-11-03","baseline":true,"run_number":1,"history":[{"date":"2026-11-03","venues":266,"menus":109,"new_menus":0}],"venues":[
+{"id":"aberavon-south-ward-liberal-cl-aberavon","name":"Aberavon South Ward Liberal Cl","town":"Aberavon","type":"pub","address":"30 Ysguthan Road Aberavon Port Talbot SA12 6NE","social":"https://www.facebook.com/p/Aberavon-Liberal-Club-100057498068142/","serves_food":"no","cuisine":"Not classified","fsa":{"r":"5","id":774159,"d":"2015-07-07"},"menus":[]},
+{"id":"bakes-and-cakes-aberavon","name":"Bakes & Cakes","town":"Aberavon","type":"restaurant","address":"33 Rhodes Avenue Aberavon Port Talbot SA12 6UT","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":1959158,"d":"2026-04-22"},"menus":[]},
+{"id":"beckys-bakes-aberavon","name":"Becky's Bakes","town":"Aberavon","type":"restaurant","address":"1 Hopkin Street Aberavon SA12 6HA","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":1435511,"d":"2022-03-25"},"menus":[]},
+{"id":"blancos-hotel-and-restaurant-aberavon","name":"Blanco's Hotel & Restaurant","town":"Aberavon","type":"restaurant","address":"Blancos & adj Car Park Green Park Industrial Estate Green Park Street Aberavon SA12 6NT","cuisine":"British pub food","fsa":{"r":"4","id":115975,"d":"2026-03-30"},"ta":{"i":"g681385-d4039692"},"menus":[]},
+{"id":"fairfield-baguettes-aberavon","name":"Fairfield Baguettes","town":"Aberavon","type":"restaurant","address":"130 Water Street Aberavon SA13 2LH","social":"https://www.facebook.com/baguettesshop/","cuisine":"Cafe & breakfast","fsa":{"r":"3","id":122511,"d":"2026-08-06"},"menus":[{"title":"Just Eat menu","type":"main","url":"https://www.just-eat.co.uk/restaurants-fairfield-baguettes-port-talbot/menu"}]},
+{"id":"freudenberg-oil-and-gas-aberavon","name":"Freudenberg Oil & Gas","town":"Aberavon","type":"restaurant","address":"Freudenberg Oil & Gas Christchurch Road Aberavon SA12 7BZ","serves_food":"no","cuisine":"Not classified","fsa":{"r":"5","id":774148,"d":"2018-07-19"},"menus":[]},
+{"id":"knockout-cafe-aberavon","name":"Knockout Cafe","town":"Aberavon","type":"cafe","address":"Bulldogs Gym Fenbrook Close Aberavon SA12 7PA","social":"https://www.facebook.com/Bulldogsbca/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1867746,"d":"2025-09-16"},"menus":[]},
+{"id":"mapa-bakers-aberavon","name":"MAPA Bakers","town":"Aberavon","type":"restaurant","address":"28 Hopkin Street Aberavon SA12 6HA","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"4","id":1914192,"d":"2026-07-06"},"menus":[]},
+{"id":"mcdonalds-restaurant-aberavon","name":"McDonalds Restaurant","town":"Aberavon","type":"restaurant","address":"Mcdonalds Restaurant Green Park Street Aberavon SA12 6LL","website":"https://www.mcdonalds.com/gb/en-gb.html","social":"https://facebook.com/mcdonaldsuk","cuisine":"Burgers, BBQ & American","fsa":{"r":"5","id":654727,"d":"2026-08-11"},"ta":{"i":"g681385-d5425609"},"menus":[{"title":"McDonald's UK menu","type":"main","url":"https://www.mcdonalds.com/gb/en-gb/menu.html"}]},
+{"id":"the-place-cafe-aberavon","name":"The Place Cafe","town":"Aberavon","type":"cafe","address":"Aberavon Leisure and Fitness Centre The Princess Margaret Way Sandfields SA12 6QN","website":"https://celticleisure.org/locations/aberavon-leisure-fitness-centre/cafe/","social":"https://www.facebook.com/CelticLeisure/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":849659,"d":"2025-01-27"},"menus":[{"title":"Cafe menu","type":"main","url":"https://www.canva.com/design/DAGoKJxmDJc/f2XZETEnPiy6VoiUa9oIkg/view?utm_content=DAGoKJxmDJc&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hc8b60847bf","format":"image"}]},
+{"id":"twocann-at-st-pauls-aberavon","name":"TwoCann at St Pauls","town":"Aberavon","type":"restaurant","address":"St Pauls Centre Gerald Street Aberavon SA12 6DQ","social":"https://www.facebook.com/twocannstpauls/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1415831,"d":"2026-07-30"},"ta":{"r":4.9,"n":25,"i":"g681385-d15610375"},"menus":[]},
+{"id":"mcdonalds-restaurant-baglan","name":"McDonalds Restaurant","town":"Baglan","type":"restaurant","address":"Mcdonalds Old Road Baglan Port Talbot SA11 2YW","website":"https://www.mcdonalds.com/gb/en-gb.html","social":"https://facebook.com/mcdonaldsuk","cuisine":"Burgers, BBQ & American","fsa":{"r":"5","id":122288,"d":"2026-04-30"},"ta":{"i":"g551977-d13543788"},"menus":[{"title":"McDonald's UK menu","type":"main","url":"https://www.mcdonalds.com/gb/en-gb/menu.html"}]},
+{"id":"oh-my-goodies-baglan","name":"Oh my goodies","town":"Baglan","type":"restaurant","address":"17 Laburnum Avenue Baglan SA12 8PB","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":1969661,"d":"2026-06-23"},"menus":[]},
+{"id":"the-margam-deer-baglan","name":"The Margam Deer","town":"Baglan","type":"pub","address":"The Copper Penny Christchurch Road Baglan Port Talbot SA12 7BZ","website":"https://www.margamdeercarveryporttalbot.co.uk/","social":"https://www.facebook.com/themargamdeer/","cuisine":"British pub food","fsa":{"r":"5","id":591888,"d":"2025-04-30"},"ta":{"i":"g186434-d3364265"},"menus":[{"title":"Food menus","type":"main","url":"https://www.margamdeercarveryporttalbot.co.uk/menus"},
+{"title":"Christmas 2026 (Festive, Christmas Day, Boxing Day menus)","type":"festive","url":"https://www.margamdeercarveryporttalbot.co.uk/christmas","valid_dates":"Christmas 2026","signal":true}],"notices":["Christmas 2026 page live (published Jul 2026): Christmas Carvery, Festive, Christmas Day and Boxing Day menus, Breakfast with Santa"]},
+{"id":"tyn-y-twr-tavern-baglan","name":"Tyn y Twr Tavern","town":"Baglan","type":"pub","address":"Tyn Y Twr Tavern Tyn Y Twr Baglan SA12 8YB","social":"https://www.facebook.com/tynytwrtavern/","cuisine":"British pub food","fsa":{"r":"5","id":1373991,"d":"2026-03-26"},"ta":{"r":4.4,"n":8,"i":"g1474531-d28290351"},"menus":[{"title":"Just Eat menu","type":"main","url":"https://www.just-eat.co.uk/restaurants-tyn-y-twr-tavern-port-talbot/menu"}]},
+{"id":"baked-by-ffi-briton-ferry","name":"Baked by Ffi","town":"Briton Ferry","type":"restaurant","address":"298 Old Road Briton Ferry Neath SA11 2ET","social":"https://www.facebook.com/p/Baked-By-Ffi-61584972455165/","cuisine":"Bakery & patisserie","fsa":{"r":"5","id":1960249,"d":"2026-04-29"},"notices":["Halloween treat boxes posted late Oct 2026"],"menus":[]},
+{"id":"britannia-inn-briton-ferry","name":"Britannia Inn","town":"Briton Ferry","type":"pub","address":"Britannia Inn 18 Bethel Street Briton Ferry Neath SA11 2HQ","social":"https://www.facebook.com/Brit.com2017/","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"4","id":1045461,"d":"2018-03-29"},"menus":[]},
+{"id":"eiras-cafe-briton-ferry","name":"Eira's Cafe","town":"Briton Ferry","type":"cafe","address":"109 Neath Road Briton Ferry SA11 2BZ","social":"https://www.facebook.com/p/Eiras-Cafe-100081196792132/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":544831,"d":"2026-01-22"},"ta":{"r":5.0,"n":6,"i":"g551977-d26351448"},"menus":[]},
+{"id":"kims-cakes-briton-ferry","name":"Kim's Cakes","town":"Briton Ferry","type":"restaurant","address":"37 Ruskin Street Briton Ferry SA11 2HU","social":"https://www.facebook.com/p/Kims-Cakes-100078197773046/","cuisine":"Bakery & patisserie","fsa":{"r":"5","id":917042,"d":"2016-09-20"},"menus":[]},
+{"id":"puddlers-arms-briton-ferry","name":"Puddlers Arms","town":"Briton Ferry","type":"pub","address":"4 Shelone Road Briton Ferry SA11 2PS","social":"https://www.facebook.com/AllisonDaviess/","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"4","id":1045467,"d":"2018-03-09"},"menus":[]},
+{"id":"schooners-bar-briton-ferry","name":"Schooners Bar","town":"Briton Ferry","type":"pub","address":"8 Neath Road Briton Ferry SA11 2YR","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":910627,"d":"2023-04-13"},"menus":[]},
+{"id":"stacys-sweet-kitchen-briton-ferry","name":"Stacy's Sweet Kitchen","town":"Briton Ferry","type":"cafe","address":"Flat 2 Garth Mor Court Old Road Briton Ferry SA11 2HW","social":"https://www.instagram.com/stacyssweetkitchen/","cuisine":"Bakery & patisserie","fsa":{"r":"5","id":1978257,"d":"2026-09-07"},"menus":[]},
+{"id":"the-crown-inn-briton-ferry","name":"The Crown Inn","town":"Briton Ferry","type":"pub","address":"244-246 Neath Road Briton Ferry SA11 2AX","social":"https://www.facebook.com/p/The-Crown-Inn-Briton-Ferry-100057492067667/","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"1","id":1157438,"d":"2026-03-30"},"menus":[]},
+{"id":"the-new-exeter-briton-ferry","name":"The New Exeter","town":"Briton Ferry","type":"pub","address":"Exeter Inn 52-54 Briton Ferry Road Neath SA11 1AP","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":691712,"d":"2014-06-24"},"menus":[]},
+{"id":"the-q-ube-briton-ferry","name":"The Q-ube","town":"Briton Ferry","type":"pub","address":"Jk's Public House 222 Neath Road Briton Ferry SA11 2AX","social":"https://www.facebook.com/thequbebritonferry/","serves_food":"no","cuisine":"Not classified","fsa":{"r":"4","id":1749811,"d":"2025-05-15"},"menus":[]},
+{"id":"afan-tavern-cwmafan","name":"Afan Tavern","town":"Cwmafan","type":"pub","address":"Jersey Terrace Cwmavon Port Talbot SA12 9AS","social":"https://www.facebook.com/AfanTavern/","cuisine":"British pub food","fsa":{"r":"5","id":195759,"d":"2025-09-25"},"ta":{"r":4.3,"n":424,"i":"g2137554-d2174945"},"menus":[]},
+{"id":"crafty-canary-cwmafan","name":"Crafty Canary","town":"Cwmafan","type":"restaurant","address":"7 High Street Cwmavon SA12 9BH","website":"https://craftycanary.beer/","social":"https://www.instagram.com/craftycanarywales/","serves_food":"no","cuisine":"Not classified","fsa":{"r":"4","id":1918683,"d":"2026-06-18"},"menus":[]},
+{"id":"fryer-tuck-cunard-snack-bar-cwmafan","name":"Fryer Tuck / Cunard Snack Bar","town":"Cwmafan","type":"restaurant","address":"Cunard Terrace Salem Road Cwmavon SA12 9EB","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":557486,"d":"2026-03-30"},"menus":[]},
+{"id":"oakwood-inn-cwmafan","name":"Oakwood Inn","town":"Cwmafan","type":"pub","address":"Oakwood Inn Church Square Cwmavon SA12 9AP","social":"https://www.facebook.com/p/Oakwood-Inn-100057402434015/","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":765598,"d":"2019-11-14"},"menus":[]},
+{"id":"olives-cwmafan","name":"Olives","town":"Cwmafan","type":"restaurant","address":"14 Cae Copor Cwmavon SA12 9BX","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":1373977,"d":"2021-09-17"},"menus":[]},
+{"id":"paned-cwmafan","name":"Paned","town":"Cwmafan","type":"restaurant","address":"40 Heol Jiwbili Cwmavon Port Talbot SA12 9NR","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"Awaiting","id":1978268},"menus":[]},
+{"id":"the-brit-cwmafan","name":"The Brit","town":"Cwmafan","type":"pub","address":"Britannia Inn London Row Cwmavon SA12 9AH","social":"https://www.facebook.com/thebritpubcwmavon/","cuisine":"British pub food","fsa":{"r":"5","id":1663028,"d":"2025-09-25"},"ta":{"r":4.7,"n":898,"i":"g681385-d7265574"},"menus":[]},
+{"id":"the-caff-at-ptbc-cwmafan","name":"The Caff at PTBC","town":"Cwmafan","type":"restaurant","address":"Squash Courts Railmill Lane Cwmafan SA12 9DL","social":"https://www.facebook.com/p/The-Caff-at-PTBC-61569847627114/","cuisine":"Cafe & breakfast","fsa":{"r":"3","id":1792002,"d":"2025-03-17"},"menus":[]},
+{"id":"the-rolling-mill-cwmafan","name":"The Rolling Mill","town":"Cwmafan","type":"pub","address":"Rolling Mill Salem Road Cwmavon Port Talbot SA12 9EW","social":"https://www.facebook.com/therollingmillcwmafan/","cuisine":"British pub food","fsa":{"r":"5","id":615718,"d":"2026-07-30"},"ta":{"r":4.5,"n":31,"i":"g681385-d8841876"},"menus":[]},
+{"id":"cakeys-creations-glynneath","name":"Cakey's Creations","town":"Glynneath","type":"restaurant","address":"45 High Street Glynneath SA11 5DA","website":"https://www.sumupbookings.com/cakey-s-creations","social":"https://www.facebook.com/100095270979508/","cuisine":"Cafe & breakfast","fsa":{"r":"4","id":1784031,"d":"2024-11-27"},"menus":[{"title":"Cafe price list (bakes, paninis, jacket potatoes)","type":"main","url":"https://www.sumupbookings.com/cakey-s-creations"}],"notices":["Facebook post (c. Oct 2026) announces last day as Cakey's Creations in Glynneath; rebrand and move to new premises at The Welf, Neath Road, Resolven SA11 4AH — unverified whether Glynneath site has closed"]},
+{"id":"clearwater-activity-glynneath","name":"Clearwater Activity","town":"Glynneath","type":"restaurant","address":"Spring Valley Lakes Rheola Farm Glynneath SA11 4DY","website":"https://clearwateractivity.wales/","social":"https://www.facebook.com/profile.php?id=61578007505896","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"3","id":1833071,"d":"2025-06-18"},"menus":[]},
+{"id":"cosy-corner-glynneath","name":"Cosy Corner","town":"Glynneath","type":"restaurant","address":"71 High Street Glynneath Neath SA11 5AL","social":"https://www.facebook.com/cosycornerglynneath/","cuisine":"Seafood & fish and chips","fsa":{"r":"3","id":306788,"d":"2026-05-28"},"menus":[]},
+{"id":"hwb-cafe-glynneath","name":"Hwb Cafe","town":"Glynneath","type":"cafe","address":"Glynneath Training Centre Oddfellows Street Glynneath SA11 5DB","social":"https://www.instagram.com/hwb_cafe1/","cuisine":"Cafe & breakfast","fsa":{"r":"4","id":1841721,"d":"2025-09-04"},"ta":{"r":5.0,"n":1,"i":"g2690998-d34563732"},"menus":[]},
+{"id":"lamb-and-flag-glynneath","name":"Lamb & Flag","town":"Glynneath","type":"pub","address":"1 Wellfield Place Glynneath Neath SA11 5ER","social":"https://www.facebook.com/p/Lamb-and-Flag-Glynneath-61576710552515/","cuisine":"British pub food","fsa":{"r":"Awaiting","id":1993977},"ta":{"r":3.7,"n":172,"i":"g2690998-d2305886"},"menus":[]},
+{"id":"leicester-house-glynneath-glynneath","name":"Leicester House (Glynneath)","town":"Glynneath","type":"pub","address":"14 High Street Glynneath Neath SA11 5BR","website":"https://www.leicester-house.com/","social":"https://www.facebook.com/p/Leicester-House-61575488352240/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1978232,"d":"2026-08-11"},"ta":{"i":"g2690998-d34512535"},"menus":[{"title":"The Menu (coffee, breakfast, burgers, spice bags, bar)","type":"main","url":"https://www.leicester-house.com/menu/"},
+{"title":"Christmas at the House","type":"festive","url":"https://www.leicester-house.com/events/christmas/","valid_dates":"December 2026","signal":true}],"notices":["Christmas at the House throughout December 2026 — Christmas plans and menus to be announced on @leicester.house; party bookings open"]},
+{"id":"sgwd-gwladys-glynneath","name":"Sgwd Gwladys","town":"Glynneath","type":"restaurant","address":"Tourist Information Centre Pontneathvaughan Road Glynneath Neath SA11 5NR","website":"https://www.sgwdgwladys.co.uk/","social":"https://www.facebook.com/sgwdgwladys/","cuisine":"British pub food","fsa":{"r":"3","id":1038684,"d":"2026-09-16"},"ta":{"r":4.1,"n":367,"i":"g1474525-d13808031"},"menus":[{"title":"Food & Drink (breakfast, lunch, evening)","type":"main","url":"https://www.sgwdgwladys.co.uk/food-and-drink/"}]},
+{"id":"spring-valley-lakes-bar-bus-glynneath","name":"Spring Valley Lakes Bar Bus","town":"Glynneath","type":"pub","address":"Rheola Farm Glynneath Lakes Resolven SA11 4DY","website":"https://springvalleylakes.co.uk/","social":"https://www.facebook.com/Springvalleylakes/","serves_food":"no","cuisine":"Not classified","fsa":{"r":"4","id":1763583,"d":"2024-09-23"},"menus":[]},
+{"id":"the-angel-inn-glynneath","name":"The Angel Inn","town":"Glynneath","type":"pub","address":"Angel Inn Pontneathvaughan Road Glynneath SA11 5NR","website":"https://www.angel-inn.co.uk/","social":"https://www.facebook.com/theangelPNV","cuisine":"British pub food","fsa":{"r":"4","id":1430639,"d":"2026-05-28"},"ta":{"r":3.8,"n":404,"i":"g2690998-d3952274"},"menus":[{"title":"Main Menu","type":"main","url":"https://www.angel-inn.co.uk/menu?menu=dinner-menu","valid_dates":"Typical menu for Oct 2026"},
+{"title":"Sunday Lunch Menu","type":"sunday-roast","url":"https://www.angel-inn.co.uk/menu?location=Location+1&menu=sunday-lunch-menu#1"},
+{"title":"Oktoberfest Menu","type":"seasonal","url":"https://www.angel-inn.co.uk/menu?location=Location+1&menu=oktoberfest-menu#1","valid_dates":"October (2026)"},
+{"title":"Main Menu - Summer (PDF)","type":"seasonal","url":"https://www.angel-inn.co.uk/_files/ugd/6deb9e_fb25dc96d0a2447c8abb5c4b84e6425f.pdf","format":"pdf"},
+{"title":"Light Bites (PDF)","type":"main","url":"https://www.angel-inn.co.uk/_files/ugd/6deb9e_7f13cdfb487b4d7c87a0b4dc113b7c93.pdf","format":"pdf"},
+{"title":"Sunday Lunch (PDF)","type":"sunday-roast","url":"https://www.angel-inn.co.uk/_files/ugd/6deb9e_f7708c688f674f5fbd50e82e7fcf371e.pdf","format":"pdf"}]},
+{"id":"the-dinas-rock-glynneath","name":"The Dinas Rock","town":"Glynneath","type":"pub","address":"Dinas Rock Hotel High Street Glynneath SA11 5AP","social":"https://www.facebook.com/thedinasrock/","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"4","id":1788570,"d":"2026-04-21"},"menus":[]},
+{"id":"the-tearooms-glynneath","name":"The Tearooms","town":"Glynneath","type":"cafe","address":"1 Pentre Street Glynneath SA11 5EU","website":"https://www.thetearooms.wales/","social":"https://www.facebook.com/tearoomsglynneath/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1243340,"d":"2026-02-05"},"ta":{"r":4.9,"n":83,"i":"g2690998-d23413376"},"menus":[{"title":"Brunch and Lunch","type":"main","url":"https://www.thetearooms.wales/menu/"}]},
+{"id":"tiny-play-cafe-glynneath","name":"Tiny Play Cafe","town":"Glynneath","type":"cafe","address":"Unit 1 68 High Street Glynneath SA11 5DA","website":"https://tinyplaycafe.co.uk/","social":"https://www.instagram.com/tinyplayglynneath/","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":1960245,"d":"2026-05-13"},"menus":[]},
+{"id":"caffir-hen-ysgol-gwaun-cae-gurwen","name":"Caffi'r Hen Ysgol","town":"Gwaun-Cae-Gurwen","type":"restaurant","address":"Hwb y Gors SA18 1RF","website":"https://hwbygors.cymru/","social":"https://www.facebook.com/hwbygors","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1897626,"d":"2026-04-23"},"menus":[]},
+{"id":"cwtch-caf-gwaun-cae-gurwen","name":"Cwtch Café","town":"Gwaun-Cae-Gurwen","type":"cafe","address":"2 - 6 Heol Cae Gurwen Gwaun Cae Gurwen Ammanford SA18 1HB","social":"https://www.facebook.com/p/Cwtch-Caf%C3%A9-61591776532348/","cuisine":"Cafe & breakfast","fsa":{"r":"4","id":1978269,"d":"2026-08-19"},"menus":[]},
+{"id":"the-mount-bar-and-grill-gwaun-cae-gurwen","name":"The Mount Bar and Grill","town":"Gwaun-Cae-Gurwen","type":"restaurant","address":"27-29 Graig Road Gwaun Cae Gurwen SA18 1EH","social":"https://www.facebook.com/themount1/","cuisine":"British pub food","fsa":{"r":"5","id":719867,"d":"2022-02-24"},"ta":{"r":4.4,"n":255,"i":"g551978-d7898924"},"menus":[]},
+{"id":"the-village-caf-gwaun-cae-gurwen","name":"The Village Café","town":"Gwaun-Cae-Gurwen","type":"cafe","address":"Unit 1 The Trading Post Graig Road Gwaun Cae Gurwen Ammanford SA18 1EG","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"3","id":1940314,"d":"2026-04-09"},"menus":[]},
+{"id":"charlottes-pantry-margam","name":"Charlottes Pantry","town":"Margam","type":"restaurant","address":"Charlottes Pantry Margam Coun Water Street Margam Port Talbot SA13 2TF","website":"https://www.margamcountrypark.co.uk/your-visit/shopping-and-eating/","social":"https://www.facebook.com/MargamCountryPark","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":195767,"d":"2025-09-05"},"menus":[]},
+{"id":"coast-cupcakes-margam","name":"Coast Cupcakes","town":"Margam","type":"restaurant","address":"23 Eglwys Nunnydd Margam SA13 2PS","social":"https://www.facebook.com/p/Coast-Cupcakes-100063675214936/","cuisine":"Bakery & patisserie","fsa":{"r":"5","id":1210555,"d":"2026-09-14"},"menus":[]},
+{"id":"compass-contract-services-uk-ltd-margam","name":"Compass Contract Services UK Ltd","town":"Margam","type":"restaurant","address":"Port Talbot Steelworks Grange Road Margam SA13 2NG","serves_food":"no","cuisine":"Not classified","fsa":{"r":"5","id":844106,"d":"2023-03-23"},"menus":[]},
+{"id":"express-cafe-margam","name":"Express Cafe","town":"Margam","type":"cafe","address":"266 Margam Road Margam Port Talbot SA13 2DB","social":"https://www.facebook.com/TambinisCafe/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":39918,"d":"2025-04-14"},"ta":{"r":4.5,"n":31,"i":"g681385-d6584016"},"menus":[]},
+{"id":"field-studies-council-margam","name":"Field Studies Council","town":"Margam","type":"restaurant","address":"Margam Discovery Centre Marga Water Street Margam Port Talbot SA13 2TJ","website":"https://www.margamcountrypark.co.uk/venue-hire/margam-discovery-centre/","serves_food":"no","cuisine":"Not classified","fsa":{"r":"5","id":122148,"d":"2023-04-19"},"menus":[]},
+{"id":"steeltown-coffee-company-ltd-margam","name":"Steeltown Coffee Company Ltd","town":"Margam","type":"cafe","address":"280 Margam Road Margam SA13 2DB","social":"https://www.facebook.com/STEELTOWNCOFFEECO/","cuisine":"Cafe & breakfast","fsa":{"r":"4","id":1584660,"d":"2023-02-03"},"menus":[{"title":"Just Eat menu","type":"main","url":"https://www.just-eat.co.uk/restaurants-steel-town-coffee-company-port-talbot/menu"}]},
+{"id":"the-grand-sultan-margam","name":"The Grand Sultan","town":"Margam","type":"restaurant","address":"The Priory Lakeside Golf Course Water Street Margam SA13 2PA","website":"https://www.thegrandsultan.co.uk/","social":"https://www.facebook.com/thegrandsultan/","cuisine":"Indian & South Asian","fsa":{"r":"5","id":1797254,"d":"2025-06-09"},"ta":{"r":4.1,"n":439,"i":"g2418002-d8845675"},"menus":[{"title":"Takeaway menu","type":"main","url":"https://www.thegrandsultan.co.uk/TheGrandSultan-TA.pdf","format":"pdf"},
+{"title":"Table inserts","type":"other","url":"https://www.thegrandsultan.co.uk/TheGrandSultan-TableInserts.pdf","format":"pdf"}],"notices":["Sunday buffet 12-4pm advertised on own site; WalesOnline (18 Oct 2026) named it Wales' best Indian restaurant"]},
+{"id":"the-kitchen-margam","name":"The Kitchen","town":"Margam","type":"cafe","address":"Unit 3 Kenfig Industrial Estate Road Margam SA13 2PE","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":1784032,"d":"2025-01-06"},"menus":[]},
+{"id":"the-orangery-margam-park-margam","name":"The Orangery (Margam Park)","town":"Margam","type":"restaurant","address":"The Orangery Margam Country P Water Street Margam Port Talbot SA13 2TF","website":"https://www.margamorangery.com/","social":"https://www.facebook.com/MargamCountryPark","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":142564,"d":"2026-06-22"},"menus":[]},
+{"id":"twelve-knights-margam","name":"Twelve Knights","town":"Margam","type":"pub","address":"Twelve Knights Hotel Margam Road Margam SA13 2DB","website":"https://www.twelveknightspubneathporttalbot.co.uk/","social":"https://www.facebook.com/twelveknightsporttalbot/","cuisine":"British pub food","fsa":{"r":"5","id":1393621,"d":"2025-09-10"},"ta":{"i":"g681385-d3519177"},"menus":[{"title":"Food menus","type":"main","url":"https://www.twelveknightspubneathporttalbot.co.uk/menus"},
+{"title":"Weekend Treat Menu","type":"specials","url":"https://www.twelveknightspubneathporttalbot.co.uk/weekend-treat-menu"},
+{"title":"Christmas 2026 (Festive, Christmas Day, Boxing Day menus)","type":"festive","url":"https://www.twelveknightspubneathporttalbot.co.uk/christmas","valid_dates":"Christmas 2026","signal":true}],"notices":["Christmas 2026 page live: Festive, Christmas Day and Boxing Day menus, Christmas Carvery and Breakfast with Santa"]},
+{"id":"a-jaes-brasserie-neath","name":"A.Jae's Brasserie","town":"Neath","type":"restaurant","address":"38 Windsor Road Neath SA11 1LU","social":"https://www.facebook.com/Thebloominn/","cuisine":"Modern British & European","fsa":{"r":"4","id":1742645,"d":"2025-05-21"},"ta":{"r":4.7,"n":41,"i":"g1474525-d28031559"},"notices":["Facebook post announces a new tasting menu inspired by Belgium/Netherlands (date not shown)"],"menus":[]},
+{"id":"aggregate-industries-express-asphalt-neath","name":"Aggregate Industries, Express Asphalt","town":"Neath","type":"restaurant","address":"Jenkins Wharf Neath Abbey Neath SA10 6BL","serves_food":"no","cuisine":"Not classified","fsa":{"r":"4","id":1024792,"d":"2025-07-09"},"menus":[]},
+{"id":"area-51-neath","name":"Area 51","town":"Neath","type":"restaurant","address":"Unit 14 Milland Road Industrial Estate Neath SA11 1NJ","website":"https://www.area51playcentre.co.uk/","social":"https://www.facebook.com/Area51playcentreneath/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1098608,"d":"2025-03-05"},"menus":[]},
+{"id":"arthur-chapman-neath","name":"Arthur Chapman","town":"Neath","type":"restaurant","address":"40 Windsor Road  Neath SA11 1LU","website":"https://arthurchapman.co.uk/","social":"https://www.facebook.com/p/Arthur-Chapman-61576650613872/","cuisine":"Cafe & breakfast","fsa":{"r":"Awaiting","id":1991096},"menus":[]},
+{"id":"authentic-japanese-foods-ltd-cafe-up-neath","name":"Authentic Japanese Foods Ltd / Cafe Up","town":"Neath","type":"cafe","address":"Bay Studios Fabian Way Crymlyn Burrows SA1 8QJ","social":"https://www.facebook.com/p/Authentic-Japanese-Foods-Ltd-Cafe-UP-100053975051404/","cuisine":"Chinese & East Asian","fsa":{"r":"3","id":840255,"d":"2026-01-09"},"menus":[]},
+{"id":"baxter-storey-ltd-at-amazon-cafe-neath","name":"Baxter Storey Ltd (at Amazon Cafe)","town":"Neath","type":"cafe","address":"Amazon Ffordd Amazon Crymlyn Burrows SA1 8QX","serves_food":"no","cuisine":"Not classified","fsa":{"r":"5","id":1038686,"d":"2026-03-19"},"menus":[]},
+{"id":"belly-busters-cafe-neath","name":"Belly Busters Cafe","town":"Neath","type":"cafe","address":"Belly Busters Cafe Milland Road Neath SA11 1NJ","cuisine":"Cafe & breakfast","fsa":{"r":"4","id":121528,"d":"2025-09-03"},"ta":{"r":4.6,"n":11,"i":"g1474525-d8736321"},"menus":[]},
+{"id":"berry-sense-neath","name":"Berry Sense","town":"Neath","type":"restaurant","address":"6 Hibbert Road Neath SA11 3DE","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"4","id":1914194,"d":"2026-06-19"},"menus":[]},
+{"id":"booths-by-the-bridge-neath","name":"Booths by the Bridge","town":"Neath","type":"restaurant","address":"2 Dulais Fach Road Tonna SA10 8EP","website":"https://www.boothsbythebridge.co.uk/","social":"https://www.facebook.com/p/Booths-by-the-Bridge-61569333710001/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1797253,"d":"2025-02-14"},"ta":{"r":4.5,"n":37,"i":"g1474525-d32877145"},"menus":[{"title":"Menu (breakfast & lunch)","type":"main","url":"https://www.boothsbythebridge.co.uk/_files/ugd/5ed28e_84d7d24371ca4c18b65b7d7d52f53631.pdf","format":"pdf"}],"notices":["Own site banner: 'Christmas bookings are now LIVE' (2026)"]},
+{"id":"brew-and-co-neath","name":"Brew & Co","town":"Neath","type":"restaurant","address":"4 Station Square Neath SA11 1BY","website":"https://brewandcompany.co.uk/","social":"https://www.facebook.com/brewandcouk/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1201243,"d":"2019-10-09"},"ta":{"r":5.0,"n":16,"i":"g1474525-d19760349"},"menus":[{"title":"Menu","type":"main","url":"https://brewandcompany.co.uk/menu"}]},
+{"id":"busk-and-brew-neath","name":"Busk and Brew","town":"Neath","type":"restaurant","address":"14 Angel Street  Neath SA11 1RS","social":"https://www.facebook.com/p/Busk-Brew-61568706865111/","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"Awaiting","id":1991093},"menus":[]},
+{"id":"butty-neath","name":"Butty","town":"Neath","type":"restaurant","address":"Stall 14 Neath Indoor Market Green Street Neath SA11 1RB","social":"https://www.instagram.com/wearebutty/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1889856,"d":"2026-06-03"},"ta":{"i":"g1474525-d34307257"},"menus":[]},
+{"id":"cadno-lounge-neath","name":"Cadno Lounge","town":"Neath","type":"pub","address":"Unit 1 Fairfield Way Neath SA11 3ES","website":"https://thelounges.co.uk/cadno/","social":"https://www.facebook.com/cadnolounge/","cuisine":"Modern British & European","fsa":{"r":"5","id":1615179,"d":"2026-06-22"},"ta":{"r":3.9,"n":57,"i":"g1474525-d25376999"},"menus":[{"title":"Cadno Lounge menus","type":"main","url":"https://thelounges.co.uk/cadno/menus/"},
+{"title":"Autumn/Winter 2026 menu","type":"seasonal","url":"https://thelounges.co.uk/whats-on/autumn-winter-2026-menu","valid_dates":"from 1 Oct 2026","signal":true},
+{"title":"Christmas 2026 set menu","type":"festive","url":"https://bunny-wp-pullzone-lgrcnjwfpd.b-cdn.net/wp-content/uploads/2026/08/LO-CFM-08.26_Christmas-Flyer-Menu_NOPRICES_WEB_Artwork_21.08.pdf","format":"pdf","valid_dates":"19 Nov - 31 Dec 2026","signal":true}],"notices":["New Autumn/Winter 2026 menu launched 1 Oct 2026","Christmas 2026 two/three-course set menu, bookings 19 Nov - 31 Dec"]},
+{"id":"cadoxton-cake-shed-neath","name":"Cadoxton Cake Shed","town":"Neath","type":"restaurant","address":"15 Caegroes Terrace Main Road Cadoxton SA10 8BP","cuisine":"Bakery & patisserie","fsa":{"r":"5","id":1978245,"d":"2026-09-16"},"menus":[]},
+{"id":"cafe-46-neath","name":"Cafe 46","town":"Neath","type":"cafe","address":"44-46 Queen Street SA11 1DL","social":"https://www.facebook.com/46neath/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1797257,"d":"2025-02-11"},"ta":{"r":4.4,"n":168,"i":"g1474525-d7606927"},"menus":[]},
+{"id":"cafe-darcy-neath","name":"Cafe Darcy","town":"Neath","type":"cafe","address":"Disability Action Centre The Courtyard D'arcy Business Park Llandarcy SA10 6EJ","social":"https://www.instagram.com/cafedarcy_/","cuisine":"Cafe & breakfast","fsa":{"r":"4","id":849664,"d":"2026-03-18"},"ta":{"r":4.5,"n":58,"i":"g7144373-d12059466"},"menus":[]},
+{"id":"cafe-memo-neath","name":"Cafe Memo","town":"Neath","type":"cafe","address":"50 Wind Street Neath SA11 3EN","cuisine":"Cafe & breakfast","fsa":{"r":"3","id":1495111,"d":"2026-01-22"},"ta":{"i":"g1474525-d24193574"},"menus":[]},
+{"id":"castell-nedd-neath","name":"Castell Nedd","town":"Neath","type":"pub","address":"Angel Inn Angel Street Neath SA11 1RS","website":"https://www.craftunionpubs.com/pubs/castell-nedd-arms-neath","social":"https://www.facebook.com/CastellNeddArms/","serves_food":"no","cuisine":"Not classified","fsa":{"r":"4","id":1019177,"d":"2024-04-26"},"menus":[]},
+{"id":"cilfrew-fish-bar-neath","name":"Cilfrew Fish Bar","town":"Neath","type":"restaurant","address":"Bouchers Penscynor Cilfrew SA10 8LF","social":"https://www.facebook.com/cilfrewfishbar/","cuisine":"Seafood & fish and chips","fsa":{"r":"5","id":849666,"d":"2026-09-24"},"ta":{"r":4.2,"n":9,"i":"g1474525-d20324262"},"menus":[]},
+{"id":"cilfrew-post-office-and-ty-coffi-shop-neath","name":"Cilfrew Post Office & Ty Coffi Shop","town":"Neath","type":"restaurant","address":"10 Main Road Cilfrew Neath SA10 8LP","social":"https://www.facebook.com/TyCoffiCilfrew/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1991084,"d":"2026-06-17"},"menus":[]},
+{"id":"cimla-fire-station-neath","name":"Cimla Fire Station","town":"Neath","type":"restaurant","address":"Neath Fire Station Cimla Road Cimla Neath SA11 3UG","serves_food":"no","cuisine":"Not classified","fsa":{"r":"5","id":94743,"d":"2019-07-16"},"menus":[]},
+{"id":"clarewood-project-neath","name":"Clarewood Project","town":"Neath","type":"restaurant","address":"Clarewood House 2 Cimla Road Neath SA11 3PW","social":"https://www.facebook.com/p/Team-Clarewood-61555049098631/","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":1615186,"d":"2023-05-04"},"menus":[]},
+{"id":"costa-coffee-neath","name":"Costa Coffee","town":"Neath","type":"cafe","address":"4 Orchard Street Neath SA11 1DU","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":733683,"d":"2015-01-26"},"ta":{"i":"g1474525-d27868049"},"menus":[]},
+{"id":"crown-and-sceptre-neath","name":"Crown & Sceptre","town":"Neath","type":"pub","address":"Crown And Sceptre Main Road Cadoxton SA10 8AP","social":"https://www.facebook.com/p/The-Crown-and-Sceptre-Inn-Cadoxton-61557396391147/","cuisine":"British pub food","fsa":{"r":"3","id":1749818,"d":"2026-07-03"},"ta":{"r":3.7,"n":384,"i":"g551975-d2540521"},"notices":["Stonegate Pub Partners lists the pub as a new-to-market tenancy; FB says open as normal"],"menus":[]},
+{"id":"crynant-shooting-ground-neath","name":"Crynant Shooting Ground","town":"Neath","type":"restaurant","address":"Rhos Common Starvin Hill Crynant Neath SA10 8PW","website":"https://www.crynantshootingground.co.uk/","social":"https://www.facebook.com/crynantshootingground/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1960253,"d":"2026-04-29"},"ta":{"i":"g3354536-d2305287","a":1},"menus":[]},
+{"id":"cymundau-caffi-neath","name":"Cymundau Caffi","town":"Neath","type":"restaurant","address":"Dove Workshop Banwen Neath SA10 9LW","website":"https://www.doveworkshop.org.uk/","social":"https://www.facebook.com/p/Caffi-Cymunedol-61568046853720/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1978262,"d":"2026-07-21"},"menus":[{"title":"Cafe Sarn Helen menu (older cafe at DOVE Workshop)","type":"main","url":"https://www.doveworkshop.org.uk/wp-content/uploads/2012/07/cafe_menu.pdf","format":"pdf"}],"notices":["Menu may be out of date (dated 2012) — unverified"]},
+{"id":"david-protheroe-neath","name":"David Protheroe","town":"Neath","type":"pub","address":"The David Protheroe 7 Windsor Road Neath SA11 1LS","website":"https://www.jdwetherspoon.com/pubs/the-david-protheroe-neath/","cuisine":"British pub food","fsa":{"r":"5","id":306786,"d":"2025-05-27"},"ta":{"r":3.1,"n":195,"i":"g1474525-d3863841"},"menus":[{"title":"Table menu","type":"main","url":"https://www.jdwetherspoon.com/wp-content/uploads/menus/currentmenus/MENU_785.pdf?v=1785310059","format":"pdf"},
+{"title":"Menu page","type":"main","url":"https://www.jdwetherspoon.com/pub-menus/the-david-protheroe-neath/"}],"notices":["Wetherspoon Christmas menu available 12 Nov - 31 Dec 2026 (chain-wide, jdwetherspoon.com)"]},
+{"id":"dream-street-neath","name":"Dream Street","town":"Neath","type":"restaurant","address":"Unit 3 Water Street Neath SA11 3EP","website":"https://playondreamstreet.co.uk/","social":"https://www.facebook.com/p/Dream-Street-61576341087976/","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":1860962,"d":"2026-02-06"},"menus":[]},
+{"id":"dyffryn-arms-neath","name":"Dyffryn Arms","town":"Neath","type":"pub","address":"Dyffryn Arms Neath Road Bryncoch SA10 7YF","social":"https://www.facebook.com/DyffrynArms/","cuisine":"British pub food","fsa":{"r":"5","id":1214817,"d":"2025-09-15"},"ta":{"r":3.8,"n":441,"i":"g1474525-d4059137"},"notices":["FB: brand-new menu of pub classics and new dishes announced (2026)","Old site menu pages (menu.html, summer2017-menu.html) return 404"],"menus":[]},
+{"id":"ems-pantry-neath","name":"Em's Pantry","town":"Neath","type":"restaurant","address":"65 Underwood Road Cadoxton Neath SA10 8BY","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":1960243,"d":"2026-04-28"},"menus":[]},
+{"id":"food-at-the-shed-neath","name":"Food at the Shed","town":"Neath","type":"restaurant","address":"Siding Terrace Lonlas Neath SA10 6RF","cuisine":"Burgers, BBQ & American","fsa":{"r":"5","id":1978282,"d":"2026-07-28"},"menus":[]},
+{"id":"gnoll-visitors-centre-neath","name":"Gnoll Visitors Centre","town":"Neath","type":"restaurant","address":"Gnoll Estate Country Park Fairyland Neath SA11 3BS","website":"https://gnollcountrypark.co.uk/plan-your-visit/cafe/","social":"https://www.facebook.com/GnollPark/","cuisine":"Cafe & breakfast","fsa":{"r":"4","id":1960246,"d":"2026-05-21"},"ta":{"i":"g1474525-d212316","a":1},"menus":[]},
+{"id":"gu-gus-bakes-neath","name":"Gu Gu's Bakes","town":"Neath","type":"restaurant","address":"50 Treforgan Road Crynant SA10 8PW","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":1430630,"d":"2021-12-16"},"menus":[]},
+{"id":"gymittee-caf-neath","name":"Gymittee Café","town":"Neath","type":"cafe","address":"Unit 20 Milland Road Industrial Estate  Neath SA11 1NJ","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"Awaiting","id":1978265},"menus":[]},
+{"id":"harvester-restaurant-neath","name":"Harvester Restaurant","town":"Neath","type":"restaurant","address":"Junction 43 M4 Llandarcy Neath SA10 6GZ","website":"https://www.harvester.co.uk/restaurants/wales/harvesterllandarcyneath","social":"https://www.facebook.com/HarvesterLlandarcy/","cuisine":"Steakhouse & grill","fsa":{"r":"4","id":306779,"d":"2025-01-29"},"ta":{"r":3.9,"n":1491,"i":"g1137850-d6898721"},"ot":{"u":"https://www.opentable.co.uk/r/harvester-llandarcy-neath"},"menus":[{"title":"Main menu","type":"main","url":"https://www.harvester.co.uk/restaurants/wales/harvesterllandarcyneath/menus/mainmenu"},
+{"title":"Lunch set menu","type":"set-menu","url":"https://www.harvester.co.uk/restaurants/wales/harvesterllandarcyneath/menus/lunch-set-menu","valid_dates":"Mon-Fri 11:30-18:00"},
+{"title":"Kids menu","type":"other","url":"https://www.harvester.co.uk/restaurants/wales/harvesterllandarcyneath/menus/youngguests"},
+{"title":"Festive menu 2026","type":"festive","url":"https://www.harvester.co.uk/restaurants/wales/harvesterllandarcyneath/menus/festivemenu","valid_dates":"Christmas 2026","signal":true}],"notices":["Christmas 2026 festive dining from £20.99 announced"]},
+{"id":"hi-coffee-neath","name":"Hi Coffee","town":"Neath","type":"cafe","address":"Unit 2 Neath General Railway Station Station Square Neath SA11 1BY","social":"https://www.facebook.com/HiCoffeeNeath/","cuisine":"Cafe & breakfast","fsa":{"r":"4","id":765608,"d":"2026-05-28"},"menus":[]},
+{"id":"highlander-bar-and-restaurant-neath","name":"Highlander Bar & Restaurant","town":"Neath","type":"pub","address":"2-4 Lewis Road Neath SA11 1EQ","social":"https://www.facebook.com/HighlanderThai/","cuisine":"Thai & South-East Asian","fsa":{"r":"4","id":910631,"d":"2016-08-10"},"ta":{"r":3.2,"n":23,"i":"g1474525-d7644735"},"notices":["mywateringhole lists venue as no longer active; not confirmed closed"],"menus":[]},
+{"id":"js-cafe-and-desserts-neath","name":"J's Cafe & Desserts","town":"Neath","type":"cafe","address":"21 Queen Street Neath SA11 1DN","social":"https://www.facebook.com/Jscafeanddesserts/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1521578,"d":"2025-10-14"},"menus":[]},
+{"id":"just-dewis-neath","name":"Just Dewi's","town":"Neath","type":"restaurant","address":"24 Queen Street Neath SA11 1DL","social":"https://www.facebook.com/p/Justdewis-Dewi-100075349208750/","cuisine":"Bakery & patisserie","fsa":{"r":"5","id":1435523,"d":"2022-03-01"},"menus":[]},
+{"id":"kt-professional-catering-neath","name":"KT Professional Catering","town":"Neath","type":"restaurant","address":"54 Brookfield Neath Abbey SA10 7EH","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":1435522,"d":"2023-12-18"},"menus":[]},
+{"id":"lizs-cafe-and-hog-roast-neath","name":"Liz's Cafe (& Hog Roast)","town":"Neath","type":"cafe","address":"Unit 1 Neath Abbey Business P Neath Abbey Business Park Road Neath Abbey Neath SA10 7DR","cuisine":"Cafe & breakfast","fsa":{"r":"4","id":128035,"d":"2026-08-06"},"ta":{"r":3.4,"n":21,"i":"g1474525-d8126173"},"menus":[]},
+{"id":"lonlas-gospel-mission-neath","name":"Lonlas Gospel Mission","town":"Neath","type":"restaurant","address":"Lonlas Avenue Lonlas SA10 6RT","website":"https://lonlasgm.org.uk/","serves_food":"no","cuisine":"Not classified","fsa":{"r":"5","id":1087288,"d":"2025-09-08"},"menus":[]},
+{"id":"loyal-order-of-moose-neath","name":"Loyal Order of Moose","town":"Neath","type":"pub","address":"Moose Hall Castle Street Neath SA11 3LU","serves_food":"no","cuisine":"Not classified","fsa":{"r":"5","id":1045463,"d":"2018-03-28"},"menus":[]},
+{"id":"margots-by-montys-neath","name":"Margots by Montys","town":"Neath","type":"restaurant","address":"20 Orchard Street Neath SA11 1DU","social":"https://www.instagram.com/margotsbymontys/","cuisine":"Cafe & breakfast","fsa":{"r":"Awaiting","id":1978271},"menus":[]},
+{"id":"mcdonalds-restaurant-neath","name":"McDonalds Restaurant","town":"Neath","type":"restaurant","address":"Mcdonalds Restaurant Sewage Works Access Road Blaengwrach Neath SA11 5NZ","website":"https://www.mcdonalds.com/gb/en-gb/location/glyn-neath/glynneath---a465/glyn-neath-business-park/8261112.html","cuisine":"Burgers, BBQ & American","fsa":{"r":"5","id":129763,"d":"2025-03-17"},"ta":{"r":2.6,"n":61,"i":"g1474525-d5430537"},"menus":[]},
+{"id":"merlins-neath","name":"Merlins","town":"Neath","type":"pub","address":"93 Windsor Road Neath SA11 1NS","social":"https://www.facebook.com/merlinspublichouse/","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"4","id":719863,"d":"2024-04-27"},"menus":[]},
+{"id":"montys-neath","name":"Montys","town":"Neath","type":"restaurant","address":"Unit 5 Shufflebotham Lane Neath SA11 3FJ","cuisine":"Cafe & breakfast","fsa":{"r":"4","id":1560763,"d":"2026-05-06"},"ta":{"r":3.3,"n":18,"i":"g1474525-d26610235"},"menus":[]},
+{"id":"nannies-goat-milk-soaps-cyf-neath","name":"Nannies Goat Milk Soaps Cyf","town":"Neath","type":"restaurant","address":"Blaenhonddan Uchaf Farm Gilfach Road Bryncoch Neath SA10 8AD","social":"https://www.facebook.com/nanniesgoatmilksoap/","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"Awaiting","id":1978229},"menus":[]},
+{"id":"neath-cafe-neath","name":"Neath Cafe","town":"Neath","type":"cafe","address":"Imo Car Wash Pantyrheol Neath SA11 2HD","social":"https://www.facebook.com/p/Neath-Cafe-and-Car-Wash-100092523406388/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1671525,"d":"2025-05-19"},"menus":[]},
+{"id":"neath-delicatessen-limited-neath","name":"Neath Delicatessen Limited","town":"Neath","type":"restaurant","address":"Fairfield Way Neath SA11 3ES","social":"https://www.facebook.com/neathdeli/","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"4","id":1852586,"d":"2025-10-15"},"menus":[]},
+{"id":"neath-little-theatre-neath","name":"Neath Little Theatre","town":"Neath","type":"pub","address":"Neath Little Theatre Westernmoor Road Neath SA11 1BQ","social":"https://www.facebook.com/100063773251383/","serves_food":"no","cuisine":"Not classified","fsa":{"r":"5","id":1788566,"d":"2025-03-27"},"menus":[]},
+{"id":"neath-town-council-neath","name":"Neath Town Council","town":"Neath","type":"restaurant","address":"Old Town Hall 1-2 Church Place Neath SA11 3LL","website":"https://www.neathtowncouncil.gov.uk/council-services/neath-town-hall/","serves_food":"no","cuisine":"Not classified","fsa":{"r":"5","id":195730,"d":"2018-02-21"},"menus":[]},
+{"id":"no-6-at-bronleigh-house-ltd-neath","name":"No 6 at Bronleigh House Ltd","town":"Neath","type":"restaurant","address":"6 Cadoxton Road  Neath SA10 7AE","website":"https://bronleighhouse.co.uk/coffee-shop-cafe/","cuisine":"Cafe & breakfast","fsa":{"r":"Awaiting","id":1978266},"ta":{"r":5.0,"n":4,"i":"g1474525-d34507453"},"notices":["Cafe relaunched as No.6 under new owners in summer 2026; seasonal/special menus planned"],"menus":[]},
+{"id":"orchard-coffee-bar-and-bistro-neath","name":"Orchard Coffee Bar And Bistro","town":"Neath","type":"cafe","address":"26-28 Orchard Street Neath SA11 1DU","website":"https://orchardcoffeebarbistro.co.uk/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":122452,"d":"2025-11-05"},"ta":{"r":4.3,"n":86,"i":"g1474525-d12217675"},"menus":[{"title":"Online ordering menu","type":"main","url":"https://orchardcoffeebarbistro.co.uk/"}]},
+{"id":"paprika-neath","name":"Paprika","town":"Neath","type":"restaurant","address":"29 Windsor Road Neath SA11 1NB","website":"https://paprikaneath.com/","cuisine":"Indian & South Asian","fsa":{"r":"1","id":669841,"d":"2026-03-30"},"ta":{"r":3.6,"n":28,"i":"g1474525-d6872811"},"menus":[{"title":"Menu","type":"main","url":"https://paprikaneath.com/storemenu"}]},
+{"id":"rachies-cakies-neath","name":"Rachie's Cakie's","town":"Neath","type":"restaurant","address":"8 Pine Grove Cimla Neath SA11 3RB","cuisine":"Bakery & patisserie","fsa":{"r":"5","id":660645,"d":"2014-04-22"},"notices":["Christmas treat boxes and cakes announced on Facebook community group (year not confirmed)"],"menus":[]},
+{"id":"riverside-bar-and-restaurant-at-aberdulais-golf-range-neath","name":"Riverside Bar & Restaurant at Aberdulais Golf range","town":"Neath","type":"restaurant","address":"Golf Driving Range Riverside Aberdulais Neath SA10 8ES","social":"https://www.facebook.com/riverside.cafebar/","cuisine":"British pub food","fsa":{"r":"4","id":187403,"d":"2026-06-19"},"ta":{"r":3.6,"n":66,"i":"g1474525-d3218022"},"menus":[]},
+{"id":"round-house-neath","name":"Round House","town":"Neath","type":"restaurant","address":"The Round House Castle Street Neath SA11 3LU","cuisine":"Cafe & breakfast","fsa":{"r":"3","id":116731,"d":"2026-08-12"},"ta":{"r":4.4,"n":43,"i":"g1474525-d4911319"},"menus":[]},
+{"id":"seren-cafe-neath","name":"Seren Cafe","town":"Neath","type":"cafe","address":"6 Windsor Road Neath SA11 1DA","website":"https://www.serencafe.co.uk","social":"https://www.facebook.com/serencaferestaurant/","cuisine":"Cafe & breakfast","fsa":{"r":"1","id":1860956,"d":"2026-03-02"},"menus":[]},
+{"id":"shellys-kitchen-neath","name":"Shelly's Kitchen","town":"Neath","type":"cafe","address":"Palm Court Fabian Way Crymlyn Burrows SA1 8QB","social":"https://www.facebook.com/p/Shellys-Kitchen-61555629890907/","cuisine":"Cafe & breakfast","fsa":{"r":"3","id":1655535,"d":"2025-09-04"},"menus":[]},
+{"id":"shooters-sports-bar-neath","name":"Shooters Sports Bar","town":"Neath","type":"pub","address":"16 New Street Neath SA11 1RT","website":"https://www.shooters.wales/","social":"https://www.facebook.com/ShootersNeath/","cuisine":"British pub food","fsa":{"r":"5","id":936182,"d":"2026-03-24"},"menus":[]},
+{"id":"smashed-raspberry-neath","name":"Smashed Raspberry","town":"Neath","type":"restaurant","address":"8 Angel Street Neath SA11 1RS","social":"https://www.facebook.com/smashedraspberryneath/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":997022,"d":"2026-04-28"},"ta":{"r":4.9,"n":30,"i":"g1474525-d13526292"},"menus":[]},
+{"id":"smiths-arms-neath","name":"Smiths Arms","town":"Neath","type":"pub","address":"Smiths Arms Main Road Neath Abbey SA10 7DG","social":"https://www.facebook.com/p/The-Smiths-Arms-Neath-Abbey-61553184127128/","cuisine":"British pub food","fsa":{"r":"4","id":1680483,"d":"2024-06-05"},"ta":{"r":4.2,"n":23,"i":"g1474525-d7375337"},"menus":[]},
+{"id":"spicy-spuds-neath-unit-neath","name":"Spicy Spuds (Neath Unit)","town":"Neath","type":"restaurant","address":"2 Cromwell Road Bryncoch SA10 8DR","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":1219944,"d":"2026-06-18"},"menus":[]},
+{"id":"spicy-spuds-swansea-unit-neath","name":"Spicy Spuds (Swansea Unit)","town":"Neath","type":"restaurant","address":"2 Cromwell Road Bryncoch Neath SA10 8DR","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":133281,"d":"2026-06-25"},"menus":[]},
+{"id":"st-ives-neath","name":"St Ives","town":"Neath","type":"pub","address":"12 Old Market Street Neath SA11 3NA","social":"https://www.facebook.com/p/St-Ives-Neath-100087630369209/","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":1926341,"d":"2026-04-15"},"menus":[]},
+{"id":"subway-swansea-uni-bay-campus-neath","name":"Subway - Swansea Uni Bay Campus","town":"Neath","type":"restaurant","address":"Swansea University Bay Campus Fabian Way Crymlyn Burrows SA1 8EN","website":"https://restaurants.subway.com/united-kingdom/wa/swansea/fabian-way-crymlyn-burrows","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1435517,"d":"2023-06-20"},"menus":[]},
+{"id":"sugar-rush-neath","name":"Sugar Rush","town":"Neath","type":"restaurant","address":"18 Angel Street Neath SA11 1RS","website":"https://sugarrushshop.co.uk/","social":"https://www.facebook.com/SugarRushNeath/","cuisine":"Bakery & patisserie","fsa":{"r":"5","id":1393634,"d":"2025-07-15"},"menus":[]},
+{"id":"ten-21-bar-and-bistro-ltd-neath","name":"Ten 21 Bar & Bistro Ltd","town":"Neath","type":"cafe","address":"9-11 New Street Neath SA11 1RT","social":"https://www.facebook.com/Ten21Neath/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1788568,"d":"2025-01-23"},"ta":{"r":4.1,"n":83,"i":"g1474525-d13373609"},"menus":[]},
+{"id":"the-borough-arms-neath","name":"The Borough Arms","town":"Neath","type":"pub","address":"The Borough Arms 2 New Henry Street Neath SA11 1PH","social":"https://www.facebook.com/TheBoroughArmsNeath/","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":973176,"d":"2017-05-17"},"menus":[]},
+{"id":"the-bryncoch-inn-neath","name":"The Bryncoch Inn","town":"Neath","type":"pub","address":"Bryncoch Inn Ty'n Yr Heol Road Bryncoch Neath SA10 7EB","website":"https://www.sizzlingpubs.co.uk/findapub/wales/thebryncochinnneath","social":"https://www.facebook.com/thebryncochinn/","cuisine":"British pub food","fsa":{"r":"5","id":146423,"d":"2026-06-30"},"ta":{"r":3.8,"n":573,"i":"g1474525-d4037484"},"menus":[{"title":"Food menu","type":"main","url":"https://www.sizzlingpubs.co.uk/findapub/wales/thebryncochinnneath/food-menu"},
+{"title":"Takeaway menu","type":"main","url":"https://www.sizzlingpubs.co.uk/findapub/wales/thebryncochinnneath/takeaway"},
+{"title":"Christmas 2026 menus (Festive Set, Christmas Day, Festive Specials)","type":"festive","url":"https://www.sizzlingpubs.co.uk/findapub/wales/thebryncochinnneath/christmas","valid_dates":"Christmas 2026","signal":true}],"notices":["Christmas 2026 published: Festive Set Menu 3 courses £21.49, Christmas Day 3 courses £66.99, Boxing Day and NYE"]},
+{"id":"the-corner-house-neath","name":"The Corner House","town":"Neath","type":"restaurant","address":"44 The Parade Neath SA11 1RN","cuisine":"British pub food","fsa":{"r":"5","id":1407332,"d":"2021-12-02"},"ta":{"i":"g1474525-d27868845"},"menus":[]},
+{"id":"the-cross-keys-neath","name":"The Cross Keys","town":"Neath","type":"pub","address":"Cross Keys Hotel St Davids Street Neath SA11 3AA","social":"https://www.facebook.com/crosskeysneath/","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":774140,"d":"2015-06-30"},"menus":[]},
+{"id":"the-diner-neath","name":"The Diner","town":"Neath","type":"restaurant","address":"17 Neath General Market Green Street Neath SA11 1DP","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1609010,"d":"2025-01-07"},"ta":{"r":5.0,"n":3,"i":"g1474525-d27519323"},"menus":[]},
+{"id":"the-duke-of-wellington-neath","name":"The Duke Of Wellington","town":"Neath","type":"pub","address":"8 Old Market Street Neath SA11 3NA","social":"https://www.facebook.com/p/The-Duke-Neath-61567378288492/","serves_food":"no","cuisine":"Not classified","fsa":{"r":"4","id":65211,"d":"2020-02-03"},"menus":[]},
+{"id":"the-flower-and-chocolate-box-neath","name":"The Flower & Chocolate Box","town":"Neath","type":"restaurant","address":"4 Lon Brynteg Waunceirch SA10 7RU","social":"https://www.instagram.com/chocolateboxneath/","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":530695,"d":"2013-03-22"},"menus":[]},
+{"id":"the-gradon-pub-and-restaurant-neath","name":"The Gradon Pub And Restaurant","town":"Neath","type":"pub","address":"111 Main Road Crynant Neath SA10 8PF","social":"https://www.instagram.com/thegradon/","cuisine":"British pub food","fsa":{"r":"5","id":91256,"d":"2025-12-03"},"ta":{"r":3.5,"n":143,"i":"g186466-d806889"},"menus":[]},
+{"id":"the-green-dragon-neath","name":"The Green Dragon","town":"Neath","type":"pub","address":"Green Dragon Church Road Cadoxton Neath SA10 8AU","website":"https://proper-pubs.com/our-proper-pubs/the-green-dragon-neath/","social":"https://www.facebook.com/greendragon.cadoxton/","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":1993313,"d":"2026-09-15"},"menus":[]},
+{"id":"the-greyhound-neath","name":"The Greyhound","town":"Neath","type":"restaurant","address":"11 Water Street Neath SA11 3EP","social":"https://www.instagram.com/thegreyhoundneath/","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":499462,"d":"2012-12-14"},"menus":[]},
+{"id":"the-mine-neath-neath","name":"The Mine Neath","town":"Neath","type":"restaurant","address":"1 and 2 Old Town Hall New Street Neath SA11 1RT","website":"https://www.bythemine.co.uk/the-mine-neath","social":"https://www.facebook.com/themineneathtown","cuisine":"Steakhouse & grill","fsa":{"r":"5","id":1527251,"d":"2025-11-26"},"ta":{"r":3.7,"n":43,"i":"g1474525-d24907114"},"menus":[{"title":"The Mine Menu","type":"main","url":"https://www.bythemine.co.uk/the-mine-neath#menu","valid_dates":"from 14 Jan 2026"},
+{"title":"3-Course Set Menu","type":"set-menu","url":"https://www.bythemine.co.uk/the-mine-neath#menu","valid_dates":"Tue-Thu until 6pm; Fri-Sat until 4pm"}]},
+{"id":"the-old-market-tavern-neath","name":"The Old Market Tavern","town":"Neath","type":"pub","address":"2 Charlesville Place Neath SA11 1PY","social":"https://www.facebook.com/theoldmarkettavernneath/","cuisine":"British pub food","fsa":{"r":"4","id":544828,"d":"2026-07-21"},"ta":{"r":4.8,"n":28,"i":"g1474525-d14117494"},"menus":[]},
+{"id":"the-pavilion-llandarcy-neath","name":"The Pavilion Llandarcy","town":"Neath","type":"restaurant","address":"Llandarcy Academy Of Sport  Llandarcy SA10 6JD","website":"https://www.pavilionllandarcy.com/","social":"https://www.facebook.com/pavilionllandarcy/","cuisine":"British pub food","fsa":{"r":"5","id":944096,"d":"2024-11-13"},"ta":{"r":3.8,"n":54,"i":"g1137850-d11380059"},"menus":[{"title":"Pavilion Menu","type":"main","url":"https://www.pavilionllandarcy.com/menus/PAVILION-MENU.pdf","format":"pdf"},
+{"title":"Carvery Menu","type":"sunday-roast","url":"https://www.pavilionllandarcy.com/menus/carvery-menu.pdf","format":"pdf"},
+{"title":"Sunday Lunch","type":"sunday-roast","url":"https://www.pavilionllandarcy.com/menu-sunday-lunch"},
+{"title":"Takeaway menu","type":"main","url":"https://www.pavilionllandarcy.com/takeaway"}]},
+{"id":"the-plaza-neath","name":"The Plaza","town":"Neath","type":"restaurant","address":"31-32 Alfred Street Neath SA11 1EH","cuisine":"Indian & South Asian","fsa":{"r":"4","id":1019174,"d":"2025-09-09"},"ta":{"r":4.1,"n":119,"i":"g1474525-d3265995"},"menus":[]},
+{"id":"the-tap-room-neath","name":"The Tap Room","town":"Neath","type":"restaurant","address":"51 Castle Drive Cimla SA11 3YF","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":1081292,"d":"2018-09-27"},"menus":[]},
+{"id":"the-towers-swansea-bay-ltd-neath","name":"The Towers Swansea Bay Ltd","town":"Neath","type":"pub","address":"The Towers Hotel Ashleigh Terrace Jersey Marine Neath SA10 6JL","website":"https://www.thetowersswanseabay.com/","social":"https://www.facebook.com/towershotelswansea","cuisine":"Modern British & European","fsa":{"r":"4","id":120614,"d":"2025-08-06"},"ta":{"r":3.8,"n":327,"i":"g551974-d2254009"},"menus":[{"title":"Restaurant Menu 2026","type":"main","url":"https://www.thetowersswanseabay.com/menus/restaurant-menu-05-01-2026.pdf","format":"pdf","valid_dates":"from 5 Jan 2026"},
+{"title":"Set Menu 2026","type":"set-menu","url":"https://www.thetowersswanseabay.com/menus/set-menu-2026.pdf","format":"pdf","valid_dates":"2026"},
+{"title":"Sunday Lunch Menu","type":"sunday-roast","url":"https://www.thetowersswanseabay.com/menus/sunday-lunch-menu-24-11-2025.pdf","format":"pdf","valid_dates":"from 24 Nov 2025"},
+{"title":"Midweek Wine and Dine","type":"other","url":"https://www.thetowersswanseabay.com/menus/midweek-wine-and-dine-package-29-10-2023.pdf","format":"pdf","valid_dates":"29 Oct 2023"},
+{"title":"Steak Special","type":"specials","url":"https://www.thetowersswanseabay.com/menus/steak-special-29-10-2023.pdf","format":"pdf","valid_dates":"29 Oct 2023"},
+{"title":"Children's Menu","type":"other","url":"https://www.thetowersswanseabay.com/menus/childrens-menu-aug-2022.pdf","format":"pdf","valid_dates":"Aug 2022"},
+{"title":"Restaurant Christmas 3 Course 2026 (festive lunches)","type":"festive","url":"https://www.thetowersswanseabay.com/christmas2026/assets/menus/2026/Restaurant Christmas 3 Course 2026.pdf","format":"pdf","valid_dates":"Christmas 2026, Thu-Sat, £32.50pp","signal":true}],"notices":["Christmas 2026 festive programme published: 3-course festive restaurant lunches £32.50pp (Thu-Sat), Christmas Day, party nights and NYE","Menu may be out of date (dated 2023) — unverified: Midweek Wine and Dine and Steak Special PDFs","Menu may be out of date (dated 2022) — unverified: Children's Menu PDF","Menu may be out of date (dated 2025) — unverified: Sunday Lunch Menu PDF"]},
+{"id":"the-treat-tray-neath","name":"The Treat Tray","town":"Neath","type":"restaurant","address":"32 Idwal  Street Neath SA11 3HR","social":"https://www.facebook.com/OatesCakesForAllOccasions/","cuisine":"Bakery & patisserie","fsa":{"r":"5","id":1959160,"d":"2026-04-20"},"menus":[]},
+{"id":"the-welsh-house-cattle-and-co-neath","name":"The Welsh House / Cattle and Co","town":"Neath","type":"restaurant","address":"5 Croft Road Neath SA11 1RW","cuisine":"Burgers, BBQ & American","fsa":{"r":"5","id":1823529,"d":"2026-01-23"},"ta":{"r":4.1,"n":263,"i":"g1474525-d25972960"},"menus":[]},
+{"id":"unit-9-cafe-neath","name":"Unit 9 Cafe","town":"Neath","type":"cafe","address":"Quay Road Neath SA11 1SL","website":"https://www.unit-9.co.uk/","social":"https://www.facebook.com/p/Unit-9-Caf%C3%A9-100076261725913/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1516450,"d":"2026-06-08"},"menus":[]},
+{"id":"waffle-town-neath","name":"Waffle Town","town":"Neath","type":"restaurant","address":"13 New Street Neath SA11 1RT","website":"https://waffletownonline.co.uk/","social":"https://www.facebook.com/waffletownneath/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1266576,"d":"2026-08-18"},"menus":[{"title":"Online ordering menu","type":"main","url":"https://waffletownonline.co.uk/"}]},
+{"id":"y-cwtch-neath","name":"Y Cwtch","town":"Neath","type":"restaurant","address":"Cafeteria Crynant Business Ce Crynant Business Park Crynant Neath SA10 8PX","website":"https://www.dansa.org.uk/y-cwtch/","social":"https://www.facebook.com/p/Y-Cwtch-Cafe-Crynant-100063708933759/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":688349,"d":"2024-12-05"},"ta":{"r":4.8,"n":18,"i":"g3354536-d8814860"},"menus":[]},
+{"id":"cardamon-pontardawe","name":"Cardamon","town":"Pontardawe","type":"restaurant","address":"52 Herbert Street Pontardawe SA8 4EB","website":"https://www.cardamonrestaurant.uk/pontardawe/","cuisine":"Indian & South Asian","fsa":{"r":"5","id":1534095,"d":"2025-08-27"},"ta":{"r":4.3,"n":91,"i":"g1644097-d6480538"},"menus":[{"title":"Online menu","type":"main","url":"https://www.cardamonrestaurant.uk/pontardawe/menu.html"}]},
+{"id":"colliers-arms-pontardawe","name":"Colliers Arms","town":"Pontardawe","type":"pub","address":"Colliers Arms 154 Swansea Road Trebanos Pontardawe SA8 4BX","cuisine":"British pub food","fsa":{"r":"4","id":187502,"d":"2019-07-16"},"menus":[]},
+{"id":"daviess-diner-pontardawe","name":"Davies's Diner","town":"Pontardawe","type":"restaurant","address":"Ema Evans Business Centre Alloy Industrial Estate Pontardawe Swansea SA8 4EN","social":"https://www.facebook.com/p/Daviess-Diner-61593529211162/","cuisine":"Cafe & breakfast","fsa":{"r":"2","id":1991098,"d":"2026-09-10"},"menus":[]},
+{"id":"dillwyn-arms-pontardawe","name":"Dillwyn Arms","town":"Pontardawe","type":"pub","address":"Dillwyn Arms Herbert Street Pontardawe SA8 4EB","social":"https://www.facebook.com/thedillwynarms/","cuisine":"British pub food","fsa":{"r":"3","id":1393636,"d":"2025-07-17"},"ta":{"r":4.8,"n":64,"i":"g1644097-d4037493"},"notices":["Facebook: 'Our New Menu starts TODAY!' and a new Sunday lunch menu announced (2026)"],"menus":[]},
+{"id":"fat-boy-wingz-ltd-pontardawe","name":"Fat Boy Wingz Ltd","town":"Pontardawe","type":"restaurant","address":"39 New Road Gellinudd Pontardawe SA8 3DY","website":"https://fatboywingz.com/","social":"https://www.facebook.com/fatboywingz/","cuisine":"Burgers, BBQ & American","fsa":{"r":"5","id":1634398,"d":"2025-07-03"},"menus":[{"title":"Just Eat menu","type":"main","url":"https://www.just-eat.co.uk/restaurants-fat-boy-wingz-glamorgan-sa8/menu"}],"notices":["Facebook post 'NEW MENU DROP' (approx. spring 2026)"]},
+{"id":"gwyn-arms-pontardawe","name":"Gwyn Arms","town":"Pontardawe","type":"pub","address":"Gwyn Arms Gwyns Place Alltwen Pontardawe Swansea SA8 3AJ","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":747103,"d":"2019-03-06"},"menus":[]},
+{"id":"indian-cottage-swansea-ltd-pontardawe","name":"Indian Cottage (Swansea) Ltd","town":"Pontardawe","type":"restaurant","address":"69 Herbert Street Pontardawe SA8 4ED","social":"https://www.facebook.com/p/Indian-Cottage-61557239810864/","cuisine":"Indian & South Asian","fsa":{"r":"1","id":1005682,"d":"2026-09-08"},"ta":{"r":4.5,"n":310,"i":"g186466-d3510070"},"menus":[{"title":"Just Eat menu","type":"main","url":"https://www.just-eat.co.uk/restaurants-indian-cottage-glamorgan/menu"}],"notices":["Facebook mentions 'our new set menu' (date unverified)"]},
+{"id":"ivy-bush-hotel-pontardawe","name":"Ivy Bush Hotel","town":"Pontardawe","type":"pub","address":"103 High Street Pontardawe Neath SA8 4JN","social":"https://www.facebook.com/1559799124312952","cuisine":"British pub food","fsa":{"r":"Awaiting","id":1993974},"ta":{"r":4.3,"n":22,"i":"g1644097-d15635919"},"menus":[]},
+{"id":"mansellsmakes-pontardawe","name":"Mansellsmakes","town":"Pontardawe","type":"restaurant","address":"6 Delffordd Rhos Pontardawe SA8 3EL","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"4","id":1978238,"d":"2026-07-29"},"menus":[]},
+{"id":"meze-and-grill-turkish-restaurant-pontardawe","name":"Meze and Grill Turkish Restaurant","town":"Pontardawe","type":"restaurant","address":"12 High Street Pontardawe SA8 4HU","website":"https://mezeandgrill.co.uk/","social":"https://www.facebook.com/p/Meze-Grill-Pontardawe-61583319839749/","cuisine":"Steakhouse & grill","fsa":{"r":"5","id":1918685,"d":"2026-06-03"},"ta":{"r":5.0,"n":9,"i":"g1644097-d34023767"},"menus":[{"title":"Online ordering (Foodhub)","type":"main","url":"https://foodhub.co.uk/pontardawe/meze-and-grill/ordernow"}]},
+{"id":"pontardawe-arts-centre-pontardawe","name":"Pontardawe Arts Centre","town":"Pontardawe","type":"restaurant","address":"Herbert Street Pontardawe SA8 4ED","website":"https://pontardaweartscentre.com/","social":"https://www.facebook.com/PontardaweArtsCentre/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1833070,"d":"2026-04-15"},"ta":{"i":"g186466-d10243890","a":1},"menus":[]},
+{"id":"pontardawe-inn-y-gwachel-pontardawe","name":"Pontardawe Inn Y Gwachel","town":"Pontardawe","type":"pub","address":"123 Herbert Street Pontardawe SA8 4ED","website":"https://www.pontardaweinnpub.co.uk/","social":"https://www.facebook.com/147329501970152","cuisine":"British pub food","fsa":{"r":"5","id":1534105,"d":"2026-07-20"},"ta":{"i":"g1644097-d4834330"},"menus":[{"title":"Menus","type":"main","url":"https://www.pontardaweinnpub.co.uk/menus"},
+{"title":"Sunday Roast","type":"sunday-roast","url":"https://www.pontardaweinnpub.co.uk/sunday-roast","valid_dates":"Sundays"},
+{"title":"Festive Menu","type":"festive","url":"https://www.pontardaweinnpub.co.uk/festive-menu","valid_dates":"Christmas 2026","signal":true},
+{"title":"Christmas Day Menu","type":"festive","url":"https://www.pontardaweinnpub.co.uk/christmas-day","valid_dates":"25 December 2026","signal":true}],"notices":["Christmas 2026 Festive Menu and Christmas Day Menu published; early-booking voucher offer ended 31 Oct 2026; Breakfast with Santa"]},
+{"id":"rossellis-coffee-house-pontardawe","name":"Rosselli's Coffee House","town":"Pontardawe","type":"cafe","address":"27 Herbert Street Pontardawe SA8 4EB","website":"https://www.rosselliscoffee.co.uk/","social":"https://www.facebook.com/rosselliscoffee/","cuisine":"Cafe & breakfast","fsa":{"r":"4","id":1471175,"d":"2025-10-23"},"ta":{"r":3.3,"n":4,"i":"g186466-d23934148"},"menus":[]},
+{"id":"smiths-arms-pontardawe","name":"Smiths Arms","town":"Pontardawe","type":"pub","address":"118 Neath Road Rhos Pontardawe SA8 3HB","social":"https://www.facebook.com/TheSmithsRhos/","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":1702281,"d":"2023-11-15"},"menus":[]},
+{"id":"tamarind-purple-panda-ltd-pontardawe","name":"Tamarind (Purple Panda Ltd)","town":"Pontardawe","type":"restaurant","address":"65 Herbert Street Pontardawe SA8 4ED","website":"https://tamarindpontardawe.co.uk/","cuisine":"Indian & South Asian","fsa":{"r":"3","id":939966,"d":"2026-08-17"},"ta":{"i":"g1644097-d2563227"},"menus":[{"title":"All dishes","type":"main","url":"https://tamarindpontardawe.co.uk/index.php/alldishes?view=menudetails&id=3&printable_menu=-1"},
+{"title":"Sunday Set Menu","type":"set-menu","url":"https://tamarindpontardawe.co.uk/index.php/sunday-special?view=menudetails&id=23&printable_menu=-1","valid_dates":"Sundays 4pm-10pm"}]},
+{"id":"the-butchers-arms-alltwen-pontardawe","name":"The Butchers Arms Alltwen","town":"Pontardawe","type":"pub","address":"The Butchers Arms Alltwen Hill Alltwen Pontardawe SA8 3BP","social":"https://www.facebook.com/thebutchersarmsalltwen/","cuisine":"British pub food","fsa":{"r":"5","id":1649644,"d":"2025-06-12"},"ta":{"r":4.1,"n":277,"i":"g1644097-d1170433"},"notices":["Facebook festive menu post found is from late 2025; no Christmas 2026 menu seen yet"],"menus":[]},
+{"id":"the-castle-hotel-pontardawe","name":"The Castle Hotel","town":"Pontardawe","type":"pub","address":"1 High Street Pontardawe Abertawe Castell Nedd Port Ta SA8 4HU","social":"https://www.facebook.com/1232937663399915","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":122374,"d":"2010-12-10"},"menus":[]},
+{"id":"the-coffee-ground-pontardawe","name":"The Coffee Ground","town":"Pontardawe","type":"cafe","address":"77 Herbert Street Pontardawe Swansea SA8 4ED","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"Awaiting","id":1993971},"menus":[]},
+{"id":"the-other-place-pontardawe","name":"The Other Place","town":"Pontardawe","type":"pub","address":"The Other Place 9 Ynysderw Road Pontardawe Swansea SA8 4EG","social":"https://www.facebook.com/TheOtherPlacePontardawe/","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":770378,"d":"2018-03-07"},"menus":[]},
+{"id":"the-pink-geranium-pontardawe","name":"The Pink Geranium","town":"Pontardawe","type":"pub","address":"31-33 Herbert Street Pontardawe SA8 4EB","social":"https://www.facebook.com/ThePinkG/","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"4","id":122509,"d":"2014-05-01"},"menus":[]},
+{"id":"the-ponty-cafe-pontardawe","name":"The Ponty Cafe","town":"Pontardawe","type":"cafe","address":"5 James Street Pontardawe Swansea SA8 4LR","social":"https://www.facebook.com/PontyCafe/","cuisine":"Cafe & breakfast","fsa":{"r":"1","id":146182,"d":"2025-06-12"},"ta":{"r":3.9,"n":14,"i":"g1644097-d10132898"},"menus":[]},
+{"id":"travellers-well-pontardawe","name":"Travellers Well","town":"Pontardawe","type":"pub","address":"Travellers Well 76 Commercial Road Rhydyfro Pontardawe SA8 4SS","social":"https://www.facebook.com/TheTravellersWell/","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"1","id":1734441,"d":"2026-05-14"},"menus":[]},
+{"id":"b2m-rumours-port-talbot-ltd-t-a-b2m-port-talbot","name":"B2M (Rumours Port Talbot Ltd t/a B2M)","town":"Port Talbot","type":"pub","address":"39 Station Road Port Talbot SA13 1NN","social":"https://www.facebook.com/b2mPortTalbot/","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":747093,"d":"2015-03-26"},"menus":[]},
+{"id":"baristas-coffee-shop-port-talbot","name":"Baristas Coffee Shop","town":"Port Talbot","type":"cafe","address":"Unit M1 Aberafan Shopping Centre Port Talbot SA13 1PB","website":"https://www.aberafanshopping.co.uk/shopping/store/baristas-coffee-shop","social":"https://www.facebook.com/Baristasporttalbot","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1742646,"d":"2026-03-19"},"ta":{"r":4.1,"n":51,"i":"g681385-d2589523"},"menus":[]},
+{"id":"bella-ciao-port-talbot","name":"Bella Ciao","town":"Port Talbot","type":"restaurant","address":"20 Forge Road Port Talbot SA13 1NU","website":"https://www.bellaciaorestaurants.co.uk/","social":"https://www.facebook.com/BellaCiaoPortTalbot/","cuisine":"Italian","fsa":{"r":"5","id":1534100,"d":"2026-06-10"},"ta":{"r":4.2,"n":87,"i":"g681385-d24175541"},"menus":[{"title":"Main Menu (Swansea Kingsway & Port Talbot)","type":"main","url":"https://www.bellaciaorestaurants.co.uk/menu-2"}],"notices":["Facebook announces a NEW Set Menu at £16.95 through the week (undated in search snippet)"]},
+{"id":"bethel-trust-food-bank-port-talbot","name":"Bethel Trust (Food Bank)","town":"Port Talbot","type":"restaurant","address":"Sandfields Road Port Talbot SA12 6LR","website":"https://betheltrustpt.co.uk/","social":"https://www.facebook.com/groups/435395763263661/","serves_food":"no","cuisine":"Not classified","fsa":{"r":"5","id":1178899,"d":"2025-06-03"},"menus":[]},
+{"id":"bollywood-lounge-port-talbot","name":"Bollywood Lounge","town":"Port Talbot","type":"restaurant","address":"27 Station Road Port Talbot SA13 1NN","website":"https://bollywoodlounge-pt.co.uk/","social":"https://www.facebook.com/BollywoodLoungePT/","cuisine":"Indian & South Asian","fsa":{"r":"4","id":1680482,"d":"2026-03-12"},"ta":{"r":4.5,"n":93,"i":"g681385-d19717500"},"notices":["Facebook promotes a 4-course Bollywood Set Menu at £14.95 (Sunday special 3-course £14.95)"],"menus":[]},
+{"id":"burger-boyz-port-talbot","name":"Burger Boyz","town":"Port Talbot","type":"restaurant","address":"37 Commercial Road Taibach SA13 1LN","website":"https://burgerboyzzz.co.uk/","social":"https://www.facebook.com/Burgerboyzzz/","cuisine":"Burgers, BBQ & American","fsa":{"r":"5","id":1521574,"d":"2026-09-10"},"ta":{"r":4.1,"n":19,"i":"g681385-d26790380"},"menus":[{"title":"Main Menu Port Talbot (July 26)","type":"main","url":"https://resdiary-prod.azureedge.net/uploads/uk/25716/menus/alacarte/Menu PT July 26   (4).pdf","format":"pdf","valid_dates":"July 2026"},
+{"title":"Meal Deals Menu - Port Talbot","type":"set-menu","url":"https://resdiary-prod.azureedge.net/uploads/uk/25716/menus/setmenu/MEAL DEALS MENU - Port Talbot (2).pdf","format":"pdf"}]},
+{"id":"cafe-fresco-port-talbot","name":"Cafe Fresco","town":"Port Talbot","type":"cafe","address":"105 Station Road Port Talbot SA13 1NR","website":"https://www.cafefrescowales.co.uk/","social":"https://www.facebook.com/cafefrescoporttalbot/","cuisine":"Cafe & breakfast","fsa":{"r":"4","id":1527246,"d":"2026-06-01"},"ta":{"i":"g681385-d12639794"},"menus":[]},
+{"id":"cafe-remos-port-talbot","name":"Cafe Remo's","town":"Port Talbot","type":"cafe","address":"The Princess Margaret Way Sandfields Port Talbot SA12 6QW","website":"https://caferemos.com/","social":"https://www.facebook.com/CafeRemos/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":144133,"d":"2026-02-05"},"ta":{"i":"g681385-d1849189"},"menus":[{"title":"Main / Ice cream / Breakfast menus (on-page sections)","type":"main","url":"https://caferemos.com/"}]},
+{"id":"caffe-latte-port-talbot","name":"Caffe Latte","town":"Port Talbot","type":"restaurant","address":"Unit 23a Aberafan Shopping Centre Port Talbot SA13 1PB","website":"https://www.aberafanshopping.co.uk/shopping/store/cafe-latte","cuisine":"Cafe & breakfast","fsa":{"r":"3","id":142501,"d":"2025-08-05"},"ta":{"r":5.0,"n":7,"i":"g681385-d9790949"},"menus":[]},
+{"id":"cinnamon-kitchen-port-talbot","name":"Cinnamon Kitchen","town":"Port Talbot","type":"cafe","address":"Cinnamon Kitchen The Princess Margaret Way Sandfields SA12 6QW","website":"https://cinnamonkitchenpt.co.uk/","social":"https://www.facebook.com/CinnamonKitchenPortTalbot/","cuisine":"Indian & South Asian","fsa":{"r":"5","id":576604,"d":"2023-04-03"},"ta":{"r":4.5,"n":598,"i":"g681385-d4281703"},"menus":[{"title":"Inside (dine-in) Menu","type":"main","url":"https://cinnamonkitchenpt.co.uk/wp-content/uploads/2023/09/CK_InsideMenu.pdf","format":"pdf"},
+{"title":"Takeaway Menu 2023","type":"main","url":"https://cinnamonkitchenpt.co.uk/wp-content/uploads/2023/12/ck_takeaway2023.pdf","format":"pdf","valid_dates":"2023"}],"notices":["Menu may be out of date (dated 2023) — unverified","Drinks menu may be out of date (dated 2022) — unverified","Own website menu page shows injected unrelated spam text — site may be compromised"]},
+{"id":"colliers-arms-port-talbot","name":"Colliers Arms","town":"Port Talbot","type":"pub","address":"Colliers Arms Efail Fach Pontrhydyfen SA12 9TY","website":"https://www.collierspub.com/","social":"https://www.facebook.com/thecolliersarms/","cuisine":"British pub food","fsa":{"r":"4","id":708213,"d":"2026-02-23"},"ta":{"i":"g681385-d1641665"},"menus":[{"title":"Just Eat menu (third-party)","type":"main","url":"https://www.just-eat.co.uk/restaurants-the-colliers-arms-port-talbot/menu"}],"notices":["Facebook post announces a NEW MENU with pub classics, pasta and wraps (undated snippet)","Facebook mentions a £20pp meal (Beef or Turkey) — occasion and date unverified"]},
+{"id":"corrwg-cwtch-ltd-port-talbot","name":"Corrwg Cwtch Ltd","town":"Port Talbot","type":"restaurant","address":"Glyncorrwg MTB Centre Ynyscorrwg Park Glyncorrwg SA13 3EA","website":"https://glyncorrwgmtbcentreandcampsite.co.uk/corrwg-cwtch/","social":"https://www.facebook.com/corrwgcwtch/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1702291,"d":"2026-04-22"},"menus":[]},
+{"id":"costa-coffee-port-talbot","name":"Costa Coffee","town":"Port Talbot","type":"cafe","address":"Unit 41 Aberafan Shopping Centre Port Talbot SA13 1PB","website":"https://www.costa.co.uk/stores/port-talbot","cuisine":"Cafe & breakfast","fsa":{"r":"4","id":910638,"d":"2025-06-11"},"ta":{"i":"g681385-d10426898"},"menus":[{"title":"Costa menu (national)","type":"main","url":"https://www.costa.co.uk/menu"}]},
+{"id":"cyfeillion-parc-coffa-talbot-friends-of-talbot-memorial-park-port-talbot","name":"Cyfeillion Parc Coffa Talbot / Friends of Talbot Memorial Park","town":"Port Talbot","type":"restaurant","address":"Talbot Memorial Park Talbot Road SA13 1SP","social":"https://www.instagram.com/talbotmem/","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":1978240,"d":"2026-07-02"},"menus":[]},
+{"id":"dreamz-funhouse-port-talbot","name":"Dreamz Funhouse","town":"Port Talbot","type":"restaurant","address":"Unit 20 Seaway Parade Port Talbot SA12 7BR","social":"https://www.facebook.com/61557181642373/","cuisine":"Cafe & breakfast","fsa":{"r":"4","id":1753563,"d":"2026-05-27"},"menus":[]},
+{"id":"ej-monks-catering-port-talbot","name":"EJ Monks Catering","town":"Port Talbot","type":"restaurant","address":"Afan Masonic Temple Forge Road Port Talbot SA13 1US","serves_food":"no","cuisine":"Not classified","fsa":{"r":"5","id":782681,"d":"2025-10-09"},"menus":[]},
+{"id":"ferraris-cafe-91-port-talbot","name":"Ferrari's Cafe 91","town":"Port Talbot","type":"cafe","address":"91 Station Road Port Talbot SA13 1NR","social":"https://www.facebook.com/cafeferraris/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1763581,"d":"2026-06-10"},"ta":{"i":"g681385-d10003152"},"menus":[]},
+{"id":"fire-station-port-talbot","name":"Fire Station","town":"Port Talbot","type":"restaurant","address":"Port Talbot Fire Station Woodfield Street Taibach SA13 1LT","serves_food":"no","cuisine":"Not classified","fsa":{"r":"5","id":660643,"d":"2019-03-26"},"menus":[]},
+{"id":"forge-tavern-port-talbot","name":"Forge Tavern","town":"Port Talbot","type":"pub","address":"4 Forge Road Port Talbot West Glamorgan SA13 1NU","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":896661,"d":"2017-11-03"},"menus":[]},
+{"id":"francos-port-talbot","name":"Franco's","town":"Port Talbot","type":"restaurant","address":"Francos Fish Bar & Restaurant The Princess Margaret Way Sandfields SA12 6QW","website":"https://www.francochips.com/","social":"https://www.facebook.com/francosaberavon/","cuisine":"Seafood & fish and chips","fsa":{"r":"4","id":844110,"d":"2026-07-16"},"ta":{"i":"g681385-d4919372"},"menus":[{"title":"Restaurant menus (breakfast, starters & mains, desserts, children's, vegan, gluten free, drinks)","type":"main","url":"https://www.francochips.com/restaurant-menus"},
+{"title":"Chip Shop (takeaway) menu","type":"main","url":"https://www.francochips.com/chip-shop"},
+{"title":"Vegan menu","type":"other","url":"https://www.francochips.com/vegan-menu"}]},
+{"id":"g2-sports-bar-and-restaurant-port-talbot","name":"G2 Sports Bar & Restaurant","town":"Port Talbot","type":"pub","address":"78-81 Jersey Road Blaengwynfi SA13 3TD","social":"https://www.facebook.com/p/The-New-G2-Sports-Bar-and-Restaurant-61567741305340/","cuisine":"British pub food","fsa":{"r":"4","id":1109277,"d":"2026-06-14"},"menus":[]},
+{"id":"glan-afan-coffee-co-port-talbot","name":"Glan Afan Coffee Co","town":"Port Talbot","type":"cafe","address":"56a Station Road Port Talbot SA13 1LZ","social":"https://www.facebook.com/glanafancoffeeco/","cuisine":"Cafe & breakfast","fsa":{"r":"4","id":1671529,"d":"2025-08-19"},"ta":{"i":"g681385-d27743555"},"notices":["Recently reopened after a big refurbishment (Facebook/Instagram posts, autumn 2026)"],"menus":[]},
+{"id":"golden-dragon-port-talbot","name":"Golden Dragon","town":"Port Talbot","type":"restaurant","address":"22 Station Road Port Talbot SA13 1JB","website":"https://www.goldendragon-npt.co.uk/","social":"https://www.facebook.com/p/Golden-Dragon-Port-Talbot-100076317249536/","cuisine":"Chinese & East Asian","fsa":{"r":"5","id":143921,"d":"2025-10-06"},"ta":{"i":"g681385-d12578802"},"menus":[{"title":"Online ordering menu","type":"main","url":"https://www.goldendragon-npt.co.uk/"}]},
+{"id":"gossip-cafe-port-talbot","name":"Gossip Cafe","town":"Port Talbot","type":"cafe","address":"31a Riverside Port Talbot SA13 1PH","social":"https://www.facebook.com/p/Gossip-cafe-port-talbot-100063565991028/","cuisine":"Cafe & breakfast","fsa":{"r":"3","id":122295,"d":"2025-06-10"},"ta":{"r":4.4,"n":23,"i":"g681385-d12322920"},"menus":[{"title":"Deliveroo menu (third-party)","type":"main","url":"https://deliveroo.co.uk/menu/swansea/port-talbot/gossip-cafe-31a-riverside-walk"}]},
+{"id":"guerrilla-kitchen-port-talbot","name":"Guerrilla Kitchen","town":"Port Talbot","type":"cafe","address":"85 Pen Y Cae Road Port Talbot SA13 2EN","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":1991080,"d":"2026-06-11"},"menus":[]},
+{"id":"habit-coffee-co-port-talbot","name":"Habit Coffee Co","town":"Port Talbot","type":"cafe","address":"74 Tan Y Groes Streeet Port Talbot SA13 1EE","website":"https://habitcoffeeco.co.uk/","social":"https://www.instagram.com/habit_coffeeco/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1940313,"d":"2026-04-14"},"menus":[{"title":"Sample Menu","type":"main","url":"https://habitcoffeeco.co.uk/#samplemenu"},
+{"title":"Full click & collect menu","type":"main","url":"https://habit-coffee-co.sumupstore.com/products"}]},
+{"id":"haus-of-bakes-port-talbot","name":"Haus of Bakes","town":"Port Talbot","type":"restaurant","address":"Unit 14 Glyncorrwg Workshops Glyncorrwg Port Talbot SA13 3EA","social":"https://www.facebook.com/p/Haus-of-Bakes-61584313904589/","cuisine":"Bakery & patisserie","fsa":{"r":"5","id":1991079,"d":"2026-06-19"},"menus":[]},
+{"id":"hi-coffee-uk-ltd-port-talbot","name":"Hi Coffee UK Ltd","town":"Port Talbot","type":"cafe","address":"Port Talbot Parkway Railway Station Cramic Way Port Talbot SA13 1RU","social":"https://www.instagram.com/workofartporttalbot/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1454738,"d":"2021-11-23"},"menus":[]},
+{"id":"honey-bee-coffee-cafe-port-talbot","name":"Honey Bee Coffee Cafe","town":"Port Talbot","type":"cafe","address":"West Mall Aberafan Shopping Centre Port Talbot SA13 1PB","website":"https://www.aberafanshopping.co.uk/shopping/store/honey-bee-cafe","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"4","id":660646,"d":"2026-07-21"},"menus":[]},
+{"id":"jimmys-bar-port-talbot","name":"Jimmy's Bar","town":"Port Talbot","type":"pub","address":"33 Station Road Port Talbot W Glam SA13 1NN","serves_food":"no","cuisine":"Not classified","fsa":{"r":"5","id":1128612,"d":"2019-04-09"},"notices":["Trading status uncertain: original company dissolved and locals asking if still open (Facebook, Nov 2026)"],"menus":[]},
+{"id":"jords-kitchen-port-talbot","name":"Jord's Kitchen","town":"Port Talbot","type":"cafe","address":"Workshop 5 Sandfields Young Business Centre Purcell Avenue Sandfields SA12 7PT","social":"https://www.facebook.com/p/Jords-kitchen-100063019129554/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1570201,"d":"2026-03-05"},"menus":[]},
+{"id":"kaspas-port-talbot","name":"Kaspas","town":"Port Talbot","type":"restaurant","address":"22 Talbot Road Port Talbot SA13 1HU","website":"https://kaspas.co.uk/","social":"https://www.facebook.com/kaspasporttalbot/","cuisine":"Bakery & patisserie","fsa":{"r":"5","id":1645046,"d":"2025-08-12"},"menus":[{"title":"Desserts menu (national)","type":"main","url":"https://kaspas.co.uk/our-menu/"}],"notices":["Search snippet shows 'Autumn Specials' on the Kaspa's menu page (page itself bot-blocked, unverified)"]},
+{"id":"kizzys-cakes-port-talbot","name":"Kizzy's Cakes","town":"Port Talbot","type":"restaurant","address":"20 Severn Crescent Sandfields SA12 6SY","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":1354976,"d":"2021-05-17"},"menus":[]},
+{"id":"mamas-cwtch-port-talbot","name":"Mama's Cwtch","town":"Port Talbot","type":"restaurant","address":"51 Commercial Road Taibach SA13 1LP","social":"https://www.facebook.com/MammasCwtch/","cuisine":"Cafe & breakfast","fsa":{"r":"4","id":810251,"d":"2025-07-31"},"menus":[]},
+{"id":"memo-beach-port-talbot","name":"Memo Beach","town":"Port Talbot","type":"restaurant","address":"Kiosk The Princess Margaret Way Sandfields SA12 7PH","social":"https://www.facebook.com/memobeachpt/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1454741,"d":"2025-06-17"},"ta":{"i":"g681385-d23603552"},"menus":[]},
+{"id":"miami-beach-port-talbot","name":"Miami Beach","town":"Port Talbot","type":"restaurant","address":"Unit 15 Aberafan Shopping Centre  Port Talbot SA13 1PB","website":"https://www.aberafanshopping.co.uk/shopping/store/miami-beach","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":1978251,"d":"2026-08-20"},"menus":[]},
+{"id":"murphys-main-stage-port-talbot","name":"Murphy's Main Stage","town":"Port Talbot","type":"pub","address":"18 Station Road Port Talbot SA13 1JB","social":"https://www.facebook.com/p/Murphys-Main-Stage-100087437112160/","serves_food":"no","cuisine":"Not classified","fsa":{"r":"4","id":1592510,"d":"2024-06-12"},"menus":[]},
+{"id":"olives-pantry-port-talbot","name":"Olive's Pantry","town":"Port Talbot","type":"restaurant","address":"Unit 9 Riverside Walk Station Road Port Talbot SA13 1PH","social":"https://www.facebook.com/p/Olives-Pantry-est-2025-61580853816729/","cuisine":"Bakery & patisserie","fsa":{"r":"5","id":1978249,"d":"2026-07-03"},"menus":[]},
+{"id":"pepes-piri-piri-port-talbot","name":"Pepes Piri Piri","town":"Port Talbot","type":"restaurant","address":"1-2 Commercial Buildings Talbot Road Port Talbot SA13 1DR","website":"https://pepes.co.uk/","social":"https://www.facebook.com/PepesPiriPiriPortTalbot/","cuisine":"Burgers, BBQ & American","fsa":{"r":"5","id":1527249,"d":"2026-02-18"},"ta":{"i":"g681385-d24871589"},"menus":[{"title":"Pepe's menu (chain-wide)","type":"main","url":"https://pepes.co.uk/menu/"}]},
+{"id":"pig-iron-tavern-port-talbot","name":"Pig Iron Tavern","town":"Port Talbot","type":"pub","address":"44-46 Station Road Port Talbot SA13 1JS","website":"https://ambertaverns.co.uk/pub/the-pig-iron-tavern/","social":"https://www.facebook.com/ThePigIronTavern/","serves_food":"no","cuisine":"Not classified","fsa":{"r":"5","id":951714,"d":"2019-08-30"},"menus":[]},
+{"id":"port-talbot-food-bank-port-talbot","name":"Port Talbot Food Bank","town":"Port Talbot","type":"restaurant","address":"Carmel Chapel Carmel Chapel Riverside Port Talbot SA13 1EJ","serves_food":"no","cuisine":"Not classified","fsa":{"r":"5","id":833771,"d":"2021-10-15"},"menus":[]},
+{"id":"portablo-coffi-port-talbot","name":"Portablo Coffi","town":"Port Talbot","type":"restaurant","address":"Kiosk 6 Aberafan Shopping Centre Port Talbot SA13 1PB","website":"https://www.aberafanshopping.co.uk/shopping/store/portablo-coffi","social":"https://www.facebook.com/portablocoffi/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1719359,"d":"2024-11-01"},"menus":[]},
+{"id":"princess-royal-theatre-port-talbot","name":"Princess Royal Theatre","town":"Port Talbot","type":"pub","address":"Princess Royal Theatre Port T Access To Port Talbot Civic Ce Port Talbot SA13 1PJ","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":1081289,"d":"2018-07-05"},"menus":[]},
+{"id":"royal-oak-inn-port-talbot","name":"Royal Oak Inn","town":"Port Talbot","type":"pub","address":"Royal Oak Hotel Maesteg Road Bryn Port Talbot SA13 2RW","cuisine":"British pub food","fsa":{"r":"5","id":740998,"d":"2026-06-14"},"menus":[]},
+{"id":"salt-and-fern-cabins-port-talbot","name":"Salt and Fern Cabins","town":"Port Talbot","type":"restaurant","address":"Salt and Fern Cabins Goytre Port Talbot SA13 2YP","social":"https://www.instagram.com/saltandferncabins/","serves_food":"no","cuisine":"Not classified","fsa":{"r":"5","id":1978250,"d":"2026-06-19"},"menus":[]},
+{"id":"sand-rabbit-bar-and-grill-port-talbot","name":"Sand Rabbit Bar and Grill","town":"Port Talbot","type":"restaurant","address":"130 Victoria Road Sandfields SA12 6AY","cuisine":"Steakhouse & grill","fsa":{"r":"5","id":1734434,"d":"2024-11-22"},"ta":{"r":3.4,"n":51,"i":"g681385-d28286087"},"menus":[]},
+{"id":"selections-coffee-shop-port-talbot","name":"Selections Coffee Shop","town":"Port Talbot","type":"cafe","address":"85 Station Road Port Talbot SA13 1NR","social":"https://www.facebook.com/p/Selections-Coffee-Shop-100061515805939/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1013847,"d":"2025-01-13"},"ta":{"r":4.4,"n":119,"i":"g681385-d4424345"},"menus":[]},
+{"id":"somerset-arms-port-talbot","name":"Somerset Arms","town":"Port Talbot","type":"restaurant","address":"Somerset Arms Commercial Road Taibach SA13 1LP","social":"https://www.facebook.com/thesker2024/","cuisine":"British pub food","fsa":{"r":"1","id":1841718,"d":"2026-07-30"},"menus":[]},
+{"id":"starbucks-port-talbot","name":"Starbucks","town":"Port Talbot","type":"restaurant","address":"Unit 2 Burrows Yard Afan Way Aberafan SA12 6LL","social":"https://www.instagram.com/p/Dbvc9H3F428/","cuisine":"Cafe & breakfast","fsa":{"r":"Awaiting","id":1978283},"menus":[]},
+{"id":"steve-os-port-talbot","name":"Steve 'Os","town":"Port Talbot","type":"restaurant","address":"139 Western Avenue Sandfields SA12 7ND","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":1407392,"d":"2025-09-08"},"menus":[]},
+{"id":"t-bones-port-talbot","name":"T Bones","town":"Port Talbot","type":"restaurant","address":"T Bones Hawdref Ganol Farm  Pelenna SA12 9SL","website":"https://www.t-bones.co.uk/","social":"https://www.facebook.com/p/T-Bones-100063763200352/","cuisine":"Steakhouse & grill","fsa":{"r":"3","id":1560761,"d":"2026-08-20"},"ta":{"r":3.8,"n":173,"i":"g1474525-d1849632"},"menus":[{"title":"Main menu","type":"main","url":"https://www.t-bones.co.uk/main-menu/"},
+{"title":"Grill menu","type":"main","url":"https://www.t-bones.co.uk/grill-menu/"},
+{"title":"Starters menu","type":"main","url":"https://www.t-bones.co.uk/starters-menu/"},
+{"title":"Traditional menu","type":"main","url":"https://www.t-bones.co.uk/traditional-menu/"},
+{"title":"Day time menu (2 for £20, Thu-Sat 12-5pm)","type":"set-menu","url":"https://www.t-bones.co.uk/day-time-menu/"},
+{"title":"Desserts menu","type":"main","url":"https://www.t-bones.co.uk/desserts-menu/"},
+{"title":"Children's menu","type":"main","url":"https://www.t-bones.co.uk/childrens-menu/"},
+{"title":"Specials (homepage)","type":"specials","url":"https://www.t-bones.co.uk/"}]},
+{"id":"thai-corner-limited-port-talbot","name":"Thai Corner Limited","town":"Port Talbot","type":"restaurant","address":"3 Victoria Road Sandfields SA12 6AY","website":"https://www.thaicornerstreetfood.co.uk/","social":"https://www.instagram.com/thai_corner_2026/","cuisine":"Thai & South-East Asian","fsa":{"r":"5","id":1867745,"d":"2026-06-09"},"ta":{"i":"g14785004-d34683794"},"menus":[{"title":"Online ordering menu","type":"main","url":"https://www.thaicornerstreetfood.co.uk/"}]},
+{"id":"the-9-darter-port-talbot","name":"The 9 Darter","town":"Port Talbot","type":"restaurant","address":"Unit 5 Port Talbot Workshops Addison Road Sandfields SA12 6HZ","social":"https://www.facebook.com/p/The-9-Darter-61586345657628/","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"Awaiting","id":1978259},"menus":[]},
+{"id":"the-amazon-port-talbot","name":"The Amazon","town":"Port Talbot","type":"pub","address":"The Amazon Parry Road Sandfields SA12 7TR","social":"https://www.facebook.com/amazonparryroad/","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"4","id":951712,"d":"2017-02-22"},"menus":[]},
+{"id":"the-bell-inn-port-talbot","name":"The Bell Inn","town":"Port Talbot","type":"pub","address":"The Bell Inn 58 Commercial Road Taibach Port Talbot SA13 1LG","social":"https://www.facebook.com/TheBellInnTaibach/","serves_food":"no","cuisine":"Not classified","fsa":{"r":"4","id":122224,"d":"2013-05-23"},"menus":[]},
+{"id":"the-docks-cafe-ltd-port-talbot","name":"The Docks Cafe Ltd","town":"Port Talbot","type":"cafe","address":"The Docks Cafe North Bank Road Port Talbot SA13 1RE","website":"https://www.thedockscafe.co.uk/","social":"https://www.facebook.com/p/The-Docks-Cafe-100057589383766/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1797256,"d":"2025-06-09"},"menus":[{"title":"Menu highlights (breakfast, lunch, Sunday lunch)","type":"main","url":"https://www.thedockscafe.co.uk/"}]},
+{"id":"the-hideout-port-talbot","name":"The Hideout","town":"Port Talbot","type":"restaurant","address":"Cafe Aberafan Shopping Centre Port Talbot SA13 1PB","website":"https://www.aberafanshopping.co.uk/shopping/store/the-hideout-cafe","social":"https://www.facebook.com/TheHideoutCafePT/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1137966,"d":"2025-06-11"},"ta":{"r":3.9,"n":21,"i":"g681385-d17386278"},"menus":[]},
+{"id":"the-lord-caradoc-port-talbot","name":"The Lord Caradoc","town":"Port Talbot","type":"pub","address":"69-73 Station Road Port Talbot W Glam SA13 1NW","website":"https://www.jdwetherspoon.com/pubs/the-lord-caradoc-port-talbot/","cuisine":"British pub food","fsa":{"r":"5","id":101141,"d":"2023-09-21"},"ta":{"r":3.6,"n":187,"i":"g681385-d3860211"},"menus":[{"title":"Pub menu","type":"main","url":"https://www.jdwetherspoon.com/pub-menus/the-lord-caradoc-port-talbot/"},
+{"title":"Christmas at Wetherspoon 2026","type":"festive","url":"https://www.jdwetherspoon.com/news/christmas-at-wetherspoon-2026/","valid_dates":"12 Nov - 31 Dec 2026 (excl. Christmas Day)","signal":true}],"notices":["Wetherspoon Christmas 2026 menu available from Thu 12 Nov to Thu 31 Dec (excluding Christmas Day)."]},
+{"id":"the-old-olive-kart-coffee-bar-and-deli-port-talbot","name":"The Old Olive Kart Coffee Bar & Deli","town":"Port Talbot","type":"cafe","address":"56c Station Road Port Talbot SA13 1LZ","website":"https://www.theoldolivekart.co.uk/","social":"https://www.facebook.com/OliveKartCoffeeBar/","cuisine":"Modern British & European","fsa":{"r":"4","id":1615189,"d":"2025-01-15"},"ta":{"r":4.7,"n":11,"i":"g681385-d26525345"},"menus":[{"title":"Menu","type":"main","url":"https://www.theoldolivekart.co.uk/menu"},
+{"title":"Coffee Shop Menu","type":"main","url":"https://www.theoldolivekart.co.uk/_files/ugd/d56d77_6cea5dbc2b68445dba9d99df29142303.pdf","format":"pdf"}]},
+{"id":"the-pop-in-cafe-port-talbot","name":"The Pop In Cafe","town":"Port Talbot","type":"cafe","address":"Purcell Avenue Sandfields Port Talbot SA12 7TF","social":"https://www.facebook.com/thepopincafe/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":56925,"d":"2025-06-27"},"ta":{"r":4.9,"n":25,"i":"g681385-d4293855"},"menus":[]},
+{"id":"the-red-lion-port-talbot","name":"The Red Lion","town":"Port Talbot","type":"pub","address":"Corner House 1 Talbot Road Port Talbot SA13 1HN","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":1219948,"d":"2022-03-09"},"menus":[]},
+{"id":"the-refreshment-rooms-port-talbot","name":"The Refreshment Rooms","town":"Port Talbot","type":"restaurant","address":"The Old Station  Cymmer SA13 3HY","social":"https://www.facebook.com/100041334344918/","cuisine":"British pub food","fsa":{"r":"5","id":922446,"d":"2025-09-23"},"ta":{"r":4.5,"n":86,"i":"g681385-d845467"},"menus":[]},
+{"id":"the-spud-fam-port-talbot","name":"The Spud Fam","town":"Port Talbot","type":"restaurant","address":"Kiosk 7 Aberafan Shopping Centre Aberafan Port Talbot SA12 1AB","website":"https://www.aberafanshopping.co.uk/shopping/store/spud-fam","social":"https://www.facebook.com/p/The-Spud-Fam-61565286833970/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1784035,"d":"2026-06-18"},"menus":[]},
+{"id":"the-surge-cafe-bar-port-talbot","name":"The Surge Cafe Bar","town":"Port Talbot","type":"cafe","address":"74 Commercial Road Taibach SA13 1LR","cuisine":"Cafe & breakfast","fsa":{"r":"4","id":1570198,"d":"2024-12-10"},"ta":{"r":5.0,"n":3,"i":"g681385-d27467641"},"menus":[]},
+{"id":"tiddlywinks-port-talbot","name":"Tiddlywinks","town":"Port Talbot","type":"restaurant","address":"Special Needs Activity Centre Lady Charlotte Lane Taibach SA13 2BL","serves_food":"no","cuisine":"Not classified","fsa":{"r":"4","id":765599,"d":"2025-04-22"},"menus":[]},
+{"id":"tunnel-hotel-port-talbot","name":"Tunnel Hotel","town":"Port Talbot","type":"pub","address":"Tunnel Hotel Gwynfi Street Blaengwynfi Port Talbot SA13 3TY","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":306781,"d":"2013-03-11"},"menus":[]},
+{"id":"wanna-thai-food-ltd-port-talbot","name":"Wanna Thai Food Ltd","town":"Port Talbot","type":"restaurant","address":"87 Station Road Port Talbot SA13 1NR","cuisine":"Thai & South-East Asian","fsa":{"r":"5","id":1534102,"d":"2026-08-13"},"menus":[]},
+{"id":"ymca-port-talbot-limited-t-a-the-new-plaza-port-talbot","name":"YMCA Port Talbot Limited T/A The New Plaza","town":"Port Talbot","type":"restaurant","address":"The Plaza 1 Talbot Road Port Talbot SA13 1DH","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":1639439,"d":"2023-09-06"},"menus":[]},
+{"id":"canal-cafe-resolven","name":"Canal Cafe","town":"Resolven","type":"cafe","address":"Commercial Road Resolven Neath SA11 4BZ","website":"https://www.southwalesadventurecompany.com/tea-rooms","social":"https://www.facebook.com/South-Wales-Adventure-Company-824218621103486/","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1742643,"d":"2026-01-21"},"menus":[]},
+{"id":"canalside-cafe-resolven","name":"Canalside Cafe","town":"Resolven","type":"cafe","address":"Ty Banc Neath Canal Towpath From Comme Resolven Neath SA11 4DP","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":1393616,"d":"2021-07-07"},"menus":[]},
+{"id":"judes-kcwtchen-resolven","name":"Jude's Kcwtchen","town":"Resolven","type":"restaurant","address":"Tanyrhiw Road Resolven SA11 4NB","cuisine":"Not classified","fsa":{"r":"5","id":1811552,"d":"2025-05-29"},"menus":[]},
+{"id":"the-besties-bar-resolven","name":"The Besties Bar","town":"Resolven","type":"pub","address":"26 Neath Road Resolven SA11 4AA","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"Awaiting","id":1914190},"menus":[]},
+{"id":"the-ranch-breakfast-bar-and-grill-resolven","name":"The Ranch Breakfast Bar and Grill","town":"Resolven","type":"restaurant","address":"Old TRW Site Car Park Resolven SA11 4SR","website":"https://www.theranchbarandgrill.co.uk/","social":"https://www.facebook.com/darrenandemmascafe/","cuisine":"Steakhouse & grill","fsa":{"r":"4","id":1430641,"d":"2026-01-15"},"ta":{"r":4.8,"n":82,"i":"g7144388-d19456897"},"menus":[{"title":"Breakfast menu (PDF)","type":"main","url":"https://theranchbarandgrill.co.uk/downloads/The%20Ranch%20-%20Breakfast%20menu.pdf","format":"pdf"}]},
+{"id":"bryndulais-hotel-seven-sisters","name":"Bryndulais Hotel","town":"Seven Sisters","type":"pub","address":"Bryndulais Hotel Church Road Seven Sisters Neath SA10 9DT","social":"https://www.facebook.com/TheBryndulais/","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":142282,"d":"2022-11-07"},"menus":[]},
+{"id":"bwyd-or-galon-seven-sisters","name":"Bwyd O'r Galon","town":"Seven Sisters","type":"restaurant","address":"Bwyd O'r Galon Stores 1 Station Terrace Seven Sisters SA10 9DH","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"4","id":1978236,"d":"2026-07-10"},"menus":[]},
+{"id":"darceys-desserts-seven-sisters","name":"Darcey's Desserts","town":"Seven Sisters","type":"restaurant","address":"18 Martyns Avenue Seven Sisters Neath SA10 9DR","social":"https://www.facebook.com/p/Darceys_desserts-100086566875495/","cuisine":"Bakery & patisserie","fsa":{"r":"5","id":1991100,"d":"2026-06-09"},"menus":[]},
+{"id":"colliers-arms-skewen","name":"Colliers Arms","town":"Skewen","type":"pub","address":"210 New Road Skewen SA10 6ET","cuisine":"British pub food","fsa":{"r":"5","id":1091770,"d":"2023-01-31"},"ta":{"r":3.6,"n":18,"i":"g7144373-d10407426","a":1},"menus":[]},
+{"id":"crescis-ice-cream-and-cafe-skewen","name":"Cresci's Ice Cream and Cafe","town":"Skewen","type":"cafe","address":"81 New Road Skewen Neath SA10 6HE","website":"https://www.cresciscafe.co.uk/","social":"https://www.instagram.com/explore/locations/1014904873/crescis-cafe-skewen/","cuisine":"Cafe & breakfast","fsa":{"r":"4","id":129905,"d":"2025-08-13"},"ta":{"r":4.2,"n":26,"i":"g7144373-d13332421"},"menus":[{"title":"Online ordering menu","type":"main","url":"https://www.cresciscafe.co.uk/takeaways/Swansea/SA10/crescis-cafe/menu"}]},
+{"id":"hiraeth-skewen","name":"Hiraeth","town":"Skewen","type":"restaurant","address":"Plumbwise Siding Terrace Skewen Neath SA10 6RF","social":"https://www.instagram.com/hiraeth_deli/","cuisine":"Cafe & breakfast","fsa":{"r":"Awaiting","id":1991097},"notices":["Instagram: Autumn drinks specials menu being unveiled; Facebook group post on a new small-plates supper menu"],"menus":[]},
+{"id":"howzat-catering-skewen","name":"Howzat Catering","town":"Skewen","type":"restaurant","address":"52b New Road Skewen SA10 6EP","social":"https://www.facebook.com/HOWZATcatering/","cuisine":"Not classified","fsa":{"r":"5","id":1763578,"d":"2025-02-24"},"menus":[]},
+{"id":"la-casona-skewen","name":"La Casona","town":"Skewen","type":"restaurant","address":"207 New Road Skewen SA10 6ET","website":"http://lacasona-skewen.co.uk/","social":"https://www.facebook.com/lacasonaskewen/","cuisine":"Modern British & European","fsa":{"r":"3","id":1784028,"d":"2025-06-11"},"ta":{"r":4.5,"n":283,"i":"g7144373-d11842285"},"menus":[{"title":"La Casona Menu (Sept 2026)","type":"main","url":"http://lacasona-skewen.co.uk/wp-content/uploads/sites/39/2026/09/LaCasonaMenu-Sept26.pdf","format":"pdf","valid_dates":"from September 2026","signal":true},
+{"title":"Dessert Menu 2023","type":"main","url":"http://lacasona-skewen.co.uk/wp-content/uploads/sites/39/2023/12/LaCasonaDessertMenu2023-web.pdf","format":"pdf","valid_dates":"2023"}],"notices":["New main menu PDF dated September 2026 on Our Menu page","Menu may be out of date (dated 2023) — unverified (dessert and cocktail menus)"]},
+{"id":"le-bistro-the-crown-inn-skewen","name":"Le Bistro @ The Crown Inn","town":"Skewen","type":"cafe","address":"216 New Road Skewen Neath SA10 6EW","social":"https://www.facebook.com/LeBistroTheCrownSkewen/","cuisine":"Modern British & European","fsa":{"r":"4","id":1960252,"d":"2026-07-23"},"ta":{"i":"g1474525-d34671581"},"notices":["Facebook: 'New menu, new head chef' and 'Check out our new Menus' posts (dates unverified)"],"menus":[]},
+{"id":"mcdonalds-restaurants-skewen","name":"McDonalds Restaurants","town":"Skewen","type":"restaurant","address":"Mcdonalds Layby Off A465 To Skewen Servi Skewen Neath SA10 7DR","website":"https://www.mcdonalds.com/gb/en-gb/location/skewen/skewen/heads-of-the-valley-road/8260601.html","cuisine":"Burgers, BBQ & American","fsa":{"r":"5","id":115928,"d":"2024-01-17"},"ta":{"r":1.8,"n":72,"i":"g7144373-d13535381"},"menus":[{"title":"Just Eat menu","type":"main","url":"https://www.just-eat.co.uk/restaurants-mcdonalds-skewen-neath/menu"}]},
+{"id":"pentwyn-petting-farm-hut-skewen","name":"Pentwyn Petting Farm Hut","town":"Skewen","type":"restaurant","address":"Pentwyn Farm Crymlyn Road Skewen Neath SA10 6NL","social":"https://www.facebook.com/p/Pentwyn-Petting-Farm-61592412165838/","cuisine":"Cafe & breakfast","fsa":{"r":"Awaiting","id":1993969},"menus":[]},
+{"id":"the-old-bake-house-bakery-deliveries-skewen","name":"The Old Bake House (Bakery deliveries)","town":"Skewen","type":"cafe","address":"26 Evelyn Road Skewen SA10 6LH","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":905045,"d":"2021-02-23"},"menus":[]},
+{"id":"the-rock-skewen","name":"The Rock","town":"Skewen","type":"pub","address":"20 Burrows Road Skewen SA10 6AD","website":"https://www.therockandfountain.co.uk/","social":"https://www.facebook.com/RockSkewen/","cuisine":"British pub food","fsa":{"r":"5","id":1671527,"d":"2023-11-22"},"menus":[{"title":"A la carte menu (Jan 25)","type":"main","url":"https://www.therockandfountain.co.uk/wp-content/uploads/go-x/u/37d62c26-ec04-40fb-8df2-046e55382d0d/The-Rock-Menu-Jan-25.pdf","format":"pdf","valid_dates":"January 2025"},
+{"title":"Winter Menu 2025","type":"seasonal","url":"https://www.therockandfountain.co.uk/wp-content/uploads/go-x/u/0029165b-f6b8-43bf-af94-2ae8451f877c/Winter-Menu-2025.pdf","format":"pdf","valid_dates":"Winter 2025"},
+{"title":"Sunday Lunch","type":"sunday-roast","url":"https://www.therockandfountain.co.uk/wp-content/uploads/go-x/u/bd5dd8fc-7aaf-4d69-a30c-a8e943de455a/Sunday-Lunch.pdf","format":"pdf","valid_dates":"Sundays"},
+{"title":"Kids Menu","type":"other","url":"https://www.therockandfountain.co.uk/wp-content/uploads/go-x/u/8f26d688-0628-4a0c-9850-804fddd40eae/Kids-Menu.pdf","format":"pdf"},
+{"title":"Buffet Menu","type":"event","url":"https://www.therockandfountain.co.uk/wp-content/uploads/go-x/u/38775d87-a168-4c0a-b991-302230300ae4/Buffet-Menu.pdf","format":"pdf"}],"notices":["Menu may be out of date (dated 2025) — unverified (a la carte 'Jan 25' and 'Winter Menu 2025' PDFs; no 2026 replacement found)"]},
+{"id":"travellers-well-skewen","name":"Travellers Well","town":"Skewen","type":"pub","address":"8 Dynevor Place Skewen SA10 6RG","social":"https://www.facebook.com/travellerswell/","cuisine":"British pub food","fsa":{"r":"3","id":1154616,"d":"2026-02-05"},"ta":{"r":4.3,"n":191,"i":"g1474525-d5521812"},"notices":["Instagram @the_travellers_well shows an undated notice 'closed until further notice' — trading status unverified (FSA inspected Feb 2026)"],"menus":[]},
+{"id":"zafran-skewen","name":"Zafran","town":"Skewen","type":"restaurant","address":"215 New Road Skewen Neath West Glamorgan SA10 6EW","website":"https://zafranrestaurant.co.uk/","social":"https://www.facebook.com/p/Zafran-Skewen-100057266096006/","cuisine":"Indian & South Asian","fsa":{"r":"4","id":93813,"d":"2026-07-14"},"ta":{"r":4.2,"n":185,"i":"g186466-d2474962"},"menus":[{"title":"Zafran Skewen takeaway menu","type":"main","url":"https://zafranrestaurant.co.uk/wp-content/uploads/sites/315/2026/06/LCP40341-Zafran-TA-Skewen.pdf","format":"pdf"}]},
+{"id":"compass-cafe-at-asda-cafe-franchise-ystalyfera","name":"Compass Cafe at Asda Cafe Franchise","town":"Ystalyfera","type":"cafe","address":"c/o Asda Store Parkwest Estate Glan Yr Avon Godre'r Graig SA9 2DE","website":"https://storelocator.asda.com/wales/swansea/glanyrafon-godrergraig/cafe","cuisine":"Cafe & breakfast","fsa":{"r":"5","id":698999,"d":"2024-01-11"},"menus":[]},
+{"id":"gigis-riverside-pizzeria-ystalyfera","name":"GiGi's Riverside Pizzeria","town":"Ystalyfera","type":"restaurant","address":"54-58 Gurnos Road Ystalyfera Swansea SA9 2HY","social":"https://www.facebook.com/p/Gigis-Riverside-Pizzeria-61589573853700/","cuisine":"Italian","fsa":{"r":"Awaiting","id":1978255},"ta":{"r":4.8,"n":4,"i":"g186466-d34574870"},"menus":[{"title":"Dish Cult listing (menu & booking)","type":"main","url":"https://dishcult.com/restaurant/gigisriversidepizzeria"}],"notices":["Facebook/Instagram: 'NEW ON THE MENU' homemade lasagne and Cacio e Pepe ravioli"]},
+{"id":"junction-cafe-ystalyfera-ystalyfera","name":"Junction Cafe Ystalyfera","town":"Ystalyfera","type":"cafe","address":"Junction Cafe Ystalyfera Glan-yr-afon Ystalfera SA9 2HA","social":"https://www.facebook.com/p/Junction-Cafe-Ystalyfera-100083006657627/","cuisine":"Cafe & breakfast","fsa":{"r":"4","id":1471178,"d":"2025-08-28"},"ta":{"r":4.8,"n":22,"i":"g1917491-d10133625"},"menus":[]},
+{"id":"the-flying-pig-ystalyfera","name":"The Flying Pig","town":"Ystalyfera","type":"pub","address":"Ystalyfera Arms Cyfyng Road Ystalyfera SA9 2BS","social":"https://www.facebook.com/p/The-Flying-Pig-61581440833810/","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"5","id":1100489,"d":"2019-01-16"},"menus":[]},
+{"id":"the-new-swan-hotel-ystalyfera","name":"The New Swan Hotel","town":"Ystalyfera","type":"pub","address":"New Swan Hotel 50 Gurnos Road Ystalyfera Swansea SA9 2HY","website":"https://thenewswanhotel.co.uk/","social":"https://www.facebook.com/thenewswanhotel/","cuisine":"British pub food","fsa":{"r":"5","id":150262,"d":"2025-12-01"},"menus":[{"title":"Food / Our Menu","type":"main","url":"https://thenewswanhotel.co.uk/index.php/menu/"}]},
+{"id":"wernfawr-inn-ystalyfera","name":"Wernfawr Inn","town":"Ystalyfera","type":"pub","address":"Wern Fawr Inn 47 Wern Road Ystalyfera Swansea SA9 2LX","serves_food":"unclear","cuisine":"Not classified","fsa":{"r":"4","id":682208,"d":"2014-06-18"},"menus":[]}
+]};
+const BUZZ = {"pulled":{},
+"summary":{},
+"themes":[
+
+],
+"places":[
+
+],
+"complaints":[
+
+],
+"posts":[
+
+]};
+(function(){
+var K="lt-bigtext",h=document.documentElement,b=document.getElementById("aa");
+function put(v){try{localStorage.setItem(K,v?"1":"0")}catch(e){}}
+function apply(on){h.classList.toggle("big",on);b.setAttribute("aria-pressed",String(on));document.getElementById("aa-l").textContent=on?"Standard text":"Larger text";}
+apply(h.classList.contains("big"));
+b.addEventListener("click",function(){var on=!h.classList.contains("big");apply(on);put(on);});
+addEventListener("hashchange",function(){if(location.hash==="#big"){apply(true);put(true);}else if(location.hash==="#std"){apply(false);put(false);}});
+})();
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const safe = u => /^https?:\/\//i.test(u||"") ? u : null;
+const ext = (u, t, cls) => safe(u) ? `<a ${cls?`class="${cls}" `:""}href="${esc(u)}" target="_blank" rel="noopener">${t}</a>` : t;
+const fmtDate = iso => new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"});
+const fmtLong = iso => new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long"});
+function nextMonday(iso){ const d=new Date(iso+"T12:00:00"); d.setDate(d.getDate()+(((8-d.getDay())%7)||7)); return d.toISOString().slice(0,10); }
+
+const V = DATA.venues.map(v => ({serves_food:"yes", trading:"confirmed", ...v, menus:(v.menus||[]).map(m => ({format:"html", ...m}))}));
+const BYID = Object.fromEntries(V.map(v=>[v.id,v]));
+const MAIN = ["Neath","Port Talbot","Pontardawe"];
+const GROUP = {"Neath":"Neath","Skewen":"Neath","Briton Ferry":"Neath","Port Talbot":"Port Talbot","Aberavon":"Port Talbot","Margam":"Port Talbot","Baglan":"Port Talbot","Cwmafan":"Port Talbot","Pontardawe":"Pontardawe"};
+const TOWNS = [["all","All of Neath Port Talbot"],["Neath","Neath"],["Port Talbot","Port Talbot"],["Pontardawe","Pontardawe"],["villages","Valleys & villages"]];
+const townKey = t => GROUP[t] || "villages";
+const KIND = {main:"Main menu",seasonal:"Seasonal",weekly:"Weekly",monthly:"Monthly",specials:"Specials","sunday-roast":"Sunday roast","set-menu":"Set menu",festive:"Christmas & festive",event:"Event",other:"Other"};
+const TYPE = {pub:"Pub",restaurant:"Restaurant",cafe:"Café"};
+const FMT = {pdf:"PDF",image:"Picture",social:"Social media post"};
+const SAY = {};
+(BUZZ.places||[]).forEach(p=>{ if(p.venue) SAY[p.venue]=p; });
+
+const CUI = {"Cafe & breakfast":"c-cafe","British pub food":"c-pub","Burgers, BBQ & American":"c-flame","Italian":"c-pizza","Thai":"c-bowl","Japanese":"c-bowl","Indian, Sri Lankan & Nepalese":"c-chilli","Anglo-Indian":"c-chilli","Mediterranean & Middle Eastern":"c-leaf","Turkish":"c-leaf","Vegan & vegetarian":"c-leaf","Modern British & European":"c-plate","Seafood & fish and chips":"c-fish","Spanish & tapas":"c-tapas","Latin American":"c-taco","Mexican & Tex-Mex":"c-taco","Global small plates":"c-globe"};
+const TYPEI = {pub:"c-pub",cafe:"c-cafe",restaurant:"c-plate"};
+const ico = (id, cls) => `<span class="badge${cls?" "+cls:""}" aria-hidden="true"><svg class="ic"><use href="#${id}"/></svg></span>`;
+const vIcon = (v, cls) => ico(CUI[v.cuisine] || TYPEI[v.type] || "c-pin", cls);
+const THEMEI = [[/open/i,"t-spark"],[/best/i,"t-trophy"],[/fish|sea ?food/i,"c-fish"],[/weekend/i,"t-sun"],[/bbq|grill|platter/i,"c-flame"],[/turk|med|kebab/i,"c-leaf"],[/brunch|caf/i,"c-cafe"],[/treat|street|ice|dessert/i,"t-ice"],[/seafront|beach|harbour|view/i,"t-wave"],[/spoon|pub|pint/i,"c-pub"],[/london|day trip|train/i,"t-train"],[/portion|indie/i,"c-plate"]];
+const themeIcon = t => (THEMEI.find(([r])=>r.test(t))||[0,"i-chat"])[1];
+const norm = t => String(t).toLowerCase().replace(/&/g,"and").replace(/[^a-z0-9 ]/g,"").replace(/\s+/g," ").trim();
+const COMPK = [[/fish|chip|oyster|lobster|seafood/i,"c-fish","Seafood & fish and chips"],[/spoons|pub|pint/i,"c-pub","Pub food"],[/caf|coffee|brunch/i,"c-cafe","Cafés"],[/season|mood|town|traffic|parking/i,"c-pin","The town itself"]];
+function compKind(c){
+const n=norm(c.title.split(",")[0]);
+const v=V.find(v=>{const vn=norm(v.name.split(" (")[0]); return vn.length>3 && (n.startsWith(vn)||vn.startsWith(n));});
+if(v) return {i:CUI[v.cuisine]||TYPEI[v.type]||"c-plate", l:v.cuisine||TYPE[v.type]||"Restaurant"};
+const k=COMPK.find(([r])=>r.test(c.title+" "+c.text));
+return k?{i:k[1],l:k[2]}:{i:"c-plate",l:"Restaurant"};
+}
+const mini = id => `<svg class="ic" aria-hidden="true"><use href="#${id}"/></svg>`;
+const st = {town:"all", type:"all", cuisine:"all", when:"any", day:"5", time:"19:00", q:"", sort:"ta", nNew:6, nPlaces:12, nPosts:6};
+try{ const t=localStorage.getItem("npt-mw-town"); if(TOWNS.some(x=>x[0]===t)) st.town=t; }catch(e){}
+
+const DAYS=["mon","tue","wed","thu","fri","sat","sun"], DAYN=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+const mins = s => { const [h,m]=s.split(":"); return +h*60 + +m; };
+function nowLondon(){
+const p=new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/London",weekday:"short",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).formatToParts(new Date());
+const g=t=>p.find(x=>x.type===t).value;
+return {d:DAYS.indexOf(g("weekday").toLowerCase().slice(0,3)), m:+g("hour")*60 + +g("minute")};
+}
+function openAt(h,d,m){
+if(!h) return null;
+for(const [o,c] of h[DAYS[d]]||[]){ const a=mins(o), b=mins(c); if(b>a ? m>=a&&m<b : m>=a) return true; }
+for(const [o,c] of h[DAYS[(d+6)%7]]||[]){ const a=mins(o), b=mins(c); if(b<=a && m<b) return true; }
+return false;
+}
+let W=null; // the moment the When filter asks about, set in render()
+const whenAt = () => st.when==="now" ? nowLondon() : st.when==="pick" ? {d:+st.day, m:mins(st.time||"19:00")} : null;
+const whenLabel = () => st.when==="now" ? "Open now" : `Open ${DAYN[+st.day]} ${st.time}`;
+function hoursBox(v){
+if(!v.hours) return `<p class="pmeta">Hours not known.</p>`;
+const today=nowLondon().d;
+const rows=DAYS.map((k,i)=>`<li${i===today?' aria-current="date"':""}>${DAYN[i].slice(0,3)}: ${(v.hours[k]||[]).length?v.hours[k].map(s=>esc(s[0])+"–"+esc(s[1])).join(", "):"Closed"}</li>`).join("");
+return `<ul class="hrs">${rows}</ul><p class="pmeta">${v.hours_checked?"Checked "+new Date(v.hours_checked+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"long"}):""}${v.hours_source?" · "+ext(v.hours_source,"Source"):""}. Check before travelling.</p>`;
+}
+
+function inScope(v){
+if(W && openAt(v.hours,W.d,W.m)===false) return false; // unknown hours stay visible
+if(st.town!=="all" && townKey(v.town)!==st.town) return false;
+if(st.type!=="all" && v.type!==st.type) return false;
+if(st.cuisine!=="all" && (v.cuisine||"Not classified")!==st.cuisine) return false;
+if(st.q && !(v.name+" "+v.town).toLowerCase().includes(st.q.toLowerCase())) return false;
+return true;
+}
+const townLabel = () => TOWNS.find(t=>t[0]===st.town)[1];
+
+function rates(v, big){
+const out=[];
+if(v.fsa){ const r=v.fsa.r, n=+r;
+const cls = r==="Awaiting" ? "" : n>=4 ? "good" : n>=3 ? "mid" : "bad";
+out.push(`<a class="rate ${cls}" href="https://ratings.food.gov.uk/business/${+v.fsa.id}" target="_blank" rel="noopener" title="Food Standards Agency hygiene rating">${r==="Awaiting"?"Hygiene: awaiting inspection":"Hygiene "+esc(r)+" out of 5"}</a>`); }
+if(v.ta && !v.ta.closed && v.ta.r){ const a=v.ta;
+out.push(`<a class="rate${a.r>=4.5&&a.n>=10?" good":""}" href="https://www.tripadvisor.co.uk/${a.a?"Attraction":"Restaurant"}_Review-${esc(a.i)}-Reviews-x.html" target="_blank" rel="noopener">TripAdvisor ${a.r.toFixed(1)} <small>(${a.n.toLocaleString("en-GB")} reviews)</small></a>`); }
+if(v.ta && v.ta.closed) out.push(`<span class="rate bad">TripAdvisor says closed</span>`);
+if(v.ot && safe(v.ot.u)) out.push(`<a class="rate" href="${esc(v.ot.u)}" target="_blank" rel="noopener">OpenTable${v.ot.r?" "+v.ot.r.toFixed(1):""}</a>`);
+return out.length ? `<div class="rates">${out.join("")}</div>` : (big?`<div class="rates"><span class="rate">No ratings found yet</span></div>`:"");
+}
+
+function towns(){
+$("towns").innerHTML = TOWNS.map(([k,l])=>`<button type="button" class="tbtn" data-t="${k}" aria-pressed="${st.town===k}">${esc(l)}</button>`).join("");
+$("towns").querySelectorAll("button").forEach(b=>b.onclick=()=>{ st.town=b.dataset.t; st.q=""; $("q").value=""; st.nNew=6; st.nPlaces=12; st.nPosts=6; try{localStorage.setItem("npt-mw-town",st.town)}catch(e){} render(); });
+}
+
+function headline(){
+const h=DATA.history, prev=h.length>1?h[h.length-2]:null;
+const newM = V.flatMap(v=>v.menus).filter(m=>m.is_new_this_week).length;
+$("k-new").textContent = DATA.baseline ? "–" : newM;
+$("k-new-l").textContent = newM===1 ? "new menu this week" : "new menus this week";
+$("k-new-d").textContent = DATA.baseline ? `Counting starts today — first additions show on ${fmtLong(nextMonday(DATA.generated))}` : prev ? `${prev.new_menus} the week before (${fmtDate(prev.date)})` : "";
+$("k-places").textContent = V.filter(v=>v.serves_food==="yes").length;
+$("k-places-d").textContent = "in "+new Set(V.map(v=>v.town)).size+" towns and villages";
+$("k-menus").textContent = V.reduce((s,v)=>s+v.menus.length,0);
+const hh=h.slice(-6), W=170, H=96, slot=(W-12)/hh.length, bw=Math.min(36,slot-10), max=Math.max(...hh.map(x=>x.new_menus),1);
+$("weeks").setAttribute("viewBox",`0 0 ${W} ${H}`);
+$("weeks").innerHTML = hh.map((x,i)=>{ const bh=(x.new_menus/max)*(H-40), xx=6+i*slot+(slot-bw)/2, last=i===hh.length-1;
+return `<rect x="${xx.toFixed(1)}" y="${(H-20-bh).toFixed(1)}" width="${bw.toFixed(1)}" height="${bh.toFixed(1)}" rx="4" fill="${last?"var(--new)":"var(--line)"}"/>`+
+`<text x="${(xx+bw/2).toFixed(1)}" y="${(H-24-bh).toFixed(1)}" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">${x.new_menus}</text>`+
+`<text x="${(xx+bw/2).toFixed(1)}" y="${H-4}" text-anchor="middle" font-size="11" fill="var(--ink-2)">${new Date(x.date+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"short"})}</text>`; }).join("");
+const next=nextMonday(DATA.generated), today=new Date().toISOString().slice(0,10);
+$("stamp").innerHTML = `Menus checked <b>${fmtLong(DATA.generated)}</b>. `+(today>next?`<br><span class="late">This week's check is running late</span>`:`Next check <b>${fmtLong(next)}</b>.`);
+}
+
+function cuisines(){
+const c=[...new Set(V.map(v=>v.cuisine||"Not classified"))].sort((a,b)=>(a==="Not classified")-(b==="Not classified")||a.localeCompare(b));
+$("f-cuisine").innerHTML = `<option value="all">All cuisines</option>`+c.map(x=>`<option>${esc(x)}</option>`).join("");
+}
+
+function newCards(){
+const rows = V.filter(inScope).flatMap(v=>v.menus.filter(m=>m.is_new_this_week).map(m=>({m,v})))
+.sort((a,b)=>(b.m.type==="festive")-(a.m.type==="festive")||a.v.name.localeCompare(b.v.name));
+$("c-new").textContent = `${rows.length} in ${townLabel()}`;
+$("newcards").innerHTML = rows.length ? rows.slice(0,st.nNew).map(({m,v})=>`<article class="mcard">
+<div class="tags"><span class="tag new">New</span><span class="tag${m.type==="festive"?" fest":""}">${esc(KIND[m.type]||m.type)}</span>${FMT[m.format]?`<span class="tag">${FMT[m.format]}</span>`:""}</div>
+<div class="vhead">${vIcon(v)}<div><div class="venue">${esc(v.name)}</div><div class="title">${esc(m.title)}</div></div></div>
+<div class="where">${esc(v.town)} · ${esc(TYPE[v.type]||v.type)} · ${esc(v.cuisine||"")}</div>
+${m.valid_dates?`<div class="when">${esc(m.valid_dates)}</div>`:""}
+${rates(v)}
+${safe(m.url)?ext(m.url,`Open the menu <svg class="ic" aria-hidden="true"><use href="#i-ext"/></svg>`,"btn solid"):""}
+</article>`).join("") : `<div class="empty">No new menus in ${esc(townLabel())} this week with these choices. Try “All of Neath Port Talbot” or “Show everything”.</div>`;
+const b=$("more-new"); b.hidden = rows.length<=st.nNew; b.textContent=`Show all ${rows.length} new menus`;
+}
+
+function placeRow(v){
+const say=SAY[v.id], menus=v.menus;
+const ml = menus.map(m=>`<li>${ext(m.url,esc(m.title))}${m.is_new_this_week?` <span class="tag new">New</span>`:""}${m.valid_dates?`<br><span class="pmeta">${esc(m.valid_dates)}</span>`:""}</li>`).join("");
+const fsa = v.fsa ? (v.fsa.r==="Awaiting" ? "Awaiting first inspection" : `${esc(v.fsa.r)} out of 5${v.fsa.d?", inspected "+new Date(v.fsa.d+"T12:00:00").toLocaleDateString("en-GB",{month:"long",year:"numeric"}):""}`) : "Not found";
+const ta = v.ta ? (v.ta.closed ? "Marked closed" : v.ta.r ? `${v.ta.r.toFixed(1)} out of 5 from ${v.ta.n.toLocaleString("en-GB")} reviews` : "Listed, no reviews yet") : "Not found";
+const notes = (v.notices||[]).map(n=>`<li>${ext(n.url, esc(n.text||n.note||""))}</li>`).join("");
+return `<details class="place"><summary><div class="pwho">${vIcon(v,"sm")}<div><div class="pname">${esc(v.name)}</div><div class="pmeta">${esc(v.town)} · ${esc(TYPE[v.type]||v.type)} · ${esc(v.cuisine||"Not classified")} · ${menus.length} menu${menus.length===1?"":"s"}${v.trading!=="confirmed"?" · check it's open":""}${W&&!v.hours?" · Hours not known":""}</div></div></div><svg class="chev" aria-hidden="true"><use href="#i-chev"/></svg><div class="summ-r">${rates(v)}</div></summary>
+<div class="pbody">
+<div class="pbox"><h4>${mini("t-star")}Ratings</h4><dl class="dl"><dt>Hygiene</dt><dd>${fsa}</dd><dt>TripAdvisor</dt><dd>${ta}</dd><dt>OpenTable</dt><dd>${v.ot?ext(v.ot.u,"Bookable online"):"Not listed"}</dd></dl></div>
+<div class="pbox"><h4>${mini("t-clock")}Opening hours</h4>${hoursBox(v)}</div>
+<div class="pbox"><h4>${mini("i-chat")}What people say</h4>${say?`<p class="say">${esc(say.why)}.</p><p class="pmeta">${esc(say.kind)}</p>`:`<p class="pmeta">No social media comments found about this place yet.</p>`}<div class="links">${ext(v.website,"Website")}${ext(v.social,"Social page")}</div><p class="pmeta">${esc(v.address)}</p></div>
+<div class="pbox"><h4>${mini("t-menu")}Menus</h4>${ml?`<ul>${ml}</ul>`:`<p class="pmeta">No menu found on its own pages.</p>`}${notes?`<h4>News</h4><ul>${notes}</ul>`:""}</div>
+</div></details>`;
+}
+function places(){
+const rows=V.filter(v=>v.serves_food!=="no" && inScope(v));
+const taS=v=>v.ta&&!v.ta.closed&&v.ta.r?(v.ta.r*v.ta.n+4*25)/(v.ta.n+25):0;
+rows.sort(st.sort==="name"?(a,b)=>a.name.localeCompare(b.name):st.sort==="menus"?(a,b)=>b.menus.length-a.menus.length||a.name.localeCompare(b.name):(a,b)=>taS(b)-taS(a)||a.name.localeCompare(b.name));
+$("c-places").textContent=`${rows.length} in ${townLabel()}`;
+$("plist").innerHTML = rows.length ? rows.slice(0,st.nPlaces).map(placeRow).join("") : `<div class="empty">No places match. Try “Show everything”.</div>`;
+const b=$("more-places"); b.hidden=rows.length<=st.nPlaces; b.textContent=`Show all ${rows.length} places`;
+}
+
+function buzz(){
+const scoped = st.town==="all"||MAIN.includes(st.town);
+const t = scoped && st.town!=="all" ? st.town : "Area";
+$("summary").textContent = !scoped ? "No social media research covers the valleys and villages yet, so this part shows the whole area." : (BUZZ.summary[t] || "");
+let th = BUZZ.themes.filter(x=>x.scope===t);
+if(!th.length) th = BUZZ.themes.filter(x=>x.scope==="Area" && x.towns.includes(t));
+$("themes").innerHTML = th.map(x=>`<article class="theme"><div class="vhead">${ico(themeIcon(x.title),"sm")}<h3>${esc(x.title)}</h3></div><p class="meaning">${esc(x.meaning)}</p><p class="ev">${x.evidence.map(e=>ext(e.u,esc(e.t))+(e.n?` (${esc(e.n)})`:"")).join(", ")}</p></article>`).join("");
+const lp = BUZZ.places.filter(p=>t==="Area"||p.town===t);
+$("loved").innerHTML = lp.map(p=>p.venue&&BYID[p.venue]?`<button type="button" class="lchip" data-v="${esc(p.venue)}" title="${esc(p.why)}">${mini(CUI[BYID[p.venue].cuisine]||"i-heart")}${esc(p.name)}</button>`:`<span class="lchip" title="${esc(p.why)}">${mini("i-heart")}${esc(p.name)}</span>`).join("");
+$("loved").querySelectorAll("button").forEach(b=>b.onclick=()=>openPlace(b.dataset.v));
+$("c-buzz").textContent = "From TikTok, Reddit, YouTube, Instagram and Facebook";
+const cs = BUZZ.complaints.filter(c=>t==="Area"||c.towns.includes(t));
+$("comps").innerHTML = cs.length ? cs.map(c=>`<div class="comp">${(k=>`<div class="icol">${ico("t-alert","sm bad")}${ico(k.i,"sm")}</div><div><b>${esc(c.title)}</b><span class="town">${esc(c.towns.join(", "))} · ${esc(k.l)}</span>`)(compKind(c))}<p>${esc(c.text)}${c.link?" "+ext(c.link,"See the post"):""}</p></div></div>`).join("") : `<div class="empty">${BUZZ.pulled.Area?`No complaints turned up for ${esc(t==='Area'?'this area':t)} in the posts we read.`:`Social media research has not been gathered yet; the first round-up arrives with the Monday refresh.`}</div>`;
+const num = p => { const m=/^([\d.]+)(k?)$/i.exec(p.n||""); const v=m?parseFloat(m[1])*(m[2]?1000:1):0; return /view|like/.test(p.unit)?v:v/100; };
+const ps = BUZZ.posts.filter(p=>t==="Area"||p.towns.includes(t)).sort((a,b)=>num(b)-num(a));
+const icon = p => p.platform==="Reddit"||p.platform==="Facebook" ? "i-chat" : "i-play";
+$("postlist").innerHTML = ps.slice(0,st.nPosts).map(p=>`<a class="post" href="${esc(safe(p.url)||"#")}" target="_blank" rel="noopener">
+<span class="thumb"><svg class="ic" aria-hidden="true" style="width:32px;height:32px"><use href="#${icon(p)}"/></svg>${p.thumb?`<img src="${esc(p.thumb)}" alt="" loading="lazy" width="88" height="110" onerror="this.remove()">`:""}</span>
+<span style="display:flex;flex-direction:column;gap:6px;min-width:0"><span class="num">${esc(p.n)}<small>${esc(p.unit)}</small></span><span class="pt">${esc(p.title)}</span><span class="why">${esc(p.why)}</span><span class="plat">${esc(p.platform)} · ${esc(p.towns.join(", "))}</span></span></a>`).join("");
+const b=$("more-posts"); b.hidden=ps.length<=st.nPosts; b.textContent=`Show all ${ps.length} posts`;
+$("buzznote").innerHTML = `<b>What people are saying</b> comes from public posts on TikTok, Reddit, YouTube, Instagram and Facebook, ${BUZZ.pulled.Area?`read on ${esc(BUZZ.pulled.Area)}`:`not gathered yet; the first round-up arrives with the Monday refresh`}. Results about places with the same name abroad were left out. It is a snapshot of public talk, not a survey.`;
+}
+
+function openPlace(id){
+const v=BYID[id]; if(!v) return;
+Object.assign(st,{town:townKey(v.town),type:"all",cuisine:"all",q:v.name});
+$("q").value=v.name; $("f-type").value="all"; $("f-cuisine").value="all";
+render();
+const d=$("plist").querySelector("details"); if(d){ d.open=true; d.scrollIntoView({block:"start"}); d.querySelector("summary").focus(); }
+}
+
+function hero(){
+$("htown").textContent=townLabel();
+}
+function render(){
+hero();
+towns();
+W = whenAt();
+$("whenpick").hidden = st.when!=="pick";
+const filtered = st.type!=="all"||st.cuisine!=="all"||st.q||W;
+$("reset").hidden=!filtered && st.town==="all";
+const bits=[townLabel()]; if(st.type!=="all") bits.push(TYPE[st.type]+"s"); if(st.cuisine!=="all") bits.push(st.cuisine); if(W) bits.push(whenLabel()+" (places with unknown hours still shown)"); if(st.q) bits.push(`“${st.q}”`);
+$("showing").textContent = "Showing: "+bits.join(" · ");
+newCards(); places(); buzz();
+}
+
+headline(); cuisines(); render();
+$("f-type").onchange=e=>{st.type=e.target.value;render();};
+$("f-cuisine").onchange=e=>{st.cuisine=e.target.value;render();};
+$("q").oninput=e=>{st.q=e.target.value.trim();render();};
+$("f-when").onchange=e=>{st.when=e.target.value;render();};
+$("f-day").onchange=e=>{st.day=e.target.value;render();};
+$("f-time").onchange=e=>{if(e.target.value){st.time=e.target.value;render();}};
+$("f-day").value=st.day;
+$("sort").onchange=e=>{st.sort=e.target.value;places();};
+$("reset").onclick=()=>{Object.assign(st,{town:"all",type:"all",cuisine:"all",when:"any",q:""});$("q").value="";$("f-when").value="any";$("f-type").value="all";$("f-cuisine").value="all";try{localStorage.setItem("npt-mw-town","all")}catch(e){}render();};
+$("more-new").onclick=()=>{st.nNew=1e4;newCards();};
+$("more-places").onclick=()=>{st.nPlaces=1e4;places();};
+$("more-posts").onclick=()=>{st.nPosts=1e4;buzz();};
+{ const t=$("totop"); const f=()=>{t.hidden=scrollY<700;}; addEventListener("scroll",f,{passive:true}); f();
+t.onclick=()=>{scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"}); const h=document.querySelector("h1"); if(h){h.setAttribute("tabindex","-1"); h.focus({preventScroll:true});}}; }
+</script>
+
+</body></html>
