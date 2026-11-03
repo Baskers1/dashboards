@@ -163,6 +163,35 @@ status, written by `tools/fetch_kp.py` from the ISS job. Each source fails soft,
 part of the file. The page treats the file as optional: missing or malformed, it renders without
 "tonight" and the Kp labels.
 
+`data/npt-food-social.json` holds the Neath Port Talbot food-and-drink social pull — forward-dated
+venue-night listings, recurring weekly fixtures, venues ranked by independent mentions, permanently
+closed venues, and the Facebook feeds worth polling — written by `tools/fetch_npt_social.py` from the
+ScrapeCreators API (`SCRAPECREATORS_API_KEY`, never printed). It is **not** on a schedule; run it by
+hand, or add a launchd job alongside the three above:
+
+    python3 tools/fetch_npt_social.py          # throttled: skips if the file is under 20 hours old
+    python3 tools/fetch_npt_social.py --force  # ignore the throttle
+
+Three things about it are load-bearing:
+
+- **A cold run costs about 700 API credits**, so every response is cached and the fetcher is
+  throttled. A re-run against a warm cache is free, which is what makes changing the parsers cheap —
+  iterate against the cache, not the API.
+- **The cache holds the raw corpus** (posts, usernames, comment text) and defaults to
+  `~/.cache/npt-social`, deliberately outside this repo, since anything here is republished on the
+  open web. Only the aggregated output is committed: business listings and mention counts, no
+  commenter text, and it is passed through `sync.redact()` on the way out. Keep that split.
+- **The exclusion lists in it are findings, not boilerplate.** "Neath" collides with *beneath* and
+  with Fallen London's underground Neath; "Seven Sisters" pulls the Sussex cliffs; "Margam" returns a
+  Dubai neighbourhood; "Neath the Wreath" is a gift market in Plano, Texas; and venue names that are
+  ordinary phrases ("The Place", "Base", "Miners") inflate the ranking from text like *"this is the
+  place to go"*. Each one reached a real pull before it was excluded. Rewriting the filters from
+  scratch brings all of them back silently, because nothing downstream fails — the output just gets
+  quietly wrong. `python3 tools/test_fetch_npt_social.py` covers them and runs in CI.
+
+The prose brief under `npt-social/` is a write-up over this data, not a scheduled artefact, so the
+fetcher does not produce it.
+
 `data/iss.json` is written at runtime by `tools/fetch_iss.py` and is not
 committed on every branch. Its absence in a fresh clone is normal, not
 breakage. `tools/fetch_iss.py` fails soft, keeping the previous file, so in a
