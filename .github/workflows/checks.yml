@@ -14,6 +14,8 @@ jobs:
         run: python3 tools/test_fetch_donki.py
       - name: Self-tests for tools/fetch_kp.py
         run: python3 tools/test_fetch_kp.py
+      - name: Self-tests for tools/fetch_npt_social.py
+        run: python3 tools/test_fetch_npt_social.py
       - name: Self-tests for tools/sync.py
         run: python3 tools/test_sync.py
       - name: Self-tests for tools/check_hardened.py

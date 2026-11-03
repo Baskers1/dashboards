@@ -278,13 +278,25 @@ The machine-readable file is **`data/npt-food-social.json`**, keyed as follows:
 - **Today's forward calendar is seasonally skewed.** It is nearly all Christmas bookings. Re-pull in
   January before concluding anything about the normal shape of a week.
 
+### Reproducing this
+
+`python3 tools/fetch_npt_social.py` rebuilds `data/npt-food-social.json` end to end — the searches,
+the Facebook discovery and paging, the comment pass, the filters and the ranking. It is throttled to
+one run per 20 hours (`--force` overrides), and every response is cached under `~/.cache/npt-social`,
+so re-running against a warm cache is free and costs no credits. A cold run is about 700 credits.
+`python3 tools/test_fetch_npt_social.py` covers the parsers offline and runs in CI.
+
+Rebuilding this brief's numbers from that script gave the same 34 forward rows and the same venue
+order, with two differences, both improvements: it drops a spurious 4 November row for The Brit (that
+date came from an inferred weekday in a post whose stated date was 16 December) and it gains The Pop
+Up Soup Kitchen on 7 November, which the hand-run missed.
+
 ### Not published here
 
 The raw corpus stays out of this repository, following the same split as the events brief: this repo is
 public and served by GitHub Pages, so quoting posts selectively with a link back to each source is a
-different act from rehosting 2,753 posts with usernames and 511 comments attached. The corpus,
-`posts.json`, `comments.json`, `venues.json` and the 717-call response cache remain in the session
-scratchpad only.
+different act from rehosting 2,753 posts with usernames and 511 comments attached. The corpus and the response
+cache live under `~/.cache/npt-social`, outside this repo, which is where the fetcher keeps them.
 
 The published JSON carries venue business listings and mention counts, not commenter text. It was run
 through this repo's own `sync.redact()` before being written, and `tools/check_contacts.py` passes on
