@@ -6,6 +6,7 @@
   "ammanford": "Ammanford",
   "plymouth": "Plymouth & Ivybridge (Plympton, Plymstock & villages)",
   "staffordshire": "Staffordshire",
+  "neath-port-talbot": "Neath Port Talbot",
   "sky": "Sky & space"
  },
  "dashboards": [
@@ -427,7 +428,8 @@
    "refresh_tasks": [
     "trig_01NTcr39czUs5KcrChm42w6V",
     "trig_01575SzYtwaVj7PWhwE2t5bM"
-   ]
+   ],
+   "show_in": "neath-port-talbot"
   },
   {
    "id": "local:sky-port-talbot",
@@ -437,7 +439,8 @@
    "refresh_tasks": [
     "trig_01NTcr39czUs5KcrChm42w6V",
     "trig_01575SzYtwaVj7PWhwE2t5bM"
-   ]
+   ],
+   "show_in": "neath-port-talbot"
   }
  ]
 }
