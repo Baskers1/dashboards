@@ -668,12 +668,14 @@ def main(argv, today=None, fetch=api):
     if old and "--force" not in argv and fresh(old, dt.datetime.combine(today, dt.time())):
         print(os.path.basename(out), "is under", MIN_AGE_HOURS, "hours old - not fetching")
         return 0
-    try:  # reuse the repo's own redaction so the published file holds no personal contact detail
-        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    # Reuse the repo's own redaction so the published file holds no personal contact detail.
+    # This must not degrade quietly: a silent fallback to identity would publish phone numbers.
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    try:
         from sync import redact
-    except Exception:
-        def redact(s):
-            return s
+    except ImportError as e:
+        raise SystemExit(f"cannot import redact from tools/sync.py ({e}); refusing to write an "
+                         f"unredacted file")
     doc = build(fetch, today, redact)
     if not doc["listings"] and not doc["venues"]:
         if old:

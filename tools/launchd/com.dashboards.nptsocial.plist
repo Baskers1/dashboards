@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Install: cp tools/launchd/com.dashboards.nptsocial.plist ~/Library/LaunchAgents/
+             launchctl load ~/Library/LaunchAgents/com.dashboards.nptsocial.plist
+     Holds no credential: the key is read from ~/.config/npt-social/env by the script. -->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.dashboards.nptsocial</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>-lc</string>
+    <string>exec "$HOME/dashboards/tools/npt-social-update.sh"</string>
+  </array>
+  <!-- Once a day rather than an interval: a cold run costs about 700 API credits. 06:23 local,
+       before the 07:52 sky refresh, and off the hour so it does not queue behind everything else. -->
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key><integer>6</integer>
+    <key>Minute</key><integer>23</integer>
+  </dict>
+  <key>StandardOutPath</key>
+  <string>/tmp/dashboards-nptsocial.log</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/dashboards-nptsocial.err</string>
+</dict>
+</plist>
