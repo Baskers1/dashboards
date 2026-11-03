@@ -1,4 +1,4 @@
-<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-DyJszOxw8kaZpFtu4Fdewd6+2roqjdXjaPa8dXBwyrc=' 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
+<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'sha256-fTYAZ801AS7phqMTHGK2PiLXPJRa6IfJSj5t5KvQi9s=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
 var SCHEME=/^\s*([a-z][a-z0-9+.\-]*):/i,HREF={http:1,https:1,mailto:1,tel:1},SRC={http:1,https:1,blob:1};
 function okUrl(v,isSrc){var c=String(v).replace(/[\u0000- ]/g,""),m=SCHEME.exec(c);if(!m)return true;var s=m[1].toLowerCase();
 if(isSrc&&s==="data")return /^data:image\//i.test(c);return !!(isSrc?SRC:HREF)[s];}
@@ -127,6 +127,7 @@ details.more[open]{padding-bottom:12px}
 .fc .t{display:block;font-weight:600}
 .fc .fx{display:block;color:var(--muted);font-size:.9375rem}
 .fc .verdict{display:block;margin-top:4px}
+.fc .why{display:block;margin-top:6px;color:var(--muted);font-size:.875rem}
 .cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;margin-top:10px}
 .cal .h{font-size:.75rem;color:var(--muted);text-align:center}
 .cal .d{position:relative;aspect-ratio:1;max-width:100%;border-radius:6px;padding:3px 4px;font-size:.8125rem;display:flex;flex-direction:column;justify-content:space-between;font-variant-numeric:tabular-nums}
@@ -136,6 +137,11 @@ details.more[open]{padding-bottom:12px}
 .calkey li{display:flex;align-items:center;gap:6px}
 .calkey .d{display:inline-block;width:14px;height:14px;border-radius:3px}
 .cal.sky{background:#070b1a;border-radius:10px;padding:10px 8px 18px;gap:20px 4px}
+.earthview{display:grid;gap:12px;margin-top:10px}
+.earthview .cal{margin-top:0}
+/* phone: the picture stays pinned under the tab bar while the calendar scrolls beneath it */
+@media (max-width:759px){.earthview #shield{position:sticky;top:calc(env(safe-area-inset-top,0px) + 50px);z-index:1;align-self:start;background:var(--surface)}.earthview #shield .journey{margin-top:0}.earthview #shield .finding{font-size:1rem;margin-bottom:0;padding-bottom:6px}}
+@media (min-width:760px){.earthview{grid-template-columns:minmax(0,1fr) minmax(0,340px);align-items:start}}
 .cal.sky .h{color:#9aa6c8}
 .cal.sky .d{border:0;border-radius:50%;width:78%;justify-self:center;justify-content:center;align-items:center;padding:0;color:#fff;background:radial-gradient(circle at 35% 35%,#7cc4ff,#1d4fa8)}
 .cal.sky .d b{font-weight:600;text-shadow:0 1px 2px #000a}
@@ -566,7 +572,16 @@ function fcRow(o){const c=o.c,k=o.k,e=o.i?hrs(c.earth.t,o.i.t):0;
   return '<li class="fc '+(o.v||'open')+'"><span class="t">Cloud that left the Sun '+fmt(c.t)+'</span>'
    +'<span class="fx">Forecast: reaches Earth '+fmt(c.earth.t)+', '+(k?'Kp '+(k[0]===k[1]?k[0]:k[0]+' to '+k[1]):'Kp not given')+(o.fs?' (a storm).':' (below storm level).')+'</span>'
    +'<span class="fx">What happened: '+(o.i?'arrived '+fmt(o.i.t)+' ('+(e>0?'+':'')+e.toFixed(1)+' h)'+(o.g?', and a storm reached Kp '+kpR(o.g.kp)+' ('+gScale(o.g.kp)+').':', and no storm followed.'):o.due?'not due yet ('+hoursTxt(hrs(new Date(NOW).toISOString(),c.earth.t))+' to go).':'no arrival logged.')+'</span>'
-   +(o.v?'<b class="verdict">'+VTXT[o.v]+'</b>':'')+'</li>'}
+   +(o.v?'<b class="verdict">'+VTXT[o.v]+'</b>':'')+whyRow(o,e)+'</li>'}
+/* Plain words on why this forecast went wrong. These are the usual causes, not a diagnosis: NASA's log does not say. */
+function whyRow(o,e){
+  const w=[],c=o.c;
+  if(o.v==='false')w.push('A storm needs the magnetic field inside the cloud to point south, against Earth\'s own field. Nobody can measure that until the cloud passes a spacecraft 15 to 60 minutes before it reaches us, so the forecast cannot know it.'+(c.earth.gb?' This one was also forecast as a glancing blow, so only its edge was due to brush past.':''));
+  if(o.v==='missed')w.push('The usual reason is the magnetic field inside the cloud: pointing south, it can turn even a modest cloud into a storm, and that cannot be seen until about an hour before it arrives. Fast solar wind arriving at the same time can add to it.');
+  if(o.i&&Math.abs(e)>=12)w.push('It came '+Math.round(Math.abs(e))+' hours '+(e>0?'late':'early')+'. A cloud heading straight at us is hard to measure, so its speed is a best guess, and the solar wind it travels through can speed it up or hold it back.');
+  if(!o.i&&!o.due)w.push('Clouds forecast to reach Earth sometimes miss, or arrive too weakly for the spacecraft to log a clear shock wave.');
+  return w.length?'<span class="fx why"><b>Why?</b> '+w.join(' ')+'</span>':'';
+}
 /* One lane per forecast: the cloud leaves the Sun on the left; a dashed ghost Earth marks the forecast arrival
    (with a dashed aurora if a storm was forecast); a solid Earth marks the real arrival, glowing if a storm came. */
 function raceHtml(sel){
@@ -757,13 +772,14 @@ earth(){
   const head='Over '+WDAYS+' days, '+(n('storm')?'a geomagnetic storm started on '+plural(n('storm'),'day'):'no geomagnetic storm started')+', a shock wave or fast solar wind arrived on '+(n('storm')?'another ':'')+plural(busy,'day')+', and NASA logged nothing on '+plural(n('calm'),'day')+'.'+(KP&&KP.daily.length?' NOAA\'s measurements show Kp stayed under 4 on '+cal.filter((c,d)=>c.k==='calm'&&kpMax(d)!=null&&kpMax(d)<4).length+' of those quiet days.':'');
   const rbeTxt=D.rbe.length?'The outer radiation belt filled with extra fast electrons (above 2 MeV) '+plural(D.rbe.length,'time'):'The radiation belts had no logged boosts';
   return '<h2>Earth</h2>'+fin(head)
-  +'<div class="card"><h3>The month at Earth</h3><p class="sub">Each little Earth is one day ('+winLabel+', UTC). The ring round each Earth shows the strongest thing logged that day.</p>'
+  +'<div class="card"><h3>The month at Earth</h3><p class="sub">Tap a day to see Earth\'s shield that day. Each little Earth is one day ('+winLabel+', UTC); the ring round it shows the strongest thing logged.</p>'
+  // picture and calendar together, so a tap changes the picture in view (side by side on wide screens)
+  +'<div class="earthview"><div id="shield">'+shieldHtml(sd0)+'</div><div>'
   +'<div class="cal sky" role="group" aria-label="Days at Earth: pick one to see Earth\'s shield that day">'+cells+'</div>'
   +'<ul class="calkey"><li><span class="d storm"></span>Storm started: aurora (G level shown)</li><li><span class="d shock"></span>Shock wave arrived</li><li><span class="d stream"></span>Fast solar wind arrived</li><li><span class="d calm"></span>Nothing logged</li></ul>'
-  +'<p class="eli">'+(KP&&KP.daily.length?'The number under each day is NOAA\'s measured Kp, the highest that day: 0 to 3 is calm, 4 is unsettled, and 5 or more is a storm.':'"Nothing logged" means NASA recorded no event that day. It is not a measurement of Earth\'s magnetic field, so a small disturbance can still have happened.')+'</p></div>'
+  +'<p class="eli">'+(KP&&KP.daily.length?'The number under each day is NOAA\'s measured Kp, the highest that day: 0 to 3 is calm, 4 is unsettled, and 5 or more is a storm.':'"Nothing logged" means NASA recorded no event that day. It is not a measurement of Earth\'s magnetic field, so a small disturbance can still have happened.')+'</p></div></div></div>'
   +'<div style="height:14px"></div><h3>Around Earth</h3>'
-  +'<p class="sub">'+rbeTxt+(D.mpc.length?', and the magnetic shield was pushed in past the geostationary satellites '+plural(D.mpc.length,'time')+'.':'; the magnetic shield was never pushed in past the geostationary satellites.')+' Tap a day on the calendar to see Earth\'s shield that day.</p>'
-  +'<div id="shield">'+shieldHtml(sd0)+'</div>'
+  +'<p class="sub">'+rbeTxt+(D.mpc.length?', and the magnetic shield was pushed in past the geostationary satellites '+plural(D.mpc.length,'time')+'.':'; the magnetic shield was never pushed in past the geostationary satellites.')+'</p>'
   +'<ul class="impact plain">'
   +(D.rbe.length?'<li><b>Radiation belt boosts:</b> fast electrons can build up charge inside satellites, which raises the risk of faults. NOAA issues an alert when this happens. On the ground, nothing changes.</li>':'')
   +(D.mpc.length?'<li><b>Shield crossings:</b> satellites in geostationary orbit, such as TV and weather satellites, are briefly outside the shield and exposed to the solar wind.</li>':'')
@@ -791,6 +807,12 @@ forecasts(){
   +(out.length?'<div id="race">'+raceHtml(sel)+'</div>'
     +'<ul class="calkey"><li><span class="k ghost"></span>Where and when NASA said</li><li><span class="k ghost storm"></span>Storm forecast</li><li><span class="k real"></span>When it arrived</li><li><span class="k real storm"></span>A storm came</li></ul><div style="height:10px"></div>'
     :empty('No forecasts','No cloud in '+cmeLabel+' was forecast to reach Earth.'))
+  +'<h3>Why forecasts miss</h3><p class="sub">Forecasting a solar storm is closer to forecasting a hurricane\'s landfall days ahead than to reading a timetable. Four things make it hard:</p><ul class="impact plain">'
+   +'<li><b>Seeing it head-on.</b> The cameras that spot clouds sit near Earth or off to the side. A cloud coming straight at us looks like a ring growing round the Sun, so its true speed and direction are hard to judge.</li>'
+   +'<li><b>The road between.</b> NASA\'s model (WSA-Enlil) has to estimate the solar wind the cloud travels through for one to four days. Faster wind speeds it up, slower wind holds it back, and clouds can run into each other on the way.</li>'
+   +'<li><b>The hidden switch.</b> How big a storm gets depends mostly on which way the magnetic field inside the cloud points. Pointing south, it links up with Earth\'s field and pours energy in; pointing north, it mostly slides past. That can only be measured when the cloud passes spacecraft about 1.5 million km out, 15 to 60 minutes before it reaches Earth.</li>'
+   +'<li><b>Hit or glancing blow.</b> Many clouds are forecast to clip Earth with their edge. A few degrees of difference in direction decides between a hit and a miss.</li></ul>'
+  +'<p class="eli">So arrival times are best read as a window of several hours either side, and the Kp range as what could happen, not what will. Tap a lane in the race above to see why that forecast missed.</p>'
   +'<h3>The detail</h3>'
   +(ar.length?more('How far off each forecast was',figure('How far off each forecast was','Hours between the model\'s arrival time and the shock logged at Earth, most accurate first.',forecastArt(ar),[{h:'CME start'},{h:'Model arrival'},{h:'Shock logged'},{h:'Difference',n:1}],ar.map(r=>[fmt(r.cme),fmt(r.pred),fmt(r.ips),(hrs(r.pred,r.ips)>0?'+':'')+hrs(r.pred,r.ips).toFixed(1)+' h']))):'')
   +more('All modelled arrivals ('+ce.length+')',ce.length?table([{h:'CME start'},{h:'Model arrival'},{h:'Kp range',n:1},{h:'Type'},{h:'Status'}],ce.slice().sort((a,b)=>T(b.earth.t)-T(a.earth.t)).map(c=>[fmt(c.t),fmt(c.earth.t),kpOf(c)?kpOf(c)[0]+' to '+kpOf(c)[1]:'n/a',c.earth.gb?'<span class="pill">glancing</span>':'<span class="pill crit">direct</span>',state(c)]),{cap:'Modelled Earth arrivals'}):'<p class="sub">None.</p>');
