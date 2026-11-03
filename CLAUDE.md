@@ -144,10 +144,10 @@ was added in `cbfde37` and served live with an inline script, no CSP and no
 dash-guard for exactly that reason — the same class of bug as the drift above,
 with no red CI to betray it.
 
-It now has a `local:sky-iss` entry, mirroring `space-weather` (a sky dashboard
-with no town, refreshed by its own job), which brings it under both the harden
-command and CI, and lists it on the hub. When adding a published page, add its
-`dashboards.json` entry in the same commit, or nothing will ever check it.
+It later became a redirect stub to the ISS tab of `space-weather`, and on
+3 Nov 2026 the stub and its `local:sky-iss` entry were removed together. When
+adding a published page, add its `dashboards.json` entry in the same commit, or
+nothing will ever check it; when removing one, delete the page in the same commit.
 
 ## Known weak spot in `~/bin/sync-dashboards.sh`
 

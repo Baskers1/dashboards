@@ -408,13 +408,6 @@
    "refresh_tasks": []
   },
   {
-   "id": "local:sky-iss",
-   "area": "sky",
-   "slug": "iss",
-   "name": "ISS (now a tab in Space weather)",
-   "refresh_tasks": []
-  },
-  {
    "id": "local:sky-ramsgate",
    "area": "sky",
    "slug": "ramsgate",
