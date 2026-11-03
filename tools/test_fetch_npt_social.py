@@ -151,4 +151,12 @@ kept = json.load(open(out))
 assert f.main(["x", out, "--force"], TODAY + dt.timedelta(days=2), empty) == 1, "empty pull must not win"
 assert json.load(open(out))["counts"] == kept["counts"], "the previous file is kept intact"
 
+# --- a failed call must not be cached ------------------------------------------------------------
+# A cached 401 from a wrong key would survive fixing the key, and the pull would stay empty with
+# nothing to show why. This happened for real: the env file was written with a literal placeholder.
+cache = tempfile.mkdtemp()
+f.CACHE = cache
+f.api("/v1/google/search", _key="not-a-real-key", query="neath")   # 401, or no route in a sandbox
+assert os.listdir(cache) == [], "a failed response must not be written to the cache"
+
 print("fetch_npt_social ok")
