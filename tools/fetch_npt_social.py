@@ -146,11 +146,15 @@ def api(path, _key=None, **q):
     except Exception as e:
         d = {"_error": str(e)[:120]}
     d["_q"] = dict(path=path, **q)
-    os.makedirs(CACHE, exist_ok=True)
-    tmp = cached + ".tmp"
-    with open(tmp, "w", encoding="utf-8") as f:
-        json.dump(d, f)
-    os.replace(tmp, cached)
+    # Never cache a failure. A cached 401 from a wrong key would survive fixing the key, and a
+    # cached 5xx would survive the outage, with nothing to show why the pull stayed empty.
+    # Re-requesting a 404 is free: the provider charges no credits for one.
+    if not d.get("_error"):
+        os.makedirs(CACHE, exist_ok=True)
+        tmp = cached + ".tmp"
+        with open(tmp, "w", encoding="utf-8") as f:
+            json.dump(d, f)
+        os.replace(tmp, cached)
     return d
 
 
@@ -678,6 +682,10 @@ def main(argv, today=None, fetch=api):
                          f"unredacted file")
     doc = build(fetch, today, redact)
     if not doc["listings"] and not doc["venues"]:
+        auth = [e for e in doc["errors"] if e.get("error") in (401, 403)]
+        if auth and len(auth) == len(doc["errors"]):
+            raise SystemExit(f"every call was rejected ({auth[0]['error']}): check "
+                             f"SCRAPECREATORS_API_KEY - it is set but the provider refused it")
         if old:
             print("nothing came back; keeping the previous", os.path.basename(out))
             return 1
