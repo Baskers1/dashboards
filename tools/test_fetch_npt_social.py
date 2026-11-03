@@ -62,6 +62,20 @@ assert "The Docks Cafe" not in shut, "closed tomorrow for a heatwave is not a cl
 assert "Glynneath Bakery" not in shut, "a denial is not a closure"
 assert "Josh Tuck Councillor for Baglan" not in shut, "a councillor is not a food-and-drink venue"
 
+# --- a closure on file is not forgotten when this run's paging misses it ------------------------
+# Observed on 3 November 2026: one run found Warners Bar (closed for good 18 March 2026) and the
+# Rock and Fountain; the next found only the Rock and Fountain. Re-deriving the list each run
+# forgets closures, and a forgotten closure is a shut pub shown as open.
+known = [{"venue": "Warners Bar", "announced": "2026-03-18", "url": "u", "quote": "closed for good"}]
+kept = f.carry_closures({}, known, [fb("Quiet week", "Warners Bar", date="2026-03-01")])
+assert "Warners Bar" in kept and kept["Warners Bar"]["carried_forward"] is True
+# ...but a venue posting AFTER its own closure has reopened, so the closure must not stick for ever
+reopened = f.carry_closures({}, known, [fb("We are back open!", "Warners Bar", date="2026-09-01")])
+assert "Warners Bar" not in reopened, "a post newer than the closure means it reopened"
+# this run's own finding always wins over the stored copy
+fresh_find = {"Warners Bar": {"venue": "Warners Bar", "announced": "2026-03-18"}}
+assert f.carry_closures(fresh_find, known, [])["Warners Bar"].get("carried_forward") is None
+
 # --- rows need a venue, a date and a usable detail -----------------------------------------------
 rows, recurring = f.listing_rows([
     fb("Elvis tribute on Saturday 7th November, doors 8pm, £5 entry", "Blancos Hotel, Bar & Restaurant"),
@@ -150,6 +164,17 @@ def empty(path, **q):
 kept = json.load(open(out))
 assert f.main(["x", out, "--force"], TODAY + dt.timedelta(days=2), empty) == 1, "empty pull must not win"
 assert json.load(open(out))["counts"] == kept["counts"], "the previous file is kept intact"
+
+# --- a carried closure still suppresses listings end to end -------------------------------------
+doc2 = f.build(fake, TODAY, workers=4, depth_group=1, depth_page=1,
+               known_closed=[{"venue": "The Dillwyn Arms", "announced": "2026-01-01", "url": "u",
+                              "quote": "closed for good"}])
+# the fake's only venue posts a carvery dated 2026-11-03, after that closure, so it reads as reopened
+assert not any(c["venue"] == "The Dillwyn Arms" for c in doc2["closed"]), "posted since: reopened"
+doc3 = f.build(fake, TODAY, workers=4, depth_group=1, depth_page=1,
+               known_closed=[{"venue": "Gone Forever Inn", "announced": "2026-01-01", "url": "u",
+                              "quote": "closed for good"}])
+assert any(c["venue"] == "Gone Forever Inn" and c["carried_forward"] for c in doc3["closed"])
 
 # --- a failed call must not be cached ------------------------------------------------------------
 # A cached 401 from a wrong key would survive fixing the key, and the pull would stay empty with

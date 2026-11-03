@@ -158,6 +158,12 @@ def api(path, _key=None, **q):
     return d
 
 
+def say(msg):
+    """Progress for a run someone is watching, and for /tmp/dashboards-nptsocial.log. Flushed,
+    because a cold run spends minutes per phase and buffered output would show nothing until the end."""
+    print(msg, flush=True)
+
+
 def iso(ts):
     try:
         return dt.datetime.fromtimestamp(int(ts), dt.timezone.utc).strftime("%Y-%m-%d")
@@ -535,11 +541,15 @@ def pull(fetch, workers=8, depth_group=6, depth_page=4):
     responses, errors = [], []
     def run(job):
         return job, fetch(job[0], **job[1])
+    jobs = search_jobs()
+    say(f"searches: {len(jobs)} calls")
     with ThreadPoolExecutor(workers) as ex:
-        for job, d in ex.map(run, search_jobs()):
+        for n, (job, d) in enumerate(ex.map(run, jobs), 1):
             responses.append(d)
             if d.get("_error"):
                 errors.append({"call": job[0], "query": job[1].get("query"), "error": d["_error"]})
+            if n % 40 == 0 or n == len(jobs):
+                say(f"searches: {n}/{len(jobs)}")
     groups, pages = facebook_targets(responses)
     targets = [("/v1/facebook/group/posts", f"https://www.facebook.com/groups/{g}", depth_group)
                for g in groups]
@@ -557,9 +567,13 @@ def pull(fetch, workers=8, depth_group=6, depth_page=4):
             if not cursor:
                 break
         return got
+    # the slow phase: each source is paged sequentially, so this is where a cold run spends minutes
+    say(f"facebook: {len(targets)} sources ({len(groups)} groups, {len(pages)} pages)")
     with ThreadPoolExecutor(workers) as ex:
-        for got in ex.map(chain, targets):
+        for n, got in enumerate(ex.map(chain, targets), 1):
             responses += got
+            if n % 20 == 0 or n == len(targets):
+                say(f"facebook: {n}/{len(targets)} sources")
     return responses, errors, groups, pages
 
 
@@ -573,6 +587,7 @@ def comment_texts(fetch, recs, limit=22, workers=6):
     jobs = [("/v1/tiktok/video/comments" if r["platform"] == "TikTok" else "/v1/reddit/post/comments",
              r["url"], r["platform"]) for r in pick[:limit]]
     out = []
+    say(f"comments: {len(jobs)} threads")
     def run(job):
         path, url, platform = job
         return platform, fetch(path, url=url)
@@ -587,11 +602,38 @@ def comment_texts(fetch, recs, limit=22, workers=6):
     return out
 
 
-def build(fetch, today=None, redact=lambda s: s, **kw):
+def carry_closures(found, known, recs):
+    """Union this run's closures with ones already on file.
+
+    A closure is only visible while its announcement is inside the page history the pull happened to
+    reach, and that window moves: the 3 November runs found Warners Bar (closed 18 March 2026) and
+    the Rock and Fountain in one pass but only the Rock and Fountain in the next. Re-deriving the
+    list each time therefore forgets closures, and a forgotten closure is a shut pub advertised as
+    open. So a known closure is kept unless this run saw the venue post something dated after it,
+    which is the one honest signal that it reopened (The Bagle Brook did exactly that).
+    """
+    out = dict(found)
+    posted_since = {}
+    for r in recs:
+        a = re.sub(r"\s+", " ", r.get("author") or "").strip().lower()
+        if a and r.get("date"):
+            posted_since[a] = max(posted_since.get(a, ""), r["date"])
+    for rec in known:
+        name = (rec.get("venue") or "").strip()
+        if not name or name in out:
+            continue
+        announced = rec.get("announced") or ""
+        if posted_since.get(name.lower(), "") > announced:
+            continue  # posting after its own closure: treat as reopened, not closed
+        out[name] = dict(rec, carried_forward=True)
+    return out
+
+
+def build(fetch, today=None, redact=lambda s: s, known_closed=(), **kw):
     today = today or dt.date.today()
     responses, errors, groups, pages = pull(fetch, **kw)
     recs = relevant(normalise(responses))
-    closed = closures(recs)
+    closed = carry_closures(closures(recs), known_closed, recs)
     rows, recurring = listing_rows(recs, today, closed)
     # the gazetteer is the venue pages' own names: whatever posted in this area is a venue here
     names = {re.sub(r"\s+", " ", r["author"]).strip() for r in recs
@@ -680,7 +722,7 @@ def main(argv, today=None, fetch=api):
     except ImportError as e:
         raise SystemExit(f"cannot import redact from tools/sync.py ({e}); refusing to write an "
                          f"unredacted file")
-    doc = build(fetch, today, redact)
+    doc = build(fetch, today, redact, known_closed=old.get("closed") or ())
     if not doc["listings"] and not doc["venues"]:
         auth = [e for e in doc["errors"] if e.get("error") in (401, 403)]
         if auth and len(auth) == len(doc["errors"]):
