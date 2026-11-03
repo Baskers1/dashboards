@@ -1,4 +1,4 @@
-<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-4Nto6LAyUvJsfAnUoSMGkdNmRcAYQb78/mELeGsnCBg=' 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'sha256-mMcoVpxcrDSh7Uol4oi5M50bWdYs6xCk6NJqF+KR3is=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
+<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-4Nto6LAyUvJsfAnUoSMGkdNmRcAYQb78/mELeGsnCBg=' 'sha256-MjiIZbChbq6hY3gC/8vxgtc/Kcf7v5HA83fUbpXIWNs=' 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
 var SCHEME=/^\s*([a-z][a-z0-9+.\-]*):/i,HREF={http:1,https:1,mailto:1,tel:1},SRC={http:1,https:1,blob:1};
 function okUrl(v,isSrc){var c=String(v).replace(/[\u0000- ]/g,""),m=SCHEME.exec(c);if(!m)return true;var s=m[1].toLowerCase();
 if(isSrc&&s==="data")return /^data:image\//i.test(c);return !!(isSrc?SRC:HREF)[s];}
@@ -69,11 +69,11 @@ border:2px solid var(--accent);background:var(--surface);color:var(--accent);fon
 .stamp{margin-top:8px;color:var(--ink-2)}
 .stamp b{color:var(--ink)}
 .late{display:inline-block;margin-top:6px;padding:4px 12px;border-radius:999px;background:var(--warn-soft);color:var(--warn);font-weight:700}
-.hero{height:72px;margin:0;border-radius:var(--r);background:var(--accent);display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.hero .htown{font-family:var(--display);font-weight:800;font-size:1.7rem;line-height:1.1;color:var(--accent-ink);padding:10px 16px}
+.hero{height:150px;margin:0;border-radius:var(--r);background:linear-gradient(180deg,transparent 35%,rgba(10,30,36,.7)),url("heroes/margam.webp") center/cover,var(--accent);display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.hero .htown{font-family:var(--display);font-weight:800;font-size:1.7rem;line-height:1.1;color:#fff;padding:10px 16px;text-shadow:0 2px 6px rgba(0,0,0,.6)}
 .hero span{color:#fff;font-size:.9rem;padding:10px 14px;text-shadow:0 1px 3px rgba(0,0,0,.6)}
 .hero a{color:#fff}
-@media (max-width:640px){.hero{height:110px;flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:0}.hero .htown{font-size:1.35rem;padding:0 14px}.hero #hcred{font-size:.8rem;padding:2px 14px 8px}}
+@media (max-width:640px){.hero{height:auto;min-height:130px;flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:0}.hero .htown{font-size:1.35rem;padding:0 14px}.hero #hcred{font-size:.8rem;padding:2px 14px 8px}}
 
 .headline{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:16px}
 @media (max-width:760px){.headline{grid-template-columns:minmax(0,1fr)}.minis{grid-template-rows:none;grid-template-columns:1fr 1fr}.mini{flex-direction:column;align-items:flex-start;gap:6px}}
@@ -849,8 +849,14 @@ render();
 const d=$("plist").querySelector("details"); if(d){ d.open=true; d.scrollIntoView({block:"start"}); d.querySelector("summary").focus(); }
 }
 
+const HERO = {"all":"margam","Neath":"neath","Port Talbot":"aberavon","Pontardawe":"pontardawe","villages":"valleys"};
+const HP = {"margam":{"f":"heroes/margam.webp","t":"Margam Castle at Margam Park","n":"Gareth James","c":"File:Margam_Castle_at_Margam_Park_-_geograph.org.uk_-_3793309.jpg"},"neath":{"f":"heroes/neath.webp","t":"Neath Abbey","n":"Philip Halling","c":"File:Neath_Abbey_-_geograph.org.uk_-_6880110.jpg"},"aberavon":{"f":"heroes/aberavon.webp","t":"Aberavon beach","n":"Helen","c":"File:Aberavon_beach_-_geograph.org.uk_-_4421086.jpg"},"pontardawe":{"f":"heroes/pontardawe.webp","t":"Pontardawe Arts Centre","n":"Chris Andrews","c":"File:Pontardawe_Arts_Centre_-_geograph.org.uk_-_4130338.jpg"},"valleys":{"f":"heroes/valleys.webp","t":"Aberdulais Aqueduct, River Neath","n":"M J Roscoe","c":"File:Aberdulais_Aqueduct,_River_Neath_-_geograph.org.uk_-_6981809.jpg"}};
 function hero(){
+const h=HP[HERO[st.town]||HERO.all];
+$("hero").style.backgroundImage=`linear-gradient(180deg,transparent 35%,rgba(10,30,36,.7)),url("${h.f}")`;
+$("hero").setAttribute("title",h.t);
 $("htown").textContent=townLabel();
+$("hcred").innerHTML=`Photo: ${esc(h.t)}, by ${esc(h.n)}, <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank" rel="noopener">CC BY-SA 2.0</a>, via <a href="https://commons.wikimedia.org/wiki/${h.c}" target="_blank" rel="noopener">Geograph via Wikimedia Commons</a>`;
 }
 function render(){
 hero();
@@ -880,5 +886,6 @@ $("more-posts").onclick=()=>{st.nPosts=1e4;buzz();};
 { const t=$("totop"); const f=()=>{t.hidden=scrollY<700;}; addEventListener("scroll",f,{passive:true}); f();
 t.onclick=()=>{scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"}); const h=document.querySelector("h1"); if(h){h.setAttribute("tabindex","-1"); h.focus({preventScroll:true});}}; }
 </script>
+
 
 </body></html>
