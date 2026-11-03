@@ -1,4 +1,4 @@
-<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-LNxt1/TtDzjVUY2bZTr9pnIf7YQrAVKl7U0ssBOikj8=' 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
+<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'sha256-qKYglZOgntvLo5qubw+4hffM/k3H9sfbsiDbKPvECkw=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
 var SCHEME=/^\s*([a-z][a-z0-9+.\-]*):/i,HREF={http:1,https:1,mailto:1,tel:1},SRC={http:1,https:1,blob:1};
 function okUrl(v,isSrc){var c=String(v).replace(/[\u0000- ]/g,""),m=SCHEME.exec(c);if(!m)return true;var s=m[1].toLowerCase();
 if(isSrc&&s==="data")return /^data:image\//i.test(c);return !!(isSrc?SRC:HREF)[s];}
@@ -167,12 +167,12 @@ details.more[open]{padding-bottom:12px}
 @media (prefers-reduced-motion:reduce){.journey .sway,.journey .ray{animation:none}}
 label.place{display:inline-flex;align-items:center;gap:6px}
 label.place select{font:inherit;color:inherit;background:transparent;border:0;max-width:11rem}
-.issmap{max-width:900px}
-.issmap .trk{fill:none;stroke:#7fe0ff;stroke-width:1.8;stroke-linecap:round}
-.issmap .trk.ahead{stroke:#ffcf8a;stroke-width:1.6;stroke-dasharray:0 4.5}
-.issmap .pulse{animation:pulse 2.4s ease-out infinite;transform-box:fill-box;transform-origin:center}
+.globe{max-width:560px;margin-inline:auto}
+.issmap .trk,.globe .trk{fill:none;stroke:#7fe0ff;stroke-width:1.8;stroke-linecap:round}
+.issmap .trk.ahead,.globe .trk.ahead{stroke:#ffcf8a;stroke-width:1.6;stroke-dasharray:0 4.5}
+.issmap .pulse,.globe .pulse{animation:pulse 2.4s ease-out infinite;transform-box:fill-box;transform-origin:center}
 @keyframes pulse{from{transform:scale(.6);opacity:.9}to{transform:scale(2.6);opacity:0}}
-@media (prefers-reduced-motion:reduce){.issmap .pulse{animation:none;opacity:0}}
+@media (prefers-reduced-motion:reduce){.issmap .pulse,.globe .pulse{animation:none;opacity:0}}
 ul.crew{list-style:none;padding:0;margin:6px 0 0;display:grid;gap:6px}
 ul.crew span{color:var(--muted)}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
@@ -678,22 +678,33 @@ function tonightHtml(){
    +'<li><b>Clouds:</b> an alert is no use under cloud. The <a href="../'+P.sky+'/">'+P.sky[0].toUpperCase()+P.sky.slice(1)+' night sky</a> page has tonight\'s cloud forecast.</li></ul>'
    +'<p class="src">Alerts from <a href="https://aurorawatch.lancs.ac.uk/">AuroraWatch UK</a>, Lancaster University. Kp from <a href="https://www.swpc.noaa.gov/">NOAA SWPC</a>.</p></div>';
 }
-/* The next pass on a sky chart: the circle is your horizon, the middle is straight overhead, north at the top,
-   east on the left as when you lie on your back looking up. */
+/* The next pass across your own horizon, like a long-exposure photo: the view is centred on where it peaks,
+   180 degrees wide; height above the horizon is height in the picture. A dot glides along it (still under reduced motion). */
 function passArt(p){
-  const W=340,H=214,cx=170,cy=104,R=74,pt=([az,el])=>{const r=R*(90-el)/90,a=az*Math.PI/180;return [cx-r*Math.sin(a),cy-r*Math.cos(a)]};
-  const [a,b,c]=p.path.map(pt),id='ps';
-  let o='<rect width="'+W+'" height="'+H+'" fill="#070b1a"/>'+skyStars(W,H,17)
-   +'<circle cx="'+cx+'" cy="'+cy+'" r="'+R+'" fill="#0d1733" stroke="#2a3558"/><circle cx="'+cx+'" cy="'+cy+'" r="'+(R*2/3)+'" fill="none" stroke="#2a3558" stroke-dasharray="2 4"/><circle cx="'+cx+'" cy="'+cy+'" r="'+(R/3)+'" fill="none" stroke="#2a3558" stroke-dasharray="2 4"/>'
-   +skyTxt(cx,cy-R-6,'N','middle','#9aa6c8')+skyTxt(cx,cy+R+14,'S','middle','#9aa6c8')+skyTxt(cx+R+10,cy+4,'W','middle','#9aa6c8')+skyTxt(cx-R-10,cy+4,'E','middle','#9aa6c8')
-   +'<path d="M'+a[0].toFixed(1)+' '+a[1].toFixed(1)+'Q'+(2*b[0]-(a[0]+c[0])/2).toFixed(1)+' '+(2*b[1]-(a[1]+c[1])/2).toFixed(1)+' '+c[0].toFixed(1)+' '+c[1].toFixed(1)+'" stroke="#ffe08a" stroke-width="2.5" fill="none" stroke-linecap="round" filter="url(#'+id+'g)"/>'
-   +'<circle cx="'+a[0].toFixed(1)+'" cy="'+a[1].toFixed(1)+'" r="3" fill="#ffe08a"/><circle cx="'+c[0].toFixed(1)+'" cy="'+c[1].toFixed(1)+'" r="4.5" fill="#fff" filter="url(#'+id+'g)"/>'
-   +skyTxt(8,18,fmt(p.start)+' '+tzName(),'start','#dfe6ff')
-   +skyTxt(8,H-8,'Middle: overhead','start','#9aa6c8')+skyTxt(W-8,H-8,'Edge: horizon','end','#9aa6c8');
-  return '<svg class="journey" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Sky chart: the ISS appears in the '+p.from+', climbs to '+p.peakEl+' degrees and disappears in the '+p.to+'."><defs><filter id="'+id+'g" x="-1" y="-1" width="3" height="3"><feGaussianBlur stdDeviation="1.5"/></filter></defs>'+o+'</svg>';
+  const P=PLACES[PLACE],W=340,H=200,hz=158,id='ps',still=matchMedia('(prefers-reduced-motion: reduce)').matches,a0=p.path[1][0];
+  // frame the pass like a camera would: wide enough for its whole arc, tall enough that a low pass still reads
+  const dA=q=>(q-a0+540)%360-180,span=Math.max(Math.abs(dA(p.path[0][0])),Math.abs(dA(p.path[2][0]))),half=Math.min(90,Math.max(30,span*1.5)),top=Math.min(90,Math.max(30,p.peakEl*1.8));
+  const X=az=>W/2+dA(az)/half*(W/2),Y=el=>hz-el/top*(hz-30);
+  const [a,b,c]=p.path.map(([az,el])=>[X(az),Y(el)]),ctl=[2*b[0]-(a[0]+c[0])/2,2*b[1]-(a[1]+c[1])/2];
+  const d='M'+a[0].toFixed(1)+' '+a[1].toFixed(1)+'Q'+ctl[0].toFixed(1)+' '+ctl[1].toFixed(1)+' '+c[0].toFixed(1)+' '+c[1].toFixed(1);
+  let o='<rect width="'+W+'" height="'+H+'" fill="url(#'+id+'k)"/>'+skyStars(W,hz,19)
+   +'<path d="'+d+'" stroke="#ffe08a" stroke-width="6" fill="none" stroke-linecap="round" opacity=".35" filter="url(#'+id+'g)"/>'
+   +'<path d="'+d+'" stroke="url(#'+id+'t)" stroke-width="2.2" fill="none" stroke-linecap="round"/>'
+   +'<circle r="4" fill="#fff" filter="url(#'+id+'g)">'+(still?'':'<animateMotion dur="6s" repeatCount="indefinite" path="'+d+'"/>')+'</circle>'
+   +(still?'<circle cx="'+c[0].toFixed(1)+'" cy="'+c[1].toFixed(1)+'" r="4" fill="#fff"/>':'');
+  // the skyline: sea and the North Foreland lighthouse for Thanet, hills inland
+  o+=P.sea?'<rect y="'+hz+'" width="'+W+'" height="'+(H-hz)+'" fill="#081227"/><path d="M286 '+H+'L292 '+(hz-14)+'h8L306 '+H+'z" fill="#1c2a4a"/><rect x="290" y="'+(hz-22)+'" width="12" height="8" fill="#1c2a4a"/><circle cx="296" cy="'+(hz-18)+'" r="2.5" fill="#ffe08a"/>'
+     :'<path d="M0 '+(hz-2)+'Q40 '+(hz-20)+' 90 '+(hz-9)+'T190 '+(hz-13)+'T290 '+(hz-5)+'T360 '+(hz-16)+'V'+H+'H0z" fill="#0d1a33"/>';
+  const step=half>60?45:22.5;for(let az=Math.ceil((a0-half)/step)*step;az<=a0+half;az+=step){const x=X((az+360)%360);if(x>14&&x<W-14)o+=skyTxt(x,H-8,DIRS[Math.round(((az%360)+360)%360/22.5)%16],'middle','#9aa6c8')}
+  for(let e=10;e<top;e+=10)o+='<path d="M0 '+Y(e).toFixed(1)+'H'+W+'" stroke="#ffffff" stroke-opacity=".05"/>'+(e%20?'':skyTxt(W-6,Y(e)-3,e+'°','end','#5f6e94'));
+  o+=skyTxt(a[0]+(a[0]<c[0]?-4:4),a[1]-8,'appears',a[0]<c[0]?'end':'start','#ffe08a')
+   +skyTxt(c[0]+(a[0]<c[0]?4:-4),c[1]-8,c[1]<hz-20?'fades out':'sets',a[0]<c[0]?'start':'end','#ffffff')
+   +skyTxt(8,18,fmt(p.start)+' '+tzName(),'start','#dfe6ff')+skyTxt(W-8,18,'highest: '+p.peakEl+'° up','end','#9aa6c8');
+  return '<svg class="journey" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="The ISS crosses your sky: it appears in the '+p.from+', climbs to '+p.peakEl+' degrees and disappears in the '+p.to+'.">'
+   +'<defs><linearGradient id="'+id+'k" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#03050f"/><stop offset="1" stop-color="#14224a"/></linearGradient>'
+   +'<linearGradient id="'+id+'t" gradientUnits="userSpaceOnUse" x1="'+a[0]+'" y1="0" x2="'+c[0]+'" y2="0"><stop offset="0" stop-color="#ffe08a" stop-opacity=".3"/><stop offset="1" stop-color="#ffffff"/></linearGradient>'
+   +'<filter id="'+id+'g" x="-1" y="-1" width="3" height="3"><feGaussianBlur stdDeviation="2"/></filter></defs>'+o+'</svg>';
 }
-/* World map: equirectangular, night shaded from the Sun's position, the ISS track and a live dot. */
-const MW=340,MH=170,mx=lon=>(lon+180)/360*MW,my=lat=>(90-lat)/180*MH;
 function issAt(t){
   const tr=ORB.track;let i=tr.findIndex(p=>p.t>t);if(i<1)return i===0?tr[0]:null;
   const p=tr[i-1],q=tr[i],f=(t-p.t)/(q.t-p.t);let dl=q.lon-p.lon;if(dl>180)dl-=360;if(dl<-180)dl+=360;
@@ -718,48 +729,67 @@ function region(lat,lon){
   if(lon>-70&&lon<20||(lon>=-100&&lon<=-70&&lat>8))return 'over the '+ns+'Atlantic';
   return 'over the '+ns+'Pacific';
 }
-function nightPath(t){
-  const d=new Date(t),n=t/864e5+2440587.5-2451545,g=(357.528+.9856003*n)*Math.PI/180,L=(280.46+.9856474*n+1.915*Math.sin(g)+.02*Math.sin(2*g))*Math.PI/180,e=(23.439-4e-7*n)*Math.PI/180;
+/* The globe, seen from space above the ISS (orthographic view): it turns under the ISS as it moves. */
+const GW=340,GH=320,GR=128,GX=170,GY=160;
+function sunSub(t){  // where the Sun is overhead (same low-precision almanac as the iMac script)
+  const n=t/864e5+2440587.5-2451545,g=(357.528+.9856003*n)*Math.PI/180,L=(280.46+.9856474*n+1.915*Math.sin(g)+.02*Math.sin(2*g))*Math.PI/180,e=(23.439-4e-7*n)*Math.PI/180;
   const dec=Math.asin(Math.sin(e)*Math.sin(L)),ra=Math.atan2(Math.cos(e)*Math.sin(L),Math.cos(L)),gm=(280.46061837+360.98564736629*n)%360;
-  const sl=(ra*180/Math.PI-gm+540)%360-180,dd=Math.abs(dec)<1e-3?1e-3:dec;
-  let pth='';for(let lon=-180;lon<=180;lon+=3){const la=Math.atan(-Math.cos((lon-sl)*Math.PI/180)/Math.tan(dd))*180/Math.PI;pth+=(pth?'L':'M')+mx(lon).toFixed(1)+' '+my(la).toFixed(1)}
-  return pth+(dec>0?'L'+MW+' '+MH+'L0 '+MH:'L'+MW+' 0L0 0')+'Z';
+  return {lat:dec*180/Math.PI,lon:(ra*180/Math.PI-gm+540)%360-180};
 }
-function issMap(){
-  const land=LAND.map(r=>{let d='';for(let i=0;i<r.length;i+=2)d+=(i?'L':'M')+mx(r[i]/2).toFixed(1)+' '+my(r[i+1]/2).toFixed(1);return d+'Z'}).join('');
-  const line=pts=>{let d='',prev=null;pts.forEach(p=>{d+=(prev&&Math.abs(p.lon-prev.lon)<180?'L':'M')+mx(p.lon).toFixed(1)+' '+my(p.lat).toFixed(1);prev=p});return d};
-  const past=ORB.track.filter(p=>p.t<=NOW),ahead=ORB.track.filter(p=>p.t>=NOW-6e4);
-  // where it will be in 30, 60 and 90 minutes: labelled beads on the path ahead
-  const beads=[30,60,90].map(m=>{const q=issAt(NOW+m*6e4);return q?'<circle cx="'+mx(q.lon).toFixed(1)+'" cy="'+my(q.lat).toFixed(1)+'" r="2.2" fill="#ffcf8a"/>'+skyTxt(mx(q.lon)+(q.lon>150?-4:4),my(q.lat)-4,m+' min',q.lon>150?'end':'start','#ffcf8a'):''}).join('');
-  let grid='';for(let l=-150;l<=150;l+=30)grid+='M'+mx(l)+' 0V'+MH;for(let l=-60;l<=60;l+=30)grid+='M0 '+my(l)+'H'+MW;
-  const pl=Object.entries(PLACES).map(([k,v])=>'<circle cx="'+mx(v.lon).toFixed(1)+'" cy="'+my(v.lat).toFixed(1)+'" r="'+(k===PLACE?2.4:1.4)+'" fill="'+(k===PLACE?'#ffe08a':'#c8d3f0')+'"/>').join('')
-   +skyTxt(mx(PLACES[PLACE].lon)-5,my(PLACES[PLACE].lat)-4,PLACES[PLACE].sky[0].toUpperCase()+PLACES[PLACE].sky.slice(1),'end','#ffe08a');
-  return '<svg class="journey issmap" viewBox="0 0 '+MW+' '+MH+'" role="img" aria-label="World map with the ISS track, where it will be in 30, 60 and 90 minutes, and its position now">'
-   +'<defs><radialGradient id="mo" cx=".5" cy=".45" r=".75"><stop offset="0" stop-color="#123a73"/><stop offset="1" stop-color="#06122b"/></radialGradient>'
-   +'<linearGradient id="ml" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5b8f6a"/><stop offset="1" stop-color="#2f5a42"/></linearGradient>'
-   +'<filter id="mb" x="-.1" y="-.1" width="1.2" height="1.2"><feGaussianBlur stdDeviation="3"/></filter>'
-   +'<filter id="mg" x="-.2" y="-.2" width="1.4" height="1.4"><feGaussianBlur stdDeviation="1.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>'
-   +'<rect width="'+MW+'" height="'+MH+'" fill="url(#mo)"/><path d="'+grid+'" stroke="#ffffff" stroke-opacity=".06" stroke-width=".5"/>'
-   +'<path d="'+land+'" fill="url(#ml)"/>'
-   +'<path d="'+nightPath(NOW)+'" fill="#020617" opacity=".55" filter="url(#mb)"/>'
-   +'<g id="issfoot"></g>'
-   +'<path class="trk" d="'+line(past)+'" filter="url(#mg)"/><path class="trk ahead" d="'+line(ahead)+'"/>'+beads+pl
-   +'<g id="issmark"><circle class="pulse" r="6" fill="none" stroke="#ffe08a"/><circle r="5" fill="#ffe08a" opacity=".3"/><rect x="-5" y="-1.2" width="10" height="2.4" fill="#ffe08a"/><rect x="-1.4" y="-2.6" width="2.8" height="5.2" fill="#fff"/></g></svg>';
+function globeSvg(p,now){
+  const r=Math.PI/180,f0=p.lat*r,l0=p.lon*r,A=(6371+Math.cbrt(398600.4418/(2*Math.PI/(ORB.period*60))**2)-6371)/6371;
+  const v=(lat,lon)=>{const f=lat*r,l=lon*r-l0;return [Math.cos(f)*Math.sin(l),Math.cos(f0)*Math.sin(f)-Math.sin(f0)*Math.cos(f)*Math.cos(l),Math.sin(f0)*Math.sin(f)+Math.cos(f0)*Math.cos(f)*Math.cos(l)]};
+  const S=(x,y,k)=>(GX+GR*k*x).toFixed(1)+' '+(GY-GR*k*y).toFixed(1);
+  // land: points on the far side are pulled to the rim, which keeps the shapes filled correctly at the edge
+  const land=LAND.map(q=>{let d='';for(let i=0;i<q.length;i+=2){let [x,y,z]=v(q[i+1]/2,q[i]/2);if(z<0){const m=Math.hypot(x,y)||1;x/=m;y/=m}d+=(i?'L':'M')+S(x,y,1)}return d+'Z'}).join('');
+  const curve=(pts,k)=>{let d='',on=false;pts.forEach(q=>{const [x,y,z]=v(q.lat,q.lon),hid=z<0&&Math.hypot(x,y)*k<1;if(hid){on=false;return}d+=(on?'L':'M')+S(x,y,k);on=true});return d};
+  let grid=[];for(let la=-60;la<=60;la+=30){const g=[];for(let lo=-180;lo<=180;lo+=6)g.push({lat:la,lon:lo});grid.push(curve(g,1))}
+  for(let lo=-180;lo<180;lo+=30){const g=[];for(let la=-84;la<=84;la+=6)g.push({lat:la,lon:lo});grid.push(curve(g,1))}
+  // night: the half of the visible disc facing away from the Sun, bounded by the terminator (a half-ellipse) and the rim
+  const ss=sunSub(now),[sx,sy,sz]=v(ss.lat,ss.lon),hxy=Math.hypot(sx,sy);let night='';
+  if(hxy<1e-3){if(sz<0)night='<circle cx="'+GX+'" cy="'+GY+'" r="'+GR+'"/>'}else{
+    const e1=[sy/hxy,-sx/hxy,0],e2=[sy*e1[2]-sz*e1[1],sz*e1[0]-sx*e1[2],sx*e1[1]-sy*e1[0]],sg=e2[2]>=0?1:-1,pts=[];
+    for(let k=0;k<=36;k++){const t=k/36*Math.PI;pts.push([Math.cos(t)*e1[0]+sg*Math.sin(t)*e2[0],Math.cos(t)*e1[1]+sg*Math.sin(t)*e2[1]])}
+    const aS=Math.atan2(pts[36][1],pts[36][0]),aE=Math.atan2(pts[0][1],pts[0][0]),aN=Math.atan2(-sy,-sx);
+    let span=(aE-aS+4*Math.PI)%(2*Math.PI);const mid=aS+span/2,dir=Math.cos(mid-aN)>0?1:-1;if(dir<0)span=span-2*Math.PI;
+    for(let k=1;k<=36;k++){const t=aS+span*k/36;pts.push([Math.cos(t),Math.sin(t)])}
+    night='<path d="M'+pts.map(q=>S(q[0],q[1],1)).join('L')+'Z"/>'}
+  const past=ORB.track.filter(q=>q.t<=now),ahead=ORB.track.filter(q=>q.t>=now-6e4);
+  const fp=footprint(p).map(([lo,la])=>({lat:la,lon:lo}));
+  const beads=[30,60].map(m=>{const q=issAt(now+m*6e4);if(!q)return '';const [x,y,z]=v(q.lat,q.lon);if(z<0&&Math.hypot(x,y)*A<1)return '';const P2=S(x,y,A).split(' ');
+    return '<circle cx="'+P2[0]+'" cy="'+P2[1]+'" r="2.4" fill="#ffcf8a"/>'+skyTxt(+P2[0]+5,+P2[1]-4,'in '+m+' min','start','#ffcf8a')}).join('');
+  const pk=PLACES[PLACE],[px,py,pz]=v(pk.lat,pk.lon),town=pk.sky[0].toUpperCase()+pk.sky.slice(1);
+  const sun=S(sx*1.25,sy*1.25,1).split(' ');
+  return '<svg class="journey globe" viewBox="0 0 '+GW+' '+GH+'" role="img" aria-label="The Earth seen from space above the ISS, with its track, where it will be in 30 and 60 minutes, and the area it can be seen from now">'
+   +'<defs><radialGradient id="gs" cx=".5" cy=".5" r=".5"><stop offset=".9" stop-color="#7fc8ff" stop-opacity=".0"/><stop offset=".96" stop-color="#7fc8ff" stop-opacity=".5"/><stop offset="1" stop-color="#7fc8ff" stop-opacity="0"/></radialGradient>'
+   +'<radialGradient id="go" gradientUnits="userSpaceOnUse" cx="'+sun[0]+'" cy="'+sun[1]+'" r="'+(GR*2.2)+'"><stop offset="0" stop-color="#2a6fc0"/><stop offset=".55" stop-color="#11407e"/><stop offset="1" stop-color="#061a3d"/></radialGradient>'
+   +'<radialGradient id="gl" gradientUnits="userSpaceOnUse" cx="'+sun[0]+'" cy="'+sun[1]+'" r="'+(GR*2.2)+'"><stop offset="0" stop-color="#7fb98a"/><stop offset=".6" stop-color="#3f7150"/><stop offset="1" stop-color="#22432f"/></radialGradient>'
+   +'<clipPath id="gc"><circle cx="'+GX+'" cy="'+GY+'" r="'+GR+'"/></clipPath>'
+   +'<filter id="gb" x="-.2" y="-.2" width="1.4" height="1.4"><feGaussianBlur stdDeviation="5"/></filter>'
+   +'<filter id="gg" x="-.2" y="-.2" width="1.4" height="1.4"><feGaussianBlur stdDeviation="1.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>'
+   +'<rect width="'+GW+'" height="'+GH+'" fill="#03050f"/>'+skyStars(GW,GH,23)
+   +'<circle cx="'+GX+'" cy="'+GY+'" r="'+(GR*1.09)+'" fill="url(#gs)"/>'
+   +'<g clip-path="url(#gc)"><circle cx="'+GX+'" cy="'+GY+'" r="'+GR+'" fill="url(#go)"/><path d="'+land+'" fill="url(#gl)"/>'
+   +'<path d="'+grid.join('')+'" fill="none" stroke="#ffffff" stroke-opacity=".07" stroke-width=".6"/>'
+   +'<g fill="#020617" opacity=".62" filter="url(#gb)">'+night+'</g>'
+   +'<path d="'+curve(fp,1)+'" fill="#ffe08a" fill-opacity=".1" stroke="#ffe08a" stroke-opacity=".5" stroke-width=".8" stroke-dasharray="2 2"/></g>'
+   +(pz>0?'<circle cx="'+S(px,py,1).split(' ')[0]+'" cy="'+S(px,py,1).split(' ')[1]+'" r="2.4" fill="#ffe08a"/>'+skyTxt(+S(px,py,1).split(' ')[0]-5,+S(px,py,1).split(' ')[1]-4,town,'end','#ffe08a'):'')
+   +'<path class="trk" d="'+curve(past,A)+'" filter="url(#gg)"/><path class="trk ahead" d="'+curve(ahead,A)+'"/>'+beads
+   +'<g transform="translate('+GX+' '+GY+')"><circle class="pulse" r="7" fill="none" stroke="#ffe08a"/><circle r="6" fill="#ffe08a" opacity=".3"/><rect x="-6" y="-1.4" width="12" height="2.8" fill="#ffe08a"/><rect x="-1.6" y="-3" width="3.2" height="6" fill="#fff"/></g>'
+   +skyTxt(GX,GY-14,'ISS','middle','#ffffff')+(pz>0?'':skyTxt(GW-8,GH-10,town+' is round the other side','end','#9aa6c8'))+'</svg>';
 }
-// The patch of Earth from which the ISS is above the horizon right now (about 2,200 km across each way at 420 km up).
+// The patch of Earth from which the ISS is above the horizon right now (about 2,200 km out each way at 420 km up).
 function footprint(p){
-  const h=Math.cbrt(398600.4418/(2*Math.PI/(ORB.period*60))**2)-6371,rho=Math.acos(6371/(6371+h)),la=p.lat*Math.PI/180,lo=p.lon*Math.PI/180;
-  let pts=[];for(let b=0;b<=360;b+=10){const br=b*Math.PI/180,l2=Math.asin(Math.sin(la)*Math.cos(rho)+Math.cos(la)*Math.sin(rho)*Math.cos(br));
-    let o2=lo+Math.atan2(Math.sin(br)*Math.sin(rho)*Math.cos(la),Math.cos(rho)-Math.sin(la)*Math.sin(l2));pts.push([o2*180/Math.PI,l2*180/Math.PI])}
-  // drawn three times, a world apart, so a circle crossing the date line shows on both edges
-  return [-360,0,360].map(sh=>'<path d="'+pts.map((q,i)=>(i?'L':'M')+mx(q[0]+sh).toFixed(1)+' '+my(q[1]).toFixed(1)).join('')+'Z" fill="#ffe08a" fill-opacity=".08" stroke="#ffe08a" stroke-opacity=".45" stroke-width=".6" stroke-dasharray="2 2"/>').join('');
+  const h=Math.cbrt(398600.4418/(2*Math.PI/(ORB.period*60))**2)-6371,rho=Math.acos(6371/(6371+h)),la=p.lat*Math.PI/180,lo=p.lon*Math.PI/180,pts=[];
+  for(let b=0;b<=360;b+=10){const br=b*Math.PI/180,l2=Math.asin(Math.sin(la)*Math.cos(rho)+Math.cos(la)*Math.sin(rho)*Math.cos(br));
+    const o2=lo+Math.atan2(Math.sin(br)*Math.sin(rho)*Math.cos(la),Math.cos(rho)-Math.sin(la)*Math.sin(l2));pts.push([o2*180/Math.PI,l2*180/Math.PI])}
+  return pts;
 }
 window.issTick=()=>{
   if(!ORB)return;
-  const now=Date.now(),p=issAt(now),m=document.getElementById('issmark'),tx=document.getElementById('issnow');if(!m||!tx)return;
-  if(!p){tx.textContent='The saved ISS track has run out: the iMac has not updated it recently, so the position is unknown.';m.setAttribute('visibility','hidden');const fp=document.getElementById('issfoot');if(fp)fp.innerHTML='';return}
-  m.setAttribute('transform','translate('+mx(p.lon).toFixed(1)+' '+my(p.lat).toFixed(1)+')');
-  const fp=document.getElementById('issfoot');if(fp)fp.innerHTML=footprint(p);
+  const now=Date.now(),p=issAt(now),g=document.getElementById('issglobe'),tx=document.getElementById('issnow');if(!g||!tx)return;
+  if(!p){tx.textContent='The saved ISS track has run out: the iMac has not updated it recently, so the position is unknown.';g.innerHTML='';return}
+  g.innerHTML=globeSvg(p,now);
   tx.textContent='Now '+region(p.lat,p.lon)+', heading '+(p.up?'north':'south')+(p.east?'east':'west')+' ('+Math.abs(p.lat).toFixed(0)+'°'+(p.lat>=0?'N':'S')+', '+Math.abs(p.lon).toFixed(0)+'°'+(p.lon>=0?'E':'W')+').';
 };
 function journeySvg(e,n){
@@ -887,8 +917,8 @@ iss(){
   return '<h2>ISS</h2>'
   +'<div class="ep next tonight"><h3>Could I see the ISS from '+P.name+' tonight? '+ans[0]+'</h3>'+(next?passArt(next):'')
    +'<p>'+ans[1]+'</p><p class="sub">The ISS flies over most nights, but you only see it when sunlight catches it while your sky is dark, so sightings come in spells around dusk and dawn. Times this far ahead can shift by a minute or so.</p></div>'
-  +'<h3>Where it is now</h3>'+issMap()+'<p class="finding" id="issnow" aria-live="polite"></p>'
-  +'<p class="sub">The bright blue line is where it has been in the last 45 minutes; the gold dots are where it goes next, with where it will be in 30, 60 and 90 minutes. The gold circle is everywhere it is above the horizon right now. The shaded part of the world is in night.</p>'
+  +'<h3>Where it is now</h3><div id="issglobe"></div><p class="finding" id="issnow" aria-live="polite"></p>'
+  +'<p class="sub">The Earth as seen from space above the ISS, turning beneath it. The bright blue line is where it has been in the last 45 minutes; the gold dots are where it goes next. The gold circle is everywhere it is above the horizon right now. The dark side is in night.</p>'
   +'<h3>How fast is that?</h3><ul class="impact plain">'
    +'<li><b>'+Math.round(w*a*3600).toLocaleString('en-GB')+' km/h</b>, '+(w*a).toFixed(1)+' km every second.</li>'
    +'<li>It would cross from '+town(PLACE)+' to '+town(far)+' in about <b>'+(secs<100?secs+' seconds':Math.round(secs/60*2)/2+' minutes')+'</b>.</li>'
