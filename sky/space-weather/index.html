@@ -1,4 +1,4 @@
-<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-VIise6QWY6cFresnAgZoPDz0fty6mCgb+rVJ+LNsPjk=' 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
+<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-Go55/WkXpXmW05lBeYXXBr85s8V7KVDvc2BVlfwdzPo=' 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
 var SCHEME=/^\s*([a-z][a-z0-9+.\-]*):/i,HREF={http:1,https:1,mailto:1,tel:1},SRC={http:1,https:1,blob:1};
 function okUrl(v,isSrc){var c=String(v).replace(/[\u0000- ]/g,""),m=SCHEME.exec(c);if(!m)return true;var s=m[1].toLowerCase();
 if(isSrc&&s==="data")return /^data:image\//i.test(c);return !!(isSrc?SRC:HREF)[s];}
@@ -171,8 +171,16 @@ details.more[open]{padding-bottom:12px}
 @keyframes sway{from{transform:translateX(-10px) skewX(-3deg)}to{transform:translateX(10px) skewX(3deg)}}
 @keyframes ray{from{opacity:.15}to{opacity:1}}
 @media (prefers-reduced-motion:reduce){.journey .sway,.journey .ray{animation:none}}
-label.place{display:inline-flex;align-items:center;gap:6px}
-label.place select{font:inherit;color:inherit;background:transparent;border:0;max-width:11rem}
+.placecard{display:flex;align-items:center;gap:12px;padding:6px 14px 6px 6px;border-radius:14px;background:linear-gradient(135deg,#0b1430,#050914);border:1px solid #23305a;color:#e8ecf6;box-shadow:0 6px 22px #02051055}
+.placemap{width:74px;height:auto;flex:none;border-radius:10px}
+.placemap .pm-dot{cursor:pointer}
+.placemap .pulse{animation:pulse 2.4s ease-out infinite;transform-box:fill-box;transform-origin:center}
+.pc-txt{display:flex;flex-direction:column;gap:2px;min-width:0}
+.pc-eye{font-size:.6875rem;letter-spacing:.08em;text-transform:uppercase;color:#9aa6c8}
+.pc-txt select{font:600 1.0625rem var(--font-display);color:#ffe08a;background:transparent;border:0;padding:0;max-width:15rem;cursor:pointer}
+.pc-txt select option{color:#14203a}
+.pc-sub{font-size:.8125rem;color:#c8d3f0}
+@media (prefers-reduced-motion:reduce){.placemap .pulse{animation:none}}
 .globe{max-width:560px;margin-inline:auto}
 .issmap .trk,.globe .trk{fill:none;stroke:#7fe0ff;stroke-width:1.8;stroke-linecap:round}
 .issmap .trk.ahead,.globe .trk.ahead{stroke:#ffcf8a;stroke-width:1.6;stroke-dasharray:0 4.5}
@@ -194,6 +202,15 @@ ul.crew span{color:var(--muted)}
 .journey .flare{animation:flare 3s ease-in-out infinite alternate}
 @keyframes flare{from{opacity:.15}to{opacity:.55}}
 @media (prefers-reduced-motion:reduce){.journey .flare{animation:none}}
+.journey .spin{animation:spin 6s linear infinite;transform-box:view-box}
+@keyframes spin{to{transform:rotate(360deg)}}
+.journey .blink{animation:blink 1.6s steps(1) infinite}
+@keyframes blink{50%{opacity:.15}}
+.journey .twl{animation:tw 2.6s ease-in-out infinite alternate}
+.journey .beam{animation:beam 6s ease-in-out infinite}
+@keyframes beam{0%,100%{opacity:0}45%{opacity:.16}}
+@media (prefers-reduced-motion:reduce){.journey .spin,.journey .blink,.journey .twl,.journey .beam{animation:none}}
+.placemap{width:88px}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .impact.plain{border-top:0;padding-left:1.1em;margin-top:4px}
 .journey{display:block;width:100%;height:auto;border-radius:10px;margin:6px 0 4px;font:500 11px var(--sans,system-ui)}
@@ -222,7 +239,8 @@ dt{font-weight:600;color:var(--ink)} dd{margin:0}
   </div>
   <div class="ctl">
     <span class="fresh" id="fresh" role="status"></span>
-    <label class="btn place">Place <select id="place" aria-label="Choose your place"></select></label>
+    <div class="placecard"><svg id="placemap" class="placemap" viewBox="0 0 120 150" aria-hidden="true"></svg>
+      <div class="pc-txt"><span class="pc-eye">Your sky</span><select id="place" aria-label="Choose your place"></select><span class="pc-sub" id="placesub"></span></div></div>
     <button class="btn" id="tzbtn" type="button"></button>
     <button class="btn" id="thbtn" type="button"></button>
   </div>
@@ -240,13 +258,31 @@ const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},se
 /* Every place this page serves. Add a place = add a line. scot: AuroraWatch's wording names Scotland separately.
    sky: the folder of that place's night-sky page (for cloud). Towns close together share a place: same aurora, same ISS. */
 const PLACES={
- thanet:{name:'Thanet',full:'Thanet: Ramsgate, Broadstairs, Margate',lat:51.36,lon:1.40,scot:false,view:'Looking north over the sea from Thanet',sea:true,sky:'ramsgate',spot:'such as the cliffs at Margate or Broadstairs'},
+ thanet:{name:'Thanet',full:'Thanet: Ramsgate, Broadstairs, Margate',lat:51.36,lon:1.40,scot:false,view:'Looking north over the sea from Thanet',sky:'ramsgate',spot:'such as the cliffs at Margate or Broadstairs'},
  tayside:{name:'Dundee & Tayside',full:'Dundee & Tayside: Dundee, Carnoustie',lat:56.46,lon:-2.97,scot:true,view:'Looking north from Dundee',sky:'dundee'},
  'west-herts':{name:'West Hertfordshire',full:'West Hertfordshire: Rickmansworth, Watford',lat:51.64,lon:-0.43,scot:false,view:'Looking north from Rickmansworth',sky:'rickmansworth'},
  'south-wales':{name:'Ammanford, Swansea & Neath Port Talbot',full:'Ammanford, Swansea & Neath Port Talbot',lat:51.72,lon:-3.90,scot:false,view:'Looking north from Ammanford',sky:'ammanford'},
  plymouth:{name:'Plymouth & Ivybridge',full:'Plymouth & Ivybridge',lat:50.38,lon:-4.05,scot:false,view:'Looking north towards Dartmoor',sky:'plymouth'}};
 const PALIAS={ramsgate:'thanet',broadstairs:'thanet',margate:'thanet',dundee:'tayside',carnoustie:'tayside',rickmansworth:'west-herts',watford:'west-herts',
  ammanford:'south-wales',swansea:'south-wales',neath:'south-wales','port-talbot':'south-wales','neath-port-talbot':'south-wales',ivybridge:'plymouth'};
+/* Britain and Ireland from Natural Earth 50m land (public domain, via world-atlas): rings of [lon*20,lat*20,...]. */
+const UKMAP=[[-62,1170,-62,1169,-63,1168,-64,1166,-68,1165,-75,1161,-80,1159,-81,1157,-78,1157,-82,1154,-83,1152,-80,1152,-77,1152,-73,1153,-68,1154,-66,1154,-62,1153,-59,1154,-57,1154,-45,1154,-42,1154,-39,1154,-37,1152,-36,1150,-37,1148,-39,1147,-40,1145,-41,1143,-45,1137,-49,1135,-50,1133,-52,1131,-54,1130,-55,1130,-61,1129,-62,1129,-64,1128,-66,1127,-64,1127,-62,1128,-58,1128,-53,1126,-53,1125,-55,1124,-60,1124,-64,1122,-65,1121,-67,1121,-70,1121,-74,1121,-76,1122,-74,1121,-72,1120,-61,1119,-57,1121,-52,1121,-43,1118,-40,1116,-37,1113,-35,1112,-33,1111,-32,1110,-30,1105,-28,1101,-26,1095,-25,1094,-23,1093,-15,1091,-13,1090,-10,1088,-7,1086,-5,1084,-2,1082,-3,1082,-4,1080,-3,1079,-2,1077,0,1075,2,1072,1,1073,-1,1073,-3,1074,-5,1075,-9,1074,-11,1074,-13,1074,-10,1074,-6,1074,3,1069,5,1067,7,1063,6,1062,4,1061,2,1059,1,1058,6,1056,8,1057,10,1059,14,1060,17,1059,19,1059,21,1059,25,1058,28,1058,33,1055,34,1054,35,1052,35,1049,34,1047,33,1046,32,1043,31,1042,28,1040,26,1039,25,1039,25,1038,24,1036,22,1036,19,1036,15,1035,18,1034,18,1031,16,1031,14,1030,12,1030,10,1030,8,1029,11,1030,12,1029,13,1028,18,1027,20,1027,25,1028,27,1027,28,1026,28,1024,21,1021,20,1019,15,1019,14,1018,11,1017,8,1016,6,1016,4,1015,-4,1016,-9,1016,-16,1015,-17,1015,-20,1016,-23,1017,-26,1017,-28,1018,-27,1016,-30,1015,-32,1015,-34,1015,-37,1014,-41,1014,-39,1013,-41,1012,-47,1013,-49,1012,-51,1012,-53,1013,-56,1014,-58,1014,-60,1014,-68,1013,-70,1011,-71,1009,-72,1006,-74,1005,-76,1005,-78,1006,-82,1007,-83,1008,-86,1007,-88,1007,-90,1007,-95,1006,-96,1005,-100,1003,-102,1001,-105,1000,-106,1002,-109,1002,-111,1002,-112,1001,-113,1003,-111,1004,-107,1005,-103,1007,-101,1009,-99,1010,-98,1011,-92,1016,-91,1018,-90,1020,-86,1021,-84,1024,-77,1025,-72,1025,-68,1024,-65,1024,-63,1024,-61,1025,-58,1028,-56,1029,-54,1031,-52,1032,-49,1035,-51,1034,-53,1032,-55,1032,-60,1031,-62,1030,-65,1028,-71,1028,-75,1031,-78,1032,-80,1032,-82,1031,-85,1031,-83,1033,-82,1033,-86,1034,-88,1035,-91,1035,-92,1035,-94,1034,-98,1033,-102,1034,-103,1036,-104,1037,-105,1038,-104,1039,-102,1040,-98,1041,-91,1043,-88,1044,-84,1046,-83,1047,-82,1048,-81,1049,-80,1051,-81,1051,-81,1053,-81,1055,-82,1056,-82,1058,-85,1058,-87,1058,-89,1057,-92,1056,-94,1056,-93,1058,-91,1059,-88,1060,-87,1061,-85,1063,-82,1064,-76,1066,-73,1066,-71,1066,-69,1067,-66,1067,-62,1065,-63,1068,-61,1069,-58,1066,-55,1066,-57,1067,-58,1067,-59,1068,-61,1070,-61,1072,-60,1073,-59,1075,-61,1075,-61,1077,-61,1078,-58,1079,-57,1081,-57,1083,-60,1083,-61,1083,-62,1083,-66,1085,-68,1086,-71,1089,-72,1091,-69,1095,-65,1098,-61,1099,-69,1099,-71,1099,-73,1098,-74,1098,-76,1097,-77,1097,-78,1096,-79,1096,-82,1096,-83,1096,-85,1097,-88,1096,-90,1095,-93,1096,-96,1097,-98,1095,-98,1094,-101,1095,-103,1097,-103,1098,-103,1100,-102,1100,-101,1100,-99,1103,-96,1107,-94,1108,-94,1110,-95,1112,-98,1114,-98,1116,-97,1117,-97,1119,-92,1119,-93,1119,-97,1121,-96,1123,-97,1122,-99,1121,-102,1120,-103,1119,-104,1119,-105,1120,-104,1121,-104,1122,-100,1125,-102,1124,-106,1122,-108,1120,-108,1119,-107,1117,-111,1108,-112,1107,-115,1107,-115,1108,-114,1112,-112,1114,-110,1116,-111,1116,-112,1121,-111,1123,-111,1125,-110,1127,-109,1128,-108,1130,-107,1131,-106,1132,-105,1134,-104,1135,-111,1131,-113,1131,-115,1131,-117,1131,-119,1132,-119,1134,-121,1134,-123,1134,-121,1135,-118,1136,-115,1137,-117,1138,-115,1139,-112,1142,-111,1145,-113,1146,-116,1148,-116,1149,-115,1150,-114,1150,-112,1151,-114,1151,-115,1153,-114,1156,-112,1158,-107,1158,-106,1158,-103,1158,-108,1161,-107,1163,-107,1164,-105,1165,-101,1165,-102,1167,-102,1168,-101,1170,-100,1171,-98,1172,-96,1171,-94,1170,-91,1171,-89,1170,-84,1171,-77,1172,-73,1172,-69,1172,-65,1173,-61,1173,-62,1170],[-144,1101,-142,1101,-141,1102,-139,1104,-136,1104,-134,1104,-129,1105,-127,1105,-125,1104,-123,1104,-121,1103,-120,1101,-117,1098,-114,1096,-115,1094,-118,1094,-116,1093,-115,1093,-112,1093,-111,1092,-110,1091,-110,1089,-111,1090,-113,1091,-113,1090,-113,1088,-111,1087,-112,1085,-114,1085,-117,1085,-118,1083,-119,1082,-120,1081,-122,1081,-124,1082,-123,1080,-125,1080,-126,1080,-127,1079,-126,1078,-125,1077,-125,1075,-124,1073,-123,1072,-123,1070,-123,1068,-123,1066,-121,1063,-121,1062,-121,1059,-121,1057,-123,1056,-123,1055,-124,1053,-124,1051,-127,1048,-128,1047,-129,1047,-126,1045,-129,1044,-131,1044,-134,1044,-136,1044,-137,1044,-139,1045,-140,1043,-142,1043,-144,1043,-149,1042,-151,1042,-152,1040,-153,1040,-157,1039,-159,1037,-161,1037,-163,1036,-164,1037,-166,1038,-168,1038,-167,1037,-167,1035,-168,1034,-170,1034,-172,1033,-175,1033,-176,1032,-186,1030,-188,1030,-189,1031,-191,1030,-195,1029,-197,1030,-194,1032,-191,1033,-198,1033,-200,1032,-202,1032,-201,1033,-199,1035,-197,1035,-195,1036,-192,1037,-202,1035,-204,1036,-207,1036,-208,1037,-205,1039,-203,1040,-201,1041,-199,1042,-205,1043,-208,1043,-207,1044,-204,1045,-203,1046,-201,1046,-200,1045,-195,1045,-197,1046,-197,1048,-198,1048,-197,1049,-195,1049,-193,1051,-187,1052,-181,1052,-176,1054,-178,1054,-180,1055,-182,1053,-183,1053,-188,1052,-189,1053,-191,1053,-192,1052,-195,1052,-198,1051,-195,1053,-190,1056,-189,1056,-188,1058,-189,1059,-186,1062,-185,1062,-183,1063,-181,1063,-180,1063,-179,1064,-181,1065,-183,1065,-189,1065,-191,1065,-192,1066,-194,1067,-195,1066,-198,1067,-196,1068,-198,1068,-200,1068,-202,1068,-201,1070,-202,1070,-201,1071,-198,1072,-194,1072,-197,1073,-198,1074,-195,1076,-192,1076,-192,1078,-195,1078,-198,1077,-198,1079,-197,1080,-197,1082,-199,1082,-199,1083,-202,1083,-202,1084,-200,1086,-199,1085,-197,1085,-194,1086,-191,1086,-186,1086,-183,1084,-181,1086,-175,1085,-172,1085,-171,1086,-172,1087,-171,1088,-169,1089,-168,1089,-166,1090,-164,1092,-163,1093,-169,1092,-175,1094,-174,1095,-173,1095,-171,1096,-169,1097,-168,1098,-168,1099,-167,1101,-165,1103,-163,1103,-160,1104,-156,1104,-155,1105,-153,1105,-152,1104,-151,1102,-153,1101,-153,1099,-152,1100,-150,1101,-150,1103,-150,1105,-149,1106,-146,1106,-147,1107,-145,1107,-143,1106,-141,1105,-139,1105,-141,1104,-143,1103,-144,1102],[-88,1084,-92,1081,-94,1082,-95,1081,-94,1084,-92,1085,-90,1088,-89,1088,-87,1085,-88,1084],[-132,1132,-133,1132,-131,1133,-130,1133,-132,1132],[-102,1109,-105,1109,-107,1110,-108,1112,-107,1114,-105,1114,-104,1114,-102,1111,-102,1110],[-116,1127,-124,1126,-126,1126,-124,1127,-123,1130,-126,1131,-126,1132,-124,1133,-122,1133,-121,1132,-119,1131,-117,1130,-115,1130,-116,1127],[-123,1119,-122,1116,-121,1114,-122,1113,-125,1112,-125,1113,-126,1115,-129,1114,-129,1115,-129,1117,-127,1117,-126,1117,-124,1118,-123,1119],[-119,1116,-121,1116,-121,1118,-118,1119,-119,1120,-119,1121,-116,1122,-115,1122,-116,1120,-119,1116],[-21,1210,-23,1212,-22,1214,-20,1214,-21,1213,-21,1212,-21,1211],[-26,1211,-26,1209,-23,1208,-21,1209,-21,1208,-23,1204,-23,1202,-24,1200,-26,1198,-27,1198,-26,1201,-26,1202,-26,1204,-28,1204,-30,1203,-30,1205,-32,1205,-33,1206,-32,1206,-30,1206,-27,1207,-29,1209,-31,1210,-30,1211,-28,1212,-26,1212,-26,1211],[-16,1216,-17,1214,-18,1214,-19,1215,-18,1216,-16,1217],[-63,1176,-66,1176,-67,1177,-68,1178,-65,1178,-65,1177,-63,1176],[-84,1066,-81,1066,-84,1064,-86,1063,-87,1063,-88,1064,-91,1065,-91,1068,-89,1068,-86,1068,-84,1066],[-51,1185,-53,1185,-52,1186,-51,1186,-48,1186,-51,1185],[-61,1181,-60,1180,-58,1180,-56,1180,-56,1178,-57,1178,-60,1179,-63,1178,-64,1179,-65,1180,-66,1179,-67,1180,-66,1183,-65,1183,-63,1183,-61,1182,-61,1181],[-55,1184,-56,1183,-57,1185,-59,1185,-61,1186,-60,1187,-57,1186,-56,1185,-55,1185],[-124,1167,-127,1164,-128,1163,-131,1162,-129,1162,-128,1160,-132,1159,-134,1158,-136,1157,-138,1155,-140,1155,-142,1156,-139,1157,-137,1158,-140,1159,-141,1160,-140,1161,-142,1162,-142,1163,-141,1164,-139,1164,-138,1164,-136,1164,-135,1164,-136,1166,-135,1166,-131,1168,-126,1170,-125,1170,-124,1169,-124,1167],[-126,1139,-127,1139,-129,1140,-126,1141,-125,1140],[-123,1150,-123,1148,-123,1147,-122,1146,-118,1145,-114,1145,-114,1144,-116,1143,-118,1141,-120,1141,-121,1144,-123,1144,-125,1144,-126,1144,-129,1147,-134,1147,-135,1148,-134,1150,-133,1150,-132,1150,-132,1151,-128,1152,-127,1153,-125,1153,-123,1152,-123,1150],[-144,1154,-142,1153,-144,1151,-146,1151,-150,1152,-149,1153,-148,1153,-146,1153,-144,1154],[-145,1142,-147,1142,-148,1144,-148,1146,-148,1148,-146,1148,-145,1143],[-199,1078,-201,1078,-205,1080,-204,1080,-200,1080,-199,1078],[-21,1014,-23,1013,-24,1012,-26,1012,-30,1013,-28,1015,-26,1015,-23,1015,-21,1014]];
+/* The chooser's map: your places as dots, the chosen one glowing. Tapping a dot picks it; the select does the same
+   for keyboards and screen readers, so the map itself is hidden from them. */
+function placeMapSvg(){
+  const k=15.6,c=Math.cos(55*Math.PI/180),X=lo=>((lo+11)*c*k).toFixed(1),Y=la=>((59.4-la)*k).toFixed(1);
+  const land=UKMAP.map(r=>{let d='';for(let i=0;i<r.length;i+=2)d+=(i?'L':'M')+X(r[i]/20)+' '+Y(r[i+1]/20);return d+'Z'}).join('');
+  let o='<defs><radialGradient id="pmS" cx=".45" cy=".4" r=".8"><stop offset="0" stop-color="#123a73"/><stop offset="1" stop-color="#050b1e"/></radialGradient>'
+   +'<filter id="pmG" x="-2" y="-2" width="5" height="5"><feGaussianBlur stdDeviation="2.2"/></filter></defs>'
+   +'<rect width="120" height="150" rx="10" fill="url(#pmS)"/>';
+  for(let i=0;i<26;i++)o+='<circle cx="'+((i*47)%120)+'" cy="'+((i*29)%150)+'" r="'+(i%6?.4:.8)+'" fill="#fff" opacity=".35"/>';
+  o+='<path d="'+land+'" fill="#2f5a42" stroke="#7fa98a" stroke-width=".5" stroke-linejoin="round"/>';
+  Object.entries(PLACES).forEach(([key,v])=>{const on=key===PLACE,x=X(v.lon),y=Y(v.lat);
+    o+='<g data-place="'+key+'" class="pm-dot'+(on?' on':'')+'"><title>'+v.name+'</title><circle cx="'+x+'" cy="'+y+'" r="9" fill="transparent"/>'
+     +(on?'<circle cx="'+x+'" cy="'+y+'" r="6" fill="#ffe08a" opacity=".55" filter="url(#pmG)"/><circle class="pulse" cx="'+x+'" cy="'+y+'" r="4" fill="none" stroke="#ffe08a"/>':'')
+     +'<circle cx="'+x+'" cy="'+y+'" r="'+(on?3.2:2.2)+'" fill="'+(on?'#ffe08a':'#dfe6ff')+'"/></g>'});
+  return o;
+}
 const placeKey=k=>(k=String(k||'').toLowerCase(),PLACES[k]?k:PALIAS[k]||null);
 let PLACE=placeKey(new URLSearchParams(location.search).get('place'))||placeKey(store.get('space-place'))||'thanet';
 const T=s=>new Date(s.endsWith('Z')?s:s+'Z');
@@ -663,6 +699,58 @@ function moonIcon(cx,cy,R,m){
    +'<path d="M'+cx+' '+(cy-R)+'A'+R+' '+R+' 0 0 '+side+' '+cx+' '+(cy+R)+'A'+rx.toFixed(1)+' '+R+' 0 0 '+(k>0?side:1-side)+' '+cx+' '+(cy-R)+'Z" fill="#f4f1e2"/>'
    +'<circle cx="'+cx+'" cy="'+cy+'" r="'+(R+4)+'" fill="#f4f1e2" opacity="'+(m.frac*.18).toFixed(2)+'" filter="url(#tng)"/>';
 }
+/* The view north from each place, in layers that fade into haze with distance. Landmarks are simple silhouettes,
+   placed for the feel of the view rather than surveyed. sky: the sky drawing, mirrored in water where there is some. */
+function skyline(key,W,H,hz,sky,id){
+  const ridge=(pts,fill,op)=>{let d='M0 '+H+'L'+pts[0][0]+' '+pts[0][1];for(let i=1;i<pts.length;i++){const [x0,y0]=pts[i-1],[x1,y1]=pts[i];d+='Q'+x0+' '+y0+' '+((x0+x1)/2).toFixed(1)+' '+((y0+y1)/2).toFixed(1)}
+      const L=pts[pts.length-1];return '<path d="'+d+'L'+L[0]+' '+L[1]+'L'+W+' '+H+'Z" fill="'+fill+'"'+(op?' opacity="'+op+'"':'')+'/>'};
+  const glow=(c,a)=>'<rect y="'+(hz-26)+'" width="'+W+'" height="30" fill="url(#'+id+'lp)" opacity="'+a+'"/>'+'<defs><linearGradient id="'+id+'lp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+c+'" stop-opacity="0"/><stop offset="1" stop-color="'+c+'" stop-opacity=".5"/></linearGradient></defs>';
+  const lights=(n,y0,y1,seed)=>{let o='';for(let i=0;i<n;i++){const x=(i*61+seed*17)%W,y=y0+((i*37+seed)%Math.max(1,y1-y0));o+='<rect class="'+(i%5?'':'twl')+'" x="'+x+'" y="'+y+'" width="1.6" height="1.6" fill="#ffd27a" opacity=".85"/>'}return o};
+  const water=(top)=>(sky?'<g clip-path="url(#'+id+'wc)" opacity=".3"><g transform="translate(0 '+top+') scale(1 -.5) translate(0 -'+top+')">'+sky+'</g></g>':'')
+     +'<defs><clipPath id="'+id+'wc"><rect y="'+top+'" width="'+W+'" height="'+(H-top)+'"/></clipPath></defs>'
+     +Array.from({length:Math.ceil((H-top)/5)},(_,i)=>'<path d="M'+((i*53)%60)+' '+(top+3+i*5)+'H'+(W-(i*31)%50)+'" stroke="#bcd3ff" stroke-opacity="'+(.05+.02*(i%3))+'" stroke-dasharray="'+(14+i%4*6)+' '+(9+i%3*5)+'"/>').join('');
+  let o='';
+  if(key==='thanet'){
+    o+='<rect y="'+hz+'" width="'+W+'" height="'+(H-hz)+'" fill="url(#'+id+'sea)"/><defs><linearGradient id="'+id+'sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d1f3f"/><stop offset="1" stop-color="#050b1c"/></linearGradient></defs>'+water(hz);
+    // Thanet offshore wind farm on the horizon: towers, turning blades, blinking red lights
+    for(let i=0;i<14;i++){const x=24+i*12+(i%3)*3,ty=hz-1-(i%2),h=8+(i%3);
+      o+='<path d="M'+x+' '+ty+'V'+(ty-h)+'" stroke="#8ea3c9" stroke-width=".7" opacity=".7"/><g class="spin" style="animation-duration:'+(5+i%4)+'s;transform-origin:'+x+'px '+(ty-h)+'px">'
+        +[0,120,240].map(a=>'<path d="M'+x+' '+(ty-h)+'l'+(4.5*Math.sin(a*Math.PI/180)).toFixed(2)+' '+(-4.5*Math.cos(a*Math.PI/180)).toFixed(2)+'" stroke="#8ea3c9" stroke-width=".55" opacity=".7"/>').join('')+'</g>'
+        +'<circle class="blink" style="animation-delay:-'+(i%4*.4)+'s" cx="'+x+'" cy="'+(ty-h)+'" r=".9" fill="#ff4a3d"/>'}
+    o+='<circle cx="200" cy="'+(hz-1)+'" r=".9" fill="#ffe7a8"/><circle cx="214" cy="'+(hz-1)+'" r=".7" fill="#ff8a7a"/>';
+    // chalk cliff with the North Foreland lighthouse
+    const ct=hz+8;o+='<path d="M232 '+H+'Q240 '+(ct+4)+' 252 '+ct+'L'+W+' '+(ct-2)+'V'+H+'Z" fill="#14203b"/><path d="M232 '+H+'Q240 '+(ct+4)+' 252 '+ct+'L'+W+' '+(ct-2)+'" stroke="#c9d3e6" stroke-opacity=".35" fill="none"/>'
+     +'<path d="M290 '+ct+'L294 '+(ct-26)+'h7L305 '+ct+'z" fill="#d8dfee" opacity=".85"/><rect x="292.5" y="'+(ct-33)+'" width="10" height="7" fill="#1c2a4a"/>'
+     +'<circle cx="297.5" cy="'+(ct-29.5)+'" r="2.6" fill="#fff3c4"/><path class="beam" d="M297.5 '+(ct-29.5)+'L190 '+(ct-50)+'L190 '+(ct-38)+'Z" fill="#fff3c4" opacity=".12"/>';
+  }else if(key==='tayside'){
+    o+=glow('#ffb35c',.5)
+     +ridge([[0,hz-16],[60,hz-24],[120,hz-18],[170,hz-28],[240,hz-20],[300,hz-26],[W,hz-17]],'#22335e',.9)          // the Sidlaw Hills
+     +ridge([[0,hz-4],[150,hz-6],[185,hz-20],[205,hz-36],[225,hz-20],[260,hz-6],[W,hz-3]],'#111e3d')                  // the Law
+     +'<rect x="203" y="'+(hz-47)+'" width="4" height="11" fill="#111e3d"/><circle cx="205" cy="'+(hz-48)+'" r="1.4" fill="#ffd27a"/>';
+    let roofs='';for(let x=0;x<W;x+=9){const h=8+((x*7)%13);roofs+='<rect x="'+x+'" y="'+(H-h-6)+'" width="9.5" height="'+(h+6)+'" fill="#0a1328"/>'}
+    o+=roofs+lights(34,H-18,H-4,3);
+  }else if(key==='west-herts'){
+    o+=glow('#ffb35c',.35)+ridge([[0,hz-12],[90,hz-17],[180,hz-13],[260,hz-19],[W,hz-14]],'#22335e',.85);           // the Chilterns
+    let trees='M0 '+(hz+2);for(let x=0;x<=W;x+=8){trees+='Q'+(x+4)+' '+(hz-6-((x*13)%9))+' '+(x+8)+' '+(hz+1)}
+    o+='<path d="'+trees+'V'+(hz+8)+'H0Z" fill="#0c1730"/><rect y="'+(hz+6)+'" width="'+W+'" height="'+(H-hz-6)+'" fill="#071126"/>'+water(hz+6)   // a tree line over the Aquadrome lakes
+     +'<path d="'+trees.replace(/Q(\S+) (\S+) /g,(m,a,b)=>'Q'+a+' '+(2*(hz+6)-(+b)).toFixed(1)+' ')+'V'+(hz+6)+'H0Z" fill="#0c1730" opacity=".35"/>'
+     +[10,16,21,27].map((x,i)=>'<path d="M'+x+' '+H+'q'+(i%2?2:-2)+' -10 '+(i%2?-1:1)+' -'+(16+i*2)+'" stroke="#0a1224" stroke-width="1.4" fill="none"/>').join('')+lights(6,hz-2,hz+2,9);
+  }else if(key==='south-wales'){
+    o+=ridge([[0,hz-10],[60,hz-16],[130,hz-30],[200,hz-36],[246,hz-37],[256,hz-20],[290,hz-14],[W,hz-12]],'#22335e',.9)  // the Black Mountain escarpment
+     +ridge([[0,hz+4],[70,hz-4],[150,hz+2],[230,hz-6],[W,hz+2]],'#10203f')
+     +ridge([[0,H-10],[90,H-18],[200,H-12],[W,H-20]],'#0a1328')
+     +[[60,hz+2],[96,hz+8],[150,hz+6],[210,H-16],[262,hz+4],[300,H-14]].map(([x,y],i)=>'<circle class="'+(i%2?'twl':'')+'" cx="'+x+'" cy="'+y+'" r="1.2" fill="#ffd27a"/>').join('');
+  }else{
+    o+=ridge([[0,hz-14],[70,hz-22],[150,hz-26],[230,hz-21],[W,hz-15]],'#22335e',.9);                               // Dartmoor
+    [[70,hz-22],[150,hz-26],[232,hz-21]].forEach(([x,y],i)=>{o+='<path d="M'+(x-6)+' '+(y+2)+'h3v-4h3v-3h3v3h2v4h2" fill="#22335e" stroke="#22335e"/>'});  // tors on the crests
+    o+=ridge([[0,hz+2],[120,hz-4],[240,hz+3],[W,hz-2]],'#10203f');
+    // Ivybridge viaduct across the valley: a deck on tall piers, the arches open so the hillside shows through
+    const vy=hz+3,vb=H-4;let via='M26 '+vy+'H236V'+vb+'H26Z';for(let x=30;x<226;x+=22)via+='M'+(x+4)+' '+vb+'V'+(vy+13)+'A7 7 0 0 1 '+(x+18)+' '+(vy+13)+'V'+vb+'Z';
+    o+='<path d="'+via+'" fill="#070d1e" fill-rule="evenodd"/><path d="M26 '+vy+'H236" stroke="#3a4c80" stroke-width=".8"/>'+'<circle class="twl" cx="118" cy="'+(vy-2)+'" r="1" fill="#ffd27a"/>'
+     +ridge([[0,H-8],[120,H-14],[W,H-9]],'#070f22')+lights(5,H-12,H-4,5);
+  }
+  return o;
+}
 function tonightArt(aw){
   const P=PLACES[PLACE],W=340,H=170,hz=128,lv={red:3,amber:2,yellow:1}[aw]||0,id='tn',still=matchMedia('(prefers-reduced-motion: reduce)').matches;
   const ribbon=(seed,ht,ph)=>{let top='',bot='';for(let x=-20;x<=W+20;x+=10){
@@ -694,18 +782,8 @@ function tonightArt(aw){
   let o='<rect width="'+W+'" height="'+H+'" fill="url(#'+id+'k)"/><rect y="'+(hz-40)+'" width="'+W+'" height="40" fill="url(#'+id+'h)"/>'+skyStars(W,hz,13)+sky
    +(mo.alt>0?moonIcon(W-28,40,9,mo)+skyTxt(W-42,44,Math.round(mo.frac*100)+'% Moon','end','#c9c6b4'):'')
    +'<rect y="'+hz+'" width="'+W+'" height="'+(H-hz)+'" fill="#081227"/>';
-  if(P.sea){
-    if(lv)o+='<g clip-path="url(#'+id+'w)" opacity=".35"><g transform="translate(0 '+hz+') scale(1 -.45) translate(0 -'+hz+')">'+sky+'</g></g>';
-    for(let y=hz+6;y<H;y+=7)o+='<path d="M0 '+y+'H'+W+'" stroke="#ffffff" stroke-opacity=".04"/>';
-    // North Foreland lighthouse on the shore, bottom right
-    o+='<path d="M286 '+H+'L292 '+(hz-14)+'h8L306 '+H+'z" fill="#1c2a4a"/><rect x="290" y="'+(hz-22)+'" width="12" height="8" fill="#1c2a4a"/><circle cx="296" cy="'+(hz-18)+'" r="2.5" fill="#ffe08a"/>'
-     +'<path d="M0 '+H+'V'+(H-10)+'Q60 '+(H-16)+' 120 '+(H-11)+'T260 '+(H-12)+'L340 '+(H-9)+'V'+H+'z" fill="#141f38"/>';
-  }else{
-    // inland: rolling hills on the skyline, with a few lit windows
-    o+='<path d="M0 '+(hz-2)+'Q40 '+(hz-22)+' 90 '+(hz-10)+'T190 '+(hz-14)+'T290 '+(hz-6)+'T360 '+(hz-18)+'V'+H+'H0z" fill="#0d1a33"/>'
-     +'<path d="M0 '+(H-18)+'Q80 '+(H-30)+' 170 '+(H-20)+'T340 '+(H-24)+'V'+H+'H0z" fill="#141f38"/>'
-     +[30,44,120,212,226,300].map((x,i)=>'<rect x="'+x+'" y="'+(H-22-(i%3)*3)+'" width="3" height="3" fill="#ffe08a" opacity=".8"/>').join('');
-  }
+  o+=skyline(PLACE,W,H,hz,lv?sky:'',id);
+
   return '<svg class="journey" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+P.view+' tonight: '+(lv?'aurora, as AuroraWatch\'s '+aw+' alert suggests':'no aurora expected')+'.">'
    +'<defs>'+defs+'</defs>'+o+skyTxt(10,20,P.view,'start','#dfe6ff')+skyTxt(W/2,hz-4,'N','middle','#9aa6c8')+'</svg>';
 }
@@ -743,8 +821,7 @@ function passArt(p){
    +'<circle r="4" fill="#fff" filter="url(#'+id+'g)">'+(still?'':'<animateMotion dur="6s" repeatCount="indefinite" path="'+d+'"/>')+'</circle>'
    +(still?'<circle cx="'+c[0].toFixed(1)+'" cy="'+c[1].toFixed(1)+'" r="4" fill="#fff"/>':'');
   // the skyline: sea and the North Foreland lighthouse for Thanet, hills inland
-  o+=P.sea?'<rect y="'+hz+'" width="'+W+'" height="'+(H-hz)+'" fill="#081227"/><path d="M286 '+H+'L292 '+(hz-14)+'h8L306 '+H+'z" fill="#1c2a4a"/><rect x="290" y="'+(hz-22)+'" width="12" height="8" fill="#1c2a4a"/><circle cx="296" cy="'+(hz-18)+'" r="2.5" fill="#ffe08a"/>'
-     :'<path d="M0 '+(hz-2)+'Q40 '+(hz-20)+' 90 '+(hz-9)+'T190 '+(hz-13)+'T290 '+(hz-5)+'T360 '+(hz-16)+'V'+H+'H0z" fill="#0d1a33"/>';
+  o+=skyline(PLACE,W,H,hz,'',id);
   const step=half>60?45:22.5;for(let az=Math.ceil((a0-half)/step)*step;az<=a0+half;az+=step){const x=X((az+360)%360);if(x>14&&x<W-14)o+=skyTxt(x,H-8,DIRS[Math.round(((az%360)+360)%360/22.5)%16],'middle','#9aa6c8')}
   for(let e=10;e<top;e+=10)o+='<path d="M0 '+Y(e).toFixed(1)+'H'+W+'" stroke="#ffffff" stroke-opacity=".05"/>'+(e%20?'':skyTxt(W-6,Y(e)-3,e+'°','end','#5f6e94'));
   o+=skyTxt(a[0]+(a[0]<c[0]?-4:4),a[1]-8,'appears',a[0]<c[0]?'end':'start','#ffe08a')
@@ -1143,8 +1220,10 @@ function render(){
   show(cur,true);
 }
 $('#place').innerHTML=Object.entries(PLACES).map(([k,v])=>'<option value="'+k+'"'+(k===PLACE?' selected':'')+'>'+v.name+'</option>').join('');
+const drawPlace=()=>{$('#placemap').innerHTML=placeMapSvg();$('#placesub').textContent=PLACES[PLACE].full.split(': ')[1]||''};drawPlace();
 $('#place').onchange=e=>{PLACE=placeKey(e.target.value)||'thanet';store.set('space-place',PLACE);
-  history.replaceState(null,'','?place='+PLACE+location.hash);render()};
+  history.replaceState(null,'','?place='+PLACE+location.hash);drawPlace();render()};
+$('#placemap').onclick=e=>{const g=e.target.closest('[data-place]');if(!g)return;const sel=$('#place');sel.value=g.dataset.place;sel.dispatchEvent(new Event('change'))};
 $('#tzbtn').onclick=()=>{TZ=TZ==='UTC'?'Europe/London':'UTC';store.set('donki-tz',TZ==='UTC'?'utc':'uk');render()};
 render();
 let h0=(location.hash||'').slice(1);h0=OLD[h0]||h0;show(labels[h0]?h0:'now');
