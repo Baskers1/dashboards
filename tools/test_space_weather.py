@@ -130,6 +130,16 @@ def main():
             pg.close()
             assert after and after != before and pressed == 1, (before, after, pressed)
             print("ok forecast lane picker")
+            # tapping a place on the chooser's map switches the page to that place
+            pg = b.new_page()
+            pg.goto(url + "?place=thanet#now")
+            pg.wait_for_timeout(800)
+            pg.evaluate("() => document.querySelector('#placemap [data-place=\"tayside\"]').dispatchEvent(new MouseEvent('click',{bubbles:true}))")
+            pg.wait_for_timeout(300)
+            chosen, title = pg.eval_on_selector("#place", "e => e.value"), pg.inner_text("#p-now .tonight h3")
+            pg.close()
+            assert chosen == "tayside" and "Dundee" in title, (chosen, title)
+            print("ok place map")
             b.close()
     finally:
         srv.shutdown()
