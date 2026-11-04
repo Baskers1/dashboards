@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-03",
+ "generated": "2026-11-04",
  "area": "Neath Port Talbot",
  "scope": "restaurants, pubs, cafes, pop-ups and markets",
  "timezone": "Europe/London",
@@ -26,12 +26,12 @@
   "note": "Those five networks have no ScrapeCreators endpoint and return HTTP 404. Facebook has no keyword search, so its pages and groups are found via Google and read directly."
  },
  "counts": {
-  "api_responses": 746,
-  "posts_kept": 2758,
+  "api_responses": 749,
+  "posts_kept": 2773,
   "comments_read": 397,
-  "food_and_drink_posts": 1799,
-  "listing_rows": 254,
-  "listing_rows_forward": 31,
+  "food_and_drink_posts": 1806,
+  "listing_rows": 258,
+  "listing_rows_forward": 28,
   "recurring_fixtures": 12,
   "venues_ranked": 57,
   "closed_venues": 1,
@@ -39,57 +39,6 @@
   "facebook_pages": 115
  },
  "listings": [
-  {
-   "date": "2026-11-03",
-   "venue": "Rosa’s Bakery",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "time": null,
-   "price": null,
-   "detail": "Tuesday’s Product Menu: • Brown & Seeded Sourdough • Sweet Cinnamon & Raisin Sourdough • Cinnamon Swirls • Stem Ginger Cake 🫚 • Carrot Cake 🥕 • Choc & Pecan Cookies 🍪 And the rest of our bread. 🍞",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/rosasbakery.co.uk/posts/pfbid02fXKVvDXhCPrTDTzyyUnSkzKzZ45jZnpHDBcPZUwYoZBLxKZEP6cnKAeaGeGPWXU7l",
-   "posted": "2026-11-03",
-   "date_inferred": true,
-   "date_text": "Tuesday",
-   "recurring": false,
-   "needs_check": true
-  },
-  {
-   "date": "2026-11-03",
-   "venue": "The Pig Iron Tavern",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "time": "8PM",
-   "price": null,
-   "detail": "⚽ CHAMPIONS LEAGUE ACTION! 🏆 Two nights of top European football coming your way! 🍻 📺 TONIGHT – 8PM 🔥 Aston Villa v Barcelona 🔥 Man United v Roma 📺 TOMORROW NIGHT ⚽ 5:45PM – Fenerbahce v Liverpool ⚽ 8PM – RB Leipzig v Ma",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/ThePigIronTavern/posts/pfbid033KRht6b15HHUXReZ3PGh476mPenwpBy2iuYxwydW5zYCrVHBwTdLUZxELVGEELw4l",
-   "posted": "2026-11-03",
-   "date_inferred": true,
-   "date_text": "tonight",
-   "recurring": false,
-   "needs_check": true
-  },
-  {
-   "date": "2026-11-03",
-   "venue": "The Rising Sun Inn",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "time": null,
-   "price": null,
-   "detail": "Open Mic is back this Tuesday. Come along, join in, sing or just sit and enjoy.",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/therisingsuninnabersychan/posts/pfbid02GGuJRspNctS2Q3YxKisR8b3QnfnWQjAjJtNKt7KicEoYRNFvRs3rB62qUxqbmykyl",
-   "posted": "2026-10-31",
-   "date_inferred": true,
-   "date_text": "this Tuesday",
-   "recurring": false,
-   "needs_check": true
-  },
   {
    "date": "2026-11-04",
    "venue": "The Dillwyn Arms",
@@ -875,7 +824,7 @@
   },
   {
    "venue": "The Crown Skewen",
-   "total_mentions": 11,
+   "total_mentions": 16,
    "independent_mentions": 7,
    "platforms": [
     "Facebook",
@@ -1206,7 +1155,7 @@
    ]
   },
   {
-   "venue": "Rolling Mill",
+   "venue": "The Rolling Mill",
    "total_mentions": 5,
    "independent_mentions": 3,
    "platforms": [
@@ -1216,7 +1165,7 @@
    ]
   },
   {
-   "venue": "The Rolling Mill",
+   "venue": "Rolling Mill",
    "total_mentions": 5,
    "independent_mentions": 3,
    "platforms": [
@@ -1255,7 +1204,7 @@
   },
   {
    "venue": "Bryncoch Inn",
-   "total_mentions": 5,
+   "total_mentions": 8,
    "independent_mentions": 3,
    "platforms": [
     "Facebook",
@@ -1264,7 +1213,7 @@
   },
   {
    "venue": "The Bryncoch Inn",
-   "total_mentions": 5,
+   "total_mentions": 8,
    "independent_mentions": 3,
    "platforms": [
     "Facebook",
@@ -1392,6 +1341,11 @@
    "dated": 8
   },
   {
+   "source": "https://www.facebook.com/thebryncochinn",
+   "posts": 12,
+   "dated": 8
+  },
+  {
    "source": "https://www.facebook.com/groups/1016434321744080",
    "posts": 19,
    "dated": 7
@@ -1423,11 +1377,6 @@
   },
   {
    "source": "https://www.facebook.com/Thai-Food-Cafe-100049167354912",
-   "posts": 12,
-   "dated": 7
-  },
-  {
-   "source": "https://www.facebook.com/AfanTavern",
    "posts": 12,
    "dated": 7
   }
