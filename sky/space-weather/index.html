@@ -1,4 +1,4 @@
-<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-Cut+JrcqnChPTQGLScb73AFvK/0b7uljOZBHu6Ce61w=' 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
+<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-VIise6QWY6cFresnAgZoPDz0fty6mCgb+rVJ+LNsPjk=' 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
 var SCHEME=/^\s*([a-z][a-z0-9+.\-]*):/i,HREF={http:1,https:1,mailto:1,tel:1},SRC={http:1,https:1,blob:1};
 function okUrl(v,isSrc){var c=String(v).replace(/[\u0000- ]/g,""),m=SCHEME.exec(c);if(!m)return true;var s=m[1].toLowerCase();
 if(isSrc&&s==="data")return /^data:image\//i.test(c);return !!(isSrc?SRC:HREF)[s];}
@@ -181,6 +181,19 @@ label.place select{font:inherit;color:inherit;background:transparent;border:0;ma
 @media (prefers-reduced-motion:reduce){.issmap .pulse,.globe .pulse{animation:none;opacity:0}}
 ul.crew{list-style:none;padding:0;margin:6px 0 0;display:grid;gap:6px}
 ul.crew span{color:var(--muted)}
+.journey .aur{animation:aur 3.5s ease-in-out infinite alternate}
+@keyframes aur{from{opacity:.35}to{opacity:.95}}
+@media (prefers-reduced-motion:reduce){.journey .aur{animation:none}}
+.tonight .journey > circle[r="1.1"]{animation:tw 2.8s ease-in-out infinite alternate}
+.tonight .journey > circle[r="1.1"]:nth-of-type(2n){animation-duration:3.7s;animation-delay:-1.2s}
+@keyframes tw{from{opacity:.25}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.tonight .journey > circle{animation:none}}
+.cal.sky .d{filter:drop-shadow(0 0 calc(var(--g,0)*12px) rgba(77,255,166,calc(var(--g,0)*.9)))}
+.journey .boost{animation:aur 2.6s ease-in-out infinite alternate}
+@media (prefers-reduced-motion:reduce){.journey .boost{animation:none}}
+.journey .flare{animation:flare 3s ease-in-out infinite alternate}
+@keyframes flare{from{opacity:.15}to{opacity:.55}}
+@media (prefers-reduced-motion:reduce){.journey .flare{animation:none}}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .impact.plain{border-top:0;padding-left:1.1em;margin-top:4px}
 .journey{display:block;width:100%;height:auto;border-radius:10px;margin:6px 0 4px;font:500 11px var(--sans,system-ui)}
@@ -478,21 +491,6 @@ const skyDefs=id=>'<defs><radialGradient id="'+id+'s"><stop offset="0" stop-colo
  +'<filter id="'+id+'b" x="-1" y="-1" width="3" height="3"><feGaussianBlur stdDeviation="2.5"/></filter></defs>';
 const skyTxt=(x,y,t,a,c)=>'<text x="'+x+'" y="'+y+'" text-anchor="'+a+'" style="fill:'+(c||'#dfe6ff')+'">'+t+'</text>';
 const skyEarth=(id,x,y,r,glow)=>(glow?'<circle cx="'+x+'" cy="'+y+'" r="'+(r+6)+'" fill="#4dffa6" opacity=".35" filter="url(#'+id+'b)"/>':'')+'<circle cx="'+x+'" cy="'+y+'" r="'+r+'" fill="url(#'+id+'e)"/>';
-/* Sun tab: every cloud the Sun threw out. Most fly off in other directions; the few aimed at Earth are brighter,
-   and how far each got along the path shows whether it was forecast, arrived, or set off a storm. */
-function sunArt(all,fc,ar,sm){
-  const W=340,H=210,sx=44,sy=105,ex=306,id='sa',fs=new Set(fc),as=new Set(ar),ss=new Set(sm);let o='',k=0,f=0;
-  all.forEach(c=>{if(fs.has(c))return;k++;let a=(k*137.5)%360;if(a<25||a>335)a+=40;const d=46+(k*29)%60,r=a*Math.PI/180;
-    o+='<circle cx="'+(sx+Math.cos(r)*d).toFixed(1)+'" cy="'+(sy+Math.sin(r)*d*.8).toFixed(1)+'" r="2.4" fill="#ffb86b" opacity=".45"/>'});
-  fc.forEach(c=>{f++;const t=ss.has(c)?.93:as.has(c)?.84:.3+(f%5)*.08,x=sx+(ex-sx)*t,y=sy+((f*37)%26-13)*(1-t);
-    o+='<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+(ss.has(c)?5:3.6)+'" fill="'+(ss.has(c)?'#ff6b5a':'#ffcf8a')+'" opacity=".9"/>'});
-  return '<svg class="journey" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+all.length+' clouds left the Sun in all directions; '+fc.length+' headed for Earth, '+ar.length+' arrived and '+sm.length+' set off a storm.">'+skyDefs(id)
-   +'<rect width="'+W+'" height="'+H+'" fill="#070b1a"/>'+skyStars(W,H,3)
-   +'<path d="M'+(sx+30)+' '+sy+'H'+(ex-20)+'" stroke="#ffcf8a" stroke-dasharray="2 6" opacity=".4"/>'
-   +'<circle cx="'+sx+'" cy="'+sy+'" r="50" fill="url(#'+id+'g)"/><circle cx="'+sx+'" cy="'+sy+'" r="24" fill="url(#'+id+'s)"/>'+o+skyEarth(id,ex,sy,13,sm.length)
-   +skyTxt(10,20,all.length+' clouds left the Sun','start')+skyTxt(W-8,20,fc.length+' headed for Earth','end','#ffcf8a')
-   +skyTxt(W-8,H-28,ar.length+' arrived','end','#ffcf8a')+skyTxt(W-8,H-12,plural(sm.length,'storm')+' at Earth','end','#ff8f80')+'</svg>';
-}
 /* Forecasts tab: Earth is the target; each forecast lands left (arrived early) or right (arrived late) of it. */
 function forecastArt(rows){
   const W=340,cx=170,rh=24,top=62,H=top+rows.length*rh+30,id='fa',mx=Math.max(24,...rows.map(r=>Math.abs(hrs(r.pred,r.ips)))),sc=(cx-92)/mx;
@@ -539,35 +537,47 @@ function shieldDefault(){
   const d=[last(D.mpc),last(D.rbe),last(D.gst)].find(v=>v!=null);return d==null?WDAYS-1:d;
 }
 function shieldHtml(d){
-  const s=shieldDay(d),W=340,H=230,ex=212,ey=118,id='sh',geo=66,sd=s.mpc?54:s.g>=2||s.hit?82:100;
-  let o='<rect width="'+W+'" height="'+H+'" fill="#070b1a"/>'+skyStars(W,H,9)
-   +'<circle cx="-60" cy="'+ey+'" r="110" fill="url(#'+id+'g)"/><circle cx="-60" cy="'+ey+'" r="70" fill="url(#'+id+'s)"/>';
-  // solar wind streaming from the Sun, bending round the shield
-  for(let i=-4;i<=4;i++){const y=ey+i*24;o+='<path class="flow" d="M30 '+y+'H'+(ex-sd-6+(i*24)**2/(2.4*sd)).toFixed(1)+'" stroke="#ffcf8a" stroke-width="1" opacity="'+(s.hit||s.mpc?.6:.25)+'" stroke-dasharray="6 6"/>'}
-  // the shield's edge: a nose on the Sun side, opening into a tail
-  let pth='';for(let y=-112;y<=112;y+=8){const x=ex-sd+y*y/(2.4*sd);pth+=(pth?'L':'M')+Math.min(x,W+20).toFixed(1)+' '+(ey+y)}
-  o+='<path d="'+pth+'" stroke="#9fb4ff" stroke-width="2" fill="none" opacity=".85"/>';
-  // radiation belts, side on: inner and outer lobes either side of Earth
-  [-1,1].forEach(k=>{o+='<ellipse cx="'+(ex+k*24)+'" cy="'+ey+'" rx="7" ry="12" fill="#c9a8ff" opacity=".35"/>'
-    +(s.rbe?'<ellipse cx="'+(ex+k*50)+'" cy="'+ey+'" rx="20" ry="32" fill="#7fe8ff" opacity=".55" filter="url(#'+id+'b)"/>':'')
-    +'<ellipse cx="'+(ex+k*50)+'" cy="'+ey+'" rx="17" ry="28" fill="#7fe8ff" opacity="'+(s.rbe?.6:.18)+'"/>'});
-  o+='<circle cx="'+ex+'" cy="'+ey+'" r="'+geo+'" fill="none" stroke="#dfe6ff" stroke-dasharray="2 5" opacity=".5"/>';
-  if(s.g)o+='<ellipse cx="'+ex+'" cy="'+(ey-10)+'" rx="'+(6+s.g)+'" ry="'+(2+s.g*.6)+'" fill="#4dffa6" opacity=".8" filter="url(#'+id+'b)"/><ellipse cx="'+ex+'" cy="'+(ey+10)+'" rx="'+(6+s.g)+'" ry="'+(2+s.g*.6)+'" fill="#4dffa6" opacity=".7" filter="url(#'+id+'b)"/>';
-  o+=skyEarth(id,ex,ey,10,0)+'<circle cx="'+(ex+9)+'" cy="'+(ey-9)+'" r="1.8" fill="#fff"/>';
+  const s=shieldDay(d),W=340,H=230,ex=212,ey=118,id='sh',RE=10,geo=66,sd=s.mpc?54:s.g>=2||s.hit?82:100,still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const rad=Math.PI/180,edge=y=>ex-sd+y*y/(2.4*sd),bow=y=>ex-sd-16+y*y/(3*(sd+16));
+  // a dipole field line of size L (in Earth radii), squeezed on the Sun side to fit inside the shield, stretched behind
+  const loop=(L,side,lo,hi)=>{let d='';for(let la=lo;la<=hi;la+=3){const c=Math.cos(la*rad),r=L*RE*c*c,y=ey-r*Math.sin(la*rad);
+      let x=r*c;x=side<0?ex-Math.min(x,(ex-edge(y-ey))*.92):ex+x*(1.3+L*.12);d+=(d?'L':'M')+x.toFixed(1)+' '+y.toFixed(1)}return d};
+  // a radiation belt: the band between two field lines, either side of Earth
+  const belt=(a,b,side)=>{let d='';for(let la=-60;la<=60;la+=4){const c=Math.cos(la*rad),r=a*RE*c*c;d+=(d?'L':'M')+(ex+side*r*c).toFixed(1)+' '+(ey-r*Math.sin(la*rad)).toFixed(1)}
+    for(let la=60;la>=-60;la-=4){const c=Math.cos(la*rad),r=b*RE*c*c;d+='L'+(ex+side*r*c).toFixed(1)+' '+(ey-r*Math.sin(la*rad)).toFixed(1)}return d+'Z'};
+  let o='<rect width="'+W+'" height="'+H+'" fill="url(#'+id+'bg)"/>'+skyStars(W,H,9)
+   +'<circle cx="-60" cy="'+ey+'" r="120" fill="url(#'+id+'g)"/><circle cx="-60" cy="'+ey+'" r="70" fill="url(#'+id+'s)"/>';
+  // the solar wind: streamlines that bend round the bow shock
+  for(let i=-4;i<=4;i++){const y0=i*24;let d='M24 '+(ey+y0);for(let x=40;x<=W+10;x+=10){const yb=Math.abs(y0)+.1,bx=bow(yb);let yy=y0;if(x>bx-30){const push=Math.max(0,Math.min(1,(x-(bx-30))/60));yy=y0+Math.sign(y0||.1)*push*(26-Math.abs(y0)*.12)}d+='L'+x+' '+(ey+yy).toFixed(1)}
+    o+='<path class="flow" d="'+d+'" stroke="#ffcf8a" stroke-width="1" fill="none" opacity="'+(s.hit||s.mpc?.55:.22)+'" stroke-dasharray="6 6"/>'}
+  let bp='',mp='';for(let y=-112;y<=112;y+=6){bp+=(bp?'L':'M')+Math.min(bow(y),W+20).toFixed(1)+' '+(ey+y);mp+=(mp?'L':'M')+Math.min(edge(y),W+20).toFixed(1)+' '+(ey+y)}
+  o+='<path d="'+bp+'" stroke="#ffcf8a" stroke-width="1" fill="none" opacity=".45" stroke-dasharray="1 3"/>'
+   +'<path d="'+mp+'" stroke="#9fb4ff" stroke-width="5" fill="none" opacity=".18" filter="url(#'+id+'b)"/><path d="'+mp+'" stroke="#b9c8ff" stroke-width="1.6" fill="none" opacity=".9"/>';
+  // field lines
+  [2.5,4,5.5,7].forEach((L,i)=>{o+='<path d="'+loop(L,-1,-74,74)+'" stroke="#9fb4ff" fill="none" opacity="'+(.45-i*.07)+'"/><path d="'+loop(L,1,-74,74)+'" stroke="#9fb4ff" fill="none" opacity="'+(.35-i*.06)+'"/>'});
+  [ -1,1].forEach(k=>{o+='<path d="M'+ex+' '+(ey-k*RE*.9)+'C'+(ex+40)+' '+(ey-k*48)+' '+(ex+90)+' '+(ey-k*44)+' '+(W+10)+' '+(ey-k*40)+'" stroke="#9fb4ff" fill="none" opacity=".25"/>'});
+  // radiation belts: inner (fainter, steady) and outer (lights up when boosted)
+  [-1,1].forEach(k=>{o+='<path d="'+belt(1.3,2.2,k)+'" fill="#c9a8ff" opacity=".28"/>'
+    +(s.rbe?'<path class="boost" d="'+belt(3.2,5.6,k)+'" fill="#7fe8ff" opacity=".35" filter="url(#'+id+'b)"/>':'')
+    +'<path d="'+belt(3.2,5.6,k)+'" fill="url(#'+id+'r)" opacity="'+(s.rbe?.5:.2)+'" filter="url(#'+id+'b)"/>'});
+  o+='<circle cx="'+ex+'" cy="'+ey+'" r="'+geo+'" fill="none" stroke="#dfe6ff" stroke-dasharray="2 5" opacity=".45"/>';
+  o+=miniGlobe(ex,ey,RE+1,25,5,id);
+  if(s.g)o+=[-1,1].map(k=>'<ellipse class="aur" cx="'+ex+'" cy="'+(ey+k*RE*.8)+'" rx="'+(4+s.g)+'" ry="1.8" fill="none" stroke="#4dffa6" stroke-width="'+(1.2+s.g*.4)+'" filter="url(#'+id+'b)"/>').join('');
+  o+='<circle cx="'+(ex+13)+'" cy="'+(ey-9)+'" r="1.6" fill="#fff"/>';
   // a TV/weather satellite on the Sun-facing side of its ring
   const sx=ex-geo,sat=s.mpc?'#ff6b5a':s.rbe?'#7fe8ff':'#dfe6ff';
-  o+='<g><rect x="'+(sx-9)+'" y="'+(ey-2)+'" width="6" height="4" fill="'+sat+'"/><rect x="'+(sx+3)+'" y="'+(ey-2)+'" width="6" height="4" fill="'+sat+'"/><rect x="'+(sx-2.5)+'" y="'+(ey-3.5)+'" width="5" height="7" fill="#fff"/></g>';
+  o+='<g'+(s.mpc&&!still?' class="aur"':'')+'><rect x="'+(sx-9)+'" y="'+(ey-2)+'" width="6" height="4" fill="'+sat+'"/><rect x="'+(sx+3)+'" y="'+(ey-2)+'" width="6" height="4" fill="'+sat+'"/><rect x="'+(sx-2.5)+'" y="'+(ey-3.5)+'" width="5" height="7" fill="#fff"/></g>';
   o+=skyTxt(8,20,dlab(d),'start','#ffffff')+skyTxt(W-8,20,'Sizes are illustrative','end','#9aa6c8')
    +skyTxt(sx,ey-50,'TV & weather','middle','#dfe6ff')+skyTxt(sx,ey-38,'satellites','middle','#dfe6ff')
-   +skyTxt(ex+16,ey-16,'ISS','start','#dfe6ff')+skyTxt(ex+50,ey+48,s.rbe?'Outer belt boosted':'Outer belt','middle',s.rbe?'#7fe8ff':'#9aa6c8')
-   +skyTxt(ex-sd+4,H-10,s.mpc?'Shield edge, pushed in':'Shield edge','middle','#9fb4ff');
+   +skyTxt(ex+18,ey-14,'ISS','start','#dfe6ff')+skyTxt(ex+44,ey+62,s.rbe?'Outer belt boosted':'Outer belt','middle',s.rbe?'#7fe8ff':'#9aa6c8')
+   +skyTxt(ex-sd+4,H-10,s.mpc?'Shield edge, pushed in':'Shield edge','middle','#b9c8ff');
   const say=[];
   if(s.mpc)say.push('the shield was pushed in past the TV and weather satellites, leaving them out in the solar wind');
   if(s.rbe)say.push('the outer radiation belt filled with fast electrons, so those satellites sat inside a boosted belt');
   if(s.g)say.push('a G'+s.g+' storm lit up the aurora');
   if(!say.length&&s.hit)say.push('fast solar wind or a shock wave pressed on the shield, but nothing more was logged');
   const txt=dlab(d)+': '+(say.length?say.join('; ')+'.':'a quiet day. The belts and the shield sat in their usual place, as far as NASA\'s log shows.');
-  return '<svg class="journey" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Earth\'s shield on '+txt+'">'+skyDefs(id)+o+'</svg><p class="finding" aria-live="polite">'+txt+'</p>';
+  return '<svg class="journey" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Earth\'s shield on '+txt+'">'+skyDefs(id)+'<defs><linearGradient id="'+id+'bg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#140b0a"/><stop offset=".4" stop-color="#05070f"/><stop offset="1" stop-color="#03050f"/></linearGradient><radialGradient id="'+id+'r" gradientUnits="userSpaceOnUse" cx="'+ex+'" cy="'+ey+'" r="60"><stop offset=".3" stop-color="#bff6ff" stop-opacity=".2"/><stop offset=".7" stop-color="#7fe8ff"/><stop offset="1" stop-color="#3fbfe0" stop-opacity=".3"/></radialGradient></defs>'+o+'</svg><p class="finding" aria-live="polite">'+txt+'</p>';
 }
 window.shieldHtml=shieldHtml; // the click handler lives outside this per-delivery scope
 /* Forecasts tab: each forecast against what happened. Did the cloud arrive, and did NASA link a storm to its arrival? */
@@ -637,6 +647,22 @@ function tonight(){
 }
 /* The aurora is drawn only on an AuroraWatch alert. Each curtain is a wavy ribbon whose shape is animated (SVG
    animate, skipped under reduced motion), with fine rays flickering inside it and a squashed reflection in the sea. */
+/* The Moon for a place and time (low-precision almanac, good to a degree or so): how much is lit, waxing or
+   waning, and its height above the horizon. */
+function moonAt(t,lat,lon){
+  const r=Math.PI/180,d=t/864e5+2440587.5-2451545,L=218.316+13.176396*d,M=(134.963+13.064993*d)*r,F=(93.272+13.229350*d)*r;
+  const la=(L+6.289*Math.sin(M))*r,be=5.128*Math.sin(F)*r,ep=23.439*r;
+  const ra=Math.atan2(Math.sin(la)*Math.cos(ep)-Math.tan(be)*Math.sin(ep),Math.cos(la)),dec=Math.asin(Math.sin(be)*Math.cos(ep)+Math.cos(be)*Math.sin(ep)*Math.sin(la));
+  const ha=((280.46061837+360.98564736629*d+lon)*r-ra),f=lat*r,alt=Math.asin(Math.sin(f)*Math.sin(dec)+Math.cos(f)*Math.cos(dec)*Math.cos(ha));
+  const g=(357.528+.9856003*d)*r,ls=280.46+.9856474*d+1.915*Math.sin(g)+.02*Math.sin(2*g),el=(((la/r-ls)%360)+360)%360;
+  return {frac:(1-Math.cos(el*r))/2,waxing:el<180,alt:alt/r};
+}
+function moonIcon(cx,cy,R,m){
+  const k=1-2*m.frac,rx=Math.abs(k)*R,side=m.waxing?1:0;
+  return '<circle cx="'+cx+'" cy="'+cy+'" r="'+R+'" fill="#2a3352"/>'
+   +'<path d="M'+cx+' '+(cy-R)+'A'+R+' '+R+' 0 0 '+side+' '+cx+' '+(cy+R)+'A'+rx.toFixed(1)+' '+R+' 0 0 '+(k>0?side:1-side)+' '+cx+' '+(cy-R)+'Z" fill="#f4f1e2"/>'
+   +'<circle cx="'+cx+'" cy="'+cy+'" r="'+(R+4)+'" fill="#f4f1e2" opacity="'+(m.frac*.18).toFixed(2)+'" filter="url(#tng)"/>';
+}
 function tonightArt(aw){
   const P=PLACES[PLACE],W=340,H=170,hz=128,lv={red:3,amber:2,yellow:1}[aw]||0,id='tn',still=matchMedia('(prefers-reduced-motion: reduce)').matches;
   const ribbon=(seed,ht,ph)=>{let top='',bot='';for(let x=-20;x<=W+20;x+=10){
@@ -648,6 +674,7 @@ function tonightArt(aw){
   let defs='<linearGradient id="'+id+'c" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#5dffb0"/><stop offset=".45" stop-color="#2ee88a" stop-opacity=".85"/><stop offset=".8" stop-color="'+top+'" stop-opacity="'+(lv>=2?.55:0)+'"/><stop offset="1" stop-color="'+top+'" stop-opacity="0"/></linearGradient>'
    +'<linearGradient id="'+id+'r" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#eafff4" stop-opacity=".9"/><stop offset="1" stop-color="#eafff4" stop-opacity="0"/></linearGradient>'
    +'<linearGradient id="'+id+'k" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#03050f"/><stop offset="1" stop-color="#0b1430"/></linearGradient>'
+   +'<linearGradient id="'+id+'h" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b3a5c" stop-opacity="0"/><stop offset="1" stop-color="#2b5a6e" stop-opacity=".45"/></linearGradient>'
    +'<filter id="'+id+'g" x="-.2" y="-.5" width="1.4" height="2"><feGaussianBlur stdDeviation="7"/></filter>'
    +'<filter id="'+id+'s" x="-.1" y="-.2" width="1.2" height="1.4"><feGaussianBlur stdDeviation="1.6"/></filter>'
    +'<clipPath id="'+id+'w"><rect y="'+hz+'" width="'+W+'" height="'+(H-hz)+'"/></clipPath>';
@@ -663,7 +690,9 @@ function tonightArt(aw){
       +'<path d="'+d+'" fill="url(#'+id+'c)" opacity="'+(op*.8)+'" filter="url(#'+id+'g)">'+anim(seed,ht,dur)+'</path>'
       +'<path d="'+d+'" fill="url(#'+id+'c)" opacity="'+op+'" filter="url(#'+id+'s)">'+anim(seed,ht,dur)+'</path>'
       +(rays?'<g clip-path="url(#'+id+'p'+n+')" opacity="'+(op*.55)+'">'+rays+'</g>':'')+'</g>'});
-  let o='<rect width="'+W+'" height="'+H+'" fill="url(#'+id+'k)"/>'+skyStars(W,hz,13)+sky
+  const mt=moonTime(),mo=moonAt(mt,P.lat,P.lon);
+  let o='<rect width="'+W+'" height="'+H+'" fill="url(#'+id+'k)"/><rect y="'+(hz-40)+'" width="'+W+'" height="40" fill="url(#'+id+'h)"/>'+skyStars(W,hz,13)+sky
+   +(mo.alt>0?moonIcon(W-28,40,9,mo)+skyTxt(W-42,44,Math.round(mo.frac*100)+'% Moon','end','#c9c6b4'):'')
    +'<rect y="'+hz+'" width="'+W+'" height="'+(H-hz)+'" fill="#081227"/>';
   if(P.sea){
     if(lv)o+='<g clip-path="url(#'+id+'w)" opacity=".35"><g transform="translate(0 '+hz+') scale(1 -.45) translate(0 -'+hz+')">'+sky+'</g></g>';
@@ -680,6 +709,7 @@ function tonightArt(aw){
   return '<svg class="journey" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+P.view+' tonight: '+(lv?'aurora, as AuroraWatch\'s '+aw+' alert suggests':'no aurora expected')+'.">'
    +'<defs>'+defs+'</defs>'+o+skyTxt(10,20,P.view,'start','#dfe6ff')+skyTxt(W/2,hz-4,'N','middle','#9aa6c8')+'</svg>';
 }
+function moonTime(){const n=new Date(NOW),h=n.getUTCHours();if(h>=18||h<6)return NOW;const d=Date.UTC(n.getUTCFullYear(),n.getUTCMonth(),n.getUTCDate(),22);return d}
 function tonightHtml(){
   if(!KP||(!KP.aw&&!KP.fc.length))return '';
   const aw=KP.aw,t=tonight(),k=t.k,g=k!=null?gLevel(k):0,age=KP.awAt?(NOW-KP.awAt)/36e5:null;
@@ -692,8 +722,9 @@ function tonightHtml(){
    :['No, not tonight.',(aw?'AuroraWatch reports no significant activity':'There is no AuroraWatch reading')+(k!=null?', and NOAA forecasts Kp '+kpR(k)+' tonight, below storm level (Kp 5).':'.')];
   return '<div class="ep next tonight"><h3>Could I see the aurora from '+P.name+' tonight? '+ans[0]+'</h3>'+tonightArt(aw)
    +'<p>'+ans[1]+'</p><ul class="impact plain">'
-   +(aw?'<li><b>AuroraWatch UK</b> ('+aw+(age!=null?', checked '+(age<1?'within the hour':Math.round(age)+' hours ago, so it may have changed'):'')+'): '+AWTXT[aw]+'</li>':'')
+   +(aw?'<li><b>AuroraWatch UK</b> ('+aw+(age!=null?', checked '+(age<1?'within the hour':plural(Math.round(age),'hour')+' ago, so it may have changed'):'')+'): '+AWTXT[aw]+'</li>':'')
    +(k!=null?'<li><b>NOAA forecast</b> for tonight: Kp up to '+kpR(k)+(g?' (G'+g+' storm)':' (storms start at Kp 5)')+'.</li>':'')
+   +(()=>{const m=moonAt(moonTime(),P.lat,P.lon),pc=Math.round(m.frac*100);return '<li><b>Moon:</b> '+pc+'% lit and '+(m.waxing?'growing':'shrinking')+', '+(m.alt>0?'up in the sky'+(NOW===moonTime()?' now':' at 22:00')+(pc>=50?'. Its light washes out faint aurora.':'.'):'below the horizon'+(NOW===moonTime()?' now':' at 22:00')+', so no moonlight to spoil the view.')+'</li>'})()
    +'<li><b>Clouds:</b> an alert is no use under cloud. The <a href="../'+P.sky+'/">'+P.sky[0].toUpperCase()+P.sky.slice(1)+' night sky</a> page has tonight\'s cloud forecast.</li></ul>'
    +'<p class="src">Alerts from <a href="https://aurorawatch.lancs.ac.uk/">AuroraWatch UK</a>, Lancaster University. Kp from <a href="https://www.swpc.noaa.gov/">NOAA SWPC</a>.</p></div>';
 }
@@ -811,30 +842,112 @@ window.issTick=()=>{
   g.innerHTML=globeSvg(p,now);
   tx.textContent='Now '+region(p.lat,p.lon)+', heading '+(p.up?'north':'south')+(p.east?'east':'west')+' ('+Math.abs(p.lat).toFixed(0)+'°'+(p.lat>=0?'N':'S')+', '+Math.abs(p.lon).toFixed(0)+'°'+(p.lon>=0?'E':'W')+').';
 };
-function journeySvg(e,n){
-  const W=340,H=170,g=gLevel(e.g.kp),id='j'+n,ex=292,ey=92;
-  let st='';for(let i=0;i<46;i++){const x=(i*73+n*31)%W,y=(i*41+n*17)%H,r=i%7?0.6:1.1;st+='<circle cx="'+x+'" cy="'+y+'" r="'+r+'" fill="#fff" opacity="'+(0.25+(i%5)/8)+'"/>'}
-  const sun='<circle cx="-18" cy="'+ey+'" r="96" fill="url(#'+id+'g)"/><circle cx="-18" cy="'+ey+'" r="62" fill="url(#'+id+'s)"/>';
-  const cross=e.cause==='eruption'
-    ? '<g class="drift">'+[[0,0,16],[14,-9,13],[13,10,12],[26,1,14],[-10,8,10],[-9,-10,9]].map(([x,y,r])=>'<circle cx="'+(150+x)+'" cy="'+(ey+y)+'" r="'+r+'" fill="#ffb86b" opacity=".35"/>').join('')+'</g>'
-      +'<path d="M70 '+(ey-14)+'q40 -6 70 -4M70 '+(ey+14)+'q40 6 70 4M66 '+ey+'h62" stroke="#ffb86b" stroke-width="1.2" stroke-dasharray="3 5" opacity=".6" fill="none"/>'
-    : e.cause==='stream'
-    ? [-22,-8,6,20].map((d,i)=>'<path class="flow" d="M60 '+(ey+d)+'c40 -12 80 12 120 0s80 -12 '+(ex-200)+' 0" stroke="#7fd4ff" stroke-width="1.6" opacity="'+(.35+i*.12)+'" fill="none" stroke-dasharray="6 6"/>').join('')
-    : '';
-  const field=[26,36,46].map((r,i)=>'<path d="M'+ex+' '+(ey-r)+'C'+(ex-r*1.6)+' '+(ey-r)+' '+(ex-r*1.6)+' '+(ey+r)+' '+ex+' '+(ey+r)+'" stroke="#9fb4ff" stroke-width="1" fill="none" opacity="'+(.5-i*.13)+'"/>').join('');
-  const aur=g?'<ellipse cx="'+ex+'" cy="'+(ey-15)+'" rx="'+(9+g*2)+'" ry="'+(3+g)+'" fill="#4dffa6" opacity="'+(.25+g*.12)+'" filter="url(#'+id+'b)"/><ellipse cx="'+ex+'" cy="'+(ey+15)+'" rx="'+(9+g*2)+'" ry="'+(3+g)+'" fill="#4dffa6" opacity="'+(.2+g*.1)+'" filter="url(#'+id+'b)"/>':'';
-  const earth='<circle cx="'+ex+'" cy="'+ey+'" r="16" fill="url(#'+id+'e)"/><path d="M'+(ex-9)+' '+(ey-6)+'q5 -4 9 0t7 4q-3 6 -9 4t-7 -8zM'+(ex+2)+' '+(ey+6)+'q4 -2 7 1q-2 5 -6 4z" fill="#5fbf7a" opacity=".85"/>';
-  const lab=(x,y,t,a,c)=>'<text x="'+x+'" y="'+y+'" text-anchor="'+a+'" style="fill:'+(c||'#dfe6ff')+'">'+t+'</text>';
-  const first=e.st[0],trip=e.cme?later(e.cme.t,e.g.t).replace(' later',''):null;
-  const words=lab(10,22,e.cause==='stream'?'Sun: a hole in its outer layer':'Sun · '+day(first.t),'start')
-    +(e.cause==='eruption'?lab(155,ey+44,(e.cme.sp?e.cme.sp+' km/s, ':'')+trip+' to Earth','middle','#ffcf99'):e.cause==='stream'?lab(165,ey+44,'Fast solar wind','middle','#a8e2ff'):'')
-    +lab(W-8,22,'Earth · '+day(e.g.t),'end')+lab(W-8,H-12,g?'Storm G'+g+(g>=3?': aurora further south than usual':''):'No storm','end',g?'#7dffbf':'#dfe6ff');
-  return '<svg class="journey" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+(e.cause==='eruption'?'A cloud of gas from the Sun':e.cause==='stream'?'A fast stream of solar wind':'Something from the Sun')+' crossed to Earth and set off a G'+g+' storm.">'
-   +'<defs><radialGradient id="'+id+'s"><stop offset="0" stop-color="#fff6c8"/><stop offset=".6" stop-color="#ffc24a"/><stop offset="1" stop-color="#ff7a1a"/></radialGradient>'
-   +'<radialGradient id="'+id+'g"><stop offset=".55" stop-color="#ff9a3c" stop-opacity=".55"/><stop offset="1" stop-color="#ff9a3c" stop-opacity="0"/></radialGradient>'
+/* A small real-land Earth, seen from (lat0, lon0), lit from the left (the Sun's side) and dark to the right. */
+function miniGlobe(cx,cy,R,lat0,lon0,id){
+  const r=Math.PI/180,f0=lat0*r,l0=lon0*r;
+  const land=LAND.map(q=>{let d='';for(let i=0;i<q.length;i+=2){const f=q[i+1]/2*r,l=q[i]/2*r-l0;let x=Math.cos(f)*Math.sin(l),y=Math.cos(f0)*Math.sin(f)-Math.sin(f0)*Math.cos(f)*Math.cos(l);const z=Math.sin(f0)*Math.sin(f)+Math.cos(f0)*Math.cos(f)*Math.cos(l);
+    if(z<0){const m=Math.hypot(x,y)||1;x/=m;y/=m}d+=(i?'L':'M')+(cx+R*x).toFixed(1)+' '+(cy-R*y).toFixed(1)}return d+'Z'}).join('');
+  return '<defs><clipPath id="'+id+'k"><circle cx="'+cx+'" cy="'+cy+'" r="'+R+'"/></clipPath>'
+   +'<radialGradient id="'+id+'o" cx=".3" cy=".45" r=".8"><stop offset="0" stop-color="#3a86d8"/><stop offset="1" stop-color="#0b2a5a"/></radialGradient>'
+   +'<linearGradient id="'+id+'n" x1="0" y1="0" x2="1" y2="0"><stop offset=".45" stop-color="#020617" stop-opacity="0"/><stop offset=".75" stop-color="#020617" stop-opacity=".75"/></linearGradient></defs>'
+   +'<circle cx="'+cx+'" cy="'+cy+'" r="'+(R+3)+'" fill="#7fc8ff" opacity=".25" filter="url(#'+id+'b)"/>'
+   +'<g clip-path="url(#'+id+'k)"><circle cx="'+cx+'" cy="'+cy+'" r="'+R+'" fill="url(#'+id+'o)"/><path d="'+land+'" fill="#5f9a6e"/><circle cx="'+cx+'" cy="'+cy+'" r="'+R+'" fill="url(#'+id+'n)"/></g>';
+}
+/* One storm's journey: the Sun and its corona on the left; what crossed (an expanding bubble of gas, or a fast
+   stream); Earth on the right inside its magnetic field, squeezed harder and with a brighter aurora for bigger storms. */
+/* "N20E10" -> latitude 20, longitude -10 (east of the Sun's centre as seen from Earth is negative). */
+function solarSpot(loc){const m=/^([NS])(\d{1,2})([EW])(\d{1,3})$/.exec(String(loc||''));if(!m)return null;
+  const la=+m[2]*(m[1]==='S'?-1:1),lo=+m[4]*(m[3]==='E'?-1:1);return la<=90&&Math.abs(lo)<=90?{la,lo}:null}
+/* The Sun as seen from Earth this month: limb-darkened disc and corona, each flare at its real spot.
+   The disc is drawn without the Sun's small tilt towards us; flares are where they were on the day. */
+function sunDiscArt(){
+  const W=340,cx=170,cy=150,R=110,id='sd';
+  const stormFl=new Set(D.cme.filter(c=>c.earth&&stormOf(c)).map(flareOf).filter(Boolean));
+  const fl=D.flr.map(f=>({f,s:solarSpot(f.loc),x:flux(f.c)})).filter(o=>o.s).sort((a,b)=>a.x-b.x);
+  let o='<circle cx="'+cx+'" cy="'+cy+'" r="'+(R*1.45)+'" fill="url(#'+id+'c)"/>'
+   +'<circle cx="'+cx+'" cy="'+cy+'" r="'+R+'" fill="url(#'+id+'l)"/>';
+  // a faint mottled surface, for texture only
+  for(let i=0;i<70;i++){const a=i*2.399,r=R*Math.sqrt(i/70)*.95;o+='<circle cx="'+(cx+r*Math.cos(a)).toFixed(1)+'" cy="'+(cy+r*Math.sin(a)).toFixed(1)+'" r="'+(6+i%5)+'" fill="#fff3c4" opacity=".05"/>'}
+  // the line of the Sun's face that points straight at Earth
+  o+='<path d="M'+cx+' '+(cy-R)+'V'+(cy+R)+'" stroke="#ffffff" stroke-opacity=".18" stroke-dasharray="2 4"/>';
+  let labels=[];
+  fl.forEach(({f,s,x})=>{const r=Math.PI/180,px=cx+R*Math.cos(s.la*r)*Math.sin(s.lo*r),py=cy-R*Math.sin(s.la*r),sz=x>=1e-4?9:x>=5e-5?7:x>=1e-5?5:2.6,hit=stormFl.has(f);
+    o+=(x>=1e-5?'<circle class="flare" cx="'+px.toFixed(1)+'" cy="'+py.toFixed(1)+'" r="'+(sz*2.2)+'" fill="#ffffff" opacity=".35" filter="url(#'+id+'g)"/>':'')
+      +'<circle cx="'+px.toFixed(1)+'" cy="'+py.toFixed(1)+'" r="'+sz+'" fill="'+(x>=1e-5?'#ffffff':'#fff1b0')+'" opacity="'+(x>=1e-5?1:.75)+'"/>'
+      +(hit?'<circle cx="'+px.toFixed(1)+'" cy="'+py.toFixed(1)+'" r="'+(sz+5)+'" fill="none" stroke="#ff6b5a" stroke-width="2"/>':'');
+    if(x>=5e-5||hit)labels.push({px,py,sz,f,hit})});
+  labels.sort((a,b)=>flux(b.f.c)-flux(a.f.c)).forEach((l,i)=>{o+='<circle cx="'+(l.px+l.sz+6).toFixed(1)+'" cy="'+(l.py-l.sz-6).toFixed(1)+'" r="7" fill="#03050f" stroke="'+(l.hit?'#ff8f80':'#ffffff')+'"/>'+skyTxt(l.px+l.sz+6,l.py-l.sz-2.5,String(i+1),'middle',l.hit?'#ff8f80':'#ffffff');
+    l.key=(i+1)+'  '+l.f.c+' flare, '+day(l.f.p)+(l.hit?': came with the cloud behind a storm':'')});
+  const H=290+labels.length*16;
+  labels.forEach((l,i)=>{o+=skyTxt(14,292+i*16,l.key,'start',l.hit?'#ff8f80':'#dfe6ff')});
+  o+=skyTxt(cx-R-6,cy+4,'East','end','#9aa6c8')+skyTxt(cx+R+6,cy+4,'West','start','#9aa6c8')+skyTxt(cx,cy+R+18,'Facing Earth','middle','#9aa6c8')
+   +skyTxt(10,20,'The Sun as we saw it, '+winLabel,'start','#dfe6ff');
+  o='<rect width="'+W+'" height="'+H+'" fill="#03050f"/>'+skyStars(W,H,29)+o;
+  return '<svg class="journey" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="The Sun seen from Earth with this month\'s '+plural(fl.length,'flare')+' at their real positions">'
+   +'<defs><radialGradient id="'+id+'l"><stop offset="0" stop-color="#fffbe6"/><stop offset=".55" stop-color="#ffd25e"/><stop offset=".85" stop-color="#ff9a2e"/><stop offset="1" stop-color="#d2561a"/></radialGradient>'
+   +'<radialGradient id="'+id+'c"><stop offset=".62" stop-color="#ffb347" stop-opacity=".55"/><stop offset=".75" stop-color="#ff8a3d" stop-opacity=".18"/><stop offset="1" stop-color="#ff8a3d" stop-opacity="0"/></radialGradient>'
+   +'<filter id="'+id+'g" x="-1" y="-1" width="3" height="3"><feGaussianBlur stdDeviation="3"/></filter></defs>'+o+'</svg>';
+}
+/* Where the clouds went, seen from above the Sun's north pole: Earth to the right, each cloud a cone in its
+   measured direction (west of the Sun-Earth line is up) and width. Clouds with no measured direction are left out. */
+function cloudConesArt(){
+  const W=340,H=300,cx=120,cy=150,AU=170,id='cc',r=Math.PI/180;
+  const all=D.cme.filter(c=>c.lon!=null&&typeof c.ha==='number'),storm=new Set(D.cme.filter(c=>c.earth&&stormOf(c)));
+  let o='<rect width="'+W+'" height="'+H+'" fill="#03050f"/>'+skyStars(W,H,31)
+   +'<circle cx="'+cx+'" cy="'+cy+'" r="'+AU+'" fill="none" stroke="#9fb4ff" stroke-opacity=".35" stroke-dasharray="3 5"/>';
+  const cone=(c,len)=>{const a=-c.lon*r,h=Math.min(c.ha,80)*r,p1=[cx+len*Math.cos(a-h),cy+len*Math.sin(a-h)],p2=[cx+len*Math.cos(a+h),cy+len*Math.sin(a+h)];
+    return 'M'+cx+' '+cy+'L'+p1[0].toFixed(1)+' '+p1[1].toFixed(1)+'A'+len+' '+len+' 0 0 1 '+p2[0].toFixed(1)+' '+p2[1].toFixed(1)+'Z'};
+  all.filter(c=>!c.earth).forEach(c=>{o+='<path d="'+cone(c,AU*1.15)+'" fill="url(#'+id+'f)" opacity=".05"/>'});
+  all.filter(c=>c.earth&&!storm.has(c)).forEach(c=>{o+='<path d="'+cone(c,AU*1.15)+'" fill="url(#'+id+'a)" opacity=".16" stroke="#ffe08a" stroke-opacity=".35" stroke-width=".6"/>'});
+  all.filter(c=>storm.has(c)).forEach(c=>{o+='<path d="'+cone(c,AU*1.15)+'" fill="url(#'+id+'s)" opacity=".4" stroke="#ff6b5a" stroke-width="1.2"/>'});
+  o+='<circle cx="'+cx+'" cy="'+cy+'" r="30" fill="url(#'+id+'g)"/><circle cx="'+cx+'" cy="'+cy+'" r="11" fill="url(#'+id+'u)"/>'
+   +skyEarth(id,cx+AU,cy,7,storm.size)+skyTxt(cx+AU-12,cy-12,'Earth','end','#dfe6ff')
+   +skyTxt(10,20,'Where the clouds went (from above the Sun)','start','#dfe6ff')
+   +skyTxt(10,H-24,'Faint: heading elsewhere','start','#ffb86b')+skyTxt(10,H-10,'Bright: forecast to reach Earth','start','#ffcf8a')+skyTxt(W-8,H-10,'Red: caused a storm','end','#ff8f80');
+  return '<svg class="journey" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Seen from above the Sun: '+plural(all.length,'cloud')+' drawn as cones in the directions they travelled; Earth is to the right.">'
+   +'<defs><radialGradient id="'+id+'f" gradientUnits="userSpaceOnUse" cx="'+cx+'" cy="'+cy+'" r="'+AU*1.15+'"><stop offset="0" stop-color="#ffb86b"/><stop offset="1" stop-color="#ffb86b" stop-opacity="0"/></radialGradient>'
+   +'<radialGradient id="'+id+'a" gradientUnits="userSpaceOnUse" cx="'+cx+'" cy="'+cy+'" r="'+AU*1.15+'"><stop offset="0" stop-color="#ffe08a"/><stop offset="1" stop-color="#ffe08a" stop-opacity=".1"/></radialGradient>'
+   +'<radialGradient id="'+id+'s" gradientUnits="userSpaceOnUse" cx="'+cx+'" cy="'+cy+'" r="'+AU*1.15+'"><stop offset="0" stop-color="#ff6b5a"/><stop offset="1" stop-color="#ff6b5a" stop-opacity=".15"/></radialGradient>'
+   +'<radialGradient id="'+id+'g"><stop offset="0" stop-color="#ffb347" stop-opacity=".8"/><stop offset="1" stop-color="#ffb347" stop-opacity="0"/></radialGradient>'
+   +'<radialGradient id="'+id+'u"><stop offset="0" stop-color="#fffbe6"/><stop offset="1" stop-color="#ff9a2e"/></radialGradient>'
    +'<radialGradient id="'+id+'e" cx=".35" cy=".35"><stop offset="0" stop-color="#7cc4ff"/><stop offset="1" stop-color="#1d4fa8"/></radialGradient>'
-   +'<filter id="'+id+'b" x="-1" y="-1" width="3" height="3"><feGaussianBlur stdDeviation="2.5"/></filter></defs>'
-   +'<rect width="'+W+'" height="'+H+'" fill="#070b1a"/>'+st+sun+cross+field+aur+earth+words+'</svg>';
+   +'<filter id="'+id+'b" x="-1" y="-1" width="3" height="3"><feGaussianBlur stdDeviation="2.5"/></filter></defs>'+o+'</svg>';
+}
+function journeySvg(e,n){
+  const W=340,H=190,g=gLevel(e.g.kp),id='j'+n,ex=282,ey=98,R=22,still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const lab=(x,y,t,a,c)=>'<text x="'+x+'" y="'+y+'" text-anchor="'+a+'" style="fill:'+(c||'#dfe6ff')+'">'+t+'</text>';
+  let o='<rect width="'+W+'" height="'+H+'" fill="url(#'+id+'bg)"/>'+skyStars(W,H,n*7+3);
+  // the Sun: corona rays, glow, limb-darkened disc
+  for(let k=0;k<18;k++){const a=(k/18*2-1)*Math.PI*.55,l=70+(k*37%5)*9;o+='<path d="M'+(-30+56*Math.cos(a)).toFixed(1)+' '+(ey+56*Math.sin(a)).toFixed(1)+'L'+(-30+(56+l)*Math.cos(a)).toFixed(1)+' '+(ey+(56+l)*Math.sin(a)).toFixed(1)+'" stroke="#ffcf8a" stroke-width="'+(2+k%3)+'" opacity=".18" filter="url(#'+id+'b)"/>'}
+  o+='<circle cx="-30" cy="'+ey+'" r="104" fill="url(#'+id+'g)"/><circle cx="-30" cy="'+ey+'" r="58" fill="url(#'+id+'s)"/>';
+  // what crossed the gap
+  if(e.cause==='eruption'){
+    const shell=(rad,op,w)=>{const a=22*Math.PI/180,x1=-30+rad*Math.cos(-a),y1=ey+rad*Math.sin(-a),x2=-30+rad*Math.cos(a),y2=ey+rad*Math.sin(a);return '<path d="M'+x1.toFixed(1)+' '+y1.toFixed(1)+'A'+rad+' '+rad+' 0 0 1 '+x2.toFixed(1)+' '+y2.toFixed(1)+'" stroke="#ffb86b" stroke-width="'+w+'" fill="none" opacity="'+op+'" stroke-linecap="round"/>'};
+    o+='<g class="drift"><path d="M-30 '+ey+'L'+(-30+190*Math.cos(-.38)).toFixed(1)+' '+(ey+190*Math.sin(-.38)).toFixed(1)+'A190 190 0 0 1 '+(-30+190*Math.cos(.38)).toFixed(1)+' '+(ey+190*Math.sin(.38)).toFixed(1)+'Z" fill="url(#'+id+'c)"/>'
+      +shell(150,.25,6)+shell(170,.45,4)+shell(190,.9,2.4)+'</g>';
+  }else if(e.cause==='stream'){
+    o+=[-30,-15,0,15,30].map((d,i)=>'<path class="flow" d="M40 '+(ey+d*.6)+'C110 '+(ey+d*.6-14)+' 170 '+(ey+d+12)+' '+(ex-62)+' '+(ey+d*1.4)+'" stroke="#7fd4ff" stroke-width="'+(1.2+i%2)+'" opacity="'+(.3+i*.1)+'" fill="none" stroke-dasharray="8 6" filter="url(#'+id+'w)"/>').join('');
+  }
+  // Earth's magnetic field: a bow shock in front, loops squeezed on the Sun side and stretched into a tail behind
+  const so=60-g*5;let bs='';for(let y=-78;y<=78;y+=6){const x=ex-so+y*y/(2.6*so);bs+=(bs?'L':'M')+x.toFixed(1)+' '+(ey+y)}
+  o+='<path d="'+bs+'" stroke="#9fb4ff" stroke-width="1.4" fill="none" opacity=".7" stroke-dasharray="1 3"/>';
+  [1.5,2.1,2.8].forEach((L,i)=>{let day='',night='';for(let la=-72;la<=72;la+=4){const c=Math.cos(la*Math.PI/180),rr=L*R*c*c,yy=ey-rr*Math.sin(la*Math.PI/180)*1.0;
+      day+=(day?'L':'M')+(ex-rr*c*(.85-g*.04)).toFixed(1)+' '+yy.toFixed(1);night+=(night?'L':'M')+(ex+rr*c*(1.6+i*.5)).toFixed(1)+' '+yy.toFixed(1)}
+    o+='<path d="'+day+'" stroke="#9fb4ff" fill="none" opacity="'+(.55-i*.12)+'"/><path d="'+night+'" stroke="#9fb4ff" fill="none" opacity="'+(.4-i*.1)+'"/>'});
+  o+=miniGlobe(ex,ey,R,25,5,id);
+  // the aurora: rings round both poles, wider and brighter for a bigger storm
+  if(g)o+=[-1,1].map(k=>'<ellipse class="aur" cx="'+ex+'" cy="'+(ey+k*R*.78)+'" rx="'+(R*(.32+g*.05))+'" ry="'+(R*.12)+'" fill="none" stroke="#4dffa6" stroke-width="'+(1.5+g*.7)+'" opacity="'+(.45+g*.1)+'" filter="url(#'+id+'b)"/><ellipse cx="'+ex+'" cy="'+(ey+k*R*.78)+'" rx="'+(R*(.32+g*.05))+'" ry="'+(R*.12)+'" fill="none" stroke="#b8ffd9" stroke-width=".8" opacity=".8"/>').join('');
+  const first=e.st[0],trip=e.cme?later(e.cme.t,e.g.t).replace(' later',''):null;
+  o+=lab(10,20,e.cause==='stream'?'Sun: a hole in its outer layer':'Sun · '+day(first.t),'start')
+    +(e.cause==='eruption'?lab(150,H-14,(e.cme.sp?e.cme.sp+' km/s, ':'')+trip+' to Earth','middle','#ffcf99'):e.cause==='stream'?lab(150,H-14,'Fast solar wind','middle','#a8e2ff'):'')
+    +lab(W-8,20,'Earth · '+day(e.g.t),'end')+lab(W-8,37,g?'Storm G'+g+(g>=3?': aurora further south':''):'No storm','end',g?'#7dffbf':'#dfe6ff');
+  return '<svg class="journey" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+(e.cause==='eruption'?'A cloud of gas from the Sun':e.cause==='stream'?'A fast stream of solar wind':'Something from the Sun')+' crossed to Earth and set off a G'+g+' storm.">'
+   +'<defs><radialGradient id="'+id+'s" cx=".62" cy=".45"><stop offset="0" stop-color="#fffbe6"/><stop offset=".55" stop-color="#ffd25e"/><stop offset=".9" stop-color="#ff8a2e"/><stop offset="1" stop-color="#d2561a"/></radialGradient>'
+   +'<radialGradient id="'+id+'g"><stop offset=".5" stop-color="#ff9a3c" stop-opacity=".6"/><stop offset="1" stop-color="#ff9a3c" stop-opacity="0"/></radialGradient>'
+   +'<radialGradient id="'+id+'c" gradientUnits="userSpaceOnUse" cx="-30" cy="'+ey+'" r="190"><stop offset=".55" stop-color="#ffb86b" stop-opacity="0"/><stop offset="1" stop-color="#ffb86b" stop-opacity=".3"/></radialGradient>'
+   +'<linearGradient id="'+id+'bg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#140b0a"/><stop offset=".35" stop-color="#05070f"/><stop offset="1" stop-color="#03050f"/></linearGradient>'
+   +'<filter id="'+id+'b" x="-1" y="-1" width="3" height="3"><feGaussianBlur stdDeviation="2.5"/></filter>'
+   +'<filter id="'+id+'w" x="-.2" y="-1" width="1.4" height="3"><feGaussianBlur stdDeviation="1.2"/></filter></defs>'+o+'</svg>';
 }
 function epHtml(e,n){
   const word=gScale(e.g.kp).replace(/^G\d /,'');
@@ -863,9 +976,11 @@ sun(){
   const rows=D.cme.map(c=>[fmt(c.t),c.loc||'none',c.sp==null?'n/a':c.sp,c.ha!=null?c.ha+'°':'n/a',c.ty||'n/a']);
   const cd=chartCmeDaily(),fc=D.cme.filter(c=>c.earth),ar=fc.filter(c=>loggedIps(c)),sm=ar.filter(c=>{const i=loggedIps(c);return D.gst.some(g=>g.lk.includes(i.id))});
   const mf=D.flr.filter(f=>flux(f.c)>=1e-5),r2=D.flr.filter(f=>flux(f.c)>=5e-5);
+  const spots=D.flr.map(f=>solarSpot(f.loc)).filter(Boolean),mid=spots.filter(q=>Math.abs(q.lo)<=30).length,coned=D.cme.filter(c=>c.lon!=null&&typeof c.ha==='number'),sweep=coned.filter(c=>Math.abs(c.lon)<=c.ha).length;
+  const sunTxt=spots.length?mid+' of '+plural(spots.length,'flare')+' with a known spot were within 30° of the middle of the Sun, the part facing Earth.':'No flare positions were logged this month.';
   const steps=[[D.cme.length,'clouds of gas left the Sun'],[fc.length,'were forecast to reach Earth'],[ar.length,'of those reached Earth'],[sm.length,'were linked to a geomagnetic storm']];
-  const funnel='<div class="card"><h3>From the Sun to a storm at Earth</h3><p class="eli">Most clouds leave the Sun in other directions and never come near us. Only the ones aimed at Earth can affect us.</p>'
-   +sunArt(D.cme,fc,ar,sm)+'<ol class="funnel">'+steps.map(([n,t])=>'<li><b>'+n+'</b> '+t+'</li>').join('')+'</ol></div>';
+  const funnel='<div class="card"><h3>From the Sun to a storm at Earth</h3><p class="eli">Most clouds leave the Sun in other directions and never come near us. Of the '+plural(coned.length,'cloud')+' with a measured direction, '+sweep+' '+(sweep===1?'was':'were')+' aimed close enough, and wide enough, to sweep across Earth.</p>'
+   +cloudConesArt()+'<ol class="funnel">'+steps.map(([n,t])=>'<li><b>'+n+'</b> '+t+'</li>').join('')+'</ol></div>';
   let bw=0,bn=-1;for(let d=0;d+7<=WDAYS;d++){const n=D.flr.filter(f=>dayIdx(f.p)>=d&&dayIdx(f.p)<d+7).length+D.cme.filter(c=>dayIdx(c.t)>=d&&dayIdx(c.t)<d+7).length;if(n>bn){bn=n;bw=d}}
   const big=sm.map(c=>({c,g:stormOf(c),f:flareOf(c)})).sort((a,b)=>b.g.kp-a.g.kp||!!b.f-!!a.f)[0];
   const monthTxt='The Sun\'s busiest week was '+dlab(bw)+' to '+dlab(bw+6)+', with '+plural(bn,'flare and cloud').replace('flare and clouds','flares and clouds')+'.'
@@ -873,6 +988,8 @@ sun(){
   const radio=mf.length?mf.length+' of '+plural(D.flr.length,'flare')+' were strong enough to disrupt shortwave radio on the daytime side of Earth'+(r2.length?'; '+r2.length+' could have blacked it out for tens of minutes (NOAA level R2) or longer.':', briefly and weakly (NOAA level R1).'):'None of the '+plural(D.flr.length,'flare')+' were strong enough to disrupt radio on Earth (none reached M-class).';
   return '<h2>Sun</h2>'+fin('The Sun threw out '+plural(D.cme.length,'cloud')+' of gas. '+fc.length+' '+(fc.length===1?'was':'were')+' forecast to reach Earth, '+ar.length+' did, and '+sm.length+' '+(sm.length===1?'was':'were')+' linked to a storm.')
   +funnel
+  +'<div style="height:14px"></div><h3>Where on the Sun</h3>'+fin(sunTxt)+sunDiscArt()
+  +'<p class="sub">Each white spot is a flare, bigger for stronger ones; a red ring marks the flare that came with a storm-causing cloud. The dashed line is the middle of the Sun as we see it: eruptions near it face Earth, which is where storm-causing clouds usually start.</p>'
   +'<div style="height:14px"></div><h3>The Sun\'s month</h3>'+fin(monthTxt)
   +sunMonthArt()
   +'<p class="sub">Bigger flash = stronger flare. Brighter dot = a cloud aimed at Earth. The red line follows one eruption from its flare, to its cloud, to the storm at Earth. Storms with no line came from fast solar wind, not a cloud.</p>'
@@ -893,7 +1010,7 @@ earth(){
   const n=k=>cal.filter(c=>c.k===k).length,KW={calm:'nothing logged',stream:'fast solar wind arrived',shock:'a shock wave arrived',storm:'a storm started'};
   const pad=(day0.getUTCDay()+6)%7,sd0=shieldDefault();
   const cells='<span class="h">M</span><span class="h">T</span><span class="h">W</span><span class="h">T</span><span class="h">F</span><span class="h">S</span><span class="h">S</span>'+'<span></span>'.repeat(pad)
-   +cal.map((c,d)=>'<button type="button" class="d '+c.k+'" data-d="'+d+'" aria-pressed="'+(d===sd0)+'" title="'+dlab(d)+': '+KW[c.k]+(c.g?' (Kp '+kpR(c.g)+')':'')+'"><b>'+dlab(d).split(' ')[0]+'</b>'+(c.g?'<i>G'+gLevel(c.g)+'</i>':kpMax(d)!=null?'<i class="kp">'+kpR(kpMax(d))+'</i>':'')+'<span class="vh">'+dlab(d)+': '+KW[c.k]+(c.g?', Kp '+kpR(c.g):'')+'</span></button>').join('');
+   +cal.map((c,d)=>'<button type="button" class="d '+c.k+'" style="--g:'+(kpMax(d)==null?0:Math.max(0,Math.min(1,(kpMax(d)-2.5)/3.5))).toFixed(2)+'" data-d="'+d+'" aria-pressed="'+(d===sd0)+'" title="'+dlab(d)+': '+KW[c.k]+(c.g?' (Kp '+kpR(c.g)+')':'')+'"><b>'+dlab(d).split(' ')[0]+'</b>'+(c.g?'<i>G'+gLevel(c.g)+'</i>':kpMax(d)!=null?'<i class="kp">'+kpR(kpMax(d))+'</i>':'')+'<span class="vh">'+dlab(d)+': '+KW[c.k]+(c.g?', Kp '+kpR(c.g):'')+'</span></button>').join('');
   const busy=n('stream')+n('shock');
   const head='Over '+WDAYS+' days, '+(n('storm')?'a geomagnetic storm started on '+plural(n('storm'),'day'):'no geomagnetic storm started')+', a shock wave or fast solar wind arrived on '+(n('storm')?'another ':'')+plural(busy,'day')+', and NASA logged nothing on '+plural(n('calm'),'day')+'.'+(KP&&KP.daily.length?' NOAA\'s measurements show Kp stayed under 4 on '+cal.filter((c,d)=>c.k==='calm'&&kpMax(d)!=null&&kpMax(d)<4).length+' of those quiet days.':'');
   const rbeTxt=D.rbe.length?'The outer radiation belt filled with extra fast electrons (above 2 MeV) '+plural(D.rbe.length,'time'):'The radiation belts had no logged boosts';
@@ -1092,7 +1209,8 @@ function slim(F,w,pulledMs){
       if(iso(e.estimatedShockArrivalTime)) earth={t:e.estimatedShockArrivalTime,kp:['kp_18','kp_90','kp_135','kp_180'].map(k=>typeof e[k]==='number'?e[k]:null),gb:!!e.isEarthGB};
       for(const i of e.impactList||[]) if(i&&typeof i.location==='string'&&iso(i.arrivalTime)) imp.push({loc:i.location,t:i.arrivalTime});
     }
-    return {id:id16(c.activityID),t:c.startTime,loc:c.sourceLocation,ar:c.activeRegionNum,sp:a.speed,ty:a.type,ha:a.halfAngle,earth,imp};
+    const deg=v=>typeof v==='number'&&isFinite(v)&&Math.abs(v)<=180?v:null;
+    return {id:id16(c.activityID),t:c.startTime,loc:c.sourceLocation,ar:c.activeRegionNum,sp:a.speed,ty:a.type,ha:a.halfAngle,lon:deg(a.longitude),lat:deg(a.latitude),earth,imp};
   });
   const days=cme.map(c=>c.t.slice(0,10)).sort();
   const p=new Date(pulledMs);
