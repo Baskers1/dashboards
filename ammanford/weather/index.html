@@ -102,6 +102,7 @@ button.more{grid-column:1/-1;justify-self:stretch}
 .hero img{display:block;width:100%;height:auto;aspect-ratio:3.2/1;max-height:240px;object-fit:cover}
 .hero figcaption{padding:8px 14px;font:.8rem/1.4 system-ui,sans-serif;color:var(--mute)}
 .floodtop[hidden]{display:none}
+.stack{display:flex;flex-direction:column;gap:22px;min-width:0}
 
 .wq li.sr{display:flex;justify-content:flex-start;align-items:flex-start;gap:10px}.sr .sd{flex:none;width:14px;height:14px;border-radius:50%;margin-top:5px;box-sizing:border-box;border:2px solid var(--mute)}.sd.p{background:var(--poor);border-color:var(--poor)}.sd.f{background:var(--fair);border-color:var(--fair)}.sd.g{background:var(--good);border-color:var(--good)}.sd.n{background:transparent;border-color:var(--mute)}
 .sr .sb{min-width:0;flex:1;display:flex;flex-direction:column;gap:2px}.sr .st{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:baseline}.sr .st b{min-width:0;overflow-wrap:anywhere}.sr .st .dq{white-space:normal}.sr .sdet{color:var(--fg)}
@@ -120,7 +121,7 @@ var s=false;try{s=localStorage.getItem("lt-bigtext")==="1"}catch(e){}
 set(s,false);b.addEventListener("click",function(){set(!h.classList.contains("bigtext"),true)});})();
 </script>
 <section class="glance" id="glance" aria-labelledby="gh"><h2 id="gh" class="vh">Right now</h2></section>
-<nav class="jump" aria-label="Jump to a section"><a class="jl" href="#w">Weather</a><a class="jl" href="#aq">Air</a><a class="jl" href="#rl">Rivers</a><a class="jl" href="#fl">Floods</a><a class="jl" href="#sw">Sewage</a><a class="jl" href="#k">Walks</a></nav>
+<nav class="jump" aria-label="Jump to a section"><a class="jl" href="#w">Weather</a><a class="jl" href="#aq">Air</a><a class="jl" href="#fl">Floods</a><a class="jl" href="#rl">Rivers</a><a class="jl" href="#sw">Sewage</a><a class="jl" href="#k">Walks</a></nav>
 
 <section class="card wide" aria-labelledby="w">
 <h2 id="w">Weather</h2>
@@ -134,16 +135,12 @@ set(s,false);b.addEventListener("click",function(){set(!h.classList.contains("bi
 <div class="small" style="margin-top:6px">Walk rating: Good = low rain and light gusts; Fair = showers possible or gusty; Poor = wet or windy (50%+ rain or gusts 45 km/h+). Forecasts are Open-Meteo model data (CC BY 4.0, modified). The model works on a grid, so neighbouring villages can show identical figures.</div>
 </section>
 
+
+<div class="stack">
 <section class="card" aria-labelledby="aq">
 <h2 id="aq">Air Quality</h2>
 <div id="air" class="sans"></div>
 <div class="small" style="margin-top:8px" id="airnote"></div>
-</section>
-
-<section class="card" aria-labelledby="rl">
-<h2 id="rl">River Levels</h2>
-<div id="rivers" class="sans"></div>
-<details class="about"><summary>About this data</summary><p class="small" style="margin:8px 0 0">Latest readings from Natural Resources Wales river level stations (Open Government Licence v3.0), with NRW's own rising, steady or falling trend. Each station reports on its own scale in metres, so levels cannot be compared between stations. The usual range (shaded band, where known) is the range the level is in 90% of the time, as published by RiverLevels.uk from NRW data. The line builds up from the readings collected each time this page is refreshed. The Amman, Loughor and Tawe rise quickly after heavy rain on the Black Mountain. This is a level reading, not a flood forecast. Check <a href="https://flood-warning.naturalresources.wales/?culture=en-GB" target="_blank" rel="noopener">NRW flood warnings</a> for official warnings and <a href="https://rivers-and-seas.naturalresources.wales/" target="_blank" rel="noopener">NRW river levels</a> for full charts.</p></details>
 </section>
 
 <section class="card" aria-labelledby="fl">
@@ -151,6 +148,14 @@ set(s,false);b.addEventListener("click",function(){set(!h.classList.contains("bi
 <div id="floods" class="sans"></div>
 <details class="about"><summary>About this data</summary><p class="small" style="margin:8px 0 0">Flood alerts and warnings published by Natural Resources Wales for the rivers and coast around Ammanford, Llandeilo, the Gwendraeth valley, Llanelli and the Swansea Valley. Alerts and warnings change quickly, so check <a href="https://flood-warning.naturalresources.wales/?culture=en-GB" target="_blank" rel="noopener">NRW flood warnings and alerts</a> or call Floodline on 0345 988 1188 for the current position.</p></details>
 </section>
+</div>
+
+<section class="card" aria-labelledby="rl">
+<h2 id="rl">River Levels</h2>
+<div id="rivers" class="sans"></div>
+<details class="about"><summary>About this data</summary><p class="small" style="margin:8px 0 0">Latest readings from Natural Resources Wales river level stations (Open Government Licence v3.0), with NRW's own rising, steady or falling trend. Each station reports on its own scale in metres, so levels cannot be compared between stations. The usual range (shaded band, where known) is the range the level is in 90% of the time, as published by RiverLevels.uk from NRW data. The line builds up from the readings collected each time this page is refreshed. The Amman, Loughor and Tawe rise quickly after heavy rain on the Black Mountain. This is a level reading, not a flood forecast. Check <a href="https://flood-warning.naturalresources.wales/?culture=en-GB" target="_blank" rel="noopener">NRW flood warnings</a> for official warnings and <a href="https://rivers-and-seas.naturalresources.wales/" target="_blank" rel="noopener">NRW river levels</a> for full charts.</p></details>
+</section>
+
 
 <section class="card wide" aria-labelledby="sw">
 <h2 id="sw">Live Sewage Alerts</h2>
