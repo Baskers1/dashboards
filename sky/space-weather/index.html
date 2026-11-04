@@ -1,4 +1,4 @@
-<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-DuzwVr3WlThaOKxhB49MtujYPhJD95bx2BWfx0kIumo=' 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
+<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-YIbnmzEGDr2eYY7lNV2A8l2eyCUsBMuLmBmhVOIfU4M=' 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
 var SCHEME=/^\s*([a-z][a-z0-9+.\-]*):/i,HREF={http:1,https:1,mailto:1,tel:1},SRC={http:1,https:1,blob:1};
 function okUrl(v,isSrc){var c=String(v).replace(/[\u0000- ]/g,""),m=SCHEME.exec(c);if(!m)return true;var s=m[1].toLowerCase();
 if(isSrc&&s==="data")return /^data:image\//i.test(c);return !!(isSrc?SRC:HREF)[s];}
@@ -181,6 +181,13 @@ label.place select{font:inherit;color:inherit;background:transparent;border:0;ma
 @media (prefers-reduced-motion:reduce){.issmap .pulse,.globe .pulse{animation:none;opacity:0}}
 ul.crew{list-style:none;padding:0;margin:6px 0 0;display:grid;gap:6px}
 ul.crew span{color:var(--muted)}
+.journey .aur{animation:aur 3.5s ease-in-out infinite alternate}
+@keyframes aur{from{opacity:.35}to{opacity:.95}}
+@media (prefers-reduced-motion:reduce){.journey .aur{animation:none}}
+.tonight .journey > circle[r="1.1"]{animation:tw 2.8s ease-in-out infinite alternate}
+.tonight .journey > circle[r="1.1"]:nth-of-type(2n){animation-duration:3.7s;animation-delay:-1.2s}
+@keyframes tw{from{opacity:.25}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.tonight .journey > circle{animation:none}}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .impact.plain{border-top:0;padding-left:1.1em;margin-top:4px}
 .journey{display:block;width:100%;height:auto;border-radius:10px;margin:6px 0 4px;font:500 11px var(--sans,system-ui)}
@@ -633,6 +640,22 @@ function tonight(){
 }
 /* The aurora is drawn only on an AuroraWatch alert. Each curtain is a wavy ribbon whose shape is animated (SVG
    animate, skipped under reduced motion), with fine rays flickering inside it and a squashed reflection in the sea. */
+/* The Moon for a place and time (low-precision almanac, good to a degree or so): how much is lit, waxing or
+   waning, and its height above the horizon. */
+function moonAt(t,lat,lon){
+  const r=Math.PI/180,d=t/864e5+2440587.5-2451545,L=218.316+13.176396*d,M=(134.963+13.064993*d)*r,F=(93.272+13.229350*d)*r;
+  const la=(L+6.289*Math.sin(M))*r,be=5.128*Math.sin(F)*r,ep=23.439*r;
+  const ra=Math.atan2(Math.sin(la)*Math.cos(ep)-Math.tan(be)*Math.sin(ep),Math.cos(la)),dec=Math.asin(Math.sin(be)*Math.cos(ep)+Math.cos(be)*Math.sin(ep)*Math.sin(la));
+  const ha=((280.46061837+360.98564736629*d+lon)*r-ra),f=lat*r,alt=Math.asin(Math.sin(f)*Math.sin(dec)+Math.cos(f)*Math.cos(dec)*Math.cos(ha));
+  const g=(357.528+.9856003*d)*r,ls=280.46+.9856474*d+1.915*Math.sin(g)+.02*Math.sin(2*g),el=(((la/r-ls)%360)+360)%360;
+  return {frac:(1-Math.cos(el*r))/2,waxing:el<180,alt:alt/r};
+}
+function moonIcon(cx,cy,R,m){
+  const k=1-2*m.frac,rx=Math.abs(k)*R,side=m.waxing?1:0;
+  return '<circle cx="'+cx+'" cy="'+cy+'" r="'+R+'" fill="#2a3352"/>'
+   +'<path d="M'+cx+' '+(cy-R)+'A'+R+' '+R+' 0 0 '+side+' '+cx+' '+(cy+R)+'A'+rx.toFixed(1)+' '+R+' 0 0 '+(k>0?side:1-side)+' '+cx+' '+(cy-R)+'Z" fill="#f4f1e2"/>'
+   +'<circle cx="'+cx+'" cy="'+cy+'" r="'+(R+4)+'" fill="#f4f1e2" opacity="'+(m.frac*.18).toFixed(2)+'" filter="url(#tng)"/>';
+}
 function tonightArt(aw){
   const P=PLACES[PLACE],W=340,H=170,hz=128,lv={red:3,amber:2,yellow:1}[aw]||0,id='tn',still=matchMedia('(prefers-reduced-motion: reduce)').matches;
   const ribbon=(seed,ht,ph)=>{let top='',bot='';for(let x=-20;x<=W+20;x+=10){
@@ -644,6 +667,7 @@ function tonightArt(aw){
   let defs='<linearGradient id="'+id+'c" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#5dffb0"/><stop offset=".45" stop-color="#2ee88a" stop-opacity=".85"/><stop offset=".8" stop-color="'+top+'" stop-opacity="'+(lv>=2?.55:0)+'"/><stop offset="1" stop-color="'+top+'" stop-opacity="0"/></linearGradient>'
    +'<linearGradient id="'+id+'r" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#eafff4" stop-opacity=".9"/><stop offset="1" stop-color="#eafff4" stop-opacity="0"/></linearGradient>'
    +'<linearGradient id="'+id+'k" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#03050f"/><stop offset="1" stop-color="#0b1430"/></linearGradient>'
+   +'<linearGradient id="'+id+'h" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b3a5c" stop-opacity="0"/><stop offset="1" stop-color="#2b5a6e" stop-opacity=".45"/></linearGradient>'
    +'<filter id="'+id+'g" x="-.2" y="-.5" width="1.4" height="2"><feGaussianBlur stdDeviation="7"/></filter>'
    +'<filter id="'+id+'s" x="-.1" y="-.2" width="1.2" height="1.4"><feGaussianBlur stdDeviation="1.6"/></filter>'
    +'<clipPath id="'+id+'w"><rect y="'+hz+'" width="'+W+'" height="'+(H-hz)+'"/></clipPath>';
@@ -659,7 +683,9 @@ function tonightArt(aw){
       +'<path d="'+d+'" fill="url(#'+id+'c)" opacity="'+(op*.8)+'" filter="url(#'+id+'g)">'+anim(seed,ht,dur)+'</path>'
       +'<path d="'+d+'" fill="url(#'+id+'c)" opacity="'+op+'" filter="url(#'+id+'s)">'+anim(seed,ht,dur)+'</path>'
       +(rays?'<g clip-path="url(#'+id+'p'+n+')" opacity="'+(op*.55)+'">'+rays+'</g>':'')+'</g>'});
-  let o='<rect width="'+W+'" height="'+H+'" fill="url(#'+id+'k)"/>'+skyStars(W,hz,13)+sky
+  const mt=moonTime(),mo=moonAt(mt,P.lat,P.lon);
+  let o='<rect width="'+W+'" height="'+H+'" fill="url(#'+id+'k)"/><rect y="'+(hz-40)+'" width="'+W+'" height="40" fill="url(#'+id+'h)"/>'+skyStars(W,hz,13)+sky
+   +(mo.alt>0?moonIcon(W-28,40,9,mo)+skyTxt(W-42,44,Math.round(mo.frac*100)+'% Moon','end','#c9c6b4'):'')
    +'<rect y="'+hz+'" width="'+W+'" height="'+(H-hz)+'" fill="#081227"/>';
   if(P.sea){
     if(lv)o+='<g clip-path="url(#'+id+'w)" opacity=".35"><g transform="translate(0 '+hz+') scale(1 -.45) translate(0 -'+hz+')">'+sky+'</g></g>';
@@ -676,6 +702,7 @@ function tonightArt(aw){
   return '<svg class="journey" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+P.view+' tonight: '+(lv?'aurora, as AuroraWatch\'s '+aw+' alert suggests':'no aurora expected')+'.">'
    +'<defs>'+defs+'</defs>'+o+skyTxt(10,20,P.view,'start','#dfe6ff')+skyTxt(W/2,hz-4,'N','middle','#9aa6c8')+'</svg>';
 }
+function moonTime(){const n=new Date(NOW),h=n.getUTCHours();if(h>=18||h<6)return NOW;const d=Date.UTC(n.getUTCFullYear(),n.getUTCMonth(),n.getUTCDate(),22);return d}
 function tonightHtml(){
   if(!KP||(!KP.aw&&!KP.fc.length))return '';
   const aw=KP.aw,t=tonight(),k=t.k,g=k!=null?gLevel(k):0,age=KP.awAt?(NOW-KP.awAt)/36e5:null;
@@ -688,8 +715,9 @@ function tonightHtml(){
    :['No, not tonight.',(aw?'AuroraWatch reports no significant activity':'There is no AuroraWatch reading')+(k!=null?', and NOAA forecasts Kp '+kpR(k)+' tonight, below storm level (Kp 5).':'.')];
   return '<div class="ep next tonight"><h3>Could I see the aurora from '+P.name+' tonight? '+ans[0]+'</h3>'+tonightArt(aw)
    +'<p>'+ans[1]+'</p><ul class="impact plain">'
-   +(aw?'<li><b>AuroraWatch UK</b> ('+aw+(age!=null?', checked '+(age<1?'within the hour':Math.round(age)+' hours ago, so it may have changed'):'')+'): '+AWTXT[aw]+'</li>':'')
+   +(aw?'<li><b>AuroraWatch UK</b> ('+aw+(age!=null?', checked '+(age<1?'within the hour':plural(Math.round(age),'hour')+' ago, so it may have changed'):'')+'): '+AWTXT[aw]+'</li>':'')
    +(k!=null?'<li><b>NOAA forecast</b> for tonight: Kp up to '+kpR(k)+(g?' (G'+g+' storm)':' (storms start at Kp 5)')+'.</li>':'')
+   +(()=>{const m=moonAt(moonTime(),P.lat,P.lon),pc=Math.round(m.frac*100);return '<li><b>Moon:</b> '+pc+'% lit and '+(m.waxing?'growing':'shrinking')+', '+(m.alt>0?'up in the sky'+(NOW===moonTime()?' now':' at 22:00')+(pc>=50?'. Its light washes out faint aurora.':'.'):'below the horizon'+(NOW===moonTime()?' now':' at 22:00')+', so no moonlight to spoil the view.')+'</li>'})()
    +'<li><b>Clouds:</b> an alert is no use under cloud. The <a href="../'+P.sky+'/">'+P.sky[0].toUpperCase()+P.sky.slice(1)+' night sky</a> page has tonight\'s cloud forecast.</li></ul>'
    +'<p class="src">Alerts from <a href="https://aurorawatch.lancs.ac.uk/">AuroraWatch UK</a>, Lancaster University. Kp from <a href="https://www.swpc.noaa.gov/">NOAA SWPC</a>.</p></div>';
 }
@@ -807,30 +835,54 @@ window.issTick=()=>{
   g.innerHTML=globeSvg(p,now);
   tx.textContent='Now '+region(p.lat,p.lon)+', heading '+(p.up?'north':'south')+(p.east?'east':'west')+' ('+Math.abs(p.lat).toFixed(0)+'°'+(p.lat>=0?'N':'S')+', '+Math.abs(p.lon).toFixed(0)+'°'+(p.lon>=0?'E':'W')+').';
 };
+/* A small real-land Earth, seen from (lat0, lon0), lit from the left (the Sun's side) and dark to the right. */
+function miniGlobe(cx,cy,R,lat0,lon0,id){
+  const r=Math.PI/180,f0=lat0*r,l0=lon0*r;
+  const land=LAND.map(q=>{let d='';for(let i=0;i<q.length;i+=2){const f=q[i+1]/2*r,l=q[i]/2*r-l0;let x=Math.cos(f)*Math.sin(l),y=Math.cos(f0)*Math.sin(f)-Math.sin(f0)*Math.cos(f)*Math.cos(l);const z=Math.sin(f0)*Math.sin(f)+Math.cos(f0)*Math.cos(f)*Math.cos(l);
+    if(z<0){const m=Math.hypot(x,y)||1;x/=m;y/=m}d+=(i?'L':'M')+(cx+R*x).toFixed(1)+' '+(cy-R*y).toFixed(1)}return d+'Z'}).join('');
+  return '<defs><clipPath id="'+id+'k"><circle cx="'+cx+'" cy="'+cy+'" r="'+R+'"/></clipPath>'
+   +'<radialGradient id="'+id+'o" cx=".3" cy=".45" r=".8"><stop offset="0" stop-color="#3a86d8"/><stop offset="1" stop-color="#0b2a5a"/></radialGradient>'
+   +'<linearGradient id="'+id+'n" x1="0" y1="0" x2="1" y2="0"><stop offset=".45" stop-color="#020617" stop-opacity="0"/><stop offset=".75" stop-color="#020617" stop-opacity=".75"/></linearGradient></defs>'
+   +'<circle cx="'+cx+'" cy="'+cy+'" r="'+(R+3)+'" fill="#7fc8ff" opacity=".25" filter="url(#'+id+'b)"/>'
+   +'<g clip-path="url(#'+id+'k)"><circle cx="'+cx+'" cy="'+cy+'" r="'+R+'" fill="url(#'+id+'o)"/><path d="'+land+'" fill="#5f9a6e"/><circle cx="'+cx+'" cy="'+cy+'" r="'+R+'" fill="url(#'+id+'n)"/></g>';
+}
+/* One storm's journey: the Sun and its corona on the left; what crossed (an expanding bubble of gas, or a fast
+   stream); Earth on the right inside its magnetic field, squeezed harder and with a brighter aurora for bigger storms. */
 function journeySvg(e,n){
-  const W=340,H=170,g=gLevel(e.g.kp),id='j'+n,ex=292,ey=92;
-  let st='';for(let i=0;i<46;i++){const x=(i*73+n*31)%W,y=(i*41+n*17)%H,r=i%7?0.6:1.1;st+='<circle cx="'+x+'" cy="'+y+'" r="'+r+'" fill="#fff" opacity="'+(0.25+(i%5)/8)+'"/>'}
-  const sun='<circle cx="-18" cy="'+ey+'" r="96" fill="url(#'+id+'g)"/><circle cx="-18" cy="'+ey+'" r="62" fill="url(#'+id+'s)"/>';
-  const cross=e.cause==='eruption'
-    ? '<g class="drift">'+[[0,0,16],[14,-9,13],[13,10,12],[26,1,14],[-10,8,10],[-9,-10,9]].map(([x,y,r])=>'<circle cx="'+(150+x)+'" cy="'+(ey+y)+'" r="'+r+'" fill="#ffb86b" opacity=".35"/>').join('')+'</g>'
-      +'<path d="M70 '+(ey-14)+'q40 -6 70 -4M70 '+(ey+14)+'q40 6 70 4M66 '+ey+'h62" stroke="#ffb86b" stroke-width="1.2" stroke-dasharray="3 5" opacity=".6" fill="none"/>'
-    : e.cause==='stream'
-    ? [-22,-8,6,20].map((d,i)=>'<path class="flow" d="M60 '+(ey+d)+'c40 -12 80 12 120 0s80 -12 '+(ex-200)+' 0" stroke="#7fd4ff" stroke-width="1.6" opacity="'+(.35+i*.12)+'" fill="none" stroke-dasharray="6 6"/>').join('')
-    : '';
-  const field=[26,36,46].map((r,i)=>'<path d="M'+ex+' '+(ey-r)+'C'+(ex-r*1.6)+' '+(ey-r)+' '+(ex-r*1.6)+' '+(ey+r)+' '+ex+' '+(ey+r)+'" stroke="#9fb4ff" stroke-width="1" fill="none" opacity="'+(.5-i*.13)+'"/>').join('');
-  const aur=g?'<ellipse cx="'+ex+'" cy="'+(ey-15)+'" rx="'+(9+g*2)+'" ry="'+(3+g)+'" fill="#4dffa6" opacity="'+(.25+g*.12)+'" filter="url(#'+id+'b)"/><ellipse cx="'+ex+'" cy="'+(ey+15)+'" rx="'+(9+g*2)+'" ry="'+(3+g)+'" fill="#4dffa6" opacity="'+(.2+g*.1)+'" filter="url(#'+id+'b)"/>':'';
-  const earth='<circle cx="'+ex+'" cy="'+ey+'" r="16" fill="url(#'+id+'e)"/><path d="M'+(ex-9)+' '+(ey-6)+'q5 -4 9 0t7 4q-3 6 -9 4t-7 -8zM'+(ex+2)+' '+(ey+6)+'q4 -2 7 1q-2 5 -6 4z" fill="#5fbf7a" opacity=".85"/>';
+  const W=340,H=190,g=gLevel(e.g.kp),id='j'+n,ex=282,ey=98,R=22,still=matchMedia('(prefers-reduced-motion: reduce)').matches;
   const lab=(x,y,t,a,c)=>'<text x="'+x+'" y="'+y+'" text-anchor="'+a+'" style="fill:'+(c||'#dfe6ff')+'">'+t+'</text>';
+  let o='<rect width="'+W+'" height="'+H+'" fill="url(#'+id+'bg)"/>'+skyStars(W,H,n*7+3);
+  // the Sun: corona rays, glow, limb-darkened disc
+  for(let k=0;k<18;k++){const a=(k/18*2-1)*Math.PI*.55,l=70+(k*37%5)*9;o+='<path d="M'+(-30+56*Math.cos(a)).toFixed(1)+' '+(ey+56*Math.sin(a)).toFixed(1)+'L'+(-30+(56+l)*Math.cos(a)).toFixed(1)+' '+(ey+(56+l)*Math.sin(a)).toFixed(1)+'" stroke="#ffcf8a" stroke-width="'+(2+k%3)+'" opacity=".18" filter="url(#'+id+'b)"/>'}
+  o+='<circle cx="-30" cy="'+ey+'" r="104" fill="url(#'+id+'g)"/><circle cx="-30" cy="'+ey+'" r="58" fill="url(#'+id+'s)"/>';
+  // what crossed the gap
+  if(e.cause==='eruption'){
+    const shell=(rad,op,w)=>{const a=22*Math.PI/180,x1=-30+rad*Math.cos(-a),y1=ey+rad*Math.sin(-a),x2=-30+rad*Math.cos(a),y2=ey+rad*Math.sin(a);return '<path d="M'+x1.toFixed(1)+' '+y1.toFixed(1)+'A'+rad+' '+rad+' 0 0 1 '+x2.toFixed(1)+' '+y2.toFixed(1)+'" stroke="#ffb86b" stroke-width="'+w+'" fill="none" opacity="'+op+'" stroke-linecap="round"/>'};
+    o+='<g class="drift"><path d="M-30 '+ey+'L'+(-30+190*Math.cos(-.38)).toFixed(1)+' '+(ey+190*Math.sin(-.38)).toFixed(1)+'A190 190 0 0 1 '+(-30+190*Math.cos(.38)).toFixed(1)+' '+(ey+190*Math.sin(.38)).toFixed(1)+'Z" fill="url(#'+id+'c)"/>'
+      +shell(150,.25,6)+shell(170,.45,4)+shell(190,.9,2.4)+'</g>';
+  }else if(e.cause==='stream'){
+    o+=[-30,-15,0,15,30].map((d,i)=>'<path class="flow" d="M40 '+(ey+d*.6)+'C110 '+(ey+d*.6-14)+' 170 '+(ey+d+12)+' '+(ex-62)+' '+(ey+d*1.4)+'" stroke="#7fd4ff" stroke-width="'+(1.2+i%2)+'" opacity="'+(.3+i*.1)+'" fill="none" stroke-dasharray="8 6" filter="url(#'+id+'w)"/>').join('');
+  }
+  // Earth's magnetic field: a bow shock in front, loops squeezed on the Sun side and stretched into a tail behind
+  const so=60-g*5;let bs='';for(let y=-78;y<=78;y+=6){const x=ex-so+y*y/(2.6*so);bs+=(bs?'L':'M')+x.toFixed(1)+' '+(ey+y)}
+  o+='<path d="'+bs+'" stroke="#9fb4ff" stroke-width="1.4" fill="none" opacity=".7" stroke-dasharray="1 3"/>';
+  [1.5,2.1,2.8].forEach((L,i)=>{let day='',night='';for(let la=-72;la<=72;la+=4){const c=Math.cos(la*Math.PI/180),rr=L*R*c*c,yy=ey-rr*Math.sin(la*Math.PI/180)*1.0;
+      day+=(day?'L':'M')+(ex-rr*c*(.85-g*.04)).toFixed(1)+' '+yy.toFixed(1);night+=(night?'L':'M')+(ex+rr*c*(1.6+i*.5)).toFixed(1)+' '+yy.toFixed(1)}
+    o+='<path d="'+day+'" stroke="#9fb4ff" fill="none" opacity="'+(.55-i*.12)+'"/><path d="'+night+'" stroke="#9fb4ff" fill="none" opacity="'+(.4-i*.1)+'"/>'});
+  o+=miniGlobe(ex,ey,R,25,5,id);
+  // the aurora: rings round both poles, wider and brighter for a bigger storm
+  if(g)o+=[-1,1].map(k=>'<ellipse class="aur" cx="'+ex+'" cy="'+(ey+k*R*.78)+'" rx="'+(R*(.32+g*.05))+'" ry="'+(R*.12)+'" fill="none" stroke="#4dffa6" stroke-width="'+(1.5+g*.7)+'" opacity="'+(.45+g*.1)+'" filter="url(#'+id+'b)"/><ellipse cx="'+ex+'" cy="'+(ey+k*R*.78)+'" rx="'+(R*(.32+g*.05))+'" ry="'+(R*.12)+'" fill="none" stroke="#b8ffd9" stroke-width=".8" opacity=".8"/>').join('');
   const first=e.st[0],trip=e.cme?later(e.cme.t,e.g.t).replace(' later',''):null;
-  const words=lab(10,22,e.cause==='stream'?'Sun: a hole in its outer layer':'Sun · '+day(first.t),'start')
-    +(e.cause==='eruption'?lab(155,ey+44,(e.cme.sp?e.cme.sp+' km/s, ':'')+trip+' to Earth','middle','#ffcf99'):e.cause==='stream'?lab(165,ey+44,'Fast solar wind','middle','#a8e2ff'):'')
-    +lab(W-8,22,'Earth · '+day(e.g.t),'end')+lab(W-8,H-12,g?'Storm G'+g+(g>=3?': aurora further south than usual':''):'No storm','end',g?'#7dffbf':'#dfe6ff');
+  o+=lab(10,20,e.cause==='stream'?'Sun: a hole in its outer layer':'Sun · '+day(first.t),'start')
+    +(e.cause==='eruption'?lab(150,H-14,(e.cme.sp?e.cme.sp+' km/s, ':'')+trip+' to Earth','middle','#ffcf99'):e.cause==='stream'?lab(150,H-14,'Fast solar wind','middle','#a8e2ff'):'')
+    +lab(W-8,20,'Earth · '+day(e.g.t),'end')+lab(W-8,37,g?'Storm G'+g+(g>=3?': aurora further south':''):'No storm','end',g?'#7dffbf':'#dfe6ff');
   return '<svg class="journey" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+(e.cause==='eruption'?'A cloud of gas from the Sun':e.cause==='stream'?'A fast stream of solar wind':'Something from the Sun')+' crossed to Earth and set off a G'+g+' storm.">'
-   +'<defs><radialGradient id="'+id+'s"><stop offset="0" stop-color="#fff6c8"/><stop offset=".6" stop-color="#ffc24a"/><stop offset="1" stop-color="#ff7a1a"/></radialGradient>'
-   +'<radialGradient id="'+id+'g"><stop offset=".55" stop-color="#ff9a3c" stop-opacity=".55"/><stop offset="1" stop-color="#ff9a3c" stop-opacity="0"/></radialGradient>'
-   +'<radialGradient id="'+id+'e" cx=".35" cy=".35"><stop offset="0" stop-color="#7cc4ff"/><stop offset="1" stop-color="#1d4fa8"/></radialGradient>'
-   +'<filter id="'+id+'b" x="-1" y="-1" width="3" height="3"><feGaussianBlur stdDeviation="2.5"/></filter></defs>'
-   +'<rect width="'+W+'" height="'+H+'" fill="#070b1a"/>'+st+sun+cross+field+aur+earth+words+'</svg>';
+   +'<defs><radialGradient id="'+id+'s" cx=".62" cy=".45"><stop offset="0" stop-color="#fffbe6"/><stop offset=".55" stop-color="#ffd25e"/><stop offset=".9" stop-color="#ff8a2e"/><stop offset="1" stop-color="#d2561a"/></radialGradient>'
+   +'<radialGradient id="'+id+'g"><stop offset=".5" stop-color="#ff9a3c" stop-opacity=".6"/><stop offset="1" stop-color="#ff9a3c" stop-opacity="0"/></radialGradient>'
+   +'<radialGradient id="'+id+'c" gradientUnits="userSpaceOnUse" cx="-30" cy="'+ey+'" r="190"><stop offset=".55" stop-color="#ffb86b" stop-opacity="0"/><stop offset="1" stop-color="#ffb86b" stop-opacity=".3"/></radialGradient>'
+   +'<linearGradient id="'+id+'bg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#140b0a"/><stop offset=".35" stop-color="#05070f"/><stop offset="1" stop-color="#03050f"/></linearGradient>'
+   +'<filter id="'+id+'b" x="-1" y="-1" width="3" height="3"><feGaussianBlur stdDeviation="2.5"/></filter>'
+   +'<filter id="'+id+'w" x="-.2" y="-1" width="1.4" height="3"><feGaussianBlur stdDeviation="1.2"/></filter></defs>'+o+'</svg>';
 }
 function epHtml(e,n){
   const word=gScale(e.g.kp).replace(/^G\d /,'');
