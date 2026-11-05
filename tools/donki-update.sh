@@ -11,6 +11,6 @@ git pull -q --rebase --autostash origin main
 "$PY_BIN" -I tools/fetch_donki.py
 git add data/donki.json
 if git diff --cached --quiet; then echo "nothing to commit"; exit 0; fi
-git commit -q -m "DONKI snapshot $(date -u '+%Y-%m-%d %H:%M')"
+git commit -q -m "DONKI snapshot $(date -u '+%Y-%m-%d %H:%M')" -- data/donki.json
 git push -q origin main || { git pull -q --rebase --autostash origin main && git push -q origin main; }
 echo "$(date '+%F %T') pushed $(git rev-parse --short HEAD)"

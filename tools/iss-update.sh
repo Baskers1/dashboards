@@ -14,6 +14,6 @@ git pull -q --rebase --autostash origin main
 "$PY_BIN" -I tools/fetch_kp.py || echo "fetch_kp failed; keeping the previous data/kp.json" >&2
 git add data/orbit.json data/kp.json
 if git diff --cached --quiet; then echo "nothing to commit"; exit 0; fi
-git commit -q -m "ISS position $(date -u '+%Y-%m-%d %H:%M')"
+git commit -q -m "ISS position $(date -u '+%Y-%m-%d %H:%M')" -- data/orbit.json data/kp.json
 git push -q origin main || { git pull -q --rebase --autostash origin main && git push -q origin main; }
 echo "$(date '+%F %T') pushed $(git rev-parse --short HEAD)"
