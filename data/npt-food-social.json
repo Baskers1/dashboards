@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-04",
+ "generated": "2026-11-05",
  "area": "Neath Port Talbot",
  "scope": "restaurants, pubs, cafes, pop-ups and markets",
  "timezone": "Europe/London",
@@ -31,7 +31,7 @@
   "comments_read": 397,
   "food_and_drink_posts": 1806,
   "listing_rows": 258,
-  "listing_rows_forward": 28,
+  "listing_rows_forward": 26,
   "recurring_fixtures": 12,
   "venues_ranked": 57,
   "closed_venues": 1,
@@ -39,40 +39,6 @@
   "facebook_pages": 115
  },
  "listings": [
-  {
-   "date": "2026-11-04",
-   "venue": "The Dillwyn Arms",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "time": "5:30pm",
-   "price": null,
-   "detail": "🇹🇭✈️🌏 NEXT STOP… THAILAND! 🇹🇭🌴 Our Around the World Wednesdays adventure continues with a taste of Thailand! 🍜🌶️🥢 📅 Wednesday 4th November ⏰ From 5:30pm 📍 The Dillwyn Arms ☎️01792 863310",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/thedillwynarms/posts/pfbid0cJa6nsqF7s9rQtHVESdo4FwJP2ygDL16scPqvhWiE93kHN2ocr1w2jx7pp5ToUjml",
-   "posted": "2026-11-02",
-   "date_inferred": false,
-   "date_text": "4th November",
-   "recurring": false,
-   "needs_check": false
-  },
-  {
-   "date": "2026-11-04",
-   "venue": "The Pig Iron Tavern",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "time": "8PM",
-   "price": null,
-   "detail": "⚽ CHAMPIONS LEAGUE ACTION! 🏆 Two nights of top European football coming your way! 🍻 📺 TONIGHT – 8PM 🔥 Aston Villa v Barcelona 🔥 Man United v Roma 📺 TOMORROW NIGHT ⚽ 5:45PM – Fenerbahce v Liverpool ⚽ 8PM – RB Leipzig v Ma",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/ThePigIronTavern/posts/pfbid033KRht6b15HHUXReZ3PGh476mPenwpBy2iuYxwydW5zYCrVHBwTdLUZxELVGEELw4l",
-   "posted": "2026-11-03",
-   "date_inferred": true,
-   "date_text": "tomorrow",
-   "recurring": false,
-   "needs_check": true
-  },
   {
    "date": "2026-11-07",
    "venue": "The Pop Up Soup Kitchen",
@@ -844,7 +810,7 @@
    ]
   },
   {
-   "venue": "The Bagle Brook",
+   "venue": "Bagle Brook",
    "total_mentions": 7,
    "independent_mentions": 7,
    "platforms": [
@@ -854,7 +820,7 @@
    ]
   },
   {
-   "venue": "Bagle Brook",
+   "venue": "The Bagle Brook",
    "total_mentions": 7,
    "independent_mentions": 7,
    "platforms": [
@@ -1050,7 +1016,7 @@
    ]
   },
   {
-   "venue": "Dillwyn Arms",
+   "venue": "The Dillwyn Arms",
    "total_mentions": 10,
    "independent_mentions": 3,
    "platforms": [
@@ -1060,7 +1026,7 @@
    ]
   },
   {
-   "venue": "The Dillwyn Arms",
+   "venue": "Dillwyn Arms",
    "total_mentions": 10,
    "independent_mentions": 3,
    "platforms": [
@@ -1155,7 +1121,7 @@
    ]
   },
   {
-   "venue": "The Rolling Mill",
+   "venue": "Rolling Mill",
    "total_mentions": 5,
    "independent_mentions": 3,
    "platforms": [
@@ -1165,7 +1131,7 @@
    ]
   },
   {
-   "venue": "Rolling Mill",
+   "venue": "The Rolling Mill",
    "total_mentions": 5,
    "independent_mentions": 3,
    "platforms": [
@@ -1203,7 +1169,7 @@
    ]
   },
   {
-   "venue": "Bryncoch Inn",
+   "venue": "The Bryncoch Inn",
    "total_mentions": 8,
    "independent_mentions": 3,
    "platforms": [
@@ -1212,7 +1178,7 @@
    ]
   },
   {
-   "venue": "The Bryncoch Inn",
+   "venue": "Bryncoch Inn",
    "total_mentions": 8,
    "independent_mentions": 3,
    "platforms": [
