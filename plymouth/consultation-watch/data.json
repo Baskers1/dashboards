@@ -736,6 +736,126 @@
     "wildlife": [],
     "systems": []
    }
+  },
+  {
+   "id": "totnes-bridgetown-crossing",
+   "title": "New signal crossing on Bridgetown Hill (A385), Totnes",
+   "body": "Devon County Council, South Hams Highways and Traffic Orders Committee",
+   "sector": "local",
+   "status": "decision",
+   "deadline": "2099-12-31",
+   "nodate": 1,
+   "time": "Approved, reported 5 November 2026. Formal notices for the crossing and parking changes are still to be advertised (no date published).",
+   "topics": [
+    "travel"
+   ],
+   "plain": "County councillors agreed up to £322,000 for a push-button pedestrian crossing on Bridgetown Hill, just west of Blackpost Lane, after a petition from local people. Formal notices will follow, and that is when you can comment.",
+   "detail": "From The Moorlander, 5 November 2026 (local news, read today). A traffic survey in May counted more than 16,000 vehicles between 7am and 7pm. Two bus stops would move a short way west and double yellow lines are proposed around the crossing. A zebra crossing was ruled out because of traffic volume and speed. Nearby residents are to be notified when the notices are advertised.",
+   "how": "Watch for the formal traffic regulation notices, then comment on them by the date they give.",
+   "url": "https://www.themoorlander.co.uk/news/totnes-crossing-plans-move-ahead-after-long-standing-safety-concerns-9331075",
+   "urlLabel": "Read the article",
+   "src": "https://www.themoorlander.co.uk/news/totnes-crossing-plans-move-ahead-after-long-standing-safety-concerns-9331075",
+   "a": {
+    "people": [
+     [
+      "Pedestrians and bus users in Bridgetown",
+      1
+     ],
+     [
+      "Young people crossing to college or work",
+      1
+     ],
+     [
+      "Drivers on the A385",
+      0
+     ]
+    ],
+    "groups": [],
+    "wildlife": [],
+    "systems": [
+     [
+      "Road traffic and bus stops on the A385",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "totnes-bridgetown-lgr",
+   "title": "Keep Bridgetown in one council area (Totnes Town Council's reorganisation position)",
+   "body": "Totnes Town Council",
+   "sector": "local",
+   "status": "decision",
+   "deadline": "2099-12-31",
+   "nodate": 1,
+   "time": "Agreed at an extraordinary meeting, reported 11 August 2026. The Government withdrew its Devon reorganisation decision for review on 29 October 2026.",
+   "topics": [
+    "services"
+   ],
+   "plain": "Totnes Town Council voted unanimously against the Government's plans for new councils in Devon and asked that all of Bridgetown stays in one council area instead of being split with Torbay.",
+   "detail": "From Totnes Town Council's news story (read today). The proposed boundary between Totnes and Berry Pomeroy parish would have put part of Bridgetown in Torbay. A survey by Bridgetown Alive found unanimous support among replies so far for keeping Bridgetown together. See the Greater Plymouth reorganisation card for the Government's review.",
+   "how": "No consultation open. Contact Totnes Town Council or Bridgetown Alive to give your view.",
+   "url": "https://www.totnestowncouncil.gov.uk/lgr-extraordinary-meeting/",
+   "urlLabel": "Read the story",
+   "src": "https://www.totnestowncouncil.gov.uk/lgr-extraordinary-meeting/",
+   "a": {
+    "people": [
+     [
+      "Residents of Bridgetown and Totnes",
+      1
+     ]
+    ],
+    "groups": [
+     [
+      "Bridgetown Alive and local voluntary organisations",
+      1
+     ],
+     [
+      "Totnes and Berry Pomeroy town and parish councils",
+      1
+     ]
+    ],
+    "wildlife": [],
+    "systems": []
+   }
+  },
+  {
+   "id": "totnes-stjohns-nursery",
+   "title": "Totnes St John's Primary: take in Daisy Pre-School and teach from age 2",
+   "body": "Academies for Character and Excellence (ACE) Trust, an academy trust",
+   "sector": "charity",
+   "status": "closed",
+   "deadline": "2026-10-02",
+   "time": "Consultation ran 7 September to 2 October 2026 (closing time not stated). The Trust decides after 2 October; the change would start in January 2027.",
+   "topics": [
+    "services"
+   ],
+   "plain": "A consultation on extending Totnes St John's CE Primary School's age range from 4–11 to 2–11, so Daisy Pre-School becomes the school's nursery. It has closed.",
+   "detail": "Read on the school's consultation page today. The page says a decision follows the review of responses, with the 2–11 age range from January 2027. A later change to take babies and under-twos (0–11) would need a separate consultation, expected spring 2027, and depends on Department for Education funding. No outcome was published on the page. ACE is an academy trust; academy trusts are non-profit, which is why this is listed under charity and non-profit.",
+   "how": "Closed. The page gave an email address for responses; watch the school's website for the decision.",
+   "url": "https://www.totnesstjohnsprimary.org/about-5",
+   "urlLabel": "See the consultation",
+   "src": "https://www.totnesstjohnsprimary.org/about-5",
+   "a": {
+    "people": [
+     [
+      "Families with young children in Totnes",
+      1
+     ],
+     [
+      "Pre-school staff",
+      1
+     ]
+    ],
+    "groups": [
+     [
+      "Daisy Pre-School trustees and other early years providers",
+      1
+     ]
+    ],
+    "wildlife": [],
+    "systems": []
+   }
   }
  ],
  "petitions": [
@@ -863,6 +983,14 @@
   [
    "South Devon National Landscape: Management Plan",
    "https://www.southdevon-nl.org.uk/management-plan-2025-2030/"
+  ],
+  [
+   "Totnes Town Council news",
+   "https://www.totnestowncouncil.gov.uk/whats-on/news/"
+  ],
+  [
+   "Totnes St John's Primary: age range consultation",
+   "https://www.totnesstjohnsprimary.org/about-5"
   ]
  ],
  "status": {
@@ -872,5 +1000,5 @@
  "collected": "2 November 2026",
  "watch_note": "Still to come: the Environment Agency's consultation on a permit change at Hemerdon Tungsten Mine (Drakelands Restoration Ltd) - its page (21 October 2026, read 2 November) says it expects to open in November for at least four weeks; not open yet. Plymouth e-petitions open now (not listed until they close): 'Devils Point Slab' (signing ends 4 November 2026) and 'Reverse the decision to introduce parking charges at the George Junction Park and Ride' (ends 24 November 2026). No charity or non-profit consultation was found open on 2 November 2026 after searching for Devon Wildlife Trust, RSPB, Plymouth Tree People and CPRE Devon; the only non-profit item, the Plymouth Parent Carer Voice SEND survey, closed 31 October 2026.",
  "empty_charity": "No charity or non-profit consultation was found open on 2 November 2026; see the places to watch.",
- "generated_at": "2026-11-02T08:49:39Z"
+ "generated_at": "2026-11-05T11:57:38Z"
 }
