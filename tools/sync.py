@@ -174,7 +174,7 @@ main{{max-width:46rem;margin:0 auto;padding:32px 16px 64px}}h1{{font-size:30px;m
 p.lede{{color:var(--muted);margin:0 0 24px}}h2{{font-size:21px;margin:28px 0 10px}}
 ul{{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(14rem,1fr));gap:10px}}
 li a{{display:block;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--card);
-color:var(--accent);font-weight:600;text-decoration:none}}li a:hover,li a:focus{{border-color:var(--accent)}}
+color:var(--accent);font-weight:600;text-decoration:none}}li a small{{display:block;margin-top:4px;color:var(--muted);font-size:16px;font-weight:400;line-height:1.4}}li a:hover,li a:focus{{border-color:var(--accent)}}
 h2 a,p.back a{{color:inherit;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:4px}}
 h2 a:hover,h2 a:focus,p.back a:hover,p.back a:focus{{color:var(--accent);text-decoration-color:var(--accent)}}
 p.back{{margin:0 0 16px}}p.back a{{color:var(--accent)}}
@@ -197,12 +197,19 @@ def build_hub():
                 print(f"WARNING not on the hub (no page published yet): {d['area']}/{d['slug']}")
         if not items:
             continue
-        def links(prefix):
+        def links(prefix, blurbs=False):
             q = lambda d: f'?place={d["links"][key]}' if key in d.get("links", {}) else ""
-            return "".join(f'<li><a href="{prefix}{d["area"]}/{d["slug"]}/{q(d)}">{html.escape(d["name"])}</a></li>' for d in items)
+            # optional "blurb" in dashboards.json: hover text plus a subtitle, only on area pages with an intro
+            sub = lambda d: (f' title="{html.escape(d["blurb"])}"', f'<small>{html.escape(d["blurb"])}</small>') \
+                if blurbs and d.get("blurb") else ("", "")
+            return "".join(f'<li><a href="{prefix}{d["area"]}/{d["slug"]}/{q(d)}"{sub(d)[0]}>{html.escape(d["name"])}{sub(d)[1]}</a></li>'
+                           for d in items)
         rows.append(f'<section><h2><a href="{key}/">{html.escape(label)}</a></h2><ul>{links("")}</ul></section>')
-        area_page = render(label, f"Every dashboard for {html.escape(label)}. Each page updates itself on a schedule.",
-                           f"<ul>{links('../')}</ul>", '<p class="back"><a href="../">&larr; All areas</a></p>')
+        # optional M["intros"][area]: paragraphs replacing the default lede (render() wraps each in p.lede)
+        intro = M.get("intros", {}).get(key)
+        lede = '</p>\n<p class="lede">'.join(map(html.escape, intro)) if intro else \
+            f"Every dashboard for {html.escape(label)}. Each page updates itself on a schedule."
+        area_page = render(label, lede, f"<ul>{links('../', blurbs=bool(intro))}</ul>", '<p class="back"><a href="../">&larr; All areas</a></p>')
         open(os.path.join(ROOT, key, "index.html"), "w", encoding="utf-8").write(harden(area_page))
     page = render("Baskers Dashboards",
                   "Weather, what's on, menus, local consultations and NHS waits for the places we care about. "

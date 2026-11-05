@@ -327,43 +327,50 @@
    "id": "RLBsVPiLZh1JLFnNvkkEnv",
    "area": "neath-port-talbot",
    "slug": "weather",
-   "name": "Weather"
+   "name": "Weather",
+   "blurb": "Your local forecast at a glance: what to expect today, the days ahead, and any air quality or flood warnings worth knowing before you head out."
   },
   {
    "id": "14atwam4QkakV92PPku91y",
    "area": "neath-port-talbot",
    "slug": "menu-watch",
-   "name": "Menu Watch"
+   "name": "Menu Watch",
+   "blurb": "Fancy eating out? See what local caf\u00e9s, pubs and restaurants are serving up, so you can pick somewhere before your stomach starts rumbling."
   },
   {
    "id": "24HUYytZzF3xB6UXUucUVg",
    "area": "neath-port-talbot",
    "slug": "whats-on",
-   "name": "What's On"
+   "name": "What's On",
+   "blurb": "Gigs, markets, family days and community events across the area, all in one list, so you never miss out on what's happening nearby."
   },
   {
    "id": "MXyqZCnB7MrG6AFueccw8S",
    "area": "neath-port-talbot",
    "slug": "whats-on-big",
-   "name": "What's On (big buttons)"
+   "name": "What's On (big buttons)",
+   "blurb": "The same events, with larger, easy-tap buttons and clearer text. Perfect if you prefer a simpler screen, or you're browsing on a phone."
   },
   {
    "id": "PCRCKL7sSx92nhA5ptr2oJ",
    "area": "neath-port-talbot",
    "slug": "season-ahead",
-   "name": "Season Ahead"
+   "name": "Season Ahead",
+   "blurb": "A look at what the coming months have in store: seasonal events, dates for the diary and things to plan around."
   },
   {
    "id": "LF95U5XCjDaZ1noVjqneeH",
    "area": "neath-port-talbot",
    "slug": "community-watch",
-   "name": "Community Watch"
+   "name": "Community Watch",
+   "blurb": "Local news and updates that matter to your neighbourhood, gathered in one spot so you can stay in the loop."
   },
   {
    "id": "QANJUhze8AtUUmzSMUKh1i",
    "area": "neath-port-talbot",
    "slug": "consultation-watch",
-   "name": "Consultation Watch"
+   "name": "Consultation Watch",
+   "blurb": "Have your say. Find open consultations from your council and public bodies, with closing dates clearly shown, so your voice is heard while it still counts."
   },
   {
    "id": "JZPxyZiLMEKogzNgrokD19",
@@ -372,7 +379,8 @@
    "name": "Referral Waits",
    "aliases": [
     "8e314f83-74b9-4e81-8a25-839e06791630"
-   ]
+   ],
+   "blurb": "Waiting to be seen at hospital? Get a clear picture of how long local referrals are currently taking, so you know what to expect."
   },
   {
    "id": "SVC9HE8EWYV6yVj5GykLxq",
@@ -381,7 +389,8 @@
    "name": "Waiting & Outcome Charts",
    "aliases": [
     "ce6428b5-f0ed-49cd-a8ee-eda362b84cea"
-   ]
+   ],
+   "blurb": "The bigger picture on hospital waiting times and outcomes, shown as simple charts so trends are easy to follow without wading through reports."
   },
   {
    "id": "FtnSqUFf4fa9q8kCZKJAVT",
@@ -405,7 +414,8 @@
     "neath-port-talbot": "south-wales",
     "plymouth": "plymouth"
    },
-   "refresh_tasks": []
+   "refresh_tasks": [],
+   "blurb": "Will the Northern Lights put on a show for you tonight? Check solar activity and aurora alerts before you grab your coat."
   },
   {
    "id": "local:sky-ramsgate",
@@ -482,7 +492,8 @@
     "trig_01NTcr39czUs5KcrChm42w6V",
     "trig_01575SzYtwaVj7PWhwE2t5bM"
    ],
-   "show_in": "neath-port-talbot"
+   "show_in": "neath-port-talbot",
+   "blurb": "Your stargazing guide for Neath: what's visible tonight, moon phase and how clear the skies are likely to be."
   },
   {
    "id": "local:sky-port-talbot",
@@ -493,7 +504,14 @@
     "trig_01NTcr39czUs5KcrChm42w6V",
     "trig_01575SzYtwaVj7PWhwE2t5bM"
    ],
-   "show_in": "neath-port-talbot"
+   "show_in": "neath-port-talbot",
+   "blurb": "The same night-sky guide, tuned for Port Talbot, so you're looking up at exactly the right moment."
   }
- ]
+ ],
+ "intros": {
+  "neath-port-talbot": [
+   "Croeso! \ud83d\udc4b I've built these dashboards with one person in mind: you. Whether you're in Neath, Port Talbot, Briton Ferry or up the valleys, you shouldn't have to hunt across a dozen websites to find out what's happening on your doorstep.",
+   "So I've brought it all together in one place, and every page keeps itself up to date, so you don't have to."
+  ]
+ }
 }

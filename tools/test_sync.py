@@ -184,3 +184,11 @@ assert 'sky/space-weather/?place=tayside"' in hub, "links: and for Tayside under
 sky = hub.split('<a href="sky/">')[1]
 assert "night sky" not in sky, "night-sky pages move to their own areas"
 print("hub ok")
+npt = open(os.path.join(s.ROOT, "neath-port-talbot", "index.html"), encoding="utf-8").read()
+assert npt.count('<p class="lede">') == 2 and "Croeso!" in npt, "intros: NPT page opens with its two intro paragraphs"
+assert npt.count("<small>") == 12 and 'title="Your stargazing guide for Neath' in npt, "blurbs: every NPT tile has hover text and a subtitle"
+assert "Croeso!" not in hub and "<small>" not in hub, "intros and blurbs stay off the main hub"
+assert "Every dashboard for East Kent" in ek, "areas without an intro keep the default lede"
+print("intro ok")
+assert "<small>" not in ek, "blurbs: shared tiles (Space weather) stay plain on areas without an intro"
+print("blurb scope ok")
