@@ -14,14 +14,16 @@
    "id": "FEHxzoKP7H3Xnn9oQD7w3d",
    "area": "east-kent",
    "slug": "weather",
-   "name": "Weather"
+   "name": "Weather",
+   "blurb": "Your local forecast at a glance: what to expect today, the days ahead, and any air quality or flood warnings worth knowing before you head out."
   },
   {
    "id": "GrK4QJtEGQrjoGXTiLRr6y",
    "area": "east-kent",
    "slug": "menu-watch",
    "name": "Menu Watch",
-   "files": true
+   "files": true,
+   "blurb": "Fancy eating out? See what local caf\u00e9s, pubs and restaurants are serving up, so you can pick somewhere before your stomach starts rumbling."
   },
   {
    "id": "XCuXsnqRJTJe4DYG8o9kL4",
@@ -30,7 +32,8 @@
    "name": "What's On",
    "refresh_tasks": [
     "trig_014XLpbAjuzMS4HBkgRokoU8"
-   ]
+   ],
+   "blurb": "Gigs, markets, family days and community events across the area, all in one list, so you never miss out on what's happening nearby."
   },
   {
    "id": "Aaj8aLdLJ6798nYerVQLH2",
@@ -39,25 +42,29 @@
    "name": "What's On (big buttons)",
    "refresh_tasks": [
     "trig_014XLpbAjuzMS4HBkgRokoU8"
-   ]
+   ],
+   "blurb": "The same events, with larger, easy-tap buttons and clearer text. Perfect if you prefer a simpler screen, or you're browsing on a phone."
   },
   {
    "id": "6t1FK9Bbev1o8oKj7ES2qZ",
    "area": "east-kent",
    "slug": "season-ahead",
-   "name": "Season Ahead"
+   "name": "Season Ahead",
+   "blurb": "A look at what the coming months have in store: seasonal events, dates for the diary and things to plan around."
   },
   {
    "id": "X7JTGWckje8GhgwwVQhpSq",
    "area": "east-kent",
    "slug": "community-watch",
-   "name": "Community Watch"
+   "name": "Community Watch",
+   "blurb": "Local news and updates that matter to your neighbourhood, gathered in one spot so you can stay in the loop."
   },
   {
    "id": "DeeDkxNspd2fh5yBGexuys",
    "area": "east-kent",
    "slug": "consultation-watch",
-   "name": "Consultation Watch"
+   "name": "Consultation Watch",
+   "blurb": "Have your say. Find open consultations from your council and public bodies, with closing dates clearly shown, so your voice is heard while it still counts."
   },
   {
    "id": "GxRwChkzXrSMukphXMyAky",
@@ -66,7 +73,8 @@
    "name": "Referral Waits",
    "aliases": [
     "81365a8b-6746-4a75-b25e-d841e614697a"
-   ]
+   ],
+   "blurb": "Waiting to be seen at hospital? Get a clear picture of how long local referrals are currently taking, so you know what to expect."
   },
   {
    "id": "3tHzURDoGBo53pXmhT9D2d",
@@ -75,19 +83,22 @@
    "name": "Waiting & Outcome Charts",
    "aliases": [
     "175bae3c-6ecc-4f2e-b099-31315d5bb4ee"
-   ]
+   ],
+   "blurb": "The bigger picture on hospital waiting times and outcomes, shown as simple charts so trends are easy to follow without wading through reports."
   },
   {
    "id": "85RFURpU8jkhfq2rUHGzSq",
    "area": "west-herts",
    "slug": "weather",
-   "name": "Weather"
+   "name": "Weather",
+   "blurb": "Your local forecast at a glance: what to expect today, the days ahead, and any air quality or flood warnings worth knowing before you head out."
   },
   {
    "id": "H9cqqN36C6LEUehZcDvY5e",
    "area": "west-herts",
    "slug": "menu-watch",
-   "name": "Menu Watch"
+   "name": "Menu Watch",
+   "blurb": "Fancy eating out? See what local caf\u00e9s, pubs and restaurants are serving up, so you can pick somewhere before your stomach starts rumbling."
   },
   {
    "id": "TYydvMg8TWjFTxuWNcjwSg",
@@ -96,7 +107,8 @@
    "name": "What's On",
    "refresh_tasks": [
     "trig_013u4nh5ykFCos8buoeZ5SGk"
-   ]
+   ],
+   "blurb": "Gigs, markets, family days and community events across the area, all in one list, so you never miss out on what's happening nearby."
   },
   {
    "id": "DRa7jk3F6d2WKcFWY7WyUa",
@@ -105,25 +117,29 @@
    "name": "What's On (big buttons)",
    "refresh_tasks": [
     "trig_013u4nh5ykFCos8buoeZ5SGk"
-   ]
+   ],
+   "blurb": "The same events, with larger, easy-tap buttons and clearer text. Perfect if you prefer a simpler screen, or you're browsing on a phone."
   },
   {
    "id": "9pV7MTwWTFSoUF6pvyngQD",
    "area": "west-herts",
    "slug": "season-ahead",
-   "name": "Season Ahead"
+   "name": "Season Ahead",
+   "blurb": "A look at what the coming months have in store: seasonal events, dates for the diary and things to plan around."
   },
   {
    "id": "8Ych3dtfwVKZUZtcdKrM4t",
    "area": "west-herts",
    "slug": "community-watch",
-   "name": "Community Watch"
+   "name": "Community Watch",
+   "blurb": "Local news and updates that matter to your neighbourhood, gathered in one spot so you can stay in the loop."
   },
   {
    "id": "YMAnEFahKvzLLJiLGQFPec",
    "area": "west-herts",
    "slug": "consultation-watch",
-   "name": "Consultation Watch"
+   "name": "Consultation Watch",
+   "blurb": "Have your say. Find open consultations from your council and public bodies, with closing dates clearly shown, so your voice is heard while it still counts."
   },
   {
    "id": "1ap1HPBzNXcBw1tXUb7HP1",
@@ -132,7 +148,8 @@
    "name": "Referral Waits",
    "aliases": [
     "04b8831e-e840-4b3f-a9a8-270cb6a0a72c"
-   ]
+   ],
+   "blurb": "Waiting to be seen at hospital? Get a clear picture of how long local referrals are currently taking, so you know what to expect."
   },
   {
    "id": "GBeYq1Pe1gojBtBko66GWX",
@@ -141,19 +158,22 @@
    "name": "Waiting & Outcome Charts",
    "aliases": [
     "7af5a868-4a9a-4069-961d-5f8e04ac6764"
-   ]
+   ],
+   "blurb": "The bigger picture on hospital waiting times and outcomes, shown as simple charts so trends are easy to follow without wading through reports."
   },
   {
    "id": "MVLXSXWcDGro4CG3zdWYtW",
    "area": "tayside",
    "slug": "weather",
-   "name": "Weather"
+   "name": "Weather",
+   "blurb": "Your local forecast at a glance: what to expect today, the days ahead, and any air quality or flood warnings worth knowing before you head out."
   },
   {
    "id": "Fgxnsgj32yzut1CFWempEZ",
    "area": "tayside",
    "slug": "menu-watch",
-   "name": "Menu Watch"
+   "name": "Menu Watch",
+   "blurb": "Fancy eating out? See what local caf\u00e9s, pubs and restaurants are serving up, so you can pick somewhere before your stomach starts rumbling."
   },
   {
    "id": "QrJxtLuXYS4iDG38ftF4dY",
@@ -162,7 +182,8 @@
    "name": "What's On",
    "refresh_tasks": [
     "trig_012SeWDFSz9P1m2BMoTyxycr"
-   ]
+   ],
+   "blurb": "Gigs, markets, family days and community events across the area, all in one list, so you never miss out on what's happening nearby."
   },
   {
    "id": "QqFJGqbF14S4tK2eeUyi7f",
@@ -171,25 +192,29 @@
    "name": "What's On (big buttons)",
    "refresh_tasks": [
     "trig_012SeWDFSz9P1m2BMoTyxycr"
-   ]
+   ],
+   "blurb": "The same events, with larger, easy-tap buttons and clearer text. Perfect if you prefer a simpler screen, or you're browsing on a phone."
   },
   {
    "id": "LNr1ihua7i7PGGWJgDB4J8",
    "area": "tayside",
    "slug": "season-ahead",
-   "name": "Season Ahead"
+   "name": "Season Ahead",
+   "blurb": "A look at what the coming months have in store: seasonal events, dates for the diary and things to plan around."
   },
   {
    "id": "ToQ97Bd1mogDcP4Xpm5B6h",
    "area": "tayside",
    "slug": "community-watch",
-   "name": "Community Watch"
+   "name": "Community Watch",
+   "blurb": "Local news and updates that matter to your neighbourhood, gathered in one spot so you can stay in the loop."
   },
   {
    "id": "5Y1Nphe49oUuPZByeZtuh4",
    "area": "tayside",
    "slug": "consultation-watch",
-   "name": "Consultation Watch"
+   "name": "Consultation Watch",
+   "blurb": "Have your say. Find open consultations from your council and public bodies, with closing dates clearly shown, so your voice is heard while it still counts."
   },
   {
    "id": "KW9d4HfJUrrcoFqwri2tzC",
@@ -198,7 +223,8 @@
    "name": "Referral Waits",
    "aliases": [
     "95d660e5-6d42-46ae-8e9b-f881321ca7f9"
-   ]
+   ],
+   "blurb": "Waiting to be seen at hospital? Get a clear picture of how long local referrals are currently taking, so you know what to expect."
   },
   {
    "id": "9WPeF5bi5z5jXiCkewiF64",
@@ -207,49 +233,57 @@
    "name": "Waiting & Outcome Charts",
    "aliases": [
     "44e3a1df-0f4b-46dd-9f4e-9c0841d7b845"
-   ]
+   ],
+   "blurb": "The bigger picture on hospital waiting times and outcomes, shown as simple charts so trends are easy to follow without wading through reports."
   },
   {
    "id": "QvsUPEJ7F3xE83p1e6zRnR",
    "area": "ammanford",
    "slug": "weather",
-   "name": "Weather"
+   "name": "Weather",
+   "blurb": "Your local forecast at a glance: what to expect today, the days ahead, and any air quality or flood warnings worth knowing before you head out."
   },
   {
    "id": "YZbWmT2TPNtLRNQy6VhSZq",
    "area": "ammanford",
    "slug": "menu-watch",
-   "name": "Menu Watch"
+   "name": "Menu Watch",
+   "blurb": "Fancy eating out? See what local caf\u00e9s, pubs and restaurants are serving up, so you can pick somewhere before your stomach starts rumbling."
   },
   {
    "id": "32Dq7wmwbtJpdQ5FSJbYZk",
    "area": "ammanford",
    "slug": "whats-on",
-   "name": "What's On"
+   "name": "What's On",
+   "blurb": "Gigs, markets, family days and community events across the area, all in one list, so you never miss out on what's happening nearby."
   },
   {
    "id": "Je7N3gBvphdzDHNAx3MkJW",
    "area": "ammanford",
    "slug": "whats-on-big",
-   "name": "What's On (big buttons)"
+   "name": "What's On (big buttons)",
+   "blurb": "The same events, with larger, easy-tap buttons and clearer text. Perfect if you prefer a simpler screen, or you're browsing on a phone."
   },
   {
    "id": "KnGiijupXJsjetXEMrDvaZ",
    "area": "ammanford",
    "slug": "season-ahead",
-   "name": "Season Ahead"
+   "name": "Season Ahead",
+   "blurb": "A look at what the coming months have in store: seasonal events, dates for the diary and things to plan around."
   },
   {
    "id": "3ZiFCcP1veuzCjnDdJ56zG",
    "area": "ammanford",
    "slug": "community-watch",
-   "name": "Community Watch"
+   "name": "Community Watch",
+   "blurb": "Local news and updates that matter to your neighbourhood, gathered in one spot so you can stay in the loop."
   },
   {
    "id": "XpAV3m3MFuxHYvkD6mJ7PP",
    "area": "ammanford",
    "slug": "consultation-watch",
-   "name": "Consultation Watch"
+   "name": "Consultation Watch",
+   "blurb": "Have your say. Find open consultations from your council and public bodies, with closing dates clearly shown, so your voice is heard while it still counts."
   },
   {
    "id": "WMTkiPBR3iJxxy3Eoh4NE3",
@@ -258,7 +292,8 @@
    "name": "Referral Waits",
    "aliases": [
     "edb46253-275c-4cfb-8c04-6f826c691ae0"
-   ]
+   ],
+   "blurb": "Waiting to be seen at hospital? Get a clear picture of how long local referrals are currently taking, so you know what to expect."
   },
   {
    "id": "3End8nyEVNwRs1hwJym7xc",
@@ -267,61 +302,71 @@
    "name": "Waiting & Outcome Charts",
    "aliases": [
     "121f1000-6cc0-4731-9b17-6dc374662ef1"
-   ]
+   ],
+   "blurb": "The bigger picture on hospital waiting times and outcomes, shown as simple charts so trends are easy to follow without wading through reports."
   },
   {
    "id": "LeV1ruVRf99iohVKqx4Fsz",
    "area": "plymouth",
    "slug": "weather",
-   "name": "Weather"
+   "name": "Weather",
+   "blurb": "Your local forecast at a glance: what to expect today, the days ahead, and any air quality or flood warnings worth knowing before you head out."
   },
   {
    "id": "JNqonEAe5oTtJsAMb2uNHW",
    "area": "plymouth",
    "slug": "menu-watch",
-   "name": "Menu Watch"
+   "name": "Menu Watch",
+   "blurb": "Fancy eating out? See what local caf\u00e9s, pubs and restaurants are serving up, so you can pick somewhere before your stomach starts rumbling."
   },
   {
    "id": "WqWnaRE8QoJi8sVpC2qMbd",
    "area": "plymouth",
    "slug": "whats-on",
-   "name": "What's On"
+   "name": "What's On",
+   "blurb": "Gigs, markets, family days and community events across the area, all in one list, so you never miss out on what's happening nearby."
   },
   {
    "id": "BqwFHQsoTtEe8ca5ojKdHs",
    "area": "plymouth",
    "slug": "whats-on-big",
-   "name": "What's On (big buttons)"
+   "name": "What's On (big buttons)",
+   "blurb": "The same events, with larger, easy-tap buttons and clearer text. Perfect if you prefer a simpler screen, or you're browsing on a phone."
   },
   {
    "id": "9Wk4vNehvmPgSGjxLL71bx",
    "area": "plymouth",
    "slug": "season-ahead",
-   "name": "Season Ahead"
+   "name": "Season Ahead",
+   "blurb": "A look at what the coming months have in store: seasonal events, dates for the diary and things to plan around."
   },
   {
    "id": "UG61MFm2aC8bKGPdpx9gxJ",
    "area": "plymouth",
    "slug": "community-watch",
-   "name": "Community Watch"
+   "name": "Community Watch",
+   "blurb": "Local news and updates that matter to your neighbourhood, gathered in one spot so you can stay in the loop."
   },
   {
    "id": "2G1ka81Lp9QNbVHf2qiBRY",
    "area": "plymouth",
    "slug": "consultation-watch",
-   "name": "Consultation Watch"
+   "name": "Consultation Watch",
+   "blurb": "Have your say. Find open consultations from your council and public bodies, with closing dates clearly shown, so your voice is heard while it still counts."
   },
   {
    "id": "6ThmgZwjDLhGX5jsP75EKd",
    "area": "plymouth",
    "slug": "referral-waits",
-   "name": "Referral Waits"
+   "name": "Referral Waits",
+   "blurb": "Waiting to be seen at hospital? Get a clear picture of how long local referrals are currently taking, so you know what to expect."
   },
   {
    "id": "GaRAts7QJcRgJehP4GhYHz",
    "area": "plymouth",
    "slug": "waiting-charts",
-   "name": "Waiting & Outcome Charts"
+   "name": "Waiting & Outcome Charts",
+   "blurb": "The bigger picture on hospital waiting times and outcomes, shown as simple charts so trends are easy to follow without wading through reports."
   },
   {
    "id": "RLBsVPiLZh1JLFnNvkkEnv",
@@ -396,7 +441,8 @@
    "id": "FtnSqUFf4fa9q8kCZKJAVT",
    "area": "staffordshire",
    "slug": "referral-waits",
-   "name": "Referral Waits"
+   "name": "Referral Waits",
+   "blurb": "Waiting to be seen at hospital? Get a clear picture of how long local referrals are currently taking, so you know what to expect."
   },
   {
    "id": "local:space-weather",
@@ -426,7 +472,8 @@
     "trig_01NTcr39czUs5KcrChm42w6V",
     "trig_01575SzYtwaVj7PWhwE2t5bM"
    ],
-   "show_in": "east-kent"
+   "show_in": "east-kent",
+   "blurb": "Your stargazing guide for Ramsgate: what's visible tonight, moon phase and how clear the skies are likely to be."
   },
   {
    "id": "local:sky-ammanford",
@@ -437,7 +484,8 @@
     "trig_01NTcr39czUs5KcrChm42w6V",
     "trig_01575SzYtwaVj7PWhwE2t5bM"
    ],
-   "show_in": "ammanford"
+   "show_in": "ammanford",
+   "blurb": "Your stargazing guide for Ammanford: what's visible tonight, moon phase and how clear the skies are likely to be."
   },
   {
    "id": "local:sky-dundee",
@@ -448,7 +496,8 @@
     "trig_01NTcr39czUs5KcrChm42w6V",
     "trig_01575SzYtwaVj7PWhwE2t5bM"
    ],
-   "show_in": "tayside"
+   "show_in": "tayside",
+   "blurb": "Your stargazing guide for Dundee: what's visible tonight, moon phase and how clear the skies are likely to be."
   },
   {
    "id": "local:sky-carnoustie",
@@ -459,7 +508,8 @@
     "trig_01NTcr39czUs5KcrChm42w6V",
     "trig_01575SzYtwaVj7PWhwE2t5bM"
    ],
-   "show_in": "tayside"
+   "show_in": "tayside",
+   "blurb": "The same night-sky guide, tuned for Carnoustie, so you're looking up at exactly the right moment."
   },
   {
    "id": "local:sky-plymouth",
@@ -470,7 +520,8 @@
     "trig_01NTcr39czUs5KcrChm42w6V",
     "trig_01575SzYtwaVj7PWhwE2t5bM"
    ],
-   "show_in": "plymouth"
+   "show_in": "plymouth",
+   "blurb": "Your stargazing guide for Plymouth and Ivybridge: what's visible tonight, moon phase and how clear the skies are likely to be."
   },
   {
    "id": "local:sky-rickmansworth",
@@ -481,7 +532,8 @@
     "trig_01NTcr39czUs5KcrChm42w6V",
     "trig_01575SzYtwaVj7PWhwE2t5bM"
    ],
-   "show_in": "west-herts"
+   "show_in": "west-herts",
+   "blurb": "Your stargazing guide for Rickmansworth: what's visible tonight, moon phase and how clear the skies are likely to be."
   },
   {
    "id": "local:sky-neath",
@@ -512,6 +564,34 @@
   "neath-port-talbot": [
    "Croeso! \ud83d\udc4b I've built these dashboards with one person in mind: you. Whether you're in Neath, Port Talbot, Briton Ferry or up the valleys, you shouldn't have to hunt across a dozen websites to find out what's happening on your doorstep.",
    "So I've brought it all together in one place, and every page keeps itself up to date, so you don't have to."
+  ],
+  "east-kent": [
+   "Hello! \ud83d\udc4b I've built these dashboards with one person in mind: you. Whether you're in Ramsgate, Margate, Broadstairs or out in the villages, you shouldn't have to hunt across a dozen websites to find out what's happening on your doorstep.",
+   "So I've brought it all together in one place, and every page keeps itself up to date, so you don't have to."
+  ],
+  "west-herts": [
+   "Hello! \ud83d\udc4b I've built these dashboards with one person in mind: you. Whether you're in Rickmansworth, Croxley Green, Chorleywood or out in the Chilterns, you shouldn't have to hunt across a dozen websites to find out what's happening on your doorstep.",
+   "So I've brought it all together in one place, and every page keeps itself up to date, so you don't have to."
+  ],
+  "tayside": [
+   "Hiya! \ud83d\udc4b I've built these dashboards with one person in mind: you. Whether you're in Dundee, Carnoustie, Broughty Ferry or out in the glens, you shouldn't have to hunt across a dozen websites to find out what's happening on your doorstep.",
+   "So I've brought it all together in one place, and every page keeps itself up to date, so you don't have to."
+  ],
+  "ammanford": [
+   "Croeso! \ud83d\udc4b I've built these dashboards with one person in mind: you. Whether you're in Ammanford, Tycroes, Glanamman or up the Amman Valley, you shouldn't have to hunt across a dozen websites to find out what's happening on your doorstep.",
+   "So I've brought it all together in one place, and every page keeps itself up to date, so you don't have to."
+  ],
+  "plymouth": [
+   "Hello! \ud83d\udc4b I've built these dashboards with one person in mind: you. Whether you're in Plymouth, Ivybridge, Plympton, Plymstock or one of the villages, you shouldn't have to hunt across a dozen websites to find out what's happening on your doorstep.",
+   "So I've brought it all together in one place, and every page keeps itself up to date, so you don't have to."
+  ],
+  "staffordshire": [
+   "Hello! \ud83d\udc4b I've built this page with one person in mind: you. If you're waiting to be seen at hospital in Staffordshire, you shouldn't have to dig through NHS reports to find out how long it's likely to take.",
+   "So I've pulled the figures together in one place, and the page keeps itself up to date, so you don't have to."
+  ],
+  "sky": [
+   "Hello! \ud83d\udc4b I've built this page with one person in mind: you. Whether you're a keen stargazer or just hoping to catch the Northern Lights, you shouldn't have to hunt across a dozen websites to know if tonight's the night.",
+   "So I've brought space weather, aurora alerts and the International Space Station together in one place, and the page keeps itself up to date, so you don't have to."
   ]
  }
 }

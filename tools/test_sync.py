@@ -188,7 +188,12 @@ npt = open(os.path.join(s.ROOT, "neath-port-talbot", "index.html"), encoding="ut
 assert npt.count('<p class="lede">') == 2 and "Croeso!" in npt, "intros: NPT page opens with its two intro paragraphs"
 assert npt.count("<small>") == 12 and 'title="Your stargazing guide for Neath' in npt, "blurbs: every NPT tile has hover text and a subtitle"
 assert "Croeso!" not in hub and "<small>" not in hub, "intros and blurbs stay off the main hub"
-assert "Every dashboard for East Kent" in ek, "areas without an intro keep the default lede"
+for key in s.M["areas"]:
+    page = open(os.path.join(s.ROOT, key, "index.html"), encoding="utf-8").read()
+    assert page.count("<li>") == page.count("<small>") > 0, f"blurbs: every tile on the {key} page has a subtitle"
+# an area with no intro keeps the default lede and plain tiles
+saved = s.M.pop("intros"); s.build_hub(); s.M["intros"] = saved
+ek = open(os.path.join(s.ROOT, "east-kent", "index.html"), encoding="utf-8").read()
+assert "Every dashboard for East Kent" in ek and "<small>" not in ek, "no intro: default lede, no subtitles"
+s.build_hub()
 print("intro ok")
-assert "<small>" not in ek, "blurbs: shared tiles (Space weather) stay plain on areas without an intro"
-print("blurb scope ok")
