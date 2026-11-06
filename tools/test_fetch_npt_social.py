@@ -184,4 +184,149 @@ f.CACHE = cache
 f.api("/v1/google/search", _key="not-a-real-key", query="neath")   # 401, or no route in a sandbox
 assert os.listdir(cache) == [], "a failed response must not be written to the cache"
 
+# --- the weekly refresh and the quiet-source back-off -------------------------------------------
+# A cold pull costs ~700 credits, so a cached response is reused until it is due, and a source that
+# keeps serving the same posts is re-read less and less often. A local server stands in for the
+# provider: nothing here may touch the real API.
+import glob, threading, time, urllib.parse
+from http.server import BaseHTTPRequestHandler, HTTPServer
+
+POST = {"id": "1", "url": "u1", "text": "Quiz 8pm", "reactionCount": 1, "videoViewCount": 40}
+S = {"body": {"posts": [POST]}, "calls": 0, "code": 200}
+
+class Handler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        S["calls"] += 1
+        b = json.dumps(S["body"]).encode()
+        self.send_response(S["code"]); self.send_header("Content-Type", "application/json")
+        self.send_header("Content-Length", str(len(b))); self.end_headers(); self.wfile.write(b)
+    def log_message(self, *a): pass
+
+srv = HTTPServer(("127.0.0.1", 0), Handler)
+threading.Thread(target=srv.serve_forever, daemon=True).start()
+f.API = "http://127.0.0.1:%d" % srv.server_port
+
+def new_cache():
+    f.CACHE = tempfile.mkdtemp()
+
+def cache_files():
+    return [p for p in glob.glob(os.path.join(f.CACHE, "*.json"))
+            if os.path.basename(p) != "schedule.json"]
+
+def age(days, path=None):
+    t = time.time() - days * 86400
+    os.utime(path or cache_files()[0], (t, t))
+
+def pull_one(**q):
+    return f.api("/v1/facebook/page/posts", _key="x", url="https://www.facebook.com/x", **q)
+
+def every(n=None):
+    """The one schedule entry, or the whole schedule when n is given."""
+    s = json.load(open(os.path.join(f.CACHE, "schedule.json")))
+    return s if n else s[next(iter(s))]
+
+new_cache()
+f.CHECKS.update(checked=0, skipped=0, changed=0)
+assert pull_one()["posts"] == [POST] and S["calls"] == 1, "a source with no cache is fetched"
+assert every()["interval_days"] == 7, "a new source is checked weekly"
+assert pull_one()["posts"] == [POST] and S["calls"] == 1, "a cache younger than its interval: no call"
+age(8)
+assert pull_one() and S["calls"] == 2 and every()["interval_days"] == 14, "due, same posts: wait 14"
+assert time.time() - os.path.getmtime(cache_files()[0]) < 120, \
+    "the cache is rewritten even when nothing changed, so the next wait runs from this check"
+age(8)
+pull_one()
+assert S["calls"] == 2, "8 days into a 14-day interval is not due"
+age(15)
+assert pull_one() and every()["interval_days"] == 28 and S["calls"] == 3, "still quiet: wait 28"
+age(29)
+assert pull_one() and every()["interval_days"] == 28 and S["calls"] == 4, "28 days is the cap"
+# an engagement counter ticking up is not a new post: hashing it would end the back-off for ever
+S["body"] = {"posts": [dict(POST, reactionCount=99, videoViewCount=9000)]}
+age(29)
+assert pull_one() and every()["interval_days"] == 28 and S["calls"] == 5, "only the counts moved"
+S["body"] = {"posts": [POST, dict(POST, id="2", url="u2", text="Carvery Sunday")]}
+age(29)
+assert len(pull_one()["posts"]) == 2 and every()["interval_days"] == 7, "a new post: back to weekly"
+assert f.CHECKS["checked"] == 6 and f.CHECKS["skipped"] == 2 and f.CHECKS["changed"] == 2, f.CHECKS
+assert pull_one()["_q"]["fetched"] == dt.date.today().isoformat(), "fetch date rides in _q"
+
+# a failed refresh must leave both the cache and the schedule alone, and still serve what we have
+new_cache()
+assert pull_one()["posts"], "seed the cache"
+seeded, before = json.load(open(cache_files()[0])), every()
+S["code"] = 500
+age(8)
+served = pull_one()
+S["code"] = 200
+assert served["posts"] == seeded["posts"], "a failed refresh serves the copy we already have"
+assert json.load(open(cache_files()[0])) == seeded and every() == before, \
+    "a failed call changes neither the cache nor the schedule, so it is retried next run"
+
+# a cache file written before this change has no schedule entry and no _q, so it is dated weekly
+# by its own mtime - today's cache is 768 such files, and none of them may be refetched at once
+new_cache()
+S["body"] = {"posts": [POST]}
+assert pull_one()["posts"], "seed the cache"
+os.remove(os.path.join(f.CACHE, "schedule.json"))
+p = cache_files()[0]
+json.dump({"posts": [POST]}, open(p, "w"))        # as it looked before _q existed
+age(3)
+quiet = S["calls"]
+d = pull_one()
+assert S["calls"] == quiet, "under 7 days with no schedule entry: reused, no call"
+assert d["_q"]["fetched"] == dt.date.fromtimestamp(os.path.getmtime(p)).isoformat(), \
+    "an entry with no stamp is dated by its file"
+assert time.time() - os.path.getmtime(p) > 86400, "reusing an entry must not touch its mtime"
+age(8)
+assert pull_one() and S["calls"] == quiet + 1, "over 7 days with no schedule entry: refetched"
+
+# a corrupt schedule must not take the run down: everything simply becomes due
+new_cache()
+open(os.path.join(f.CACHE, "schedule.json"), "w").write("{not json")
+assert f.schedule() == {} and f.interval_days(f.schedule(), "x") == 7
+assert pull_one()["posts"], "a corrupt schedule is replaced, not fatal"
+
+# build() runs api() in a thread pool, so the schedule must not lose entries to a lost update
+new_cache()
+with f.ThreadPoolExecutor(8) as ex:
+    list(ex.map(lambda i: pull_one(cursor=str(i)), range(16)))
+assert len(every(n=1)) == 16, "one schedule entry per source, however many threads wrote it"
+assert not glob.glob(os.path.join(f.CACHE, "*.tmp")), "no temp files left behind"
+# the churn that is actually out there: TikTok hands back a fresh ?u_code on every call, and the
+# play count moves. Same video, so the source is still quiet.
+def tik(nonce):
+    return {"search_item_list": [{"aweme_info": {
+        "aweme_id": "t1", "desc": "Resolven Market every Saturday", "create_time": 1793664000,
+        "url": "https://tiktok.com/t1", "share_url": "https://tiktok.com/t1?_r=1&u_code=" + nonce,
+        "author": {"unique_id": "someone"},
+        "statistics": {"play_count": int(nonce), "digg_count": 2, "comment_count": 0}}}]}
+
+def tiktok():
+    return f.api("/v1/tiktok/search/keyword", _key="x", query="neath food")
+
+new_cache()
+S["body"] = tik("1")
+assert tiktok()["search_item_list"], "seed the cache"
+S["body"] = tik("999")
+age(8)
+assert tiktok() and every()["interval_days"] == 14, \
+    "a new share token and a higher play count are not a new video"
+S["body"] = {"search_item_list": [tik("1")["search_item_list"][0],
+                                  {"aweme_info": dict(tik("1")["search_item_list"][0]["aweme_info"],
+                                                      aweme_id="t2", desc="Chip shop reopens")}]}
+age(15)
+assert tiktok() and every()["interval_days"] == 7, "a second video is a new post"
+srv.shutdown()
+
+# the output says when the posts behind it were fetched, since a quiet source is only read monthly
+def dated(path, **q):
+    d = fake(path, **q)
+    d["_q"]["fetched"] = "2026-10-20" if "google" in path else "2026-11-02"
+    return d
+
+assert doc["posts_fetched"] == {"oldest": None, "newest": None}, "unstamped responses say nothing"
+assert f.build(dated, TODAY, workers=4, depth_group=1, depth_page=1)["posts_fetched"] == \
+    {"oldest": "2026-10-20", "newest": "2026-11-02"}
+
 print("fetch_npt_social ok")

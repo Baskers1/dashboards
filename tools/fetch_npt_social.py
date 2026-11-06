@@ -11,7 +11,9 @@ Scope: restaurants, pubs, cafes, pop-ups and markets, across Neath, Port Talbot,
 surrounding villages. Times in the output are UK local, as posted.
 
 Costs roughly 700 API credits for a cold run, so it is throttled to MIN_AGE_HOURS and every response
-is cached. A re-run with a warm cache is free, which is what makes iterating on the parsers cheap.
+is cached. A cached response is reused until it is due: weekly, doubling to at most 28 days for a
+source that keeps serving the same posts (the per-source intervals live in schedule.json beside the
+cache). So a warm re-run calls nothing, which is what makes iterating on the parsers cheap.
 
 The cache holds the raw corpus - posts, usernames, comment text - and defaults to a directory OUTSIDE
 this repository on purpose. This repo is public and served by GitHub Pages, so only the aggregated
@@ -34,13 +36,23 @@ If nothing at all came back, the previous file is kept and this exits non-zero.
 Not produced here: the prose Trend Discovery Brief and its thumbnails under npt-social/. Those are a
 write-up over this data, not a scheduled artefact.
 """
-import datetime as dt, hashlib, itertools, json, os, re, sys, urllib.error, urllib.parse, urllib.request
+import datetime as dt, hashlib, itertools, json, os, re, sys, threading, time
+import urllib.error, urllib.parse, urllib.request
 from concurrent.futures import ThreadPoolExecutor
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 API = "https://api.scrapecreators.com"
 MIN_AGE_HOURS = 20
 CACHE = os.environ.get("NPT_SOCIAL_CACHE") or os.path.join(os.path.expanduser("~"), ".cache", "npt-social")
+WEEK_DAYS, MAX_DAYS = 7, 28     # how often a source is re-checked, and the cap once it goes quiet
+# Leaf names that carry content, used only when a response is one no parser recognises: see
+# content_hash(), which prefers what normalise() reads out of a response it does know.
+CONTENT_KEYS = re.compile(
+    r"^(id|pk|aweme_id|shortcode|permalink|url|share_url|canonical_url|text|body|desc|selftext|"
+    r"caption|title|description|name|username|unique_id|subreddit|create_time|creation_time|"
+    r"publishTime|publishedTime|created_at_iso|taken_at)$")
+CHECKS = {"checked": 0, "skipped": 0, "changed": 0}
+LOCK = threading.Lock()         # build() calls api() from several threads; schedule.json is shared
 
 TOWNS = {"neath": "Neath", "port talbot": "Port Talbot", "pontardawe": "Pontardawe",
          "aberavon": "Aberavon", "aberafan": "Aberavon", "skewen": "Skewen",
@@ -123,19 +135,97 @@ NOT_FB_HANDLE = {"groups", "events", "watch", "reel", "photo", "story.php", "pag
                  "sharer", "login", "permalink.php", "media", "profile.php", "hashtag", "share"}
 
 
+def content_hash(d):
+    """Hash of what the parsers read out of this response - who posted what, and when - ignoring the
+    _q api() adds. Sorted, so neither key order nor the order results arrive in is a change; a new,
+    removed or edited post is. Deliberately not the raw body: engagement counts move every call, a
+    TikTok share_url carries a fresh ?u_code and ?_r each time, and nested music and hashtag objects
+    come back truncated differently, so hashing those would mean no source was ever quiet."""
+    leaves = ["|".join(str(r.get(k)) for k in ("platform", "id", "author", "text", "date"))
+              for r in normalise([d])]
+    if not leaves:
+        # A body no parser knows yet, or one with no posts in it. Falling back to the content-ish
+        # leaves keeps a new endpoint from hashing to a constant and backing itself off for ever.
+        def walk(o, k=""):
+            if isinstance(o, dict):
+                for kk, v in o.items():
+                    if kk != "_q":
+                        walk(v, kk)
+            elif isinstance(o, list):
+                for v in o:
+                    walk(v, k)
+            elif CONTENT_KEYS.match(k):
+                leaves.append(k + "=" + str(o))
+        walk(d)
+    return hashlib.sha1("\n".join(sorted(leaves)).encode("utf-8", "replace")).hexdigest()
+
+
+def schedule():
+    """The refresh schedule, read from disk on every use: CACHE is repointed by the tests and the
+    gate, and several threads update this file within one run."""
+    try:
+        with open(os.path.join(CACHE, "schedule.json"), encoding="utf-8") as f:
+            s = json.load(f)
+        return s if isinstance(s, dict) else {}
+    except (OSError, ValueError):
+        return {}       # no schedule yet, or a corrupt one: everything is due weekly
+
+
+def interval_days(sched, name):
+    try:
+        return max(int((sched.get(name) or {}).get("interval_days") or WEEK_DAYS), 1)
+    except (TypeError, ValueError):
+        return WEEK_DAYS
+
+
+def reschedule(name, h):
+    """Record a successful check and say whether the content changed. Same posts as last time means
+    wait twice as long, up to MAX_DAYS; anything new resets to weekly."""
+    with LOCK:
+        sched = schedule()
+        was = sched.get(name) or {}
+        changed = was.get("hash") != h
+        sched[name] = {"interval_days": WEEK_DAYS if changed
+                       else min(interval_days(sched, name) * 2, MAX_DAYS),
+                       "hash": h, "checked": dt.date.today().isoformat()}
+        os.makedirs(CACHE, exist_ok=True)
+        dest = os.path.join(CACHE, "schedule.json")
+        tmp = f"{dest}.{os.getpid()}.{threading.get_ident()}.tmp"
+        with open(tmp, "w", encoding="utf-8") as f:
+            json.dump(sched, f, indent=1, sort_keys=True)
+        os.replace(tmp, dest)   # atomic: a half-written schedule would lose every interval
+        CHECKS["changed"] += changed
+        return changed
+
+
 def api(path, _key=None, **q):
-    """GET with an on-disk cache. Returns parsed JSON, or {"_error": ...}. Never logs the key."""
+    """GET with an on-disk cache that is refreshed weekly, and up to four weeks apart for a source
+    that keeps serving the same posts. Returns parsed JSON, or {"_error": ...}. Never logs the key."""
     key = _key or os.environ.get("SCRAPECREATORS_API_KEY")
     if not key:
         raise SystemExit("SCRAPECREATORS_API_KEY is not set")
     name = hashlib.sha1((path + "|" + urllib.parse.urlencode(sorted(q.items()))).encode()).hexdigest()[:16]
     cached = os.path.join(CACHE, name + ".json")
+    old = None
     if os.path.exists(cached):
         try:
             with open(cached, encoding="utf-8") as f:
-                return json.load(f)
+                old = json.load(f)
         except ValueError:
-            pass  # a truncated cache entry: refetch it
+            old = None  # a truncated cache entry: refetch it
+        else:
+            # Stamped before the due check, so a copy served after a failed refresh is dated too.
+            # An entry written before this field existed is dated by its own mtime.
+            old.setdefault("_q", {}).setdefault(
+                "fetched", dt.date.fromtimestamp(os.path.getmtime(cached)).isoformat())
+            # Due is measured from the file's own mtime, so a cache copied or restored by hand is
+            # dated by the file, not by a schedule entry it may not have.
+            if time.time() - os.path.getmtime(cached) < interval_days(schedule(), name) * 86400:
+                with LOCK:
+                    CHECKS["skipped"] += 1
+                return old
+    with LOCK:
+        CHECKS["checked"] += 1
     url = API + path + ("?" + urllib.parse.urlencode(q) if q else "")
     req = urllib.request.Request(url, headers={"x-api-key": key})
     try:
@@ -145,16 +235,22 @@ def api(path, _key=None, **q):
         d = {"_error": e.code}
     except Exception as e:
         d = {"_error": str(e)[:120]}
-    d["_q"] = dict(path=path, **q)
+    d["_q"] = dict(path=path, **q, fetched=dt.date.today().isoformat())
     # Never cache a failure. A cached 401 from a wrong key would survive fixing the key, and a
     # cached 5xx would survive the outage, with nothing to show why the pull stayed empty.
-    # Re-requesting a 404 is free: the provider charges no credits for one.
-    if not d.get("_error"):
-        os.makedirs(CACHE, exist_ok=True)
-        tmp = cached + ".tmp"
-        with open(tmp, "w", encoding="utf-8") as f:
-            json.dump(d, f)
-        os.replace(tmp, cached)
+    # Re-requesting a 404 is free: the provider charges no credits for one. A failed refresh leaves
+    # the schedule alone too, so it is retried next run, and serves the copy we already have.
+    # A rejected key is the exception: it has to reach doc["errors"], or a dead key would quietly
+    # serve month-old posts for ever and main()'s "every call was rejected" check would never fire.
+    if d.get("_error"):
+        return d if old is None or d["_error"] in (401, 403) else old
+    reschedule(name, content_hash(d))
+    os.makedirs(CACHE, exist_ok=True)
+    # Rewritten even when nothing changed: the next interval runs from this check, not the first one.
+    tmp = f"{cached}.{os.getpid()}.{threading.get_ident()}.tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(d, f)
+    os.replace(tmp, cached)
     return d
 
 
@@ -632,6 +728,9 @@ def carry_closures(found, known, recs):
 def build(fetch, today=None, redact=lambda s: s, known_closed=(), **kw):
     today = today or dt.date.today()
     responses, errors, groups, pages = pull(fetch, **kw)
+    # When the posts behind this file were actually fetched: a quiet source is only re-read monthly,
+    # so the newest row can be older than "generated".
+    got = sorted(x for x in ((d.get("_q") or {}).get("fetched") for d in responses) if x)
     recs = relevant(normalise(responses))
     closed = carry_closures(closures(recs), known_closed, recs)
     rows, recurring = listing_rows(recs, today, closed)
@@ -676,6 +775,7 @@ def build(fetch, today=None, redact=lambda s: s, known_closed=(), **kw):
                     "Facebook has no keyword search, so its pages and groups are found via Google "
                     "and read directly.",
         },
+        "posts_fetched": {"oldest": got[0] if got else None, "newest": got[-1] if got else None},
         "counts": {"api_responses": len(responses), "posts_kept": len(recs),
                    "comments_read": len(comments),
                    "food_and_drink_posts": sum(1 for r in recs if r.get("food")),
@@ -722,7 +822,10 @@ def main(argv, today=None, fetch=api):
     except ImportError as e:
         raise SystemExit(f"cannot import redact from tools/sync.py ({e}); refusing to write an "
                          f"unredacted file")
+    CHECKS.update(checked=0, skipped=0, changed=0)
     doc = build(fetch, today, redact, known_closed=old.get("closed") or ())
+    say(f"checked {CHECKS['checked']}, skipped {CHECKS['skipped']} (not due), "
+        f"changed {CHECKS['changed']}")
     if not doc["listings"] and not doc["venues"]:
         auth = [e for e in doc["errors"] if e.get("error") in (401, 403)]
         if auth and len(auth) == len(doc["errors"]):
