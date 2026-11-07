@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-06",
+ "generated": "2026-11-07",
  "area": "Neath Port Talbot",
  "scope": "restaurants, pubs, cafes, pop-ups and markets",
  "timezone": "Europe/London",
@@ -24,6 +24,10 @@
    "Facebook keyword search"
   ],
   "note": "Those five networks have no ScrapeCreators endpoint and return HTTP 404. Facebook has no keyword search, so its pages and groups are found via Google and read directly."
+ },
+ "posts_fetched": {
+  "oldest": "2026-11-03",
+  "newest": "2026-11-04"
  },
  "counts": {
   "api_responses": 749,
@@ -1121,7 +1125,7 @@
    ]
   },
   {
-   "venue": "The Rolling Mill",
+   "venue": "Rolling Mill",
    "total_mentions": 5,
    "independent_mentions": 3,
    "platforms": [
@@ -1131,7 +1135,7 @@
    ]
   },
   {
-   "venue": "Rolling Mill",
+   "venue": "The Rolling Mill",
    "total_mentions": 5,
    "independent_mentions": 3,
    "platforms": [
@@ -1169,7 +1173,7 @@
    ]
   },
   {
-   "venue": "The Bryncoch Inn",
+   "venue": "Bryncoch Inn",
    "total_mentions": 8,
    "independent_mentions": 3,
    "platforms": [
@@ -1178,7 +1182,7 @@
    ]
   },
   {
-   "venue": "Bryncoch Inn",
+   "venue": "The Bryncoch Inn",
    "total_mentions": 8,
    "independent_mentions": 3,
    "platforms": [
