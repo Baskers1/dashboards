@@ -1,9 +1,9 @@
-TASK: Test pushing to Baskers1/dashboards with `GH_DASHBOARDS_TOKEN` (`push-test` branch, `push-test.txt` holding today's date), without ever printing the token and without touching `main`.
-STATE: done. The push worked on 2026-10-14 and again on 2026-10-18. Deleting `push-test` is blocked.
-FILES: push-test.txt (on the `push-test` branch only; no repo files changed)
+TASK: Remove TokenHarbor gateway and fcc setup from the user's Mac; explain the ANTHROPIC_MODEL deepseek warning; explain /usage overage.
+STATE: done (Mac cleanup verified); residual: thk_live lines in ~/.zsh_history not scrubbed.
+FILES: /Users/baskersimac/.claude/settings.json; /Users/baskersimac/.zshrc; /Users/baskersimac/.zsh_history (unscrubbed); /Users/baskersimac/.tokenharbor (deleted); cloud env dashboards allowlist (env_011rHQnLFrmnxq6ZHSZ87qYF, 8 MCP hosts).
 DECISIONS:
-- The token goes only in the push URL, and all output is filtered so `github_pat_` text never shows.
-- The second push added a commit on top of the existing `push-test` branch instead of force-pushing over it.
-- I didn't try to get around GitHub's 403 on branch deletion, because the proxy docs say not to.
-NEXT: Delete `push-test` from the repo's Branches page on GitHub.
-GOTCHAS: This session can create and push branches but can't delete them (GitHub returns 403). The user's issues from a claude.ai chat are still waiting to be pasted in here.
+- TokenHarbor removed completely; user revoked the key, so no rotation needed.
+- Kept the 8 MCP hosts on the dashboards environment (user approved all 8).
+- Did not use fcc. User is on Ultra overage billing until the subscription limit resets; check claude.ai/settings/usage.
+NEXT: Decide whether to scrub thk_live lines from ~/.zsh_history (back up first, then grep -v to a temp file and move it back).
+GOTCHAS: Diagnostic greps typed the key prefix into zsh history. zsh -xl does not source .zshrc, so it cannot confirm shell exports. Key appeared in chat output; revoked. ~/.claude/projects grep was clean.
