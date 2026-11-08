@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-07",
+ "generated": "2026-11-08",
  "area": "Neath Port Talbot",
  "scope": "restaurants, pubs, cafes, pop-ups and markets",
  "timezone": "Europe/London",
@@ -35,7 +35,7 @@
   "comments_read": 397,
   "food_and_drink_posts": 1806,
   "listing_rows": 258,
-  "listing_rows_forward": 26,
+  "listing_rows_forward": 25,
   "recurring_fixtures": 12,
   "venues_ranked": 57,
   "closed_venues": 1,
@@ -43,23 +43,6 @@
   "facebook_pages": 115
  },
  "listings": [
-  {
-   "date": "2026-11-07",
-   "venue": "The Pop Up Soup Kitchen",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "time": null,
-   "price": "£15",
-   "detail": "THE POP UP SOUP KITCHEN PREPARING FOR OUR 11TH SUCCESSIVE YEAR It's almost that time of year again! The soup kitchen van is on charge, our volunteers' meeting and advisers' meeting have taken place, and two of our chefs ",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/popupsoupkitchen/posts/pfbid02gJCfdmxHy281rD6Hympbt5CeYaJjk4cAKpxB1KQ1Q2vdccrnCior1kyUSUwsZ6vl",
-   "posted": "2026-11-01",
-   "date_inferred": true,
-   "date_text": "Saturday",
-   "recurring": false,
-   "needs_check": true
-  },
   {
    "date": "2026-11-08",
    "venue": "Cariad Events Cymru Witches Market",
@@ -814,7 +797,7 @@
    ]
   },
   {
-   "venue": "The Bagle Brook",
+   "venue": "Bagle Brook",
    "total_mentions": 7,
    "independent_mentions": 7,
    "platforms": [
@@ -824,7 +807,7 @@
    ]
   },
   {
-   "venue": "Bagle Brook",
+   "venue": "The Bagle Brook",
    "total_mentions": 7,
    "independent_mentions": 7,
    "platforms": [
@@ -1173,7 +1156,7 @@
    ]
   },
   {
-   "venue": "Bryncoch Inn",
+   "venue": "The Bryncoch Inn",
    "total_mentions": 8,
    "independent_mentions": 3,
    "platforms": [
@@ -1182,7 +1165,7 @@
    ]
   },
   {
-   "venue": "The Bryncoch Inn",
+   "venue": "Bryncoch Inn",
    "total_mentions": 8,
    "independent_mentions": 3,
    "platforms": [
