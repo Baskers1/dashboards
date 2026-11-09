@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-11-02T09:25:56Z",
- "collected": "2 November 2026",
+ "generated_at": "2026-11-09T09:24:52Z",
+ "collected": "9 November 2026",
  "items": [
   {
    "id": "angus-sds-rates",
@@ -10,12 +10,12 @@
    "status": "decision",
    "nodate": true,
    "deadline": "2026-10-23",
-   "time": "the personal assistant survey's reported closing date (23 October 2026, from a partnership social media post seen only in search results) has passed; on 2 November 2026 the Engage Angus page for direct payment recipients was still published with a survey but no closing date, so check before you rely on it being open",
+   "time": "the personal assistant survey's reported closing date (23 October 2026, from a partnership social media post seen only in search results) has passed; on 9 November 2026 Engage Angus still listed the direct payment recipients project as published with a survey but no closing date, so check before you rely on it being open",
    "topics": [
     "health"
    ],
    "plain": "Angus is considering paying set Fair Cost of Care rates when people arrange their own care with a direct payment. It wants views from care at home providers, personal assistants, their employers who get direct payments, and staff.",
-   "detail": "The Engage Angus page for care at home providers says the council is considering the Fair Cost of Care rates for Option 1 (direct payments), which are already used in Options 2 and 3 in Angus, and that feedback will help it understand the impact of set rates and inform any future decisions. Engage Angus lists separate surveys for personal assistants, staff, care at home providers and direct payment recipients; I could open only the care at home providers page. The surveys are anonymous. The partnership's social media post says the personal assistant survey closes on 23 October 2026 and will help inform future discussions about PA rates; I could not open the post itself, and I did not confirm whether the other surveys close on the same day. What the rates are, and whether they would change direct payment amounts, is not stated on the page I read. On 2 November 2026 the care at home providers page would not open without signing in, while the direct payment recipients page was still published with an anonymous survey and no closing date; it is listed as Watch, not Open, for that reason.",
+   "detail": "The Engage Angus page for care at home providers says the council is considering the Fair Cost of Care rates for Option 1 (direct payments), which are already used in Options 2 and 3 in Angus, and that feedback will help it understand the impact of set rates and inform any future decisions. Engage Angus lists separate surveys for personal assistants, staff, care at home providers and direct payment recipients; I could open only the care at home providers page. The surveys are anonymous. The partnership's social media post says the personal assistant survey closes on 23 October 2026 and will help inform future discussions about PA rates; I could not open the post itself, and I did not confirm whether the other surveys close on the same day. What the rates are, and whether they would change direct payment amounts, is not stated on the page I read. On 2 November 2026 the care at home providers page would not open without signing in, while the direct payment recipients page was still published with an anonymous survey and no closing date; it is listed as Watch, not Open, for that reason. On 9 November 2026 the Engage Angus projects list still showed 'Rates - Direct Payment Recipients' as published.",
    "how": "Choose the survey for your role on Engage Angus (search the projects list for 'Rates'). If you are unsure which applies to you, ask the Angus Health and Social Care Partnership.",
    "url": "https://engage.angus.gov.uk/personal-assistant-rates-direct-payments",
    "urlLabel": "Have your say",
@@ -1327,14 +1327,14 @@
    "title": "Outdoor play consultation",
    "body": "Angus Council",
    "sector": "local",
-   "status": "open",
+   "status": "closed",
    "deadline": "2026-11-04",
-   "time": "closing date from the project's key dates; closing time not stated",
+   "time": "Closed 4 November 2026 (date from the project's key dates; closing time not stated). On 9 November 2026 the Engage Angus page still showed the surveys with no closing date",
    "topics": [
     "services"
    ],
    "plain": "Angus Council wants to hear from children, young people and adults about where they play outdoors, in parks, streets, gardens, woodland and play areas, and how to make it better.",
-   "detail": "Opened 17 September 2026. There are separate surveys for children under 6 (with a drawing activity), for children 6 and over and teenagers, for groups led by a teacher or youth leader, and for adults, plus a map tool to pin places that matter. The adult survey says views will help develop the council's open spaces. The closing date, 4 November 2026, comes from the project's key dates as shown in search results; the main page did not show it when I checked.",
+   "detail": "Opened 17 September 2026. There are separate surveys for children under 6 (with a drawing activity), for children 6 and over and teenagers, for groups led by a teacher or youth leader, and for adults, plus a map tool to pin places that matter. The adult survey says views will help develop the council's open spaces. The closing date, 4 November 2026, comes from the project's key dates as shown in search results; the main page did not show it when I checked. On 9 November 2026 the Engage Angus page still showed the surveys but gave no closing date; no results had been published.",
    "how": "Choose the survey for your age group on Engage Angus and use the map tool. Paper copies are in local libraries, community campuses and country parks.",
    "url": "https://engage.angus.gov.uk/play-sufficiency-consultation",
    "urlLabel": "Have your say",
@@ -1644,6 +1644,64 @@
      [
       "Residual waste capacity and bin colours",
       1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "dundee-corridors",
+   "title": "Sustainable transport corridors: Arbroath Road and Lochee Road",
+   "body": "Dundee City Council and Tactran (designs by Sweco)",
+   "sector": "local",
+   "status": "open",
+   "deadline": "2026-11-29",
+   "time": "closing date of 29 November 2026 from a Cycling Scotland social media post seen only in search results; the council's event pages and the project hub I could read do not state a closing date or time, so check the hub before you rely on it",
+   "topics": [
+    "travel"
+   ],
+   "plain": "Dundee is drawing up plans to make travel along Arbroath Road (towards Broughty Ferry) and Lochee Road easier, safer and more sustainable, looking at bus services, walking, wheeling and cycling. It wants local people, businesses and visitors to share their views and experiences.",
+   "detail": "Dundee City Council and Tactran, working with the engineering consultancy Sweco, are exploring improvements along the Lochee Road and Arbroath Road corridors. The council says the plans will look at potential improvements to bus services, walking, wheeling and cycling, and that feedback will help inform the development of the plans. Public drop-in events were held in early November 2026 (the council's posts mention Ancrum Primary School for Lochee Road on 3 November and an Arbroath Road event on 5 November). Council social media says more information and an online survey are on the project hub site. The hub is a JavaScript page I could not read, so I have not seen the survey questions, the exact streets covered or the proposals themselves. What the changes would mean for parking, traffic lanes or bus stops is not stated in anything I read.",
+   "how": "Open the project hub, read the proposals and complete the online survey for the corridor you use (Lochee Road or Arbroath Road). Watch the council's events page for any further drop-in sessions.",
+   "url": "https://dundee-sustainable-transport-corridors-swecouk.hub.arcgis.com/",
+   "urlLabel": "Have your say",
+   "src": "https://www.dundeecity.gov.uk/events/event/35677",
+   "a": {
+    "people": [
+     [
+      "Bus passengers, people walking, wheeling and cycling on Arbroath Road and Lochee Road",
+      1
+     ],
+     [
+      "Residents along the two corridors, including people travelling to and from Broughty Ferry",
+      0
+     ],
+     [
+      "Drivers using Arbroath Road and Lochee Road",
+      0
+     ]
+    ],
+    "groups": [
+     [
+      "Local businesses along the corridors",
+      1
+     ],
+     [
+      "Community councils and community groups in Lochee, Stobswell and the east of the city",
+      0
+     ]
+    ],
+    "systems": [
+     [
+      "Bus services and road layout on two main routes",
+      1
+     ],
+     [
+      "Walking and cycling routes",
+      1
+     ],
+     [
+      "Kerbside parking and traffic",
+      0
      ]
     ]
    }

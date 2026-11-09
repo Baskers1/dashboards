@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-02T09:31:43Z",
+ "generated_at": "2026-11-09T09:30:12Z",
  "items": [
   {
    "id": "lower-high",
@@ -1317,7 +1317,7 @@
    "title": "Croxley Green 20mph speed limits (Right Place, Right Pace)",
    "body": "Hertfordshire County Council",
    "sector": "local",
-   "status": "open",
+   "status": "closed",
    "deadline": "2026-11-08",
    "closes": "23:59",
    "time": "23:59",
@@ -1325,7 +1325,7 @@
     "travel"
    ],
    "plain": "Proposed 20mph limits on more streets in Croxley Green, as part of the county's 20mph programme.",
-   "detail": "Uses an interactive map showing main roads, high streets, residential streets and roads that are already 20mph; some Croxley Green streets already have the lower limit. Residents are asked which additional roads should be included or excluded. One of twelve Hertfordshire 20mph consultations running at the same time, including Watford and Rickmansworth.",
+   "detail": "Uses an interactive map showing main roads, high streets, residential streets and roads that are already 20mph; some Croxley Green streets already have the lower limit. Residents are asked which additional roads should be included or excluded. One of twelve Hertfordshire 20mph consultations running at the same time, including Watford and Rickmansworth. Closed at 11.59pm on 8 November 2026; Hertfordshire County Council has not yet published results.",
    "how": "Use the interactive map and survey on the Let's Talk Transport page, or email 20mph@hertfordshire.gov.uk quoting 'Croxley Green 20mph'.",
    "url": "https://letstalktransport.hertfordshire.gov.uk/croxley-green",
    "urlLabel": "Have your say",
@@ -1639,7 +1639,7 @@
    "title": "Dacorum Local Plan examination: extra documents on Tr03 East of Tring",
    "body": "Dacorum Local Plan Inspectors, through Dacorum Borough Council",
    "sector": "local",
-   "status": "open",
+   "status": "closed",
    "deadline": "2026-11-06",
    "time": "closes at midnight on Friday 6 November 2026 (the Inspectors say late comments will not be accepted)",
    "topics": [
@@ -1647,7 +1647,7 @@
     "nature"
    ],
    "plain": "The planning inspectors examining Dacorum's Local Plan want comments on two new documents about the case for building east of Tring.",
-   "detail": "After the Stage 3 hearings the Inspectors asked the council to justify site Tr03, East of Tring. Dacorum has submitted documents DBC/ED64 and DBC/ED65, and the Inspectors are running a targeted consultation on those two documents only. Comments are invited only from people who commented on Tr03 at Regulation 19 stage, who made hearing statements or took part in the Tr03 hearing sessions, who took part in the site selection hearing (Matter 2 Issue 3), or who responded to the consultation on examination document DBC/ED39. No opening date is published; the page was last updated on 25 September 2026. Responses will be posted on the consultation page after the deadline.",
+   "detail": "After the Stage 3 hearings the Inspectors asked the council to justify site Tr03, East of Tring. Dacorum has submitted documents DBC/ED64 and DBC/ED65, and the Inspectors are running a targeted consultation on those two documents only. Comments are invited only from people who commented on Tr03 at Regulation 19 stage, who made hearing statements or took part in the Tr03 hearing sessions, who took part in the site selection hearing (Matter 2 Issue 3), or who responded to the consultation on examination document DBC/ED39. No opening date is published; the page was last updated on 25 September 2026. Responses will be posted on the consultation page after the deadline. Closed at midnight on 6 November 2026; the page says responses will be posted there after the deadline.",
    "how": "Follow the instructions on the Let's Talk Dacorum page. Comments sent after midnight on 6 November will not be accepted.",
    "url": "https://letstalk.dacorum.gov.uk/consultation-on-additional-documents-relating-to-tring-tr03",
    "urlLabel": "Have your say",
@@ -2464,14 +2464,14 @@
    "title": "Watford: renewing the public spaces alcohol ban (PSPO)",
    "body": "Safer Watford (Watford's Community Safety Partnership) with Watford Borough Council",
    "sector": "local",
-   "status": "open",
+   "status": "closed",
    "deadline": "2026-11-04",
    "time": "the council's page says it runs for about three weeks from its 14 October 2026 launch, but publishes no exact closing date or time; 4 November 2026 shown here is this dashboard's estimate from that 'three weeks', not a published date",
    "topics": [
     "services"
    ],
    "plain": "Watford wants views on renewing the order that bans drinking alcohol in the borough's public spaces, including parks, play areas, cemeteries and footpaths.",
-   "detail": "The existing Public Spaces Protection Order bans drinking alcohol in Watford's public spaces 24 hours a day. The consultation launched on 14 October 2026 and asks residents for their views through a short survey. It runs for about three weeks; no exact closing date is published on the council's own page.",
+   "detail": "The existing Public Spaces Protection Order bans drinking alcohol in Watford's public spaces 24 hours a day. The consultation launched on 14 October 2026 and asks residents for their views through a short survey. It runs for about three weeks; no exact closing date is published on the council's own page. By 9 November 2026 the three-week period from 14 October had passed, so this card is now shown as closed; the council has not published an exact end date or a result.",
    "how": "Complete the short survey (surveymonkey.com/r/PSPO-WBC-26) linked from the council's news page.",
    "url": "https://www.watford.gov.uk/news/article/1058/public-consultation-launched-for-renewal-of-pspo-on-the-consumption-of-alcohol-in-public-spaces",
    "urlLabel": "Have your say",
@@ -2668,6 +2668,189 @@
     "systems": [
      [
       "School places and admissions rules",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "hcc-budget-2028",
+   "title": "Hertfordshire County Council budget survey 2027/28",
+   "body": "Hertfordshire County Council",
+   "sector": "local",
+   "status": "open",
+   "deadline": "2026-12-07",
+   "time": "closes on Monday 7 December 2026; no closing time is published",
+   "topics": [
+    "services"
+   ],
+   "plain": "Hertfordshire County Council asks which of its services should come first for money next year, where it could save and how it could raise more income.",
+   "detail": "The county council says it spends about £1.5 billion a year, 67% of it on social care for adults and children, and is investing £349 million in buildings and infrastructure this year, £87m of it on highways. It says it is working to save £58.5m this year and may face difficult choices even with a 4.99% Council Tax rise. The survey launched in late October 2026; the closing date of 7 December comes from Royston Town Council's notice of the survey, as the county's own page did not show a date when checked.",
+   "how": "Complete the online survey at hertfordshire.gov.uk/budgetsurvey.",
+   "url": "https://www.hertfordshire.gov.uk/about-the-council/consultations/council-budget/budget-survey-2027-28.aspx",
+   "urlLabel": "Have your say",
+   "src": "https://www.roystontowncouncil.gov.uk/_VirDir/CoreContents/News/Display.aspx?id=86169",
+   "a": {
+    "people": [
+     [
+      "Every resident of Hertfordshire who uses county services",
+      1
+     ],
+     [
+      "Older and disabled people who rely on social care",
+      1
+     ],
+     [
+      "Families and children using children's services and SEND school places",
+      1
+     ],
+     [
+      "Drivers, walkers and bus users affected by highways spending",
+      0
+     ]
+    ],
+    "groups": [
+     [
+      "Care and voluntary organisations funded by the county",
+      0
+     ],
+     [
+      "Town and parish councils",
+      0
+     ]
+    ],
+    "wildlife": [
+     [
+      "No effect named",
+      0
+     ]
+    ],
+    "systems": [
+     [
+      "Council money and council tax",
+      1
+     ],
+     [
+      "Roads and highways maintenance",
+      1
+     ],
+     [
+      "Libraries",
+      1
+     ],
+     [
+      "Social care services",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "bucks-education-places",
+   "title": "Buckinghamshire Education Places Sufficiency Strategy 2027 to 2032",
+   "body": "Buckinghamshire Council",
+   "sector": "local",
+   "status": "open",
+   "deadline": "2026-12-13",
+   "closes": "23:59",
+   "time": "11:59pm on Sunday 13 December 2026",
+   "topics": [
+    "services",
+    "homes"
+   ],
+   "plain": "How Buckinghamshire plans to make sure there are enough school, early years, SEND and post-16 places in the right places over the next five years.",
+   "detail": "The draft strategy covers school places, Early Years Education Entitlements (funded childcare from nine months to school age), SEND provision and post-16 places, and how places will keep up with planned growth. It was drafted after early engagement with schools, early years and post-16 providers. The council notes that Appendix F (the annual sufficiency assessment) is being updated with 2026 data and will be published with the final strategy. Covers the whole of Buckinghamshire, including Amersham, Chesham and Little Chalfont.",
+   "how": "Complete the online survey on Your Voice Bucks, or email educationconsultation@buckinghamshire.gov.uk.",
+   "url": "https://yourvoicebucks.citizenspace.com/childrens-services/education-places-sufficiency-strategy/",
+   "urlLabel": "Have your say",
+   "src": "https://yourvoicebucks.citizenspace.com/childrens-services/education-places-sufficiency-strategy/",
+   "a": {
+    "people": [
+     [
+      "Families with children of school and nursery age",
+      1
+     ],
+     [
+      "Children and young people with SEND",
+      1
+     ],
+     [
+      "Young people aged 16 and over",
+      1
+     ],
+     [
+      "Residents of new housing growth areas",
+      0
+     ]
+    ],
+    "groups": [
+     [
+      "Schools, early years and post-16 providers",
+      1
+     ],
+     [
+      "Parent carer forums",
+      0
+     ]
+    ],
+    "wildlife": [
+     [
+      "No effect named",
+      0
+     ]
+    ],
+    "systems": [
+     [
+      "School and childcare places, planned with new homes and planning growth",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "bucks-admissions-2028",
+   "title": "Buckinghamshire school admissions consultation for 2028 entry",
+   "body": "Buckinghamshire Council",
+   "sector": "local",
+   "status": "open",
+   "deadline": "2026-12-14",
+   "closes": "23:59",
+   "time": "11:59pm on 14 December 2026",
+   "topics": [
+    "services"
+   ],
+   "plain": "Buckinghamshire's yearly check of the admission rules for its community and voluntary controlled schools, for children starting in 2028.",
+   "detail": "No significant changes are proposed to the county admissions scheme or the oversubscription rules for primary or secondary schools, and no school's published admission number is due to change, but the council is consulting generally because it is seven years since it last did. The one proposed change is a wider catchment area for The Buckingham School, outside the Chiltern towns this dashboard covers. The Cabinet Member agreed on 23 October 2026 to consult; a decision on the final arrangements is due before 28 February 2027.",
+   "how": "Complete the online survey on Your Voice Bucks, email admissions@buckinghamshire.gov.uk, or write to School Admissions and Transport Team, Walton Street Offices, Buckinghamshire Council, Walton Street, Aylesbury, HP20 1UZ.",
+   "url": "https://yourvoicebucks.citizenspace.com/schools/school-admissions-consultation-2028/",
+   "urlLabel": "Have your say",
+   "src": "https://yourvoicebucks.citizenspace.com/schools/school-admissions-consultation-2028/",
+   "a": {
+    "people": [
+     [
+      "Families applying for school places for 2028",
+      1
+     ],
+     [
+      "Children in the Buckingham School catchment area",
+      1
+     ]
+    ],
+    "groups": [
+     [
+      "Community and voluntary controlled schools",
+      1
+     ]
+    ],
+    "wildlife": [
+     [
+      "No effect named",
+      0
+     ]
+    ],
+    "systems": [
+     [
+      "School admission rules and catchment areas",
       1
      ]
     ]
@@ -2877,7 +3060,7 @@
   "croxley-appeal": "Awaiting Inspector",
   "sarratt-churchlane": "Undecided"
  },
- "collected": "2 November 2026",
- "watch_note": "No charity or non-profit consultation was found open on 2 November 2026. These organisations are the likeliest to run one.",
- "empty_charity": "No charity or non-profit consultation was found open on 2 November 2026. Try the places to watch."
+ "collected": "9 November 2026",
+ "watch_note": "No charity or non-profit consultation was found open on 9 November 2026. These organisations are the likeliest to run one.",
+ "empty_charity": "No charity or non-profit consultation was found open on 9 November 2026. Try the places to watch."
 }
