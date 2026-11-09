@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-08",
+ "generated": "2026-11-09",
  "area": "Neath Port Talbot",
  "scope": "restaurants, pubs, cafes, pop-ups and markets",
  "timezone": "Europe/London",
@@ -35,7 +35,7 @@
   "comments_read": 397,
   "food_and_drink_posts": 1806,
   "listing_rows": 258,
-  "listing_rows_forward": 25,
+  "listing_rows_forward": 21,
   "recurring_fixtures": 12,
   "venues_ranked": 57,
   "closed_venues": 1,
@@ -43,74 +43,6 @@
   "facebook_pages": 115
  },
  "listings": [
-  {
-   "date": "2026-11-08",
-   "venue": "Cariad Events Cymru Witches Market",
-   "towns": [
-    "Margam"
-   ],
-   "time": "4pm",
-   "price": "£2",
-   "detail": "It’s TODAYYYY 🫶🏼✨👻 @Cariad Events Cymru Witches Market at The Orangert at Margam Park 🔮 On TODAY from 11-4pm pay on the door £2 If your seeing this and it’s after the event we are also at Craig Y nos castle on Sunday 1st",
-   "platform": "TikTok",
-   "url": "https://www.tiktok.com/@jacobsboutiquexo/video/7700553480330644768",
-   "posted": "2026-10-25",
-   "date_inferred": false,
-   "date_text": "8th November",
-   "recurring": false,
-   "needs_check": false
-  },
-  {
-   "date": "2026-11-08",
-   "venue": "Ferrari's Cafe",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "time": null,
-   "price": null,
-   "detail": "☀️ GOOD MORNING, COMMUNITY! ☕❤️ We’re OPEN and ready to welcome you! Come and see what delicious treats we have waiting for you this week! 🧁🍰 ✨ NEW CAKES ON OUR STAND THIS WEEK! ✨ Pop in, treat yourself and discover your",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/groups/121676847869402/permalink/28961780933432276/",
-   "posted": "2026-11-03",
-   "date_inferred": true,
-   "date_text": "Sunday",
-   "recurring": true,
-   "needs_check": true
-  },
-  {
-   "date": "2026-11-08",
-   "venue": "Oakwood Inn",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "time": null,
-   "price": null,
-   "detail": "Just a little post to say a HUGE heartfelt thank you to everyone who supported our little village pub 💚 🌳 on Sunday for the Richard Burton 10K. ❤️ It was so lovely to see so many familiar faces and the support shown real",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/permalink.php?story_fbid=pfbid0eYe6H25iy3TnFoYB4rJUfcJN6MgNtrAkw4ATPrAxHgqyRwEYknVQm6FHwFoJa7Ukl&id=100057402434015",
-   "posted": "2026-11-03",
-   "date_inferred": true,
-   "date_text": "Sunday",
-   "recurring": false,
-   "needs_check": true
-  },
-  {
-   "date": "2026-11-08",
-   "venue": "Portablo Coffi",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "time": null,
-   "price": null,
-   "detail": "October, told in 20 pics and videos. 📸🍂 Quite a month looking back at it! Somewhere between making Coffi, roasting beans and opening the doors every morning, we’ve squeezed in the BBC Travel Show, Sgwrsio Cymraeg, Sunday",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/portablocoffi/posts/pfbid0TobZNoKUcrsMcyCMdJY4V5Fe12WGUtxDWq5PAdLxCLHjczZfj2QGXo1JkHfW4qicl",
-   "posted": "2026-11-02",
-   "date_inferred": true,
-   "date_text": "Sunday",
-   "recurring": false,
-   "needs_check": true
-  },
   {
    "date": "2026-11-14",
    "venue": "Cariad Events Cymru Witches Market",
@@ -1003,7 +935,7 @@
    ]
   },
   {
-   "venue": "Dillwyn Arms",
+   "venue": "The Dillwyn Arms",
    "total_mentions": 10,
    "independent_mentions": 3,
    "platforms": [
@@ -1013,7 +945,7 @@
    ]
   },
   {
-   "venue": "The Dillwyn Arms",
+   "venue": "Dillwyn Arms",
    "total_mentions": 10,
    "independent_mentions": 3,
    "platforms": [
@@ -1108,7 +1040,7 @@
    ]
   },
   {
-   "venue": "Rolling Mill",
+   "venue": "The Rolling Mill",
    "total_mentions": 5,
    "independent_mentions": 3,
    "platforms": [
@@ -1118,7 +1050,7 @@
    ]
   },
   {
-   "venue": "The Rolling Mill",
+   "venue": "Rolling Mill",
    "total_mentions": 5,
    "independent_mentions": 3,
    "platforms": [
