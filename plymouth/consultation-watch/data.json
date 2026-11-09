@@ -262,18 +262,18 @@
   },
   {
    "id": "lgr-greater-plymouth",
-   "title": "Local government reorganisation: Greater Plymouth plan (13 South Hams parishes) paused",
+   "title": "Local government reorganisation: Greater Plymouth plan (13 South Hams parishes) withdrawn for review",
    "body": "UK Government (Ministry of Housing, Communities and Local Government)",
    "sector": "central",
    "status": "decision",
    "deadline": "2099-12-31",
-   "time": "Government consultation closed 26 March 2026. Proposal withdrawn for a further review on 29 October 2026; the Government says it will make a fresh decision in 2027 (no date given).",
+   "time": "Government consultation closed 26 March 2026. Proposal withdrawn for a further review on 29 October 2026; a fresh decision is due in 2027. District councils expect to hear more in March 2027 (Devon Air Radio, 5 November 2026; not a Government date).",
    "topics": [
     "services",
     "homes"
    ],
-   "plain": "The Government's plan to enlarge Plymouth by 13 South Hams parishes, including Ivybridge, was approved in July and then paused for review in September. A newspaper-style report that it has been formally withdrawn could not be confirmed. Elections in May 2027 are said to go ahead on the existing boundaries.",
-   "detail": "The Herald (29 October 2026, read in full) reports the Government has withdrawn its favoured proposal for Devon, which included a Greater Plymouth Council taking in 13 South Hams parishes, and will put it through a further review with a fresh decision in 2027. Plymouth City Council's leader said the council was disappointed and will make its case again when the review begins; the Government still aims for shadow authority elections in 2028 and new councils in 2029. A local MP's social post (search snippet only) also says ministers have formally withdrawn the plan. Earlier history: the Government consultation closed at 11.59pm on 26 March 2026 (gov.uk); the plan was approved in July 2026 and paused in September 2026. No review timetable has been published yet.",
+   "plain": "The Government's plan to enlarge Plymouth by 13 South Hams parishes, including Ivybridge, was approved in July, paused in September and withdrawn for a further review on 29 October. A fresh decision is due in 2027.",
+   "detail": "The Herald (29 October 2026, read in full) reports the Government has withdrawn its favoured proposal for Devon, which included a Greater Plymouth Council taking in 13 South Hams parishes, and will put it through a further review with a fresh decision in 2027. Plymouth City Council's leader said the council was disappointed and will make its case again when the review begins; the Government still aims for shadow authority elections in 2028 and new councils in 2029. A local MP's social post (search snippet only) also says ministers have formally withdrawn the plan. Earlier history: the Government consultation closed at 11.59pm on 26 March 2026 (gov.uk); the plan was approved in July 2026 and paused in September 2026. No review timetable has been published yet. Devon Air Radio (Local Democracy Reporter, 5 November 2026, read 9 November) reports that Devon's district councils expect to hear in March 2027 what happens next; this is a council expectation, not a Government date.",
    "how": "No open consultation. Watch for the Government's review and the councils' statements; contact your MP or parish councillor.",
    "url": "https://www.ivybridge.gov.uk/the-council/local-government-reorganisation/",
    "urlLabel": "Ivybridge Town Council: reorganisation",
@@ -613,14 +613,14 @@
    "title": "Stroud Park Road parking changes (Traffic Regulation Order)",
    "body": "Plymouth City Council",
    "sector": "local",
-   "status": "open",
+   "status": "closed",
    "deadline": "2026-11-06",
-   "time": "Representations must reach the council by 6 November 2026 (closing time not stated)",
+   "time": "Representations closed 6 November 2026 (closing time not stated)",
    "topics": [
     "travel"
    ],
    "plain": "The council plans to remove a stretch of double yellow lines on Stroud Park Road (near PL2 3NL) to give residents more on-street parking.",
-   "detail": "From The Herald (31 October 2026), reporting a Plymouth City Council public notice dated 16 October 2026: the draft order (reference Amd.2026.2137368 Stroud Park Road) would add or amend parking restrictions on lengths of Stroud Park Road, removing a section of double yellow lines. Comments must give grounds for support or objection. I did not open the council's own notice.",
+   "detail": "From The Herald (31 October 2026), reporting a Plymouth City Council public notice dated 16 October 2026: the draft order (reference Amd.2026.2137368 Stroud Park Road) would add or amend parking restrictions on lengths of Stroud Park Road, removing a section of double yellow lines. Comments must give grounds for support or objection. I did not open the council's own notice. The comment period ended on 6 November 2026; no decision on the order had been published when checked on 9 November 2026.",
    "how": "Use the council's traffic regulation order comments facility (Have your say, Traffic and road safety schemes), or write to Service Director for Street Services (Plymouth Highways), Ballard House, West Hoe Road, Plymouth PL1 3BJ quoting Amd.2026.2137368. Hard copies on 01752 668000.",
    "url": "https://www.plymouth.gov.uk/have-your-say",
    "urlLabel": "Plymouth Have your say",
@@ -856,6 +856,67 @@
     "wildlife": [],
     "systems": []
    }
+  },
+  {
+   "id": "mount-edgcumbe-cmp",
+   "title": "Mount Edgcumbe Country Park: survey on its future (Conservation Management Plan)",
+   "body": "Cornwall Council (neighbouring council) and Plymouth City Council, joint owners",
+   "sector": "local",
+   "status": "open",
+   "deadline": "2026-12-14",
+   "time": "Survey open until 14 December 2026 (closing time not stated)",
+   "topics": [
+    "nature",
+    "coast"
+   ],
+   "plain": "The two councils that own Mount Edgcumbe Country Park, across the water from Plymouth, want to hear from residents and visitors to help write a long-term plan for caring for the park, its gardens, buildings and wildlife.",
+   "detail": "From Cornwall Council's news release (last updated 5 November 2026, read 9 November). A £65,000 National Lottery Heritage Fund grant pays for a Conservation Management Plan and a Business Plan, prepared by Purcell with specialists in landscape archaeology, ecology and arboriculture. The 350-hectare estate has historic gardens, listed buildings, nationally important plant collections and protected wildlife habitats, overlooking Plymouth Sound National Marine Park. The plan will cover climate change, nature recovery, visitor expectations and long-term finances. The project runs to June 2027.",
+   "how": "Fill in the short online survey (Microsoft Forms) linked from Cornwall Council's news release.",
+   "url": "https://forms.cloud.microsoft/pages/responsepage.aspx?id=BeqYbRkvdUe7DH8a0RfxYsj3VFNnMjROnfapXt7mQGpURDJLVEpWNlRKRVk3VTI4MzBXWTZCTElTRy4u&route=shorturl",
+   "urlLabel": "Fill in the survey",
+   "src": "https://www.cornwall.gov.uk/council-news/environment-culture-and-planning/residents-invited-to-help-shape-the-future-of-mount-edgcumbe-country-park/",
+   "a": {
+    "people": [
+     [
+      "Plymouth residents and visitors who use the park",
+      1
+     ],
+     [
+      "Families and dog owners who walk there",
+      0
+     ]
+    ],
+    "groups": [
+     [
+      "Friends and volunteer groups at the park",
+      0
+     ],
+     [
+      "Heritage and conservation bodies",
+      0
+     ]
+    ],
+    "wildlife": [
+     [
+      "Protected wildlife habitats on the estate",
+      1
+     ],
+     [
+      "Nationally important plant collections",
+      1
+     ]
+    ],
+    "systems": [
+     [
+      "Historic landscape, gardens and trees",
+      1
+     ],
+     [
+      "Coast and Plymouth Sound setting",
+      1
+     ]
+    ]
+   }
   }
  ],
  "petitions": [
@@ -917,6 +978,15 @@
    "sig": null,
    "outcome": "The Herald (20 March 2022) reported a petition with more than 200 signatures handed to the council by ward councillors; exact count not published. The council said the removal programme would start on 22 March 2022, cutting shelters from 626 to 415, and that shelters still served by a bus would be replaced by a stop. The article does not say how the petition itself was answered.",
    "url": "https://www.plymouthherald.co.uk/news/plymouth-news/plymouth-remove-more-200-bus-6829299"
+  },
+  {
+   "date": "2026-11-04",
+   "to": "pcc",
+   "title": "Devils Point Slab",
+   "sig": 4,
+   "outcome": "Plymouth City Council e-petition. Signing ended on 4 November 2026 and the council's e-petitions list now shows it as 'Finished' with 4 respondents (read through the home-computer scrape of 9 November 2026). I did not read the petition's own page, so what it asked for and any council response are not verified.",
+   "url": "https://democracy.plymouth.gov.uk/mgEPetitionListDisplay.aspx?RPID=626299703&HPID=626299703&VM=2",
+   "nature": 1
   }
  ],
  "watch": [
@@ -997,8 +1067,8 @@
   "plymouth-dtcca": "Government minded to proceed",
   "lgr-greater-plymouth": "Withdrawn for review"
  },
- "collected": "2 November 2026",
- "watch_note": "Still to come: the Environment Agency's consultation on a permit change at Hemerdon Tungsten Mine (Drakelands Restoration Ltd) - its page (21 October 2026, read 2 November) says it expects to open in November for at least four weeks; not open yet. Plymouth e-petitions open now (not listed until they close): 'Devils Point Slab' (signing ends 4 November 2026) and 'Reverse the decision to introduce parking charges at the George Junction Park and Ride' (ends 24 November 2026). No charity or non-profit consultation was found open on 2 November 2026 after searching for Devon Wildlife Trust, RSPB, Plymouth Tree People and CPRE Devon; the only non-profit item, the Plymouth Parent Carer Voice SEND survey, closed 31 October 2026.",
- "empty_charity": "No charity or non-profit consultation was found open on 2 November 2026; see the places to watch.",
- "generated_at": "2026-11-05T11:57:38Z"
+ "collected": "9 November 2026",
+ "watch_note": "Still to come: the Environment Agency's consultation on a permit change at Hemerdon Tungsten Mine (Drakelands Restoration Ltd). Its page (21 October 2026, read again 9 November) still says it expects to open in November for at least four weeks; not open yet. Plymouth e-petition open now (not listed until it closes): 'Reverse the decision to introduce parking charges at the George Junction Park and Ride', 138 respondents, signing ends 24 November 2026. Plymouth, Devon, Torbay and the Combined County Authority are due to take formal decisions on a mayoral authority in November and December 2026. No charity or non-profit consultation was found open on 9 November 2026 after searching for Devon Wildlife Trust, RSPB, Plymouth Tree People, CPRE Devon, Transition Town Totnes and Totnes Caring.",
+ "empty_charity": "No charity or non-profit consultation was found open on 9 November 2026; see the places to watch.",
+ "generated_at": "2026-11-09T08:49:16Z"
 }
