@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-09",
+ "generated": "2026-11-10",
  "area": "Neath Port Talbot",
  "scope": "restaurants, pubs, cafes, pop-ups and markets",
  "timezone": "Europe/London",
@@ -935,7 +935,7 @@
    ]
   },
   {
-   "venue": "The Dillwyn Arms",
+   "venue": "Dillwyn Arms",
    "total_mentions": 10,
    "independent_mentions": 3,
    "platforms": [
@@ -945,7 +945,7 @@
    ]
   },
   {
-   "venue": "Dillwyn Arms",
+   "venue": "The Dillwyn Arms",
    "total_mentions": 10,
    "independent_mentions": 3,
    "platforms": [
@@ -1040,7 +1040,7 @@
    ]
   },
   {
-   "venue": "The Rolling Mill",
+   "venue": "Rolling Mill",
    "total_mentions": 5,
    "independent_mentions": 3,
    "platforms": [
@@ -1050,7 +1050,7 @@
    ]
   },
   {
-   "venue": "Rolling Mill",
+   "venue": "The Rolling Mill",
    "total_mentions": 5,
    "independent_mentions": 3,
    "platforms": [
@@ -1088,7 +1088,7 @@
    ]
   },
   {
-   "venue": "The Bryncoch Inn",
+   "venue": "Bryncoch Inn",
    "total_mentions": 8,
    "independent_mentions": 3,
    "platforms": [
@@ -1097,7 +1097,7 @@
    ]
   },
   {
-   "venue": "Bryncoch Inn",
+   "venue": "The Bryncoch Inn",
    "total_mentions": 8,
    "independent_mentions": 3,
    "platforms": [
