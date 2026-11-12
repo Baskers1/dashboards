@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-11",
+ "generated": "2026-11-12",
  "area": "Neath Port Talbot",
  "scope": "restaurants, pubs, cafes, pop-ups and markets",
  "timezone": "Europe/London",
@@ -26,16 +26,16 @@
   "note": "Those five networks have no ScrapeCreators endpoint and return HTTP 404. Facebook has no keyword search, so its pages and groups are found via Google and read directly."
  },
  "posts_fetched": {
-  "oldest": "2026-11-03",
-  "newest": "2026-11-11"
+  "oldest": "2026-11-11",
+  "newest": "2026-11-12"
  },
  "counts": {
-  "api_responses": 737,
-  "posts_kept": 2786,
+  "api_responses": 740,
+  "posts_kept": 2793,
   "comments_read": 391,
-  "food_and_drink_posts": 1822,
-  "listing_rows": 272,
-  "listing_rows_forward": 47,
+  "food_and_drink_posts": 1828,
+  "listing_rows": 280,
+  "listing_rows_forward": 41,
   "recurring_fixtures": 15,
   "venues_ranked": 60,
   "closed_venues": 1,
@@ -43,108 +43,6 @@
   "facebook_pages": 115
  },
  "listings": [
-  {
-   "date": "2026-11-11",
-   "venue": "Rosa’s Bakery",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "time": null,
-   "price": null,
-   "detail": "Wednesday’s Product Menu: • Marmadough (organic yeast extract ~marmite~ sourdough) • Sourdough English Muffins • 🇷🇴 Apple Ștrudels 🍏 • 🇷🇴 Spiced Pumpkin Ștrudels • Stem Ginger Cake 🫚 • Beetroot Brownies 🫜 • Carrot Cake 🥕",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/rosasbakery.co.uk/posts/pfbid0DLRwh5yMFzMrMy1tnFZ8HMQgU23CmHSjZiELZSstFPcT1E93mLgpdPjxysjsqwDal",
-   "posted": "2026-11-10",
-   "date_inferred": true,
-   "date_text": "Wednesday",
-   "recurring": false,
-   "needs_check": true
-  },
-  {
-   "date": "2026-11-11",
-   "venue": "Skippys Burger Bar",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "time": "7:00 PM",
-   "price": null,
-   "detail": "🔥 **MAY THE ODDS BE EVER IN YOUR FAVOR!** 🔥 Think you have what it takes to survive the arena? Time to put that Hunger Games knowledge to the test! 🏹 **HUNGER GAMES TRIVIA** 📅 Wednesday, November 11 ⏰ 7:00 PM Gather your",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/SkippysBurgerBar/posts/pfbid02yu754QPHYxYtfSZrARhSMxtpRQqBuTGMCdMPCKyGW4KTiH1KRj8n7axBio4AYEPrl",
-   "posted": "2026-11-06",
-   "date_inferred": false,
-   "date_text": "November 11",
-   "recurring": false,
-   "needs_check": false
-  },
-  {
-   "date": "2026-11-11",
-   "venue": "The Bold Dragoon and Restaurant Forty-Eight",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "time": "7pm",
-   "price": "£2.00",
-   "detail": "🍻 QUIZ NIGHT AT THE BOLD DRAGOON 🍻 Grab your friends, Bring a team, Have some drinks 🥂 It’s Wednesday Quiz Night at The Bold Dragoon. Join us on the for a night of fun ✨ 🍴Bar snacks available 7pm Start £2.00 per person U",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/TheBoldDragoonAndRestaurantFortyEight/posts/pfbid087NYySwfCF4pTgYUpN7qB9PRWVpYyVZsVaSH5LeXmvBdHwrQsGd3tXHcyxHbzUaEl",
-   "posted": "2026-11-08",
-   "date_inferred": true,
-   "date_text": "Wednesday",
-   "recurring": false,
-   "needs_check": true
-  },
-  {
-   "date": "2026-11-11",
-   "venue": "The Crown and Sceptre Inn Cadoxton",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "time": "5pm",
-   "price": null,
-   "detail": "👑🍻 EXCITING NEWS – CROWN & SCEPTRE! 🍻👑 Hi everyone! 👋 I'm Hayley, the new manager of the Crown & Sceptre in Cadoxton! I'm excited to announce we're reopening tomorrow, Wednesday 11th November, from 5pm for drinks! 🍻 🍽️ O",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/permalink.php?story_fbid=pfbid0g4zikZhWFa4pZ3LZAR57Dd95gkbycSSeXLWn9otnm1qNjchrqFYNeYayXjU3yNDul&id=61557396391147",
-   "posted": "2026-11-10",
-   "date_inferred": false,
-   "date_text": "11th November",
-   "recurring": false,
-   "needs_check": false
-  },
-  {
-   "date": "2026-11-11",
-   "venue": "The Dillwyn Arms",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "time": "12pm",
-   "price": "£20",
-   "detail": "Join us tomorrow at The Dillwyn Arms🍴 Carvery served from 12pm🥕 2 meals for £20 until 3pm🤤 Around the World Wednesday heading to Germany🇩🇪🍴✈️ ☎️01792 863310",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/thedillwynarms/posts/pfbid02Zh6miuWgS4r3Awy5w33oUCNyuX71EKCjqX7kP5AgHYD9rHjjjaEtgePG3eZb9TNtl",
-   "posted": "2026-11-10",
-   "date_inferred": true,
-   "date_text": "Wednesday",
-   "recurring": false,
-   "needs_check": true
-  },
-  {
-   "date": "2026-11-11",
-   "venue": "The Dillwyn Arms",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "time": "5:30pm",
-   "price": null,
-   "detail": "🇩🇪✈️ NEXT STOP… GERMANY! 🍻 Our Around the World Wednesdays continue! 🌍 📅 Wednesday 11th November ⏰ From 5:30pm 📍 The Dillwyn Arms Just a heads up..Wednesday 18th November will be our final Around the World Wednesday befo",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/thedillwynarms/posts/pfbid02uw7GsauvQVZTFqdBjADDi7i9Buyf9kCzbK3sVhD5a5bXJnVSKbPegqBRGsRPP8a9l",
-   "posted": "2026-11-10",
-   "date_inferred": false,
-   "date_text": "11th November",
-   "recurring": false,
-   "needs_check": false
-  },
   {
    "date": "2026-11-12",
    "venue": "Bar 98",
@@ -1219,8 +1117,8 @@
    ]
   },
   {
-   "venue": "Le Bistro",
-   "total_mentions": 9,
+   "venue": "The Crown Skewen",
+   "total_mentions": 16,
    "independent_mentions": 7,
    "platforms": [
     "Facebook",
@@ -1229,8 +1127,8 @@
    ]
   },
   {
-   "venue": "The Crown Skewen",
-   "total_mentions": 16,
+   "venue": "Le Bistro",
+   "total_mentions": 9,
    "independent_mentions": 7,
    "platforms": [
     "Facebook",
@@ -1539,7 +1437,7 @@
    ]
   },
   {
-   "venue": "Rolling Mill",
+   "venue": "The Rolling Mill",
    "total_mentions": 4,
    "independent_mentions": 3,
    "platforms": [
@@ -1549,7 +1447,7 @@
    ]
   },
   {
-   "venue": "The Rolling Mill",
+   "venue": "Rolling Mill",
    "total_mentions": 4,
    "independent_mentions": 3,
    "platforms": [
@@ -1734,6 +1632,11 @@
    "dated": 8
   },
   {
+   "source": "https://www.facebook.com/Gossip-cafe-port-talbot-100063565991028",
+   "posts": 12,
+   "dated": 8
+  },
+  {
    "source": "https://www.facebook.com/themineneathtown",
    "posts": 12,
    "dated": 8
@@ -1785,11 +1688,6 @@
   },
   {
    "source": "https://www.facebook.com/The-Docks-Cafe-100057589383766",
-   "posts": 12,
-   "dated": 7
-  },
-  {
-   "source": "https://www.facebook.com/TheLoftneath",
    "posts": 12,
    "dated": 7
   }
