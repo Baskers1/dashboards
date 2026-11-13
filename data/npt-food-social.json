@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-12",
+ "generated": "2026-11-13",
  "area": "Neath Port Talbot",
  "scope": "restaurants, pubs, cafes, pop-ups and markets",
  "timezone": "Europe/London",
@@ -27,7 +27,7 @@
  },
  "posts_fetched": {
   "oldest": "2026-11-11",
-  "newest": "2026-11-12"
+  "newest": "2026-11-13"
  },
  "counts": {
   "api_responses": 740,
@@ -35,7 +35,7 @@
   "comments_read": 391,
   "food_and_drink_posts": 1828,
   "listing_rows": 280,
-  "listing_rows_forward": 41,
+  "listing_rows_forward": 39,
   "recurring_fixtures": 15,
   "venues_ranked": 60,
   "closed_venues": 1,
@@ -43,40 +43,6 @@
   "facebook_pages": 115
  },
  "listings": [
-  {
-   "date": "2026-11-12",
-   "venue": "Bar 98",
-   "towns": [
-    "Pontardawe"
-   ],
-   "time": "5.50",
-   "price": "£5",
-   "detail": "The One Where We Get Hungry… 🍟 Could this menu BE any more delicious?! 👀 We’re serving up some serious comfort food for our FRIENDS Quiz Night at Bar98! From cheesy chips to chicken tenders, we’ve teamed up with Rhos Chi",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/permalink.php?story_fbid=pfbid0zJUd1mA7pCPCRMGQgxZBS5QitKdBBiuANM8CwoCHoj34BPBuHHs6nY3DUXxH6pHul&id=61558407041109",
-   "posted": "2026-11-10",
-   "date_inferred": false,
-   "date_text": "12th November",
-   "recurring": false,
-   "needs_check": false
-  },
-  {
-   "date": "2026-11-12",
-   "venue": "The Crown and Sceptre Inn Cadoxton",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "time": "5pm",
-   "price": null,
-   "detail": "👑🍻 EXCITING NEWS – CROWN & SCEPTRE! 🍻👑 Hi everyone! 👋 I'm Hayley, the new manager of the Crown & Sceptre in Cadoxton! I'm excited to announce we're reopening tomorrow, Wednesday 11th November, from 5pm for drinks! 🍻 🍽️ O",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/permalink.php?story_fbid=pfbid0g4zikZhWFa4pZ3LZAR57Dd95gkbycSSeXLWn9otnm1qNjchrqFYNeYayXjU3yNDul&id=61557396391147",
-   "posted": "2026-11-10",
-   "date_inferred": false,
-   "date_text": "12th November",
-   "recurring": false,
-   "needs_check": false
-  },
   {
    "date": "2026-11-13",
    "venue": "The Old White Horse Inn, Pontneathvaughan",
@@ -1117,8 +1083,8 @@
    ]
   },
   {
-   "venue": "The Crown Skewen",
-   "total_mentions": 16,
+   "venue": "Le Bistro",
+   "total_mentions": 9,
    "independent_mentions": 7,
    "platforms": [
     "Facebook",
@@ -1127,8 +1093,8 @@
    ]
   },
   {
-   "venue": "Le Bistro",
-   "total_mentions": 9,
+   "venue": "The Crown Skewen",
+   "total_mentions": 16,
    "independent_mentions": 7,
    "platforms": [
     "Facebook",
@@ -1437,7 +1403,7 @@
    ]
   },
   {
-   "venue": "The Rolling Mill",
+   "venue": "Rolling Mill",
    "total_mentions": 4,
    "independent_mentions": 3,
    "platforms": [
@@ -1447,7 +1413,7 @@
    ]
   },
   {
-   "venue": "Rolling Mill",
+   "venue": "The Rolling Mill",
    "total_mentions": 4,
    "independent_mentions": 3,
    "platforms": [
