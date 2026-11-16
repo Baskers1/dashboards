@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-11-09T09:24:52Z",
- "collected": "9 November 2026",
+ "generated_at": "2026-11-16T09:25:00Z",
+ "collected": "16 November 2026",
  "items": [
   {
    "id": "angus-sds-rates",
@@ -59,22 +59,21 @@
   },
   {
    "id": "sg-localgov",
-   "title": "Council reform: proposal for regional and community authorities",
+   "title": "Local governance reform: public questionnaire",
    "body": "Scottish Government (Local Government and Housing Directorate)",
    "sector": "central",
-   "status": "decision",
-   "nodate": true,
-   "deadline": "2026-09-21",
-   "time": "discussion paper published 21 September 2026; no public response form or closing date found on 14 October 2026; the government wants a shared direction before the end of 2026",
+   "status": "open",
+   "deadline": "2026-12-11",
+   "time": "closes Friday 11 December 2026; closing time not stated (questionnaire launched 13 November 2026)",
    "topics": [
     "services"
    ],
-   "plain": "An opening proposal to replace Scotland's 32 councils with 6 to 10 regional authorities and 120 to 160 community authorities. Local news reports say Dundee, Angus and Perth and Kinross could be merged into one Tayside authority.",
-   "detail": "The paper says regional authorities would handle strategic matters such as economic development, housing, strategic planning, transport, waste and education, and community authorities would handle local decisions such as householder planning applications, licensing, green spaces, town centre regeneration and local leisure and culture. Councillors would still be elected by ward and sit on both. Social care and social work are part of the same three-month dialogue. The paper does not name the regions; the possible Tayside merger comes from reports in The Courier, not from the paper. The dialogue is mainly with councils, COSLA, trade unions and care providers; the paper says more detailed proposals will follow for Parliament, councils and communities. I found no form for members of the public to respond.",
-   "how": "No public consultation is open. Read the paper, and contact your councillors or MSP if you want to give a view. Watch for the more detailed proposals the government says will follow.",
-   "url": "https://www.gov.scot/publications/public-sector-reform-proposal/",
-   "urlLabel": "Read the proposal",
-   "src": "https://www.gov.scot/publications/public-sector-reform-proposal/",
+   "plain": "The Scottish Government has opened an online questionnaire asking the public how councils are organised now, what matters most in reforming local government, and any concerns or opportunities. Its earlier proposal would replace Scotland's 32 councils with 6 to 10 regional authorities and 120 to 160 community authorities, and local news reports say Dundee, Angus and Perth and Kinross could be merged into one Tayside authority.",
+   "detail": "The questionnaire was launched on 13 November 2026 as part of a three-month dialogue on local governance reform; ministers are also talking to all 32 councils, COSLA and trade unions. The government's September discussion paper says regional authorities would handle strategic matters such as economic development, housing, strategic planning, transport, waste and education, and community authorities would handle local decisions such as householder planning applications, licensing, green spaces, town centre regeneration and local leisure and culture. The paper does not name the regions; the possible Tayside merger comes from reports in The Courier, not from the government. The government says any future changes would need further assessment of workforce, assets and service delivery.",
+   "how": "Answer the online questionnaire on the Scottish Government's Comhairle platform by 11 December 2026. You can also read the September discussion paper first.",
+   "url": "https://comhairle.scot/conversations/local-governance-reform",
+   "urlLabel": "Have your say",
+   "src": "https://www.gov.scot/news/public-urged-to-share-views-on-local-government-reform/",
    "a": {
     "people": [
      [
@@ -1560,18 +1559,18 @@
    "title": "Angus Local Development Plan: draft Participation Statement 2026",
    "body": "Angus Council",
    "sector": "local",
-   "status": "open",
+   "status": "closed",
    "deadline": "2026-11-09",
    "closes": "12:00",
-   "time": "12 noon on Monday 9 November 2026",
+   "time": "closed at 12 noon on Monday 9 November 2026",
    "topics": [
     "homes"
    ],
    "plain": "Tell Angus Council how and when you want to be consulted while it prepares the next Local Development Plan, which guides where homes and other development go across Angus, including Carnoustie and Monifieth.",
-   "detail": "The council must consult on its draft Participation Statement every year. It sets out how the council plans to inform, engage, involve and consult people, and the methods it may use, as the next plan is prepared. The council says that if you answered last year's survey you need not repeat your answers, because the survey and document cover the same content. Paper copies of the survey are in libraries across Angus.",
-   "how": "Read the draft Participation Statement and complete the survey on Engage Angus, or use a paper copy from an Angus library. Questions to ldp@angus.gov.uk.",
+   "detail": "The council must consult on its draft Participation Statement every year. It sets out how the council plans to inform, engage, involve and consult people, and the methods it may use, as the next plan is prepared. The council says that if you answered last year's survey you need not repeat your answers, because the survey and document cover the same content. Paper copies of the survey are in libraries across Angus. Outcome so far: the Engage Angus page says the consultation has closed, comments are being considered, and an amended Development Plan Scheme and Participation Statement 2026 goes to Angus Council committee on 10 December 2026.",
+   "how": "The survey has closed. To join the Local Development Plan mailing list, email ldp@angus.gov.uk.",
    "url": "https://engage.angus.gov.uk/draft-ldp-participation-statement-2026",
-   "urlLabel": "Have your say",
+   "urlLabel": "See the outcome page",
    "src": "https://engage.angus.gov.uk/draft-ldp-participation-statement-2026",
    "a": {
     "people": [
@@ -1660,8 +1659,8 @@
     "travel"
    ],
    "plain": "Dundee is drawing up plans to make travel along Arbroath Road (towards Broughty Ferry) and Lochee Road easier, safer and more sustainable, looking at bus services, walking, wheeling and cycling. It wants local people, businesses and visitors to share their views and experiences.",
-   "detail": "Dundee City Council and Tactran, working with the engineering consultancy Sweco, are exploring improvements along the Lochee Road and Arbroath Road corridors. The council says the plans will look at potential improvements to bus services, walking, wheeling and cycling, and that feedback will help inform the development of the plans. Public drop-in events were held in early November 2026 (the council's posts mention Ancrum Primary School for Lochee Road on 3 November and an Arbroath Road event on 5 November). Council social media says more information and an online survey are on the project hub site. The hub is a JavaScript page I could not read, so I have not seen the survey questions, the exact streets covered or the proposals themselves. What the changes would mean for parking, traffic lanes or bus stops is not stated in anything I read.",
-   "how": "Open the project hub, read the proposals and complete the online survey for the corridor you use (Lochee Road or Arbroath Road). Watch the council's events page for any further drop-in sessions.",
+   "detail": "Dundee City Council and Tactran, working with the engineering consultancy Sweco, are exploring improvements along the Lochee Road and Arbroath Road corridors. The council says the plans will look at potential improvements to bus services, walking, wheeling and cycling, and that feedback will help inform the development of the plans. Sustainable Dundee says the project is at its third stage and is asking for feedback on concept design proposals, with drop-in events at Ancrum Primary School (3 November), Glebelands Primary School (5 November), Westgait Church of Scotland, Lochee (10 November), Claypotts Primary School (14 November) and the Wellgate Shopping Centre (Saturday 21 November, 11am to 2pm). Council social media says more information and an online survey are on the project hub site. The hub is a JavaScript page I could not read, so I have not seen the survey questions, the exact streets covered or the proposals themselves. What the changes would mean for parking, traffic lanes or bus stops is not stated in anything I read.",
+   "how": "Open the project hub, read the proposals and complete the online survey for the corridor you use (Lochee Road or Arbroath Road), or go to the last drop-in event at the Wellgate Shopping Centre on Saturday 21 November, 11am to 2pm.",
    "url": "https://dundee-sustainable-transport-corridors-swecouk.hub.arcgis.com/",
    "urlLabel": "Have your say",
    "src": "https://www.dundeecity.gov.uk/events/event/35677",
@@ -1702,6 +1701,56 @@
      [
       "Kerbside parking and traffic",
       0
+     ]
+    ]
+   }
+  },
+  {
+   "id": "angus-adult-learning",
+   "title": "Help shape adult learning in Angus",
+   "body": "Angus Council (Adult Learning Team)",
+   "sector": "local",
+   "status": "open",
+   "deadline": "2026-12-11",
+   "time": "closes 11 December 2026; closing time not stated on the page",
+   "topics": [
+    "services"
+   ],
+   "plain": "Angus Council wants to know what adults across Angus, including Carnoustie and Monifieth, would like to learn, how they prefer to learn and which days and times suit them, so it can plan community courses and groups.",
+   "detail": "Adult learning here means flexible, often free or low-cost learning in local communities, not school or college. The short survey is open to anyone aged 16 or over who lives in Angus, whether or not they are learning now. You can stay anonymous or leave contact details to hear about future opportunities. The council says answers will help it plan future courses, groups and activities, make learning easier to access and provide the right support. The page does not say which courses might change or be cut.",
+   "how": "Take the online survey on Engage Angus, or pick up a paper copy at Learning Shops, libraries and selected GP surgeries. For help, contact the Adult Learning Team at BSCommunities@angus.gov.uk or (number on group website).",
+   "url": "https://engage.angus.gov.uk/adult-learning-in-angus",
+   "urlLabel": "Have your say",
+   "src": "https://engage.angus.gov.uk/adult-learning-in-angus",
+   "a": {
+    "people": [
+     [
+      "Angus residents aged 16 and over, including Carnoustie and Monifieth",
+      1
+     ],
+     [
+      "Adults wanting to build literacy, numeracy or digital skills",
+      0
+     ],
+     [
+      "Older people and people on low incomes looking for free or low-cost learning",
+      0
+     ]
+    ],
+    "groups": [
+     [
+      "Community groups and learning shops",
+      0
+     ]
+    ],
+    "systems": [
+     [
+      "Community adult learning courses and groups",
+      1
+     ],
+     [
+      "Learning opportunities and support across Angus",
+      1
      ]
     ]
    }
