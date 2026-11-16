@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-15",
+ "generated": "2026-11-16",
  "area": "Neath Port Talbot",
  "scope": "restaurants, pubs, cafes, pop-ups and markets",
  "timezone": "Europe/London",
@@ -27,7 +27,7 @@
  },
  "posts_fetched": {
   "oldest": "2026-11-11",
-  "newest": "2026-11-15"
+  "newest": "2026-11-16"
  },
  "counts": {
   "api_responses": 740,
@@ -35,7 +35,7 @@
   "comments_read": 391,
   "food_and_drink_posts": 1828,
   "listing_rows": 280,
-  "listing_rows_forward": 32,
+  "listing_rows_forward": 31,
   "recurring_fixtures": 15,
   "venues_ranked": 60,
   "closed_venues": 1,
@@ -43,23 +43,6 @@
   "facebook_pages": 115
  },
  "listings": [
-  {
-   "date": "2026-11-15",
-   "venue": "The Brit Public House & Restaurant",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "time": "5PM",
-   "price": "£75",
-   "detail": "‼️LIMITED AVAILABILITY LEFT‼️ 🎄🌿 Christmas Wreath Making is back! 🌿🎄 We absolutely loved our wreath-making evening last time, so we’ve decided to do it all again this Christmas! ❤️ Join us on Sunday 15th November from 5P",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/thebritpubcwmavon/posts/pfbid0MJwDsPGtuYj79bEjYGsAwnFDrpX7J3hV8sgYgBJVoQsqFaDgr9MMSaDdbDmDQ7Ghl",
-   "posted": "2026-11-07",
-   "date_inferred": false,
-   "date_text": "15th November",
-   "recurring": false,
-   "needs_check": false
-  },
   {
    "date": "2026-11-16",
    "venue": "Cinnamon Kitchen",
@@ -1311,7 +1294,7 @@
    ]
   },
   {
-   "venue": "The Docks Cafe",
+   "venue": "Docks Cafe",
    "total_mentions": 8,
    "independent_mentions": 3,
    "platforms": [
@@ -1321,7 +1304,7 @@
    ]
   },
   {
-   "venue": "Docks Cafe",
+   "venue": "The Docks Cafe",
    "total_mentions": 8,
    "independent_mentions": 3,
    "platforms": [
