@@ -134,18 +134,18 @@
    "sector": "local",
    "status": "open",
    "deadline": "2026-11-22",
-   "time": "22 November 2026 (closing time not stated on the pages I read)",
+   "time": "Open 12 October to 22 November 2026 (closing time not stated on the consultation page)",
    "topics": [
     "nature",
     "coast",
     "services"
    ],
    "plain": "The five-year plan for Dartmoor National Park. Seven themes include nature, farming, climate, heritage and people. Parts of Ivybridge, Cornwood and Sparkwell sit beside the Park.",
-   "detail": "From the Authority's own posts: the Authority approved the draft outcomes and targets on Friday 2 October 2026 and the public consultation launched on Monday 12 October (LinkedIn article dated 6 October). The Authority's Facebook post lists seven themes and says to share views by 22nd November 2026. The draft covers nature, farming, cultural heritage, access, climate change and business. I could not open dartmoor.gov.uk (blocked) so did not read the plan itself. Whether each named village falls inside the Park boundary is not checked. Dates re-checked: the Authority's 2 October 2026 meeting paper (search result) and the Your Dartmoor site (search result) both give 12 October to 22 November 2026. The closing time is still not stated in what I read.",
-   "how": "Read the draft and respond online via the link on the Dartmoor National Park Authority page (the Authority's short link is bit.ly/4jdnvoF). Ask the Authority for paper copies if you cannot use the web.",
-   "url": "https://www.dartmoor.gov.uk/living-and-working/partnership-plan",
-   "urlLabel": "Dartmoor Partnership Plan",
-   "src": "https://www.dartmoor.gov.uk/__data/assets/pdf_file/0024/239145/2026-10-02-Authority.pdf",
+   "detail": "Read on the Your Dartmoor consultation page (through a home-computer scrape, 16 November 2026): consultation open 12 October to 22 November 2026; seven themes: climate change, the next generation, nature and natural beauty, cultural heritage, farming and forestry, people, and business and communities. Comments are also invited on the Strategic Environmental Assessment, the Habitats Regulations Assessment (effects on internationally important wildlife sites) and a non-technical summary. Paper copies can be seen at Parke, Haytor Visitor Centre and Postbridge Visitor Centre. The closing time is not stated. Whether each named village falls inside the Park boundary is not checked.",
+   "how": "Read the draft and fill in the questionnaire linked from the Your Dartmoor consultation page. Paper copies are at Parke, Haytor Visitor Centre and Postbridge Visitor Centre. Questions: partnershipplan@dartmoor.gov.uk.",
+   "url": "https://www.yourdartmoor.org/partnership-plan-review/partnership-plan-consultation",
+   "urlLabel": "Your Dartmoor: consultation page",
+   "src": "https://www.yourdartmoor.org/partnership-plan-review/partnership-plan-consultation",
    "a": {
     "people": [
      [
@@ -204,15 +204,15 @@
    "sector": "local",
    "status": "decision",
    "deadline": "2099-12-31",
-   "time": "Consultation closed 28 October 2026. Plymouth, Devon, Torbay and the Combined County Authority are due to decide between November and December 2026 (no meeting dates published on the pages read).",
+   "time": "Consultation closed 28 October 2026. The Herald (10 November) said papers would be published on Friday 13 November; Plymouth City Council meets on Monday 23 November 2026 at 2pm (agenda published; I could not read it).",
    "topics": [
     "travel",
     "homes",
     "services"
    ],
    "plain": "Closed on 28 October. It asked whether Plymouth should become a full member of the regional authority, which would seek a directly elected mayor. The Government has said it is minded to proceed, and the councils will publish findings before decisions.",
-   "detail": "Plymouth City Council's news item (16 September 2026) says a six-week consultation ran to 28 October 2026 on Plymouth becoming a full member, and that the Authority would seek mayoral status; a mayor would not run local councils, and bin collections, schools, social care, housing and planning would stay with councils. The Combined County Authority's news page (28 October 2026, read 2 November) says the Budget confirmed the Government is minded to proceed with a Mayoral Strategic Authority for Devon, Plymouth and Torbay; responses are being analysed and findings will be published before decisions; each council and the Authority will take formal decisions between November and December 2026; if all agree and Parliament approves, the authority could start in autumn 2027 with the first mayoral election expected in May 2028.",
-   "how": "The consultation has closed. Watch Plymouth City Council and Devon and Torbay Combined County Authority meeting papers for the findings and decisions.",
+   "detail": "Plymouth City Council's news item (16 September 2026) says a six-week consultation ran to 28 October 2026 on Plymouth becoming a full member, and that the Authority would seek mayoral status; a mayor would not run local councils, and bin collections, schools, social care, housing and planning would stay with councils. The Combined County Authority's news page (28 October 2026, read 2 November) says the Budget confirmed the Government is minded to proceed with a Mayoral Strategic Authority for Devon, Plymouth and Torbay; responses are being analysed and findings will be published before decisions; each council and the Authority will take formal decisions between November and December 2026; if all agree and Parliament approves, the authority could start in autumn 2027 with the first mayoral election expected in May 2028. Update 16 November 2026: The Herald (10 November, Local Democracy Reporter) says final edits were being made to Plymouth's proposal to join the Authority and the papers would be published that Friday following the consultation; the council leader said a mayoral authority could bring a 30-year investment fund of around £750 million. The Moorlander (9 November) says the first mayor is expected to take office in spring 2028. The Plymouth democracy feed (home-computer scrape, 16 November) shows a City Council agenda published for Monday 23 November 2026 at 2pm; I could not read whether this item is on it.",
+   "how": "The consultation has closed. Watch the City Council meeting on 23 November 2026 and the Devon and Torbay Combined County Authority papers for the findings and decisions.",
    "url": "https://www.plymouth.gov.uk/news/should-plymouth-join-top-table",
    "urlLabel": "Council news item",
    "src": "https://www.devonandtorbay-cca.gov.uk/news/government-backs-plans-for-a-mayoral-strategic-authority-for-devon-plymouth-and-torbay/",
@@ -267,13 +267,13 @@
    "sector": "central",
    "status": "decision",
    "deadline": "2099-12-31",
-   "time": "Government consultation closed 26 March 2026. Proposal withdrawn for a further review on 29 October 2026; a fresh decision is due in 2027. District councils expect to hear more in March 2027 (Devon Air Radio, 5 November 2026; not a Government date).",
+   "time": "Government consultation closed 26 March 2026. Proposal withdrawn for a further review on 29 October 2026. The Herald (10 November) says news is due within two months; district councils expect to hear in March 2027 (neither is a Government date).",
    "topics": [
     "services",
     "homes"
    ],
    "plain": "The Government's plan to enlarge Plymouth by 13 South Hams parishes, including Ivybridge, was approved in July, paused in September and withdrawn for a further review on 29 October. A fresh decision is due in 2027.",
-   "detail": "The Herald (29 October 2026, read in full) reports the Government has withdrawn its favoured proposal for Devon, which included a Greater Plymouth Council taking in 13 South Hams parishes, and will put it through a further review with a fresh decision in 2027. Plymouth City Council's leader said the council was disappointed and will make its case again when the review begins; the Government still aims for shadow authority elections in 2028 and new councils in 2029. A local MP's social post (search snippet only) also says ministers have formally withdrawn the plan. Earlier history: the Government consultation closed at 11.59pm on 26 March 2026 (gov.uk); the plan was approved in July 2026 and paused in September 2026. No review timetable has been published yet. Devon Air Radio (Local Democracy Reporter, 5 November 2026, read 9 November) reports that Devon's district councils expect to hear in March 2027 what happens next; this is a council expectation, not a Government date.",
+   "detail": "The Herald (29 October 2026, read in full) reports the Government has withdrawn its favoured proposal for Devon, which included a Greater Plymouth Council taking in 13 South Hams parishes, and will put it through a further review with a fresh decision in 2027. Plymouth City Council's leader said the council was disappointed and will make its case again when the review begins; the Government still aims for shadow authority elections in 2028 and new councils in 2029. A local MP's social post (search snippet only) also says ministers have formally withdrawn the plan. Earlier history: the Government consultation closed at 11.59pm on 26 March 2026 (gov.uk); the plan was approved in July 2026 and paused in September 2026. No review timetable has been published yet. Devon Air Radio (Local Democracy Reporter, 5 November 2026, read 9 November) reports that Devon's district councils expect to hear in March 2027 what happens next; this is a council expectation, not a Government date. Update 16 November 2026: The Herald (10 November) reports news on reorganisation for Devon is due in the next two months and that the plan may come back, be scrapped or be replaced; Hits Radio (16 November) confirms Devon is among nine areas whose decisions were withdrawn for review.",
    "how": "No open consultation. Watch for the Government's review and the councils' statements; contact your MP or parish councillor.",
    "url": "https://www.ivybridge.gov.uk/the-council/local-government-reorganisation/",
    "urlLabel": "Ivybridge Town Council: reorganisation",
@@ -655,16 +655,16 @@
    "title": "Disposal of public open space off Whin Bank Road, Eggbuckland, for social housing",
    "body": "Plymouth City Council",
    "sector": "local",
-   "status": "open",
+   "status": "closed",
    "deadline": "2026-11-11",
-   "time": "Written objections must reach the Head of Land and Property by 11 November 2026 (closing time not stated)",
+   "time": "Objection period ended 11 November 2026 (closing time not stated). No outcome published that I found by 16 November 2026.",
    "topics": [
     "homes",
     "nature"
    ],
-   "plain": "The council intends to dispose of 0.445 hectares of amenity land off Whin Bank Road, Eggbuckland (near PL6 5SZ), held as public open space, for social housing.",
-   "detail": "From The Herald (31 October 2026), reporting a council notice dated 21 October 2026 under Section 123(2A) of the Local Government Act 1972. The disposal does not grant planning permission; any development would need a separate planning application with its own consultation. Objections should focus on the loss of open space. I did not open the council's legal notices page.",
-   "how": "Write to the Head of Land and Property, Plymouth City Council, or email landandproperty@plymouth.gov.uk, giving your name, address and reasons, and saying it concerns the amenity land off Whin Bank Road, Eggbuckland.",
+   "plain": "Closed on 11 November. The council intends to dispose of 0.445 hectares of amenity land off Whin Bank Road, Eggbuckland (near PL6 5SZ), held as public open space, for social housing.",
+   "detail": "From The Herald (31 October 2026), reporting a council notice dated 21 October 2026 under Section 123(2A) of the Local Government Act 1972. The disposal does not grant planning permission; any development would need a separate planning application with its own consultation. Objections should focus on the loss of open space. I did not open the council's legal notices page. Checked 16 November 2026: the objection deadline has passed; I found no published decision on the disposal.",
+   "how": "The objection period has closed. Any housing scheme on the land would need its own planning application, which will have its own consultation.",
    "url": "https://www.plymouth.gov.uk/have-your-say",
    "urlLabel": "Plymouth Have your say",
    "src": "https://www.plymouthherald.co.uk/news/plymouth-news/land-set-disposal-under-social-11209225",
@@ -917,6 +917,67 @@
      ]
     ]
    }
+  },
+  {
+   "id": "hemerdon-permit",
+   "title": "Hemerdon Mine: permit change for the mineral processing plant (Drakelands Restoration Ltd)",
+   "body": "Environment Agency",
+   "sector": "central",
+   "status": "open",
+   "deadline": "2026-12-11",
+   "time": "Comments by 11 December 2026 (closing time not stated)",
+   "topics": [
+    "nature",
+    "energy"
+   ],
+   "plain": "The Environment Agency is asking for comments on a big change to the environmental permit for the processing plant at Hemerdon tungsten mine, between Plympton and Dartmoor. The permit sets limits on emissions such as noise, dust and water.",
+   "detail": "From the Environment Agency notice on GOV.UK (published 13 November 2026): Drakelands Restoration Limited has applied to vary its permit (EPR/AP3203ML/V003) with a substantial change, for a mineral processing facility at Hemerdon Mine, Drakelands, Plympton PL7 5BW. Listed activities are roasting or sintering metal ore, treatment of non-hazardous waste above 50 tonnes a day, and crushing or grinding minerals. The application describes emissions, their effects on the environment and how they will be prevented, reduced and monitored. The Agency's Devon and Cornwall page says the site drew local concern under previous operators because of low-frequency noise affecting nearby communities. The Agency will decide whether to grant or refuse and what conditions to set. I did not read the application documents.",
+   "how": "Email comments to pscpublicresponse@environment-agency.gov.uk by 11 December 2026, quoting EPR/AP3203ML/V003. For help, or if you cannot email, call 03708 506 506. Comments normally go on the public register with your name; say if you do not want that.",
+   "url": "https://www.gov.uk/government/publications/pl7-5bw-drakelands-restoration-limited-environmental-permit-application-advertisement-eprap3203mlv003/pl7-5bw-drakelands-restoration-limited-environmental-permit-application-advertisement-eprap3203mlv003",
+   "urlLabel": "Environment Agency notice (GOV.UK)",
+   "src": "https://www.gov.uk/government/publications/pl7-5bw-drakelands-restoration-limited-environmental-permit-application-advertisement-eprap3203mlv003/pl7-5bw-drakelands-restoration-limited-environmental-permit-application-advertisement-eprap3203mlv003",
+   "a": {
+    "people": [
+     [
+      "Nearby communities affected by low-frequency noise in the past",
+      1
+     ],
+     [
+      "Residents of Plympton, Sparkwell and Cornwood near the mine",
+      0
+     ]
+    ],
+    "groups": [
+     [
+      "Sparkwell and Cornwood parish councils",
+      0
+     ],
+     [
+      "Local businesses and jobs at the mine",
+      0
+     ]
+    ],
+    "wildlife": [
+     [
+      "Farmland, hedgerow and grassland wildlife around the site",
+      0
+     ]
+    ],
+    "systems": [
+     [
+      "Air and noise emissions from the processing plant",
+      1
+     ],
+     [
+      "Water, drainage and waste from ore treatment",
+      1
+     ],
+     [
+      "Roads and traffic from lorry movements",
+      0
+     ]
+    ]
+   }
   }
  ],
  "petitions": [
@@ -1067,8 +1128,8 @@
   "plymouth-dtcca": "Government minded to proceed",
   "lgr-greater-plymouth": "Withdrawn for review"
  },
- "collected": "9 November 2026",
- "watch_note": "Still to come: the Environment Agency's consultation on a permit change at Hemerdon Tungsten Mine (Drakelands Restoration Ltd). Its page (21 October 2026, read again 9 November) still says it expects to open in November for at least four weeks; not open yet. Plymouth e-petition open now (not listed until it closes): 'Reverse the decision to introduce parking charges at the George Junction Park and Ride', 138 respondents, signing ends 24 November 2026. Plymouth, Devon, Torbay and the Combined County Authority are due to take formal decisions on a mayoral authority in November and December 2026. No charity or non-profit consultation was found open on 9 November 2026 after searching for Devon Wildlife Trust, RSPB, Plymouth Tree People, CPRE Devon, Transition Town Totnes and Totnes Caring.",
- "empty_charity": "No charity or non-profit consultation was found open on 9 November 2026; see the places to watch.",
- "generated_at": "2026-11-09T08:49:16Z"
+ "collected": "16 November 2026",
+ "watch_note": "Plymouth e-petition open now (not listed until it closes): 'Reverse the decision to introduce parking charges at the George Junction Park and Ride', 138 respondents, signing ends 24 November 2026. Plymouth City Council meets on 23 November 2026; Plymouth, Devon, Torbay and the Combined County Authority are due to take formal decisions on a mayoral authority in November and December 2026. The South Devon National Landscape management plan consultation has still not opened. No charity or non-profit consultation was found open on 16 November 2026 after searching for Devon Wildlife Trust, RSPB, Plymouth Tree People, CPRE Devon, Friends of the Dart, Transition Town Totnes and Totnes Caring.",
+ "empty_charity": "No charity or non-profit consultation was found open on 16 November 2026; see the places to watch.",
+ "generated_at": "2026-11-16T08:49:49Z"
 }

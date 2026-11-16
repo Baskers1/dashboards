@@ -5,16 +5,16 @@
    "title": "Port Talbot Steelworks: draft permit decision (PAN-029148.1)",
    "body": "Natural Resources Wales",
    "sector": "central",
-   "status": "open",
+   "status": "closed",
    "deadline": "2026-11-13",
-   "time": "closing time not published; the NRW consultation hub still lists it as closing 13 November 2026 (checked 9 November).",
+   "time": "Closed 13 November 2026. The NRW consultation hub lists it under closed activities (checked 16 November).",
    "topics": [
     "energy",
     "nature"
    ],
    "plain": "Tata Steel is changing the steelworks permit as it moves from blast furnaces to an electric arc furnace. NRW is minded to approve this first stage and wants comments on the draft permit.",
-   "detail": "Names Port Talbot directly: the site is Port Talbot Steelworks, SA13 2NG, and NRW lists Aberavon, Baglan, Bryn and Cwmavon, Margam, Port Talbot, Sandfields East and West and Tai-bach among the areas covered. This variation (V019 of permit EPR/BL7108IM) removes blast furnace and basic oxygen steelmaking activities, mothballs others during the transformation and adds new steam boilers (medium combustion plant). NRW says it can only consider comments within its legal permitting remit. Later stages, including the electric arc furnace itself, will be consulted on separately.",
-   "how": "Comment online through NRW Citizen Space, or email permittingconsultations@naturalresourceswales.gov.uk, by 13 November 2026.",
+   "detail": "Names Port Talbot directly: the site is Port Talbot Steelworks, SA13 2NG, and NRW lists Aberavon, Baglan, Bryn and Cwmavon, Margam, Port Talbot, Sandfields East and West and Tai-bach among the areas covered. This variation (V019 of permit EPR/BL7108IM) removes blast furnace and basic oxygen steelmaking activities, mothballs others during the transformation and adds new steam boilers (medium combustion plant). NRW says it can only consider comments within its legal permitting remit. Later stages, including the electric arc furnace itself, will be consulted on separately. The consultation closed on 13 November 2026. No decision on the final permit had been published by 16 November 2026.",
+   "how": "The consultation has closed. Watch NRW's consultation hub and public register for the decision.",
    "url": "https://ymgynghori.cyfoethnaturiol.cymru/permitting-caniatau/port-talbot-steelworks-draft-decision-pan-029148-1/",
    "urlLabel": "Read the consultation",
    "src": "https://ymgynghori.cyfoethnaturiol.cymru/permitting-caniatau/port-talbot-steelworks-draft-decision-pan-029148-1/",
@@ -60,7 +60,7 @@
    "sector": "central",
    "status": "open",
    "deadline": "2026-11-20",
-   "time": "closing time not published; the consultation page says it ends 20 November 2026.",
+   "time": "closing time not published; the consultation page says it ends 20 November 2026 (checked 16 November).",
    "topics": [
     "homes",
     "energy"
@@ -213,7 +213,7 @@
    "sector": "central",
    "status": "open",
    "deadline": "2026-12-13",
-   "time": "closing time not published; the Transport for Wales page gives no closing date. The 3 November to 13 December dates come from a Local Democracy Reporting Service article (Nation.Cymru, 3 November 2026). Drop-in at Neath Railway Station, Friday 20 November, 8am to 4pm.",
+   "time": "closing time not published; the Transport for Wales page still gives no closing date (checked 16 November). The 3 November to 13 December dates come from local news reports (Nation.Cymru and others, 3 November 2026). Drop-in at Neath Railway Station, Friday 20 November, 8am to 4pm.",
    "topics": [
     "travel"
    ],
@@ -312,7 +312,7 @@
     "services"
    ],
    "plain": "A short anonymous survey about what you expect from your fire and rescue service and what it should prioritise.",
-   "detail": "Covers the whole Mid and West Wales fire service area, which includes Neath Port Talbot; the page does not name Neath Port Talbot specifically. No closing date is published. On 9 November 2026 the service's campaigns page no longer named this survey but still invited people to 'take our survey'; the survey's own page could not be read automatically, so it is not confirmed whether it is still open. Check the page before relying on it. The survey includes an optional prize draw.",
+   "detail": "Covers the whole Mid and West Wales fire service area, which includes Neath Port Talbot; the page does not name Neath Port Talbot specifically. On 16 November 2026 the service's campaigns page still linked to this survey ('Take our survey') and the survey page still invited people to fill it in, but neither page gives a closing date. The survey includes an optional prize draw.",
    "how": "Fill in the online survey from the service's page, or ring 0370 6060699 for another language or format.",
    "url": "https://www.mawwfire.gov.uk/eng/campaigns-and-consultations/shaping-mid-and-west-wales-fire-and-rescue-service-together/",
    "urlLabel": "Take the survey",
@@ -365,6 +365,167 @@
     "wildlife": [],
     "systems": []
    }
+  },
+  {
+   "id": "nrw-monkstone-dredging",
+   "title": "Maintenance dredging at Monkstone marina, River Neath (marine licence DML2629)",
+   "body": "Natural Resources Wales (application by Monkstone Cruising & Sailing Club Ltd)",
+   "sector": "central",
+   "status": "open",
+   "deadline": "2026-11-18",
+   "time": "closing time not published; the NRW notice says representations by 18 November 2026.",
+   "topics": [
+    "coast",
+    "nature"
+   ],
+   "plain": "The sailing club wants a licence to dredge its marina about every three years and release the dredged material into the River Neath on ebb tides. NRW is taking comments or objections.",
+   "detail": "Names the River Neath and Monkstone marina; the marina is at Jersey Marine in Neath Port Talbot (the location within the county borough is my reading; the notice names only the marina and the river). The dredging would lower the marina to 2.2 m below the gate cill, a 1.2 m reduction. Application documents are on NRW's public register under reference DML2629. The notice opened on 20 October 2026. Representations are shared with the applicant and may be published with personal details removed.",
+   "how": "Email marinelicensing@naturalresourceswales.gov.uk, or write to NRW Marine Licensing Team, Welsh Government Offices, Cathays Park, Cardiff CF10 3NQ, quoting DML2629, by 18 November 2026.",
+   "url": "https://ymgynghori.cyfoethnaturiol.cymru/marine-morol/maintence-dredging-monks/",
+   "urlLabel": "Read the notice",
+   "src": "https://ymgynghori.cyfoethnaturiol.cymru/marine-morol/maintence-dredging-monks/",
+   "a": {
+    "people": [
+     [
+      "Marina users and boat owners",
+      0
+     ],
+     [
+      "Anglers and river users downstream",
+      0
+     ]
+    ],
+    "groups": [
+     [
+      "Monkstone Cruising and Sailing Club",
+      1
+     ],
+     [
+      "Conservation groups watching the Neath estuary",
+      0
+     ]
+    ],
+    "wildlife": [
+     [
+      "Estuary fish and wading birds",
+      0
+     ]
+    ],
+    "systems": [
+     [
+      "River Neath estuary: sediment and water quality",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "ng-margam-community-fund",
+   "title": "Margam Connection community fund: help decide how £1.06 million is spent",
+   "body": "National Grid",
+   "sector": "private",
+   "status": "open",
+   "deadline": "2026-11-26",
+   "time": "closing time not published; the survey is open until Thursday 26 November 2026, according to Swansea News (4 November) and National Grid's release as shown in search results. National Grid's own page could not be opened automatically; check it before relying on the date.",
+   "topics": [
+    "energy",
+    "services"
+   ],
+   "plain": "National Grid is putting £1.06 million into a community fund for Port Talbot alongside the new substations that will power the steelworks' electric arc furnace, and asks what the money should support.",
+   "detail": "Names Port Talbot and Margam: the fund accompanies the Margam Connection project, which extends a substation off Harbour Way, builds another inside the steelworks and links them by underground cable. Suggested priorities include skills and training, green spaces, community facilities, youth services, help with fuel bills and support for local firms, and people can propose their own. Drop-ins were held on 6 and 7 November. National Grid has not said who will decide between bids or when money will first be paid. Source for details: Swansea News, 4 November 2026.",
+   "how": "Fill in the survey linked from National Grid's project page for the Margam Connection by 26 November 2026. It is open to residents, businesses, charities, community groups and councillors.",
+   "url": "https://nationalgrid.com/national-grid-invites-local-people-help-shape-ps106-million-fund-port-talbot-communities",
+   "urlLabel": "Read National Grid's announcement",
+   "src": "https://swansea-news.co.uk/national-grid-asks-port-talbot-to-shape-fund/",
+   "a": {
+    "people": [
+     [
+      "Port Talbot residents",
+      1
+     ],
+     [
+      "Local businesses and employers",
+      1
+     ],
+     [
+      "Young people (youth services)",
+      1
+     ],
+     [
+      "Households struggling with fuel bills",
+      1
+     ]
+    ],
+    "groups": [
+     [
+      "Charities and community groups",
+      1
+     ],
+     [
+      "Town and community councils and local councillors",
+      0
+     ]
+    ],
+    "wildlife": [],
+    "systems": [
+     [
+      "Electricity grid connection for the steelworks",
+      1
+     ],
+     [
+      "Green spaces and parks",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "wg-community-right-to-buy",
+   "title": "Community Right to Buy Scheme for Wales",
+   "body": "Welsh Government",
+   "sector": "central",
+   "status": "open",
+   "deadline": "2027-01-04",
+   "time": "closing time not published; the consultation page says submit comments by 4 January 2027.",
+   "topics": [
+    "homes",
+    "services"
+   ],
+   "plain": "The Welsh Government plans a scheme to give community groups a chance to buy land and buildings that matter to them, and asks for views on how it should work and the law needed to set it up.",
+   "detail": "Applies to all of Wales; it does not name a Neath Port Talbot place. Kept because it would let community groups in the county borough bid for local pubs, halls, shops or land when they come up for sale (my reading; the page sets out policy proposals generally). Launched 10 November 2026; an Easy Read version and response form are available.",
+   "how": "Respond online, or email the response form to CommunityRightToBuy@gov.wales, or post it to Place Division, Welsh Government, Cathays Park, Cardiff CF10 3NQ, by 4 January 2027.",
+   "url": "https://www.gov.wales/community-right-buy-scheme-wales",
+   "urlLabel": "Read the consultation",
+   "src": "https://www.gov.wales/community-right-buy-scheme-wales",
+   "a": {
+    "people": [
+     [
+      "Every resident in Wales",
+      0
+     ],
+     [
+      "Landowners selling community assets",
+      0
+     ]
+    ],
+    "groups": [
+     [
+      "Community groups, charities and voluntary organisations",
+      0
+     ],
+     [
+      "Town and community councils",
+      0
+     ]
+    ],
+    "wildlife": [],
+    "systems": [
+     [
+      "Community buildings, green spaces and parks",
+      0
+     ]
+    ]
+   }
   }
  ],
  "petitions": [],
@@ -411,8 +572,8 @@
   ]
  ],
  "status": {},
- "collected": "9 November 2026",
- "watch_note": "Checked on 9 November 2026. The council's environment consultations portal, its committee papers site and the fire service survey page could not be read automatically this week.",
- "empty_charity": "No charity or non-profit consultation was found open on 9 November 2026. Try the places to watch.",
- "generated_at": "2026-11-09T08:41:24Z"
+ "collected": "16 November 2026",
+ "watch_note": "Checked on 16 November 2026. The council's committee papers site, its environment consultations portal and National Grid's announcement page could not be read automatically this week, so recent council decisions were not checked.",
+ "empty_charity": "No charity or non-profit consultation was found open on 16 November 2026. Try the places to watch.",
+ "generated_at": "2026-11-16T08:39:15Z"
 }
