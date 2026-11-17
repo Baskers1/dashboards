@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-16",
+ "generated": "2026-11-17",
  "area": "Neath Port Talbot",
  "scope": "restaurants, pubs, cafes, pop-ups and markets",
  "timezone": "Europe/London",
@@ -27,7 +27,7 @@
  },
  "posts_fetched": {
   "oldest": "2026-11-11",
-  "newest": "2026-11-16"
+  "newest": "2026-11-17"
  },
  "counts": {
   "api_responses": 740,
@@ -35,7 +35,7 @@
   "comments_read": 391,
   "food_and_drink_posts": 1828,
   "listing_rows": 280,
-  "listing_rows_forward": 31,
+  "listing_rows_forward": 30,
   "recurring_fixtures": 15,
   "venues_ranked": 60,
   "closed_venues": 1,
@@ -43,23 +43,6 @@
   "facebook_pages": 115
  },
  "listings": [
-  {
-   "date": "2026-11-16",
-   "venue": "Cinnamon Kitchen",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "time": "5pm",
-   "price": "£15.95",
-   "detail": "🎄 CHRISTMAS PARTY BOOKINGS 🎄 Celebrate at Cinnamon Kitchen! *2 Course £15.95 | 3 Course £17.95* 📅 16 Nov - 23 Dec 2026 Mon - Thurs, 5pm - 10pm Perfect for family gatherings & work parties Advance booking & pre-order requ",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/CinnamonKitchenPortTalbot/posts/pfbid0oiwBrQhN5BDLxRnTmns1hJQTdq3PZWCfMN13CbaEmkngi253xmSBXQv7LjmumUQul",
-   "posted": "2026-10-22",
-   "date_inferred": false,
-   "date_text": "16 Nov",
-   "recurring": false,
-   "needs_check": false
-  },
   {
    "date": "2026-11-17",
    "venue": "The Pig Iron Tavern",
@@ -1294,7 +1277,7 @@
    ]
   },
   {
-   "venue": "Docks Cafe",
+   "venue": "The Docks Cafe",
    "total_mentions": 8,
    "independent_mentions": 3,
    "platforms": [
@@ -1304,7 +1287,7 @@
    ]
   },
   {
-   "venue": "The Docks Cafe",
+   "venue": "Docks Cafe",
    "total_mentions": 8,
    "independent_mentions": 3,
    "platforms": [
