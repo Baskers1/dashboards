@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-16T09:30:57Z",
+ "generated_at": "2026-11-17T08:45:17Z",
  "items": [
   {
    "id": "lower-high",
@@ -379,16 +379,16 @@
    "status": "closed",
    "deadline": "2026-10-18",
    "closes": "23:59",
-   "time": "closed 18 October 2026; early results reported, no final decision yet",
+   "time": "closed 18 October 2026, 23:59; results reported, no final decision yet",
    "topics": [
     "travel"
    ],
    "plain": "Proposed 20mph limits on roads in Watford, as part of the county's 20mph programme.",
-   "detail": "Opened 21 September 2026. Comments can be sent by email quoting 'Watford 20mph'. The Rickmansworth and South Oxhey proposals run to the same date. A county progress update to the Highways Cabinet Panel on 12 November 2026, as reported by local news, said 16 of 22 completed 20mph consultations were supported; almost 60% backed the residential-street proposals in Watford once 'not sure' answers were left out. Supported schemes still need a Traffic Regulation Order and could be built from January 2027.",
+   "detail": "Opened 21 September 2026. Comments can be sent by email quoting 'Watford 20mph'. The Rickmansworth and South Oxhey proposals run to the same date. Results from the county's progress report to the Highways Cabinet Panel on 12 November 2026, as reported by Watford Today (figures leave out 'not sure' answers): Watford: 59.2% backed 20mph on residential streets from 1,073 replies (76.3% around schools, 62.9% on high streets, 30.7% on main roads); the wider Watford scheme is planned for 2027/28. Supported schemes still need a Traffic Regulation Order, which anyone can object to, and could be built from January 2027.",
    "how": "Use the Let's Talk Transport page or email 20mph@hertfordshire.gov.uk, quoting 'Watford 20mph'.",
    "url": "https://letstalktransport.hertfordshire.gov.uk/watford-20mph",
    "urlLabel": "Have your say",
-   "src": "https://stevenagetoday.co.uk/hertfordshire-20mph-consultation-results",
+   "src": "https://watfordtoday.co.uk/watford-20mph-consultation-results",
    "a": {
     "people": [
      [
@@ -440,16 +440,16 @@
    "status": "closed",
    "deadline": "2026-10-18",
    "closes": "23:59",
-   "time": "closed 18 October 2026, 23:59; early results reported, no final decision yet",
+   "time": "closed 18 October 2026, 23:59; results reported, no final decision yet",
    "topics": [
     "travel"
    ],
    "plain": "Proposed 20mph limits on roads in the Rickmansworth area, as part of the county's 20mph programme.",
-   "detail": "Opened 21 September 2026. South Oxhey and Abbots Langley also close on 18 October 2026, confirmed directly on Hertfordshire's Let's Talk Transport pages. Local feedback reported earlier in the programme suggested some people want lower limits in places. A county progress update to the Highways Cabinet Panel on 12 November 2026, as reported by local news, said 16 of 22 completed 20mph consultations were supported; more than 55% in Rickmansworth backed the residential-street proposals once 'not sure' answers were left out. Supported schemes still need a Traffic Regulation Order and could be built from January 2027.",
+   "detail": "Opened 21 September 2026. South Oxhey and Abbots Langley also close on 18 October 2026, confirmed directly on Hertfordshire's Let's Talk Transport pages. Local feedback reported earlier in the programme suggested some people want lower limits in places. Results from the county's progress report to the Highways Cabinet Panel on 12 November 2026, as reported by Watford Today (figures leave out 'not sure' answers): Rickmansworth: 54.5% backed 20mph on residential streets from 830 replies, and 74.7% around schools. Supported schemes still need a Traffic Regulation Order, which anyone can object to, and could be built from January 2027.",
    "how": "Use the Let's Talk Transport page or email 20mph@hertfordshire.gov.uk, quoting the area name.",
    "url": "https://letstalktransport.hertfordshire.gov.uk/rickmansworth-20mph",
    "urlLabel": "Have your say",
-   "src": "https://stevenagetoday.co.uk/hertfordshire-20mph-consultation-results",
+   "src": "https://watfordtoday.co.uk/watford-20mph-consultation-results",
    "a": {
     "people": [
      [
@@ -1329,7 +1329,7 @@
    "how": "Use the interactive map and survey on the Let's Talk Transport page, or email 20mph@hertfordshire.gov.uk quoting 'Croxley Green 20mph'.",
    "url": "https://letstalktransport.hertfordshire.gov.uk/croxley-green",
    "urlLabel": "Have your say",
-   "src": "https://www.watfordobserver.co.uk/news/26604709.watford-among-12-hertfordshire-20mph-zone-consultations/",
+   "src": "https://watfordtoday.co.uk/watford-20mph-consultation-results",
    "a": {
     "people": [
      [
@@ -1483,16 +1483,16 @@
    "status": "closed",
    "deadline": "2026-10-18",
    "closes": "23:59",
-   "time": "deadline passed 18 October 2026, 23:59; unlike the Watford, Rickmansworth and South Oxhey pages this page showed no explicit closed banner as of 19 October 2026, but the deadline has passed and no outcome has been published",
+   "time": "closed 18 October 2026, 23:59; results reported, no final decision yet",
    "topics": [
     "travel"
    ],
    "plain": "Proposed 20mph limits on more streets in Abbots Langley, as part of the county's 20mph programme. Parts of the village already have the lower limit.",
-   "detail": "One of twelve Hertfordshire 20mph consultations running at the same time across the county, including Watford, Rickmansworth, Croxley Green and South Oxhey. Residents are asked which additional roads should be included or excluded using an interactive map.",
+   "detail": "One of twelve Hertfordshire 20mph consultations running at the same time across the county, including Watford, Rickmansworth, Croxley Green and South Oxhey. Residents are asked which additional roads should be included or excluded using an interactive map. Results from the county's progress report to the Highways Cabinet Panel on 12 November 2026, as reported by Watford Today (figures leave out 'not sure' answers): Abbots Langley: 50.4% backed 20mph on residential streets from 741 replies, the narrowest margin in the report; Bedmond was not supported (41.9% from 162 replies). Officers will look at respondents' postcodes where results are close. Supported schemes still need a Traffic Regulation Order, which anyone can object to, and could be built from January 2027.",
    "how": "Use the interactive map and survey on the Let's Talk Transport page, or email 20mph@hertfordshire.gov.uk quoting 'Abbots Langley 20mph'.",
    "url": "https://letstalktransport.hertfordshire.gov.uk/abbots-langley-20mph",
    "urlLabel": "Have your say",
-   "src": "https://www.watfordobserver.co.uk/news/26604709.watford-among-12-hertfordshire-20mph-zone-consultations/",
+   "src": "https://watfordtoday.co.uk/watford-20mph-consultation-results",
    "a": {
     "people": [
      [
@@ -1536,16 +1536,16 @@
    "status": "closed",
    "deadline": "2026-10-18",
    "closes": "23:59",
-   "time": "closed 18 October 2026, 23:59; early results reported, no final decision yet",
+   "time": "closed 18 October 2026, 23:59; results reported, no final decision yet",
    "topics": [
     "travel"
    ],
    "plain": "Proposed 20mph limits on streets in South Oxhey, as part of the county's 20mph programme.",
-   "detail": "One of twelve Hertfordshire 20mph consultations running at the same time, including Watford, Rickmansworth, Croxley Green and Abbots Langley. The closing date is confirmed both on the consultation page and in local news coverage. A county progress update to the Highways Cabinet Panel on 12 November 2026, as reported by local news, said 16 of 22 completed 20mph consultations were supported; more than 55% in South Oxhey backed the residential-street proposals once 'not sure' answers were left out. Supported schemes still need a Traffic Regulation Order and could be built from January 2027.",
+   "detail": "One of twelve Hertfordshire 20mph consultations running at the same time, including Watford, Rickmansworth, Croxley Green and Abbots Langley. The closing date is confirmed both on the consultation page and in local news coverage. Results from the county's progress report to the Highways Cabinet Panel on 12 November 2026, as reported by Watford Today (figures leave out 'not sure' answers): South Oxhey: 54.9% backed 20mph on residential streets from 315 replies, and 71.1% around schools. Supported schemes still need a Traffic Regulation Order, which anyone can object to, and could be built from January 2027.",
    "how": "Use the interactive map and survey on the Let's Talk Transport page, or email 20mph@hertfordshire.gov.uk quoting 'South Oxhey 20mph'.",
    "url": "https://letstalktransport.hertfordshire.gov.uk/south-oxhey-20mph",
    "urlLabel": "Have your say",
-   "src": "https://stevenagetoday.co.uk/hertfordshire-20mph-consultation-results",
+   "src": "https://watfordtoday.co.uk/watford-20mph-consultation-results",
    "a": {
     "people": [
      [
@@ -3105,6 +3105,10 @@
    "https://letstalktransport.hertfordshire.gov.uk/"
   ],
   [
+   "Thames Valley Police and Crime Commissioner survey (Buckinghamshire; no closing date published)",
+   "https://www.thamesvalley-pcc.gov.uk/get-involved/survey/"
+  ],
+  [
    "Hertfordshire local government reorganisation",
    "https://www.hertfordshire-lgr.co.uk/"
   ],
@@ -3174,7 +3178,7 @@
   "croxley-appeal": "Awaiting Inspector",
   "sarratt-churchlane": "Undecided"
  },
- "collected": "16 November 2026",
- "watch_note": "No charity or non-profit consultation was found open on 16 November 2026. These organisations are the likeliest to run one.",
- "empty_charity": "No charity or non-profit consultation was found open on 16 November 2026. Try the places to watch."
+ "collected": "17 November 2026",
+ "watch_note": "No charity or non-profit consultation was found open on 17 November 2026. These organisations are the likeliest to run one.",
+ "empty_charity": "No charity or non-profit consultation was found open on 17 November 2026. Try the places to watch."
 }
