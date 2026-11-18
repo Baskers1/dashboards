@@ -172,7 +172,9 @@ writes `data/link-ledger.json`: only URLs that are dead or cant_check, with `dea
 ledger committed without its pages makes the "publishing rules" CI step go red.
 
 `tools/check_hardened.py` also refuses a staged page whose data holds a link value with template code
-(`{{`, `${`) or a JS null (`=undefined`, `NaN`...).
+(double curly braces, or a dollar sign followed by a brace) or a JS null (`=undefined`, `NaN`...).
+Do not type those brace pairs literally in any `.md` file here: GitHub Pages runs Markdown through
+Jekyll's Liquid, and an unclosed double brace failed the Pages build on 18 Nov 2026.
 
 ## Generated data files
 
