@@ -33,7 +33,7 @@ Three habits to keep:
 
 ## Scheduled jobs on the iMac (`baskersimac@iMac`)
 
-All three are launchd agents in `~/Library/LaunchAgents`, run only while the user is
+All four are launchd agents in `~/Library/LaunchAgents`, run only while the user is
 logged in, and hardcode
 `/Users/baskersimac/.pyenv/versions/3.13.15/bin/python3` because launchd
 supplies a bare `PATH`. A pyenv upgrade silently breaks them all.
@@ -43,6 +43,7 @@ supplies a bare `PATH`. A pyenv upgrade silently breaks them all.
 | `com.dashboards.iss` | `tools/iss-update.sh` (in this repo; runs `tools/fetch_orbit.py`, which needs `sgp4==2.27` in that python, and `tools/fetch_kp.py`, which goes to the network at most every 30 min) | 600s | `~/dashboards`, SSH remote | `/tmp/dashboards-iss.{log,err}` |
 | `com.dashboards.donki` | `tools/donki-update.sh` (in this repo) | 10800s | `~/dashboards`, SSH remote | `/tmp/dashboards-donki.{log,err}` |
 | `com.dashboards.nptsocial` | `tools/npt-social-update.sh` (in this repo; runs `tools/fetch_npt_social.py`) | daily 06:23 | `~/dashboards`, SSH remote | `/tmp/dashboards-nptsocial.{log,err}` |
+| `com.dashboards.linkcheck` | `tools/linkcheck-update.sh` (in this repo; runs `tools/check_links.py`, ~20 min incl. lychee) | weekly, Sun 05:41 | `~/dashboards`, SSH remote | `/tmp/dashboards-linkcheck.{log,err}`, report `~/.cache/linkcheck/report-<date>.md` |
 | hourly sync | `~/bin/sync-dashboards.sh` (not in this repo) | hourly at :10 | `~/dashboards-source`, HTTPS + keychain | `~/dashboards-source/.last-sync-status.txt` |
 
 Credentials: the keychain works fine under launchd — do not "fix" it. `com.dashboards.nptsocial` is
@@ -159,6 +160,19 @@ prove the push landed. To check whether commits are stranded locally:
     cd ~/dashboards-source && git fetch -q origin main && git log --oneline origin/main..HEAD
 
 Empty output means everything is pushed.
+
+## Listing links and data/link-ledger.json
+
+Rules are in `LINKS.md` in dashboards-source. `tools/check_links.py` (weekly, `com.dashboards.linkcheck`)
+checks every listing link on the What's On, Menu Watch, Community Watch and Consultation Watch pages and
+writes `data/link-ledger.json`: only URLs that are dead or cant_check, with `dead_runs` /
+`cant_check_runs`. `sync.py` `drop_dead()` publishes a URL dead on two runs without its link, inside
+`page_text()`, so the pre-commit hook and CI agree with it automatically. When the ledger changes,
+`sync.py --harden-only` changes pages, so the job commits the ledger and those pages together; a
+ledger committed without its pages makes the "publishing rules" CI step go red.
+
+`tools/check_hardened.py` also refuses a staged page whose data holds a link value with template code
+(`{{`, `${`) or a JS null (`=undefined`, `NaN`...).
 
 ## Generated data files
 

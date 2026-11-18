@@ -197,3 +197,32 @@ ek = open(os.path.join(s.ROOT, "east-kent", "index.html"), encoding="utf-8").rea
 assert "Every dashboard for East Kent" in ek and "<small>" not in ek, "no intro: default lede, no subtitles"
 s.build_hub()
 print("intro ok")
+
+# --- dead-link safety net (LINKS.md, dashboards-source): ledger-dead URLs lose their link
+import json as _json
+dead = ["https://gone.example/events/72", "https://gone.example/events/7"]
+page = ('const DATA={"events":[{"title":"A","url":"https://gone.example/events/72"},'
+        '{"title":"B","url":"https:\\/\\/gone.example\\/events\\/7"},'
+        '{"title":"C","url":"https://gone.example/events/72?x=1"},'
+        '{"title":"D","url":"https://ok.example/"}]};'
+        'const t="see https://gone.example/events/72 for details";')
+out = s.drop_dead(page, dead)
+assert '"url":"","title"' not in out and out.count('"url":""') == 2, out
+assert "events/72?x=1" in out, "a longer URL that merely starts with a dead one must stay"
+assert "https://ok.example/" in out
+assert "see https://gone.example/events/72 for details" in out, "only whole quoted values change"
+assert s.drop_dead(out, dead) == out, "drop_dead must be idempotent"
+assert s.drop_dead(page, []) == page
+
+with tempfile.TemporaryDirectory() as tmp:
+    p = os.path.join(tmp, "ledger.json")
+    with open(p, "w") as f:
+        _json.dump({"urls": {
+            "https://a.example/1": {"state": "dead", "dead_runs": 2},
+            "https://a.example/12": {"state": "dead", "dead_runs": 3},
+            "https://b.example/": {"state": "dead", "dead_runs": 1},
+            "https://c.example/": {"state": "cant_check", "cant_check_runs": 5}}}, f)
+    assert s.dead_links(p) == ["https://a.example/12", "https://a.example/1"], \
+        "only dead on 2+ runs, longest first; one dead run or cant_check never hides a link"
+    assert s.dead_links(os.path.join(tmp, "missing.json")) == []
+print("dead links ok")

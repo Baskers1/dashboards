@@ -56,6 +56,35 @@ def rewrite_links(text):
     return LINK.sub(sub, text)
 
 
+LEDGER = os.path.join(ROOT, "data", "link-ledger.json")
+
+
+def dead_links(path=LEDGER):
+    """URLs the weekly link check has found dead on two runs in a row (LINKS.md, dashboards-source).
+    Longest first, so a URL that is a prefix of another can never clip it."""
+    try:
+        with open(path, encoding="utf-8") as f:
+            urls = json.load(f).get("urls", {})
+    except FileNotFoundError:
+        return []
+    return sorted((u for u, e in urls.items() if e.get("state") == "dead" and e.get("dead_runs", 0) >= 2),
+                  key=len, reverse=True)
+
+
+DEAD = dead_links()
+
+
+def drop_dead(text, dead=None):
+    """Blank a dead URL where it appears as a whole quoted string in a page's data, so the page
+    shows the listing without a link. Only exact quoted values change: a dead URL inside longer
+    text, or inside page code, is left alone. Plain and JSON-escaped (\\/) spellings both."""
+    for u in DEAD if dead is None else dead:
+        for spelling in {u, u.replace("/", "\\/")}:
+            for q in ('"', "'"):
+                text = text.replace(q + spelling + q, q + q)
+    return text
+
+
 def redact(text):
     for r in REDACT:
         text = text.replace(r["find"], r["replace"])
@@ -130,7 +159,7 @@ def page_text(t):
     staged pages so the pre-commit hook and this sync can never disagree about what
     "already hardened" means.
     """
-    return harden(redact(rewrite_links(t)))
+    return harden(redact(drop_dead(rewrite_links(t))))
 
 
 def fix_pages(dst):
@@ -144,7 +173,7 @@ def fix_pages(dst):
             if dirpath == dst and n in PUBLIC_DATA:
                 with open(p, encoding="utf-8", newline="") as f:
                     t = f.read()
-                t2 = redact(rewrite_links(t))
+                t2 = redact(drop_dead(rewrite_links(t)))
                 if t2 != t:
                     with open(p, "w", encoding="utf-8", newline="") as f:
                         f.write(t2)

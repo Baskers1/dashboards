@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Install: cp tools/launchd/com.dashboards.linkcheck.plist ~/Library/LaunchAgents/
+             launchctl load ~/Library/LaunchAgents/com.dashboards.linkcheck.plist
+     Holds no credential. Weekly link check: see tools/linkcheck-update.sh and LINKS.md. -->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.dashboards.linkcheck</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>-lc</string>
+    <string>exec "$HOME/dashboards/tools/linkcheck-update.sh"</string>
+  </array>
+  <!-- Sunday 05:41 local: weekly, before the weekday refreshes, and off the hour. -->
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Weekday</key><integer>0</integer>
+    <key>Hour</key><integer>5</integer>
+    <key>Minute</key><integer>41</integer>
+  </dict>
+  <key>StandardOutPath</key>
+  <string>/tmp/dashboards-linkcheck.log</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/dashboards-linkcheck.err</string>
+</dict>
+</plist>

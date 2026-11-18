@@ -24,6 +24,8 @@ jobs:
         run: python3 tools/test_sync.py
       - name: Self-tests for tools/check_hardened.py
         run: python3 tools/test_check_hardened.py
+      - name: Self-tests for tools/check_links.py (no network)
+        run: python3 tools/test_check_links.py
       - name: No personal contact details in any tracked file
         run: |
           python3 tools/test_check_contacts.py

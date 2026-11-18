@@ -34,3 +34,16 @@ why = c.reasons(linky)
 assert why == ["sync.py would still rewrite it (links, redaction or hardening)"], why
 
 print("ok")
+
+# --- broken link values in page data are refused even on a fully hardened page (LINKS.md 3.2)
+for bad_value in ('https://x.org/{{ links.menu }}', 'https://x.org/e?id=undefined',
+                  'https://cal.example/?dates=NaN', 'https://x.org/${a.a?'):
+    pg = c.page_text(plain.replace("var A=1;", 'var D={"url":"%s"};' % bad_value))
+    assert any("broken link" in w for w in c.reasons(pg)), (bad_value, c.reasons(pg))
+for ok_value in ('https://x.org/events/1', '', '/_blob/bd6b59', 'https://x.org/undefined-stories'):
+    pg = c.page_text(plain.replace("var A=1;", 'var D={"url":"%s","Menu":"Bwydlen"};' % ok_value))
+    assert c.reasons(pg) == [], (ok_value, c.reasons(pg))
+# page code is not data: a template literal URL in JS must not trip the check
+pg = c.page_text(plain.replace("var A=1;", 'var f=a=>`https://t.example/${a}`;'))
+assert c.reasons(pg) == [], c.reasons(pg)
+print("broken data links ok")
