@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-17",
+ "generated": "2026-11-18",
  "area": "Neath Port Talbot",
  "scope": "restaurants, pubs, cafes, pop-ups and markets",
  "timezone": "Europe/London",
@@ -27,7 +27,7 @@
  },
  "posts_fetched": {
   "oldest": "2026-11-11",
-  "newest": "2026-11-17"
+  "newest": "2026-11-18"
  },
  "counts": {
   "api_responses": 740,
@@ -35,7 +35,7 @@
   "comments_read": 391,
   "food_and_drink_posts": 1828,
   "listing_rows": 280,
-  "listing_rows_forward": 30,
+  "listing_rows_forward": 29,
   "recurring_fixtures": 15,
   "venues_ranked": 60,
   "closed_venues": 1,
@@ -43,23 +43,6 @@
   "facebook_pages": 115
  },
  "listings": [
-  {
-   "date": "2026-11-17",
-   "venue": "The Pig Iron Tavern",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "time": "5pm",
-   "price": null,
-   "detail": "Two big Nations League clashes coming up this week! Catch all the action live on our screens! 🍻 🇳🇴 Saturday 14th November – Norway v Wales | 5pm 🇵🇹 Tuesday 17th November – Wales v Portugal | 7:45pm Get down, grab a drink",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/ThePigIronTavern/posts/pfbid032hPfuZvP7PfF6E33dtc3NPHKbcLd7M4mKnCNkMtSzw3q5Ttixwz7NhEQ11JeW1chl",
-   "posted": "2026-11-10",
-   "date_inferred": false,
-   "date_text": "17th November",
-   "recurring": false,
-   "needs_check": false
-  },
   {
    "date": "2026-11-18",
    "venue": "Portablo Coffi",
@@ -928,8 +911,8 @@
    ]
   },
   {
-   "venue": "Le Bistro",
-   "total_mentions": 9,
+   "venue": "The Crown Skewen",
+   "total_mentions": 16,
    "independent_mentions": 7,
    "platforms": [
     "Facebook",
@@ -938,8 +921,8 @@
    ]
   },
   {
-   "venue": "The Crown Skewen",
-   "total_mentions": 16,
+   "venue": "Le Bistro",
+   "total_mentions": 9,
    "independent_mentions": 7,
    "platforms": [
     "Facebook",
@@ -1248,7 +1231,7 @@
    ]
   },
   {
-   "venue": "The Rolling Mill",
+   "venue": "Rolling Mill",
    "total_mentions": 4,
    "independent_mentions": 3,
    "platforms": [
@@ -1258,7 +1241,7 @@
    ]
   },
   {
-   "venue": "Rolling Mill",
+   "venue": "The Rolling Mill",
    "total_mentions": 4,
    "independent_mentions": 3,
    "platforms": [
@@ -1277,7 +1260,7 @@
    ]
   },
   {
-   "venue": "The Docks Cafe",
+   "venue": "Docks Cafe",
    "total_mentions": 8,
    "independent_mentions": 3,
    "platforms": [
@@ -1287,7 +1270,7 @@
    ]
   },
   {
-   "venue": "Docks Cafe",
+   "venue": "The Docks Cafe",
    "total_mentions": 8,
    "independent_mentions": 3,
    "platforms": [
