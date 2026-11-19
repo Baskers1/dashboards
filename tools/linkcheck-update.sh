@@ -14,16 +14,19 @@ export PATH="/opt/homebrew/bin:/usr/bin:/bin:$PATH"            # lychee, dig, cu
 git pull -q --rebase --autostash origin main
 
 # Refuse to sweep someone else's half-finished page edit into this commit.
-if [ -n "$(git diff --name-only -- '*.html')" ]; then
+# sync.py publishes pages AND each dashboard's data.json, so both are covered (a missed data.json
+# turned CI red on 19 Nov 2026).
+PUBLISHED=('*.html' '*/data.json')
+if [ -n "$(git diff --name-only -- "${PUBLISHED[@]}")" ]; then
   echo "tracked pages already have uncommitted edits; not running" >&2
-  git diff --name-only -- '*.html' >&2
+  git diff --name-only -- "${PUBLISHED[@]}" >&2
   exit 1
 fi
 
 "$PY_BIN" -I tools/check_links.py
 "$PY_BIN" -I tools/sync.py --harden-only >/dev/null
 
-changed=$(git diff --name-only -- '*.html')
+changed=$(git diff --name-only -- "${PUBLISHED[@]}")
 git add data/link-ledger.json
 [ -n "$changed" ] && echo "$changed" | xargs git add --
 if git diff --cached --quiet; then echo "nothing to commit"; exit 0; fi
