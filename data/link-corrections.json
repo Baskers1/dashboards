@@ -1,0 +1,406 @@
+{
+ "about": "Sarah's decisions on dead links (LINKS.md section 4). Rules: LINKS.md in dashboards-source. Every refresh applies the entries for its area BEFORE building: replace = swap each old_url for new_url wherever it appears (events, clubs, venues, sources); drop_link = blank that URL field and keep the listing; remove = take the listing (and its events) out and never re-add it; replace_with_two = remove the old listing and add the replacements; keep_review = keep the listing, use new_url if given, otherwise no link, and re-check by review_by. Research agents must not re-add any old_url or any removed listing. tools/sync.py also applies the replace and keep_review swaps to every page it publishes.",
+ "decided": "2026-11-19",
+ "decided_by": "Sarah, via the review Sheet",
+ "corrections": [
+  {
+   "action": "keep_review",
+   "name": "Dil Se, Dundee",
+   "area": "tayside",
+   "pages": [
+    "menu-watch"
+   ],
+   "old_urls": [
+    "https://dilse-dundee.co.uk/"
+   ],
+   "new_url": null,
+   "note": "Closed for a refit, reopening Nov 2026 (The Courier). Keep listing without its dead link; review in December.",
+   "review_by": "2026-12-19"
+  },
+  {
+   "action": "replace",
+   "name": "The Nest by The Giddy Goose, Forfar",
+   "area": "tayside",
+   "pages": [
+    "menu-watch"
+   ],
+   "old_urls": [
+    "https://www.thenestbythegiddygoose.co.uk/"
+   ],
+   "new_url": "https://www.facebook.com/thenestforfar/",
+   "note": "Open; Facebook page."
+  },
+  {
+   "action": "replace",
+   "name": "Royal Oak, Hooe (Plymstock)",
+   "area": "plymouth",
+   "pages": [
+    "menu-watch"
+   ],
+   "old_urls": [
+    "http://royaloakhooe.co.uk/"
+   ],
+   "new_url": "https://www.facebook.com/RoyalOakHooe/",
+   "note": "Open; Facebook page."
+  },
+  {
+   "action": "replace",
+   "name": "Seren Cafe, Neath",
+   "area": "neath-port-talbot",
+   "pages": [
+    "menu-watch"
+   ],
+   "old_urls": [
+    "https://www.serencafe.co.uk"
+   ],
+   "new_url": "https://www.facebook.com/serencaferestaurant/",
+   "note": "Open; Facebook page."
+  },
+  {
+   "action": "remove",
+   "name": "Toasted Coffee Shop",
+   "area": "ammanford",
+   "pages": [
+    "menu-watch"
+   ],
+   "old_urls": [
+    "https://toastedcoffeeshop.co.uk/"
+   ],
+   "new_url": null,
+   "note": "Permanently closed (Sarah, 19 Nov 2026). Do not re-add."
+  },
+  {
+   "action": "keep_review",
+   "name": "The Doll's House, St Andrews",
+   "area": "tayside",
+   "pages": [
+    "menu-watch"
+   ],
+   "old_urls": [
+    "https://www.dollshousestandrews.co.uk/"
+   ],
+   "new_url": "https://www.standrewsnow.co.uk/business/dolls-house-restaurant/",
+   "note": "Unsure if open; use the St Andrews Now listing and review in December.",
+   "review_by": "2026-12-19"
+  },
+  {
+   "action": "remove",
+   "name": "Faborjé, Watford",
+   "area": "west-herts",
+   "pages": [
+    "menu-watch"
+   ],
+   "old_urls": [
+    "http://www.faborje.com/index.php"
+   ],
+   "new_url": null,
+   "note": "Closed (Sarah, 19 Nov 2026). Do not re-add."
+  },
+  {
+   "action": "remove",
+   "name": "MarinaView Restaurant (Royal Temple Yacht Club), Ramsgate",
+   "area": "east-kent",
+   "pages": [
+    "menu-watch"
+   ],
+   "old_urls": [
+    "https://marinaview-restaurant.com"
+   ],
+   "new_url": null,
+   "note": "No sign of a restaurant now (Sarah, 19 Nov 2026). Do not re-add."
+  },
+  {
+   "action": "remove",
+   "name": "Ego Nightclub, Perth",
+   "area": "tayside",
+   "pages": [
+    "whats-on",
+    "whats-on-big",
+    "season-ahead"
+   ],
+   "old_urls": [
+    "http://egonightclub.co.uk/"
+   ],
+   "new_url": null,
+   "note": "Closed (Sarah, 19 Nov 2026). Remove the venue and its events (also from the Facebook-only venues layer, social_signals.json). Do not re-add."
+  },
+  {
+   "action": "replace",
+   "name": "Cyngor Tref Cwmaman Town Council",
+   "area": "ammanford",
+   "pages": [
+    "whats-on",
+    "whats-on-big"
+   ],
+   "old_urls": [
+    "http://www.cwmamantc.org.uk/"
+   ],
+   "new_url": "https://cwmaman.org.uk/whats-on/",
+   "note": "Council website moved."
+  },
+  {
+   "action": "drop_link",
+   "name": "Menter Cwm Gwendraeth Elli",
+   "area": "ammanford",
+   "pages": [
+    "whats-on",
+    "whats-on-big"
+   ],
+   "old_urls": [
+    "http://www.mentercge.org/"
+   ],
+   "new_url": null,
+   "note": "Keep the listing; Facebook (https://www.facebook.com/MenterCwmGwendraethElli/) is its only link. Drop the dead website field."
+  },
+  {
+   "action": "remove",
+   "name": "Brynamman Christmas Village",
+   "area": "ammanford",
+   "pages": [
+    "whats-on",
+    "whats-on-big",
+    "season-ahead"
+   ],
+   "old_urls": [
+    "https://brynammanchristmasvillage.com/"
+   ],
+   "new_url": null,
+   "note": "Not opening for Christmas 2026 (site works). Remove its 2026 events; it may return in 2027."
+  },
+  {
+   "action": "replace",
+   "name": "Abertay Historical Society",
+   "area": "tayside",
+   "pages": [
+    "whats-on"
+   ],
+   "old_urls": [
+    "https://www.abertayhistoricalsociety.org.uk/"
+   ],
+   "new_url": "https://abertay.org.uk/all-events/",
+   "note": "Society's real site."
+  },
+  {
+   "action": "replace",
+   "name": "Carnoustie Walkers",
+   "area": "tayside",
+   "pages": [
+    "whats-on"
+   ],
+   "old_urls": [
+    "https://carnoustiewalkers.co.uk/",
+    "https://www.carnoustiewalkers.co.uk/"
+   ],
+   "new_url": "https://carnoustiewalkers.org.uk/FutureWalks",
+   "note": "Real site is .org.uk."
+  },
+  {
+   "action": "replace_with_two",
+   "name": "Dundee Folk Club",
+   "area": "tayside",
+   "pages": [
+    "whats-on"
+   ],
+   "old_urls": [
+    "https://www.dundeefolkclub.co.uk/",
+    "https://www.dundeefolkclub.org.uk/"
+   ],
+   "new_url": null,
+   "replacements": [
+    {
+     "name": "The Sunday Sessions (folk)",
+     "url": "https://sundaysessionsfolk.wordpress.com"
+    },
+    {
+     "name": "Box & Fiddle, Lochee",
+     "url": "https://www.boxandfiddle.com/lochee.html"
+    }
+   ],
+   "note": "Dundee Folk Club's two domains were guessed and never existed. Replace it with these two listings (Sarah, 19 Nov 2026). Do not re-add dundeefolkclub.*"
+  },
+  {
+   "action": "replace",
+   "name": "Dundee Frontrunners",
+   "area": "tayside",
+   "pages": [
+    "whats-on"
+   ],
+   "old_urls": [
+    "https://www.dundeefrontrunners.org/sunday-club-run"
+   ],
+   "new_url": "https://www.instagram.com/dundeefrontrunners/",
+   "note": "Still going; Instagram."
+  },
+  {
+   "action": "replace",
+   "name": "Dundee & District Ramblers",
+   "area": "tayside",
+   "pages": [
+    "whats-on"
+   ],
+   "old_urls": [
+    "https://www.dundeeramblers.org.uk/"
+   ],
+   "new_url": "https://www.ramblers.org.uk/go-walking/ramblers-groups/dundee-district-group",
+   "note": "Ramblers national site."
+  },
+  {
+   "action": "replace",
+   "name": "Dundee Roller Derby",
+   "area": "tayside",
+   "pages": [
+    "whats-on"
+   ],
+   "old_urls": [
+    "https://www.dundeerollerderby.co.uk/"
+   ],
+   "new_url": "https://www.facebook.com/dundeerollerderby/",
+   "note": "Still going; Facebook."
+  },
+  {
+   "action": "replace",
+   "name": "Forfar & District Ramblers",
+   "area": "tayside",
+   "pages": [
+    "whats-on"
+   ],
+   "old_urls": [
+    "https://www.forfarramblers.org.uk/"
+   ],
+   "new_url": "https://www.ramblers.org.uk/go-walking/ramblers-groups/forfar-district-group",
+   "note": "Ramblers national site."
+  },
+  {
+   "action": "replace",
+   "name": "Imperial Oyster Cinema",
+   "area": "east-kent",
+   "pages": [
+    "whats-on"
+   ],
+   "old_urls": [
+    "https://www.imperialoyster.co.uk/"
+   ],
+   "new_url": "https://cinematreasures.org/theaters/43936",
+   "note": "No booking site found; cinema-history page chosen by Sarah (19 Nov 2026)."
+  },
+  {
+   "action": "replace",
+   "name": "Ivybridge Bloomers; Ivybridge Walking Group; So Social Ivybridge",
+   "area": "plymouth",
+   "pages": [
+    "community-watch"
+   ],
+   "old_urls": [
+    "https://ivybridge.info/social.html"
+   ],
+   "new_url": "https://www.instagram.com/ivybridgebloomers/",
+   "note": "ivybridge.info is gone; Instagram. Note: one link served three groups."
+  },
+  {
+   "action": "replace",
+   "name": "Kent Museum of the Moving Image (Kent MOMI)",
+   "area": "east-kent",
+   "pages": [
+    "whats-on"
+   ],
+   "old_urls": [
+    "https://kentmomi.com/"
+   ],
+   "new_url": "https://www.kentmomi.org/events",
+   "note": "Real site is .org."
+  },
+  {
+   "action": "replace",
+   "name": "Perth Folk Club",
+   "area": "tayside",
+   "pages": [
+    "whats-on"
+   ],
+   "old_urls": [
+    "https://www.perthfolkclub.co.uk/"
+   ],
+   "new_url": "http://www.perthfolk.org/events-and-news.html",
+   "note": "Real site perthfolk.org."
+  },
+  {
+   "action": "replace",
+   "name": "Producers of Angus markets",
+   "area": "tayside",
+   "pages": [
+    "whats-on"
+   ],
+   "old_urls": [
+    "https://www.producersofangus.co.uk/"
+   ],
+   "new_url": "https://producersofangusmarkets.co.uk",
+   "note": "Real site."
+  },
+  {
+   "action": "replace",
+   "name": "St Andrews Community Council",
+   "area": "tayside",
+   "pages": [
+    "whats-on"
+   ],
+   "old_urls": [
+    "https://standrewscommunitycouncil.co.uk/",
+    "https://www.standrewscommunitycouncil.co.uk/",
+    "https://www.standrewscommunitycouncil.co.uk/about"
+   ],
+   "new_url": "https://rbstacc.org.uk",
+   "note": "Royal Burgh of St Andrews CC."
+  },
+  {
+   "action": "replace",
+   "name": "Larick Centre, Tayport",
+   "area": "tayside",
+   "pages": [
+    "whats-on"
+   ],
+   "old_urls": [
+    "https://www.thelarickcentre.co.uk/"
+   ],
+   "new_url": "https://tayportct.org.uk/communityhub/whats-on/",
+   "note": "Run by Tayport Community Trust."
+  },
+  {
+   "action": "replace",
+   "name": "T-Squared Social",
+   "area": "tayside",
+   "pages": [
+    "whats-on"
+   ],
+   "old_urls": [
+    "https://www.tsquaredsocial.co.uk/"
+   ],
+   "new_url": "https://www.tsquaredsocial.com/locations/uk/scotland/st-andrews/home",
+   "note": "Real site is .com."
+  },
+  {
+   "action": "replace",
+   "name": "The Twa Tams, Perth",
+   "area": "tayside",
+   "pages": [
+    "whats-on"
+   ],
+   "old_urls": [
+    "https://www.twatams.co.uk/"
+   ],
+   "new_url": "https://www.thetwatamsperth.com/events",
+   "note": "Real site."
+  },
+  {
+   "action": "replace",
+   "name": "Wormit Boating Club",
+   "area": "tayside",
+   "pages": [
+    "whats-on"
+   ],
+   "old_urls": [
+    "https://www.wormitboatingclub.co.uk/"
+   ],
+   "new_url": "https://wormitboatingclub.org.uk/events/list/",
+   "note": "Real site is .org.uk."
+  }
+ ]
+}

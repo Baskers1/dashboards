@@ -226,3 +226,30 @@ with tempfile.TemporaryDirectory() as tmp:
         "only dead on 2+ runs, longest first; one dead run or cant_check never hides a link"
     assert s.dead_links(os.path.join(tmp, "missing.json")) == []
 print("dead links ok")
+
+# --- Sarah's corrections: replace swaps a whole quoted URL, before drop_dead could blank it
+swaps = [("https://www.dundeeramblers.org.uk/", "https://www.ramblers.org.uk/go-walking/ramblers-groups/dundee-district-group")]
+pg = ('{"clubs":[{"name":"Ramblers","url":"https://www.dundeeramblers.org.uk/"},'
+      '{"name":"Esc","url":"https:\\/\\/www.dundeeramblers.org.uk\\/"},'
+      '{"name":"Longer","url":"https://www.dundeeramblers.org.uk/walks"}]}')
+out = s.apply_swaps(pg, swaps)
+assert out.count("dundee-district-group") == 2, out
+assert "https:\\/\\/www.ramblers.org.uk\\/go-walking" in out, "JSON-escaped spelling swapped in escaped form"
+assert "https://www.dundeeramblers.org.uk/walks" in out, "a longer URL is left alone"
+assert s.apply_swaps(out, swaps) == out, "idempotent"
+assert s.drop_dead(out, ["https://www.dundeeramblers.org.uk/"]).count("dundee-district-group") == 2, "a swapped URL is not blanked"
+with tempfile.TemporaryDirectory() as tmp:
+    p = os.path.join(tmp, "c.json")
+    with open(p, "w") as f:
+        _json.dump({"corrections": [
+            {"action": "replace", "old_urls": ["https://a.example/", "https://www.a.example/"], "new_url": "https://a.org/"},
+            {"action": "keep_review", "old_urls": ["https://k.example/"], "new_url": "https://k.org/"},
+            {"action": "keep_review", "old_urls": ["https://n.example/"], "new_url": None},
+            {"action": "remove", "old_urls": ["https://gone.example/"], "new_url": None},
+            {"action": "drop_link", "old_urls": ["https://d.example/"], "new_url": None}]}, f)
+    got = s.url_swaps(p)
+    assert set(got) == {("https://a.example/", "https://a.org/"), ("https://www.a.example/", "https://a.org/"),
+                        ("https://k.example/", "https://k.org/")}, got
+    assert got[0][0] == "https://www.a.example/", "longest first"
+    assert s.url_swaps(os.path.join(tmp, "missing.json")) == []
+print("corrections ok")

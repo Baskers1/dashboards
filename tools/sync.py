@@ -73,6 +73,36 @@ def dead_links(path=LEDGER):
 
 DEAD = dead_links()
 
+CORRECTIONS = os.path.join(ROOT, "data", "link-corrections.json")
+
+
+def url_swaps(path=CORRECTIONS):
+    """(old_url, new_url) pairs from Sarah's decisions on dead links: "replace", and "keep_review"
+    with a new_url. Removals and dropped links are not swaps: drop_dead() already publishes those
+    URLs without a link, and the area's refresh takes the listing out at the source."""
+    try:
+        with open(path, encoding="utf-8") as f:
+            entries = json.load(f).get("corrections", [])
+    except FileNotFoundError:
+        return []
+    pairs = [(old, e["new_url"]) for e in entries
+             if e.get("action") in ("replace", "keep_review") and e.get("new_url")
+             for old in e.get("old_urls", [])]
+    return sorted(pairs, key=lambda p: len(p[0]), reverse=True)
+
+
+SWAPS = url_swaps()
+
+
+def apply_swaps(text, swaps=None):
+    """Swap a corrected URL where it appears as a whole quoted string in a page's data, exactly as
+    drop_dead() matches (plain and JSON-escaped spellings). Idempotent: a new URL is never an old one."""
+    for old, new in SWAPS if swaps is None else swaps:
+        for o, n in {(old, new), (old.replace("/", "\\/"), new.replace("/", "\\/"))}:
+            for q in ('"', "'"):
+                text = text.replace(q + o + q, q + n + q)
+    return text
+
 
 def drop_dead(text, dead=None):
     """Blank a dead URL where it appears as a whole quoted string in a page's data, so the page
@@ -159,7 +189,7 @@ def page_text(t):
     staged pages so the pre-commit hook and this sync can never disagree about what
     "already hardened" means.
     """
-    return harden(redact(drop_dead(rewrite_links(t))))
+    return harden(redact(drop_dead(apply_swaps(rewrite_links(t)))))
 
 
 def fix_pages(dst):
@@ -173,7 +203,7 @@ def fix_pages(dst):
             if dirpath == dst and n in PUBLIC_DATA:
                 with open(p, encoding="utf-8", newline="") as f:
                     t = f.read()
-                t2 = redact(drop_dead(rewrite_links(t)))
+                t2 = redact(drop_dead(apply_swaps(rewrite_links(t))))
                 if t2 != t:
                     with open(p, "w", encoding="utf-8", newline="") as f:
                         f.write(t2)
