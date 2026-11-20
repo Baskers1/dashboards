@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-19",
+ "generated": "2026-11-20",
  "area": "Neath Port Talbot",
  "scope": "restaurants, pubs, cafes, pop-ups and markets",
  "timezone": "Europe/London",
@@ -26,8 +26,8 @@
   "note": "Those five networks have no ScrapeCreators endpoint and return HTTP 404. Facebook has no keyword search, so its pages and groups are found via Google and read directly."
  },
  "posts_fetched": {
-  "oldest": "2026-11-11",
-  "newest": "2026-11-19"
+  "oldest": "2026-11-19",
+  "newest": "2026-11-20"
  },
  "counts": {
   "api_responses": 779,
@@ -35,7 +35,7 @@
   "comments_read": 385,
   "food_and_drink_posts": 1917,
   "listing_rows": 303,
-  "listing_rows_forward": 64,
+  "listing_rows_forward": 62,
   "recurring_fixtures": 14,
   "venues_ranked": 59,
   "closed_venues": 2,
@@ -43,40 +43,6 @@
   "facebook_pages": 120
  },
  "listings": [
-  {
-   "date": "2026-11-19",
-   "venue": "Gossip cafe port talbot",
-   "towns": [
-    "Port Talbot"
-   ],
-   "time": "10:30am",
-   "price": null,
-   "detail": "❤️ A little later opening tomorrow! We’ll be opening at approximately 10:30am tomorrow as Dad has a hospital appointment. Sorry for any inconvenience, and thank you as always for your patience and understanding. We’ll be",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/permalink.php?story_fbid=pfbid02jwRfJBBD1pM6QhD4RZdP2tvNhJ97kVVvwP2WvauZN2SAobnDgx4yQ9t5Ur1rjTtEl&id=100063565991028",
-   "posted": "2026-11-18",
-   "date_inferred": true,
-   "date_text": "tomorrow",
-   "recurring": false,
-   "needs_check": true
-  },
-  {
-   "date": "2026-11-19",
-   "venue": "The Dillwyn Arms",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "time": "12pm",
-   "price": "£17.95",
-   "detail": "🎄 LAST CHANCE TO GRAB OUR AMAZING OFFERS! 🎄 Tomorrow is your LAST CHANCE to enjoy our regular menu and fantastic deals before our Christmas Menu kicks off on Friday! 🎅🏽🎄 2 Courses for just £17.95!🍴 2 Meals for £20 served",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/groups/121676847869402/permalink/29183335047943529/",
-   "posted": "2026-11-18",
-   "date_inferred": true,
-   "date_text": "tomorrow",
-   "recurring": false,
-   "needs_check": true
-  },
   {
    "date": "2026-11-20",
    "venue": "Cwmdu Inn, Shop and Post Office",
@@ -1453,8 +1419,8 @@
    ]
   },
   {
-   "venue": "The Crown Skewen",
-   "total_mentions": 17,
+   "venue": "Le Bistro",
+   "total_mentions": 10,
    "independent_mentions": 7,
    "platforms": [
     "Facebook",
@@ -1463,8 +1429,8 @@
    ]
   },
   {
-   "venue": "Le Bistro",
-   "total_mentions": 10,
+   "venue": "The Crown Skewen",
+   "total_mentions": 17,
    "independent_mentions": 7,
    "platforms": [
     "Facebook",
@@ -1720,7 +1686,7 @@
    ]
   },
   {
-   "venue": "The Dillwyn Arms",
+   "venue": "Dillwyn Arms",
    "total_mentions": 11,
    "independent_mentions": 3,
    "platforms": [
@@ -1730,7 +1696,7 @@
    ]
   },
   {
-   "venue": "Dillwyn Arms",
+   "venue": "The Dillwyn Arms",
    "total_mentions": 11,
    "independent_mentions": 3,
    "platforms": [
@@ -1819,7 +1785,7 @@
    ]
   },
   {
-   "venue": "The Rolling Mill",
+   "venue": "Rolling Mill",
    "total_mentions": 4,
    "independent_mentions": 3,
    "platforms": [
@@ -1829,7 +1795,7 @@
    ]
   },
   {
-   "venue": "Rolling Mill",
+   "venue": "The Rolling Mill",
    "total_mentions": 4,
    "independent_mentions": 3,
    "platforms": [
