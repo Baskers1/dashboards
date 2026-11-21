@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-20",
+ "generated": "2026-11-21",
  "area": "Neath Port Talbot",
  "scope": "restaurants, pubs, cafes, pop-ups and markets",
  "timezone": "Europe/London",
@@ -35,7 +35,7 @@
   "comments_read": 385,
   "food_and_drink_posts": 1917,
   "listing_rows": 303,
-  "listing_rows_forward": 62,
+  "listing_rows_forward": 53,
   "recurring_fixtures": 14,
   "venues_ranked": 59,
   "closed_venues": 2,
@@ -43,159 +43,6 @@
   "facebook_pages": 120
  },
  "listings": [
-  {
-   "date": "2026-11-20",
-   "venue": "Cwmdu Inn, Shop and Post Office",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "time": "9.30am",
-   "price": null,
-   "detail": "Everyday Banking at Cwmdu Post Office 💰💳💵📮 💰💳💵📮 💰💳💵📮 With high street banks closing in towns all around us, did you know that you can still carry out many of your everyday banking tasks right here in Cwmdu? Almost anyone",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/CwmduInn/posts/pfbid0K7VVvTY1jcZuoeAHKvDRpptxtQRGytzLbA9DfedPtg2J7KUyVz7XFx1YjN5qgcBSl",
-   "posted": "2026-11-16",
-   "date_inferred": true,
-   "date_text": "Friday",
-   "recurring": false,
-   "needs_check": true
-  },
-  {
-   "date": "2026-11-20",
-   "venue": "Oakwood Inn",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "time": null,
-   "price": null,
-   "detail": "Tickets will be available from Friday. 🥰",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/permalink.php?story_fbid=pfbid02Z5W5HBsABRT2AZA7R7DaFRNJZYEmLr9UTK9JeKuDTrEBuoKppmTJG2MuAhMcw2Tql&id=100057402434015",
-   "posted": "2026-11-17",
-   "date_inferred": true,
-   "date_text": "Friday",
-   "recurring": false,
-   "needs_check": true
-  },
-  {
-   "date": "2026-11-20",
-   "venue": "Saint Hugo Bakery",
-   "towns": [
-    "Neath"
-   ],
-   "time": null,
-   "price": null,
-   "detail": "There’s something special about the little things at Christmas. A warm drink, something sweet and the tree lights glowing in the corner. It’s the perfect excuse to slow down, catch up and enjoy a little time to yourself.",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/permalink.php?story_fbid=pfbid0ubEnTWVD7MCLP8U9nVGPU1eBa4qR5osXW1Z8rhh2115fuy3JHZjVrq7qyUzv8mgSl&id=61575220475131",
-   "posted": "2026-11-17",
-   "date_inferred": false,
-   "date_text": "20th November.",
-   "recurring": false,
-   "needs_check": false
-  },
-  {
-   "date": "2026-11-20",
-   "venue": "Saint Hugo Bakery",
-   "towns": [
-    "Neath"
-   ],
-   "time": "20.11",
-   "price": null,
-   "detail": "NEATH. WE OPEN FRIDAY. 20.11.26 - 7AM. Two years of Saint Hugo, and a new home in Neath. To celebrate, the first 100 coffees are on us. Can’t wait to welcome you in. Ben x",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/reel/2151700728778505/",
-   "posted": "2026-11-15",
-   "date_inferred": true,
-   "date_text": "FRIDAY",
-   "recurring": false,
-   "needs_check": true
-  },
-  {
-   "date": "2026-11-20",
-   "venue": "The Brit Public House & Restaurant",
-   "towns": [
-    "Cwmavon"
-   ],
-   "time": null,
-   "price": null,
-   "detail": "🎶Live Music This Friday at The Brit🎶 This week we're excited to welcome back the wonderful The Midnight Fiddle Band - Wedding & Function Band 🎻Join us for an evening of great music, good vibes, and delicious dining 😋 Mak",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/thebritpubcwmavon/posts/pfbid02yzu2hVnM9fLSt3yS3yXeUogYYyn3stfDRPrZxAU61gvM6Y6GeRbuoCzgmQzPHnoul",
-   "posted": "2026-11-18",
-   "date_inferred": true,
-   "date_text": "This Friday",
-   "recurring": false,
-   "needs_check": true
-  },
-  {
-   "date": "2026-11-20",
-   "venue": "The Dillwyn Arms",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "time": "12pm",
-   "price": "£17.95",
-   "detail": "🎄 LAST CHANCE TO GRAB OUR AMAZING OFFERS! 🎄 Tomorrow is your LAST CHANCE to enjoy our regular menu and fantastic deals before our Christmas Menu kicks off on Friday! 🎅🏽🎄 2 Courses for just £17.95!🍴 2 Meals for £20 served",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/groups/121676847869402/permalink/29183335047943529/",
-   "posted": "2026-11-18",
-   "date_inferred": true,
-   "date_text": "Friday",
-   "recurring": false,
-   "needs_check": true
-  },
-  {
-   "date": "2026-11-20",
-   "venue": "The Dillwyn Arms",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "time": "5:30pm",
-   "price": null,
-   "detail": "🍽️✨ Last midweek carvery today at The Dillwyn Arms! It’s your last chance to enjoy our delicious midweek carvery before our Christmas menu begins this Friday 20th November! 🎄 🌍 It’s also our last Around the World Wednesd",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/thedillwynarms/posts/pfbid04S6BaTd2AZhAVxBLpDw9YXac4YawuQumrgonfLbNAMhVn9sVzfQTi5oJvE88iABpl",
-   "posted": "2026-11-18",
-   "date_inferred": false,
-   "date_text": "20th November",
-   "recurring": false,
-   "needs_check": false
-  },
-  {
-   "date": "2026-11-20",
-   "venue": "The Dillwyn Arms",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "time": "5:30pm",
-   "price": null,
-   "detail": "✨ Last chance to enjoy our daily specials at The Dillwyn Arms! ✨ Make the most of our fantastic offers before our Christmas menu starts on Friday 20th November! 🎄 🥕Final carvery on Wednesday afternoon 🌍 Our last Around t",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/thedillwynarms/posts/pfbid0wmvR5NLgBGRRpypm2wkfekNrvsqynHpj5oJahsrrhtGxuJR3szNPxuafgtRJ1kSal",
-   "posted": "2026-11-16",
-   "date_inferred": false,
-   "date_text": "20th November",
-   "recurring": false,
-   "needs_check": false
-  },
-  {
-   "date": "2026-11-20",
-   "venue": "The Old White Horse Inn, Pontneathvaughan",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "time": "12pm",
-   "price": null,
-   "detail": "Our midweek carvery is here to make your weekdays that little more delicious!😋 Think tender meats, crispy roasties, and all your favourite trimmings…because a good roast shouldn’t be reserved for the weekend!🤭 Midweek ca",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/reel/2180475206220621/",
-   "posted": "2026-11-18",
-   "date_inferred": true,
-   "date_text": "Friday",
-   "recurring": false,
-   "needs_check": true
-  },
   {
    "date": "2026-11-21",
    "venue": "Castell-Nedd Arms",
@@ -1686,7 +1533,7 @@
    ]
   },
   {
-   "venue": "Dillwyn Arms",
+   "venue": "The Dillwyn Arms",
    "total_mentions": 11,
    "independent_mentions": 3,
    "platforms": [
@@ -1696,7 +1543,7 @@
    ]
   },
   {
-   "venue": "The Dillwyn Arms",
+   "venue": "Dillwyn Arms",
    "total_mentions": 11,
    "independent_mentions": 3,
    "platforms": [
@@ -1785,7 +1632,7 @@
    ]
   },
   {
-   "venue": "Rolling Mill",
+   "venue": "The Rolling Mill",
    "total_mentions": 4,
    "independent_mentions": 3,
    "platforms": [
@@ -1795,7 +1642,7 @@
    ]
   },
   {
-   "venue": "The Rolling Mill",
+   "venue": "Rolling Mill",
    "total_mentions": 4,
    "independent_mentions": 3,
    "platforms": [
