@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-21",
+ "generated": "2026-11-22",
  "area": "Neath Port Talbot",
  "scope": "restaurants, pubs, cafes, pop-ups and markets",
  "timezone": "Europe/London",
@@ -35,7 +35,7 @@
   "comments_read": 385,
   "food_and_drink_posts": 1917,
   "listing_rows": 303,
-  "listing_rows_forward": 53,
+  "listing_rows_forward": 45,
   "recurring_fixtures": 14,
   "venues_ranked": 59,
   "closed_venues": 2,
@@ -43,144 +43,6 @@
   "facebook_pages": 120
  },
  "listings": [
-  {
-   "date": "2026-11-21",
-   "venue": "Castell-Nedd Arms",
-   "towns": [
-    "Neath"
-   ],
-   "time": "9pm",
-   "price": null,
-   "detail": "JOEY STAR IS BACK AT THE CASTELL! We’ve got another fantastic Saturday night lined up for you, and this one is going to be a cracker! This Saturday, we’re welcoming the brilliant Joey Star to the Castell-Nedd Arms. If yo",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/CastellNeddArms/posts/pfbid02sZ7oDJkhuFdqfQV6KfZS5FYEXZDD8mA5njjrHRLYf5tgiPMjzxiK69CS2L4Nk2Fl",
-   "posted": "2026-11-17",
-   "date_inferred": false,
-   "date_text": "21st November",
-   "recurring": false,
-   "needs_check": false
-  },
-  {
-   "date": "2026-11-21",
-   "venue": "Cwmdu Inn, Shop and Post Office",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "time": "7:00pm",
-   "price": "£25",
-   "detail": "🇺🇦 🇺🇦 🇺🇦 Iryna is back in the Cwmdu Kitchen this Saturday! 🇺🇦 🇺🇦 🇺🇦 Saturday 21st November 2026 Join us for delicious authentic Ukrainian homemade food, served from 7:00pm – 8:30pm. 🍽️ 3 courses – £25 📞 To book a table, ",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/CwmduInn/posts/pfbid02eS6VyaLCTsmwur1fdedQVSrMN46ezL1YXhXeAVUPwJgFbEYeC3tmNHA4XSWuM51Xl",
-   "posted": "2026-11-17",
-   "date_inferred": false,
-   "date_text": "21st November",
-   "recurring": false,
-   "needs_check": false
-  },
-  {
-   "date": "2026-11-21",
-   "venue": "Neath Cafe and Car Wash",
-   "towns": [
-    "Neath"
-   ],
-   "time": null,
-   "price": null,
-   "detail": "🎉 🥩 SUNDAY LUNCH GIVEAWAY! 🥩 🎉 Fancy winning a delicious 2-COURSE SUNDAY LUNCH for Two 😍 We’re giving one lucky winner the chance to enjoy a gorgeous Sunday dinner for 2, followed by one of our homemade desserts! ❤️ 🍖 CH",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/permalink.php?story_fbid=pfbid022nK3PVpWYvbY22zHiK6kjNjy5oKP1UkgMRaTisBWSduU4gYNDbeBtQUKaXKLyQd3l&id=100092523406388",
-   "posted": "2026-11-16",
-   "date_inferred": false,
-   "date_text": "21st NOVEMBER",
-   "recurring": false,
-   "needs_check": false
-  },
-  {
-   "date": "2026-11-21",
-   "venue": "Portablo Coffi",
-   "towns": [
-    "Aberavon",
-    "Port Talbot"
-   ],
-   "time": "9:30",
-   "price": null,
-   "detail": "📚 Book launch this Saturday! Local Port Talbot author Rick Mainwaring will be at Portablo Coffi launching his new book Dreadlock Holiday, a thriller set in Jamaica 🇯🇲 Always happy to support local people doing good thing",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/portablocoffi/posts/pfbid0iaMo3uHe9VeqwBMEni5zeuMhZww7UxEQ8NdNmeAKosRdT3mt1rEb9ZTQAVLfsUgzl",
-   "posted": "2026-11-17",
-   "date_inferred": false,
-   "date_text": "21st November",
-   "recurring": false,
-   "needs_check": false
-  },
-  {
-   "date": "2026-11-21",
-   "venue": "Portablo Coffi",
-   "towns": [
-    "Aberavon",
-    "Port Talbot"
-   ],
-   "time": "9:30",
-   "price": null,
-   "detail": "📚 Book Launch at Portablo Coffi! This Saturday we’re welcoming local Port Talbot author Rick Mainwaring to the shop for the launch of his new book Dreadlock Holiday. 🇯🇲 Always good to support local people, creativity and",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/reel/1441910840857713/",
-   "posted": "2026-11-16",
-   "date_inferred": false,
-   "date_text": "21st November",
-   "recurring": false,
-   "needs_check": false
-  },
-  {
-   "date": "2026-11-21",
-   "venue": "The Arch Bar & Nightclub",
-   "towns": [
-    "Neath"
-   ],
-   "time": "8.10pm",
-   "price": null,
-   "detail": "🏉 WALES v AUSTRALIA, THEN JOSH NAVIDI ON THE DECKS! 🎧 Still buzzing after last Saturday? Wales 35–28 New Zealand. We waited 73 years to beat the All Blacks, and what a game to finally do it. 🐉 This Saturday, Wales take o",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/TheArchNeath/posts/pfbid0iE9yEQfLQ1hYgiofFXv45ZX9nY9bhFRY1iKvdUrF7WXx5G6Gx6igZ8JvL9b1zuVUl",
-   "posted": "2026-11-17",
-   "date_inferred": false,
-   "date_text": "21st November",
-   "recurring": false,
-   "needs_check": false
-  },
-  {
-   "date": "2026-11-21",
-   "venue": "The Somerset Arms",
-   "towns": [
-    "Port Talbot"
-   ],
-   "time": "5.30pm",
-   "price": null,
-   "detail": "This weekend The Somerset Arms at Port Talbot Saturday 5.30pm Sam Waters Live Building the atmosphere for another knock out win for Wales Sunday 5pm Ubatubaband",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/groups/1048348985663965/permalink/2577931082705740/",
-   "posted": "2026-11-16",
-   "date_inferred": true,
-   "date_text": "Saturday",
-   "recurring": false,
-   "needs_check": true
-  },
-  {
-   "date": "2026-11-21",
-   "venue": "Waters Live \n\nThe Somerset Arms",
-   "towns": [
-    "Port Talbot"
-   ],
-   "time": "5pm",
-   "price": null,
-   "detail": "This Saturday 5pm building the atmosphere for WALES V AUSTRALIA Sam Waters Live The Somerset Arms at Port Talbot",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/groups/196453747792207/permalink/2356246855146208/",
-   "posted": "2026-11-18",
-   "date_inferred": true,
-   "date_text": "This Saturday",
-   "recurring": false,
-   "needs_check": true
-  },
   {
    "date": "2026-11-22",
    "venue": "Cwmdu Inn, Shop and Post Office",
@@ -1632,7 +1494,7 @@
    ]
   },
   {
-   "venue": "The Rolling Mill",
+   "venue": "Rolling Mill",
    "total_mentions": 4,
    "independent_mentions": 3,
    "platforms": [
@@ -1642,7 +1504,7 @@
    ]
   },
   {
-   "venue": "Rolling Mill",
+   "venue": "The Rolling Mill",
    "total_mentions": 4,
    "independent_mentions": 3,
    "platforms": [
