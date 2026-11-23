@@ -1,4 +1,4 @@
-<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-4Nto6LAyUvJsfAnUoSMGkdNmRcAYQb78/mELeGsnCBg=' 'sha256-TVaze2H//12yZyZQpLTLMQspkQ1sphRez+bPbGeUZC8=' 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'sha256-gjghwr8WeUIIEcmwtUT0FL+wwN6Rko1mcEjbTM0i2IE=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
+<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-1EqSvOg2rbzJNbaI3rAk1qPq6GDr2k4HNK0n0vKBYIw=' 'sha256-4Nto6LAyUvJsfAnUoSMGkdNmRcAYQb78/mELeGsnCBg=' 'sha256-TVaze2H//12yZyZQpLTLMQspkQ1sphRez+bPbGeUZC8=' 'sha256-YXdV+6J1Dcaj73PvCyxyF+6C9E6KC3NsQszyY7Q40Us=' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com; media-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'none'"><script id="dash-guard">(function(){
 var SCHEME=/^\s*([a-z][a-z0-9+.\-]*):/i,HREF={http:1,https:1,mailto:1,tel:1},SRC={http:1,https:1,blob:1};
 function okUrl(v,isSrc){var c=String(v).replace(/[\u0000- ]/g,""),m=SCHEME.exec(c);if(!m)return true;var s=m[1].toLowerCase();
 if(isSrc&&s==="data")return /^data:image\//i.test(c);return !!(isSrc?SRC:HREF)[s];}
@@ -44,7 +44,7 @@ New menus > Places > What people say > Complaints > Most-shared posts. Large typ
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-padding-top:150px}
 body{margin:0;background:var(--bg);color:var(--ink);font:1.125rem/1.6 var(--body);padding-inline:16px}
-:root.big body{font-size:1.375rem}
+:root.big{font-size:122.2%}
 .wrap{max-width:1040px;margin-inline:auto;padding-block:20px 64px;display:flex;flex-direction:column;gap:40px}
 .wrap>*{min-width:0}
 a{color:var(--accent);text-underline-offset:3px}
@@ -83,8 +83,13 @@ border:2px solid var(--accent);background:var(--surface);color:var(--accent);fon
 .bignew .d{color:var(--ink-2)}
 .bignew .btn{grid-column:1/-1;justify-self:start;margin-top:8px;border-color:var(--new);color:var(--new)}
 .bignew .btn:hover{background:var(--new-soft)}
-.weeks{display:block;width:170px;height:auto;max-width:100%}
-@media (max-width:480px){.bignew{grid-template-columns:minmax(0,1fr)}.weeks{width:100%;max-width:260px}}
+.weeks{display:block;width:280px;height:auto;max-width:100%}
+:root.big .weeks{width:340px}
+.weekstable{font-size:1rem;margin-top:6px}
+.weekstable summary{cursor:pointer;color:var(--accent);min-height:48px;display:flex;align-items:center}
+.weekstable table{border-collapse:collapse}
+.weekstable th,.weekstable td{text-align:left;padding:4px 14px 4px 0;border-bottom:1px solid var(--line)}
+@media (max-width:480px){.bignew{grid-template-columns:minmax(0,1fr)}.weeks{width:100%;max-width:320px}}
 .minis{display:grid;gap:16px;grid-template-rows:1fr 1fr}
 .mini{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px 20px;display:flex;align-items:center;gap:16px}
 .mini .n{font-family:var(--display);font-weight:800;font-size:2.4rem;line-height:1;font-variant-numeric:tabular-nums;min-width:3ch}
@@ -129,7 +134,7 @@ section{display:flex;flex-direction:column;gap:16px;scroll-margin-top:150px}
 .tag.fest{background:var(--accent-soft);color:var(--accent)}
 
 .rates{display:flex;flex-wrap:wrap;gap:6px}
-.rate{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:8px;font-size:.95rem;font-weight:700;text-decoration:none;border:1px solid var(--line);color:var(--ink);background:var(--surface)}
+.rate{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;min-height:48px;border-radius:8px;font-size:.95rem;font-weight:700;text-decoration:none;border:1px solid var(--line);color:var(--ink);background:var(--surface)}
 .rate.good{background:var(--good-soft);border-color:transparent;color:var(--good)}
 .rate.bad{background:var(--bad-soft);border-color:transparent;color:var(--bad)}
 .rate.mid{background:var(--warn-soft);border-color:transparent;color:var(--warn)}
@@ -158,6 +163,7 @@ details[open] .chev{transform:rotate(180deg)}
 .dl dt{font-weight:700}
 .dl dd{margin:0;color:var(--ink-2)}
 .links{display:flex;flex-wrap:wrap;gap:8px 18px}
+.links a,.pbox ul a{display:inline-flex;align-items:center;min-height:48px}
 
 .summary{font-size:1.2rem;max-width:62ch}
 .themes{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:14px}
@@ -257,7 +263,7 @@ body{padding-bottom:88px}
 <div class="headline" aria-label="This week in numbers" data-cy-aria="Yr wythnos hon mewn rhifau">
 <div class="bignew">
 <div><div class="n" id="k-new">0</div><div class="l" id="k-new-l">new menus this week</div><div class="d" id="k-new-d"></div></div>
-<svg class="weeks" id="weeks" role="img" aria-label="New menus each week" data-cy-aria="Bwydlenni newydd bob wythnos"></svg>
+<div><svg class="weeks" id="weeks" role="img" aria-labelledby="weeks-t"><title id="weeks-t">New menus each week</title></svg><details class="weekstable"><summary data-cy="Dangos y rhifau">Show the numbers</summary><table><thead><tr><th scope="col" data-cy="Wythnos yn dechrau">Week starting</th><th scope="col" data-cy="Bwydlenni newydd">New menus</th></tr></thead><tbody id="weeks-rows"></tbody></table></details></div>
 <a class="btn" href="#new" id="seenew">See the new menus</a>
 </div>
 <div class="minis">
@@ -322,6 +328,7 @@ body{padding-bottom:88px}
 <p data-cy="Daw’r lleoedd o restr yr Asiantaeth Safonau Bwyd o fusnesau bwyd yn Sir Gâr, Abertawe, Castell-nedd Port Talbot a Phowys, wedi’i chyfyngu i dafarnau, bwytai a chaffis lle gallwch eistedd i lawr, ynghyd ag ambell le newydd a ganfuwyd yn lleol. Gadawyd allan ffreuturau, clybiau aelodau a siopau tecawê yn unig.">Places come from the Food Standards Agency's list of food businesses in Carmarthenshire, Swansea, Neath Port Talbot and Powys, narrowed to pubs, restaurants and cafés you can sit down in, plus a few newer places found locally. Canteens, members' clubs and takeaway-only shops are left out.</p>
 <p data-cy="Bob dydd Llun, caiff gwefan pob lle ei gwirio am fwydlenni. Mae bwydlen yn cyfrif yn newydd pan nad oedd ei dolen yno yn y gwiriad wythnosol blaenorol. Lluniwyd y rhifyn cyntaf ar 8 Hydref 2026, a dechreuodd y cyfrif wythnosol gyda’r gwiriad ar 1 Tachwedd 2026. Mae bwydlenni ar ffurf lluniau neu PDF wedi’u cysylltu ond heb eu darllen, felly gwiriwch ddyddiadau a phrydau gyda’r lle. Doedd dim arwydd diweddar ar-lein bod y lleoedd sydd wedi’u marcio “gwiriwch” yn masnachu, ac ar hyn o bryd dim ond sgôr hylendid sydd gan rai lleoedd ar y cyrion (o gwmpas Brynaman, Llandybïe, Gors-las, Cross Hands, Pontyberem a dwyrain Llanelli); caiff eu gwefannau a’u hadolygiadau eu hychwanegu gyda’r diweddariad wythnosol.">Every Monday each venue's own website is checked for menus. A menu counts as new when its link was not there at the previous weekly check. The first edition was put together on 8 October 2026 and the weekly count began with the check on 1 November 2026. Menus shown as pictures or PDFs are linked but not read, so check dates and dishes with the venue. Places marked "check" had no recent sign of trading online, and some outlying places (around Brynamman, Llandybie, Gorslas, Cross Hands, Pontyberem and east Llanelli) only have their hygiene rating so far; their websites and reviews are added on the weekly refresh.</p>
 <p data-cy="&lt;b&gt;Hylendid&lt;/b&gt; yw sgôr yr Asiantaeth Safonau Bwyd o 0 i 5, lle mai 5 yw’r gorau, a ddarllenwyd ar 23 Tachwedd 2026. Mae’n adlewyrchu’r arolygiad diwethaf, a allai fod beth amser yn ôl. Mae sgoriau &lt;b&gt;TripAdvisor&lt;/b&gt; allan o 5, gyda nifer yr adolygiadau mewn cromfachau; mae sgôr o ychydig o adolygiadau yn golygu llai. Mae &lt;b&gt;OpenTable&lt;/b&gt; yn dangos bod modd archebu lle ar-lein yno."><b>Hygiene</b> is the Food Standards Agency rating from 0 to 5, where 5 is best, read on 23 November 2026. It reflects the last inspection, which may be some time ago. <b>TripAdvisor</b> scores are out of 5, with the number of reviews in brackets; a score from only a few reviews means less. <b>OpenTable</b> shows the place takes online bookings there.</p>
+<p data-cy="Daw’r sgoriau hylendid o Gynllun Sgorio Hylendid Bwyd yr Asiantaeth Safonau Bwyd, a ddefnyddir o dan y &lt;a href=&quot;https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Drwydded Llywodraeth Agored&lt;/a&gt;. Dangosir mis yr arolygiad diwethaf gyda phob sgôr.">Hygiene ratings come from the Food Standards Agency's Food Hygiene Rating Scheme, used under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" target="_blank" rel="noopener">Open Government Licence</a>. The month of the last inspection is shown with each rating.</p>
 <p data-cy="Daw’r &lt;b&gt;oriau agor&lt;/b&gt; o wefan y lle ei hun neu restr sy’n amlwg ar ei gyfer, wedi’u gwirio ar y dyddiad a ddangosir. Mae’r hidlydd “Pryd” yn cuddio lle dim ond pan fydd ei oriau hysbys yn dweud ei fod ar gau; dangosir lleoedd heb oriau hysbys bob amser. Gwiriwch cyn teithio."><b>Opening hours</b> come from the place’s own website or a listing clearly for it, checked on the date shown. The “When” filter hides a place only when its known hours say it is closed; places with unknown hours are always shown. Check before travelling.</p>
 <p id="buzznote"></p>
 </footer>
@@ -353,7 +360,7 @@ const fmtDate = iso => fd(new Date(iso+"T12:00:00"),{weekday:"short",day:"numeri
 const fmtLong = iso => fd(new Date(iso+"T12:00:00"),{weekday:"long",day:"numeric",month:"long"});
 function nextMonday(iso){ const d=new Date(iso+"T12:00:00"); d.setDate(d.getDate()+(((8-d.getDay())%7)||7)); return d.toISOString().slice(0,10); }
 
-const V = DATA.venues.map(v => ({serves_food:"yes", trading:"confirmed", ...v, menus:(v.menus||[]).map(m => ({format:"html", ...m}))}));
+const V = DATA.venues.map(v => ({serves_food:"yes", trading:"confirmed", ...v, menus:(v.menus||[]).map(m => ({format:"html", ...m}))})).map(v => v.serves_food===true ? {...v, serves_food:"yes"} : v);
 const BYID = Object.fromEntries(V.map(v=>[v.id,v]));
 const GROUPS = [
  ["Ammanford",["Ammanford","Betws","Tycroes","Saron","Penybanc (Ammanford)","Pantyffynnont"]],
@@ -441,7 +448,7 @@ function rates(v, big){
 const out=[];
 if(v.fsa){ const r=v.fsa.r, n=+r;
 const cls = r==="Awaiting" ? "" : n>=4 ? "good" : n>=3 ? "mid" : "bad";
-out.push(`<a class="rate ${cls}" href="https://ratings.food.gov.uk/business/${+v.fsa.id}" target="_blank" rel="noopener" title="${tx("Food Standards Agency hygiene rating","Sgôr hylendid bwyd yr Asiantaeth Safonau Bwyd")}">${r==="Awaiting"?tx("Hygiene: awaiting inspection","Hylendid: aros am arolygiad"):tx("Hygiene "+esc(r)+" out of 5","Hylendid "+esc(r)+" allan o 5")}</a>`); }
+out.push(`<a class="rate ${cls}" href="https://ratings.food.gov.uk/business/${+v.fsa.id}" target="_blank" rel="noopener" title="${tx("Food Standards Agency hygiene rating","Sgôr hylendid bwyd yr Asiantaeth Safonau Bwyd")}">${r==="Awaiting"?tx("Hygiene: awaiting inspection","Hylendid: aros am arolygiad"):tx("Hygiene "+esc(r)+" out of 5","Hylendid "+esc(r)+" allan o 5")}${v.fsa.d?` <small>${tx("inspected","arolygwyd")} ${fd(new Date(v.fsa.d+"T12:00:00"),{month:"short",year:"numeric"})}</small>`:""}</a>`); }
 if(v.ta && !v.ta.closed && v.ta.r){ const a=v.ta;
 out.push(`<a class="rate${a.r>=4.5&&a.n>=10?" good":""}" href="${esc(a.u||(a.i?("https://www.tripadvisor.co.uk/"+(a.a?"Attraction":"Restaurant")+"_Review-"+a.i+"-Reviews-x.html"):"#"))}" target="_blank" rel="noopener">TripAdvisor ${a.r.toFixed(1)} ${a.n!=null?`<small>(${a.n.toLocaleString("en-GB")} ${tx("reviews","adolygiad")})</small>`:""}</a>`); }
 if(v.ta && v.ta.closed) out.push(`<span class="rate bad">${tx("TripAdvisor says closed","TripAdvisor: wedi cau")}</span>`);
@@ -454,21 +461,35 @@ $("towns").innerHTML = TOWNS.map(([k,l])=>`<button type="button" class="tbtn" da
 $("towns").querySelectorAll("button").forEach(b=>b.onclick=()=>{ st.town=b.dataset.t; st.q=""; $("q").value=""; st.nNew=6; st.nPlaces=12; st.nPosts=6; try{localStorage.setItem("amw-town",st.town)}catch(e){} render(); });
 }
 
+function weeks(){
+const h=DATA.history||[], by={};
+h.slice(1).forEach(x=>{ const d=new Date(x.date+"T12:00:00"), m=new Date(d); m.setDate(d.getDate()-((d.getDay()+6)%7)); const k=m.toISOString().slice(0,10); by[k]=(by[k]||0)+(+x.new_menus||0); });
+return Object.keys(by).sort().map(d=>({d, n:by[d]}));
+}
+function weeklyNote(){
+const wk=weeks(), before=wk.slice(0,-1).slice(-4).map(x=>x.n).sort((a,b)=>a-b);
+if(before.length>=2){ const m=before.length%2?before[(before.length-1)/2]:Math.round((before[before.length/2-1]+before[before.length/2])/2), lw=wk.length>1?wk[wk.length-2].n:0;
+return tx(`Usually about ${m} a week. Last week: ${lw}.`,`Fel arfer tua ${m} yr wythnos. Yr wythnos diwethaf: ${lw}.`); }
+return null;
+}
 function headline(){
 const h=DATA.history, prev=h.length>1?h[h.length-2]:null;
 const newM = V.flatMap(v=>v.menus).filter(m=>m.is_new_this_week).length;
 $("k-new").textContent = DATA.baseline ? "–" : newM;
 $("k-new-l").textContent = tx(newM===1 ? "new menu this week" : "new menus this week", "bwydlen newydd yr wythnos hon");
-$("k-new-d").textContent = DATA.baseline ? tx("Counting starts next Monday","Bydd y cyfrif yn dechrau ddydd Llun nesaf") : prev ? tx(`${prev.new_menus} the week before (${fmtDate(prev.date)})`,`${prev.new_menus} yr wythnos cynt (${fmtDate(prev.date)})`) : "";
+$("k-new-d").textContent = DATA.baseline ? tx("Counting starts next Monday","Bydd y cyfrif yn dechrau ddydd Llun nesaf") : weeklyNote() ? weeklyNote() : prev ? tx(`${prev.new_menus} the week before (${fmtDate(prev.date)})`,`${prev.new_menus} yr wythnos cynt (${fmtDate(prev.date)})`) : "";
 $("k-places").textContent = V.filter(v=>v.serves_food==="yes").length;
 $("k-places-d").textContent = (n=>tx(`in ${n} towns and villages`,`mewn ${n} tref a phentref`))(new Set(V.map(v=>v.town)).size);
 $("k-menus").textContent = V.reduce((s,v)=>s+v.menus.length,0);
-const hh=h.slice(-6), W=170, H=96, slot=(W-12)/hh.length, bw=Math.min(36,slot-10), max=Math.max(...hh.map(x=>x.new_menus),1);
+const wk = weeks(), hh = wk.slice(-6), W=280, H=120, L=8, R=272, slot=(R-L)/6, bw=26, max=Math.max(...hh.map(x=>x.n),1);
+const lab = d => fd(new Date(d+"T12:00:00"),{day:"numeric",month:"short"});
 $("weeks").setAttribute("viewBox",`0 0 ${W} ${H}`);
-$("weeks").innerHTML = hh.map((x,i)=>{ const bh=(x.new_menus/max)*(H-40), xx=6+i*slot+(slot-bw)/2, last=i===hh.length-1;
-return `<rect x="${xx.toFixed(1)}" y="${(H-20-bh).toFixed(1)}" width="${bw.toFixed(1)}" height="${bh.toFixed(1)}" rx="4" fill="${last?"var(--new)":"var(--line)"}"/>`+
-`<text x="${(xx+bw/2).toFixed(1)}" y="${(H-24-bh).toFixed(1)}" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">${x.new_menus}</text>`+
-`<text x="${(xx+bw/2).toFixed(1)}" y="${H-4}" text-anchor="middle" font-size="11" fill="var(--ink-2)">${fd(new Date(x.date+"T12:00:00"),{day:"numeric",month:"short"})}</text>`; }).join("");
+$("weeks").innerHTML = `<title id="weeks-t">${esc(tx(`New menus each week, last ${hh.length} weeks: ${hh.map(x=>`${lab(x.d)} ${x.n}`).join(", ")}`,`Bwydlenni newydd bob wythnos, y ${hh.length} wythnos diwethaf: ${hh.map(x=>`${lab(x.d)} ${x.n}`).join(", ")}`))}</title><line x1="${L}" x2="${R}" y1="92" y2="92" stroke="var(--ink-2)" stroke-width="1"/>`+hh.map((x,i)=>{ const last=i===hh.length-1, cx=L+(6-hh.length+i)*slot+slot/2, bh=x.n>0?Math.max(3,x.n/max*60):0;
+return (x.n>0?`<rect x="${(cx-bw/2).toFixed(1)}" y="${(92-bh).toFixed(1)}" width="${bw}" height="${bh.toFixed(1)}" rx="3" fill="${last?"var(--new)":"var(--line)"}" stroke="${last?"var(--new)":"var(--ink-2)"}" stroke-width="1"/>`:`<line x1="${(cx-bw/2).toFixed(1)}" x2="${(cx+bw/2).toFixed(1)}" y1="91" y2="91" stroke="var(--ink-2)" stroke-width="2"/>`)+
+`<text x="${cx.toFixed(1)}" y="${(86-bh).toFixed(1)}" text-anchor="middle" font-size="16" font-weight="700" fill="var(--ink)">${x.n}</text>`; }).join("")+
+(hh.length?`<text x="${(L+(6-hh.length)*slot+slot/2-bw/2).toFixed(1)}" y="112" text-anchor="start" font-size="14" fill="var(--ink-2)">${lab(hh[0].d)}</text><text x="${R}" y="112" text-anchor="end" font-size="14" fill="var(--ink-2)">${tx("This week","Yr wythnos hon")}</text>`:"");
+$("weeks").hidden = hh.length < 2;
+$("weeks-rows").innerHTML = wk.slice().reverse().map(x=>`<tr><td>${fmtDate(x.d)}</td><td>${x.n}</td></tr>`).join("");
 const next=nextMonday(DATA.generated), today=new Date().toISOString().slice(0,10);
 $("stamp").innerHTML = tx("Menus checked","Bwydlenni wedi’u gwirio")+` <b>${fmtLong(DATA.generated)}</b>. `+(today>next?`<br><span class="late">${tx("This week’s check is running late","Mae gwiriad yr wythnos hon yn hwyr")}</span>`:`${tx("Next check","Gwiriad nesaf")} <b>${fmtLong(next)}</b>.`);
 }
@@ -581,6 +602,7 @@ document.querySelectorAll("[data-cy-ph]").forEach(el=>{ if(el.dataset.enPh===und
 document.querySelectorAll(".btn.lang").forEach(b=>b.setAttribute("aria-pressed", String(b.dataset.l===LANG)));
 $("aa-l").textContent = document.documentElement.classList.contains("big") ? tx("Standard text","Testun arferol") : tx("Larger text","Testun mwy");
 $("seenew").textContent = DATA.baseline ? tx("See the festive menus","Gweld y bwydlenni Nadolig") : tx("See the new menus","Gweld y bwydlenni newydd");
+if(V.filter(v=>v.hours).length < V.length/4){ const w=$("f-when"); w.hidden=true; const l=document.querySelector('label[for="f-when"]'); if(l) l.hidden=true; }
 headline(); cuisines(); render();
 }
 document.querySelectorAll(".btn.lang").forEach(b=>b.onclick=()=>setLang(b.dataset.l));
