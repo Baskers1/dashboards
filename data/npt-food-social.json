@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-22",
+ "generated": "2026-11-23",
  "area": "Neath Port Talbot",
  "scope": "restaurants, pubs, cafes, pop-ups and markets",
  "timezone": "Europe/London",
@@ -34,8 +34,8 @@
   "posts_kept": 2883,
   "comments_read": 385,
   "food_and_drink_posts": 1917,
-  "listing_rows": 303,
-  "listing_rows_forward": 45,
+  "listing_rows": 302,
+  "listing_rows_forward": 41,
   "recurring_fixtures": 14,
   "venues_ranked": 59,
   "closed_venues": 2,
@@ -43,74 +43,6 @@
   "facebook_pages": 120
  },
  "listings": [
-  {
-   "date": "2026-11-22",
-   "venue": "Cwmdu Inn, Shop and Post Office",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "time": "12.30pm",
-   "price": "£16",
-   "detail": "🥮🥘🍲 We're excited to welcome Ben & Sian back in the Cwmdu Kitchen this Sunday! 🥮🥘🍲 Sunday 22nd November After a fabulous return of our Sunday Lunches last week come and join us for delicious roast dinner this Sunday serv",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/CwmduInn/posts/pfbid0ozZDwk29E5xPwxf4KM3gqeCNW7DD3MujBs7sibwQkrNCgH1PmCDijwrLNSN1zoEgl",
-   "posted": "2026-11-17",
-   "date_inferred": false,
-   "date_text": "22nd November",
-   "recurring": false,
-   "needs_check": false
-  },
-  {
-   "date": "2026-11-22",
-   "venue": "The Arch Bar & Nightclub",
-   "towns": [
-    "Neath"
-   ],
-   "time": null,
-   "price": null,
-   "detail": "❤️ 13 YEARS OF THE ARCH NIGHTCLUB! ❤️ On 22nd November 2013, we opened the doors to our upstairs nightclub for the very first time, just a few weeks after opening our downstairs bar in October. Little did we know back th",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/TheArchNeath/posts/pfbid0GvGAxMGaBYeK4ChshyCusMoKK7Vb4auxkKqGf6phesCY5tQTjyUL8A9hRmvUfcfTl",
-   "posted": "2026-11-18",
-   "date_inferred": false,
-   "date_text": "22nd November",
-   "recurring": false,
-   "needs_check": false
-  },
-  {
-   "date": "2026-11-22",
-   "venue": "The Somerset Arms",
-   "towns": [
-    "Port Talbot"
-   ],
-   "time": "5.30pm",
-   "price": null,
-   "detail": "This weekend The Somerset Arms at Port Talbot Saturday 5.30pm Sam Waters Live Building the atmosphere for another knock out win for Wales Sunday 5pm Ubatubaband",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/groups/1048348985663965/permalink/2577931082705740/",
-   "posted": "2026-11-16",
-   "date_inferred": true,
-   "date_text": "Sunday",
-   "recurring": false,
-   "needs_check": true
-  },
-  {
-   "date": "2026-11-22",
-   "venue": "Woody's Cafe",
-   "towns": [
-    "Port Talbot"
-   ],
-   "time": "11.50",
-   "price": "£2",
-   "detail": "Woody's Cafe PortTalbot | Port Talbot - Facebook - THIS SUNDAY. 22/11/26....WE ARE OPEN!!!! BEEF-PORK-TURKEY-LAMB (+£2) -CHOCOLATE FUDGE CAKE AND CREAM -APPLE CRUMBLE & CUSTARD -VICTORIA SPONGE CAKE £11.50 OR ...",
-   "platform": "Google",
-   "url": "https://www.facebook.com/woodyscafept/",
-   "posted": null,
-   "date_inferred": false,
-   "date_text": "22/11/26",
-   "recurring": false,
-   "needs_check": true
-  },
   {
    "date": "2026-11-23",
    "venue": "Afan Tavern",
@@ -1128,8 +1060,8 @@
    ]
   },
   {
-   "venue": "Le Bistro",
-   "total_mentions": 10,
+   "venue": "The Crown Skewen",
+   "total_mentions": 17,
    "independent_mentions": 7,
    "platforms": [
     "Facebook",
@@ -1138,8 +1070,8 @@
    ]
   },
   {
-   "venue": "The Crown Skewen",
-   "total_mentions": 17,
+   "venue": "Le Bistro",
+   "total_mentions": 10,
    "independent_mentions": 7,
    "platforms": [
     "Facebook",
@@ -1395,7 +1327,7 @@
    ]
   },
   {
-   "venue": "The Dillwyn Arms",
+   "venue": "Dillwyn Arms",
    "total_mentions": 11,
    "independent_mentions": 3,
    "platforms": [
@@ -1405,7 +1337,7 @@
    ]
   },
   {
-   "venue": "Dillwyn Arms",
+   "venue": "The Dillwyn Arms",
    "total_mentions": 11,
    "independent_mentions": 3,
    "platforms": [
@@ -1494,7 +1426,7 @@
    ]
   },
   {
-   "venue": "Rolling Mill",
+   "venue": "The Rolling Mill",
    "total_mentions": 4,
    "independent_mentions": 3,
    "platforms": [
@@ -1504,7 +1436,7 @@
    ]
   },
   {
-   "venue": "The Rolling Mill",
+   "venue": "Rolling Mill",
    "total_mentions": 4,
    "independent_mentions": 3,
    "platforms": [
