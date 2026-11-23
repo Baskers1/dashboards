@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-11-16T09:25:00Z",
- "collected": "16 November 2026",
+ "generated_at": "2026-11-23T09:25:23Z",
+ "collected": "23 November 2026",
  "items": [
   {
    "id": "angus-sds-rates",
@@ -772,17 +772,17 @@
    "title": "Restricting mobile phones in Scotland's schools",
    "body": "Scottish Government",
    "sector": "central",
-   "status": "open",
+   "status": "closed",
    "deadline": "2026-11-17",
-   "time": "closing time not checked; confirm on the consultation page",
+   "time": "closed 17 November 2026; no response analysis published yet",
    "topics": [
     "schools"
    ],
    "plain": "How far personal mobile phone use should be restricted during the school day, to shape new law. It covers every school in Scotland, including Dundee and Carnoustie.",
-   "detail": "Opened 25 August 2026. Asks about the extent of restrictions, their impacts, exemptions, and whether they should cover independent schools and wearable devices. It does not cover phone use outside school or social media at home. Pupils, parents, teachers, school staff and education authorities can respond.",
+   "detail": "Opened 25 August 2026. Asks about the extent of restrictions, their impacts, exemptions, and whether they should cover independent schools and wearable devices. It does not cover phone use outside school or social media at home. Pupils, parents, teachers, school staff and education authorities can respond. The consultation closed on 17 November 2026. The Scottish Government says responses are usually published after checks, with an analysis report some months later.",
    "how": "Respond on the consultation portal; you can save and return. Questions to relationshipsandbehaviourinschools@gov.scot.",
    "url": "https://consult.gov.scot/education/restricting-mobile-phones-in-scotlands-schools/",
-   "urlLabel": "Have your say",
+   "urlLabel": "Read the consultation page",
    "src": "https://consult.gov.scot/education/restricting-mobile-phones-in-scotlands-schools/",
    "a": {
     "people": [
@@ -895,37 +895,45 @@
   },
   {
    "id": "angus-rent",
-   "title": "Angus Council rent review 2027/28: stage two to come",
+   "title": "Angus Council rent review 2027/28: stage two, choose a rent rise",
    "body": "Angus Council",
    "sector": "local",
-   "status": "decision",
-   "deadline": "2026-09-30",
-   "time": "stage one closed 5pm on 30 September 2026; stage two date not announced",
+   "status": "open",
+   "deadline": "2026-12-13",
+   "time": "open from 9am on 11 November to 13 December 2026; closing time not stated",
    "topics": [
     "homes"
    ],
-   "plain": "Stage one asked council tenants which housing services and investments matter most. A second consultation on proposed rent and investment options is due later in 2026.",
-   "detail": "Launched 14 September 2026. Stage one covered how rental income should be split across repairs, home improvements, tenancy services, estate management, compliance, tenant engagement, digital services, debt repayment, new housing and staffing. Responses will shape the rent increase scenarios in stage two. No stage two date had been published as of 12 October 2026.",
-   "how": "No survey is open now. Watch Engage Angus and the Angus Council news page for stage two.",
-   "url": "https://www.angus.gov.uk/news/angus_council_launches_first_stage_of_rent_review_consultation_for_202728",
-   "urlLabel": "Read the council notice",
-   "src": "https://engage.angus.gov.uk/embeds/projects/33779/survey-tools/60493",
+   "plain": "Angus Council tenants, including in Carnoustie and Monifieth, are asked to pick next year's rent rise from three options: 6.5%, 7% or 7.5%, from 1 April 2027.",
+   "detail": "Stage two opened at 9am on 11 November 2026. The council says the average weekly increase would be £5.96 at 6.5%, £6.42 at 7% and £6.88 at 7.5%. In stage one (September 2026) 283 tenants took part: 59.9% said they would support higher rents for improvements to existing homes, 49.1% prioritised repairs and maintenance and 47.7% energy efficiency, and rent affordability remained a key concern. Rent income can only be spent on council housing, including repairs, improvements, estate work, compliance, empty homes and building or buying new council homes. Tenants' views will shape the recommendations to the Housing Committee in February 2027. Tenants who complete the survey can enter a prize draw for a £50 shopping voucher.",
+   "how": "Read the rent options booklet and complete the survey on Engage Angus. If you cannot go online, call the Customer Contact Centre on 03452 777 778 or email tenantparticipation@angus.gov.uk to book help from a Tenant Participation Officer.",
+   "url": "https://engage.angus.gov.uk/embeds/projects/33779/survey-tools/61897",
+   "urlLabel": "Have your say",
+   "src": "https://www.angus.gov.uk/news/angus_council_launches_second_stage_of_rent_review_consultation_for_202728",
    "a": {
     "people": [
      [
-      "Angus Council tenants, including in Carnoustie",
+      "Angus Council tenants, including in Carnoustie and Monifieth",
+      1
+     ],
+     [
+      "Tenants on low incomes worried about rent affordability",
       1
      ]
     ],
     "groups": [
      [
-      "Tenant participation groups",
-      0
+      "Tenant participation groups and the Tenant Forum",
+      1
      ]
     ],
     "systems": [
      [
-      "Rents and housing investment",
+      "Rents and housing investment from April 2027",
+      1
+     ],
+     [
+      "Repairs, energy efficiency and new council homes",
       1
      ]
     ]
@@ -1132,17 +1140,17 @@
    "title": "Quality prescribing guidance for cardiovascular risk reduction 2026-2029",
    "body": "Scottish Government",
    "sector": "central",
-   "status": "open",
+   "status": "closed",
    "deadline": "2026-11-20",
-   "time": "closing time not checked; confirm on the consultation page",
+   "time": "closed 20 November 2026; no response analysis published yet",
    "topics": [
     "health"
    ],
    "plain": "Draft national guidance for GPs and other prescribers on lowering the risk of heart disease and stroke: medicine reviews, blood pressure, cholesterol, diabetes, weight-loss medicines and stopping smoking.",
-   "detail": "Opened 28 September 2026. Recommendations include the ASSIGN v2.0 risk score, atorvastatin 20mg as the first-choice statin for prevention, incretin-based weight-loss medicines for people who meet the criteria, and asking permission before discussing weight. A virtual consultation event is planned; register interest by emailing EPandT@gov.scot.",
+   "detail": "Opened 28 September 2026. Recommendations include the ASSIGN v2.0 risk score, atorvastatin 20mg as the first-choice statin for prevention, incretin-based weight-loss medicines for people who meet the criteria, and asking permission before discussing weight. A virtual consultation event is planned; register interest by emailing EPandT@gov.scot. The consultation closed on 20 November 2026; no outcome had been published when checked on 23 November 2026.",
    "how": "Respond on the consultation portal; you can save and return.",
    "url": "https://consult.gov.scot/health-and-social-care/quality-prescribing-guidance-for-cardiovascular-ri/",
-   "urlLabel": "Have your say",
+   "urlLabel": "Read the consultation page",
    "src": "https://consult.gov.scot/health-and-social-care/quality-prescribing-guidance-for-cardiovascular-ri/",
    "a": {
     "people": [
@@ -1216,17 +1224,17 @@
    "title": "Angus Local Development Plan: draft evidence chapters (batches 5 and 6)",
    "body": "Angus Council",
    "sector": "local",
-   "status": "open",
+   "status": "closed",
    "deadline": "2026-11-16",
-   "time": "closing time not stated on the page",
+   "time": "closed 16 November 2026; no outcome published yet",
    "topics": [
     "homes"
    ],
    "plain": "Angus Council wants views on the evidence behind its next Local Development Plan, which will guide where homes and other development go across Angus, including Carnoustie and Monifieth, for ten years.",
-   "detail": "Batch 5 covers flooding and water management, housing, soils, and health, safety and wellbeing. Batch 6 covers biodiversity and natural places, community wealth building, and the site assessment methodology. There is a separate survey for each chapter. The council says the chapters are technical and asks for views on the data used, the analysis and the conclusions, at an Angus-wide level; local, place-by-place engagement comes later. The finished Evidence Report goes to the Planning and Environmental Appeals Division for a 'Gatecheck'. Earlier batches (transport, town centres, business and rural development) closed on 6 October 2026.",
+   "detail": "Batch 5 covers flooding and water management, housing, soils, and health, safety and wellbeing. Batch 6 covers biodiversity and natural places, community wealth building, and the site assessment methodology. There is a separate survey for each chapter. The council says the chapters are technical and asks for views on the data used, the analysis and the conclusions, at an Angus-wide level; local, place-by-place engagement comes later. The finished Evidence Report goes to the Planning and Environmental Appeals Division for a 'Gatecheck'. Earlier batches (transport, town centres, business and rural development) closed on 6 October 2026. The surveys closed on 16 November 2026. The finished Evidence Report is still to go to the Planning and Environmental Appeals Division for its Gatecheck; no date was given on the page checked on 23 November 2026.",
    "how": "Read each draft chapter and complete its survey on Engage Angus. Paper copies of the chapters and surveys can be requested at ANGUSalive libraries. Questions to ldp@angus.gov.uk.",
    "url": "https://engage.angus.gov.uk/draft-evidence-report-chapters",
-   "urlLabel": "Have your say",
+   "urlLabel": "Read the consultation page",
    "src": "https://engage.angus.gov.uk/draft-evidence-report-chapters",
    "a": {
     "people": [
@@ -1276,17 +1284,17 @@
    "title": "Angus Council budget consultation 2027/28: phase 1",
    "body": "Angus Council",
    "sector": "local",
-   "status": "open",
+   "status": "closed",
    "deadline": "2026-11-16",
-   "time": "closing time not stated on the page (dates 19 October to 16 November 2026, checked 26 October 2026)",
+   "time": "phase 1 closed 16 November 2026; phase 2 date not announced",
    "topics": [
     "services"
    ],
    "plain": "Angus Council wants to know which services and issues matter most to people where they live, including Carnoustie and Monifieth, before it sets its budget for 2027/28.",
-   "detail": "Opened 19 October 2026. The Engage Angus page says rising costs for food, fuel and heating, and higher demand for children's and adult care services, make it harder to afford all current services, and that the council must balance its budget and meet its legal duties. Phase 1 asks general questions about where you live; a second survey later in the year will ask more specific questions about where the council should spend money. An Easy Read version is offered for the first time, and other formats can be requested through the council's accessibility feedback form. Background is in Committee Report 273/26. The page gives no budget gap figure and lists no drop-in events.",
+   "detail": "Opened 19 October 2026. The Engage Angus page says rising costs for food, fuel and heating, and higher demand for children's and adult care services, make it harder to afford all current services, and that the council must balance its budget and meet its legal duties. Phase 1 asks general questions about where you live; a second survey later in the year will ask more specific questions about where the council should spend money. An Easy Read version is offered for the first time, and other formats can be requested through the council's accessibility feedback form. Background is in Committee Report 273/26. The page gives no budget gap figure and lists no drop-in events. Phase 1 closed on 16 November 2026. When checked on 23 November 2026, Engage Angus had not yet published the second, more specific survey or a date for it.",
    "how": "Take the online survey on Engage Angus, or download the Easy Read version.",
    "url": "https://engage.angus.gov.uk/angus-council-budget-consultation-2027-28",
-   "urlLabel": "Have your say",
+   "urlLabel": "Read the consultation page",
    "src": "https://engage.angus.gov.uk/angus-council-budget-consultation-2027-28",
    "a": {
     "people": [
@@ -1660,7 +1668,7 @@
    ],
    "plain": "Dundee is drawing up plans to make travel along Arbroath Road (towards Broughty Ferry) and Lochee Road easier, safer and more sustainable, looking at bus services, walking, wheeling and cycling. It wants local people, businesses and visitors to share their views and experiences.",
    "detail": "Dundee City Council and Tactran, working with the engineering consultancy Sweco, are exploring improvements along the Lochee Road and Arbroath Road corridors. The council says the plans will look at potential improvements to bus services, walking, wheeling and cycling, and that feedback will help inform the development of the plans. Sustainable Dundee says the project is at its third stage and is asking for feedback on concept design proposals, with drop-in events at Ancrum Primary School (3 November), Glebelands Primary School (5 November), Westgait Church of Scotland, Lochee (10 November), Claypotts Primary School (14 November) and the Wellgate Shopping Centre (Saturday 21 November, 11am to 2pm). Council social media says more information and an online survey are on the project hub site. The hub is a JavaScript page I could not read, so I have not seen the survey questions, the exact streets covered or the proposals themselves. What the changes would mean for parking, traffic lanes or bus stops is not stated in anything I read.",
-   "how": "Open the project hub, read the proposals and complete the online survey for the corridor you use (Lochee Road or Arbroath Road), or go to the last drop-in event at the Wellgate Shopping Centre on Saturday 21 November, 11am to 2pm.",
+   "how": "Open the project hub, read the proposals and complete the online survey for the corridor you use (Lochee Road or Arbroath Road). The last drop-in event, at the Wellgate Shopping Centre, was on Saturday 21 November.",
    "url": "https://dundee-sustainable-transport-corridors-swecouk.hub.arcgis.com/",
    "urlLabel": "Have your say",
    "src": "https://www.dundeecity.gov.uk/events/event/35677",
@@ -1750,6 +1758,116 @@
      ],
      [
       "Learning opportunities and support across Angus",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "dundee-budget",
+   "title": "Dundee City Council budget consultation 2027/28",
+   "body": "Dundee City Council",
+   "sector": "local",
+   "status": "open",
+   "deadline": "2026-12-18",
+   "time": "the council says the survey closes on 18 December 2026; closing time not stated (one council social media post gives 20 December, so go by the council's own pages)",
+   "topics": [
+    "services"
+   ],
+   "plain": "Dundee City Council faces a gap of at least £12.7 million next year and wants your views on specific savings options put forward by officers, and on the level of Council Tax for 2027/28.",
+   "detail": "Launched 17 November 2026. The council says each 1% on Council Tax raises just over £700,000 a year, so closing the whole gap with Council Tax alone would mean a rise of about 16.1%. It is also looking at reducing, changing or stopping some services and raising fees and charges. News reports of the officers' options (BBC, STV and The National, 10 to 19 November 2026) include less frequent bin collections, cuts to Christmas lights and the City Square tree, closing all 20 council-run public toilets from April 2027 (£81,000 a year, including Castle Green, the Esplanade and the Windmill car park in Broughty Ferry), ending council funding for the RNLI lifeguard service at Broughty Ferry beach (£32,000 a year), reviewing grounds maintenance and reducing grants to third-party organisations. No decisions have been taken; councillors will set the budget in early 2027. The council especially wants to hear from people with protected characteristics, such as older and disabled people.",
+   "how": "Complete the online survey (you can answer as many or as few options as you like). Paper forms are in libraries and community centres, and libraries offer free internet access with help from staff. The council's FAQ page explains the process.",
+   "url": "https://bit.ly/BudgetConsultation27-28",
+   "urlLabel": "Have your say",
+   "src": "https://www.dundeecity.gov.uk/news/article?article_ref=5167",
+   "a": {
+    "people": [
+     [
+      "All Dundee residents and Council Tax payers",
+      1
+     ],
+     [
+      "Older and disabled people and others with protected characteristics",
+      1
+     ],
+     [
+      "Families who use Broughty Ferry beach and parks",
+      0
+     ]
+    ],
+    "groups": [
+     [
+      "Charities and third sector organisations funded by council grants",
+      1
+     ],
+     [
+      "The RNLI lifeguard service at Broughty Ferry",
+      1
+     ],
+     [
+      "Local businesses and organisations in Dundee",
+      1
+     ]
+    ],
+    "wildlife": [
+     [
+      "Parks and green spaces affected by grounds maintenance changes",
+      0
+     ]
+    ],
+    "systems": [
+     [
+      "The 2027/28 council budget and Council Tax",
+      1
+     ],
+     [
+      "Bin collections, public toilets and city centre events",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "sg-restraint",
+   "title": "Restraint and seclusion in schools: draft statutory guidance",
+   "body": "Scottish Government",
+   "sector": "central",
+   "status": "open",
+   "deadline": "2027-02-12",
+   "time": "closing time not checked; confirm on the consultation page",
+   "topics": [
+    "schools"
+   ],
+   "plain": "New law will require schools to tell parents when restraint or seclusion has been used on their child and to record every incident. The Scottish Government wants views on the draft guidance schools will follow. It covers every school in Scotland, including Dundee and Angus.",
+   "detail": "Opened 20 November 2026. The Restraint and Seclusion in Schools (Scotland) Act 2026 received Royal Assent in May 2026. The draft guidance replaces the 2024 non-statutory guidance on physical intervention, and covers prevention, the difference between restraint and other physical actions, recording and reporting, and training. The consultation also asks about regulations listing types of restraint that will not be covered by the Act's duties. It is likely to matter most to families of children with additional support needs, though the page does not single them out.",
+   "how": "Read the consultation paper and respond on the consultation portal; you can save and return.",
+   "url": "https://consult.gov.scot/learning-directorate/restraint-and-seclusion-in-schools-scotland-act-st/",
+   "urlLabel": "Have your say",
+   "src": "https://consult.gov.scot/learning-directorate/restraint-and-seclusion-in-schools-scotland-act-st/",
+   "a": {
+    "people": [
+     [
+      "Pupils and their parents and carers",
+      1
+     ],
+     [
+      "Children with additional support needs",
+      0
+     ]
+    ],
+    "groups": [
+     [
+      "Education authorities such as Dundee and Angus councils, and school staff",
+      1
+     ],
+     [
+      "Advocacy and disability charities",
+      0
+     ]
+    ],
+    "systems": [
+     [
+      "School records, reporting and staff training",
       1
      ]
     ]
