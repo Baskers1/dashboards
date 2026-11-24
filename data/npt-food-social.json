@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-23",
+ "generated": "2026-11-24",
  "area": "Neath Port Talbot",
  "scope": "restaurants, pubs, cafes, pop-ups and markets",
  "timezone": "Europe/London",
@@ -35,7 +35,7 @@
   "comments_read": 385,
   "food_and_drink_posts": 1917,
   "listing_rows": 302,
-  "listing_rows_forward": 41,
+  "listing_rows_forward": 37,
   "recurring_fixtures": 14,
   "venues_ranked": 59,
   "closed_venues": 2,
@@ -43,74 +43,6 @@
   "facebook_pages": 120
  },
  "listings": [
-  {
-   "date": "2026-11-23",
-   "venue": "Afan Tavern",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "time": null,
-   "price": null,
-   "detail": "Our Christmas menu launches on 23rd November, bringing a little extra festive magic to the table. Whether you’re planning a family get-together, a meal with friends or a festive catch-up with colleagues, we’d love to wel",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/AfanTavern/posts/pfbid02Agmvy4ZJ1ZT7KVeSeENENX8zSTaiU8gDNeDrnAD4ppqwJjb5LdEz2qyV8LYim12Kl",
-   "posted": "2026-11-18",
-   "date_inferred": false,
-   "date_text": "23rd November",
-   "recurring": false,
-   "needs_check": false
-  },
-  {
-   "date": "2026-11-23",
-   "venue": "Afan Tavern",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "time": null,
-   "price": "£5",
-   "detail": "The moment you’ve all been waiting for.. Our Christmas menu 2026 🎅🎄 Whether you’re planning a festive family get together, a work Christmas do or just an excuse for a good meal, we’ve got you covered🥂 Take a look at our ",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/AfanTavern/posts/pfbid02e2Q1LqCCr2ygyJoxZt5kV9aymW166T7ZUPaShBJ3sLYofPXTYd5BXiAeYf6n3v2zl",
-   "posted": "2026-09-26",
-   "date_inferred": false,
-   "date_text": "23rd November",
-   "recurring": false,
-   "needs_check": false
-  },
-  {
-   "date": "2026-11-23",
-   "venue": "The Old White Horse Inn, Pontneathvaughan",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "time": "12pm",
-   "price": null,
-   "detail": "Our midweek carvery is here to make your weekdays that little more delicious!😋 Think tender meats, crispy roasties, and all your favourite trimmings…because a good roast shouldn’t be reserved for the weekend!🤭 Midweek ca",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/reel/2180475206220621/",
-   "posted": "2026-11-18",
-   "date_inferred": true,
-   "date_text": "Monday",
-   "recurring": false,
-   "needs_check": true
-  },
-  {
-   "date": "2026-11-23",
-   "venue": "The Rising Sun Inn",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "time": "6pm",
-   "price": "£2",
-   "detail": "🎲♟️ GAMES NIGHT AT THE RISING SUN INN! 🎲🍻 NEW DATE — MONDAY 23RD NOVEMBER! 📅 Fancy swapping the TV and phone screens for a bit of good old-fashioned fun? 😁 We're bringing Games Night to The Rising Sun Inn, and we'd love ",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/therisingsuninnabersychan/posts/pfbid02kdBJdwuAwcz4J8JUYVtBrCpfzY6GS6pztJQA1Ztic9PDFTAqkNqUgyYCLpx1psYRl",
-   "posted": "2026-11-14",
-   "date_inferred": false,
-   "date_text": "23rd November",
-   "recurring": false,
-   "needs_check": false
-  },
   {
    "date": "2026-11-24",
    "venue": "The Bryncoch Inn",
