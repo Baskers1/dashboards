@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-24",
+ "generated": "2026-11-25",
  "area": "Neath Port Talbot",
  "scope": "restaurants, pubs, cafes, pop-ups and markets",
  "timezone": "Europe/London",
@@ -35,7 +35,7 @@
   "comments_read": 385,
   "food_and_drink_posts": 1917,
   "listing_rows": 302,
-  "listing_rows_forward": 37,
+  "listing_rows_forward": 36,
   "recurring_fixtures": 14,
   "venues_ranked": 59,
   "closed_venues": 2,
@@ -43,23 +43,6 @@
   "facebook_pages": 120
  },
  "listings": [
-  {
-   "date": "2026-11-24",
-   "venue": "The Bryncoch Inn",
-   "towns": [
-    "Bryncoch"
-   ],
-   "time": null,
-   "price": "£228",
-   "detail": "🎉 **WHAT A TUESDAY QUIZ NIGHT!** 🎉 What a fantastic night we had at Tuesday's quiz! 🤩 A massive thank you to everyone who came along and got involved. We had lots of teams joining in, plenty of laughs, great competition ",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/thebryncochinn/posts/pfbid0Vh2xX3dsKFQNFomaJeNoY4aAiCZ3DtWX9eavHSDoeLmqtgMV6d7JhDKBysTwd17Ml",
-   "posted": "2026-11-18",
-   "date_inferred": true,
-   "date_text": "TUESDAY",
-   "recurring": false,
-   "needs_check": true
-  },
   {
    "date": "2026-11-28",
    "venue": "Oakwood Inn",
@@ -1259,7 +1242,7 @@
    ]
   },
   {
-   "venue": "Dillwyn Arms",
+   "venue": "The Dillwyn Arms",
    "total_mentions": 11,
    "independent_mentions": 3,
    "platforms": [
@@ -1269,7 +1252,7 @@
    ]
   },
   {
-   "venue": "The Dillwyn Arms",
+   "venue": "Dillwyn Arms",
    "total_mentions": 11,
    "independent_mentions": 3,
    "platforms": [
