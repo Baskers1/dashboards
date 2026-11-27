@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-26",
+ "generated": "2026-11-27",
  "area": "Neath Port Talbot",
  "scope": "restaurants, pubs, cafes, pop-ups and markets",
  "timezone": "Europe/London",
@@ -27,56 +27,363 @@
  },
  "posts_fetched": {
   "oldest": "2026-11-19",
-  "newest": "2026-11-20"
+  "newest": "2026-11-27"
  },
  "counts": {
-  "api_responses": 779,
-  "posts_kept": 2883,
-  "comments_read": 385,
-  "food_and_drink_posts": 1917,
-  "listing_rows": 302,
-  "listing_rows_forward": 36,
-  "recurring_fixtures": 14,
-  "venues_ranked": 59,
+  "api_responses": 732,
+  "posts_kept": 2789,
+  "comments_read": 611,
+  "food_and_drink_posts": 1857,
+  "listing_rows": 289,
+  "listing_rows_forward": 67,
+  "recurring_fixtures": 11,
+  "venues_ranked": 72,
   "closed_venues": 2,
-  "facebook_groups": 21,
-  "facebook_pages": 120
+  "facebook_groups": 22,
+  "facebook_pages": 107
  },
  "listings": [
   {
-   "date": "2026-11-28",
-   "venue": "Oakwood Inn",
+   "date": "2026-11-27",
+   "venue": "Bar 98",
    "towns": [
-    "Cwmavon",
-    "Port Talbot"
+    "Neath Port Talbot"
    ],
-   "time": "8:30pm",
+   "time": "7:30pm",
    "price": null,
-   "detail": "Oakwood Inn | Port Talbot - Facebook - The Oakwood, Cwmavon Saturday 28th November ⏰ 8:30pm Great music, great company and your local pub doing what it does best! ONE NIGHT. TWO ICONIC ...",
-   "platform": "Google",
-   "url": "https://www.facebook.com/p/Oakwood-Inn-100057402434015/",
-   "posted": null,
+   "detail": "🍿 This Friday at Bar98 🍿 Looking for somewhere warm to go after the parade. Well look no further as we will be showing a free Christmas film from 7:30pm All children welcome but spaces are limited so make sure you get th",
+   "platform": "Facebook",
+   "url": "https://www.facebook.com/permalink.php?story_fbid=pfbid026FUrsVJ9Cz2KEQw6mJXSbXxTvQZ739WSfQUnMmLL37we2bx6BpbhizgMkcnny55hl&id=61558407041109",
+   "posted": "2026-11-23",
+   "date_inferred": true,
+   "date_text": "This Friday",
+   "recurring": false,
+   "needs_check": true
+  },
+  {
+   "date": "2026-11-27",
+   "venue": "Bar 98",
+   "towns": [
+    "Neath Port Talbot"
+   ],
+   "time": null,
+   "price": "£1",
+   "detail": "Please join us this Christmas where we will be supporting the Pantry Food Bank. For every bear we sell we will be donating £1 to support them this festive season 🧸🫶🏻🎄 Available from the 27th November ☕️",
+   "platform": "Facebook",
+   "url": "https://www.facebook.com/reel/1084076038023042/",
+   "posted": "2026-11-20",
+   "date_inferred": false,
+   "date_text": "27th November",
+   "recurring": false,
+   "needs_check": false
+  },
+  {
+   "date": "2026-11-27",
+   "venue": "The Brit Public House & Restaurant",
+   "towns": [
+    "Neath Port Talbot"
+   ],
+   "time": "8PM",
+   "price": null,
+   "detail": "🎶 LIVE MUSIC FRIDAY 🎶 Join us this Friday 27th November at 8PM for a fantastic night of live music with the talented Paul Evans! Enjoy amazing food, delicious drinks and brilliant live entertainment - the perfect way to ",
+   "platform": "Facebook",
+   "url": "https://www.facebook.com/thebritpubcwmavon/posts/pfbid02rGhoTfF9ZNKJj5cCsGaCGYBmgjBMEQJFTwa5PTUzViMNXE6grpUkCpUcEPo8YhpJl",
+   "posted": "2026-11-25",
+   "date_inferred": false,
+   "date_text": "27th November",
+   "recurring": false,
+   "needs_check": false
+  },
+  {
+   "date": "2026-11-27",
+   "venue": "The Castle Hotel",
+   "towns": [
+    "Neath"
+   ],
+   "time": "9PM",
+   "price": "FREE ENTRY",
+   "detail": "🎤✨ IT'S A WEEKEND OF LIVE MUSIC AT THE CASTLE HOTEL NEATH! ✨🎶 Who's ready for a fantastic weekend of entertainment? We've got TWO brilliant nights lined up for you! 🥳🍻 🎸 FRIDAY 27TH NOVEMBER – VICARI'S BAR 🔥 SUNSHINE CAB",
+   "platform": "Facebook",
+   "url": "https://www.facebook.com/groups/196453747792207/permalink/2365100774260816/",
+   "posted": "2026-11-23",
+   "date_inferred": false,
+   "date_text": "27TH NOVEMBER",
+   "recurring": false,
+   "needs_check": false
+  },
+  {
+   "date": "2026-11-28",
+   "venue": "Cwmdu Inn, Shop and Post Office",
+   "towns": [
+    "Neath Port Talbot"
+   ],
+   "time": "7.00pm",
+   "price": "£16",
+   "detail": "🍲🥗🥘 Biddy is back in the Cwmdu Kitchen this Saturday! 🍲🥗🥘 Saturday 28th November 2026 7.00pm - 8.30pm 🍽️ 2 courses – £16 🍽️ 3 courses – £20 📞 To book a table, please call the shop or pub during opening hours on 01558 685",
+   "platform": "Facebook",
+   "url": "https://www.facebook.com/CwmduInn/posts/pfbid0HaVPHxgTi6fHbMqWBDiKAAi6SeAtiSpoavvymyKAJtX15pCvZWq4e6oe6bfi5Li6l",
+   "posted": "2026-11-25",
    "date_inferred": false,
    "date_text": "28th November",
+   "recurring": false,
+   "needs_check": false
+  },
+  {
+   "date": "2026-11-28",
+   "venue": "Portablo Coffi",
+   "towns": [
+    "Port Talbot"
+   ],
+   "time": null,
+   "price": null,
+   "detail": "Looking back at Saturday’s book launch! 📖 What a day at Portablo Coffi. A local author, a local business and a full house. This is what community is all about. Diolch i bawb who came along to support Rick Mainwaring. Por",
+   "platform": "Facebook",
+   "url": "https://www.facebook.com/portablocoffi/posts/pfbid02Tr815KkDSoMvgTFW6BpBsMydnTnb6iDv6GrHKzWtrjCG2UZVLtR778B3rxSFY51ol",
+   "posted": "2026-11-25",
+   "date_inferred": true,
+   "date_text": "Saturday",
    "recurring": false,
    "needs_check": true
   },
   {
    "date": "2026-11-28",
-   "venue": "Oakwood Inn",
+   "venue": "Ruta Kitchen",
    "towns": [
-    "Cwmavon"
+    "Neath"
    ],
-   "time": "8:30pm",
-   "price": null,
-   "detail": "🎤💋 IT’S TIME TO GET SWEET DREAMS ARE MADE OF THIS! 💋🎤 Fancy a night of fabulous vocals, iconic tunes and a little trip down memory lane? 🎶 We’re bringing the 80s vibes to The Oakwood, Cwmavon, with a fantastic tribute to",
+   "time": "8:30am",
+   "price": "£8.99",
+   "detail": "Lunch is sorted! 🍝 Chicken & Mushroom Pasta: linguine with pan-fried chicken breast, sautéed mushrooms and fresh spinach in a creamy sauce. Just £8.99. Freshly cooked to order at Ruta Kitchen. Eat in, take away or order ",
    "platform": "Facebook",
-   "url": "https://www.facebook.com/permalink.php?story_fbid=pfbid0gTw9VUbBc1wcrbLkvkk8CXNkGBfWjYNXpPEwLDXsCiYcdFsy9ZP7LaS3dxGkk6pBl&id=100057402434015",
-   "posted": "2026-11-10",
+   "url": "https://www.facebook.com/photo.php?fbid=122202462008804239&set=a.122094090194804239&type=3",
+   "posted": "2026-11-25",
+   "date_inferred": true,
+   "date_text": "Saturday",
+   "recurring": false,
+   "needs_check": true
+  },
+  {
+   "date": "2026-11-28",
+   "venue": "Ruta Kitchen",
+   "towns": [
+    "Neath"
+   ],
+   "time": "8:30am",
+   "price": null,
+   "detail": "Come in and warm up this winter ❄️☕ Our little piece of Ukraine on Orchard Street is ready for Christmas: sunflowers, a traditional rushnyk, the Ukrainian and Welsh flags side by side, and plenty of cosy seats. Pop in fo",
+   "platform": "Facebook",
+   "url": "https://www.facebook.com/permalink.php?story_fbid=pfbid029WXK556vNpeiK5Y36gYdYfvKNM7BboJvUGoQxbUurzPv1CbXuZdfmtopu2jPtc2hl&id=61574127172402",
+   "posted": "2026-11-23",
+   "date_inferred": true,
+   "date_text": "Saturday",
+   "recurring": false,
+   "needs_check": true
+  },
+  {
+   "date": "2026-11-28",
+   "venue": "The Bryncoch Inn",
+   "towns": [
+    "Bryncoch"
+   ],
+   "time": null,
+   "price": null,
+   "detail": "🎟️ LUCA RAFFLE – TICKETS ON SALE NOW! 🎟️ ​Lots of prizes to be won! Ask behind the bar or scan the QR code below to enter. Drawn this Sunday 28th November during our fundraising quiz event for Luca—come on down! 🍻🎉",
+   "platform": "Facebook",
+   "url": "https://www.facebook.com/thebryncochinn/posts/pfbid02PqWAGQXABPu48sqzixmfCT12cRhCQkawRJAP2iFPPUa5RVbbKZ6k7biT4QNWaizfl",
+   "posted": "2026-11-25",
    "date_inferred": false,
    "date_text": "28th November",
    "recurring": false,
    "needs_check": false
+  },
+  {
+   "date": "2026-11-28",
+   "venue": "The Castle Hotel",
+   "towns": [
+    "Neath"
+   ],
+   "time": "9PM",
+   "price": "FREE ENTRY",
+   "detail": "🎤✨ IT'S A WEEKEND OF LIVE MUSIC AT THE CASTLE HOTEL NEATH! ✨🎶 Who's ready for a fantastic weekend of entertainment? We've got TWO brilliant nights lined up for you! 🥳🍻 🎸 FRIDAY 27TH NOVEMBER – VICARI'S BAR 🔥 SUNSHINE CAB",
+   "platform": "Facebook",
+   "url": "https://www.facebook.com/groups/196453747792207/permalink/2365100774260816/",
+   "posted": "2026-11-23",
+   "date_inferred": false,
+   "date_text": "28TH NOVEMBER",
+   "recurring": false,
+   "needs_check": false
+  },
+  {
+   "date": "2026-11-28",
+   "venue": "The Somerset Arms",
+   "towns": [
+    "Port Talbot"
+   ],
+   "time": "5pm",
+   "price": null,
+   "detail": "Festive weekend This weekend at The Somerset Arms at Port Talbot Saturday Christmas tree switch on with dai and willow (family event) Sunday resident band Escapade go live at 5pm",
+   "platform": "Facebook",
+   "url": "https://www.facebook.com/groups/1048348985663965/permalink/2586605865171595/",
+   "posted": "2026-11-24",
+   "date_inferred": true,
+   "date_text": "Saturday",
+   "recurring": false,
+   "needs_check": true
+  },
+  {
+   "date": "2026-11-29",
+   "venue": "Blancos Hotel, Bar & Restaurant",
+   "towns": [
+    "Neath Port Talbot"
+   ],
+   "time": "12pm",
+   "price": "£16.95",
+   "detail": "SUNDAY LUNCH AT BLANCO’S! 🤍 Sundays are made for roasts, good food and time with the ones you love! 😍 Join us every Sunday from 12pm–5pm and enjoy a delicious Sunday roast with all the trimmings! 🥕🥔 ✨ 2 COURSES Adults £1",
+   "platform": "Facebook",
+   "url": "https://www.facebook.com/Blancoshotel/posts/pfbid031iPkE3EuLJZrFA9vBVERX6rrshaH2HogUWf1MRgRUY9uxsxXeh4eP6RJQcdrMUDnl",
+   "posted": "2026-11-24",
+   "date_inferred": true,
+   "date_text": "SUNDAY",
+   "recurring": true,
+   "needs_check": true
+  },
+  {
+   "date": "2026-11-29",
+   "venue": "Cwmdu Inn, Shop and Post Office",
+   "towns": [
+    "Neath Port Talbot"
+   ],
+   "time": "12.30pm",
+   "price": "£16",
+   "detail": "🥮🥘🍲 We're excited to welcome Ben & Sian back in the Cwmdu Kitchen this Sunday! 🥮🥘🍲 Sunday 29th November 12.30pm - 3.00pm 🍽️ one course - £16 🍽️ two courses - £20 📞 To book a table, please call the shop or pub during open",
+   "platform": "Facebook",
+   "url": "https://www.facebook.com/CwmduInn/posts/pfbid02jg2p7WerZ42HxG2p8HdZB4Kkiif2zkxVz3SZwUdPofkQCkb7YifLmfM1GjLCoXcWl",
+   "posted": "2026-11-25",
+   "date_inferred": false,
+   "date_text": "29th November",
+   "recurring": false,
+   "needs_check": false
+  },
+  {
+   "date": "2026-11-29",
+   "venue": "Le Bistro",
+   "towns": [
+    "Neath",
+    "Skewen"
+   ],
+   "time": null,
+   "price": "£40",
+   "detail": "# **This Sunday Christmas Mini Sessions in Neath, **Le Bistro The Crown Skewen Come and capture some festive moments — cosy, joyful, and full of sparkle. £40 — up to 20 minutes of shoot time and 5 beautifully edited, ful",
+   "platform": "Facebook",
+   "url": "https://www.facebook.com/groups/whatsonkidsneathvalley/permalink/3210648899131417/",
+   "posted": "2026-11-26",
+   "date_inferred": true,
+   "date_text": "This Sunday",
+   "recurring": false,
+   "needs_check": true
+  },
+  {
+   "date": "2026-11-29",
+   "venue": "Le Bistro",
+   "towns": [
+    "Neath",
+    "Skewen"
+   ],
+   "time": null,
+   "price": "£40",
+   "detail": "# ** This Sunday Christmas Mini Sessions in Neath, **Le Bistro The Crown Skewen Come and capture some festive moments — cosy, joyful, and full of sparkle. £40 — up to 20 minutes of shoot time and 5 beautifully edited, fu",
+   "platform": "Facebook",
+   "url": "https://www.facebook.com/groups/whatsonkidsneathvalley/permalink/3208065052723135/",
+   "posted": "2026-11-24",
+   "date_inferred": true,
+   "date_text": "This Sunday",
+   "recurring": false,
+   "needs_check": true
+  },
+  {
+   "date": "2026-11-29",
+   "venue": "Portablo Coffi",
+   "towns": [
+    "Neath Port Talbot"
+   ],
+   "time": "10AM",
+   "price": null,
+   "detail": "RUN PORTABLO 🏃‍♂️☕️ Great turnout for this morning’s Sunday run! Even got the new flag out for its first outing! 🏴‍☠️ Same again next Sunday, 10AM from Portablo Coffi. 5K down the beach and back! Diolch i bawb! ❤️ Croeso",
+   "platform": "Facebook",
+   "url": "https://www.facebook.com/portablocoffi/posts/pfbid0JRrSKZpbLEWsNuPRNYhuinGsKXLtZbMikAkZymzmCLRzFCqVeqNPwk2xS3y1uNRYl",
+   "posted": "2026-11-22",
+   "date_inferred": true,
+   "date_text": "next Sunday",
+   "recurring": false,
+   "needs_check": true
+  },
+  {
+   "date": "2026-11-29",
+   "venue": "The Bryncoch Inn",
+   "towns": [
+    "Bryncoch"
+   ],
+   "time": "8PM",
+   "price": null,
+   "detail": "❤️ JUST 3 DAYS TO GO – LET'S COME TOGETHER FOR LUCA! ❤️ We're looking forward to welcoming you this Sunday 29th November for a special fundraising night in support of Luca and his family! 💙 🕗 QUIZ STARTS AT 8PM! 🍽️ Arriv",
+   "platform": "Facebook",
+   "url": "https://www.facebook.com/thebryncochinn/posts/pfbid021GWaXzdNuH8nKvceDAp7me5YKMr8yybi6hBx69Rr1g7Jj6bWWehWghDgHjQxh9Lil",
+   "posted": "2026-11-26",
+   "date_inferred": false,
+   "date_text": "29th November",
+   "recurring": false,
+   "needs_check": false
+  },
+  {
+   "date": "2026-11-29",
+   "venue": "The Bryncoch Inn",
+   "towns": [
+    "Bryncoch"
+   ],
+   "time": null,
+   "price": null,
+   "detail": "❤️ LET'S COME TOGETHER FOR LUCA! ❤️ Join us on Sunday 29th November for a special fundraising night during our Sunday Quiz Night! 💙 We're coming together to raise as much as we can to support Luca and his family. Every p",
+   "platform": "Facebook",
+   "url": "https://www.facebook.com/thebryncochinn/posts/pfbid0tU9rfPvJQ7ZTK5TUMvioL7rMwkw8S2T1awFeUYGmySV7LwMdTaRYEKM6qgbghThnl",
+   "posted": "2026-11-23",
+   "date_inferred": false,
+   "date_text": "29th November",
+   "recurring": false,
+   "needs_check": false
+  },
+  {
+   "date": "2026-11-29",
+   "venue": "The Crown and Sceptre Inn Cadoxton",
+   "towns": [
+    "Neath Port Talbot"
+   ],
+   "time": null,
+   "price": null,
+   "detail": "💥👀Don't forget sunday lunch this week please try to book your table to avoid disappointment as spaces are filling fast👀💥",
+   "platform": "Facebook",
+   "url": "https://www.facebook.com/permalink.php?story_fbid=pfbid07QRmzwr9jMndBZXoKnmoHR8RZKibKF1vu3MkJaMECwrFN5XgXyDsx6n7kwMHsHLml&id=61557396391147",
+   "posted": "2026-11-26",
+   "date_inferred": true,
+   "date_text": "sunday",
+   "recurring": false,
+   "needs_check": true
+  },
+  {
+   "date": "2026-11-29",
+   "venue": "The Somerset Arms",
+   "towns": [
+    "Port Talbot"
+   ],
+   "time": "5pm",
+   "price": null,
+   "detail": "Festive weekend This weekend at The Somerset Arms at Port Talbot Saturday Christmas tree switch on with dai and willow (family event) Sunday resident band Escapade go live at 5pm",
+   "platform": "Facebook",
+   "url": "https://www.facebook.com/groups/1048348985663965/permalink/2586605865171595/",
+   "posted": "2026-11-24",
+   "date_inferred": true,
+   "date_text": "Sunday",
+   "recurring": false,
+   "needs_check": true
   },
   {
    "date": "2026-11-30",
@@ -88,12 +395,29 @@
    "price": null,
    "detail": "🎄✨ CHRISTMAS WREATH MAKING AT CADNO! ✨🎄 Get into the festive spirit and join us for a lovely evening of Christmas creativity! ❤️ Come along on Monday 30th November at 6pm and create your very own Christmas wreath to take",
    "platform": "Facebook",
-   "url": "https://www.facebook.com/cadnolounge/posts/pfbid02NKoZWzDN6sC1kKUipPRLPbD6noXBpoi6AqjfL2zChoKNxdUcvfn1bM97BLvktzeVl",
+   "url": "https://www.facebook.com/cadnolounge/posts/pfbid02N72jXBobvJWyDzAznSfWWzMu4JosvCkeiaXDTZ1dYrnoXvLKFWHGAV3hLMSepLm7l",
    "posted": "2026-11-08",
    "date_inferred": false,
    "date_text": "30th November",
    "recurring": false,
    "needs_check": false
+  },
+  {
+   "date": "2026-11-30",
+   "venue": "Ruta Kitchen",
+   "towns": [
+    "Neath"
+   ],
+   "time": "8:30am",
+   "price": "£8.99",
+   "detail": "Lunch is sorted! 🍝 Chicken & Mushroom Pasta: linguine with pan-fried chicken breast, sautéed mushrooms and fresh spinach in a creamy sauce. Just £8.99. Freshly cooked to order at Ruta Kitchen. Eat in, take away or order ",
+   "platform": "Facebook",
+   "url": "https://www.facebook.com/photo.php?fbid=122202462008804239&set=a.122094090194804239&type=3",
+   "posted": "2026-11-25",
+   "date_inferred": true,
+   "date_text": "Monday",
+   "recurring": false,
+   "needs_check": true
   },
   {
    "date": "2026-11-30",
@@ -105,10 +429,44 @@
    "price": null,
    "detail": "And our festive menu is finally here🎄🎉 Come and join us between the 30th of November and the 22nd of December to try our lovely Christmas Fayre menu at 🎄The Crown and Sceptre Inn Cadoxton 🎄 💥 please note that bookings, d",
    "platform": "Facebook",
-   "url": "https://www.facebook.com/permalink.php?story_fbid=pfbid02MPXSq2UGrv9bzed67zJgAbMw68fHExrhV1uD1sGkEfaHcGP93ZMr1Q3xCg5Uw9Q5l&id=61557396391147",
+   "url": "https://www.facebook.com/permalink.php?story_fbid=pfbid02MAkcqE4WgLwJCrDnF1QkYgDDR2xKYnTDAVmA3spocoBCMjFyRiUmyehzNDTSqHUUl&id=61557396391147",
    "posted": "2026-11-18",
    "date_inferred": false,
    "date_text": "30th of November",
+   "recurring": false,
+   "needs_check": false
+  },
+  {
+   "date": "2026-12-01",
+   "venue": "Cwmdu Inn, Shop and Post Office",
+   "towns": [
+    "Neath Port Talbot"
+   ],
+   "time": null,
+   "price": null,
+   "detail": "🎄📮 Christmas Post Office Opening Hours! 📮🎄 Our fabulous volunteers are going the extra mile this Christmas, opening Cwmdu Post Office with extended opening hours from 1st December to 23rd December! 🎅 Just in time for Chr",
+   "platform": "Facebook",
+   "url": "https://www.facebook.com/CwmduInn/posts/pfbid02is57WN7mMaUhAVcDas2GrVKKmQGqZuK5HFV92Kd7oFi9ZwC2RA7NSdiK4xUKGRZMl",
+   "posted": "2026-11-26",
+   "date_inferred": false,
+   "date_text": "1st December",
+   "recurring": false,
+   "needs_check": false
+  },
+  {
+   "date": "2026-12-01",
+   "venue": "Memories Cafe Bar",
+   "towns": [
+    "Neath Port Talbot"
+   ],
+   "time": null,
+   "price": "£20",
+   "detail": "🎄CHRISTMAS DAY VEG BOX – £20!🎄 Make Christmas dinner prep that little bit easier this year with our fresh Christmas Veg Boxes! 🥕🥔🥦 Packed with all your festive favourites, including: 🥔 Potatoes 🥕 Carrots 🥦 Broccoli 🌱 Par",
+   "platform": "Facebook",
+   "url": "https://www.facebook.com/groups/978470938890507/permalink/40279863834991062/",
+   "posted": "2026-11-26",
+   "date_inferred": false,
+   "date_text": "1ST DECEMBER",
    "recurring": false,
    "needs_check": false
   },
@@ -119,11 +477,11 @@
     "Bryncoch"
    ],
    "time": null,
-   "price": "£228",
-   "detail": "🎉 **WHAT A TUESDAY QUIZ NIGHT!** 🎉 What a fantastic night we had at Tuesday's quiz! 🤩 A massive thank you to everyone who came along and got involved. We had lots of teams joining in, plenty of laughs, great competition ",
+   "price": "£66",
+   "detail": "⭐️ANOTHER GREAT QUIZ NIGHT⭐️ Another great quiz night at The Bryn! A big well done to 👑PG TIPSY👑 for winning the quiz tonight! What a great group of brains! 👑And another big congratulations to the ladies who opened the s",
    "platform": "Facebook",
-   "url": "https://www.facebook.com/thebryncochinn/posts/pfbid0Vh2xX3dsKFQNFomaJeNoY4aAiCZ3DtWX9eavHSDoeLmqtgMV6d7JhDKBysTwd17Ml",
-   "posted": "2026-11-18",
+   "url": "https://www.facebook.com/thebryncochinn/posts/pfbid02Z1FK9CKpQn2YwBuNGbWw4iW66r6Pjf11HigYXKbA9kcz85AR7dQ49NpemYmx8zE7l",
+   "posted": "2026-11-24",
    "date_inferred": true,
    "date_text": "next Tuesday",
    "recurring": false,
@@ -139,7 +497,7 @@
    "price": "£20",
    "detail": "🎨 Our next Paint & Sip is coming up! 🍷 Fancy getting creative with us? Join us on Thursday 3rd December at 6pm for an evening of painting, sipping and a little bit of fun! Whether you’re a budding artist or just fancy tr",
    "platform": "Facebook",
-   "url": "https://www.facebook.com/cadnolounge/posts/pfbid029V6ijm35i15NDZVXZ2VhLEjN2wdyVdXJRU74UaWcN9zaxLCVodbWtVmm2cu6TrUml",
+   "url": "https://www.facebook.com/cadnolounge/posts/pfbid029GKtjxdKXeSrVDJ2GJqEpFGewtwU6Ty1sSqz4eUXHnZRirbiRp96AUUWTHageeSEl",
    "posted": "2026-11-13",
    "date_inferred": false,
    "date_text": "3rd December",
@@ -156,10 +514,27 @@
    "price": null,
    "detail": "🎄🎁 THE POP-IN CAFÉ CHRISTMAS TOY APPEAL IS BACK! 🎁🎄 ❤️ It's that time of year again when our thoughts turn to those less fortunate than ourselves, especially the children who deserve a little Christmas magic. We're once ",
    "platform": "Facebook",
-   "url": "https://www.facebook.com/thepopincafe/posts/pfbid0YTnt1Nc7sj1fvLCvmD47jrxX83NJMNxAjKVJ12CiyS2jdCztbfAjkb4BBVK4zjs8l",
+   "url": "https://www.facebook.com/thepopincafe/posts/pfbid0YiyaaDmZWwqG8bcMJzRndhbxUg27d6vbZVTMpSfkZDhH8mGrwawN8mmWQixGFgtal",
    "posted": "2026-11-02",
    "date_inferred": false,
    "date_text": "3rd December.",
+   "recurring": false,
+   "needs_check": false
+  },
+  {
+   "date": "2026-12-03",
+   "venue": "The Ranch Breakfast Bar And Grill",
+   "towns": [
+    "Neath Port Talbot"
+   ],
+   "time": "6pm",
+   "price": null,
+   "detail": "‼️ANNOUNCEMENT ‼️ Hi all the countdown is on for The Ranch Christmas light switch on Thursday December 3rd 6pm What to expect Santa will be visiting The Ranch to switch on the lights Along with some special guests on the",
+   "platform": "Facebook",
+   "url": "https://www.facebook.com/darrenandemmascafe/posts/pfbid02BpdibBZGFcVachg7A67stEwNGWn6YuDArzrvAvLgj5K7LgqBmptXGj7SMHJjGTyzl",
+   "posted": "2026-11-25",
+   "date_inferred": false,
+   "date_text": "December 3rd",
    "recurring": false,
    "needs_check": false
   },
@@ -173,10 +548,27 @@
    "price": null,
    "detail": "Hi Everyone it’s that time when we are all excited for our Christmas events 🎅🤶🎄 so today’s post is all about The Ranch Christmas Lights Switch on Yes you are all invited once again to come and get into the Christmas Spir",
    "platform": "Facebook",
-   "url": "https://www.facebook.com/darrenandemmascafe/posts/pfbid03Pb24wrn1Y2NnbsZjnUu232tTtbhuCqGFvSbWM5ioXA1W2jKURzxD6mfyk7o3Vwjl",
+   "url": "https://www.facebook.com/darrenandemmascafe/posts/pfbid03ApC59T1ppEhcG76S22Rz6KsiSbwh6RQcvj28pnAjksnC54gq5at8kRjkcjshKFpl",
    "posted": "2026-11-16",
    "date_inferred": false,
    "date_text": "DECEMBER 3RD",
+   "recurring": false,
+   "needs_check": false
+  },
+  {
+   "date": "2026-12-04",
+   "venue": "Pop In Cafe",
+   "towns": [
+    "Aberavon"
+   ],
+   "time": null,
+   "price": null,
+   "detail": "❤️ Who said community spirit has gone? ❤️ Christmas spirit is well and truly alive and kicking in Aberavon! The amount of kindness, generosity and love surrounding the Pop-In Café the last 2 weeks has been absolutely inc",
+   "platform": "Facebook",
+   "url": "https://www.facebook.com/thepopincafe/posts/pfbid02BXGaixZ6eJ9yeAXLW4HV9e8T8kBVzyzx66oHo9JoK7kCj26gGQRmxDrJLQMfua8Wl",
+   "posted": "2026-11-26",
+   "date_inferred": false,
+   "date_text": "4th December.",
    "recurring": false,
    "needs_check": false
   },
@@ -190,7 +582,7 @@
    "price": "£10",
    "detail": "🚨🎟️LOW TICKET WARNING – DON’T MISS OUT!🎟️🚨 We’re heading into one of our busiest festive periods at The Arch, and tickets for the following events are running LOW! 👀🎄 If you’re planning on joining us, we strongly recomme",
    "platform": "Facebook",
-   "url": "https://www.facebook.com/TheArchNeath/posts/pfbid02nrvKQiXRqu2ewkyZh7DzhC8YqejxZS5Kc3Qawc3odFyShjJJy5viN2aTrFbhtoY1l",
+   "url": "https://www.facebook.com/TheArchNeath/posts/pfbid02ne9VQv7ffUkSDGxLNUNAdPnYRJCeEBmA9bjQ1N5CuY4Qmdexgq4L9Png5sA428TAl",
    "posted": "2026-11-18",
    "date_inferred": false,
    "date_text": "4TH DECEMBER",
@@ -207,10 +599,79 @@
    "price": "£10",
    "detail": "🎄 CHRISTMAS BINGO LINGO IS COMING TO THE ARCH! 🎄 We’re excited to host Neath’s first Christmas Bingo Lingo — a night of festive fun, big prizes and dancing, all in support of Sophie 💙 ALL PROCEEDS GO TOWARDS SOPHIE’S TRE",
    "platform": "Facebook",
-   "url": "https://www.facebook.com/TheArchNeath/posts/pfbid0nVdDERFYFBcHrHkk3UA9w2oDBtPZnVVB2pBWfysKQ4VYi635UHQDrTx1Xg3aFJJil",
+   "url": "https://www.facebook.com/TheArchNeath/posts/pfbid0nkouoGQytPpFjSQ4UCZa372H74G1HkBCeQbqgFtfz5aTRpkUa3HbpnfqJaRREFSNl",
    "posted": "2026-11-05",
    "date_inferred": false,
    "date_text": "4th December",
+   "recurring": false,
+   "needs_check": false
+  },
+  {
+   "date": "2026-12-04",
+   "venue": "The Castle Hotel",
+   "towns": [
+    "Neath"
+   ],
+   "time": null,
+   "price": null,
+   "detail": "🎄 CHRISTMAS GIVEAWAY – WIN 4 TICKETS! 🎄 Fancy an evening with two Welsh sporting legends? We’re giving away FOUR tickets to An Evening with Alan Curtis & Mike Ruddock! 📍 The Castle Hotel, Neath 📅 Friday 4th December 2026",
+   "platform": "Facebook",
+   "url": "https://www.facebook.com/groups/68860453452/permalink/10166454049883453/",
+   "posted": "2026-11-26",
+   "date_inferred": false,
+   "date_text": "4th December",
+   "recurring": false,
+   "needs_check": false
+  },
+  {
+   "date": "2026-12-06",
+   "venue": "Cadno Lounge",
+   "towns": [
+    "Bryncoch",
+    "Neath"
+   ],
+   "time": "7pm",
+   "price": null,
+   "detail": "🎶 An evening of music for a wonderful cause ❤️ We’re delighted to be welcoming Côr Dynion Bryncoch Men's Choir to Cadno on Sunday 6th December at 7pm for a special evening of music and community. Entry is completely free",
+   "platform": "Facebook",
+   "url": "https://www.facebook.com/cadnolounge/posts/pfbid0zaYHs42xxTpupPMcffuNQ8AYMCDVqXfTWe2t1jB7MHRKHNQHGP1hB5tcRQMeAy5el",
+   "posted": "2026-11-20",
+   "date_inferred": false,
+   "date_text": "6th December",
+   "recurring": false,
+   "needs_check": false
+  },
+  {
+   "date": "2026-12-06",
+   "venue": "Castell-Nedd Arms",
+   "towns": [
+    "Neath"
+   ],
+   "time": "11am",
+   "price": null,
+   "detail": "BAR BOOT IS COMING TO THE CASTELL-NEDD ARMS! We’re doing something a little different at the Castell, and we’d love you to come along! On Sunday 6th December , from 11am, we’re hosting our Bar Boot, bringing together loc",
+   "platform": "Facebook",
+   "url": "https://www.facebook.com/CastellNeddArms/posts/pfbid0oiBNKFhpQhBUfCEGiMEHLVAvKdrbSqrMm26hD8ep63rj882dhZLwb4DCMRfU8bd5l",
+   "posted": "2026-11-21",
+   "date_inferred": false,
+   "date_text": "6th December",
+   "recurring": false,
+   "needs_check": false
+  },
+  {
+   "date": "2026-12-06",
+   "venue": "Cwmdu Inn, Shop and Post Office",
+   "towns": [
+    "Neath Port Talbot"
+   ],
+   "time": "9.30am",
+   "price": "Free Entry",
+   "detail": "COMING ⭐️UP ⭐️THIS ⭐️WEEK⭐️in Cwmdu Post office open Tuesday & Friday 9.30am - 1.30pm. 📮📮 Shop open normal hours this week Tues, Wed, Thurs & Fri 9.30am - 1.30pm. Shop also open Saturday 10.30am- 12.30pm 🥦🍅🍞🍌🥦🍅🍞🍌 ✅Tuesda",
+   "platform": "Facebook",
+   "url": "https://www.facebook.com/CwmduInn/posts/pfbid029WCJvTqbb9tzmrNQMQbPRktRfUXFXWHjwFU9qnMGB6J4MG2Mm5Tn5pqj1T86BB1Kl",
+   "posted": "2026-11-23",
+   "date_inferred": false,
+   "date_text": "December 6",
    "recurring": false,
    "needs_check": false
   },
@@ -224,27 +685,10 @@
    "price": "Free Entry",
    "detail": "COMING ⭐️UP ⭐️THIS ⭐️WEEK⭐️in Cwmdu ............ Post office open Tuesday & Friday 9.30am - 1.30pm. 📮📮 Shop open normal hours this week Tues, Wed, Thurs & Fri 9.30am - 1.30pm. Shop also open Saturday 10.30am- 12.30pm 🥦🍅🍞",
    "platform": "Facebook",
-   "url": "https://www.facebook.com/CwmduInn/posts/pfbid02Zt2Tnm2FW9wHixubCYcNdcTkojgHdpy6jNB2N3PLTXWZymEmTED82XdGohaYy9aQl",
+   "url": "https://www.facebook.com/CwmduInn/posts/pfbid02ZfFdnxcVKgUcGMg4ScXVwgqK5bDehrK4vX2wmDWJ3wMzg3jCCr8gKdEUrrCNKnfSl",
    "posted": "2026-11-15",
    "date_inferred": false,
    "date_text": "December 6",
-   "recurring": false,
-   "needs_check": false
-  },
-  {
-   "date": "2026-12-06",
-   "venue": "Treats cafe and wine bar",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "time": "2:00pm",
-   "price": "£5",
-   "detail": "Another one for the diary🎄 Didn’t get your table for Christmas Eve with us? Don’t stress… because we’ve got another date for your diary! 👀🎅🏼 📅 Sunday 6th December ⏰ From 2:00pm 🎶 The amazing Green Dragon Band! 🐉🎸 We’re m",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/TreatsofOldMarketStreet/posts/pfbid06dkpe9GTb7piz9E9TFr8a52spdZ94wMcJjvNGRoYsPeK37Q4J2FEEChuaaDPaAWol",
-   "posted": "2026-10-30",
-   "date_inferred": false,
-   "date_text": "6th December",
    "recurring": false,
    "needs_check": false
   },
@@ -258,7 +702,7 @@
    "price": null,
    "detail": "Date For The Diary / December 8th All Welcome To St Teilo’s Christmas Doo, Xmas Dinner & Entertainment 🎄 Tuesday 8th December At The Colliers Arms Pontrhydyfen. Tickets And A Preorder Needed Before This Event Many Thanks",
    "platform": "Facebook",
-   "url": "https://www.facebook.com/thecolliersarms/posts/pfbid08U21YaGGjTtbDk4siqmrWwmUcttSy6XqYzn5DSDpvwP88kpRgeQp9iVyejCDMzdWl",
+   "url": "https://www.facebook.com/thecolliersarms/posts/pfbid08FFBYmrWYq629rY1k98YYotUnxPmw1sxALanBwcEQAFBsUqA7y5yob9icQ846uu5l",
    "posted": "2026-11-16",
    "date_inferred": false,
    "date_text": "December 8th",
@@ -275,30 +719,12 @@
    "price": "£30.00",
    "detail": "🎄🎅 INTRODUCING OUR FIRST EVER ALN CHRISTMAS SUPPER WITH SANTA! 🎅🎄Thursday 10th December 6pm For the first time ever, we’re so excited to be hosting a very special ALN Christmas Supper With Santa at The Ranch! ❤️ We know ",
    "platform": "Facebook",
-   "url": "https://www.facebook.com/darrenandemmascafe/posts/pfbid0nTSXaNA3gLggfbJRc3hSVMb5A6V53RQbcAJrXEPpiWGLDPFXxo8SHvg46rFj1FBZl",
+   "url": "https://www.facebook.com/darrenandemmascafe/posts/pfbid0nidE9DKVKWsEWVXXW1Ao56i7svpPqEoWx5gisyhR27sAR98XVeV14pKiBRRuPWSXl",
    "posted": "2026-11-17",
    "date_inferred": false,
    "date_text": "10th December",
    "recurring": false,
    "needs_check": false
-  },
-  {
-   "date": "2026-12-12",
-   "venue": "The Colliers Arms",
-   "towns": [
-    "Pontrhydyfen",
-    "Port Talbot"
-   ],
-   "time": null,
-   "price": null,
-   "detail": "The Colliers Arms Pontrhydyfen | Port Talbot - Facebook - Christmas is coming, and we're getting ready for two fantastic nights of live music and festive fun! Saturday 12th December** Leroy ...",
-   "platform": "Google",
-   "url": "https://www.facebook.com/thecolliersarms/",
-   "posted": null,
-   "date_inferred": false,
-   "date_text": "12th December",
-   "recurring": false,
-   "needs_check": true
   },
   {
    "date": "2026-12-12",
@@ -310,8 +736,25 @@
    "price": "£20",
    "detail": "🎤 SOUL & MOTOWN NIGHT AT THE COLLIERS ARMS!🎶 Get ready for a fantastic night of classic Soul & Motown with the brilliant Leroy “Badboy” Brown!🕺 Join us for a night of great music, dancing and all those timeless classics ",
    "platform": "Facebook",
-   "url": "https://www.facebook.com/thecolliersarms/posts/pfbid02pLm1jFPPPHbcjF7qp46aH53g5vfzyxz1QfModwvvg8X1GGMV7ZbXXdCnxVzSK28yl",
-   "posted": "2026-11-14",
+   "url": "https://www.facebook.com/thecolliersarms/posts/pfbid0Tze8QMWoHjwoNsnmqxqsERFuLFNtTQnm6xY1xMwKpdhSJ4ZAuiUQRZdYiga5vDC1l",
+   "posted": "2026-11-19",
+   "date_inferred": false,
+   "date_text": "12th December",
+   "recurring": false,
+   "needs_check": false
+  },
+  {
+   "date": "2026-12-12",
+   "venue": "The Colliers Arms Pontrhydyfen",
+   "towns": [
+    "Pontrhydyfen"
+   ],
+   "time": null,
+   "price": "£20",
+   "detail": "🎄🎉 CHRISTMAS JOIN THE PARTY AT THE COLLIERS ARMS! 🎉🎄💃🕺🪩🍾 Christmas is coming, and we’re getting ready for two fantastic nights of live music and festive fun!🎅🍻 📅 Saturday 12th December** 🎶 Leroy Brown 🎤 Soul • Motown • R",
+   "platform": "Facebook",
+   "url": "https://www.facebook.com/thecolliersarms/posts/pfbid02uPtEy7zMZfafng1k8Zr2ny7ZcaP2kdgLCP2yFV23ckcwjHJVXVKDaGpAGwsTCmjpl",
+   "posted": "2026-10-07",
    "date_inferred": false,
    "date_text": "12th December",
    "recurring": false,
@@ -327,7 +770,7 @@
    "price": "£13",
    "detail": "🎅🎄 BREAKFAST WITH SANTA AT CADNO! 🎄🎅 Join us on Sunday 13th December, 9am–10:30am, for a magical festive morning at Cadno! ❤️ Little ones can enjoy a delicious breakfast, get creative with some Christmas colouring and ac",
    "platform": "Facebook",
-   "url": "https://www.facebook.com/cadnolounge/posts/pfbid034rmZiakfGmaNrtXfjVu7HPTiNdkJDbS7X1RPF6AQaT435jqJRUsJechLrw5EU9Mkl",
+   "url": "https://www.facebook.com/cadnolounge/posts/pfbid034dzjinLu6E3YkCZYrze9LVUUxjKwNfpoym6NwgdXGQDHUTkBnvpWTQUqU78BmCRdl",
    "posted": "2026-11-07",
    "date_inferred": false,
    "date_text": "13th December",
@@ -335,53 +778,36 @@
    "needs_check": false
   },
   {
-   "date": "2026-12-13",
-   "venue": "Treats cafe and wine bar",
+   "date": "2026-12-17",
+   "venue": "Bar 98",
    "towns": [
-    "Neath"
+    "Pontardawe"
    ],
-   "time": "5:00pm",
-   "price": "£19.95",
-   "detail": "💚 THE GRINCH THAT TRIED TO STEAL TREATS! 🎄 On this cosy winter’s evening, amongst the Neath area, lies the little town of Whoville, home of all the WHO’s… As we count down the sleeps to that one special day, our WHO’s of",
+   "time": "7pm",
+   "price": null,
+   "detail": "🎄🎅 IT'S BEGINNING TO LOOK A LOT LIKE QUIZ-MAS! We're getting into the Christmas spirit at Bar 98 with our Big Christmas Quiz! Gather your team, brush up on your festive trivia and get ready for a night of Christmas-theme",
    "platform": "Facebook",
-   "url": "https://www.facebook.com/TreatsofOldMarketStreet/posts/pfbid02P17qtiH8UWHD4dG8ycX2zMcwBbRM85Z7jxwnMQApwe7Y8AbFU5ZthiHWrh9jB9xwl",
-   "posted": "2026-11-05",
+   "url": "https://www.facebook.com/permalink.php?story_fbid=pfbid0Gqu2ZghForUJNdTHUS3pKEq3XpCKpTTFneEXCf38S3EFKXVC3k3YBBTfgM3uaXuXl&id=61558407041109",
+   "posted": "2026-11-26",
    "date_inferred": false,
-   "date_text": "December 13th",
+   "date_text": "17th December",
    "recurring": false,
    "needs_check": false
   },
   {
-   "date": "2026-12-14",
-   "venue": "Oakwood Inn",
-   "towns": [
-    "Cwmavon"
-   ],
-   "time": "4:30pm",
-   "price": "£3",
-   "detail": "🎅🎄 HO HO HO… CHRISTMAS MAGIC IS COMING TO THE OAKWOOD INN! 🎄🎅 Have you been good this year? 👀 Because Santa Claus is making a very special visit to The Oakwood Inn, Cwmafan! ❤️ We’re inviting all our little Christmas elv",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/permalink.php?story_fbid=pfbid02vFu14o8AUt1E5dKcfkVEERhnRztZAU4hUK2PmxneTFpzp4LEx6YCGFAyvQHj5wfrl&id=100057402434015",
-   "posted": "2026-11-10",
-   "date_inferred": false,
-   "date_text": "14th December",
-   "recurring": false,
-   "needs_check": false
-  },
-  {
-   "date": "2026-12-15",
-   "venue": "The Ranch Breakfast Bar And Grill",
+   "date": "2026-12-18",
+   "venue": "Cwmdu Inn, Shop and Post Office",
    "towns": [
     "Neath Port Talbot"
    ],
-   "time": null,
-   "price": null,
-   "detail": "Howdy all 🤠 Just a polite reminder can all outstanding supper with Santa payments now be made 🎉🎄🤶 And can you give me a message when paid We do also have limited spaces left for the 14th and 15th December Many thanks 🤠",
+   "time": "9.30am",
+   "price": "Free Entry",
+   "detail": "COMING ⭐️UP ⭐️THIS ⭐️WEEK⭐️in Cwmdu Post office open Tuesday & Friday 9.30am - 1.30pm. 📮📮 Shop open normal hours this week Tues, Wed, Thurs & Fri 9.30am - 1.30pm. Shop also open Saturday 10.30am- 12.30pm 🥦🍅🍞🍌🥦🍅🍞🍌 ✅Tuesda",
    "platform": "Facebook",
-   "url": "https://www.facebook.com/darrenandemmascafe/posts/pfbid02NK3CQLHqmD4Kyz8zsN6g5Neh3E2LaYHHxVoKSWPAfWAhKqU5osjcou1fCMZy4uc1l",
-   "posted": "2026-11-02",
+   "url": "https://www.facebook.com/CwmduInn/posts/pfbid029WCJvTqbb9tzmrNQMQbPRktRfUXFXWHjwFU9qnMGB6J4MG2Mm5Tn5pqj1T86BB1Kl",
+   "posted": "2026-11-23",
    "date_inferred": false,
-   "date_text": "15th December",
+   "date_text": "18th December",
    "recurring": false,
    "needs_check": false
   },
@@ -395,8 +821,42 @@
    "price": "Free Entry",
    "detail": "COMING ⭐️UP ⭐️THIS ⭐️WEEK⭐️in Cwmdu ............ Post office open Tuesday & Friday 9.30am - 1.30pm. 📮📮 Shop open normal hours this week Tues, Wed, Thurs & Fri 9.30am - 1.30pm. Shop also open Saturday 10.30am- 12.30pm 🥦🍅🍞",
    "platform": "Facebook",
-   "url": "https://www.facebook.com/CwmduInn/posts/pfbid02Zt2Tnm2FW9wHixubCYcNdcTkojgHdpy6jNB2N3PLTXWZymEmTED82XdGohaYy9aQl",
+   "url": "https://www.facebook.com/CwmduInn/posts/pfbid02ZfFdnxcVKgUcGMg4ScXVwgqK5bDehrK4vX2wmDWJ3wMzg3jCCr8gKdEUrrCNKnfSl",
    "posted": "2026-11-15",
+   "date_inferred": false,
+   "date_text": "18th December",
+   "recurring": false,
+   "needs_check": false
+  },
+  {
+   "date": "2026-12-18",
+   "venue": "The Arch Bar & Nightclub",
+   "towns": [
+    "Neath"
+   ],
+   "time": null,
+   "price": null,
+   "detail": "Let’s see who’s old enough to remember this era… 😂 If you could go back to the 2000's for one night, what tune would you want to hear? Drop it in the comments below! We’ve got something special lined up for our first eve",
+   "platform": "Facebook",
+   "url": "https://www.facebook.com/TheArchNeath/posts/pfbid0qGiQfGNz2bfgKJ7FYy8ZvhcZvL4U1BtKVKb132W4e4P32UmKzXJhTQ9AMw2jUX4xl",
+   "posted": "2026-11-24",
+   "date_inferred": false,
+   "date_text": "18/12/26",
+   "recurring": false,
+   "needs_check": false
+  },
+  {
+   "date": "2026-12-18",
+   "venue": "The Arch Bar & Nightclub",
+   "towns": [
+    "Neath"
+   ],
+   "time": "4pm",
+   "price": null,
+   "detail": "🎄 CLOCK OFF. CHRISTMAS STARTS HERE! 🙌 Get the gang together for DMF’s Black Friday Day Party at The Arch! 🎅 Dance music like you’ve never seen before — massive 90s & 00s club classics and Ibiza anthems brought to life by",
+   "platform": "Facebook",
+   "url": "https://www.facebook.com/TheArchNeath/posts/pfbid0Kp1kjZSGbg2eTuRGzYtjzfD72QJsNgxePp4R14nFVtvz8RvPc83xvz7nDeighnmLl",
+   "posted": "2026-11-23",
    "date_inferred": false,
    "date_text": "18th December",
    "recurring": false,
@@ -412,7 +872,7 @@
    "price": "£10",
    "detail": "🚨🎟️LOW TICKET WARNING – DON’T MISS OUT!🎟️🚨 We’re heading into one of our busiest festive periods at The Arch, and tickets for the following events are running LOW! 👀🎄 If you’re planning on joining us, we strongly recomme",
    "platform": "Facebook",
-   "url": "https://www.facebook.com/TheArchNeath/posts/pfbid02nrvKQiXRqu2ewkyZh7DzhC8YqejxZS5Kc3Qawc3odFyShjJJy5viN2aTrFbhtoY1l",
+   "url": "https://www.facebook.com/TheArchNeath/posts/pfbid02ne9VQv7ffUkSDGxLNUNAdPnYRJCeEBmA9bjQ1N5CuY4Qmdexgq4L9Png5sA428TAl",
    "posted": "2026-11-18",
    "date_inferred": false,
    "date_text": "19TH DECEMBER",
@@ -425,12 +885,12 @@
    "towns": [
     "Pontrhydyfen"
    ],
-   "time": "10am",
-   "price": "£12",
-   "detail": "🎅🎄 BREAKFAST WITH SANTA & HIS NAUGHTY ELF! 🎄🎅 Make this Christmas one to remember! 🎁✨ Join us for a magical morning at The Colliers Arms, Pontrhydyfen for breakfast with Santa and his Naughty Elf! 🧑‍🎄🎄 📅 5th, 12th & 19th",
+   "time": null,
+   "price": "£20",
+   "detail": "🎄🎉 CHRISTMAS JOIN THE PARTY AT THE COLLIERS ARMS! 🎉🎄💃🕺🪩🍾 Christmas is coming, and we’re getting ready for two fantastic nights of live music and festive fun!🎅🍻 📅 Saturday 12th December** 🎶 Leroy Brown 🎤 Soul • Motown • R",
    "platform": "Facebook",
-   "url": "https://www.facebook.com/thecolliersarms/posts/pfbid02T3vLvSxaU5G7GuQLrAXvc721HWZCa6eCJoTeSX4FUUEk5ogicDisdaBYQtR8Q4rWl",
-   "posted": "2026-09-18",
+   "url": "https://www.facebook.com/thecolliersarms/posts/pfbid02uPtEy7zMZfafng1k8Zr2ny7ZcaP2kdgLCP2yFV23ckcwjHJVXVKDaGpAGwsTCmjpl",
+   "posted": "2026-10-07",
    "date_inferred": false,
    "date_text": "19th December",
    "recurring": false,
@@ -446,27 +906,10 @@
    "price": "£10",
    "detail": "BREAKFAST WITH SANTA IS COMING TO THE OLD WHITE HORSE!🎅🏻🎄 Santa’s making a very special stop at The Old White Horse this Christmas, and you’re all invited! Bring the little ones along for a magical morning filled with fe",
    "platform": "Facebook",
-   "url": "https://www.facebook.com/OldWhiteHorseInn/posts/pfbid0oXoMA67MmvQE8Urzqv4xVCHnQpRPahpTK8oQX22CX8NLN63wfsVoFewS8xPQPQZtl",
+   "url": "https://www.facebook.com/OldWhiteHorseInn/posts/pfbid0oK2XAHhbbMyhyEqKV3HnF1tBoMmaayk7ng4esetiheHfVNauMiCAa15JQAzWSe7ol",
    "posted": "2026-11-17",
    "date_inferred": false,
    "date_text": "19th December",
-   "recurring": false,
-   "needs_check": false
-  },
-  {
-   "date": "2026-12-21",
-   "venue": "Bar 98",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "time": null,
-   "price": "FREE ENTRY",
-   "detail": "🌈 SHANE WOULD DEFINITELY TURN UP LATE… AND STILL PULL. 🍸 Calling all L Word lovers! 👀 Think you know your Bette from your Tina? Your Alice from your Dana? And can anyone actually explain The Chart?! 😂 It’s time to put yo",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/permalink.php?story_fbid=pfbid0JNaAUovatJmiHEfVKQhHJTmfdw49qK2irYGbS8TVKoFJpaX5GXDKggLAHjsBLKQsl&id=61558407041109",
-   "posted": "2026-11-18",
-   "date_inferred": false,
-   "date_text": "21st December",
    "recurring": false,
    "needs_check": false
   },
@@ -480,7 +923,7 @@
    "price": "£32.50",
    "detail": "🎄 Pre-order Cozonac - Romanian Christmas Loaf 🎄 We'll be making Cozonac again this year 💃 You can pre-order in-store or right now on our website: https://www.rosasbakery.co.uk/pre-order Orders must be placed by 21st Dece",
    "platform": "Facebook",
-   "url": "https://www.facebook.com/rosasbakery.co.uk/posts/pfbid0p4hvVShaWDJrmuDDZNQvu3w9VzbTkh5vmUyP1UkEbQnW9RQWavLeWdtwxJf75cqtl",
+   "url": "https://www.facebook.com/rosasbakery.co.uk/posts/pfbid0oqw6VeHpKiLTMQMXorfZfTnxqSWb3PV8sJJKkq5yxTNy1ZhnQKgPL6BV2WQKYu5tl",
    "posted": "2026-11-15",
    "date_inferred": false,
    "date_text": "21st December",
@@ -497,8 +940,8 @@
    "price": null,
    "detail": "🎅🎄 **BREAKFAST WITH SANTA AT THE BRYN!** 🎄🎅 Make this Christmas extra magical with a special morning at The Bryn! ❤️ Join us for a festive Breakfast with Santa, where little ones can enjoy a lovely breakfast and meet the",
    "platform": "Facebook",
-   "url": "https://www.facebook.com/thebryncochinn/posts/pfbid027ogeiDTDSa5zV8adJUaZDZW9bQUzQe4nCsWNHFW2pWB1sfZFKDmt8JQNpYi6QFUel",
-   "posted": "2026-11-17",
+   "url": "https://www.facebook.com/thebryncochinn/posts/pfbid0X8ursNXYuFYAgSv4dcvLb3SE7JpFxTreeVoLkw7awFZBQssUE29av7LPdFP94tjUl",
+   "posted": "2026-11-24",
    "date_inferred": false,
    "date_text": "21st December",
    "recurring": false,
@@ -514,7 +957,7 @@
    "price": "Free entry",
    "detail": "🎅🎄 CHRISTMAS MAGIC IS COMING TO THE CASTELL-NEDD ARMS! 🎄🎅 We’re bringing some festive magic to the heart of Neath this Christmas, and we want as many families as possible to come and enjoy it! ❤️ Get ready for an afterno",
    "platform": "Facebook",
-   "url": "https://www.facebook.com/CastellNeddArms/posts/pfbid031JueZnib8vi1wq1b5GLKg3xhMZLCJnHsdHCEZuhpiUK1R4Sp93MSReCEEFHBuAs9l",
+   "url": "https://www.facebook.com/CastellNeddArms/posts/pfbid031a6M8dt2nA76KFfPqdratjBo2gn68uN48kDJ4AdfQhgttG7mjt2ARdbpuEyJPJ1xl",
    "posted": "2026-11-16",
    "date_inferred": false,
    "date_text": "22ND DECEMBER",
@@ -531,7 +974,7 @@
    "price": null,
    "detail": "And our festive menu is finally here🎄🎉 Come and join us between the 30th of November and the 22nd of December to try our lovely Christmas Fayre menu at 🎄The Crown and Sceptre Inn Cadoxton 🎄 💥 please note that bookings, d",
    "platform": "Facebook",
-   "url": "https://www.facebook.com/permalink.php?story_fbid=pfbid02MPXSq2UGrv9bzed67zJgAbMw68fHExrhV1uD1sGkEfaHcGP93ZMr1Q3xCg5Uw9Q5l&id=61557396391147",
+   "url": "https://www.facebook.com/permalink.php?story_fbid=pfbid02MAkcqE4WgLwJCrDnF1QkYgDDR2xKYnTDAVmA3spocoBCMjFyRiUmyehzNDTSqHUUl&id=61557396391147",
    "posted": "2026-11-18",
    "date_inferred": false,
    "date_text": "22nd of December",
@@ -540,52 +983,18 @@
   },
   {
    "date": "2026-12-23",
-   "venue": "Afan Tavern",
+   "venue": "Cwmdu Inn, Shop and Post Office",
    "towns": [
     "Neath Port Talbot"
    ],
    "time": null,
-   "price": "£5",
-   "detail": "The moment you’ve all been waiting for.. Our Christmas menu 2026 🎅🎄 Whether you’re planning a festive family get together, a work Christmas do or just an excuse for a good meal, we’ve got you covered🥂 Take a look at our ",
+   "price": null,
+   "detail": "🎄📮 Christmas Post Office Opening Hours! 📮🎄 Our fabulous volunteers are going the extra mile this Christmas, opening Cwmdu Post Office with extended opening hours from 1st December to 23rd December! 🎅 Just in time for Chr",
    "platform": "Facebook",
-   "url": "https://www.facebook.com/AfanTavern/posts/pfbid02e2Q1LqCCr2ygyJoxZt5kV9aymW166T7ZUPaShBJ3sLYofPXTYd5BXiAeYf6n3v2zl",
-   "posted": "2026-09-26",
+   "url": "https://www.facebook.com/CwmduInn/posts/pfbid02is57WN7mMaUhAVcDas2GrVKKmQGqZuK5HFV92Kd7oFi9ZwC2RA7NSdiK4xUKGRZMl",
+   "posted": "2026-11-26",
    "date_inferred": false,
    "date_text": "23rd December",
-   "recurring": false,
-   "needs_check": false
-  },
-  {
-   "date": "2026-12-23",
-   "venue": "Cinnamon Kitchen",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "time": "5pm",
-   "price": "£15.95",
-   "detail": "🎄 CHRISTMAS PARTY BOOKINGS 🎄 Celebrate at Cinnamon Kitchen! *2 Course £15.95 | 3 Course £17.95* 📅 16 Nov - 23 Dec 2026 Mon - Thurs, 5pm - 10pm Perfect for family gatherings & work parties Advance booking & pre-order requ",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/CinnamonKitchenPortTalbot/posts/pfbid0oWGhEVBccsrPtwBupyD8HT2eRtVLyZMWPGaFvmyVDYmHXScbkFduDSS5wLjWehfLl",
-   "posted": "2026-10-22",
-   "date_inferred": false,
-   "date_text": "23 Dec",
-   "recurring": false,
-   "needs_check": false
-  },
-  {
-   "date": "2026-12-24",
-   "venue": "Neath Cafe and Car Wash",
-   "towns": [
-    "Neath"
-   ],
-   "time": null,
-   "price": "£10",
-   "detail": "🎄❤️ EXCITING NEWS FROM NEATH CAFE AND CAR WASH! ❤️🎄 We’re delighted to announce that we’ll be doing Christmas lunches this year! 🎅🎁 Let us take the stress out of Christmas dinner this year! 🥰 ✨ Sit back, relax and enjoy ",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/permalink.php?story_fbid=pfbid0A7uQDHHHzw1A4i2mSFbBk2nusXD1pd2eK8sUPhkmfs7pnkA81nBQJrokZ36vuRfDl&id=100092523406388",
-   "posted": "2026-10-26",
-   "date_inferred": false,
-   "date_text": "24th December",
    "recurring": false,
    "needs_check": false
   },
@@ -599,7 +1008,7 @@
    "price": "£32.50",
    "detail": "🎄 Pre-order Cozonac - Romanian Christmas Loaf 🎄 We'll be making Cozonac again this year 💃 You can pre-order in-store or right now on our website: https://www.rosasbakery.co.uk/pre-order Orders must be placed by 21st Dece",
    "platform": "Facebook",
-   "url": "https://www.facebook.com/rosasbakery.co.uk/posts/pfbid0p4hvVShaWDJrmuDDZNQvu3w9VzbTkh5vmUyP1UkEbQnW9RQWavLeWdtwxJf75cqtl",
+   "url": "https://www.facebook.com/rosasbakery.co.uk/posts/pfbid0oqw6VeHpKiLTMQMXorfZfTnxqSWb3PV8sJJKkq5yxTNy1ZhnQKgPL6BV2WQKYu5tl",
    "posted": "2026-11-15",
    "date_inferred": false,
    "date_text": "24th December",
@@ -616,7 +1025,7 @@
    "price": "FREE ENTRY",
    "detail": "👑✨ SLEEPING BEAUTY IS COMING TO THE CASTELL-NEDD ARMS! ✨👑 🎭 OH YES IT IS!!! 🎭 Get ready for a magical afternoon of laughter, music, excitement and plenty of pantomime madness as we bring SLEEPING BEAUTY to the Castell th",
    "platform": "Facebook",
-   "url": "https://www.facebook.com/CastellNeddArms/posts/pfbid02AjccvLBS9WcARRziVeeEUdKCL7g4yH9kekkUpgYaSv5L8A7ZvLQWGwMMMNsdmjwzl",
+   "url": "https://www.facebook.com/CastellNeddArms/posts/pfbid02AWqnvXmfxuWEWD7C56WcKY2zntydsLK7duBxbaRAcQTAxztkd1hwkfNEgCkYgrtXl",
    "posted": "2026-11-18",
    "date_inferred": false,
    "date_text": "28th December",
@@ -624,76 +1033,183 @@
    "needs_check": false
   },
   {
-   "date": "2027-01-01",
-   "venue": "The Bryncoch Inn",
+   "date": "2026-12-31",
+   "venue": "Sally O'Brien's Irish Pub",
    "towns": [
-    "Bryncoch"
+    "Neath Port Talbot"
    ],
-   "time": "21.49",
-   "price": "£21.49",
-   "detail": "🎄✨ OUR FESTIVE MENUS ARE HERE! ✨🎄 It's time to get into the Christmas spirit at The Bryn! ❤️ 🥂 FESTIVE PARTY MENU – £21.49 Enjoy 3 delicious courses! Perfect for celebrating with friends, family or work colleagues. Booki",
+   "time": "1am",
+   "price": "FREE ENTRY",
+   "detail": "🍾 Come join us for another fun filled New Year’s Eve as we party as only we know how. 🎁 Plus, help us celebrate our 3 year anniversary of being open as we first opened our doors on December 31st 2023. 🕰️ We do a countdow",
    "platform": "Facebook",
-   "url": "https://www.facebook.com/thebryncochinn/posts/pfbid0cVa8s2dU4goAUDiwiqY4AemTRFtrkffKobyQ9nAuB2FqgLHpvjVPBSQYTshRKGnl",
-   "posted": "2026-11-18",
+   "url": "https://www.facebook.com/sallyobriensprague/posts/pfbid02FbVRjL3chpnWNFoBkRSL9am7v4FQ18BiC2CtzJnE1JeeHe3Z9FpUwvZn8mvQdXTCl",
+   "posted": "2026-11-25",
    "date_inferred": false,
-   "date_text": "1st January",
+   "date_text": "December 31st",
    "recurring": false,
    "needs_check": false
   },
   {
-   "date": "2027-04-12",
-   "venue": "Neath Hotel",
+   "date": "2027-02-05",
+   "venue": "Colliers Arms",
    "towns": [
-    "Neath"
+    "Skewen"
    ],
    "time": null,
    "price": null,
-   "detail": "Neath Hotel review: excellent service and food - Facebook - Apr 12, 2026 ... This post is a food review of The Welsh House Neath, a restaurant in Neath. The author, Danitha, praises the establishment for its beautiful ..",
+   "detail": "What are the stories behind old Colliers Arms photos? - Facebook - Feb 5, 2026 ... What is the history of the Colliers Arms Skewen pub? The Colliers in Skewen is named for the area's coal mines and served as a social cen",
    "platform": "Google",
-   "url": "https://www.facebook.com/groups/493816954581634/posts/1994830391146942/",
+   "url": "https://www.facebook.com/groups/1254610991785012/posts/2004619230117514/",
    "posted": null,
    "date_inferred": false,
-   "date_text": "Apr 12",
+   "date_text": "Feb 5",
+   "recurring": false,
+   "needs_check": true
+  },
+  {
+   "date": "2027-02-06",
+   "venue": "Blancos Hotel, Bar & Restaurant",
+   "towns": [
+    "Port Talbot"
+   ],
+   "time": null,
+   "price": "£25",
+   "detail": "🏆 SIX NATIONS 2027 AT BLANCO’S! 🏆🏉 Get ready for another fantastic Six Nations Championship! Join us at Blanco’s to cheer on Wales, enjoy great food and soak up the match-day atmosphere! 🏉🍻 🏉 WALES FIXTURES 🏴 Saturday 6t",
+   "platform": "Facebook",
+   "url": "https://www.facebook.com/Blancoshotel/posts/pfbid0i7Aq67cXaaekiwsMWQrzr4xmGpmPndNEoYLB6HvkMXzggVkvxUr1xL8ZE2KGTccWl",
+   "posted": "2026-11-24",
+   "date_inferred": false,
+   "date_text": "6th February",
+   "recurring": false,
+   "needs_check": false
+  },
+  {
+   "date": "2027-02-13",
+   "venue": "Blancos Hotel, Bar & Restaurant",
+   "towns": [
+    "Port Talbot"
+   ],
+   "time": null,
+   "price": "£25",
+   "detail": "🏆 SIX NATIONS 2027 AT BLANCO’S! 🏆🏉 Get ready for another fantastic Six Nations Championship! Join us at Blanco’s to cheer on Wales, enjoy great food and soak up the match-day atmosphere! 🏉🍻 🏉 WALES FIXTURES 🏴 Saturday 6t",
+   "platform": "Facebook",
+   "url": "https://www.facebook.com/Blancoshotel/posts/pfbid0i7Aq67cXaaekiwsMWQrzr4xmGpmPndNEoYLB6HvkMXzggVkvxUr1xL8ZE2KGTccWl",
+   "posted": "2026-11-24",
+   "date_inferred": false,
+   "date_text": "13th February",
+   "recurring": false,
+   "needs_check": false
+  },
+  {
+   "date": "2027-02-20",
+   "venue": "Blancos Hotel, Bar & Restaurant",
+   "towns": [
+    "Port Talbot"
+   ],
+   "time": null,
+   "price": "£25",
+   "detail": "🏆 SIX NATIONS 2027 AT BLANCO’S! 🏆🏉 Get ready for another fantastic Six Nations Championship! Join us at Blanco’s to cheer on Wales, enjoy great food and soak up the match-day atmosphere! 🏉🍻 🏉 WALES FIXTURES 🏴 Saturday 6t",
+   "platform": "Facebook",
+   "url": "https://www.facebook.com/Blancoshotel/posts/pfbid0i7Aq67cXaaekiwsMWQrzr4xmGpmPndNEoYLB6HvkMXzggVkvxUr1xL8ZE2KGTccWl",
+   "posted": "2026-11-24",
+   "date_inferred": false,
+   "date_text": "20th February",
+   "recurring": false,
+   "needs_check": false
+  },
+  {
+   "date": "2027-03-06",
+   "venue": "Blancos Hotel, Bar & Restaurant",
+   "towns": [
+    "Port Talbot"
+   ],
+   "time": null,
+   "price": "£25",
+   "detail": "🏆 SIX NATIONS 2027 AT BLANCO’S! 🏆🏉 Get ready for another fantastic Six Nations Championship! Join us at Blanco’s to cheer on Wales, enjoy great food and soak up the match-day atmosphere! 🏉🍻 🏉 WALES FIXTURES 🏴 Saturday 6t",
+   "platform": "Facebook",
+   "url": "https://www.facebook.com/Blancoshotel/posts/pfbid0i7Aq67cXaaekiwsMWQrzr4xmGpmPndNEoYLB6HvkMXzggVkvxUr1xL8ZE2KGTccWl",
+   "posted": "2026-11-24",
+   "date_inferred": false,
+   "date_text": "6th March",
+   "recurring": false,
+   "needs_check": false
+  },
+  {
+   "date": "2027-03-12",
+   "venue": "Resolven Market",
+   "towns": [
+    "Resolven"
+   ],
+   "time": null,
+   "price": null,
+   "detail": "Resolven Market - Some more amazing handmade items for... - Mar 12, 2026 ... Some more amazing handmade items for glow & grain woodwork! All handmade from reclaimed wood and made into something amazing see for yourself t",
+   "platform": "Google",
+   "url": "https://www.facebook.com/resolvenmarket/photos/1548241330641722/",
+   "posted": null,
+   "date_inferred": false,
+   "date_text": "Mar 12",
+   "recurring": false,
+   "needs_check": true
+  },
+  {
+   "date": "2027-03-13",
+   "venue": "Blancos Hotel, Bar & Restaurant",
+   "towns": [
+    "Port Talbot"
+   ],
+   "time": null,
+   "price": "£25",
+   "detail": "🏆 SIX NATIONS 2027 AT BLANCO’S! 🏆🏉 Get ready for another fantastic Six Nations Championship! Join us at Blanco’s to cheer on Wales, enjoy great food and soak up the match-day atmosphere! 🏉🍻 🏉 WALES FIXTURES 🏴 Saturday 6t",
+   "platform": "Facebook",
+   "url": "https://www.facebook.com/Blancoshotel/posts/pfbid0i7Aq67cXaaekiwsMWQrzr4xmGpmPndNEoYLB6HvkMXzggVkvxUr1xL8ZE2KGTccWl",
+   "posted": "2026-11-24",
+   "date_inferred": false,
+   "date_text": "13th March",
+   "recurring": false,
+   "needs_check": false
+  },
+  {
+   "date": "2027-04-29",
+   "venue": "The Dillwyn Arms",
+   "towns": [
+    "Pontardawe"
+   ],
+   "time": null,
+   "price": null,
+   "detail": "I can highly recommend this Pontardawe pub for a good breakfast ... - Apr 29, 2026 ... A woman reviews the breakfast at The Dillwyn Arms hotel in Pontardawe, Wales. She showcases the menu, which includes options like a f",
+   "platform": "Google",
+   "url": "https://www.facebook.com/61581913513878/videos/dillwyn-arma-pontardawe-for-breakfast/3915309105445355/",
+   "posted": null,
+   "date_inferred": false,
+   "date_text": "Apr 29",
    "recurring": false,
    "needs_check": true
   }
  ],
  "recurring": [
   {
-   "venue": "Afan Tavern",
+   "venue": "Blancos Hotel, Bar & Restaurant",
    "pattern": "every Sunday",
    "time": "12pm",
    "towns": [
     "Neath Port Talbot"
    ],
-   "detail": "At the Afan Tavern, we want to take a moment to remember, honour and thank all those who have served, and those who continue to serve in our Armed Forces. ❤️ As a small gesture of our appreciation, we're offering ONE FRE",
+   "detail": "SUNDAY LUNCH AT BLANCO’S! 🤍 Sundays are made for roasts, good food and time with the ones you love! 😍 Join us every Sunday from 12pm–5pm and enjoy a delicious Sunday roast with all the trimmings! 🥕🥔 ✨ 2 COURSES Adults £1",
    "platform": "Facebook",
-   "url": "https://www.facebook.com/AfanTavern/posts/pfbid02TPuXQmiSCXTLCrfbKepEDXwTrVRJdGLGuG3Qar4tzBR8EzgYknqrNP63dTf8r1wGl",
-   "posted": "2026-11-07"
-  },
-  {
-   "venue": "Bar 98",
-   "pattern": "every Sunday",
-   "time": "12:30",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "detail": "Well done to this weeks winners!! If you would like to join us every Sunday from 12:30 for your chance to win… and even if you don’t it’s a great morning with some wonderful people 🫶🏻🎱",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/permalink.php?story_fbid=pfbid02GFpTJZ4e8AP7kS8EXbwoCNUicmNDcsVnXsdf76VXR5WHxFWwqVx7Fqxe4VsYukdVl&id=61558407041109",
-   "posted": "2026-11-15"
+   "url": "https://www.facebook.com/Blancoshotel/posts/pfbid031iPkE3EuLJZrFA9vBVERX6rrshaH2HogUWf1MRgRUY9uxsxXeh4eP6RJQcdrMUDnl",
+   "posted": "2026-11-24"
   },
   {
    "venue": "Castell-Nedd Arms",
-   "pattern": "every Friday",
-   "time": "1pm",
+   "pattern": "EVERY FRIDAY",
+   "time": "8pm",
    "towns": [
-    "Neath Port Talbot"
+    "Neath"
    ],
-   "detail": "October is looking unreal at Castell-Nedd Arms! We’ve got Buster Karaoke every Friday and Saturday, plus a great line-up of live music through the month and a fun Halloween party for the kids too. Here’s what’s coming up",
+   "detail": "BUSTER KARAOKE EVERY FRIDAY & SATURDAY AT THE CASTELL! Looking for a good night out in Neath? Get yourself down to the Castell Nedd Arms for Buster Karaoke, live every Friday and Saturday from 8pm. Whether you’re grabbin",
    "platform": "Facebook",
-   "url": "https://www.facebook.com/CastellNeddArms/posts/pfbid0ARAChJXggakMwiP96h3g1WEr1ytXtfmGBfmKcE6eEi6ymgQ6czsCLiAsFBC9yutgl",
-   "posted": "2026-10-01"
+   "url": "https://www.facebook.com/CastellNeddArms/posts/pfbid02CLEFtsT619hgDh3qCaTnUkF3qLXnfXwEAK6W6XhWBTqGsMDF7odePVQSFpp2AgGml",
+   "posted": "2026-11-18"
   },
   {
    "venue": "Le Bistro",
@@ -720,28 +1236,16 @@
    "posted": "2026-08-02"
   },
   {
-   "venue": "Red Hill Coffee",
-   "pattern": "Every Wednesday",
-   "time": "6AM",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "detail": "The truth about run clubs… We’re increasingly suspicious it was never really about the running. 6AM CLUB | Every Wednesday | 5K | Coffee after ☕️ #runclub #runningcommunity #coffeeandrunning #southwalesrunning #6amclub",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/reel/2102165150658486/",
-   "posted": "2026-08-13"
-  },
-  {
    "venue": "Resolven Market",
    "pattern": "every Saturday",
    "time": "6am",
    "towns": [
     "Resolven"
    ],
-   "detail": "Fresh stock this week! Come support small and shop with us at Resolven Market every Saturday 6am–2pm ✨ #babiesoftiktok #resolvenmarket #FYP#MomsofTikTok",
+   "detail": "We love coming here, just looking around has become a little family tradition every Saturday for us. If your not from the area, parking is 50p - this needs to be cash and most places inside are cash only but some do acce",
    "platform": "TikTok",
-   "url": "https://www.tiktok.com/@tinyfeeyboutiuqeltd/video/7604090203455638806",
-   "posted": "2026-02-07"
+   "url": "https://www.tiktok.com/@life_with_lott/video/7617592084815531286",
+   "posted": "2026-03-18"
   },
   {
    "venue": "Rosa’s Bakery",
@@ -775,10 +1279,22 @@
    "towns": [
     "Bryncoch"
    ],
-   "detail": "🧠🍻TUESDAY QUIZ NIGHT AT THE BRYNCOCH INN!🍻🧠 Fancy testing your knowledge and having a bit of fun? Get your thinking caps on and join us for our WEEKLY TUESDAY QUIZ! 🎉 📅 Every Tuesday 💷 Just £1.50 per person Gather your f",
+   "detail": "🧠🍻 **TUESDAY QUIZ NIGHT AT THE BRYNCOCH INN!** 🍻🧠 Fancy testing your knowledge and having a bit of fun? Get your thinking caps on and join us for our **WEEKLY TUESDAY QUIZ!** 🎉 📅 **Every Tuesday** 💷 **Just £1.50 per pers",
    "platform": "Facebook",
-   "url": "https://www.facebook.com/thebryncochinn/posts/pfbid02xybZqSxj3b1wQNaF63Td1NpW6efzMDhXRBN5GZqMUXjauboii2jnGoL1qoXd17pFl",
-   "posted": "2026-11-17"
+   "url": "https://www.facebook.com/thebryncochinn/posts/pfbid0hkRLMcDMC731JGvsbyAceQqYXkGPs6rdJ37KSprJGN9sQ7ynW6ArkGUzi2cNQWxCl",
+   "posted": "2026-11-24"
+  },
+  {
+   "venue": "The Bryncoch Inn",
+   "pattern": "every Sunday",
+   "time": "8pm",
+   "towns": [
+    "Bryncoch"
+   ],
+   "detail": "🧠🍻 SUNDAY QUIZ NIGHT AT THE BRYNCOCH INN!🍻🧠 Fancy testing your knowledge and having a bit of fun? Join us every Sunday for our quiz night! 🎉 🕗 Starts at 8pm 💷 Just £1.50 per person Gather your friends, get your thinking ",
+   "platform": "Facebook",
+   "url": "https://www.facebook.com/thebryncochinn/posts/pfbid02KkJJpDEfmAtt3UJMcYPbrXTN6MibZ3oZauZGF5t9nf8XamBzSSJKZRqVJMbaMdrhl",
+   "posted": "2026-11-22"
   },
   {
    "venue": "The Colliers Arms Pontrhydyfen",
@@ -787,22 +1303,10 @@
    "towns": [
     "Pontrhydyfen"
    ],
-   "detail": "🎤✨ KARAOKE FRIDAYS AT THE COLLIERS ARMS PONTRYDYFEN! ✨🎤 Get ready to grab the mic and sing your heart out! 🎶 📍 The Colliers Arms, Pontrhydyfen 📅 Every Friday Night ⏰ 8:30pm – 11:30pm 🎟️ FREE ENTRY! This Friday, while Con",
+   "detail": "🎤✨ KARAOKE FRIDAYS AT THE COLLIERS ARMS PONTRYDYFEN! ✨🎤 Get ready to grab the mic and sing your heart out! 🎶 📍 The Colliers Arms, Pontrhydyfen 📅 Every Friday Night ⏰ 8:30pm – 11:30pm 🎟️ FREE ENTRY!",
    "platform": "Facebook",
-   "url": "https://www.facebook.com/thecolliersarms/posts/pfbid022KZAbquj6uBdGXRxvPJaPX75veonMLbDsfKDZKRj4AmVNqXyvDSPjPj7SmDcF1K4l",
-   "posted": "2026-09-10"
-  },
-  {
-   "venue": "The Dillwyn Arms",
-   "pattern": "every Wednesday",
-   "time": "5:30pm",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "detail": "Around the World Wednesday!✈️🌍🗺️🍴 All you can eat buffet every Wednesday from 5:30pm✈️🌍🗺️ Tonight we are heading to Thailand!🇹🇭 *Vegetarian/Vegan on request🌱",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/thedillwynarms/posts/pfbid02A8n1ogRKzp2mvFHDAJQ7ZfgboY76kuA45Urid2dB3vjAW8VrazKmd54xee3KqF4Bl",
-   "posted": "2026-11-04"
+   "url": "https://www.facebook.com/thecolliersarms/posts/pfbid0J5DGyGBBsV9NR1GZke2XFjFQsPotiPwjXD8QjFhokNLqj4EGSdFE3pC29kJkKrEXl",
+   "posted": "2026-09-18"
   },
   {
    "venue": "The Rising Sun Inn",
@@ -813,38 +1317,25 @@
    ],
    "detail": "Open mic is back at The Rising Sun Inn ! After a short break whilst the new Restaurant settles in the Open Mic is back run by a team of volunteers who you will be familiar with 😀. Starting at 8pm every Tuesday in the top",
    "platform": "Facebook",
-   "url": "https://www.facebook.com/therisingsuninnabersychan/posts/pfbid02Uabhm1oaJeuumzU9uuN63iYA9FrELEB7NeX4EHfhwdFqTdeqyib926QG4JckdAihl",
+   "url": "https://www.facebook.com/therisingsuninnabersychan/posts/pfbid02UMpsmDPp8BzjP3yiLMkiEB6th2mCg8S4BfhDyVvowhAtnmjNXqVZNhs9KGAvPsr9l",
    "posted": "2026-10-25"
-  },
-  {
-   "venue": "Wild West Street Food",
-   "pattern": "every Sunday",
-   "time": "12pm",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "detail": "Well I wasn’t going to post this as I wanted to advertise the first Wild West Food challenge a little bit better than this and we were laughing as it was just an experiment to see if it would turn out ok, So anyway from ",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/reel/1188451589424372/",
-   "posted": "2025-12-14"
   }
  ],
  "venues": [
   {
    "venue": "Resolven Market",
-   "total_mentions": 40,
-   "independent_mentions": 36,
+   "total_mentions": 37,
+   "independent_mentions": 33,
    "platforms": [
     "Facebook",
     "Google",
-    "Instagram",
     "TikTok"
    ]
   },
   {
    "venue": "The Mine",
-   "total_mentions": 26,
-   "independent_mentions": 25,
+   "total_mentions": 33,
+   "independent_mentions": 28,
    "platforms": [
     "Facebook",
     "Google",
@@ -865,32 +1356,20 @@
    ]
   },
   {
-   "venue": "Neath Indoor Market",
-   "total_mentions": 17,
-   "independent_mentions": 17,
-   "platforms": [
-    "Google",
-    "Instagram",
-    "TikTok",
-    "YouTube"
-   ]
-  },
-  {
-   "venue": "Portablo Coffi",
-   "total_mentions": 19,
-   "independent_mentions": 16,
+   "venue": "The Ranch",
+   "total_mentions": 31,
+   "independent_mentions": 21,
    "platforms": [
     "Facebook",
     "Google",
     "Instagram",
-    "TikTok",
-    "YouTube"
+    "TikTok"
    ]
   },
   {
    "venue": "Mulligans",
-   "total_mentions": 16,
-   "independent_mentions": 15,
+   "total_mentions": 28,
+   "independent_mentions": 21,
    "platforms": [
     "Facebook",
     "Google",
@@ -900,8 +1379,8 @@
   },
   {
    "venue": "The Arch",
-   "total_mentions": 27,
-   "independent_mentions": 14,
+   "total_mentions": 30,
+   "independent_mentions": 17,
    "platforms": [
     "Facebook",
     "Google",
@@ -911,19 +1390,20 @@
    ]
   },
   {
-   "venue": "The Front",
-   "total_mentions": 15,
-   "independent_mentions": 14,
+   "venue": "Portablo Coffi",
+   "total_mentions": 24,
+   "independent_mentions": 15,
    "platforms": [
     "Facebook",
     "Google",
+    "Instagram",
     "TikTok",
     "YouTube"
    ]
   },
   {
    "venue": "The Brit",
-   "total_mentions": 21,
+   "total_mentions": 20,
    "independent_mentions": 14,
    "platforms": [
     "Facebook",
@@ -933,100 +1413,73 @@
    ]
   },
   {
-   "venue": "The Ranch",
-   "total_mentions": 20,
-   "independent_mentions": 12,
+   "venue": "Neath Indoor Market",
+   "total_mentions": 13,
+   "independent_mentions": 13,
    "platforms": [
-    "Facebook",
     "Google",
-    "TikTok"
+    "Instagram",
+    "TikTok",
+    "YouTube"
    ]
   },
   {
-   "venue": "Booths by the Bridge",
+   "venue": "The Front",
+   "total_mentions": 12,
+   "independent_mentions": 10,
+   "platforms": [
+    "Facebook",
+    "TikTok",
+    "YouTube"
+   ]
+  },
+  {
+   "venue": "The Duke",
    "total_mentions": 10,
    "independent_mentions": 10,
    "platforms": [
     "Facebook",
-    "Google",
-    "Reddit",
-    "TikTok"
+    "Instagram",
+    "YouTube"
    ]
   },
   {
-   "venue": "Neath Food and Drink Festival",
-   "total_mentions": 11,
+   "venue": "Sgwd Gwladys",
+   "total_mentions": 13,
    "independent_mentions": 8,
    "platforms": [
     "Facebook",
     "Google",
-    "Reddit",
     "TikTok"
    ]
   },
   {
    "venue": "Welsh House",
    "total_mentions": 14,
-   "independent_mentions": 7,
+   "independent_mentions": 8,
    "platforms": [
     "Facebook",
     "Google",
+    "Instagram",
     "TikTok"
    ]
   },
   {
-   "venue": "The Crown Skewen",
-   "total_mentions": 17,
-   "independent_mentions": 7,
-   "platforms": [
-    "Facebook",
-    "Google",
-    "TikTok"
-   ]
-  },
-  {
-   "venue": "Le Bistro",
+   "venue": "Neath Food and Drink Festival",
    "total_mentions": 10,
-   "independent_mentions": 7,
+   "independent_mentions": 8,
    "platforms": [
     "Facebook",
     "Google",
-    "TikTok"
-   ]
-  },
-  {
-   "venue": "Tap Room",
-   "total_mentions": 7,
-   "independent_mentions": 7,
-   "platforms": [
-    "Facebook",
-    "Google",
-    "TikTok"
-   ]
-  },
-  {
-   "venue": "Sgwd Gwladys",
-   "total_mentions": 6,
-   "independent_mentions": 6,
-   "platforms": [
-    "TikTok"
-   ]
-  },
-  {
-   "venue": "Neath Kitchen",
-   "total_mentions": 9,
-   "independent_mentions": 6,
-   "platforms": [
-    "Facebook",
-    "Google",
+    "Reddit",
     "TikTok",
     "YouTube"
    ]
   },
   {
-   "venue": "The Arch Bar & Nightclub",
-   "total_mentions": 7,
-   "independent_mentions": 6,
+   "venue": "The Tyn",
+   "total_mentions": 18,
+   "independent_mentions": 8,
    "platforms": [
     "Facebook",
     "Google",
@@ -1035,8 +1488,8 @@
   },
   {
    "venue": "Neath Pub Rock Festival",
-   "total_mentions": 12,
-   "independent_mentions": 6,
+   "total_mentions": 13,
+   "independent_mentions": 7,
    "platforms": [
     "Facebook",
     "Google",
@@ -1045,18 +1498,9 @@
    ]
   },
   {
-   "venue": "Rosa's Bakery",
-   "total_mentions": 6,
-   "independent_mentions": 6,
-   "platforms": [
-    "Google",
-    "TikTok"
-   ]
-  },
-  {
    "venue": "Bollywood Lounge",
-   "total_mentions": 18,
-   "independent_mentions": 6,
+   "total_mentions": 19,
+   "independent_mentions": 7,
    "platforms": [
     "Facebook",
     "Google",
@@ -1066,11 +1510,88 @@
   },
   {
    "venue": "Grand Sultan",
-   "total_mentions": 6,
-   "independent_mentions": 6,
+   "total_mentions": 7,
+   "independent_mentions": 7,
    "platforms": [
     "TikTok",
     "YouTube"
+   ]
+  },
+  {
+   "venue": "The Crown Skewen",
+   "total_mentions": 16,
+   "independent_mentions": 7,
+   "platforms": [
+    "Facebook",
+    "Google",
+    "TikTok"
+   ]
+  },
+  {
+   "venue": "Le Bistro",
+   "total_mentions": 9,
+   "independent_mentions": 7,
+   "platforms": [
+    "Facebook",
+    "Google",
+    "TikTok"
+   ]
+  },
+  {
+   "venue": "Aberafan Shopping Centre",
+   "total_mentions": 10,
+   "independent_mentions": 7,
+   "platforms": [
+    "Facebook",
+    "TikTok",
+    "YouTube"
+   ]
+  },
+  {
+   "venue": "Mulligans Neath",
+   "total_mentions": 7,
+   "independent_mentions": 7,
+   "platforms": [
+    "Google",
+    "TikTok"
+   ]
+  },
+  {
+   "venue": "Lamb and Flag",
+   "total_mentions": 8,
+   "independent_mentions": 7,
+   "platforms": [
+    "Facebook",
+    "Google"
+   ]
+  },
+  {
+   "venue": "Carnivore by the Mine",
+   "total_mentions": 6,
+   "independent_mentions": 6,
+   "platforms": [
+    "Facebook",
+    "Instagram",
+    "TikTok"
+   ]
+  },
+  {
+   "venue": "T-Bones",
+   "total_mentions": 6,
+   "independent_mentions": 6,
+   "platforms": [
+    "Google",
+    "TikTok"
+   ]
+  },
+  {
+   "venue": "The Ranch Breakfast Bar And Grill",
+   "total_mentions": 6,
+   "independent_mentions": 6,
+   "platforms": [
+    "Facebook",
+    "Google",
+    "TikTok"
    ]
   },
   {
@@ -1084,21 +1605,13 @@
    ]
   },
   {
-   "venue": "Lamb and Flag",
-   "total_mentions": 8,
+   "venue": "Saint Hugo",
+   "total_mentions": 13,
    "independent_mentions": 6,
    "platforms": [
     "Facebook",
-    "Google"
-   ]
-  },
-  {
-   "venue": "Carnivore by the Mine",
-   "total_mentions": 5,
-   "independent_mentions": 5,
-   "platforms": [
-    "Instagram",
-    "TikTok"
+    "Google",
+    "Instagram"
    ]
   },
   {
@@ -1113,25 +1626,6 @@
    ]
   },
   {
-   "venue": "Cinnamon Kitchen",
-   "total_mentions": 9,
-   "independent_mentions": 5,
-   "platforms": [
-    "Facebook",
-    "Google",
-    "TikTok"
-   ]
-  },
-  {
-   "venue": "Sand Rabbit",
-   "total_mentions": 5,
-   "independent_mentions": 5,
-   "platforms": [
-    "Google",
-    "TikTok"
-   ]
-  },
-  {
    "venue": "Food at The Shed",
    "total_mentions": 5,
    "independent_mentions": 5,
@@ -1140,16 +1634,7 @@
    ]
   },
   {
-   "venue": "Big Food Festival",
-   "total_mentions": 5,
-   "independent_mentions": 5,
-   "platforms": [
-    "Google",
-    "TikTok"
-   ]
-  },
-  {
-   "venue": "Rosa’s Bakery",
+   "venue": "Sand Rabbit",
    "total_mentions": 5,
    "independent_mentions": 5,
    "platforms": [
@@ -1158,18 +1643,37 @@
    ]
   },
   {
-   "venue": "The Tyn",
-   "total_mentions": 16,
+   "venue": "Booths by the Bridge",
+   "total_mentions": 5,
    "independent_mentions": 5,
    "platforms": [
-    "Facebook",
     "Google",
+    "Reddit",
     "TikTok"
    ]
   },
   {
-   "venue": "The Ranch Breakfast Bar And Grill",
-   "total_mentions": 6,
+   "venue": "Neath Kitchen",
+   "total_mentions": 9,
+   "independent_mentions": 5,
+   "platforms": [
+    "Facebook",
+    "Google",
+    "TikTok",
+    "YouTube"
+   ]
+  },
+  {
+   "venue": "The Brit Public House & Restaurant",
+   "total_mentions": 5,
+   "independent_mentions": 5,
+   "platforms": [
+    "Google"
+   ]
+  },
+  {
+   "venue": "Neath Cafe and Car Wash",
+   "total_mentions": 11,
    "independent_mentions": 5,
    "platforms": [
     "Facebook",
@@ -1177,47 +1681,18 @@
    ]
   },
   {
-   "venue": "Chopsticks",
-   "total_mentions": 4,
-   "independent_mentions": 4,
+   "venue": "Neath and Port Talbot Eats",
+   "total_mentions": 5,
+   "independent_mentions": 5,
    "platforms": [
-    "Google",
-    "TikTok"
+    "Facebook",
+    "Google"
    ]
   },
   {
-   "venue": "The Duke",
-   "total_mentions": 4,
-   "independent_mentions": 4,
-   "platforms": [
-    "Google",
-    "Instagram",
-    "TikTok",
-    "YouTube"
-   ]
-  },
-  {
-   "venue": "The Bagle Brook",
-   "total_mentions": 4,
-   "independent_mentions": 4,
-   "platforms": [
-    "Google",
-    "TikTok"
-   ]
-  },
-  {
-   "venue": "Neath General Market",
-   "total_mentions": 4,
-   "independent_mentions": 4,
-   "platforms": [
-    "Google",
-    "YouTube"
-   ]
-  },
-  {
-   "venue": "The Brit Public House & Restaurant",
-   "total_mentions": 4,
-   "independent_mentions": 4,
+   "venue": "Saint Hugo Bakery",
+   "total_mentions": 5,
+   "independent_mentions": 5,
    "platforms": [
     "Google"
    ]
@@ -1225,6 +1700,158 @@
   {
    "venue": "Le Bistro The Crown Skewen",
    "total_mentions": 7,
+   "independent_mentions": 5,
+   "platforms": [
+    "Facebook",
+    "Google"
+   ]
+  },
+  {
+   "venue": "Cross Keys Neath",
+   "total_mentions": 8,
+   "independent_mentions": 5,
+   "platforms": [
+    "Facebook"
+   ]
+  },
+  {
+   "venue": "New Garden",
+   "total_mentions": 5,
+   "independent_mentions": 5,
+   "platforms": [
+    "Facebook",
+    "TikTok"
+   ]
+  },
+  {
+   "venue": "Afan Tavern",
+   "total_mentions": 6,
+   "independent_mentions": 4,
+   "platforms": [
+    "Facebook",
+    "Google",
+    "Instagram",
+    "TikTok"
+   ]
+  },
+  {
+   "venue": "Bella Ciao",
+   "total_mentions": 6,
+   "independent_mentions": 4,
+   "platforms": [
+    "Facebook",
+    "Google",
+    "TikTok"
+   ]
+  },
+  {
+   "venue": "Casa Pizza",
+   "total_mentions": 4,
+   "independent_mentions": 4,
+   "platforms": [
+    "TikTok",
+    "YouTube"
+   ]
+  },
+  {
+   "venue": "Flame & Bake",
+   "total_mentions": 4,
+   "independent_mentions": 4,
+   "platforms": [
+    "Facebook",
+    "Instagram",
+    "TikTok"
+   ]
+  },
+  {
+   "venue": "Dillwyn Arms",
+   "total_mentions": 13,
+   "independent_mentions": 4,
+   "platforms": [
+    "Facebook",
+    "Google",
+    "TikTok"
+   ]
+  },
+  {
+   "venue": "The Dillwyn Arms",
+   "total_mentions": 13,
+   "independent_mentions": 4,
+   "platforms": [
+    "Facebook",
+    "Google",
+    "TikTok"
+   ]
+  },
+  {
+   "venue": "Fortune House",
+   "total_mentions": 4,
+   "independent_mentions": 4,
+   "platforms": [
+    "Instagram",
+    "TikTok"
+   ]
+  },
+  {
+   "venue": "Leicester House",
+   "total_mentions": 4,
+   "independent_mentions": 4,
+   "platforms": [
+    "Facebook",
+    "TikTok"
+   ]
+  },
+  {
+   "venue": "The Arch Bar & Nightclub",
+   "total_mentions": 5,
+   "independent_mentions": 4,
+   "platforms": [
+    "Facebook",
+    "Google",
+    "TikTok"
+   ]
+  },
+  {
+   "venue": "Rosa's Bakery",
+   "total_mentions": 4,
+   "independent_mentions": 4,
+   "platforms": [
+    "Google",
+    "TikTok"
+   ]
+  },
+  {
+   "venue": "The Hideout",
+   "total_mentions": 15,
+   "independent_mentions": 4,
+   "platforms": [
+    "Facebook",
+    "Google",
+    "Reddit",
+    "TikTok"
+   ]
+  },
+  {
+   "venue": "Shun Da",
+   "total_mentions": 4,
+   "independent_mentions": 4,
+   "platforms": [
+    "Google",
+    "TikTok"
+   ]
+  },
+  {
+   "venue": "Seventh Heaven",
+   "total_mentions": 4,
+   "independent_mentions": 4,
+   "platforms": [
+    "Google",
+    "TikTok"
+   ]
+  },
+  {
+   "venue": "The Lamb and Flag Glyn Neath",
+   "total_mentions": 4,
    "independent_mentions": 4,
    "platforms": [
     "Facebook",
@@ -1237,86 +1864,35 @@
    "independent_mentions": 3,
    "platforms": [
     "Google",
-    "Instagram",
     "TikTok"
    ]
   },
   {
-   "venue": "Dillwyn Arms",
-   "total_mentions": 11,
-   "independent_mentions": 3,
-   "platforms": [
-    "Facebook",
-    "Google",
-    "TikTok"
-   ]
-  },
-  {
-   "venue": "The Dillwyn Arms",
-   "total_mentions": 11,
-   "independent_mentions": 3,
-   "platforms": [
-    "Facebook",
-    "Google",
-    "TikTok"
-   ]
-  },
-  {
-   "venue": "Afan Tavern",
-   "total_mentions": 6,
-   "independent_mentions": 3,
-   "platforms": [
-    "Facebook",
-    "Google",
-    "Instagram",
-    "TikTok"
-   ]
-  },
-  {
-   "venue": "The Hideout",
-   "total_mentions": 13,
-   "independent_mentions": 3,
-   "platforms": [
-    "Facebook",
-    "Google",
-    "Reddit",
-    "TikTok"
-   ]
-  },
-  {
-   "venue": "Mandies",
+   "venue": "Pig Iron",
    "total_mentions": 3,
    "independent_mentions": 3,
    "platforms": [
-    "Instagram",
+    "Google",
     "TikTok"
    ]
   },
   {
    "venue": "Bar 98",
-   "total_mentions": 3,
+   "total_mentions": 5,
    "independent_mentions": 3,
    "platforms": [
-    "Google",
-    "TikTok",
-    "YouTube"
-   ]
-  },
-  {
-   "venue": "Remos",
-   "total_mentions": 3,
-   "independent_mentions": 3,
-   "platforms": [
+    "Facebook",
     "Google",
     "TikTok"
    ]
   },
   {
-   "venue": "Fortune House",
-   "total_mentions": 3,
+   "venue": "Old White Horse",
+   "total_mentions": 13,
    "independent_mentions": 3,
    "platforms": [
-    "Instagram",
+    "Facebook",
+    "Google",
     "TikTok"
    ]
   },
@@ -1331,18 +1907,42 @@
    ]
   },
   {
-   "venue": "The Duke Neath",
+   "venue": "Memo",
    "total_mentions": 3,
    "independent_mentions": 3,
    "platforms": [
-    "Google",
-    "Instagram",
     "TikTok"
    ]
   },
   {
-   "venue": "The Rolling Mill",
-   "total_mentions": 4,
+   "venue": "Big Food Festival",
+   "total_mentions": 3,
+   "independent_mentions": 3,
+   "platforms": [
+    "TikTok"
+   ]
+  },
+  {
+   "venue": "Chopsticks",
+   "total_mentions": 3,
+   "independent_mentions": 3,
+   "platforms": [
+    "Google",
+    "TikTok"
+   ]
+  },
+  {
+   "venue": "Fusion Pizza",
+   "total_mentions": 3,
+   "independent_mentions": 3,
+   "platforms": [
+    "Facebook",
+    "TikTok"
+   ]
+  },
+  {
+   "venue": "Green Dragon",
+   "total_mentions": 3,
    "independent_mentions": 3,
    "platforms": [
     "Facebook",
@@ -1361,37 +1961,36 @@
    ]
   },
   {
-   "venue": "Pop In Cafe",
-   "total_mentions": 5,
+   "venue": "The Rolling Mill",
+   "total_mentions": 4,
    "independent_mentions": 3,
    "platforms": [
     "Facebook",
-    "Google",
-    "Reddit"
-   ]
-  },
-  {
-   "venue": "Saint Hugo",
-   "total_mentions": 5,
-   "independent_mentions": 3,
-   "platforms": [
-    "Facebook",
-    "Google",
-    "Instagram"
-   ]
-  },
-  {
-   "venue": "Mulligans Neath",
-   "total_mentions": 3,
-   "independent_mentions": 3,
-   "platforms": [
     "Google",
     "TikTok"
    ]
   },
   {
-   "venue": "The Colliers Arms Pontrhydyfen",
-   "total_mentions": 4,
+   "venue": "Neath General Market",
+   "total_mentions": 3,
+   "independent_mentions": 3,
+   "platforms": [
+    "Google",
+    "YouTube"
+   ]
+  },
+  {
+   "venue": "Pop In Cafe",
+   "total_mentions": 3,
+   "independent_mentions": 3,
+   "platforms": [
+    "Google",
+    "Reddit"
+   ]
+  },
+  {
+   "venue": "The Loft",
+   "total_mentions": 11,
    "independent_mentions": 3,
    "platforms": [
     "Facebook",
@@ -1399,8 +1998,8 @@
    ]
   },
   {
-   "venue": "Neath Cafe and Car Wash",
-   "total_mentions": 10,
+   "venue": "Neath Deli",
+   "total_mentions": 3,
    "independent_mentions": 3,
    "platforms": [
     "Facebook",
@@ -1408,8 +2007,17 @@
    ]
   },
   {
-   "venue": "The Lamb and Flag Glyn Neath",
-   "total_mentions": 4,
+   "venue": "The Bryncoch Inn",
+   "total_mentions": 6,
+   "independent_mentions": 3,
+   "platforms": [
+    "Facebook",
+    "Google"
+   ]
+  },
+  {
+   "venue": "Bryncoch Inn",
+   "total_mentions": 6,
    "independent_mentions": 3,
    "platforms": [
     "Facebook",
@@ -1422,38 +2030,25 @@
    "venue": "Warners Bar",
    "announced": "2026-03-18",
    "url": "https://www.facebook.com/permalink.php?story_fbid=pfbid035giJCnipfa3h5soYodWj4LLbsnNisB7xmhaLaZphqiMCupDZamaKZnRM8nUwEwLhl&id=61567015341025",
-   "quote": "It is with a very heavy heart that I’m sharing some difficult news. After a lot of thought and a couple of sleepless nights, I have made the incredibly hard decision to close Warner’s Bar for good. Fo"
+   "quote": "It is with a very heavy heart that I’m sharing some difficult news. After a lot of thought and a couple of sleepless nights, I have made the incredibly hard decision to close Warner’s Bar for good. Fo",
+   "carried_forward": true
   },
   {
    "venue": "The Rock and Fountain, Aberdulais.",
    "announced": "2023-04-25",
    "url": "https://www.facebook.com/rockandfountainaber/posts/pfbid0ARAE8YAnXNwYp8hGetPGBDoVJrR1FmLtYabTKMpYXUr9TAYrAXqfcc68yMQmShAFl",
-   "quote": "THE ROCK AND FOUNTAIN ABERDULAIS 01639 642681 LAST FEW DAYS OF OUR CLOSING DOWN SALE THESE ARE THE OFFERS ALL STARTERS £3.50 MAINS MENU £7.00 DESSERTS £3.50 BURGERS CHICKEN , BEEF OR VEGAN £10.95 or d"
+   "quote": "THE ROCK AND FOUNTAIN ABERDULAIS 01639 642681 LAST FEW DAYS OF OUR CLOSING DOWN SALE THESE ARE THE OFFERS ALL STARTERS £3.50 MAINS MENU £7.00 DESSERTS £3.50 BURGERS CHICKEN , BEEF OR VEGAN £10.95 or d",
+   "carried_forward": true
   }
  ],
  "feeds": [
   {
-   "source": "https://www.facebook.com/thedillwynarms",
-   "posts": 12,
-   "dated": 12
-  },
-  {
    "source": "https://www.facebook.com/CwmduInn",
    "posts": 12,
-   "dated": 12
-  },
-  {
-   "source": "https://www.facebook.com/groups/121676847869402",
-   "posts": 19,
    "dated": 11
   },
   {
-   "source": "https://www.facebook.com/groups/1547730155456541",
-   "posts": 18,
-   "dated": 11
-  },
-  {
-   "source": "https://www.facebook.com/thebritpubcwmavon",
+   "source": "https://www.facebook.com/SparVictoriaRoad",
    "posts": 12,
    "dated": 11
   },
@@ -1463,17 +2058,47 @@
    "dated": 10
   },
   {
-   "source": "https://www.facebook.com/Murphys-Main-Stage-100087437112160",
+   "source": "https://www.facebook.com/CastellNeddArms",
    "posts": 12,
    "dated": 10
   },
   {
-   "source": "https://www.facebook.com/Warners-Bar-61567015341025",
+   "source": "https://www.facebook.com/thebritpubcwmavon",
    "posts": 12,
    "dated": 10
   },
   {
    "source": "https://www.facebook.com/AfanTavern",
+   "posts": 12,
+   "dated": 10
+  },
+  {
+   "source": "https://www.facebook.com/thedillwynarms",
+   "posts": 12,
+   "dated": 10
+  },
+  {
+   "source": "https://www.facebook.com/thebryncochinn",
+   "posts": 12,
+   "dated": 10
+  },
+  {
+   "source": "https://www.facebook.com/groups/1656209797940838",
+   "posts": 19,
+   "dated": 9
+  },
+  {
+   "source": "https://www.facebook.com/Murphys-Main-Stage-100087437112160",
+   "posts": 12,
+   "dated": 9
+  },
+  {
+   "source": "https://www.facebook.com/tynytwrtavern",
+   "posts": 12,
+   "dated": 9
+  },
+  {
+   "source": "https://www.facebook.com/TheOtherPlacePontardawe",
    "posts": 12,
    "dated": 9
   },
@@ -1483,33 +2108,23 @@
    "dated": 9
   },
   {
-   "source": "https://www.facebook.com/themineneathtown",
-   "posts": 12,
-   "dated": 9
-  },
-  {
-   "source": "https://www.facebook.com/rosasbakery.co.uk",
-   "posts": 12,
-   "dated": 9
-  },
-  {
    "source": "https://www.facebook.com/theminersarmsskewen",
    "posts": 12,
    "dated": 9
   },
   {
-   "source": "https://www.facebook.com/cadnolounge",
+   "source": "https://www.facebook.com/TheArchNeath",
    "posts": 12,
    "dated": 9
   },
   {
-   "source": "https://www.facebook.com/GwynHallQuizNights",
-   "posts": 12,
-   "dated": 9
-  },
-  {
-   "source": "https://www.facebook.com/groups/1254610991785012",
+   "source": "https://www.facebook.com/groups/196453747792207",
    "posts": 19,
+   "dated": 8
+  },
+  {
+   "source": "https://www.facebook.com/groups/whatsonkidsneathvalley",
+   "posts": 18,
    "dated": 8
   },
   {
@@ -1518,27 +2133,12 @@
    "dated": 8
   },
   {
-   "source": "https://www.facebook.com/CastellNeddArms",
-   "posts": 12,
-   "dated": 8
-  },
-  {
-   "source": "https://www.facebook.com/ThePigIronTavern",
-   "posts": 12,
-   "dated": 8
-  },
-  {
-   "source": "https://www.facebook.com/tynytwrtavern",
-   "posts": 12,
-   "dated": 8
-  },
-  {
    "source": "https://www.facebook.com/Neath-Cafe-and-Car-Wash-100092523406388",
    "posts": 12,
    "dated": 8
   },
   {
-   "source": "https://www.facebook.com/Gossip-cafe-port-talbot-100063565991028",
+   "source": "https://www.facebook.com/61576650613872",
    "posts": 12,
    "dated": 8
   },
@@ -1548,63 +2148,74 @@
    "dated": 8
   },
   {
-   "source": "https://www.facebook.com/beardedbaker83",
+   "source": "https://www.facebook.com/rosasbakery.co.uk",
    "posts": 12,
    "dated": 8
   },
   {
-   "source": "https://www.facebook.com/thebryncochinn",
+   "source": "https://www.facebook.com/cadnolounge",
    "posts": 12,
    "dated": 8
   },
   {
-   "source": "https://www.facebook.com/groups/1656209797940838",
-   "posts": 18,
+   "source": "https://www.facebook.com/groups/1048348985663965",
+   "posts": 19,
    "dated": 7
   },
   {
-   "source": "https://www.facebook.com/groups/315037995232315",
-   "posts": 18,
+   "source": "https://www.facebook.com/groups/neathtowntalk",
+   "posts": 19,
    "dated": 7
   },
   {
-   "source": "https://www.facebook.com/TheArchNeath",
+   "source": "https://www.facebook.com/groups/1254610991785012",
+   "posts": 19,
+   "dated": 7
+  },
+  {
+   "source": "https://www.facebook.com/ThePigIronTavern",
    "posts": 12,
    "dated": 7
   },
   {
-   "source": "https://www.facebook.com/darrenandemmascafe",
+   "source": "https://www.facebook.com/Gossip-cafe-port-talbot-100063565991028",
    "posts": 12,
    "dated": 7
   },
   {
-   "source": "https://www.facebook.com/CinnamonKitchenPortTalbot",
+   "source": "https://www.facebook.com/Thai-Food-Cafe-100049167354912",
+   "posts": 12,
+   "dated": 7
+  },
+  {
+   "source": "https://www.facebook.com/TheLoftneath",
    "posts": 12,
    "dated": 7
   }
  ],
  "listing_groups": [
   "https://www.facebook.com/groups/196453747792207",
-  "https://www.facebook.com/groups/1719701018281009",
-  "https://www.facebook.com/groups/neathtowntalk",
-  "https://www.facebook.com/groups/Gig-Guide-for-Neath-and-Port-Talbot-1719701018281009",
-  "https://www.facebook.com/groups/493816954581634",
   "https://www.facebook.com/groups/1656209797940838",
-  "https://www.facebook.com/groups/14773211051",
-  "https://www.facebook.com/groups/948864796293875",
-  "https://www.facebook.com/groups/198518347874",
+  "https://www.facebook.com/groups/1719701018281009",
   "https://www.facebook.com/groups/1048348985663965",
-  "https://www.facebook.com/groups/151866188203549",
+  "https://www.facebook.com/groups/neathtowntalk",
+  "https://www.facebook.com/groups/162080734827137",
+  "https://www.facebook.com/groups/813363855449441",
+  "https://www.facebook.com/groups/16882914141",
+  "https://www.facebook.com/groups/14773211051",
+  "https://www.facebook.com/groups/447580032039413",
+  "https://www.facebook.com/groups/Gig-Guide-for-Neath-and-Port-Talbot-1719701018281009",
+  "https://www.facebook.com/groups/198518347874",
   "https://www.facebook.com/groups/121676847869402",
   "https://www.facebook.com/groups/1547730155456541",
-  "https://www.facebook.com/groups/1035410089888866",
+  "https://www.facebook.com/groups/828876644147114",
+  "https://www.facebook.com/groups/whatsonkidsneathvalley",
   "https://www.facebook.com/groups/1254610991785012",
-  "https://www.facebook.com/groups/292489594193366",
   "https://www.facebook.com/groups/1016434321744080",
   "https://www.facebook.com/groups/CrossKeysNeath",
-  "https://www.facebook.com/groups/505702339479837",
-  "https://www.facebook.com/groups/68860453452",
-  "https://www.facebook.com/groups/315037995232315"
+  "https://www.facebook.com/groups/978470938890507",
+  "https://www.facebook.com/groups/522746875006607",
+  "https://www.facebook.com/groups/68860453452"
  ],
  "errors": []
 }
