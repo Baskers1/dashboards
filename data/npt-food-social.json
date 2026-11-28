@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-27",
+ "generated": "2026-11-28",
  "area": "Neath Port Talbot",
  "scope": "restaurants, pubs, cafes, pop-ups and markets",
  "timezone": "Europe/London",
@@ -27,15 +27,15 @@
  },
  "posts_fetched": {
   "oldest": "2026-11-19",
-  "newest": "2026-11-27"
+  "newest": "2026-11-28"
  },
  "counts": {
-  "api_responses": 732,
-  "posts_kept": 2789,
+  "api_responses": 733,
+  "posts_kept": 2795,
   "comments_read": 611,
   "food_and_drink_posts": 1857,
-  "listing_rows": 289,
-  "listing_rows_forward": 67,
+  "listing_rows": 286,
+  "listing_rows_forward": 63,
   "recurring_fixtures": 11,
   "venues_ranked": 72,
   "closed_venues": 2,
@@ -43,74 +43,6 @@
   "facebook_pages": 107
  },
  "listings": [
-  {
-   "date": "2026-11-27",
-   "venue": "Bar 98",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "time": "7:30pm",
-   "price": null,
-   "detail": "🍿 This Friday at Bar98 🍿 Looking for somewhere warm to go after the parade. Well look no further as we will be showing a free Christmas film from 7:30pm All children welcome but spaces are limited so make sure you get th",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/permalink.php?story_fbid=pfbid026FUrsVJ9Cz2KEQw6mJXSbXxTvQZ739WSfQUnMmLL37we2bx6BpbhizgMkcnny55hl&id=61558407041109",
-   "posted": "2026-11-23",
-   "date_inferred": true,
-   "date_text": "This Friday",
-   "recurring": false,
-   "needs_check": true
-  },
-  {
-   "date": "2026-11-27",
-   "venue": "Bar 98",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "time": null,
-   "price": "£1",
-   "detail": "Please join us this Christmas where we will be supporting the Pantry Food Bank. For every bear we sell we will be donating £1 to support them this festive season 🧸🫶🏻🎄 Available from the 27th November ☕️",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/reel/1084076038023042/",
-   "posted": "2026-11-20",
-   "date_inferred": false,
-   "date_text": "27th November",
-   "recurring": false,
-   "needs_check": false
-  },
-  {
-   "date": "2026-11-27",
-   "venue": "The Brit Public House & Restaurant",
-   "towns": [
-    "Neath Port Talbot"
-   ],
-   "time": "8PM",
-   "price": null,
-   "detail": "🎶 LIVE MUSIC FRIDAY 🎶 Join us this Friday 27th November at 8PM for a fantastic night of live music with the talented Paul Evans! Enjoy amazing food, delicious drinks and brilliant live entertainment - the perfect way to ",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/thebritpubcwmavon/posts/pfbid02rGhoTfF9ZNKJj5cCsGaCGYBmgjBMEQJFTwa5PTUzViMNXE6grpUkCpUcEPo8YhpJl",
-   "posted": "2026-11-25",
-   "date_inferred": false,
-   "date_text": "27th November",
-   "recurring": false,
-   "needs_check": false
-  },
-  {
-   "date": "2026-11-27",
-   "venue": "The Castle Hotel",
-   "towns": [
-    "Neath"
-   ],
-   "time": "9PM",
-   "price": "FREE ENTRY",
-   "detail": "🎤✨ IT'S A WEEKEND OF LIVE MUSIC AT THE CASTLE HOTEL NEATH! ✨🎶 Who's ready for a fantastic weekend of entertainment? We've got TWO brilliant nights lined up for you! 🥳🍻 🎸 FRIDAY 27TH NOVEMBER – VICARI'S BAR 🔥 SUNSHINE CAB",
-   "platform": "Facebook",
-   "url": "https://www.facebook.com/groups/196453747792207/permalink/2365100774260816/",
-   "posted": "2026-11-23",
-   "date_inferred": false,
-   "date_text": "27TH NOVEMBER",
-   "recurring": false,
-   "needs_check": false
-  },
   {
    "date": "2026-11-28",
    "venue": "Cwmdu Inn, Shop and Post Office",
@@ -1518,8 +1450,8 @@
    ]
   },
   {
-   "venue": "The Crown Skewen",
-   "total_mentions": 16,
+   "venue": "Le Bistro",
+   "total_mentions": 9,
    "independent_mentions": 7,
    "platforms": [
     "Facebook",
@@ -1528,8 +1460,8 @@
    ]
   },
   {
-   "venue": "Le Bistro",
-   "total_mentions": 9,
+   "venue": "The Crown Skewen",
+   "total_mentions": 16,
    "independent_mentions": 7,
    "platforms": [
     "Facebook",
@@ -1725,7 +1657,7 @@
   },
   {
    "venue": "Afan Tavern",
-   "total_mentions": 6,
+   "total_mentions": 7,
    "independent_mentions": 4,
    "platforms": [
     "Facebook",
@@ -1932,15 +1864,6 @@
    ]
   },
   {
-   "venue": "Fusion Pizza",
-   "total_mentions": 3,
-   "independent_mentions": 3,
-   "platforms": [
-    "Facebook",
-    "TikTok"
-   ]
-  },
-  {
    "venue": "Green Dragon",
    "total_mentions": 3,
    "independent_mentions": 3,
@@ -1951,7 +1874,16 @@
    ]
   },
   {
-   "venue": "Rolling Mill",
+   "venue": "Fusion Pizza",
+   "total_mentions": 3,
+   "independent_mentions": 3,
+   "platforms": [
+    "Facebook",
+    "TikTok"
+   ]
+  },
+  {
+   "venue": "The Rolling Mill",
    "total_mentions": 4,
    "independent_mentions": 3,
    "platforms": [
@@ -1961,7 +1893,7 @@
    ]
   },
   {
-   "venue": "The Rolling Mill",
+   "venue": "Rolling Mill",
    "total_mentions": 4,
    "independent_mentions": 3,
    "platforms": [
@@ -2064,11 +1996,6 @@
   },
   {
    "source": "https://www.facebook.com/thebritpubcwmavon",
-   "posts": 12,
-   "dated": 10
-  },
-  {
-   "source": "https://www.facebook.com/AfanTavern",
    "posts": 12,
    "dated": 10
   },
@@ -2189,6 +2116,11 @@
   },
   {
    "source": "https://www.facebook.com/TheLoftneath",
+   "posts": 12,
+   "dated": 7
+  },
+  {
+   "source": "https://www.facebook.com/tysoevillagehall",
    "posts": 12,
    "dated": 7
   }
